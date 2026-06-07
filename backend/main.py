@@ -14,6 +14,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy.orm import Session
+from sqlalchemy.exc import IntegrityError
 from typing import Dict, Any, List, Optional
 from pydantic import BaseModel
 
@@ -147,7 +148,7 @@ def post_answer(payload: AnswerPayload, db: Session = Depends(get_db), session_i
             raise HTTPException(status_code=422, detail="Questão inválida: campo 'subject' ausente")
         if not question.get("gabarito"):
             raise HTTPException(status_code=422, detail="Questão inválida: campo 'gabarito' ausente")
-        
+
         existing = db.query(QuestionHistory).filter(
             QuestionHistory.id == str(question.get("id", ""))[:115],
             QuestionHistory.session_id == session_id
@@ -160,7 +161,16 @@ def post_answer(payload: AnswerPayload, db: Session = Depends(get_db), session_i
         return result
     except HTTPException:
         raise
+    except IntegrityError as exc:
+        # Race condition: o mesmo ID foi inserido por outro request simultâneo
+        db.rollback()
+        logger.warning(f"UniqueViolation ao salvar resposta (duplo envio ignorado): {exc}")
+        raise HTTPException(
+            status_code=409,
+            detail="Esta questão já foi respondida. Carregue uma nova questão."
+        )
     except Exception as exc:
+        db.rollback()
         logger.exception("Falha ao processar resposta")
         raise HTTPException(status_code=500, detail=f"Erro ao processar resposta: {type(exc).__name__}: {str(exc)[:200]}")
 

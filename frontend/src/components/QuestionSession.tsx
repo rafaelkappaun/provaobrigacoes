@@ -163,6 +163,10 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, subje
         const data = await res.json();
         setResponse(data);
         setErrorMessage('');
+      } else if (res.status === 409) {
+        // Questão já respondida (duplo envio ou race condition) → carrega próxima automaticamente
+        setErrorMessage('');
+        fetchNextQuestion();
       } else {
         const errData = await res.json().catch(() => ({ detail: `Erro HTTP ${res.status}` }));
         setErrorMessage(errData.detail || `Erro ${res.status} ao verificar resposta`);
@@ -175,6 +179,7 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, subje
       submittingRef.current = false;
     }
   };
+
 
   const handleAskProfessor = async (e: React.FormEvent) => {
     e.preventDefault();
