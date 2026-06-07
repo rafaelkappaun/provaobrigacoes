@@ -9,7 +9,7 @@ import { SimuladoSession } from './components/SimuladoSession';
 import { ReportTab } from './components/ReportTab';
 import { apiFetch } from './api';
 
-const API_BASE = import.meta.env.VITE_API_BASE || "http://127.0.0.1:8000/api";
+const API_BASE = import.meta.env.VITE_API_BASE || "/api";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('dashboard');
