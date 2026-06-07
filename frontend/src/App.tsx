@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { LayoutDashboard, PlayCircle, Layers, BookOpen, ShieldAlert, Award, FileText, Settings, Menu, X, Flame, Loader2 } from 'lucide-react';
+import { LayoutDashboard, PlayCircle, Layers, BookOpen, ShieldAlert, Award, FileText, Menu, X, Flame, Loader2 } from 'lucide-react';
 import { Dashboard, type DashboardData } from './components/Dashboard';
 import { QuestionSession } from './components/QuestionSession';
 import { FlashcardsTab } from './components/FlashcardsTab';
@@ -7,7 +7,6 @@ import { ArticleLibrary } from './components/ArticleLibrary';
 import { ErrorReport } from './components/ErrorReport';
 import { SimuladoSession } from './components/SimuladoSession';
 import { ReportTab } from './components/ReportTab';
-import { SettingsTab } from './components/SettingsTab';
 import { apiFetch } from './api';
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://127.0.0.1:8000/api";
@@ -65,8 +64,6 @@ export default function App() {
         return <ErrorReport apiBase={API_BASE} onNavigate={handleNavigate} />;
       case 'report':
         return <ReportTab apiBase={API_BASE} onNavigate={handleNavigate} />;
-      case 'settings':
-        return <SettingsTab apiBase={API_BASE} />;
       default:
         return <div>Tab não encontrada</div>;
     }
@@ -80,7 +77,6 @@ export default function App() {
     { id: 'simulado', label: 'Simulados', icon: Award },
     { id: 'erros', label: 'Meus Erros', icon: ShieldAlert },
     { id: 'report', label: 'Parecer da IA', icon: FileText },
-    { id: 'settings', label: 'Configurações', icon: Settings },
   ];
 
   return (
