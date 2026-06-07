@@ -60,6 +60,19 @@ class AdaptiveEngine:
         cls.initialize_topics_if_needed(db, session_id)
         
         stats = db.query(UserStats).filter(UserStats.session_id == session_id).first()
+        if not stats:
+            logger.warning("UserStats not found for session %s, creating inline", session_id)
+            stats = UserStats(
+                session_id=session_id,
+                total_time_seconds=0,
+                questions_answered=0,
+                questions_correct=0,
+                streak_days=0,
+                last_study_date=None
+            )
+            db.add(stats)
+            db.flush()
+        
         topics = db.query(TopicMastery).filter(TopicMastery.session_id == session_id).all()
         
         total_answered = stats.questions_answered
