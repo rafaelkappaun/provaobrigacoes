@@ -54,7 +54,7 @@ class QuestionHistory(Base):
 class Flashcard(Base):
     __tablename__ = "flashcards"
     
-    id = Column(String(50), primary_key=True, index=True)
+    id = Column(String(120), primary_key=True, index=True)
     session_id = Column(String(50), index=True, default="default")
     subject = Column(String(100), index=True, nullable=False)
     front = Column(Text, nullable=False)

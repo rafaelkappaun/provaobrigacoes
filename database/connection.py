@@ -81,6 +81,47 @@ def run_migrations():
         except Exception:
             pass
 
+        # last_reviewed coluna para flashcards
+        try:
+            if not column_exists(conn, "flashcards", "last_reviewed"):
+                conn.execute(text("ALTER TABLE flashcards ADD COLUMN last_reviewed DATETIME"))
+                conn.commit()
+                logger.info("Migração: coluna last_reviewed adicionada em flashcards")
+        except Exception as e:
+            logger.debug(f"Migração last_reviewed: {e}")
+
+        # Aumenta VARCHAR de flashcards.id de 50 para 120 (PostgreSQL)
+        if not is_sqlite:
+            try:
+                conn.execute(text("ALTER TABLE flashcards ALTER COLUMN id TYPE VARCHAR(120)"))
+                conn.commit()
+                logger.info("Migração: flashcards.id alterado para VARCHAR(120)")
+            except Exception as e:
+                logger.debug(f"Migração flashcards.id type: {e}")
+
+        # Remove UNIQUE constraint antiga de topic_mastery.subject
+        try:
+            indexes = conn.execute(text(
+                "SELECT name FROM sqlite_master WHERE type='index' AND tbl_name='topic_mastery' AND sql IS NOT NULL AND sql LIKE '%UNIQUE%'"
+            ) if is_sqlite else text(
+                "SELECT indexname FROM pg_indexes WHERE tablename='topic_mastery' AND indexdef LIKE '%UNIQUE%'"
+            )).fetchall()
+            for idx in indexes:
+                idx_name = idx[0]
+                if "subject" in idx_name.lower():
+                    conn.execute(text(f"DROP INDEX IF EXISTS {idx_name}"))
+                    conn.commit()
+                    logger.info(f"Migração: índice UNIQUE {idx_name} removido de topic_mastery")
+            # Recria como non-unique se SQLite
+            if is_sqlite:
+                conn.execute(text(
+                    "CREATE INDEX IF NOT EXISTS ix_topic_mastery_subject ON topic_mastery(subject)"
+                ))
+                conn.commit()
+                logger.info("Migração: índice não-único ix_topic_mastery_subject recriado")
+        except Exception as e:
+            logger.debug(f"Migração unique index: {e}")
+
 
 def get_db():
     db = SessionLocal()
