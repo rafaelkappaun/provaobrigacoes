@@ -15,18 +15,24 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<string>('dashboard');
   const [dashboardData, setDashboardData] = useState<DashboardData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [extraProps, setExtraProps] = useState<Record<string, unknown>>({});
 
   const loadDashboard = useCallback(async () => {
+    setLoading(true);
+    setError(null);
     try {
       const res = await apiFetch(API_BASE, '/dashboard');
       if (res.ok) {
         const data = await res.json();
         setDashboardData(data);
+      } else {
+        setError(`Erro do servidor (${res.status}): Não foi possível carregar as informações do painel.`);
       }
     } catch (e) {
       console.error("Erro de conexão com o servidor:", e);
+      setError("Não foi possível conectar ao servidor. Verifique sua conexão com a internet.");
     } finally {
       setLoading(false);
     }
@@ -185,6 +191,20 @@ export default function App() {
             <div className="h-full flex flex-col items-center justify-center space-y-3">
               <Loader2 className="animate-spin text-indigo-500" size={32} />
               <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Sincronizando estatísticas...</p>
+            </div>
+          ) : error ? (
+            <div className="h-full flex flex-col items-center justify-center space-y-4 max-w-md mx-auto text-center px-4">
+              <div className="p-3 bg-red-500/10 text-red-500 rounded-2xl border border-red-500/20">
+                <ShieldAlert size={40} className="mx-auto" />
+              </div>
+              <h2 className="text-lg font-bold text-white">Falha na Sincronização</h2>
+              <p className="text-sm text-slate-400">{error}</p>
+              <button 
+                onClick={loadDashboard}
+                className="px-5 py-2.5 bg-indigo-650 hover:bg-indigo-500 text-white rounded-xl text-sm font-bold shadow-lg shadow-indigo-600/15 transition-all"
+              >
+                Tentar Novamente
+              </button>
             </div>
           ) : (
             renderActiveTab()

@@ -10,13 +10,23 @@ function generateId(): string {
   });
 }
 
+let inMemorySessionId: string | null = null;
+
 export function getSessionId(): string {
-  let id = localStorage.getItem(SESSION_KEY);
-  if (!id) {
-    id = generateId();
-    localStorage.setItem(SESSION_KEY, id);
+  try {
+    let id = localStorage.getItem(SESSION_KEY);
+    if (!id) {
+      id = generateId();
+      localStorage.setItem(SESSION_KEY, id);
+    }
+    return id;
+  } catch (e) {
+    console.warn("localStorage is not accessible, using in-memory session ID:", e);
+    if (!inMemorySessionId) {
+      inMemorySessionId = generateId();
+    }
+    return inMemorySessionId;
   }
-  return id;
 }
 
 export function apiFetch(apiBase: string, url: string, options?: RequestInit): Promise<Response> {
