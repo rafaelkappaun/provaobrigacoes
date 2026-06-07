@@ -40,6 +40,89 @@
             '</div><hr style="border-color:#1e293b;margin:15px 0;">';
         }
       }, true);
+
+      // Console virtual de depuração para celular
+      (function() {
+        var logs = [];
+        function addLog(type, args) {
+          var msg = Array.prototype.slice.call(args).map(function(arg) {
+            try {
+              return typeof arg === 'object' ? JSON.stringify(arg) : String(arg);
+            } catch(e) { return '[Circular/Unserializable Object]'; }
+          }).join(' ');
+          
+          // Aguarda o body carregar se necessário
+          if (!document.body) {
+            logs.push({type: type, msg: msg});
+            return;
+          }
+          
+          // Esvazia buffer inicial
+          if (logs.length > 0) {
+            logs.forEach(function(item) { renderLine(item.type, item.msg); });
+            logs = [];
+          }
+          
+          renderLine(type, msg);
+        }
+
+        function renderLine(type, msg) {
+          var logBox = document.getElementById('debug-log-box');
+          if (!logBox) {
+            logBox = document.createElement('div');
+            logBox.id = 'debug-log-box';
+            logBox.style.position = 'fixed';
+            logBox.style.bottom = '0';
+            logBox.style.left = '0';
+            logBox.style.width = '100%';
+            logBox.style.maxHeight = '150px';
+            logBox.style.backgroundColor = 'rgba(11, 15, 25, 0.95)';
+            logBox.style.color = '#10b981';
+            logBox.style.fontFamily = 'monospace';
+            logBox.style.fontSize = '11px';
+            logBox.style.overflow = 'auto';
+            logBox.style.padding = '8px';
+            logBox.style.zIndex = '9999999';
+            logBox.style.borderTop = '2px solid #3b82f6';
+            document.body.appendChild(logBox);
+          }
+          var line = document.createElement('div');
+          line.style.borderBottom = '1px solid #1e293b';
+          line.style.padding = '3px 0';
+          line.style.whiteSpace = 'pre-wrap';
+          var color = '#e2e8f0';
+          if (type === 'ERROR') color = '#ef4444';
+          if (type === 'WARN') color = '#fbbf24';
+          line.style.color = color;
+          line.innerText = '[' + type + '] ' + msg;
+          logBox.appendChild(line);
+          logBox.scrollTop = logBox.scrollHeight;
+        }
+        
+        var _log = console.log;
+        var _error = console.error;
+        var _warn = console.warn;
+        
+        console.log = function() {
+          addLog('LOG', arguments);
+          _log.apply(console, arguments);
+        };
+        console.error = function() {
+          addLog('ERROR', arguments);
+          _error.apply(console, arguments);
+        };
+        console.warn = function() {
+          addLog('WARN', arguments);
+          _warn.apply(console, arguments);
+        };
+
+        window.addEventListener('DOMContentLoaded', function() {
+          if (logs.length > 0) {
+            logs.forEach(function(item) { renderLine(item.type, item.msg); });
+            logs = [];
+          }
+        });
+      })();
     </script>
     <script type="module" crossorigin src="/assets/index-DvERIxR6.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-DQd9EnAj.css">
