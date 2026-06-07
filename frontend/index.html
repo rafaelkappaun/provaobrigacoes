@@ -5,6 +5,42 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JUS OBRIGAÇÕES MASTER - Estudos Inteligentes</title>
+    <script>
+      window.addEventListener('error', function(e) {
+        var isResource = e.target && (e.target.src || e.target.href);
+        var errDiv = document.getElementById('error-overlay');
+        if (!errDiv) {
+          errDiv = document.createElement('div');
+          errDiv.id = 'error-overlay';
+          errDiv.style.position = 'fixed';
+          errDiv.style.top = '0';
+          errDiv.style.left = '0';
+          errDiv.style.width = '100%';
+          errDiv.style.height = '100%';
+          errDiv.style.backgroundColor = '#0b0f19';
+          errDiv.style.color = '#ef4444';
+          errDiv.style.padding = '24px';
+          errDiv.style.zIndex = '999999';
+          errDiv.style.fontFamily = 'system-ui, -apple-system, sans-serif';
+          errDiv.style.overflow = 'auto';
+          document.body.appendChild(errDiv);
+        }
+        if (isResource) {
+          errDiv.innerHTML += '<div style="margin-bottom:20px;">' +
+            '<h3 style="color:#fbbf24;font-size:18px;margin-bottom:8px;font-weight:bold;">⚠️ Falha ao Carregar Recurso</h3>' +
+            '<p style="color:#e2e8f0;font-size:14px;">Não foi possível carregar o arquivo: <code style="background:#1e293b;padding:2px 6px;border-radius:4px;color:#f43f5e;font-family:monospace;font-size:12px;">' + (e.target.src || e.target.href) + '</code></p>' +
+            '<p style="color:#94a3b8;font-size:13px;margin-top:10px;"><b>Dica:</b> O navegador do celular pode estar tentando acessar uma versão antiga do sistema armazenada no cache. Por favor, <b>limpe o cache do seu navegador</b> ou abra uma <b>nova guia anônima</b>.</p>' +
+            '</div><hr style="border-color:#1e293b;margin:15px 0;">';
+        } else {
+          errDiv.innerHTML += '<div style="margin-bottom:20px;">' +
+            '<h3 style="color:#f43f5e;font-size:18px;margin-bottom:8px;font-weight:bold;">❌ Erro de Execução</h3>' +
+            '<p style="color:#e2e8f0;font-size:14px;"><strong>Mensagem:</strong> ' + e.message + '</p>' +
+            '<p style="color:#e2e8f0;font-size:14px;"><strong>Origem:</strong> ' + e.filename + ':' + e.lineno + ':' + e.colno + '</p>' +
+            '<pre style="background:#0f172a;padding:12px;border-radius:8px;border:1px solid rgba(244,63,94,0.3);color:#94a3b8;font-size:12px;white-space:pre-wrap;font-family:monospace;margin-top:8px;">' + (e.error && e.error.stack ? e.error.stack : 'Sem stack trace') + '</pre>' +
+            '</div><hr style="border-color:#1e293b;margin:15px 0;">';
+        }
+      }, true);
+    </script>
   </head>
   <body>
     <div id="root"></div>
