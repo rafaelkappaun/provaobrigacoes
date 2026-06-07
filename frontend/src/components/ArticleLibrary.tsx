@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Search, ChevronDown, ChevronUp, Book, Star, AlertTriangle, Play } from 'lucide-react';
 import { apiFetch } from '../api';
 
@@ -12,9 +12,17 @@ interface Article {
   common_errors: string;
 }
 
+interface Question {
+  bank: string;
+  difficulty: string;
+  enunciado: string;
+  gabarito: string;
+  article?: string;
+}
+
 interface ArticleLibraryProps {
   apiBase: string;
-  onNavigate: (tab: string, extra?: any) => void;
+  onNavigate: (tab: string, extra?: Record<string, unknown>) => void;
 }
 
 export const ArticleLibrary: React.FC<ArticleLibraryProps> = ({ apiBase, onNavigate }) => {
@@ -22,14 +30,10 @@ export const ArticleLibrary: React.FC<ArticleLibraryProps> = ({ apiBase, onNavig
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const [relatedQuestions, setRelatedQuestions] = useState<{[key: string]: any[]}>({});
+  const [relatedQuestions, setRelatedQuestions] = useState<{[key: string]: Question[]}>({});
   const [questionsLoading, setQuestionsLoading] = useState<{[key: string]: boolean}>({});
 
-  useEffect(() => {
-    fetchArticles();
-  }, [searchQuery]);
-
-  const fetchArticles = async () => {
+  const fetchArticles = useCallback(async () => {
     setLoading(true);
     try {
       const res = await apiFetch(apiBase, `/articles?query=${encodeURIComponent(searchQuery)}`);
@@ -42,7 +46,13 @@ export const ArticleLibrary: React.FC<ArticleLibraryProps> = ({ apiBase, onNavig
     } finally {
       setLoading(false);
     }
-  };
+  }, [apiBase, searchQuery]);
+
+  useEffect(() => {
+    Promise.resolve().then(() => {
+      fetchArticles();
+    });
+  }, [fetchArticles]);
 
   const toggleExpand = (id: string) => {
     setExpandedId(prev => (prev === id ? null : id));
@@ -179,7 +189,7 @@ export const ArticleLibrary: React.FC<ArticleLibraryProps> = ({ apiBase, onNavig
                       </div>
                       {relatedQuestions[art.id] && relatedQuestions[art.id].length > 0 && (
                         <div className="space-y-2 max-h-60 overflow-y-auto">
-                          {relatedQuestions[art.id].map((q: any, i: number) => (
+                          {relatedQuestions[art.id].map((q, i) => (
                             <div key={i} className="p-2 bg-slate-950 rounded-lg border border-slate-800 text-left">
                               <div className="flex items-center gap-1 mb-1">
                                 <span className="px-1.5 py-0.5 text-[8px] font-black bg-indigo-900/50 text-indigo-400 rounded">{q.bank}</span>

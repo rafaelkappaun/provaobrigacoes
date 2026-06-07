@@ -34,10 +34,6 @@ export const SettingsTab: React.FC<SettingsTabProps> = ({ apiBase }) => {
   const [saving, setSaving] = useState<boolean>(false);
   const [statusMessage, setStatusMessage] = useState<{ text: string; success: boolean } | null>(null);
 
-  useEffect(() => {
-    fetchConfig();
-  }, []);
-
   const fetchConfig = async () => {
     setLoading(true);
     try {
@@ -52,6 +48,13 @@ export const SettingsTab: React.FC<SettingsTabProps> = ({ apiBase }) => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    Promise.resolve().then(() => {
+      fetchConfig();
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,7 +81,7 @@ export const SettingsTab: React.FC<SettingsTabProps> = ({ apiBase }) => {
     }
   };
 
-  const updateField = (field: keyof Config, value: any) => {
+  const updateField = <K extends keyof Config>(field: K, value: Config[K]) => {
     setConfig(prev => ({
       ...prev,
       [field]: value

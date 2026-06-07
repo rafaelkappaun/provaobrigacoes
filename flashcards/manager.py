@@ -156,20 +156,39 @@ class FlashcardManager:
 
     @staticmethod
     def get_due_flashcards(db: Session, session_id: str = "default") -> List[Flashcard]:
-        """Obtém flashcards agendados para revisão hoje"""
+        """Obtém flashcards agendados para revisão hoje (exclui dominados)"""
         now = datetime.utcnow()
         return db.query(Flashcard).filter(
             Flashcard.next_revision_date <= now,
-            Flashcard.session_id == session_id
+            Flashcard.session_id == session_id,
+            Flashcard.mastered == False
         ).all()
 
     @staticmethod
-    def get_all_flashcards(db: Session, subject: str = None, session_id: str = "default") -> List[Flashcard]:
+    def get_all_flashcards(db: Session, subject: str = None, session_id: str = "default", include_mastered: bool = False) -> List[Flashcard]:
         """Obtém todos os flashcards do banco, opcionalmente filtrados por assunto"""
         query = db.query(Flashcard).filter(Flashcard.session_id == session_id)
         if subject:
             query = query.filter(Flashcard.subject == subject)
+        if not include_mastered:
+            query = query.filter(Flashcard.mastered == False)
         return query.all()
+
+    @staticmethod
+    def mark_as_mastered(db: Session, card_id: str, session_id: str = "default") -> Flashcard:
+        """Marca o flashcard como dominado (não aparecerá mais nas revisões agendadas)"""
+        card = db.query(Flashcard).filter(
+            Flashcard.id == card_id,
+            Flashcard.session_id == session_id
+        ).first()
+        if card:
+            card.mastered = True
+            card.box = 5
+            card.interval_days = 30
+            card.next_revision_date = datetime.utcnow() + timedelta(days=30)
+            card.last_reviewed = datetime.utcnow()
+            db.commit()
+        return card
 
     @classmethod
     def process_review(cls, db: Session, card_id: str, is_easy: bool, session_id: str = "default") -> Flashcard:

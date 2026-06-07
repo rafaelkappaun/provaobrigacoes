@@ -82,24 +82,24 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, onSes
   
   // Cronômetro e métricas
   const [seconds, setSeconds] = useState<number>(0);
-  const timerRef = useRef<any>(null);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const startTimeRef = useRef<number>(0);
 
-  const startTimer = () => {
+  const stopTimer = useCallback(() => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+  }, []);
+
+  const startTimer = useCallback(() => {
     stopTimer();
     setSeconds(0);
     startTimeRef.current = Date.now();
     timerRef.current = setInterval(() => {
       setSeconds(prev => prev + 1);
     }, 1000);
-  };
-
-  const stopTimer = () => {
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-      timerRef.current = null;
-    }
-  };
+  }, [stopTimer]);
 
   const fetchNextQuestion = useCallback(async () => {
     setLoading(true);
@@ -128,13 +128,15 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, onSes
     } finally {
       setLoading(false);
     }
-  }, [apiBase]);
+  }, [apiBase, startTimer]);
 
   // Carrega questão ao iniciar
   useEffect(() => {
-    fetchNextQuestion();
+    Promise.resolve().then(() => {
+      fetchNextQuestion();
+    });
     return () => stopTimer();
-  }, [fetchNextQuestion]);
+  }, [fetchNextQuestion, stopTimer]);
 
   const handleSubmit = async () => {
     if (!question || !selectedOption || checking || submittingRef.current) return;

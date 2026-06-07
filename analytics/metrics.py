@@ -77,27 +77,28 @@ class AnalyticsMetrics:
                 "rate": round(rate, 1)
             })
             
-        # 3. Histórico dos últimos 7 dias (Questões respondidas por dia)
+        # 3. Histórico dos últimos 7 dias (Questões respondidas por dia) — query única
+        seven_days_ago = datetime.combine(datetime.utcnow().date() - timedelta(days=6), datetime.min.time())
+        daily_rows = db.query(
+            func.date(QuestionHistory.answered_at).label("day"),
+            func.count(QuestionHistory.id).label("total"),
+            func.sum(case((QuestionHistory.is_correct == True, 1), else_=0)).label("correct")
+        ).filter(
+            QuestionHistory.answered_at >= seven_days_ago,
+            QuestionHistory.session_id == session_id
+        ).group_by(func.date(QuestionHistory.answered_at)).all()
+        
+        daily_map = {row.day: {"answered": row.total, "correct": row.correct or 0} for row in daily_rows}
         today = datetime.utcnow().date()
         daily_history = []
         for i in range(6, -1, -1):
             date = today - timedelta(days=i)
-            start_dt = datetime.combine(date, datetime.min.time())
-            end_dt = datetime.combine(date, datetime.max.time())
-            
-            day_stats = db.query(
-                func.count(QuestionHistory.id).label("total"),
-                func.sum(case((QuestionHistory.is_correct == True, 1), else_=0)).label("correct")
-            ).filter(
-                QuestionHistory.answered_at >= start_dt,
-                QuestionHistory.answered_at <= end_dt,
-                QuestionHistory.session_id == session_id
-            ).first()
-            
+            date_str = date.strftime("%Y-%m-%d")
+            day_stats = daily_map.get(date_str, {"answered": 0, "correct": 0})
             daily_history.append({
                 "date": date.strftime("%d/%m"),
-                "answered": day_stats.total or 0,
-                "correct": day_stats.correct or 0
+                "answered": day_stats["answered"],
+                "correct": day_stats["correct"]
             })
             
         # 4. Totalizadores Gerais

@@ -16,8 +16,6 @@ load_dotenv()
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("AIProviderManager")
 
-_prompt_cache: Dict[str, Any] = {}
-
 # Carrega o pool de questões seed (gerado pelo ai/generate_seed.py)
 _seed_pool: List[Dict[str, Any]] = []
 _seed_file = Path(__file__).resolve().parent.parent / "database" / "seed_questions.json"
@@ -105,13 +103,6 @@ class AIProviderManager:
 
         config = cls.get_config()
         provider = config.get("active_provider", "offline")
-
-        # Cache efêmero (remove após 1 uso para garantir variedade)
-        cache_key = f"q_{subject}_{bank}_{difficulty}"
-        if cache_key in _prompt_cache:
-            cached_val = _prompt_cache.pop(cache_key)
-            logger.info(f"Cache hit para: {cache_key}")
-            return cached_val
 
         # 2. Tenta gerar com IA online
         prompt = cls._build_question_prompt(subject, bank, difficulty)

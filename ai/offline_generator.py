@@ -166,7 +166,7 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
             )
 
     # -------------------------------------------------------------
-    # 2. A QUEM SE DEVE PAGAR (Arts. 308 - 312)
+    # 3. A QUEM SE DEVE PAGAR (Arts. 308 - 312)
     # -------------------------------------------------------------
     elif subject == "A quem se deve pagar":
         question_data["article"] = "Art. 308 e Art. 309 do Código Civil"
@@ -284,7 +284,7 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
             )
 
     # -------------------------------------------------------------
-    # 4. TEMPO DO PAGAMENTO (Arts. 331 - 333)
+    # 6. TEMPO DO PAGAMENTO (Arts. 331 - 333)
     # -------------------------------------------------------------
     elif subject == "Tempo do pagamento":
         question_data["article"] = "Art. 331 e Art. 333 do Código Civil"
@@ -322,7 +322,7 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
             )
 
     # -------------------------------------------------------------
-    # 5. CONSIGNAÇÃO EM PAGAMENTO (Arts. 334 - 345)
+    # 7. CONSIGNAÇÃO EM PAGAMENTO (Arts. 334 - 345)
     # -------------------------------------------------------------
     elif subject == "Consignação em pagamento":
         question_data["article"] = "Art. 334 e Art. 335 do Código Civil"
@@ -360,7 +360,7 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
             )
 
     # -------------------------------------------------------------
-    # 6. PAGAMENTO COM SUB-ROGAÇÃO (Arts. 346 - 351)
+    # 8. PAGAMENTO COM SUB-ROGAÇÃO (Arts. 346 - 351)
     # -------------------------------------------------------------
     elif subject == "Pagamento com sub-rogação":
         question_data["article"] = "Art. 346 e Art. 347 do Código Civil"
@@ -399,7 +399,7 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
             )
 
     # -------------------------------------------------------------
-    # 7. IMPUTAÇÃO DO PAGAMENTO (Arts. 352 - 355)
+    # 9. IMPUTAÇÃO DO PAGAMENTO (Arts. 352 - 355)
     # -------------------------------------------------------------
     elif subject == "Imputação do pagamento":
         question_data["article"] = "Art. 352 e Art. 354 do Código Civil"
@@ -438,7 +438,7 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
             )
 
     # -------------------------------------------------------------
-    # 8. DAÇÃO EM PAGAMENTO (Arts. 356 - 359)
+    # 10. DAÇÃO EM PAGAMENTO (Arts. 356 - 359)
     # -------------------------------------------------------------
     elif subject == "Dação em pagamento":
         question_data["article"] = "Art. 356 e Art. 359 do Código Civil"
@@ -477,7 +477,7 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
             )
 
     # -------------------------------------------------------------
-    # 9. NOVAÇÃO (Arts. 360 - 367)
+    # 11. NOVAÇÃO (Arts. 360 - 367)
     # -------------------------------------------------------------
     elif subject == "Novação":
         question_data["article"] = "Art. 360 e Art. 364 do Código Civil"
@@ -518,7 +518,7 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
             )
 
     # -------------------------------------------------------------
-    # 10. COMPENSAÇÃO (Arts. 368 - 380)
+    # 12. COMPENSAÇÃO (Arts. 368 - 380)
     # -------------------------------------------------------------
     elif subject == "Compensação":
         question_data["article"] = "Art. 368 e Art. 369 do Código Civil"
@@ -556,7 +556,7 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
             )
 
     # -------------------------------------------------------------
-    # 11. CONFUSÃO (Arts. 381 - 384)
+    # 13. CONFUSÃO (Arts. 381 - 384)
     # -------------------------------------------------------------
     elif subject == "Confusão":
         question_data["article"] = "Art. 381 do Código Civil"
@@ -594,7 +594,7 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
             )
 
     # -------------------------------------------------------------
-    # 12. REMISSÃO DAS DÍVIDAS (Arts. 385 - 388)
+    # 14. REMISSÃO DAS DÍVIDAS (Arts. 385 - 388)
     # -------------------------------------------------------------
     elif subject == "Remissão das dívidas":
         question_data["article"] = "Art. 385 e Art. 388 do Código Civil"
@@ -632,9 +632,9 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
             )
 
     # -------------------------------------------------------------
-    # 13. MORA (Arts. 394 - 401)
+    # 15. MORA - GERAL (Arts. 394 - 401)
     # -------------------------------------------------------------
-    elif subject in ["Mora - Geral", "Mora do devedor", "Mora do credor"]:
+    elif subject == "Mora - Geral":
         question_data["article"] = "Art. 394, Art. 395 e Art. 396 do Código Civil"
         if is_cespe:
             question_data["enunciado"] = (
@@ -670,47 +670,203 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
             )
 
     # -------------------------------------------------------------
-    # 14. INADIMPLEMENTO ABSOLUTO & PERDAS E DANOS (Arts. 389 - 393, 402 - 405)
+    # 15b. MORA DO DEVEDOR (Arts. 394 - 401)
     # -------------------------------------------------------------
-    elif subject in ["Inadimplemento - Disposições gerais", "Inadimplemento absoluto", "Perdas e danos"]:
-        question_data["article"] = "Art. 389, Art. 393 e Art. 402 do Código Civil"
+    elif subject == "Mora do devedor":
+        question_data["article"] = "Art. 394, Art. 397, Art. 399 do Código Civil"
         if is_cespe:
             question_data["enunciado"] = (
-                f"({bank}) O devedor {v['devedor']} responde pelos prejuízos decorrentes de caso fortuito ou força maior se estes ocorrerem "
-                f"durante o atraso (mora), a menos que prove que o dano ocorreria mesmo se a obrigação tivesse sido cumprida a tempo."
+                f"({bank}) {v['devedor']}, devedor de obrigação líquida e com prazo certo, deixou de pagar {v['valor']} a {v['credor']} na data ajustada. "
+                f"Antes do recebimento da prestação, o bem objeto do contrato pereceu por caso fortuito, sem culpa de {v['devedor']}. "
+                f"Nessa hipótese, {v['devedor']} não responde pelo perecimento, exceto se este também ocorresse caso a prestação tivesse sido realizada no vencimento."
             )
             question_data["options"] = {"A": "CERTO", "B": "ERRADO"}
             question_data["gabarito"] = "A"
             question_data["legal_basis"] = "Art. 399 do Código Civil."
             question_data["explanation"] = (
-                f"O devedor em mora responde pelo caso fortuito ou força maior. Trata-se da perpetuação da obrigação (perpetuatio obligationis) "
-                f"prevista no art. 399, onde ele só se exime se provar a inevitabilidade do dano mesmo adimplindo tempestivamente. "
-                f"Portanto, a afirmação está CERTA."
+                f"O art. 399 do CC dispõe que o devedor em mora responde pela impossibilidade da prestação, exceto se provar que o dano ocorreria "
+                f"ainda que a obrigação tivesse sido cumprida no vencimento. Portanto, a afirmação está CERTA."
             )
         else:
             question_data["enunciado"] = (
-                f"({bank}) {v['devedor']} descumpriu culposamente contrato de prestação de serviços no valor de {v['valor']} celebrado com {v['credor']}. "
-                f"Como consequência direta e imediata do inadimplemento absoluto da obrigação, {v['credor']} sofreu prejuízos materiais. "
-                f"Acerca das normas de Inadimplemento e Perdas e Danos previstas no Código Civil, assinale a opção correta:"
+                f"({bank}) {v['devedor']} contraiu obrigação de entregar {v['contrato']} a {v['credor']} até determinada data. "
+                f"Após o vencimento, {v['credor']} exige o cumprimento com acréscimos legais. Considerando a disciplina da mora do devedor no Código Civil, assinale a opção correta:"
             )
             question_data["options"] = {
-                "A": "As perdas e danos devidas ao credor abrangem apenas o que ele efetivamente perdeu (dano emergente), sendo vedada a condenação por lucros cessantes no direito civil brasileiro.",
-                "B": "O devedor responde por caso fortuito ou de força maior mesmo que não tenha expressamente se responsabilizado por eles no contrato.",
-                "C": "Salvo as exceções previstas em lei, as perdas e danos abrangem, além do que o credor efetivamente perdeu, o que razoavelmente deixou de lucrar, desde que consequência direta e imediata do inadimplemento.",
-                "D": "Os juros de mora em perdas e danos decorrentes de responsabilidade contratual contam-se unicamente a partir da citação inicial do devedor.",
-                "E": "Nas obrigações de pagar em dinheiro, se o credor provar que o juro da mora não cobre o prejuízo, o juiz não poderá conceder indenização suplementar."
+                "A": "Constituído em mora, o devedor responde pela impossibilidade da prestação, ainda que esta decorra de caso fortuito ou força maior, salvo se provar que o dano ocorreria mesmo que cumprisse a obrigação no vencimento.",
+                "B": "A mora do devedor é sempre purgável mediante a simples oferta da prestação principal, independentemente do pagamento de juros ou correção monetária.",
+                "C": "O devedor constituído em mora não responde pelos prejuízos decorrentes de caso fortuito se provar que agiu com diligência na guarda do bem.",
+                "D": "A mora do devedor em obrigação sem prazo determinado constitui-se automaticamente no momento do inadimplemento, sem necessidade de interpelação.",
+                "E": "O credor pode recusar a prestação oferecida pelo devedor em mora se o prejuízo causado pelo atraso exceder o valor da própria obrigação."
             }
-            question_data["gabarito"] = "C"
-            question_data["legal_basis"] = "Art. 389, Art. 393, Art. 402, Art. 403 e Art. 404 do Código Civil."
+            question_data["gabarito"] = "A"
+            question_data["legal_basis"] = "Art. 394, Art. 397 e Art. 399 do Código Civil."
             question_data["explanation"] = (
-                f"A alternativa C retrata o art. 402 do CC, dispondo sobre a composição das perdas e danos (danos emergentes + lucros cessantes). "
-                f"A alternativa A erra ao vedar lucros cessantes. A alternativa B erra porque o devedor *não* responde por caso fortuito ou força maior "
-                f"se não se responsabilizou por eles (art. 393). A alternativa E erra ao ignorar o art. 404, parágrafo único, que autoriza "
-                f"indenização suplementar se os juros moratórios não cobrirem o prejuízo."
+                f"A alternativa A descreve corretamente a perpetuação da obrigação (art. 399). A alternativa B erra porque a purgação exige o pagamento "
+                f"da prestação acrescida de juros, correção e perdas e danos (art. 401). A alternativa D erra porque obrigação sem prazo exige interpelação "
+                f"(art. 397, parágrafo único). A alternativa C contraria o art. 399, que impõe a responsabilidade objetiva do devedor em mora pelo fortuito."
             )
 
     # -------------------------------------------------------------
-    # 15. JUROS LEGAIS (Arts. 406 - 407)
+    # 15c. MORA DO CREDOR (Arts. 394 - 401)
+    # -------------------------------------------------------------
+    elif subject == "Mora do credor":
+        question_data["article"] = "Art. 394, Art. 400 do Código Civil"
+        if is_cespe:
+            question_data["enunciado"] = (
+                f"({bank}) {v['credor']} recusou injustificadamente receber o pagamento de {v['valor']} oferecido por {v['devedor']} no prazo e local ajustados. "
+                f"Em razão da mora do credor, {v['devedor']} fica desobrigado de conservar a coisa objeto da prestação, respondendo apenas por dolo, "
+                f"e ficam suspensos os juros de mora."
+            )
+            question_data["options"] = {"A": "CERTO", "B": "ERRADO"}
+            question_data["gabarito"] = "A"
+            question_data["legal_basis"] = "Art. 400 do Código Civil."
+            question_data["explanation"] = (
+                f"O art. 400 do CC estabelece que 'a mora do credor subtrai o devedor da responsabilidade pela conservação da coisa, "
+                f"obriga o credor a pagar as despesas e reduzindo-a, e exime o devedor de pagar juros'. Portanto, a afirmação está CERTA."
+            )
+        else:
+            question_data["enunciado"] = (
+                f"({bank}) {v['credor']} recusou-se, sem justa causa, a receber o valor de {v['valor']} que {v['devedor']} lhe ofereceu no local e data "
+                f"aprazados. Diante da recusa, {v['devedor']} não sabe como proceder para se desonerar. Considerando a disciplina da mora do credor (mora accipiendi) no Código Civil, assinale a opção correta:"
+            )
+            question_data["options"] = {
+                "A": "O devedor em mora accipiendi responde pela conservação da coisa enquanto não a consignar, salvo se a recusa do credor o impossibilitar de cumprir a prestação.",
+                "B": "A mora do credor exonera o devedor da responsabilidade pela conservação da coisa, obriga o credor a ressarcir as despesas de guarda e exime o devedor de pagar juros sobre a dívida.",
+                "C": "O credor em mora pode, a qualquer tempo, exigir a prestação, correndo por conta do devedor os riscos pela deterioração da coisa.",
+                "D": "A mora do credor converte automaticamente a obrigação de dar em obrigação de indenizar, liberando o devedor do vínculo obrigacional.",
+                "E": "O devedor pode exigir a purgação da mora do credor mediante consignação extrajudicial, sendo esta suficiente para afastar a mora accipiendi."
+            }
+            question_data["gabarito"] = "B"
+            question_data["legal_basis"] = "Art. 400 do Código Civil."
+            question_data["explanation"] = (
+                f"A alternativa B descreve precisamente os efeitos da mora do credor previstos no art. 400 do CC. "
+                f"A alternativa A erra porque o devedor não responde pela conservação (salvo dolo). A alternativa C erra porque os riscos da deterioração "
+                f"correm por conta do credor em mora. A alternativa D erra porque o vínculo não se converte automaticamente em indenização."
+            )
+
+    # -------------------------------------------------------------
+    # 16a. INADIMPLEMENTO - DISPOSIÇÕES GERAIS (Arts. 389 - 393)
+    # -------------------------------------------------------------
+    elif subject == "Inadimplemento - Disposições gerais":
+        question_data["article"] = "Art. 389, Art. 390, Art. 391, Art. 392, Art. 393 do Código Civil"
+        if is_cespe:
+            question_data["enunciado"] = (
+                f"({bank}) {v['devedor']} descumpriu obrigação contratual com {v['credor']} em razão de caso fortuito imprevisível, "
+                f"não tendo assumido expressamente o risco por tal evento no contrato. Nessa hipótese, {v['devedor']} não responde pelos prejuízos "
+                f"decorrentes do inadimplemento, pois o caso fortuito exclui a responsabilidade, salvo disposição em contrário."
+            )
+            question_data["options"] = {"A": "CERTO", "B": "ERRADO"}
+            question_data["gabarito"] = "A"
+            question_data["legal_basis"] = "Art. 393 do Código Civil."
+            question_data["explanation"] = (
+                f"O art. 393 do CC estabelece que 'o devedor não responde pelos prejuízos resultantes de caso fortuito ou força maior, "
+                f"se expressamente não se houver por eles responsabilizado'. Portanto, a afirmação está CERTA."
+            )
+        else:
+            question_data["enunciado"] = (
+                f"({bank}) {v['devedor']} não cumpriu a obrigação assumida no contrato de {v['contrato']} com {v['credor']} no valor de {v['valor']}. "
+                f"Considerando as disposições gerais sobre inadimplemento das obrigações no Código Civil, assinale a opção correta:"
+            )
+            question_data["options"] = {
+                "A": "O inadimplemento absoluto ocorre quando a prestação ainda é possível e útil ao credor, autorizando o cumprimento forçado com acréscimos.",
+                "B": "O devedor não responde pelos prejuízos resultantes de caso fortuito ou força maior, se expressamente não se houver por eles responsabilizado.",
+                "C": "Nas obrigações de dar coisa incerta, a escolha pertence ao devedor, que não pode ser obrigado a prestar outra de qualidade superior.",
+                "D": "A mora caracteriza-se pelo descumprimento definitivo da obrigação, tornando inútil a prestação ao credor.",
+                "E": "O credor da obrigação de fazer pode, em qualquer hipótese, mandar executar o fato por terceiro às expensas do devedor."
+            }
+            question_data["gabarito"] = "B"
+            question_data["legal_basis"] = "Art. 389, Art. 390, Art. 391, Art. 392 e Art. 393 do Código Civil."
+            question_data["explanation"] = (
+                f"A alternativa B reproduz o art. 393, caput, que exclui a responsabilidade do devedor por caso fortuito ou força maior, "
+                f"salvo assunção expressa. A alternativa A erra ao confundir inadimplemento absoluto (que torna a prestação inútil ao credor) "
+                f"com mora. A alternativa D erra ao inverter os conceitos: mora é atraso (ainda possível); inadimplemento absoluto é impossibilidade definitiva."
+            )
+
+    # -------------------------------------------------------------
+    # 16b. INADIMPLEMENTO ABSOLUTO (Arts. 389 - 393)
+    # -------------------------------------------------------------
+    elif subject == "Inadimplemento absoluto":
+        question_data["article"] = "Art. 389, Art. 391, Art. 395 do Código Civil"
+        if is_cespe:
+            question_data["enunciado"] = (
+                f"({bank}) {v['devedor']} deveria entregar {v['contrato']} a {v['credor']} em determinada data, mas o bem pereceu totalmente por culpa exclusiva de {v['devedor']}, "
+                f"tornando a prestação impossível. Diante do inadimplemento absoluto, {v['credor']} tem direito de exigir o equivalente econômico "
+                f"da prestação acrescido de perdas e danos, sem prejuízo de buscar a resolução do contrato."
+            )
+            question_data["options"] = {"A": "CERTO", "B": "ERRADO"}
+            question_data["gabarito"] = "A"
+            question_data["legal_basis"] = "Art. 389 do Código Civil."
+            question_data["explanation"] = (
+                f"O art. 389 do CC dispõe que 'não cumprida a obrigação, responde o devedor por perdas e danos, mais juros e atualização monetária, "
+                f"sem prejuízo da resolução do contrato'. A diferença entre inadimplemento absoluto e mora é que no absoluto a prestação tornou-se inútil "
+                f"ao credor. Portanto, a afirmação está CERTA."
+            )
+        else:
+            question_data["enunciado"] = (
+                f"({bank}) {v['devedor']} comprometeu-se a entregar bem específico a {v['credor']} até o dia do vencimento. "
+                f"Após o vencimento, o bem pereceu integralmente por culpa de {v['devedor']}, não sendo mais possível o cumprimento da prestação original. "
+                f"Considerando o inadimplemento absoluto no Código Civil, assinale a opção correta:"
+            )
+            question_data["options"] = {
+                "A": "O inadimplemento absoluto distingue-se da mora porque nesta a prestação ainda é possível e útil ao credor, enquanto naquele a prestação tornou-se impossível ou inútil.",
+                "B": "No inadimplemento absoluto, o credor pode exigir o cumprimento forçado da prestação original, pois o vínculo obrigacional persiste integralmente.",
+                "C": "O devedor em inadimplemento absoluto responde apenas pelo valor da prestação, sem incidência de juros, correção ou perdas e danos.",
+                "D": "O inadimplemento absoluto exige necessariamente prévia interpelação judicial ou extrajudicial do devedor para se configurar.",
+                "E": "A purgação do inadimplemento absoluto pode ocorrer a qualquer tempo, desde que o devedor comprove força maior."
+            }
+            question_data["gabarito"] = "A"
+            question_data["legal_basis"] = "Art. 389, art. 394 e art. 395 do Código Civil."
+            question_data["explanation"] = (
+                f"A alternativa A diferencia corretamente inadimplemento absoluto (prestação impossível ou inútil ao credor) da mora (atraso culposo "
+                f"em que a prestação ainda é possível e útil). A alternativa B erra porque no inadimplemento absoluto não há mais falar em cumprimento "
+                f"forçado da prestação original (já impossível). A alternativa C erra porque o art. 389 impõe perdas e danos, juros e correção."
+            )
+
+    # -------------------------------------------------------------
+    # 16c. PERDAS E DANOS (Arts. 402 - 405)
+    # -------------------------------------------------------------
+    elif subject == "Perdas e danos":
+        question_data["article"] = "Art. 402, Art. 403, Art. 404, Art. 405 do Código Civil"
+        if is_cespe:
+            question_data["enunciado"] = (
+                f"({bank}) Em decorrência do inadimplemento contratual de {v['devedor']}, {v['credor']} sofreu prejuízo de dois tipos: "
+                f"(i) desembolsou {v['valor']} para contratar terceiro para concluir o serviço (dano emergente) e (ii) deixou de lucrar {v['valor']} "
+                f"em razão do atraso (lucros cessantes). Segundo o Código Civil, ambos os componentes integram as perdas e danos, "
+                f"desde que sejam consequência direta e imediata do inadimplemento."
+            )
+            question_data["options"] = {"A": "CERTO", "B": "ERRADO"}
+            question_data["gabarito"] = "A"
+            question_data["legal_basis"] = "Art. 402 do Código Civil."
+            question_data["explanation"] = (
+                f"O art. 402 do CC dispõe que 'salvo as exceções expressamente previstas em lei, as perdas e danos devidas ao credor abrangem, "
+                f"além do que ele efetivamente perdeu (dano emergente), o que razoavelmente deixou de lucrar (lucros cessantes), desde que sejam "
+                f"consequência direta e imediata do inadimplemento'. Portanto, a afirmação está CERTA."
+            )
+        else:
+            question_data["enunciado"] = (
+                f"({bank}) {v['devedor']} descumpriu contrato de prestação de serviços firmado com {v['credor']} no valor de {v['valor']}. "
+                f"{v['credor']} alega ter sofrido prejuízos materiais e requer indenização. Considerando a disciplina das perdas e danos no Código Civil, assinale a opção correta:"
+            )
+            question_data["options"] = {
+                "A": "As perdas e danos abrangem o dano emergente e os lucros cessantes, desde que consequência direta e imediata do inadimplemento ou do fato lesivo, apurados em liquidação de sentença.",
+                "B": "Os lucros cessantes limitam-se ao que o credor deixou de lucrar exclusivamente com a obrigação descumprida, vedada a indenização por oportunidades perdidas além do vínculo contratual.",
+                "C": "O devedor respede por todos os prejuízos sofridos pelo credor, ainda que remotos, desde que decorrentes do inadimplemento.",
+                "D": "Nas perdas e danos decorrentes de responsabilidade contratual, os juros de mora contam-se exclusivamente a partir da citação inicial.",
+                "E": "O valor da indenização por perdas e danos limita-se ao montante da obrigação principal, não podendo excedê-lo."
+            }
+            question_data["gabarito"] = "A"
+            question_data["legal_basis"] = "Art. 402, Art. 403, Art. 404 e Art. 405 do Código Civil."
+            question_data["explanation"] = (
+                f"A alternativa A descreve corretamente a composição das perdas e danos (art. 402: dano emergente + lucros cessantes), "
+                f"com apuração em liquidação de sentença (art. 403). A alternativa B erra ao restringir indevidamente os lucros cessantes. "
+                f"A alternativa C erra porque a indenização abrange apenas os danos diretos e imediatos (art. 403), excluindo danos remotos. "
+                f"A alternativa D erra porque os juros de mora contam-se da citação apenas na responsabilidade extracontratual; na contratual, "
+                f"contam-se do vencimento (art. 405)."
+            )
+
+    # -------------------------------------------------------------
+    # 17. JUROS LEGAIS (Arts. 406 - 407)
     # -------------------------------------------------------------
     elif subject == "Juros legais":
         question_data["article"] = "Art. 406 e Art. 407 do Código Civil"
@@ -747,7 +903,7 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
             )
 
     # -------------------------------------------------------------
-    # 16. CLÁUSULA PENAL (Arts. 408 - 416)
+    # 18. CLÁUSULA PENAL (Arts. 408 - 416)
     # -------------------------------------------------------------
     elif subject == "Cláusula penal":
         question_data["article"] = "Art. 408 a Art. 416 do Código Civil"
@@ -787,7 +943,7 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
             )
 
     # -------------------------------------------------------------
-    # 17. ARRAS OU SINAL (Arts. 417 - 420)
+    # 19. ARRAS OU SINAL (Arts. 417 - 420)
     # -------------------------------------------------------------
     elif subject == "Arras ou sinal":
         question_data["article"] = "Art. 417 a Art. 420 do Código Civil"
@@ -827,7 +983,7 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
             )
             
     # -------------------------------------------------------------
-    # 18. DEFAULT / FALLBACK PARA OS DEMAIS TEMAS DO CC (ARTS 304 - 420)
+    # 20. DEFAULT / FALLBACK PARA OS DEMAIS TEMAS DO CC (ARTS 304 - 420)
     # -------------------------------------------------------------
     else:
         # Fallback genérico para cobrir qualquer tema faltante com padrão civilista robusto

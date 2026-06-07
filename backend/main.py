@@ -50,7 +50,7 @@ app.add_middleware(
 
 # Rate limiting simples (em memória)
 _rate_limit_store: Dict[str, List[float]] = {}
-RATE_LIMIT_REQUESTS = int(os.getenv("RATE_LIMIT_REQUESTS", "30"))
+RATE_LIMIT_REQUESTS = int(os.getenv("RATE_LIMIT_REQUESTS", "60"))
 RATE_LIMIT_WINDOW = int(os.getenv("RATE_LIMIT_WINDOW", "60"))
 
 @app.middleware("http")
@@ -58,7 +58,7 @@ async def rate_limit_middleware(request: Request, call_next):
     if request.url.path.startswith("/api/"):
         client_ip = request.client.host if request.client else "unknown"
         now = time.time()
-        window_key = f"{client_ip}:{request.url.path}"
+        window_key = client_ip
 
         timestamps = _rate_limit_store.get(window_key, [])
         timestamps = [t for t in timestamps if now - t < RATE_LIMIT_WINDOW]
@@ -92,6 +92,7 @@ class ConfigPayload(BaseModel):
     deepseek_api_key: str
     qwen_api_key: str
     mistral_api_key: str
+    groq_api_key: str
     temperature: float
 
 class ProfessorChatPayload(BaseModel):
@@ -172,6 +173,19 @@ def get_flashcards(subject: Optional[str] = None, due_only: bool = False, db: Se
         logger.exception("Falha ao obter flashcards")
         raise HTTPException(status_code=500, detail="Erro ao obter flashcards")
 
+@app.patch("/api/flashcards/{card_id}/master")
+def master_flashcard(card_id: str, db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
+    try:
+        card = FlashcardManager.mark_as_mastered(db, card_id, session_id)
+        if not card:
+            raise HTTPException(status_code=404, detail="Flashcard não encontrado")
+        return {"message": "Flashcard marcado como dominado", "next_revision": card.next_revision_date}
+    except HTTPException:
+        raise
+    except Exception:
+        logger.exception("Falha ao marcar flashcard como dominado")
+        raise HTTPException(status_code=500, detail="Erro ao marcar flashcard como dominado")
+
 @app.post("/api/flashcards/{card_id}/review")
 def review_flashcard(card_id: str, payload: FlashcardReviewPayload, db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
     try:
@@ -231,7 +245,17 @@ def get_simulado(size: int = 10, db: Session = Depends(get_db), session_id: str 
         for i in range(size):
             subj = selected_subjects[i % len(selected_subjects)]
             bank = "FGV" if i % 2 == 0 else "OAB"
-            q = AIProviderManager.generate_question(subj, bank, "Médio", db, session_id)
+            mastery = db.query(TopicMastery).filter(
+                TopicMastery.subject == subj,
+                TopicMastery.session_id == session_id
+            ).first()
+            difficulty = "Médio"
+            if mastery:
+                if mastery.status == "Critico":
+                    difficulty = "Fácil"
+                elif mastery.status == "Dominado":
+                    difficulty = "Difícil"
+            q = AIProviderManager.generate_question(subj, bank, difficulty, db, session_id)
             questions.append(q)
         return questions
     except Exception:
@@ -333,6 +357,7 @@ def post_config(payload: ConfigPayload, db: Session = Depends(get_db)):
         config.deepseek_api_key = payload.deepseek_api_key
         config.qwen_api_key = payload.qwen_api_key
         config.mistral_api_key = payload.mistral_api_key
+        config.groq_api_key = payload.groq_api_key
         config.temperature = payload.temperature
         db.commit()
         return {"message": "Configurações salvas com sucesso"}

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { RefreshCw, Check, AlertCircle, BookOpen, Loader2 } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { RefreshCw, Check, AlertCircle, BookOpen, Loader2, Star } from 'lucide-react';
 import { apiFetch } from '../api';
 
 interface Flashcard {
@@ -9,6 +9,7 @@ interface Flashcard {
   back: string;
   box: number;
   interval_days: number;
+  mastered: boolean;
 }
 
 interface FlashcardsTabProps {
@@ -24,6 +25,7 @@ export const FlashcardsTab: React.FC<FlashcardsTabProps> = ({ apiBase }) => {
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [dueOnly, setDueOnly] = useState<boolean>(false);
   const [reviewedCount, setReviewedCount] = useState<number>(0);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   // Lista todos os assuntos disponíveis para carregar
   const SUBJECT_LIST = [
@@ -35,14 +37,11 @@ export const FlashcardsTab: React.FC<FlashcardsTabProps> = ({ apiBase }) => {
     "Inadimplemento absoluto", "Perdas e danos", "Juros legais", "Cláusula penal", "Arras ou sinal"
   ];
 
-  useEffect(() => {
-    fetchCards();
-  }, [selectedSubject, dueOnly]);
-
-  const fetchCards = async () => {
+  const fetchCards = useCallback(async () => {
     setLoading(true);
     setCurrentIndex(0);
     setIsFlipped(false);
+    setErrorMessage(null);
     
     try {
       let path = '/flashcards';
@@ -63,11 +62,57 @@ export const FlashcardsTab: React.FC<FlashcardsTabProps> = ({ apiBase }) => {
       if (res.ok) {
         const data = await res.json();
         setCards(data);
+      } else {
+        const errBody = await res.json().catch(() => ({ detail: `Erro ${res.status}` }));
+        setErrorMessage(errBody.detail || `Falha ao carregar flashcards (${res.status})`);
+        setCards([]);
       }
     } catch (e) {
       console.error("Erro ao carregar flashcards:", e);
+      setErrorMessage("Não foi possível conectar ao servidor. Verifique se o backend está rodando.");
+      setCards([]);
     } finally {
       setLoading(false);
+    }
+  }, [apiBase, selectedSubject, dueOnly]);
+
+  useEffect(() => {
+    Promise.resolve().then(() => {
+      fetchCards();
+    });
+  }, [fetchCards]);
+
+  const handleMaster = async () => {
+    if (cards.length === 0 || submitting) return;
+    
+    const activeCard = cards[currentIndex];
+    setSubmitting(true);
+    
+    try {
+      const res = await apiFetch(apiBase, `/flashcards/${activeCard.id}/master`, {
+        method: 'PATCH'
+      });
+      
+      if (res.ok) {
+        setReviewedCount(prev => prev + 1);
+        setIsFlipped(false);
+        setTimeout(() => {
+          if (currentIndex < cards.length - 1) {
+            setCurrentIndex(prev => prev + 1);
+          } else {
+            fetchCards();
+          }
+          setSubmitting(false);
+        }, 300);
+      } else {
+        const errBody = await res.json().catch(() => ({ detail: `Erro ${res.status}` }));
+        setErrorMessage(errBody.detail || "Falha ao marcar como dominado");
+        setSubmitting(false);
+      }
+    } catch (e) {
+      console.error(e);
+      setErrorMessage("Erro de conexão ao marcar flashcard como dominado");
+      setSubmitting(false);
     }
   };
 
@@ -153,6 +198,18 @@ export const FlashcardsTab: React.FC<FlashcardsTabProps> = ({ apiBase }) => {
           <Loader2 className="animate-spin text-indigo-500" size={32} />
           <p className="text-sm font-bold text-slate-400">Embaralhando flashcards...</p>
         </div>
+      ) : errorMessage ? (
+        <div className="p-10 rounded-2xl bg-red-950/20 border border-red-900/40 text-center space-y-4">
+          <AlertCircle className="text-red-400 mx-auto" size={48} />
+          <h4 className="text-lg font-black text-red-300">Erro ao carregar</h4>
+          <p className="text-sm text-red-400/80 max-w-sm mx-auto">{errorMessage}</p>
+          <button
+            onClick={fetchCards}
+            className="px-6 py-2 bg-red-900/30 hover:bg-red-900/50 text-red-300 font-bold rounded-lg text-sm transition-all"
+          >
+            Tentar novamente
+          </button>
+        </div>
       ) : cards.length === 0 ? (
         <div className="p-10 rounded-2xl bg-slate-900 border border-slate-800 text-center space-y-4">
           <BookOpen className="text-slate-600 mx-auto" size={48} />
@@ -204,17 +261,26 @@ export const FlashcardsTab: React.FC<FlashcardsTabProps> = ({ apiBase }) => {
             <button
               disabled={submitting}
               onClick={() => handleReview(false)}
-              className="flex-1 max-w-[200px] py-4 rounded-xl border border-red-900/60 bg-red-950/20 hover:bg-red-950/40 text-red-400 font-bold transition-all text-sm flex items-center justify-center gap-2 shadow-lg"
+              className="flex-1 max-w-[160px] py-4 rounded-xl border border-red-900/60 bg-red-950/20 hover:bg-red-950/40 text-red-400 font-bold transition-all text-sm flex items-center justify-center gap-2 shadow-lg"
             >
-              <AlertCircle size={16} /> Difícil (Rever Hoje)
+              <AlertCircle size={16} /> Difícil
             </button>
             
             <button
               disabled={submitting}
               onClick={() => handleReview(true)}
-              className="flex-1 max-w-[200px] py-4 rounded-xl border border-emerald-900/60 bg-emerald-950/20 hover:bg-emerald-950/40 text-emerald-400 font-bold transition-all text-sm flex items-center justify-center gap-2 shadow-lg"
+              className="flex-1 max-w-[160px] py-4 rounded-xl border border-emerald-900/60 bg-emerald-950/20 hover:bg-emerald-950/40 text-emerald-400 font-bold transition-all text-sm flex items-center justify-center gap-2 shadow-lg"
             >
-              <Check size={16} /> Fácil (Avançar)
+              <Check size={16} /> Fácil
+            </button>
+
+            <button
+              disabled={submitting}
+              onClick={handleMaster}
+              className="flex-1 max-w-[160px] py-4 rounded-xl border border-yellow-900/60 bg-yellow-950/20 hover:bg-yellow-950/40 text-yellow-400 font-bold transition-all text-sm flex items-center justify-center gap-2 shadow-lg"
+              title="Não quero mais ver este card"
+            >
+              <Star size={16} /> Dominado
             </button>
           </div>
 

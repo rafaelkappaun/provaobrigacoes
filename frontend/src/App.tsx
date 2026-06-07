@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { LayoutDashboard, PlayCircle, Layers, BookOpen, ShieldAlert, Award, FileText, Settings, Menu, X, Flame, Loader2 } from 'lucide-react';
-import { Dashboard } from './components/Dashboard';
+import { Dashboard, type DashboardData } from './components/Dashboard';
 import { QuestionSession } from './components/QuestionSession';
 import { FlashcardsTab } from './components/FlashcardsTab';
 import { ArticleLibrary } from './components/ArticleLibrary';
@@ -14,16 +14,12 @@ const API_BASE = import.meta.env.VITE_API_BASE || "http://127.0.0.1:8000/api";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('dashboard');
-  const [dashboardData, setDashboardData] = useState<any>(null);
+  const [dashboardData, setDashboardData] = useState<DashboardData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
-  const [extraProps, setExtraProps] = useState<any>({});
+  const [extraProps, setExtraProps] = useState<Record<string, unknown>>({});
 
-  useEffect(() => {
-    loadDashboard();
-  }, [activeTab]);
-
-  const loadDashboard = async () => {
+  const loadDashboard = useCallback(async () => {
     try {
       const res = await apiFetch(API_BASE, '/dashboard');
       if (res.ok) {
@@ -35,9 +31,15 @@ export default function App() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  const handleNavigate = (tab: string, extra: any = {}) => {
+  useEffect(() => {
+    Promise.resolve().then(() => {
+      loadDashboard();
+    });
+  }, [activeTab, loadDashboard]);
+
+  const handleNavigate = (tab: string, extra: Record<string, unknown> = {}) => {
     setExtraProps(extra);
     setActiveTab(tab);
     setMobileMenuOpen(false);
@@ -97,7 +99,7 @@ export default function App() {
               <span className="text-[10px] font-extrabold text-indigo-400 tracking-wider">MASTER V1.0</span>
             </div>
           </div>
-          {dashboardData?.streak_days > 0 && (
+          {dashboardData && dashboardData.streak_days > 0 && (
             <div className="flex items-center gap-1 text-orange-500 font-extrabold text-xs" title="Sequência de dias estudados">
               <Flame size={16} fill="currentColor" /> {dashboardData.streak_days}
             </div>
@@ -144,7 +146,7 @@ export default function App() {
           </div>
 
           <div className="flex items-center gap-3">
-            {dashboardData?.streak_days > 0 && (
+            {dashboardData && dashboardData.streak_days > 0 && (
               <div className="flex items-center gap-1 text-orange-500 font-extrabold text-xs">
                 <Flame size={14} fill="currentColor" /> {dashboardData.streak_days}
               </div>

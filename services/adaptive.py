@@ -222,13 +222,19 @@ class AdaptiveEngine:
         if is_correct:
             mastery.questions_correct += 1
             mastery.consecutive_correct += 1
-            mastery.consecutive_errors = 0
             
-            # Metas: 5 acertos consecutivos = Domínio total do tema
+            if was_intensive:
+                # Modo Intensivo: reduz erros gradualmente conforme acerta
+                mastery.consecutive_errors = max(0, mastery.consecutive_errors - 1)
+            else:
+                mastery.consecutive_errors = 0
+            
+            # 5 acertos consecutivos = Domínio total (saída do intensivo)
             if mastery.consecutive_correct >= 5:
                 mastery.status = "Dominado"
+                mastery.consecutive_errors = 0
         else:
-            # Erro: zera os acertos consecutivos (precisa recomeçar)
+            # Erro: zera os acertos consecutivos, precisa recomeçar
             mastery.consecutive_correct = 0
             mastery.consecutive_errors += 1
             
@@ -247,14 +253,15 @@ class AdaptiveEngine:
         # Recalcula taxa de sucesso do assunto (apenas para referência)
         mastery.success_rate = (mastery.questions_correct / mastery.questions_answered) * 100.0
         
-        # Atualiza Status (se ainda não dominou, usa a faixa tradicional)
+        # Atualiza Status (se ainda não dominou por consecutivos)
         if mastery.status != "Dominado":
             if mastery.success_rate < 60.0:
                 mastery.status = "Critico"
             elif mastery.success_rate < 85.0:
                 mastery.status = "Intermediario"
+            elif mastery.consecutive_correct >= 5:
+                mastery.status = "Dominado"
             else:
-                # Se tiver sucesso alto mas ainda não bateu 5 consecutivos, segue como Intermediario
                 mastery.status = "Intermediario"
             
         # 4. Agendamento de Repetição Espaçada

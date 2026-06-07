@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ShieldAlert, Award, Play, ChevronDown, ChevronUp, Loader2 } from 'lucide-react';
 import { apiFetch } from '../api';
 
@@ -19,7 +19,7 @@ interface ErrorLog {
 
 interface ErrorReportProps {
   apiBase: string;
-  onNavigate: (tab: string, extra?: any) => void;
+  onNavigate: (tab: string, extra?: Record<string, unknown>) => void;
 }
 
 export const ErrorReport: React.FC<ErrorReportProps> = ({ apiBase, onNavigate }) => {
@@ -27,11 +27,7 @@ export const ErrorReport: React.FC<ErrorReportProps> = ({ apiBase, onNavigate })
   const [loading, setLoading] = useState<boolean>(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  useEffect(() => {
-    fetchErrors();
-  }, []);
-
-  const fetchErrors = async () => {
+  const fetchErrors = useCallback(async () => {
     setLoading(true);
     try {
       const res = await apiFetch(apiBase, '/errors');
@@ -44,7 +40,13 @@ export const ErrorReport: React.FC<ErrorReportProps> = ({ apiBase, onNavigate })
     } finally {
       setLoading(false);
     }
-  };
+  }, [apiBase]);
+
+  useEffect(() => {
+    Promise.resolve().then(() => {
+      fetchErrors();
+    });
+  }, [fetchErrors]);
 
   const toggleExpand = (id: string) => {
     setExpandedId(prev => (prev === id ? null : id));

@@ -32,29 +32,24 @@ export const SimuladoSession: React.FC<SimuladoSessionProps> = ({ apiBase, vespe
 
   // Tempo do Simulado
   const [seconds, setSeconds] = useState<number>(0);
-  const timerRef = useRef<any>(null);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const questionStartTimes = useRef<{ [index: number]: number }>({});
 
   // Estatísticas em tempo real
   const liveStats = useMemo(() => {
     let correct = 0;
     let incorrect = 0;
-    let unanswered = 0;
     Object.keys(answers).forEach((key) => {
       const idx = parseInt(key);
       const q = questions[idx];
       if (!q) return;
       if (answers[idx] === q.gabarito) correct++;
       else if (answers[idx]) incorrect++;
-      else unanswered++;
     });
     const totalAnswered = correct + incorrect;
     const remaining = questions.length - totalAnswered;
     return { correct, incorrect, totalAnswered, remaining };
   }, [answers, questions]);
-
-  useEffect(() => {
-    return () => stopTimer();
-  }, []);
 
   const startTimer = () => {
     setSeconds(0);
@@ -70,12 +65,17 @@ export const SimuladoSession: React.FC<SimuladoSessionProps> = ({ apiBase, vespe
     }
   };
 
+  useEffect(() => {
+    return () => stopTimer();
+  }, []);
+
   const startSimulado = async () => {
     setLoading(true);
     setIsFinished(false);
     setAnswers({});
     setCurrentIndex(0);
     setSubmittedIndex(null);
+    questionStartTimes.current = {};
     
     try {
       const endpoint = vesperaMode ? 'vespera/start' : `simulado/start?size=${size}`;
@@ -85,6 +85,8 @@ export const SimuladoSession: React.FC<SimuladoSessionProps> = ({ apiBase, vespe
         setQuestions(data);
         setIsPlaying(true);
         startTimer();
+        // Marca o tempo inicial da primeira questão
+        questionStartTimes.current[0] = Date.now();
       }
     } catch (e) {
       console.error(e);
@@ -100,40 +102,74 @@ export const SimuladoSession: React.FC<SimuladoSessionProps> = ({ apiBase, vespe
 
   const nextQuestion = () => {
     if (currentIndex < questions.length - 1) {
-      setCurrentIndex(prev => prev + 1);
+      const nextIdx = currentIndex + 1;
+      if (!questionStartTimes.current[nextIdx]) {
+        questionStartTimes.current[nextIdx] = Date.now();
+      }
+      setCurrentIndex(nextIdx);
       setSubmittedIndex(null);
     }
   };
 
   const prevQuestion = () => {
     if (currentIndex > 0) {
-      setCurrentIndex(prev => prev - 1);
+      const prevIdx = currentIndex - 1;
+      if (!questionStartTimes.current[prevIdx]) {
+        questionStartTimes.current[prevIdx] = Date.now();
+      }
+      setCurrentIndex(prevIdx);
       setSubmittedIndex(null);
     }
   };
 
+  const [submitting, setSubmitting] = useState<boolean>(false);
+  const [submitProgress, setSubmitProgress] = useState<number>(0);
+
   const finishSimulado = async () => {
     stopTimer();
-    setIsFinished(true);
+    setSubmitting(true);
+    setSubmitProgress(0);
     
-    for (let i = 0; i < questions.length; i++) {
-      const q = questions[i];
-      const ans = answers[i] || '';
-      
-      try {
-        await apiFetch(apiBase, '/question/answer', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            question: q,
-            selected_option: ans,
-            response_time: seconds / questions.length
-          })
-        });
-      } catch (e) {
-        console.error("Erro ao computar resultado no simulado:", e);
-      }
+    const now = Date.now();
+    const batchSize = 5;
+    const results = [];
+    
+    for (let start = 0; start < questions.length; start += batchSize) {
+      const batch = questions.slice(start, start + batchSize);
+      const batchResults = await Promise.allSettled(
+        batch.map(async (q, bi) => {
+          const i = start + bi;
+          const ans = answers[i] || '';
+          const startTime = questionStartTimes.current[i] || now - 30000;
+          const elapsed = (now - startTime) / 1000;
+          
+          const res = await apiFetch(apiBase, '/question/answer', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              question: q,
+              selected_option: ans,
+              response_time: Math.max(1, elapsed)
+            })
+          });
+          setSubmitProgress(prev => prev + 1);
+          if (!res.ok) {
+            const err = await res.json().catch(() => ({ detail: 'Erro de rede' }));
+            console.error(`Erro na questão ${i + 1}:`, err.detail);
+          }
+          return res;
+        })
+      );
+      results.push(...batchResults);
     }
+    
+    const failed = results.filter(r => r.status === 'rejected').length;
+    if (failed > 0) {
+      console.error(`${failed} questão(ões) não foram registradas devido a erro de rede.`);
+    }
+    
+    setSubmitting(false);
+    setIsFinished(true);
   };
 
   const selectOption = (opt: string) => {
@@ -390,9 +426,14 @@ export const SimuladoSession: React.FC<SimuladoSessionProps> = ({ apiBase, vespe
                 ) : submittedIndex === currentIndex && (
                   <button
                     onClick={finishSimulado}
-                    className="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-bold transition-all shadow-md"
+                    disabled={submitting}
+                    className="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded-lg text-xs font-bold transition-all shadow-md flex items-center gap-2"
                   >
-                    Finalizar Prova
+                    {submitting ? (
+                      <><Loader2 className="animate-spin" size={14} /> {submitProgress}/{questions.length}</>
+                    ) : (
+                      'Finalizar Prova'
+                    )}
                   </button>
                 )}
               </div>

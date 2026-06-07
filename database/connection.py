@@ -49,6 +49,22 @@ def run_migrations():
             logger.info("Migração: coluna consecutive_correct adicionada em topic_mastery")
     except Exception:
         pass
+    # Migração: groq_api_key no system_config
+    try:
+        with engine.connect() as conn:
+            conn.execute(text("ALTER TABLE system_config ADD COLUMN groq_api_key VARCHAR(255) DEFAULT ''"))
+            conn.commit()
+            logger.info("Migração: coluna groq_api_key adicionada em system_config")
+    except Exception:
+        pass
+    # Migração: mastered no flashcards
+    try:
+        with engine.connect() as conn:
+            conn.execute(text("ALTER TABLE flashcards ADD COLUMN mastered BOOLEAN DEFAULT 0"))
+            conn.commit()
+            logger.info("Migração: coluna mastered adicionada em flashcards")
+    except Exception:
+        pass
 
 # Dependência do DB para FastAPI
 def get_db():

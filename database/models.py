@@ -63,6 +63,7 @@ class Flashcard(Base):
     next_revision_date = Column(DateTime, default=datetime.utcnow)
     last_reviewed = Column(DateTime, nullable=True)
     box = Column(Integer, default=1) # Caixa do Leitner/SM-2
+    mastered = Column(Boolean, default=False) # Usuário marcou como dominado
     created_at = Column(DateTime, default=datetime.utcnow)
 
 class ErrorLog(Base):
@@ -85,4 +86,5 @@ class SystemConfig(Base):
     deepseek_api_key = Column(String(255), default="")
     qwen_api_key = Column(String(255), default="")
     mistral_api_key = Column(String(255), default="")
+    groq_api_key = Column(String(255), default="")
     temperature = Column(Float, default=0.3)

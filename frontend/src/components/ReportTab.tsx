@@ -15,16 +15,12 @@ interface CognitiveReport {
 
 interface ReportTabProps {
   apiBase: string;
-  onNavigate: (tab: string, extra?: any) => void;
+  onNavigate: (tab: string, extra?: Record<string, unknown>) => void;
 }
 
 export const ReportTab: React.FC<ReportTabProps> = ({ apiBase, onNavigate }) => {
   const [report, setReport] = useState<CognitiveReport | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-
-  useEffect(() => {
-    fetchReport();
-  }, []);
 
   const fetchReport = async () => {
     setLoading(true);
@@ -40,6 +36,13 @@ export const ReportTab: React.FC<ReportTabProps> = ({ apiBase, onNavigate }) => 
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    Promise.resolve().then(() => {
+      fetchReport();
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="max-w-2xl mx-auto space-y-6 pb-12 text-left">

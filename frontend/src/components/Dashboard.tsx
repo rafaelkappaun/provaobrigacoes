@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flame, Clock, Award, CheckCircle, BookOpen, AlertTriangle, ArrowRight, Play, Zap, Shield } from 'lucide-react';
 
-interface Subject {
+export interface Subject {
   subject: string;
   questions_answered: number;
   questions_correct: number;
@@ -13,7 +13,7 @@ interface Subject {
   is_intensive: boolean;
 }
 
-interface DashboardData {
+export interface DashboardData {
   overall_success_rate: number;
   questions_answered: number;
   questions_correct: number;
@@ -33,7 +33,7 @@ interface DashboardData {
 
 interface DashboardProps {
   data: DashboardData;
-  onNavigate: (tab: string, extra?: any) => void;
+  onNavigate: (tab: string, extra?: Record<string, unknown>) => void;
 }
 
 export const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
