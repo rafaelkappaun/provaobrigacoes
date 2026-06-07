@@ -30,21 +30,30 @@ SUBJECTS = [
 
 BANKS = ["FGV", "OAB", "CESPE", "FCC", "VUNESP", "AOCP", "FMP", "Consulplan"]
 
-NOMES_DEVEDOR = ["João", "Pedro", "Marcos", "Rafael", "Rodrigo", "Gustavo", "Thiago", "Fabiano", "Felipe"]
-NOMES_CREDOR = ["Ana", "Fernanda", "Maria", "Juliana", "Patrícia", "Camila", "Beatriz", "Letícia", "Larissa"]
-NOMES_TERCEIRO = ["Lucas", "Bruno", "Carlos", "Roberto", "Daniel", "André", "Mateus", "Gabriel", "Vitor"]
+NOMES_DEVEDOR = ["João", "Pedro", "Marcos", "Rafael", "Rodrigo", "Gustavo", "Thiago", "Fabiano", "Felipe", "Alexandre", "Henrique", "Vinícius", "Eduardo", "Ricardo", "Murilo", "Diego", "Leonardo", "César", "Alberto", "Fernando"]
+NOMES_CREDOR = ["Ana", "Fernanda", "Maria", "Juliana", "Patrícia", "Camila", "Beatriz", "Letícia", "Larissa", "Carolina", "Amanda", "Vanessa", "Natália", "Cristina", "Raquel", "Daniela", "Priscila", "Michele", "Aline", "Gabriela"]
+NOMES_TERCEIRO = ["Lucas", "Bruno", "Carlos", "Roberto", "Daniel", "André", "Mateus", "Gabriel", "Vitor", "Fábio", "Marcelo", "Renato", "Leandro", "Sérgio", "Jorge", "Márcio", "Flávio", "Paulo", "Sérgio", "Cristiano"]
 
-PROFISSOES = ["Advogado", "Médico", "Empresário", "Contador", "Engenheiro", "Dentista", "Comerciante", "Arquiteto", "Veterinário"]
+PROFISSOES = ["Advogado", "Médico", "Empresário", "Contador", "Engenheiro", "Dentista", "Comerciante", "Arquiteto", "Veterinário", "Professor", "Bancário", "Corretor", "Administrador", "Economista", "Consultor", "Despachante", "Tabelião", "Juiz aposentado", "Empresário rural", "Microempresário"]
 CONTRATOS = [
     "compra e venda de um veículo seminovo",
     "locação de um galpão comercial",
     "prestação de serviços de consultoria em TI",
     "financiamento de maquinário industrial",
     "empréstimo de insumos agrícolas",
-    "fornecimento de mercadorias para revenda"
+    "fornecimento de mercadorias para revenda",
+    "promessa de compra e venda de imóvel residencial",
+    "prestação de serviços advocatícios",
+    "contrato de empreitada para reforma",
+    "compromisso de cessão de direitos creditórios",
+    "mútuo bancário para capital de giro",
+    "arrendamento mercantil de equipamentos",
+    "contrato de franquia empresarial",
+    "prestação de serviços médicos hospitalares",
+    "transporte de cargas interestadual",
 ]
-CIDADES = ["São Paulo/SP", "Rio de Janeiro/RJ", "Belo Horizonte/MG", "Curitiba/PR", "Porto Alegre/RS", "Salvador/BA", "Recife/PE", "Fortaleza/CE"]
-VALORES = ["R$ 10.000,00", "R$ 25.000,00", "R$ 50.000,00", "R$ 120.000,00", "R$ 200.000,00", "R$ 5.000,00"]
+CIDADES = ["São Paulo/SP", "Rio de Janeiro/RJ", "Belo Horizonte/MG", "Curitiba/PR", "Porto Alegre/RS", "Salvador/BA", "Recife/PE", "Fortaleza/CE", "Brasília/DF", "Florianópolis/SC", "Manaus/AM", "Goiânia/GO", "Vitória/ES", "Natal/RN", "Campo Grande/MS", "Cuiabá/MT", "João Pessoa/PB", "Maceió/AL", "São Luís/MA", "Teresina/PI"]
+VALORES = ["R$ 10.000,00", "R$ 25.000,00", "R$ 50.000,00", "R$ 120.000,00", "R$ 200.000,00", "R$ 5.000,00", "R$ 8.500,00", "R$ 15.000,00", "R$ 35.000,00", "R$ 75.000,00", "R$ 150.000,00", "R$ 300.000,00", "R$ 3.200,00", "R$ 42.000,00", "R$ 87.500,00"]
 
 def get_random_vars():
     return {
@@ -68,6 +77,7 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
     v = get_random_vars()
     q_id = str(uuid.uuid4())
     difficulty = random.choice(["Fácil", "Médio", "Difícil"])
+    variant = random.randint(0, 1)  # 0 = template original, 1 = variação
     
     # Se a banca for CESPE, geramos no formato Certo/Errado
     is_cespe = (bank == "CESPE")
@@ -104,24 +114,45 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
                 f"pode pagar em nome do devedor (art. 305). O credor não é obrigado a receber prestação diversa (art. 313). Portanto, a afirmação está CERTA."
             )
         else:
-            question_data["enunciado"] = (
-                f"({bank}) {v['devedor']} ({v['prof_dev']}) contraiu obrigação de pagar {v['valor']} a {v['credor']} ({v['prof_cred']}) "
-                f"decorrente de {v['contrato']}. Considerando as disposições gerais sobre pagamento no Código Civil, assinale a opção correta:"
-            )
-            question_data["options"] = {
-                "A": f"O pagamento deve ser necessariamente realizado pelo próprio devedor {v['devedor']}, sendo vedado o adimplemento por terceiros, ainda que interessados.",
-                "B": f"O credor {v['credor']} é obrigado a aceitar prestação diversa da que lhe é devida, desde que a prestação alternativa seja mais valiosa que a original.",
-                "C": f"O pagamento feito por terceiro juridicamente interessado, como o fiador, extingue a obrigação e opera a sub-rogação legal nos direitos do credor.",
-                "D": f"O pagamento em dinheiro deve ser feito em moeda estrangeira sempre que houver cláusula de escala móvel pactuada entre as partes.",
-                "E": f"A quitação dada pelo credor ao devedor não faz presumir a extinção da obrigação principal, devendo ser comprovada por outros meios jurídicos."
-            }
-            question_data["gabarito"] = "C"
-            question_data["legal_basis"] = "Arts. 304, 305, 313, 314 e 320 do Código Civil."
-            question_data["explanation"] = (
-                f"O art. 304 estabelece que 'qualquer interessado na extinção da dívida pode pagá-la'. O terceiro interessado (fiador, avalista, "
-                f"adquirente de imóvel hipotecado) ao pagar a dívida sub-roga-se nos direitos do credor (art. 346, III). O credor não é obrigado "
-                f"a receber prestação diversa (art. 313) nem a receber por partes (art. 314). A moeda de pagamento é a moeda corrente nacional (art. 315)."
-            )
+            if variant == 0:
+                question_data["enunciado"] = (
+                    f"({bank}) {v['devedor']} ({v['prof_dev']}) contraiu obrigação de pagar {v['valor']} a {v['credor']} ({v['prof_cred']}) "
+                    f"decorrente de {v['contrato']}. Considerando as disposições gerais sobre pagamento no Código Civil, assinale a opção correta:"
+                )
+                question_data["options"] = {
+                    "A": f"O pagamento deve ser necessariamente realizado pelo próprio devedor {v['devedor']}, sendo vedado o adimplemento por terceiros, ainda que interessados.",
+                    "B": f"O credor {v['credor']} é obrigado a aceitar prestação diversa da que lhe é devida, desde que a prestação alternativa seja mais valiosa que a original.",
+                    "C": f"O pagamento feito por terceiro juridicamente interessado, como o fiador, extingue a obrigação e opera a sub-rogação legal nos direitos do credor.",
+                    "D": f"O pagamento em dinheiro deve ser feito em moeda estrangeira sempre que houver cláusula de escala móvel pactuada entre as partes.",
+                    "E": f"A quitação dada pelo credor ao devedor não faz presumir a extinção da obrigação principal, devendo ser comprovada por outros meios jurídicos."
+                }
+                question_data["gabarito"] = "C"
+                question_data["legal_basis"] = "Arts. 304, 305, 313, 314 e 320 do Código Civil."
+                question_data["explanation"] = (
+                    f"O art. 304 estabelece que 'qualquer interessado na extinção da dívida pode pagá-la'. O terceiro interessado (fiador, avalista, "
+                    f"adquirente de imóvel hipotecado) ao pagar a dívida sub-roga-se nos direitos do credor (art. 346, III). O credor não é obrigado "
+                    f"a receber prestação diversa (art. 313) nem a receber por partes (art. 314). A moeda de pagamento é a moeda corrente nacional (art. 315)."
+                )
+            else:
+                question_data["enunciado"] = (
+                    f"({bank}) {v['credor']} emprestou {v['valor']} a {v['devedor']} mediante contrato de {v['contrato']} com vencimento em 30 dias. "
+                    f"Próximo ao vencimento, sobreveio legislação que reduziu o poder aquisitivo da moeda. {v['devedor']} deseja pagar com correção monetária, "
+                    f"mas {v['credor']} exige o valor nominal. À luz do Código Civil sobre pagamento, assinale a opção correta:"
+                )
+                question_data["options"] = {
+                    "A": f"O credor {v['credor']} tem direito ao valor nominal, salvo disposição contratual em contrário, pois o pagamento deve ser feito no valor originalmente contratado.",
+                    "B": f"O devedor {v['devedor']} pode exigir a revisão judicial do valor com base na teoria da imprevisão, independentemente de qualquer cláusula contratual.",
+                    "C": f"O pagamento em dinheiro deverá ser feito em moeda estrangeira se houver desvalorização superior a 20% da moeda nacional.",
+                    "D": f"Se o contrato for omisso quanto à correção, o juiz pode determinar a atualização monetária com base em índices oficiais sempre que houver desequilíbrio econômico.",
+                    "E": f"O pagamento pode ser feito em bem imóvel de valor equivalente se o devedor não dispuser de recursos em dinheiro no vencimento."
+                }
+                question_data["gabarito"] = "A"
+                question_data["legal_basis"] = "Arts. 315, 316 e 317 do Código Civil."
+                question_data["explanation"] = (
+                    f"Pelo art. 315 do CC, o pagamento em dinheiro deve ser feito em moeda corrente nacional pelo valor nominal (princípio do nominalismo). "
+                    f"O art. 317 permite a correção judicial apenas em caso de desproporção manifesta entre o valor da prestação e o do dia do pagamento, "
+                    f"desde que a parte não tenha assumido o risco cambial. A regra geral, contudo, é o valor nominal."
+                )
 
     # -------------------------------------------------------------
     # 2. QUEM DEVE PAGAR (Arts. 304 - 307)
@@ -143,27 +174,48 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
                 f"legais expressas (Art. 346, CC). Portanto, a afirmação está ERRADA."
             )
         else:
-            question_data["enunciado"] = (
-                f"({bank}) {v['devedor']} ({v['prof_dev']}) possuía uma dívida no valor de {v['valor']} decorrente de {v['contrato']} com "
-                f"{v['credor']}. Diante das dificuldades financeiras de {v['devedor']}, seu amigo {v['terceiro']} ({v['prof_terc']}), "
-                f"terceiro juridicamente não interessado, resolveu quitar a obrigação diretamente com o credor. "
-                f"Sobre o pagamento feito por {v['terceiro']} em seu próprio nome, assinale a opção correta à luz do Código Civil:"
-            )
-            question_data["options"] = {
-                "A": f"O pagamento feito por {v['terceiro']} extingue a dívida e gera sub-rogação imediata em todos os direitos e garantias de {v['credor']}.",
-                "B": f"Por ser terceiro não interessado, {v['terceiro']} tem direito a reembolsar-se do que pagar, mas não se sub-roga nos direitos do credor original.",
-                "C": f"Se {v['terceiro']} tivesse pago a dívida antes de vencida, teria direito ao reembolso imediato, mesmo antes do vencimento do prazo original.",
-                "D": f"O pagamento feito por {v['terceiro']} é considerado nulo, pois somente o devedor ou terceiros juridicamente interessados podem adimplir a obrigação.",
-                "E": f"Caso {v['devedor']} tivesse meios para ilidir (impedir) a ação e desconhecesse o pagamento, {v['terceiro']} ainda assim teria direito ao reembolso total."
-            }
-            question_data["gabarito"] = "B"
-            question_data["legal_basis"] = "Art. 305 e Art. 306 do Código Civil."
-            question_data["explanation"] = (
-                f"Conforme o art. 305, caput, do Código Civil, o terceiro não interessado que paga a dívida em seu próprio nome tem direito a "
-                f"reembolsar-se do que pagar, mas não se sub-roga nos direitos do credor. Além disso, o parágrafo único do mesmo artigo prevê que "
-                f"se pagar antes de vencida a dívida, só terá direito ao reembolso no vencimento. O art. 306 dispõe que o pagamento feito por terceiro, "
-                f"com desconhecimento ou oposição do devedor, não obriga a reembolso se este tinha meios para ilidir a ação."
-            )
+            if variant == 0:
+                question_data["enunciado"] = (
+                    f"({bank}) {v['devedor']} ({v['prof_dev']}) possuía uma dívida no valor de {v['valor']} decorrente de {v['contrato']} com "
+                    f"{v['credor']}. Diante das dificuldades financeiras de {v['devedor']}, seu amigo {v['terceiro']} ({v['prof_terc']}), "
+                    f"terceiro juridicamente não interessado, resolveu quitar a obrigação diretamente com o credor. "
+                    f"Sobre o pagamento feito por {v['terceiro']} em seu próprio nome, assinale a opção correta à luz do Código Civil:"
+                )
+                question_data["options"] = {
+                    "A": f"O pagamento feito por {v['terceiro']} extingue a dívida e gera sub-rogação imediata em todos os direitos e garantias de {v['credor']}.",
+                    "B": f"Por ser terceiro não interessado, {v['terceiro']} tem direito a reembolsar-se do que pagar, mas não se sub-roga nos direitos do credor original.",
+                    "C": f"Se {v['terceiro']} tivesse pago a dívida antes de vencida, teria direito ao reembolso imediato, mesmo antes do vencimento do prazo original.",
+                    "D": f"O pagamento feito por {v['terceiro']} é considerado nulo, pois somente o devedor ou terceiros juridicamente interessados podem adimplir a obrigação.",
+                    "E": f"Caso {v['devedor']} tivesse meios para ilidir (impedir) a ação e desconhecesse o pagamento, {v['terceiro']} ainda assim teria direito ao reembolso total."
+                }
+                question_data["gabarito"] = "B"
+                question_data["legal_basis"] = "Art. 305 e Art. 306 do Código Civil."
+                question_data["explanation"] = (
+                    f"Conforme o art. 305, caput, do Código Civil, o terceiro não interessado que paga a dívida em seu próprio nome tem direito a "
+                    f"reembolsar-se do que pagar, mas não se sub-roga nos direitos do credor. Além disso, o parágrafo único do mesmo artigo prevê que "
+                    f"se pagar antes de vencida a dívida, só terá direito ao reembolso no vencimento. O art. 306 dispõe que o pagamento feito por terceiro, "
+                    f"com desconhecimento ou oposição do devedor, não obriga a reembolso se este tinha meios para ilidir a ação."
+                )
+            else:
+                question_data["enunciado"] = (
+                    f"({bank}) {v['devedor']} faleceu antes de quitar a dívida de {v['valor']} que possuía com {v['credor']}. "
+                    f"O herdeiro {v['terceiro']} deseja pagar o débito para evitar a execução sobre o patrimônio deixado. "
+                    f"Considerando as regras sobre quem deve pagar no Código Civil, assinale a opção correta:"
+                )
+                question_data["options"] = {
+                    "A": f"Os herdeiros não têm legitimidade para pagar dívidas do falecido, devendo o credor {v['credor']} cobrar diretamente do espólio.",
+                    "B": f"O interessado na extinção da dívida, como o herdeiro ou fiador, pode pagá-la, sub-rogando-se nos direitos do credor.",
+                    "C": f"Apenas o devedor originário pode realizar o pagamento, sendo nulo qualquer pagamento feito por terceiros.",
+                    "D": f"O pagamento por terceiro interessado exige autorização judicial prévia para produzir efeitos de extinção da obrigação.",
+                    "E": f"O herdeiro que pagar dívida do falecido não tem direito de regresso contra os demais herdeiros, salvo disposição testamentária."
+                }
+                question_data["gabarito"] = "B"
+                question_data["legal_basis"] = "Art. 304 do Código Civil."
+                question_data["explanation"] = (
+                    f"O art. 304 do CC estabelece que 'qualquer interessado na extinção da dívida pode pagá-la'. O herdeiro é parte interessada "
+                    f"diretamente, pois responde pelas dívidas do falecido dentro da força da herança (art. 1.997, CC). Ao pagar, sub-roga-se nos "
+                    f"direitos do credor contra os demais herdeiros (art. 346, III, CC)."
+                )
 
     # -------------------------------------------------------------
     # 3. A QUEM SE DEVE PAGAR (Arts. 308 - 312)
@@ -184,26 +236,48 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
                 f"ainda provado depois que não era credor'. A boa-fé do devedor é o requisito essencial. Portanto, a afirmação está CERTA."
             )
         else:
-            question_data["enunciado"] = (
-                f"({bank}) {v['devedor']} contraiu uma obrigação perante {v['credor']} no valor de {v['valor']} referente a {v['contrato']}. "
-                f"No dia do vencimento, {v['devedor']} realizou o pagamento de boa-fé a {v['terceiro']}, pessoa que, por circunstâncias fáticas, "
-                f"apresentava-se socialmente e documentalmente como mandatário de {v['credor']} (credor putativo). Dias depois, {v['credor']} "
-                f"notificou {v['devedor']} exigindo o pagamento, alegando que {v['terceiro']} nunca teve poderes para receber. Diante disso, assinale a opção correta:"
-            )
-            question_data["options"] = {
-                "A": f"O pagamento é inválido, aplicando-se o brocardo popular 'quem paga mal paga duas vezes', restando a {v['devedor']} apenas pagar novamente a {v['credor']}.",
-                "B": f"O pagamento feito de boa-fé ao credor putativo é válido, restando a {v['credor']} demandar contra {v['terceiro']} para reaver o valor recebido.",
-                "C": f"O pagamento a {v['terceiro']} só seria válido se houvesse expressa autorização judicial prévia.",
-                "D": f"O pagamento é anulável, devendo {v['devedor']} ingressar com ação de anulação do negócio jurídico em face de {v['terceiro']}.",
-                "E": f"O pagamento é válido porque qualquer pagamento realizado a terceiros extingue a obrigação, independentemente de boa-fé."
-            }
-            question_data["gabarito"] = "B"
-            question_data["legal_basis"] = "Art. 309 do Código Civil."
-            question_data["explanation"] = (
-                f"De acordo com o art. 309 do CC, o pagamento feito de boa-fé ao credor putativo é perfeitamente válido. A lei protege o devedor "
-                f"que foi induzido a erro escusável pela aparência de credor do receptor. O verdadeiro credor ({v['credor']}) deve buscar o "
-                f"ressarcimento contra quem recebeu indevidamente ({v['terceiro']})."
-            )
+            if variant == 0:
+                question_data["enunciado"] = (
+                    f"({bank}) {v['devedor']} contraiu uma obrigação perante {v['credor']} no valor de {v['valor']} referente a {v['contrato']}. "
+                    f"No dia do vencimento, {v['devedor']} realizou o pagamento de boa-fé a {v['terceiro']}, pessoa que, por circunstâncias fáticas, "
+                    f"apresentava-se socialmente e documentalmente como mandatário de {v['credor']} (credor putativo). Dias depois, {v['credor']} "
+                    f"notificou {v['devedor']} exigindo o pagamento, alegando que {v['terceiro']} nunca teve poderes para receber. Diante disso, assinale a opção correta:"
+                )
+                question_data["options"] = {
+                    "A": f"O pagamento é inválido, aplicando-se o brocardo popular 'quem paga mal paga duas vezes', restando a {v['devedor']} apenas pagar novamente a {v['credor']}.",
+                    "B": f"O pagamento feito de boa-fé ao credor putativo é válido, restando a {v['credor']} demandar contra {v['terceiro']} para reaver o valor recebido.",
+                    "C": f"O pagamento a {v['terceiro']} só seria válido se houvesse expressa autorização judicial prévia.",
+                    "D": f"O pagamento é anulável, devendo {v['devedor']} ingressar com ação de anulação do negócio jurídico em face de {v['terceiro']}.",
+                    "E": f"O pagamento é válido porque qualquer pagamento realizado a terceiros extingue a obrigação, independentemente de boa-fé."
+                }
+                question_data["gabarito"] = "B"
+                question_data["legal_basis"] = "Art. 309 do Código Civil."
+                question_data["explanation"] = (
+                    f"De acordo com o art. 309 do CC, o pagamento feito de boa-fé ao credor putativo é perfeitamente válido. A lei protege o devedor "
+                    f"que foi induzido a erro escusável pela aparência de credor do receptor. O verdadeiro credor ({v['credor']}) deve buscar o "
+                    f"ressarcimento contra quem recebeu indevidamente ({v['terceiro']})."
+                )
+            else:
+                question_data["enunciado"] = (
+                    f"({bank}) {v['credor']} faleceu antes do vencimento da dívida de {v['valor']} que {v['devedor']} havia contraído mediante "
+                    f"{v['contrato']}. {v['devedor']} efetuou o pagamento a {v['terceiro']}, irmão de {v['credor']}, que se apresentou como herdeiro e apresentou "
+                    f"cópia simples da certidão de óbito. Posteriormente, o verdadeiro administrador do espólio cobrou novamente o valor, alegando que {v['terceiro']} não era o inventariante. "
+                    f"À luz das regras sobre 'a quem se deve pagar' no Código Civil, assinale a opção correta:"
+                )
+                question_data["options"] = {
+                    "A": f"O pagamento a {v['terceiro']} é válido, pois o pagamento feito a herdeiro aparente de boa-fé extingue a obrigação.",
+                    "B": f"O pagamento é inválido, pois o credor é o espólio representado pelo inventariante, e não um herdeiro individualmente considerado.",
+                    "C": f"O pagamento a qualquer parente do credor falecido é válido, independentemente de inventário ou formal de partilha.",
+                    "D": f"A cobrança do espólio é abusiva, pois o pagamento feito a herdeiro putativo é sempre considerado quitado.",
+                    "E": f"O pagamento só seria válido se {v['terceiro']} fosse o único herdeiro e comprovasse essa condição com certidão de óbito."
+                }
+                question_data["gabarito"] = "B"
+                question_data["legal_basis"] = "Art. 308 e Art. 310 do Código Civil."
+                question_data["explanation"] = (
+                    f"O art. 308 do CC determina que o pagamento deve ser feito ao credor ou a quem legalmente o represente. Com o falecimento do credor, "
+                    f"o espólio, representado pelo inventariante, é quem detém a titularidade do crédito. O art. 310 dispõe que o pagamento feito de boa-fé "
+                    f"ao credor putativo é válido, mas isso exige aparência legítima de credor, o que não ocorre com mera apresentação de certidão de óbito."
+                )
 
     # -------------------------------------------------------------
     # 4. OBJETO DO PAGAMENTO E SUA PROVA (Arts. 313 - 326)

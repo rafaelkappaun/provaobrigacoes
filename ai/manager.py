@@ -93,16 +93,20 @@ class AIProviderManager:
     @classmethod
     def generate_question(cls, subject: str, bank: str, difficulty: str,
                           db: Any = None, session_id: str = None) -> Dict[str, Any]:
-        """Gera questão: prioriza seed pool offline, depois IA, com fallback dinâmico"""
-        # 1. Tenta servir do seed pool (evita repetir já respondidas)
+        """Gera questão: alterna entre seed pool, IA e offline para maior variedade"""
         if not bank or bank not in BANKS:
             bank = random.choice(BANKS)
-        seed_q = cls._pick_from_seed_pool(subject, bank, db, session_id)
-        if seed_q:
-            return seed_q
-
+        
         config = cls.get_config()
         provider = config.get("active_provider", "offline")
+        has_ai = provider != "offline" and config.get(f"{provider}_api_key")
+        
+        # 1. Tenta servir do seed pool (com chance de pular se AI disponível para variar)
+        use_seed_first = not (has_ai and random.random() < 0.6)
+        if use_seed_first:
+            seed_q = cls._pick_from_seed_pool(subject, bank, db, session_id)
+            if seed_q:
+                return seed_q
 
         # 2. Tenta gerar com IA online
         prompt = cls._build_question_prompt(subject, bank, difficulty)
