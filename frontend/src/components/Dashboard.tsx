@@ -333,7 +333,11 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {adimplementoSubjects.map(sub => (
-              <div key={sub.subject} className="p-4 rounded-xl bg-slate-950 border border-slate-800/60 hover:border-indigo-500/20 transition-all flex flex-col justify-between gap-3">
+              <button
+                key={sub.subject}
+                onClick={() => onNavigate('estudo', { subject: sub.subject })}
+                className="p-4 rounded-xl bg-slate-950 border border-slate-800/60 hover:border-indigo-500/40 hover:bg-slate-900/60 transition-all flex flex-col justify-between gap-3 text-left w-full cursor-pointer"
+              >
                 <div className="flex items-start justify-between gap-2">
                   <span className="text-sm font-bold text-slate-200 line-clamp-1">{sub.subject}</span>
                   {renderStatusTag(sub)}
@@ -356,7 +360,6 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
                     </div>
                     <span className="text-xs font-bold text-slate-400 shrink-0">{sub.success_rate}%</span>
                   </div>
-                  {/* Barra de progresso: acertos consecutivos para Dominado */}
                   <div className="flex items-center gap-1.5">
                     <span className="text-[10px] text-slate-500">🔥</span>
                     {[1,2,3,4,5].map(step => (
@@ -375,7 +378,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
                     </span>
                   </div>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -387,7 +390,11 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {inadimplementoSubjects.map(sub => (
-              <div key={sub.subject} className="p-4 rounded-xl bg-slate-950 border border-slate-800/60 hover:border-indigo-500/20 transition-all flex flex-col justify-between gap-3">
+              <button
+                key={sub.subject}
+                onClick={() => onNavigate('estudo', { subject: sub.subject })}
+                className="p-4 rounded-xl bg-slate-950 border border-slate-800/60 hover:border-indigo-500/40 hover:bg-slate-900/60 transition-all flex flex-col justify-between gap-3 text-left w-full cursor-pointer"
+              >
                 <div className="flex items-start justify-between gap-2">
                   <span className="text-sm font-bold text-slate-200 line-clamp-1">{sub.subject}</span>
                   {renderStatusTag(sub)}
@@ -410,7 +417,6 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
                     </div>
                     <span className="text-xs font-bold text-slate-400 shrink-0">{sub.success_rate}%</span>
                   </div>
-                  {/* Barra de progresso: acertos consecutivos para Dominado */}
                   <div className="flex items-center gap-1.5">
                     <span className="text-[10px] text-slate-500">🔥</span>
                     {[1,2,3,4,5].map(step => (
@@ -429,7 +435,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
                     </span>
                   </div>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>

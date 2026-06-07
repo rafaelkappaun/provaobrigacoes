@@ -48,12 +48,13 @@ export default function App() {
       case 'dashboard':
         return dashboardData && <Dashboard data={dashboardData} onNavigate={handleNavigate} />;
       case 'estudo':
-        return (
-          <QuestionSession 
-            apiBase={API_BASE} 
-            onSessionFinished={() => handleNavigate('dashboard')} 
-          />
-        );
+          return (
+            <QuestionSession 
+              apiBase={API_BASE} 
+              subject={extraProps.subject as string | undefined}
+              onSessionFinished={() => handleNavigate('dashboard')} 
+            />
+          );
       case 'flashcards':
         return <FlashcardsTab apiBase={API_BASE} />;
       case 'artigos':

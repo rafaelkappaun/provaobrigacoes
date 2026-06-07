@@ -118,9 +118,10 @@ def get_dashboard(db: Session = Depends(get_db), session_id: str = Depends(get_s
         raise HTTPException(status_code=500, detail="Erro ao obter dados do painel")
 
 @app.get("/api/question/next")
-def get_next_question(bank: str = "FGV", db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
+def get_next_question(bank: str = "FGV", subject: Optional[str] = None, db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
     try:
-        subject = AdaptiveEngine.get_next_subject(db, session_id)
+        if not subject:
+            subject = AdaptiveEngine.get_next_subject(db, session_id)
         difficulty = "Médio"
         mastery = db.query(TopicMastery).filter(
             TopicMastery.subject == subject,

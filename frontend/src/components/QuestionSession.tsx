@@ -53,13 +53,14 @@ interface AnswerResponse {
 
 interface QuestionSessionProps {
   apiBase: string;
+  subject?: string;
   onSessionFinished?: () => void;
 }
 
 const BANKS = ["FGV", "OAB", "CESPE", "FCC", "VUNESP", "AOCP", "FMP", "Consulplan"];
 const pickRandomBank = () => BANKS[Math.floor(Math.random() * BANKS.length)];
 
-export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, onSessionFinished }) => {
+export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, subject, onSessionFinished }) => {
   const [question, setQuestion] = useState<Question | null>(null);
   const [selectedOption, setSelectedOption] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
@@ -112,8 +113,9 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, onSes
     setErrorMessage('');
     
     const randomBank = pickRandomBank();
+    const subjectParam = subject ? `&subject=${encodeURIComponent(subject)}` : '';
     try {
-      const res = await apiFetch(apiBase, `/question/next?bank=${randomBank}`);
+      const res = await apiFetch(apiBase, `/question/next?bank=${randomBank}${subjectParam}`);
       if (res.ok) {
         const data = await res.json();
         setQuestion(data);
@@ -128,7 +130,7 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, onSes
     } finally {
       setLoading(false);
     }
-  }, [apiBase, startTimer]);
+  }, [apiBase, subject, startTimer]);
 
   // Carrega questão ao iniciar
   useEffect(() => {
@@ -214,17 +216,20 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, onSes
 
   return (
     <div className="max-w-3xl mx-auto space-y-6 pb-24">
-      {/* Barra superior com botão de voltar */}
-      {onSessionFinished && (
-        <div className="p-4 rounded-xl bg-slate-900 border border-slate-800">
-          <button 
-            onClick={onSessionFinished} 
-            className="px-3 py-1 bg-slate-950 hover:bg-slate-800 border border-slate-850 rounded-lg text-xs font-bold text-slate-400 hover:text-slate-200 transition-all"
-          >
-            ← Painel
-          </button>
-        </div>
-      )}
+      {/* Barra superior com botão de voltar e indicador de assunto */}
+      <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-3">
+        <button 
+          onClick={onSessionFinished} 
+          className="px-3 py-1 bg-slate-950 hover:bg-slate-800 border border-slate-850 rounded-lg text-xs font-bold text-slate-400 hover:text-slate-200 transition-all"
+        >
+          ← Painel
+        </button>
+        {subject && (
+          <span className="text-xs font-bold text-indigo-400 bg-indigo-950/40 px-3 py-1.5 rounded-lg border border-indigo-800/40 truncate max-w-[250px]">
+            📚 {subject}
+          </span>
+        )}
+      </div>
 
       {/* Box de Estudo Principal */}
       <div className="p-6 md:p-8 rounded-2xl bg-slate-900 border border-slate-800 shadow-xl relative min-h-[300px] flex flex-col justify-between">
