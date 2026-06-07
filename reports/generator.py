@@ -61,7 +61,7 @@ class ReportGenerator:
                 if not key:
                     continue
                 try:
-                    ai_diagnostic = AIProviderManager._call_text_provider(current_prov, key, prompt, 0.6)
+                    ai_diagnostic = AIProviderManager.call_text_provider(current_prov, key, prompt, 0.6)
                     if ai_diagnostic:
                         break
                 except Exception:

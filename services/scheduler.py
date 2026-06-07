@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from database.models import TopicMastery, Flashcard
 
 # Sequência padrão de revisão espaçada em dias: 1, 3, 7, 15, 30
@@ -8,8 +8,8 @@ class SpacedRepetitionScheduler:
     @staticmethod
     def schedule_next_revision(mastery: TopicMastery, is_correct: bool, is_insecure: bool):
         """Atualiza a data da próxima revisão do assunto com base no desempenho"""
-        now = datetime.utcnow()
-        
+        now = datetime.now(timezone.utc).replace(tzinfo=None)
+
         if not is_correct:
             # Erro: reseta o intervalo para o passo inicial (1 dia)
             mastery.interval_days = 1
@@ -44,8 +44,8 @@ class SpacedRepetitionScheduler:
     @staticmethod
     def update_flashcard_repetition(flashcard: Flashcard, is_easy: bool):
         """Atualiza o agendamento de repetição espaçada de um flashcard individual (Leitner Simplificado)"""
-        now = datetime.utcnow()
-        
+        now = datetime.now(timezone.utc).replace(tzinfo=None)
+
         if is_easy:
             # Avança na caixa (max caixa 5)
             flashcard.box = min(5, flashcard.box + 1)

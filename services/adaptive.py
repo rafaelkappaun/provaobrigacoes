@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import json
 import logging
 import os
@@ -35,7 +35,7 @@ class AdaptiveEngine:
                     status="Critico",
                     ease_factor=2.5,
                     interval_days=0,
-                    next_revision_date=datetime.utcnow()
+                    next_revision_date=datetime.now(timezone.utc).replace(tzinfo=None)
                 )
                 db.add(mastery)
         
@@ -192,7 +192,7 @@ class AdaptiveEngine:
         stats.total_time_seconds += int(response_time)
         
         # Lógica de streak (sequência)
-        today = datetime.utcnow().date()
+        today = datetime.now(timezone.utc).replace(tzinfo=None).date()
         if stats.last_study_date:
             last_date = stats.last_study_date.date()
             if today == last_date:
@@ -203,7 +203,7 @@ class AdaptiveEngine:
                 stats.streak_days = 1
         else:
             stats.streak_days = 1
-        stats.last_study_date = datetime.utcnow()
+        stats.last_study_date = datetime.now(timezone.utc).replace(tzinfo=None)
         
         # 3. Atualizar domínio do assunto (TopicMastery)
         mastery = db.query(TopicMastery).filter(
@@ -240,7 +240,7 @@ class AdaptiveEngine:
             
             # Salvar no log de erros
             import hashlib
-            error_id = hashlib.md5(f"{question['id']}_{session_id}_{datetime.utcnow().timestamp()}".encode()).hexdigest()[:40]
+            error_id = hashlib.md5(f"{question['id']}_{session_id}_{datetime.now(timezone.utc).replace(tzinfo=None).timestamp()}".encode()).hexdigest()[:40]
             error_log = ErrorLog(
                 id=error_id,
                 session_id=session_id,
@@ -321,7 +321,7 @@ class AdaptiveEngine:
             return random.choice(close_to_mastery).subject
         
         # 4. Revisões espaçadas pendentes
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc).replace(tzinfo=None)
         due_revisions = [t for t in not_mastered if t.next_revision_date and t.next_revision_date <= now]
         if due_revisions and random.random() < 0.70:
             return random.choice(due_revisions).subject

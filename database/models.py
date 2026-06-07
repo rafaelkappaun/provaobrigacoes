@@ -1,7 +1,10 @@
 from sqlalchemy import Column, String, Integer, Float, Boolean, DateTime, ForeignKey, Text
 from sqlalchemy.orm import relationship
-from datetime import datetime
+from datetime import datetime, timezone
 from database.connection import Base
+
+def _utcnow():
+    return datetime.now(timezone.utc).replace(tzinfo=None)
 
 class UserStats(Base):
     __tablename__ = "user_stats"
@@ -13,7 +16,7 @@ class UserStats(Base):
     questions_correct = Column(Integer, default=0)
     streak_days = Column(Integer, default=0)
     last_study_date = Column(DateTime, nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=_utcnow)
 
 class TopicMastery(Base):
     __tablename__ = "topic_mastery"
@@ -46,7 +49,7 @@ class QuestionHistory(Base):
     is_correct = Column(Boolean, nullable=False)
     response_time = Column(Float, default=0.0) # em segundos
     is_insecure = Column(Boolean, default=False) # Acerto inseguro (tempo > 45s)
-    answered_at = Column(DateTime, default=datetime.utcnow)
+    answered_at = Column(DateTime, default=_utcnow)
 
 class Flashcard(Base):
     __tablename__ = "flashcards"
@@ -60,11 +63,11 @@ class Flashcard(Base):
     # SM-2 para Flashcard
     ease_factor = Column(Float, default=2.5)
     interval_days = Column(Integer, default=0)
-    next_revision_date = Column(DateTime, default=datetime.utcnow)
+    next_revision_date = Column(DateTime, default=_utcnow)
     last_reviewed = Column(DateTime, nullable=True)
     box = Column(Integer, default=1) # Caixa do Leitner/SM-2
     mastered = Column(Boolean, default=False) # Usuário marcou como dominado
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=_utcnow)
 
 class ErrorLog(Base):
     __tablename__ = "error_logs"
@@ -73,7 +76,7 @@ class ErrorLog(Base):
     session_id = Column(String(50), index=True, default="default")
     subject = Column(String(100), index=True, nullable=False)
     question_json = Column(Text, nullable=False) # JSON da questão errada
-    answered_at = Column(DateTime, default=datetime.utcnow)
+    answered_at = Column(DateTime, default=_utcnow)
     resolved = Column(Boolean, default=False)
 
 class SystemConfig(Base):

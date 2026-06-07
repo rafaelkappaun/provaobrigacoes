@@ -34,10 +34,8 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    Promise.resolve().then(() => {
-      loadDashboard();
-    });
-  }, [activeTab, loadDashboard]);
+    loadDashboard();
+  }, [loadDashboard]);
 
   const handleNavigate = (tab: string, extra: Record<string, unknown> = {}) => {
     setExtraProps(extra);

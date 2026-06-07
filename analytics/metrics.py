@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Dict, Any, List
 from sqlalchemy.orm import Session
 from sqlalchemy import func, Integer, case
@@ -78,7 +78,7 @@ class AnalyticsMetrics:
             })
             
         # 3. Histórico dos últimos 7 dias (Questões respondidas por dia) — query única
-        seven_days_ago = datetime.combine(datetime.utcnow().date() - timedelta(days=6), datetime.min.time())
+        seven_days_ago = datetime.combine(datetime.now(timezone.utc).replace(tzinfo=None).date() - timedelta(days=6), datetime.min.time())
         daily_rows = db.query(
             func.date(QuestionHistory.answered_at).label("day"),
             func.count(QuestionHistory.id).label("total"),
@@ -89,7 +89,7 @@ class AnalyticsMetrics:
         ).group_by(func.date(QuestionHistory.answered_at)).all()
         
         daily_map = {row.day: {"answered": row.total, "correct": row.correct or 0} for row in daily_rows}
-        today = datetime.utcnow().date()
+        today = datetime.now(timezone.utc).replace(tzinfo=None).date()
         daily_history = []
         for i in range(6, -1, -1):
             date = today - timedelta(days=i)

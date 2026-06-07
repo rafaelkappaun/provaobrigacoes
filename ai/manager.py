@@ -193,7 +193,7 @@ class AIProviderManager:
             if not key:
                 continue
             try:
-                resp = cls._call_text_provider(current_prov, key, prompt, 0.5)
+                resp = cls.call_text_provider(current_prov, key, prompt, 0.5)
                 if resp:
                     return resp
             except Exception as e:
@@ -298,7 +298,7 @@ class AIProviderManager:
             return None
 
     @classmethod
-    def _call_text_provider(cls, provider: str, api_key: str, prompt: str, temperature: float) -> Optional[str]:
+    def call_text_provider(cls, provider: str, api_key: str, prompt: str, temperature: float) -> Optional[str]:
         """Chama API para resposta textual"""
         url, headers, payload = cls._build_request(provider, api_key, prompt, temperature, json_mode=False)
 

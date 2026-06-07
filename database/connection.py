@@ -1,31 +1,40 @@
 import os
 import logging
-from sqlalchemy import create_engine, text
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine, text, inspect
+from sqlalchemy.orm import sessionmaker, declarative_base
 
 logger = logging.getLogger("database")
 
-# Configuração da URL do banco de dados (SQLite por padrão, PostgreSQL em produção/Render)
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///database/jus_obrigacoes.db")
 
-# Se for SQLite, criamos o diretório 'database' se não existir
-if DATABASE_URL.startswith("sqlite:///"):
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+
+is_sqlite = DATABASE_URL.startswith("sqlite:///")
+
+if is_sqlite:
     db_dir = "database"
     if not os.path.exists(db_dir):
         os.makedirs(db_dir)
 
-# Parâmetros adicionais para SQLite para evitar concorrência em requisições concorrentes
 connect_args = {}
-if DATABASE_URL.startswith("sqlite"):
-    connect_args = {"check_same_thread": False}
+if is_sqlite:
+    connect_args["check_same_thread"] = False
+else:
+    connect_args["sslmode"] = "require"
 
 engine = create_engine(DATABASE_URL, connect_args=connect_args)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
+
+def column_exists(conn, table_name, column_name):
+    inspector = inspect(conn)
+    columns = [c["name"] for c in inspector.get_columns(table_name)]
+    return column_name in columns
+
+
 def run_migrations():
-    """Adiciona colunas de session_id se não existirem (migração para multi-usuário)"""
     tables_columns = {
         "user_stats": "session_id",
         "topic_mastery": "session_id",
@@ -33,40 +42,41 @@ def run_migrations():
         "flashcards": "session_id",
         "error_logs": "session_id",
     }
-    for table, column in tables_columns.items():
+    with engine.connect() as conn:
+        for table, column in tables_columns.items():
+            try:
+                if not column_exists(conn, table, column):
+                    conn.execute(text(f"ALTER TABLE {table} ADD COLUMN {column} VARCHAR(50) DEFAULT 'default'"))
+                    conn.commit()
+                    logger.info(f"Migração: coluna {column} adicionada em {table}")
+            except Exception:
+                pass
+
+        for col_name, col_def in [
+            ("consecutive_correct", "INTEGER DEFAULT 0"),
+            ("groq_api_key", "VARCHAR(255) DEFAULT ''"),
+        ]:
+            try:
+                if not column_exists(conn, "topic_mastery" if col_name == "consecutive_correct" else "system_config", col_name):
+                    table_name = "topic_mastery" if col_name == "consecutive_correct" else "system_config"
+                    conn.execute(text(f"ALTER TABLE {table_name} ADD COLUMN {col_name} {col_def}"))
+                    conn.commit()
+                    logger.info(f"Migração: coluna {col_name} adicionada em {table_name}")
+            except Exception:
+                pass
+
         try:
-            with engine.connect() as conn:
-                conn.execute(text(f"ALTER TABLE {table} ADD COLUMN {column} VARCHAR(50) DEFAULT 'default'"))
+            if not column_exists(conn, "flashcards", "mastered"):
+                if is_sqlite:
+                    conn.execute(text("ALTER TABLE flashcards ADD COLUMN mastered BOOLEAN DEFAULT 0"))
+                else:
+                    conn.execute(text("ALTER TABLE flashcards ADD COLUMN mastered BOOLEAN DEFAULT FALSE"))
                 conn.commit()
-                logger.info(f"Migração: coluna {column} adicionada em {table}")
+                logger.info("Migração: coluna mastered adicionada em flashcards")
         except Exception:
             pass
-    # Migração: consecutive_correct no topic_mastery
-    try:
-        with engine.connect() as conn:
-            conn.execute(text("ALTER TABLE topic_mastery ADD COLUMN consecutive_correct INTEGER DEFAULT 0"))
-            conn.commit()
-            logger.info("Migração: coluna consecutive_correct adicionada em topic_mastery")
-    except Exception:
-        pass
-    # Migração: groq_api_key no system_config
-    try:
-        with engine.connect() as conn:
-            conn.execute(text("ALTER TABLE system_config ADD COLUMN groq_api_key VARCHAR(255) DEFAULT ''"))
-            conn.commit()
-            logger.info("Migração: coluna groq_api_key adicionada em system_config")
-    except Exception:
-        pass
-    # Migração: mastered no flashcards
-    try:
-        with engine.connect() as conn:
-            conn.execute(text("ALTER TABLE flashcards ADD COLUMN mastered BOOLEAN DEFAULT 0"))
-            conn.commit()
-            logger.info("Migração: coluna mastered adicionada em flashcards")
-    except Exception:
-        pass
 
-# Dependência do DB para FastAPI
+
 def get_db():
     db = SessionLocal()
     try:

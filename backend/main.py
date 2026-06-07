@@ -27,6 +27,7 @@ from flashcards.manager import FlashcardManager, FLASHCARD_BANK
 from analytics.metrics import AnalyticsMetrics
 from reports.generator import ReportGenerator
 from backend.session import get_session_id
+from ai.offline_generator import generate_question_offline
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
 logger = logging.getLogger("backend")
@@ -198,8 +199,6 @@ def review_flashcard(card_id: str, payload: FlashcardReviewPayload, db: Session 
     except Exception:
         logger.exception("Falha ao processar revisão")
         raise HTTPException(status_code=500, detail="Erro ao processar revisão")
-
-from ai.offline_generator import generate_question_offline
 
 @app.get("/api/articles")
 def get_articles(query: Optional[str] = None, related: Optional[str] = None):

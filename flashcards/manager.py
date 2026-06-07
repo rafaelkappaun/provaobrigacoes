@@ -1,5 +1,5 @@
 import uuid
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import List, Dict, Any
 from sqlalchemy.orm import Session
 from database.models import Flashcard
@@ -144,7 +144,7 @@ class FlashcardManager:
                     back=card_data["back"],
                     box=1,
                     interval_days=1,
-                    next_revision_date=datetime.utcnow()
+                    next_revision_date=datetime.now(timezone.utc).replace(tzinfo=None)
                 )
                 db.add(fc)
                 created_cards.append(fc)
@@ -157,7 +157,7 @@ class FlashcardManager:
     @staticmethod
     def get_due_flashcards(db: Session, session_id: str = "default") -> List[Flashcard]:
         """Obtém flashcards agendados para revisão hoje (exclui dominados)"""
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc).replace(tzinfo=None)
         return db.query(Flashcard).filter(
             Flashcard.next_revision_date <= now,
             Flashcard.session_id == session_id,
@@ -185,8 +185,8 @@ class FlashcardManager:
             card.mastered = True
             card.box = 5
             card.interval_days = 30
-            card.next_revision_date = datetime.utcnow() + timedelta(days=30)
-            card.last_reviewed = datetime.utcnow()
+            card.next_revision_date = datetime.now(timezone.utc).replace(tzinfo=None) + timedelta(days=30)
+            card.last_reviewed = datetime.now(timezone.utc).replace(tzinfo=None)
             db.commit()
         return card
 
