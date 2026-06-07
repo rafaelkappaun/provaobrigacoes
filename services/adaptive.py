@@ -310,7 +310,7 @@ class AdaptiveEngine:
 
     @classmethod
     def get_next_subject(cls, db: Session, session_id: str = "default") -> str:
-        """Determina o próximo assunto a estudar — prioriza não-dominados (consecutive_correct < 5)"""
+        """Determina o próximo assunto — distribuição igualitária entre não-dominados"""
         cls.initialize_topics_if_needed(db, session_id)
         
         topics = db.query(TopicMastery).filter(TopicMastery.session_id == session_id).all()
@@ -321,25 +321,30 @@ class AdaptiveEngine:
                 logger.info(f"Modo Intensivo Ativo para: {t.subject}")
                 return t.subject
         
-        # 2. Assuntos ainda não dominados (consecutive_correct < 5)
+        # 2. Separa dominados (consecutive_correct >= 5) e não-dominados
+        mastered = [t for t in topics if t.consecutive_correct >= 5]
         not_mastered = [t for t in topics if t.consecutive_correct < 5]
+        
         if not not_mastered:
-            # Todos dominados → revisão aleatória
             return random.choice(topics).subject
         
-        # 3. Prioriza quem está mais perto de dominar (consecutive_correct mais alto)
-        #    com 60% de chance, para dar sensação de progresso
-        if random.random() < 0.60:
-            close_to_mastery = sorted(not_mastered, key=lambda t: -t.consecutive_correct)[:5]
-            return random.choice(close_to_mastery).subject
-        
-        # 4. Revisões espaçadas pendentes
+        # 3. Distribuição igualitária: peso inverso ao total de perguntas respondidas
+        #    Quanto menos respondeu, maior a chance de ser selecionado
         now = datetime.now(timezone.utc).replace(tzinfo=None)
-        due_revisions = [t for t in not_mastered if t.next_revision_date and t.next_revision_date <= now]
-        if due_revisions and random.random() < 0.70:
-            return random.choice(due_revisions).subject
         
-        # 5. Qualquer não-dominado
+        weights = []
+        for t in not_mastered:
+            weight = 1.0 / (t.questions_answered + 1)
+            if t.next_revision_date and t.next_revision_date <= now:
+                weight *= 3
+            weights.append(weight)
+        
+        total = sum(weights)
+        if total > 0:
+            normalized = [w / total for w in weights]
+            chosen = random.choices(not_mastered, weights=normalized, k=1)[0]
+            return chosen.subject
+        
         return random.choice(not_mastered).subject
 
     @staticmethod
