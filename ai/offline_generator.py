@@ -223,18 +223,33 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
     elif subject == "A quem se deve pagar":
         question_data["article"] = "Art. 308 e Art. 309 do Código Civil"
         if is_cespe:
-            question_data["enunciado"] = (
-                f"({bank}) {v['devedor']} realizou o pagamento do débito de {v['valor']} a {v['terceiro']}, que aparentava de forma convincente ser "
-                f"o legítimo credor (credor putativo). Posteriormente, o verdadeiro credor, {v['credor']}, demonstrou que {v['terceiro']} agia com falsidade. "
-                f"Nessa hipótese, o pagamento feito por {v['devedor']} a {v['terceiro']} é considerado plenamente válido, desde que {v['devedor']} tenha agido de boa-fé."
-            )
-            question_data["options"] = {"A": "CERTO", "B": "ERRADO"}
-            question_data["gabarito"] = "A"
-            question_data["legal_basis"] = "Art. 309 do Código Civil."
-            question_data["explanation"] = (
-                f"O art. 309 do Código Civil consagra a Teoria da Aparência ao dispor que 'o pagamento feito de boa-fé ao credor putativo é válido, "
-                f"ainda provado depois que não era credor'. A boa-fé do devedor é o requisito essencial. Portanto, a afirmação está CERTA."
-            )
+            if variant == 0:
+                question_data["enunciado"] = (
+                    f"({bank}) {v['devedor']} realizou o pagamento do débito de {v['valor']} a {v['terceiro']}, que aparentava de forma convincente ser "
+                    f"o legítimo credor (credor putativo). Posteriormente, o verdadeiro credor, {v['credor']}, demonstrou que {v['terceiro']} agia com falsidade. "
+                    f"Nessa hipótese, o pagamento feito por {v['devedor']} a {v['terceiro']} é considerado plenamente válido, desde que {v['devedor']} tenha agido de boa-fé."
+                )
+                question_data["options"] = {"A": "CERTO", "B": "ERRADO"}
+                question_data["gabarito"] = "A"
+                question_data["legal_basis"] = "Art. 309 do Código Civil."
+                question_data["explanation"] = (
+                    f"O art. 309 do Código Civil consagra a Teoria da Aparência ao dispor que 'o pagamento feito de boa-fé ao credor putativo é válido, "
+                    f"ainda provado depois que não era credor'. A boa-fé do devedor é o requisito essencial. Portanto, a afirmação está CERTA."
+                )
+            else:
+                question_data["enunciado"] = (
+                    f"({bank}) {v['devedor']} pagou o valor de {v['valor']} a {v['terceiro']}, pessoa relativamente incapaz que se apresentava "
+                    f"como credor, sem que {v['terceiro']} tivesse capacidade para dar quitação. {v['devedor']} não consegue provar que o valor "
+                    f"reverteu em proveito do verdadeiro credor {v['credor']}. Nessa hipótese, o pagamento é válido e extingue a obrigação."
+                )
+                question_data["options"] = {"A": "CERTO", "B": "ERRADO"}
+                question_data["gabarito"] = "B"
+                question_data["legal_basis"] = "Art. 310 do Código Civil."
+                question_data["explanation"] = (
+                    f"O art. 310 do CC dispõe: 'Não vale o pagamento feito a quem se mostrava incapaz de quitá-lo, se o devedor não provar "
+                    f"que reverteu em proveito do credor'. A incapacidade relativa de {v['terceiro']} para dar quitação invalida o pagamento, "
+                    f"a menos que o devedor prove que o valor beneficiou o verdadeiro credor. Portanto, a afirmação está ERRADA."
+                )
         else:
             if variant == 0:
                 question_data["enunciado"] = (
