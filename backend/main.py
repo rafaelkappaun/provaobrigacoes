@@ -102,10 +102,6 @@ class ProfessorChatPayload(BaseModel):
 # ENDPOINTS API
 # -------------------------------------------------------------
 
-@app.get("/")
-def read_root():
-    return {"message": "Bem-vindo ao JUS OBRIGAÇÕES MASTER API"}
-
 @app.get("/health")
 def health_check():
     return {"status": "ok", "service": "jus-obrigacoes-master"}
