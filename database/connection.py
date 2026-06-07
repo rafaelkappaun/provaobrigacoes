@@ -90,14 +90,26 @@ def run_migrations():
         except Exception as e:
             logger.debug(f"Migração last_reviewed: {e}")
 
-        # Aumenta VARCHAR de flashcards.id de 50 para 120 (PostgreSQL)
+        # Aumenta VARCHAR de id para 120 em todas as tabelas relevantes (PostgreSQL)
         if not is_sqlite:
-            try:
-                conn.execute(text("ALTER TABLE flashcards ALTER COLUMN id TYPE VARCHAR(120)"))
-                conn.commit()
-                logger.info("Migração: flashcards.id alterado para VARCHAR(120)")
-            except Exception as e:
-                logger.debug(f"Migração flashcards.id type: {e}")
+            id_tables = ["flashcards", "question_history", "error_logs"]
+            for tbl in id_tables:
+                try:
+                    # Verifica tamanho atual antes de alterar
+                    size_row = conn.execute(text(
+                        f"SELECT character_maximum_length FROM information_schema.columns "
+                        f"WHERE table_name='{tbl}' AND column_name='id'"
+                    )).fetchone()
+                    current_size = size_row[0] if size_row else None
+                    if current_size is None or current_size < 120:
+                        conn.execute(text(f"ALTER TABLE {tbl} ALTER COLUMN id TYPE VARCHAR(120)"))
+                        conn.commit()
+                        logger.info(f"Migração: {tbl}.id alterado para VARCHAR(120) (era {current_size})")
+                    else:
+                        logger.info(f"Migração: {tbl}.id já é VARCHAR({current_size}), sem necessidade de alterar")
+                except Exception as e:
+                    conn.rollback()
+                    logger.warning(f"Migração {tbl}.id type falhou: {type(e).__name__}: {e}")
 
         # Remove UNIQUE constraint antiga de topic_mastery.subject
         try:

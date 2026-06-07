@@ -141,21 +141,28 @@ def get_next_question(bank: str = "FGV", subject: Optional[str] = None, db: Sess
 @app.post("/api/question/answer")
 def post_answer(payload: AnswerPayload, db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
     try:
+        # Valida campos obrigatórios da questão
+        question = payload.question
+        if not question.get("subject"):
+            raise HTTPException(status_code=422, detail="Questão inválida: campo 'subject' ausente")
+        if not question.get("gabarito"):
+            raise HTTPException(status_code=422, detail="Questão inválida: campo 'gabarito' ausente")
+        
         existing = db.query(QuestionHistory).filter(
-            QuestionHistory.id == payload.question.get("id", ""),
+            QuestionHistory.id == str(question.get("id", ""))[:115],
             QuestionHistory.session_id == session_id
         ).first()
         if existing:
             raise HTTPException(status_code=409, detail="Esta questão já foi respondida anteriormente. Carregue uma nova questão.")
         result = AdaptiveEngine.process_answer(
-            db, payload.question, payload.selected_option, payload.response_time, session_id
+            db, question, payload.selected_option, payload.response_time, session_id
         )
         return result
     except HTTPException:
         raise
-    except Exception:
+    except Exception as exc:
         logger.exception("Falha ao processar resposta")
-        raise HTTPException(status_code=500, detail="Erro ao processar resposta")
+        raise HTTPException(status_code=500, detail=f"Erro ao processar resposta: {type(exc).__name__}: {str(exc)[:200]}")
 
 @app.get("/api/flashcards")
 def get_flashcards(subject: Optional[str] = None, due_only: bool = False, db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):

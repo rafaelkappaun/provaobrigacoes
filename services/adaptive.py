@@ -3,6 +3,7 @@ import json
 import logging
 import os
 import random
+import uuid
 from typing import Dict, Any, List, Optional
 from sqlalchemy.orm import Session
 from database.models import TopicMastery, UserStats, QuestionHistory, ErrorLog, Flashcard
@@ -179,9 +180,16 @@ class AdaptiveEngine:
         is_correct = (selected_option.upper() == correct_option.upper())
         is_insecure = is_correct and (response_time > INSECURE_TIME_LIMIT)
         
+        # Garante ID sempre válido (nunca None/vazio, max 115 chars)
+        raw_id = question.get("id") or ""
+        if not raw_id or not str(raw_id).strip():
+            raw_id = str(uuid.uuid4())
+            logger.warning(f"Questão sem id válido, gerado UUID: {raw_id}")
+        question_id = str(raw_id).strip()[:115]
+        
         # 1. Registrar histórico
         q_history = QuestionHistory(
-            id=question["id"],
+            id=question_id,
             session_id=session_id,
             subject=subject,
             difficulty=question.get("difficulty", "Médio"),
