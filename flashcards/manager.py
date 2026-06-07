@@ -14,17 +14,23 @@ FLASHCARD_BANK: Dict[str, List[Dict[str, str]]] = {
     "Quem deve pagar": [
         {"front": "Qualquer interessado pode pagar a dívida?", "back": "Sim. E caso haja oposição do credor, pode usar os meios de exoneração (ex: consignação). Art. 304, CC."},
         {"front": "Qual a diferença de efeitos entre o terceiro interessado e o não interessado?", "back": "O interessado se sub-roga nos direitos do credor. O não interessado que paga em seu nome tem apenas direito a reembolso, sem sub-rogação. Arts. 304/305, CC."},
-        {"front": "O que é um 'terceiro interessado'?", "back": "É aquele que pode sofrer prejuízo patrimonial caso a dívida não seja paga (ex: o fiador, o avalista, o adquirente do imóvel hipotecado)."}
+        {"front": "O que é um 'terceiro interessado'?", "back": "É aquele que pode sofrer prejuízo patrimonial caso a dívida não seja paga (ex: o fiador, o avalista, o adquirente do imóvel hipotecado)."},
+        {"front": "Quando o pagamento envolvendo transmissão de propriedade é considerado válido?", "back": "Apenas se o pagador for o dono da coisa (tiver poder de aliená-la). Porém, se for coisa fungível consumida de boa-fé pelo credor, resolve-se em perdas e danos e o pagamento é eficaz. Art. 307, CC."}
     ],
     "A quem se deve pagar": [
         {"front": "O pagamento feito ao credor putativo de boa-fé é válido?", "back": "Sim, é plenamente válido, mesmo provado depois que ele não era o credor legítimo. Art. 309, CC."},
         {"front": "O que rege o ditado popular 'quem paga mal paga duas vezes' no Código Civil?", "back": "O pagamento feito a quem não é credor (ou representante) só vale se ratificado por este ou se reverter em seu proveito. Art. 308, CC."},
-        {"front": "O pagamento ao credor cujo crédito foi penhorado é válido?", "back": "Não. Se o devedor foi notificado da penhora e pagar ao credor, o pagamento não vale contra terceiros penhorantes. Art. 312, CC."}
+        {"front": "O pagamento ao credor cujo crédito foi penhorado é válido?", "back": "Não. Se o devedor foi notificado da penhora e pagar ao credor, o pagamento não vale contra terceiros penhorantes. Art. 312, CC."},
+        {"front": "O que ocorre se o pagamento for realizado a credor incapaz de quitar?", "back": "Em regra não vale, a menos que o devedor prove que o pagamento reverteu integralmente em proveito do incapaz. Art. 310, CC."},
+        {"front": "Quem é presumido autorizado a receber o pagamento?", "back": "O portador da quitação, exceto se as circunstâncias contrariarem essa presunção. Art. 311, CC."}
     ],
     "Objeto do pagamento e sua prova": [
         {"front": "O credor é obrigado a receber prestação diversa se for mais valiosa?", "back": "Não. O credor não pode ser obrigado a receber prestação diversa da que lhe é devida, ainda que mais valiosa. Art. 313, CC."},
         {"front": "O devedor é obrigado a pagar em parcelas se o contrato previu parcela única?", "back": "Não. O credor não pode ser obrigado a receber por partes, nem o devedor a pagar por partes, se não convencionado. Art. 314, CC."},
-        {"front": "Qual o principal meio de prova do pagamento?", "back": "A quitação (recibo), que pode ser dada por instrumento particular e conter os requisitos do Art. 320, CC."}
+        {"front": "Qual o principal meio de prova do pagamento?", "back": "A quitação (recibo), que pode ser dada por instrumento particular e conter os requisitos do Art. 320, CC."},
+        {"front": "Nas dívidas em quotas periódicas, o que presume a quitação da última?", "back": "Faz presumir, até prova em contrário, que as parcelas anteriores foram integralmente pagas. Art. 322, CC."},
+        {"front": "O que presume a quitação do capital sem reserva dos juros?", "back": "Faz presumir que os juros da dívida foram pagos e extintos. Art. 323, CC."},
+        {"front": "Qual o efeito da devolução do título representativo da obrigação ao devedor?", "back": "Gera presunção de pagamento (adimplemento). O credor tem 60 dias para provar o não pagamento. Art. 324, CC."}
     ],
     "Lugar do pagamento": [
         {"front": "Qual a regra geral para o lugar do pagamento se não convencionado?", "back": "No domicílio do devedor (obrigação querível ou 'quérable'). Art. 327, CC."},
@@ -34,7 +40,8 @@ FLASHCARD_BANK: Dict[str, List[Dict[str, str]]] = {
     "Tempo do pagamento": [
         {"front": "Nas obrigações sem prazo assinalado, quando o credor pode cobrar?", "back": "Imediatamente, salvo disposição especial do Código Civil. Art. 331, CC."},
         {"front": "Em quais casos o credor pode cobrar a dívida antes de vencido o prazo?", "back": "Insolvência/falência do devedor; penhora do bem dado em garantia por outro credor; garantias insuficientes não reforçadas. Art. 333, CC."},
-        {"front": "O vencimento antecipado do devedor principal se propaga aos fiadores?", "back": "Não. Nos casos de solidariedade passiva, o vencimento antecipado não se propaga aos codevedores ou fiadores solventes. Art. 333, parágrafo único."}
+        {"front": "O vencimento antecipado do devedor principal se propaga aos fiadores?", "back": "Não. Nos casos de solidariedade passiva, o vencimento antecipado não se propaga aos codevedores ou fiadores solventes. Art. 333, parágrafo único."},
+        {"front": "Como ocorre o pagamento de obrigação sob condição suspensiva?", "back": "O devedor deve adimplir na data do implemento (ocorrência) do evento futuro e incerto, devendo o credor provar que o devedor teve ciência desse fato. Art. 332, CC."}
     ],
     "Consignação em pagamento": [
         {"front": "O que caracteriza a consignação em pagamento?", "back": "O depósito judicial ou em estabelecimento bancário da coisa ou quantia devida, para fins de exoneração da obrigação. Art. 334, CC."},
@@ -79,12 +86,15 @@ FLASHCARD_BANK: Dict[str, List[Dict[str, str]]] = {
     "Inadimplemento - Disposições gerais": [
         {"front": "Quem responde pelas perdas e danos no inadimplemento?", "back": "O devedor inadimplente responde por perdas e danos, mais juros, atualização monetária e honorários de advogado. Art. 389, CC."},
         {"front": "O devedor responde por caso fortuito ou força maior?", "back": "Em regra não, exceto se houver se responsabilizado expressamente ou se já estava em mora. Art. 393, CC."},
-        {"front": "Nos contratos bilaterais, o inadimplemento permite o quê?", "back": "A parte lesada pode pedir a resolução do contrato ou exigir-lhe o cumprimento, cabendo em qualquer caso indenização."}
+        {"front": "Nos contratos bilaterais, o inadimplemento permite o quê?", "back": "A parte lesada pode pedir a resolução do contrato ou exigir-lhe o cumprimento, cabendo em qualquer caso indenização."},
+        {"front": "Nas obrigações de não fazer, quando se caracteriza o inadimplemento?", "back": "O devedor é considerado inadimplente desde o dia em que realizou o ato que se havia obrigado a abster-se. Art. 390, CC."},
+        {"front": "Quais bens do devedor respondem pelo inadimplemento das obrigações?", "back": "Todos os bens do devedor respondem pelo descumprimento, ressalvadas as restrições e impenhorabilidades previstas em lei. Art. 391, CC."}
     ],
     "Mora - Geral": [
         {"front": "Qual a diferença de mora ex re e mora ex persona?", "back": "A mora ex re decorre do vencimento de obrigação com termo certo. A mora ex persona exige interpelação/notificação judicial ou extrajudicial por falta de termo. Art. 397, CC."},
         {"front": "Quem responde pelos danos em caso de mora do credor?", "back": "O credor responde pela conservação da coisa (salvo dolo do devedor) e deve ressarcir as despesas com a guarda. Art. 400, CC."},
-        {"front": "Como se purga a mora do devedor?", "back": "Oferecendo a prestação mais os juros, a atualização monetária e os prejuízos decorrentes do atraso. Art. 401, I, CC."}
+        {"front": "Como se purga a mora do devedor?", "back": "Oferecendo a prestação mais os juros, a atualização monetária e os prejuízos decorrentes do atraso. Art. 401, I, CC."},
+        {"front": "Como ocorre a purgação da mora pelo credor?", "back": "Oferecendo-se a receber o pagamento e sujeitando-se aos efeitos da sua mora (como arcar com as despesas de conservação). Art. 401, II, CC."}
     ],
     "Mora do devedor": [
         {"front": "Quais os requisitos para constituição em mora do devedor?", "back": "Existência de obrigação exigível; descumprimento injustificado (atraso culposo); e interpelação (se mora ex persona). Art. 396, CC."},

@@ -158,21 +158,36 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
     # 2. QUEM DEVE PAGAR (Arts. 304 - 307)
     # -------------------------------------------------------------
     elif subject == "Quem deve pagar":
-        question_data["article"] = "Art. 304 e Art. 305 do Código Civil"
+        question_data["article"] = "Art. 304, Art. 305 e Art. 307 do Código Civil"
         if is_cespe:
-            question_data["enunciado"] = (
-                f"({bank}) {v['terceiro']}, terceiro não interessado na extinção de dívida decorrente de contrato de {v['contrato']} firmado entre "
-                f"{v['devedor']} (devedor) e {v['credor']} (credor), realiza o pagamento integral do débito de {v['valor']} em seu próprio nome, "
-                f"sem oposição de {v['devedor']}. Nessa situação, {v['terceiro']} se sub-roga de pleno direito nos privilégios e garantias do credor original."
-            )
-            question_data["options"] = {"A": "CERTO", "B": "ERRADO"}
-            question_data["gabarito"] = "B"
-            question_data["legal_basis"] = "Art. 305, caput, do Código Civil."
-            question_data["explanation"] = (
-                f"O terceiro não interessado que paga a dívida em seu próprio nome tem direito a reembolsar-se do que pagar, mas não se sub-roga "
-                f"nos direitos do credor (Art. 305, CC). A sub-rogação de pleno direito só ocorre a favor do terceiro interessado ou nas hipóteses "
-                f"legais expressas (Art. 346, CC). Portanto, a afirmação está ERRADA."
-            )
+            if variant == 0:
+                question_data["enunciado"] = (
+                    f"({bank}) {v['terceiro']}, terceiro não interessado na extinção de dívida decorrente de contrato de {v['contrato']} firmado entre "
+                    f"{v['devedor']} (devedor) e {v['credor']} (credor), realiza o pagamento integral do débito de {v['valor']} em seu próprio nome, "
+                    f"sem oposição de {v['devedor']}. Nessa situação, {v['terceiro']} se sub-roga de pleno direito nos privilégios e garantias do credor original."
+                )
+                question_data["options"] = {"A": "CERTO", "B": "ERRADO"}
+                question_data["gabarito"] = "B"
+                question_data["legal_basis"] = "Art. 305, caput, do Código Civil."
+                question_data["explanation"] = (
+                    f"O terceiro não interessado que paga a dívida em seu próprio nome tem direito a reembolsar-se do que pagar, mas não se sub-roga "
+                    f"nos direitos do credor (Art. 305, CC). A sub-rogação de pleno direito só ocorre a favor do terceiro interessado ou nas hipóteses "
+                    f"legais expressas (Art. 346, CC). Portanto, a afirmação está ERRADA."
+                )
+            else:
+                question_data["enunciado"] = (
+                    f"({bank}) {v['credor']} cedeu o crédito de {v['valor']} a {v['terceiro']}, mas continuou a figurar como credor no contrato de {v['contrato']} firmado com "
+                    f"{v['devedor']}. {v['devedor']}, ciente da cessão, efetuou o pagamento diretamente a {v['credor']}, que já não era mais o titular do crédito. "
+                    f"Nessa hipótese, o pagamento realizado por {v['devedor']} a {v['credor']} não extingue a obrigação, pois o crédito já havia sido transferido a {v['terceiro']}."
+                )
+                question_data["options"] = {"A": "CERTO", "B": "ERRADO"}
+                question_data["gabarito"] = "A"
+                question_data["legal_basis"] = "Art. 307 do Código Civil."
+                question_data["explanation"] = (
+                    f"O art. 307 do CC dispõe: 'Sendo o crédito portador de cláusula de não transmissibilidade, o pagamento feito ao credor que o transferiu "
+                    f"não extingue a obrigação se o devededor tiver ciência da transferência'. A regra protege o terceiro cessionário: se o devedor sabia "
+                    f"da cessão e paga ao credor cedente, o pagamento é ineficaz. O crédito pertence ao cessionário ({v['terceiro']}). Portanto, a afirmação está CERTA."
+                )
         else:
             if variant == 0:
                 question_data["enunciado"] = (
@@ -221,9 +236,10 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
     # 3. A QUEM SE DEVE PAGAR (Arts. 308 - 312)
     # -------------------------------------------------------------
     elif subject == "A quem se deve pagar":
-        question_data["article"] = "Art. 308 e Art. 309 do Código Civil"
+        question_data["article"] = "Art. 308, Art. 309, Art. 310 e Art. 312 do Código Civil"
+        v = random.randint(0, 2)  # 3 variants
         if is_cespe:
-            if variant == 0:
+            if v == 0:
                 question_data["enunciado"] = (
                     f"({bank}) {v['devedor']} realizou o pagamento do débito de {v['valor']} a {v['terceiro']}, que aparentava de forma convincente ser "
                     f"o legítimo credor (credor putativo). Posteriormente, o verdadeiro credor, {v['credor']}, demonstrou que {v['terceiro']} agia com falsidade. "
@@ -236,7 +252,7 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
                     f"O art. 309 do Código Civil consagra a Teoria da Aparência ao dispor que 'o pagamento feito de boa-fé ao credor putativo é válido, "
                     f"ainda provado depois que não era credor'. A boa-fé do devedor é o requisito essencial. Portanto, a afirmação está CERTA."
                 )
-            else:
+            elif v == 1:
                 question_data["enunciado"] = (
                     f"({bank}) {v['devedor']} pagou o valor de {v['valor']} a {v['terceiro']}, pessoa relativamente incapaz que se apresentava "
                     f"como credor, sem que {v['terceiro']} tivesse capacidade para dar quitação. {v['devedor']} não consegue provar que o valor "
@@ -250,8 +266,23 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
                     f"que reverteu em proveito do credor'. A incapacidade relativa de {v['terceiro']} para dar quitação invalida o pagamento, "
                     f"a menos que o devedor prove que o valor beneficiou o verdadeiro credor. Portanto, a afirmação está ERRADA."
                 )
+            else:
+                question_data["enunciado"] = (
+                    f"({bank}) {v['devedor']} possuía uma dívida de {v['valor']} perante {v['credor']} decorrente de {v['contrato']}. "
+                    f"O crédito de {v['credor']} foi penhorado por outro credor e havia ordem judicial expressa para que {v['devedor']} depositasse o valor em juízo. "
+                    f"{v['devedor']}, desconhecendo a penhora, pagou diretamente a {v['credor']}. "
+                    f"Nessa hipótese, o pagamento feito por {v['devedor']} a {v['credor']} é válido e extingue a obrigação, desde que {v['devedor']} tenha agido de boa-fé e sem ciência da penhora."
+                )
+                question_data["options"] = {"A": "CERTO", "B": "ERRADO"}
+                question_data["gabarito"] = "A"
+                question_data["legal_basis"] = "Art. 312 do Código Civil."
+                question_data["explanation"] = (
+                    f"O art. 312 do CC dispõe: 'Se o devedor pagar ao credor, ignorando estar este impedido de receber, valerá o pagamento, "
+                    f"se o devedor não tinha conhecimento da penhora ou do concurso de credores'. A boa-fé do devedor é protegida pela lei. "
+                    f"Portanto, a afirmação está CERTA."
+                )
         else:
-            if variant == 0:
+            if v == 0:
                 question_data["enunciado"] = (
                     f"({bank}) {v['devedor']} contraiu uma obrigação perante {v['credor']} no valor de {v['valor']} referente a {v['contrato']}. "
                     f"No dia do vencimento, {v['devedor']} realizou o pagamento de boa-fé a {v['terceiro']}, pessoa que, por circunstâncias fáticas, "
@@ -272,7 +303,7 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
                     f"que foi induzido a erro escusável pela aparência de credor do receptor. O verdadeiro credor ({v['credor']}) deve buscar o "
                     f"ressarcimento contra quem recebeu indevidamente ({v['terceiro']})."
                 )
-            else:
+            elif v == 1:
                 question_data["enunciado"] = (
                     f"({bank}) {v['credor']} faleceu antes do vencimento da dívida de {v['valor']} que {v['devedor']} havia contraído mediante "
                     f"{v['contrato']}. {v['devedor']} efetuou o pagamento a {v['terceiro']}, irmão de {v['credor']}, que se apresentou como herdeiro e apresentou "
@@ -293,24 +324,59 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
                     f"o espólio, representado pelo inventariante, é quem detém a titularidade do crédito. O art. 310 dispõe que o pagamento feito de boa-fé "
                     f"ao credor putativo é válido, mas isso exige aparência legítima de credor, o que não ocorre com mera apresentação de certidão de óbito."
                 )
+            else:
+                question_data["enunciado"] = (
+                    f"({bank}) O crédito de {v['credor']} no valor de {v['valor']} foi objeto de penhora no rosto dos autos em execução movida por terceiro. "
+                    f"{v['devedor']} foi intimado da penhora e determinou-se que pagasse em juízo. Apesar da intimação, {v['devedor']} pagou diretamente a {v['credor']}. "
+                    f"Diante dessa situação, de acordo com o Código Civil, assinale a opção correta:"
+                )
+                question_data["options"] = {
+                    "A": f"O pagamento feito diretamente a {v['credor']} é válido e extingue a obrigação, pois o devedor não pode ser prejudicado por disputas entre credores.",
+                    "B": f"O pagamento não extingue a obrigação, pois o devedor, ciente da penhora, deveria ter depositado o valor em juízo, subsistindo o crédito em favor dos credores que penhoraram.",
+                    "C": f"O pagamento é anulável se {v['credor']} concordar em devolver o valor, caso contrário é plenamente válido.",
+                    "D": f"A penhora do crédito impede que {v['devedor']} pague a quem quer que seja, devendo aguardar decisão judicial para se exonerar.",
+                    "E": f"O pagamento direto a {v['credor']} é nulo de pleno direito, independentemente do conhecimento de {v['devedor']} sobre a penhora."
+                }
+                question_data["gabarito"] = "B"
+                question_data["legal_basis"] = "Art. 312 do Código Civil."
+                question_data["explanation"] = (
+                    f"O art. 312 do CC dispõe que o pagamento feito ao credor, estando este impedido de receber em razão de penhora, só vale "
+                    f"se o devedor ignorava o impedimento de boa-fé. Como {v['devedor']} foi intimado da penhora, o pagamento direto a {v['credor']} "
+                    f"não extingue a obrigação. O valor deveria ter sido depositado em juízo para satisfazer os credores que penhoraram."
+                )
 
     # -------------------------------------------------------------
     # 4. OBJETO DO PAGAMENTO E SUA PROVA (Arts. 313 - 326)
     # -------------------------------------------------------------
     elif subject == "Objeto do pagamento e sua prova":
-        question_data["article"] = "Art. 313, Art. 314 e Art. 320 do Código Civil"
+        question_data["article"] = "Art. 313, Art. 314, Art. 320, Art. 323 e Art. 324 do Código Civil"
         if is_cespe:
-            question_data["enunciado"] = (
-                f"({bank}) O credor não é obrigado a receber prestação diversa da que lhe é devida, ainda que mais valiosa, "
-                f"salvo se o devedor oferecer garantias reais adicionais que assegurem o cumprimento da prestação original."
-            )
-            question_data["options"] = {"A": "CERTO", "B": "ERRADO"}
-            question_data["gabarito"] = "B"
-            question_data["legal_basis"] = "Art. 313 do Código Civil."
-            question_data["explanation"] = (
-                f"O art. 313 do CC determina que 'o credor não é obrigado a receber prestação diversa da que lhe é devida, ainda que mais valiosa'. "
-                f"A ressalva sobre garantias reais adicionais não existe no texto legal — a regra é absoluta. Portanto, a afirmação está ERRADA."
-            )
+            if variant == 0:
+                question_data["enunciado"] = (
+                    f"({bank}) O credor não é obrigado a receber prestação diversa da que lhe é devida, ainda que mais valiosa, "
+                    f"salvo se o devedor oferecer garantias reais adicionais que assegurem o cumprimento da prestação original."
+                )
+                question_data["options"] = {"A": "CERTO", "B": "ERRADO"}
+                question_data["gabarito"] = "B"
+                question_data["legal_basis"] = "Art. 313 do Código Civil."
+                question_data["explanation"] = (
+                    f"O art. 313 do CC determina que 'o credor não é obrigado a receber prestação diversa da que lhe é devida, ainda que mais valiosa'. "
+                    f"A ressalva sobre garantias reais adicionais não existe no texto legal — a regra é absoluta. Portanto, a afirmação está ERRADA."
+                )
+            else:
+                question_data["enunciado"] = (
+                    f"({bank}) {v['devedor']} firmou contrato de prestação de serviços com {v['credor']} para pagamento em 12 parcelas mensais de {v['valor']}. "
+                    f"{v['devedor']} atrasou as parcelas 3, 4 e 5, mas efetuou o pagamento da 6ª parcela sem que {v['credor']} fizesse qualquer ressalva. "
+                    f"Nessa hipótese, o recebimento da 6ª parcela sem ressalva por parte de {v['credor']} faz presumir que foram renunciados os débitos anteriores."
+                )
+                question_data["options"] = {"A": "CERTO", "B": "ERRADO"}
+                question_data["gabarito"] = "A"
+                question_data["legal_basis"] = "Art. 323 do Código Civil."
+                question_data["explanation"] = (
+                    f"O art. 323 do CC dispõe: 'Sendo a dívida pagável por quotas periódicas, o recebimento de uma delas sem ressalva "
+                    f"faz presumir que foram solvidas as anteriores'. O credor que aceita uma parcela sem protesto presume ter recebido as anteriores. "
+                    f"Portanto, a afirmação está CERTA."
+                )
         else:
             if variant == 0:
                 question_data["enunciado"] = (
@@ -333,7 +399,7 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
                     f"com a assinatura do credor, ou do seu representante'. O credor não é obrigado a receber prestação diversa (art. 313), nem "
                     f"a receber por partes (art. 314). O pagamento em moeda estrangeira só é válido nos casos expressos em lei (art. 318)."
                 )
-            else:
+            elif variant == 1:
                 question_data["enunciado"] = (
                     f"({bank}) {v['devedor']} deve a {v['credor']} o valor de {v['valor']} em moeda nacional, mas propõe quitar a dívida "
                     f"entregando metade em dinheiro e a outra metade em serviços de sua profissão ({v['prof_dev']}). "
@@ -352,6 +418,25 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
                     f"O art. 313 do CC determina que o credor não é obrigado a receber prestação diversa da que lhe é devida, ainda que mais valiosa. "
                     f"O art. 314, por sua vez, dispõe que o credor não é obrigado a receber o pagamento por partes, salvo disposição em contrário. "
                     f"A quitação (art. 320) exige a assinatura do credor. Moeda estrangeira só é admitida nos casos em que a lei autoriza (art. 318)."
+                )
+            else:
+                question_data["enunciado"] = (
+                    f"({bank}) {v['devedor']} quitou integralmente a dívida de {v['valor']} que possuía perante {v['credor']} decorrente de {v['contrato']}. "
+                    f"{v['credor']} entregou a {v['devedor']} o título original da dívida. Meses depois, {v['credor']} cobra novamente o valor, alegando que "
+                    f"houve erro na quitação. Considerando as regras do Código Civil sobre prova do pagamento, assinale a opção correta:"
+                )
+                question_data["options"] = {
+                    "A": f"A entrega do título ao devedor faz presumir o pagamento, salvo se o credor provar que a dívida não foi paga.",
+                    "B": f"A devolução do título não tem qualquer valor probatório, sendo necessária a apresentação do recibo de quitação assinado pelo credor.",
+                    "C": f"O credor pode cobrar novamente a dívida se provar que o título foi extraviado e posteriormente recuperado.",
+                    "D": f"A dívida considera-se automaticamente novada com a devolução do título, independentemente de pagamento.",
+                    "E": f"A entrega do título ao devedor extingue a obrigação de forma absoluta, não podendo o credor jamais cobrá-la novamente."
+                }
+                question_data["gabarito"] = "A"
+                question_data["legal_basis"] = "Art. 324 do Código Civil."
+                question_data["explanation"] = (
+                    f"O art. 324 do CC estabelece: 'A entrega do título ao devedor faz presumir o pagamento'. Trata-se de presunção relativa (juris tantum), "
+                    f"que admite prova em contrário pelo credor. Se o credor demonstrar que não houve pagamento, a dívida subsiste."
                 )
 
     # -------------------------------------------------------------
