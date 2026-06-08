@@ -29,7 +29,7 @@ export default function App() {
 
   const isLoadingRef = useRef(false);
 
-  useEffect(() => {
+  const loadDashboard = useCallback(() => {
     if (isLoadingRef.current) return;
     isLoadingRef.current = true;
     setLoading(true);
@@ -42,6 +42,12 @@ export default function App() {
       })
       .finally(() => { setLoading(false); isLoadingRef.current = false; });
   }, [fetchDashboardData]);
+
+  useEffect(() => {
+    if (activeTab === 'dashboard') {
+      loadDashboard();
+    }
+  }, [activeTab, loadDashboard]);
 
   const handleRetry = useCallback(() => {
     setLoading(true);
