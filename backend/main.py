@@ -186,7 +186,7 @@ def get_flashcards(subject: Optional[str] = None, due_only: bool = False, db: Se
             if due_only:
                 cards = FlashcardManager.get_due_flashcards(db, session_id)
             else:
-                for sub in list(FLASHCARD_BANK.keys())[:3]:
+                for sub in list(FLASHCARD_BANK.keys()):
                     FlashcardManager.create_cards_for_subject(db, sub, session_id)
                 cards = FlashcardManager.get_all_flashcards(db, session_id=session_id)
         return cards
@@ -260,6 +260,8 @@ def get_simulado(size: int = 10, db: Session = Depends(get_db), session_id: str 
         topics = db.query(TopicMastery).filter(TopicMastery.session_id == session_id).all()
         sorted_topics = sorted(topics, key=lambda x: x.success_rate)
         selected_subjects = [t.subject for t in sorted_topics]
+        if not selected_subjects:
+            selected_subjects = ["Adimplemento e Extinção das Obrigações"]
         questions = []
         for i in range(size):
             subj = selected_subjects[i % len(selected_subjects)]

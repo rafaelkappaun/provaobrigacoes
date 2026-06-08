@@ -95,16 +95,19 @@ class AdaptiveEngine:
         # Detalhamento de cada assunto
         subjects_detail = []
         for t in topics:
+            needs_recovery = t.questions_answered >= 3 and t.success_rate < 90.0
             subjects_detail.append({
                 "subject": t.subject,
                 "questions_answered": t.questions_answered,
                 "questions_correct": t.questions_correct,
+                "questions_incorrect": t.questions_answered - t.questions_correct,
                 "success_rate": round(t.success_rate, 1),
                 "status": t.status,
                 "consecutive_errors": t.consecutive_errors,
                 "consecutive_correct": t.consecutive_correct,
                 "mastery_target": "5/5",
-                "is_intensive": t.consecutive_errors >= 3
+                "is_intensive": t.consecutive_errors >= 3,
+                "needs_recovery": needs_recovery
             })
             
         # Ranking pessoal (faixa)
@@ -140,7 +143,7 @@ class AdaptiveEngine:
                 has_any_key = any(ai_status.get(f"{p}_api_key") for p in ["groq", "deepseek", "openrouter", "gemini", "qwen", "mistral"])
                 if not has_any_key:
                     next_step = "🔑 Configure uma chave de IA gratuita (Groq) no arquivo .env para gerar questões ilimitadas personalizadas."
-            if meta_achieved_flag or overall_success_rate >= 95:
+            if meta_achieved_flag:
                 next_step = "🏆 Meta 95% atingida! Faça um simulado completo para fixar o conhecimento."
             elif intensive_subject:
                 next_step = f"🔥 Modo Intensivo ativo em '{intensive_subject}'. Estude este tema para desbloquear os demais."
@@ -266,7 +269,7 @@ class AdaptiveEngine:
             mastery.consecutive_errors += 1
             
             # Salvar no log de erros
-            error_id = hashlib.md5(f"{question['id']}_{session_id}_{datetime.now(timezone.utc).replace(tzinfo=None).timestamp()}".encode()).hexdigest()[:40]
+            error_id = hashlib.md5(f"{question_id}_{session_id}_{datetime.now(timezone.utc).replace(tzinfo=None).timestamp()}".encode()).hexdigest()[:40]
             error_log = ErrorLog(
                 id=error_id,
                 session_id=session_id,

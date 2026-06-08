@@ -48,6 +48,7 @@ class AIProviderManager:
                         "deepseek_api_key": cfg.deepseek_api_key,
                         "qwen_api_key": cfg.qwen_api_key,
                         "mistral_api_key": cfg.mistral_api_key,
+                        "groq_api_key": cfg.groq_api_key,
                         "temperature": cfg.temperature,
                     }
             finally:

@@ -5,12 +5,14 @@ export interface Subject {
   subject: string;
   questions_answered: number;
   questions_correct: number;
+  questions_incorrect: number;
   success_rate: number;
   status: 'Critico' | 'Intermediario' | 'Dominado';
   consecutive_errors: number;
   consecutive_correct: number;
   mastery_target: string;
   is_intensive: boolean;
+  needs_recovery: boolean;
 }
 
 export interface DashboardData {
@@ -315,6 +317,40 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
         </div>
       )}
 
+      {/* Revisão Urgente */}
+      {data.subjects.filter(s => s.needs_recovery).length > 0 && (
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <AlertTriangle size={18} className="text-red-400" />
+            <h3 className="text-lg font-bold text-red-300 tracking-tight">Revisão Urgente</h3>
+            <span className="px-2 py-0.5 text-[10px] font-bold rounded bg-red-950/60 text-red-400 border border-red-800">
+              Abaixo de 90%
+            </span>
+          </div>
+          <div className="p-4 rounded-xl bg-red-950/20 border border-red-500/20">
+            <p className="text-xs text-red-300/80 mb-3">Você está com menos de 90% de acertos nestes temas. Clique em <strong>Recuperar</strong> para revisar com foco nas questões que errou.</p>
+            <div className="flex flex-wrap gap-2">
+              {data.subjects.filter(s => s.needs_recovery).map(sub => (
+                <button
+                  key={sub.subject}
+                  onClick={() => onNavigate('estudo', { subject: sub.subject, recovery: true })}
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg bg-red-950/40 border border-red-800/60 hover:bg-red-900/40 hover:border-red-600 transition-all text-left"
+                >
+                  <div className="p-1 rounded bg-red-500/20 text-red-400">
+                    <AlertTriangle size={14} />
+                  </div>
+                  <div className="text-xs">
+                    <p className="font-bold text-red-200">{sub.subject}</p>
+                    <p className="text-red-400/80">{sub.questions_correct}/{sub.questions_answered} corretas ({sub.success_rate}%)</p>
+                  </div>
+                  <ArrowRight size={14} className="text-red-400 shrink-0" />
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Jornada Adaptativa dos Temas */}
       <div className="space-y-6">
         <div className="flex justify-between items-center">
@@ -344,8 +380,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
                 </div>
                 <div className="space-y-1">
                   <div className="flex justify-between text-xs text-slate-500">
-                    <span>Respondidas: {sub.questions_answered}</span>
-                    <span>Acertos: {sub.success_rate}%</span>
+                    <span className="text-emerald-400">✅ {sub.questions_correct} corretas</span>
+                    <span className={sub.questions_incorrect > 0 ? 'text-red-400' : 'text-slate-500'}>❌ {sub.questions_incorrect} incorretas</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="flex-1 w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
@@ -401,8 +437,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
                 </div>
                 <div className="space-y-1">
                   <div className="flex justify-between text-xs text-slate-500">
-                    <span>Respondidas: {sub.questions_answered}</span>
-                    <span>Acertos: {sub.success_rate}%</span>
+                    <span className="text-emerald-400">✅ {sub.questions_correct} corretas</span>
+                    <span className={sub.questions_incorrect > 0 ? 'text-red-400' : 'text-slate-500'}>❌ {sub.questions_incorrect} incorretas</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="flex-1 w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">

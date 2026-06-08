@@ -173,7 +173,7 @@ export const ErrorReport: React.FC<ErrorReportProps> = ({ apiBase, onNavigate })
                       {/* Botão de Estudo Específico */}
                       <div className="flex justify-end pt-2">
                         <button
-                          onClick={() => onNavigate('estudo', { preselectedSubject: err.subject })}
+                          onClick={() => onNavigate('estudo', { subject: err.subject })}
                           className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-lg transition-all flex items-center gap-1.5"
                         >
                           Treinar Apenas Este Tema

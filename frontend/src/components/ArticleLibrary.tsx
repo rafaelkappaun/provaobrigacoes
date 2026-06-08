@@ -212,7 +212,7 @@ export const ArticleLibrary: React.FC<ArticleLibraryProps> = ({ apiBase, onNavig
                     {/* Botão para Estudar Tema */}
                     <div className="flex justify-end pt-2">
                       <button
-                        onClick={() => onNavigate('estudo', { preselectedSubject: art.subject })}
+                        onClick={() => onNavigate('estudo', { subject: art.subject })}
                         className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-lg transition-all flex items-center gap-1.5 shadow-md shadow-indigo-600/10"
                       >
                         <Play size={12} fill="currentColor" /> Praticar Questões do Tema

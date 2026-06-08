@@ -104,7 +104,7 @@ export const ReportTab: React.FC<ReportTabProps> = ({ apiBase, onNavigate }) => 
                   {report.weakest_topics.map(subj => (
                     <button
                       key={subj}
-                      onClick={() => onNavigate('estudo', { preselectedSubject: subj })}
+                      onClick={() => onNavigate('estudo', { subject: subj })}
                       className="px-3 py-1 bg-indigo-650 hover:bg-indigo-600 text-white font-bold text-[10px] rounded-lg transition-all flex items-center gap-1 shadow-md"
                     >
                       <Play size={10} fill="currentColor" /> Praticar: {subj}
