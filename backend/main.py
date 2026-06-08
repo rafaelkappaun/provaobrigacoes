@@ -3,6 +3,7 @@ import os
 import json
 import time
 import logging
+import threading
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -20,6 +21,7 @@ from pydantic import BaseModel
 
 from database.connection import Base, engine, get_db, run_migrations
 from database.models import SystemConfig, TopicMastery, UserStats, QuestionHistory, ErrorLog, Flashcard
+from database.crypto import encrypt_value, decrypt_value
 from database.articles_db import ARTICLES_DATA
 from ai.manager import AIProviderManager
 from services.adaptive import AdaptiveEngine
@@ -52,6 +54,7 @@ app.add_middleware(
 
 # Rate limiting simples (em memória)
 _rate_limit_store: Dict[str, List[float]] = {}
+_rate_limit_lock = threading.Lock()
 RATE_LIMIT_REQUESTS = int(os.getenv("RATE_LIMIT_REQUESTS", "60"))
 RATE_LIMIT_WINDOW = int(os.getenv("RATE_LIMIT_WINDOW", "60"))
 
@@ -62,10 +65,11 @@ async def rate_limit_middleware(request: Request, call_next):
         now = time.time()
         window_key = client_ip
 
-        timestamps = _rate_limit_store.get(window_key, [])
-        timestamps = [t for t in timestamps if now - t < RATE_LIMIT_WINDOW]
-        timestamps.append(now)
-        _rate_limit_store[window_key] = timestamps
+        with _rate_limit_lock:
+            timestamps = _rate_limit_store.get(window_key, [])
+            timestamps = [t for t in timestamps if now - t < RATE_LIMIT_WINDOW]
+            timestamps.append(now)
+            _rate_limit_store[window_key] = timestamps
 
         if len(timestamps) > RATE_LIMIT_REQUESTS:
             return JSONResponse(
@@ -363,6 +367,8 @@ def get_config():
             val = cfg[key_name]
             if len(val) > 12:
                 cfg[key_name] = val[:4] + "*" * (len(val) - 8) + val[-4:]
+            elif len(val) > 0:
+                cfg[key_name] = val[:2] + "****"
     return cfg
 
 @app.post("/api/config")
@@ -373,12 +379,12 @@ def post_config(payload: ConfigPayload, db: Session = Depends(get_db)):
             config = SystemConfig()
             db.add(config)
         config.active_provider = payload.active_provider
-        config.gemini_api_key = payload.gemini_api_key
-        config.openrouter_api_key = payload.openrouter_api_key
-        config.deepseek_api_key = payload.deepseek_api_key
-        config.qwen_api_key = payload.qwen_api_key
-        config.mistral_api_key = payload.mistral_api_key
-        config.groq_api_key = payload.groq_api_key
+        config.gemini_api_key = encrypt_value(payload.gemini_api_key)
+        config.openrouter_api_key = encrypt_value(payload.openrouter_api_key)
+        config.deepseek_api_key = encrypt_value(payload.deepseek_api_key)
+        config.qwen_api_key = encrypt_value(payload.qwen_api_key)
+        config.mistral_api_key = encrypt_value(payload.mistral_api_key)
+        config.groq_api_key = encrypt_value(payload.groq_api_key)
         config.temperature = payload.temperature
         db.commit()
         return {"message": "Configurações salvas com sucesso"}

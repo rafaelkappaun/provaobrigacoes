@@ -9,6 +9,7 @@ from typing import Dict, Any, List, Optional
 from dotenv import load_dotenv
 from database.connection import SessionLocal
 from database.models import SystemConfig
+from database.crypto import decrypt_value
 from ai.offline_generator import generate_question_offline, SUBJECTS, BANKS
 
 load_dotenv()
@@ -43,12 +44,12 @@ class AIProviderManager:
                 if cfg:
                     config_from_db = {
                         "active_provider": cfg.active_provider,
-                        "gemini_api_key": cfg.gemini_api_key,
-                        "openrouter_api_key": cfg.openrouter_api_key,
-                        "deepseek_api_key": cfg.deepseek_api_key,
-                        "qwen_api_key": cfg.qwen_api_key,
-                        "mistral_api_key": cfg.mistral_api_key,
-                        "groq_api_key": cfg.groq_api_key,
+                        "gemini_api_key": decrypt_value(cfg.gemini_api_key),
+                        "openrouter_api_key": decrypt_value(cfg.openrouter_api_key),
+                        "deepseek_api_key": decrypt_value(cfg.deepseek_api_key),
+                        "qwen_api_key": decrypt_value(cfg.qwen_api_key),
+                        "mistral_api_key": decrypt_value(cfg.mistral_api_key),
+                        "groq_api_key": decrypt_value(cfg.groq_api_key),
                         "temperature": cfg.temperature,
                     }
             finally:

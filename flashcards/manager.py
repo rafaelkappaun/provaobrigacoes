@@ -137,7 +137,10 @@ class FlashcardManager:
     @staticmethod
     def create_cards_for_subject(db: Session, subject: str, session_id: str = "default") -> List[Flashcard]:
         """Gera e salva flashcards padrão para o assunto do estudante se não existirem no deck do banco"""
-        cards = FLASHCARD_BANK.get(subject, FLASHCARD_BANK["Pagamento - Geral"])
+        cards = FLASHCARD_BANK.get(subject)
+        if cards is None:
+            logger.warning("Nenhum flashcard cadastrado para '%s' — pulando", subject)
+            return []
         created_cards = []
         
         for idx, card_data in enumerate(cards):

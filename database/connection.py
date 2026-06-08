@@ -40,6 +40,18 @@ def column_exists(conn, table_name, column_name):
     return column_name in columns
 
 
+ALLOWED_TABLES = {"user_stats", "topic_mastery", "question_history", "flashcards", "error_logs", "system_config"}
+ALLOWED_COLUMNS = {
+    "session_id", "consecutive_correct", "groq_api_key", "mastered", "last_reviewed",
+    "question_id",
+}
+
+def _safe_ident(name: str, allowed: set[str]) -> str:
+    if name not in allowed:
+        raise ValueError(f"Identificador não permitido: {name}")
+    return name
+
+
 def run_migrations():
     tables_columns = {
         "user_stats": "session_id",
@@ -48,65 +60,69 @@ def run_migrations():
         "flashcards": "session_id",
         "error_logs": "session_id",
     }
-    allowed_tables = set(tables_columns.keys())
     with engine.connect() as conn:
         for table, column in tables_columns.items():
-            if table not in allowed_tables:
-                continue
             try:
-                if not column_exists(conn, table, column):
-                    conn.execute(text(f"ALTER TABLE {table} ADD COLUMN {column} VARCHAR(50) DEFAULT 'default'"))
+                safe_table = _safe_ident(table, ALLOWED_TABLES)
+                safe_col = _safe_ident(column, ALLOWED_COLUMNS)
+                if not column_exists(conn, safe_table, safe_col):
+                    conn.execute(text(f"ALTER TABLE {safe_table} ADD COLUMN {safe_col} VARCHAR(50) DEFAULT 'default'"))
                     conn.commit()
                     logger.info(f"Migração: coluna {column} adicionada em {table}")
-            except Exception:
-                pass
+            except (ValueError, Exception) as e:
+                if not isinstance(e, ValueError):
+                    logger.debug(f"Migração {table}.{column}: {e}")
 
-        for col_name, col_def in [
-            ("consecutive_correct", "INTEGER DEFAULT 0"),
-            ("groq_api_key", "VARCHAR(255) DEFAULT ''"),
-        ]:
+        for col_name in ["consecutive_correct", "groq_api_key"]:
             try:
-                if not column_exists(conn, "topic_mastery" if col_name == "consecutive_correct" else "system_config", col_name):
-                    table_name = "topic_mastery" if col_name == "consecutive_correct" else "system_config"
-                    conn.execute(text(f"ALTER TABLE {table_name} ADD COLUMN {col_name} {col_def}"))
+                safe_col = _safe_ident(col_name, ALLOWED_COLUMNS)
+                table_name = "topic_mastery" if col_name == "consecutive_correct" else "system_config"
+                safe_table = _safe_ident(table_name, ALLOWED_TABLES)
+                if not column_exists(conn, safe_table, safe_col):
+                    col_def = "INTEGER DEFAULT 0" if col_name == "consecutive_correct" else "VARCHAR(255) DEFAULT ''"
+                    conn.execute(text(f"ALTER TABLE {safe_table} ADD COLUMN {safe_col} {col_def}"))
                     conn.commit()
                     logger.info(f"Migração: coluna {col_name} adicionada em {table_name}")
-            except Exception:
-                pass
+            except (ValueError, Exception) as e:
+                if not isinstance(e, ValueError):
+                    logger.debug(f"Migração {table_name}.{col_name}: {e}")
 
         try:
-            if not column_exists(conn, "flashcards", "mastered"):
-                if is_sqlite:
-                    conn.execute(text("ALTER TABLE flashcards ADD COLUMN mastered BOOLEAN DEFAULT 0"))
-                else:
-                    conn.execute(text("ALTER TABLE flashcards ADD COLUMN mastered BOOLEAN DEFAULT FALSE"))
+            safe_table = _safe_ident("flashcards", ALLOWED_TABLES)
+            safe_col = _safe_ident("mastered", ALLOWED_COLUMNS)
+            if not column_exists(conn, safe_table, safe_col):
+                default = "0" if is_sqlite else "FALSE"
+                conn.execute(text(f"ALTER TABLE {safe_table} ADD COLUMN {safe_col} BOOLEAN DEFAULT {default}"))
                 conn.commit()
                 logger.info("Migração: coluna mastered adicionada em flashcards")
-        except Exception:
-            pass
+        except (ValueError, Exception) as e:
+            if not isinstance(e, ValueError):
+                logger.debug(f"Migração flashcards.mastered: {e}")
 
-        # last_reviewed coluna para flashcards
         try:
-            if not column_exists(conn, "flashcards", "last_reviewed"):
-                conn.execute(text("ALTER TABLE flashcards ADD COLUMN last_reviewed DATETIME"))
+            safe_table = _safe_ident("flashcards", ALLOWED_TABLES)
+            safe_col = _safe_ident("last_reviewed", ALLOWED_COLUMNS)
+            if not column_exists(conn, safe_table, safe_col):
+                conn.execute(text(f"ALTER TABLE {safe_table} ADD COLUMN {safe_col} DATETIME"))
                 conn.commit()
                 logger.info("Migração: coluna last_reviewed adicionada em flashcards")
-        except Exception as e:
-            logger.debug(f"Migração last_reviewed: {e}")
+        except (ValueError, Exception) as e:
+            if not isinstance(e, ValueError):
+                logger.debug(f"Migração last_reviewed: {e}")
 
         # Aumenta VARCHAR de id para 120 em todas as tabelas relevantes (PostgreSQL)
         if not is_sqlite:
             id_tables = ["flashcards", "question_history", "error_logs"]
             for tbl in id_tables:
                 try:
-                    # Verifica tamanho atual antes de alterar
+                    safe_tbl = _safe_ident(tbl, ALLOWED_TABLES)
                     size_row = conn.execute(text(
-                        f"SELECT character_maximum_length FROM information_schema.columns "
-                        f"WHERE table_name='{tbl}' AND column_name='id'"
-                    )).fetchone()
+                        "SELECT character_maximum_length FROM information_schema.columns "
+                        "WHERE table_name = :tbl AND column_name = 'id'"
+                    ).bindparams(tbl=safe_tbl)).fetchone()
                     current_size = size_row[0] if size_row else None
                     if current_size is None or current_size < 120:
-                        conn.execute(text(f"ALTER TABLE {tbl} ALTER COLUMN id TYPE VARCHAR(120)"))
+                        conn.execute(text(f"ALTER TABLE {safe_tbl} ALTER COLUMN id TYPE VARCHAR(120)"))
                         conn.commit()
                         logger.info(f"Migração: {tbl}.id alterado para VARCHAR(120) (era {current_size})")
                     else:
@@ -115,10 +131,12 @@ def run_migrations():
                     conn.rollback()
                     logger.warning(f"Migração {tbl}.id type falhou: {type(e).__name__}: {e}")
 
-        # Adiciona coluna question_id em question_history (separa ID da questão do ID composto do histórico)
+        # Adiciona coluna question_id em question_history
         try:
-            if not column_exists(conn, "question_history", "question_id"):
-                conn.execute(text("ALTER TABLE question_history ADD COLUMN question_id VARCHAR(120)"))
+            safe_tbl = _safe_ident("question_history", ALLOWED_TABLES)
+            safe_col = _safe_ident("question_id", ALLOWED_COLUMNS)
+            if not column_exists(conn, safe_tbl, safe_col):
+                conn.execute(text(f"ALTER TABLE {safe_tbl} ADD COLUMN {safe_col} VARCHAR(120)"))
                 conn.commit()
                 logger.info("Migração: coluna question_id adicionada em question_history")
         except Exception as e:
@@ -127,18 +145,20 @@ def run_migrations():
 
         # Remove UNIQUE constraint antiga de topic_mastery.subject
         try:
-            indexes = conn.execute(text(
-                "SELECT name FROM sqlite_master WHERE type='index' AND tbl_name='topic_mastery' AND sql IS NOT NULL AND sql LIKE '%UNIQUE%'"
-            ) if is_sqlite else text(
-                "SELECT indexname FROM pg_indexes WHERE tablename='topic_mastery' AND indexdef LIKE '%UNIQUE%'"
-            )).fetchall()
+            if is_sqlite:
+                indexes = conn.execute(text(
+                    "SELECT name FROM sqlite_master WHERE type='index' AND tbl_name='topic_mastery' AND sql IS NOT NULL AND sql LIKE '%UNIQUE%'"
+                )).fetchall()
+            else:
+                indexes = conn.execute(text(
+                    "SELECT indexname FROM pg_indexes WHERE tablename='topic_mastery' AND indexdef LIKE '%UNIQUE%'"
+                )).fetchall()
             for idx in indexes:
                 idx_name = idx[0]
                 if "subject" in idx_name.lower():
-                    conn.execute(text(f"DROP INDEX IF EXISTS {idx_name}"))
+                    conn.execute(text(f"DROP INDEX IF EXISTS [{idx_name}]") if is_sqlite else text(f"DROP INDEX IF EXISTS \"{idx_name}\""))
                     conn.commit()
                     logger.info(f"Migração: índice UNIQUE {idx_name} removido de topic_mastery")
-            # Recria como non-unique se SQLite
             if is_sqlite:
                 conn.execute(text(
                     "CREATE INDEX IF NOT EXISTS ix_topic_mastery_subject ON topic_mastery(subject)"

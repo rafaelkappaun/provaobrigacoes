@@ -80,6 +80,7 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, subje
   
   // Trava anti-duplo clique
   const submittingRef = useRef<boolean>(false);
+  const mountedRef = useRef<boolean>(true);
   
   // Cronômetro e métricas
   const [seconds, setSeconds] = useState<number>(0);
@@ -119,7 +120,7 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, subje
       if (res.ok) {
         const data = await res.json();
         setQuestion(data);
-        startTimer();
+        if (mountedRef.current) startTimer();
       } else {
         const errData = await res.json().catch(() => ({ detail: `Erro HTTP ${res.status}` }));
         setErrorMessage(errData.detail || `Erro ${res.status} ao carregar questão`);
@@ -134,10 +135,14 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, subje
 
   // Carrega questão ao iniciar
   useEffect(() => {
+    mountedRef.current = true;
     Promise.resolve().then(() => {
       fetchNextQuestion();
     });
-    return () => stopTimer();
+    return () => {
+      mountedRef.current = false;
+      stopTimer();
+    };
   }, [fetchNextQuestion, stopTimer]);
 
   const handleSubmit = async () => {

@@ -98,9 +98,37 @@ export const SimuladoSession: React.FC<SimuladoSessionProps> = ({ apiBase, vespe
     }
   };
 
-  const submitAnswer = () => {
+  const submitAnswer = async () => {
     if (submittedIndex === currentIndex) return;
-    setSubmittedIndex(currentIndex);
+    const idx = currentIndex;
+    const q = questions[idx];
+    const ans = answers[idx] || '';
+    if (!q) return;
+
+    const now = Date.now();
+    const startTime = questionStartTimes.current[idx] || now - 30000;
+    const elapsed = (now - startTime) / 1000;
+
+    try {
+      const res = await apiFetch(apiBase, '/question/answer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          question: q,
+          selected_option: ans,
+          response_time: Math.max(1, elapsed)
+        })
+      });
+      if (res.status === 409) {
+        console.warn(`Questão ${idx + 1} já respondida anteriormente (duplicada).`);
+      } else if (!res.ok) {
+        const err = await res.json().catch(() => ({ detail: 'Erro de rede' }));
+        console.error(`Erro ao salvar resposta da questão ${idx + 1}:`, err.detail);
+      }
+    } catch (e) {
+      console.error(`Falha de rede ao salvar resposta da questão ${idx + 1}:`, e);
+    }
+    setSubmittedIndex(idx);
   };
 
   const nextQuestion = () => {
@@ -126,63 +154,34 @@ export const SimuladoSession: React.FC<SimuladoSessionProps> = ({ apiBase, vespe
   };
 
   const [submitting, setSubmitting] = useState<boolean>(false);
-  const [submitProgress, setSubmitProgress] = useState<number>(0);
 
-  const submitAnswerWithRetry = async (q: Question, index: number, maxRetries = 3): Promise<boolean> => {
-    const now = Date.now();
-    const ans = answers[index] || '';
-    const startTime = questionStartTimes.current[index] || now - 30000;
-    const elapsed = (now - startTime) / 1000;
+  const finishSimulado = async () => {
+    stopTimer();
+    setSubmitting(true);
 
-    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    const unanswered = questions
+      .map((q, i) => ({ q, i }))
+      .filter(({ i }) => !answers[i] && submittedIndex !== i);
+    
+    for (const { q, i } of unanswered) {
       try {
+        const now = Date.now();
+        const startTime = questionStartTimes.current[i] || now - 30000;
         const res = await apiFetch(apiBase, '/question/answer', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             question: q,
-            selected_option: ans,
-            response_time: Math.max(1, elapsed)
+            selected_option: '',
+            response_time: Math.max(1, (now - startTime) / 1000)
           })
         });
-        setSubmitProgress(prev => prev + 1);
-        if (res.ok) return true;
-        if (res.status === 409) return true;
-        const err = await res.json().catch(() => ({ detail: 'Erro de rede' }));
-        console.error(`Tentativa ${attempt}/${maxRetries} - Erro na questão ${index + 1}:`, err.detail);
+        if (!res.ok && res.status !== 409) {
+          console.error(`Erro ao registrar questão não respondida ${i + 1}`);
+        }
       } catch (e) {
-        console.error(`Tentativa ${attempt}/${maxRetries} - Falha de rede na questão ${index + 1}:`, e);
+        console.error(`Falha de rede na questão não respondida ${i + 1}:`, e);
       }
-      if (attempt < maxRetries) {
-        await new Promise(r => setTimeout(r, 1000 * attempt));
-      }
-    }
-    console.error(`Questão ${index + 1} não foi registrada após ${maxRetries} tentativas.`);
-    return false;
-  };
-
-  const finishSimulado = async () => {
-    stopTimer();
-    setSubmitting(true);
-    setSubmitProgress(0);
-    
-    const batchSize = 5;
-    const results = [];
-    
-    for (let start = 0; start < questions.length; start += batchSize) {
-      const batch = questions.slice(start, start + batchSize);
-      const batchResults = await Promise.allSettled(
-        batch.map(async (q, bi) => {
-          const i = start + bi;
-          return submitAnswerWithRetry(q, i);
-        })
-      );
-      results.push(...batchResults);
-    }
-    
-    const failed = results.filter(r => r.status === 'fulfilled' && r.value === false).length;
-    if (failed > 0) {
-      console.error(`${failed} questão(ões) não foram registradas após retentativas.`);
     }
     
     setSubmitting(false);
@@ -447,7 +446,7 @@ export const SimuladoSession: React.FC<SimuladoSessionProps> = ({ apiBase, vespe
                     className="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded-lg text-xs font-bold transition-all shadow-md flex items-center gap-2"
                   >
                     {submitting ? (
-                      <><Loader2 className="animate-spin" size={14} /> {submitProgress}/{questions.length}</>
+                      <><Loader2 className="animate-spin" size={14} /> Salvando...</>
                     ) : (
                       'Finalizar Prova'
                     )}
