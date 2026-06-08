@@ -1,9 +1,11 @@
 import json
 import hashlib
 import re
+from pathlib import Path
 
-INPUT_FILE = r"C:\Users\55459\provas\database\seed_questions.json"
-OUTPUT_FILE = r"C:\Users\55459\provas\database\seed_questions.json"
+BASE_DIR = Path(__file__).resolve().parent.parent
+INPUT_FILE = BASE_DIR / "database" / "seed_questions.json"
+OUTPUT_FILE = BASE_DIR / "database" / "seed_questions.json"
 
 with open(INPUT_FILE, "r", encoding="utf-8") as f:
     data = json.load(f)

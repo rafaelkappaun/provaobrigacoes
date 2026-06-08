@@ -11,6 +11,7 @@ if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
 is_sqlite = DATABASE_URL.startswith("sqlite:///")
+is_postgres = DATABASE_URL.startswith("postgresql://")
 
 if is_sqlite:
     db_dir = "database"
@@ -20,7 +21,7 @@ if is_sqlite:
 connect_args = {}
 if is_sqlite:
     connect_args["check_same_thread"] = False
-else:
+elif is_postgres:
     connect_args["sslmode"] = "require"
 
 engine = create_engine(
@@ -47,8 +48,11 @@ def run_migrations():
         "flashcards": "session_id",
         "error_logs": "session_id",
     }
+    allowed_tables = set(tables_columns.keys())
     with engine.connect() as conn:
         for table, column in tables_columns.items():
+            if table not in allowed_tables:
+                continue
             try:
                 if not column_exists(conn, table, column):
                     conn.execute(text(f"ALTER TABLE {table} ADD COLUMN {column} VARCHAR(50) DEFAULT 'default'"))

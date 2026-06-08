@@ -35,13 +35,12 @@ def override_get_db():
     finally:
         db.close()
 
+TEST_SESSION_ID = "test-session-0000"
+
 app.dependency_overrides[get_db] = override_get_db
 app.dependency_overrides[get_session_id] = lambda: TEST_SESSION_ID
 
 client = TestClient(app)
-
-
-TEST_SESSION_ID = "test-session-0000"
 
 def seed_test_data():
     from database.models import UserStats, TopicMastery

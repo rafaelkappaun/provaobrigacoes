@@ -78,7 +78,7 @@ ARTICLES_DATA: List[Dict[str, Any]] = [
         "id": "art_331",
         "number": 331,
         "subject": "Tempo do pagamento",
-        "text": "Art. 331. Salvo disposição especial deste Código, as obrigacões puras e simples, sem prazo assinalado, são exigíveis imediatamente.",
+        "text": "Art. 331. Salvo disposição especial deste Código, as obrigações puras e simples, sem prazo assinalado, são exigíveis imediatamente.",
         "summary": "Obrigações sem prazo vencem imediatamente.",
         "tips": "O credor pode cobrar logo após a constituição do vínculo, dispensando prazo moratório.",
         "common_errors": "Achar que a ausência de prazo torna a obrigação nula."

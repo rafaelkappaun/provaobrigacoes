@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 import uuid
 
-seed_file = Path(r"c:\Users\55459\provas\database\seed_questions.json")
+seed_file = Path(__file__).resolve().parent.parent / "database" / "seed_questions.json"
 
 # Load existing database
 with open(seed_file, "r", encoding="utf-8") as f:

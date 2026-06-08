@@ -36,20 +36,12 @@ def main():
         for i in range(need):
             bank = random.choice(BANKS)
             q = generate_question_offline(subj, bank)
-            if q["id"] not in existing_ids:
-                existing_ids.add(q["id"])
-                pool["questions"].append(q)
-                print(f"  [{subj}] questão {count + i + 1}/{QUESTIONS_PER_SUBJECT} gerada ({bank})")
-            else:
-                print(f"  [!] ID duplicado, pulando...")
-                # Tenta de novo
-                for _ in range(5):
-                    q = generate_question_offline(subj, bank)
-                    if q["id"] not in existing_ids:
-                        existing_ids.add(q["id"])
-                        pool["questions"].append(q)
-                        print(f"  [{subj}] questão {count + i + 1}/{QUESTIONS_PER_SUBJECT} gerada ({bank})")
-                        break
+            while q["id"] in existing_ids:
+                print(f"  [!] ID duplicado, gerando novo...")
+                q = generate_question_offline(subj, bank)
+            existing_ids.add(q["id"])
+            pool["questions"].append(q)
+            print(f"  [{subj}] questão {count + i + 1}/{QUESTIONS_PER_SUBJECT} gerada ({bank})")
 
     with open(SEED_FILE, "w", encoding="utf-8") as f:
         json.dump(pool, f, ensure_ascii=False, indent=2)
