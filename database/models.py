@@ -41,7 +41,8 @@ class TopicMastery(Base):
 class QuestionHistory(Base):
     __tablename__ = "question_history"
     
-    id = Column(String(50), primary_key=True, index=True) # question UUID
+    id = Column(String(120), primary_key=True, index=True) # composto: question_id + "_" + session_id[:20]
+    question_id = Column(String(120), index=True, nullable=True)  # UUID original da questão
     session_id = Column(String(50), index=True, default="default")
     subject = Column(String(100), index=True, nullable=False)
     difficulty = Column(String(20), nullable=False) # "Facil", "Medio", "Dificil"
@@ -72,7 +73,7 @@ class Flashcard(Base):
 class ErrorLog(Base):
     __tablename__ = "error_logs"
     
-    id = Column(String(50), primary_key=True, index=True)
+    id = Column(String(120), primary_key=True, index=True)
     session_id = Column(String(50), index=True, default="default")
     subject = Column(String(100), index=True, nullable=False)
     question_json = Column(Text, nullable=False) # JSON da questão errada

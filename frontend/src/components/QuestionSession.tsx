@@ -164,9 +164,9 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, subje
         setResponse(data);
         setErrorMessage('');
       } else if (res.status === 409) {
-        // Questão já respondida (duplo envio ou race condition) → carrega próxima automaticamente
-        setErrorMessage('');
-        fetchNextQuestion();
+        // Questão já respondida (duplo envio ou race condition) → carrega próxima
+        setErrorMessage('Esta questão já foi respondida anteriormente. Carregando próxima...');
+        setTimeout(() => fetchNextQuestion(), 1500);
       } else {
         const errData = await res.json().catch(() => ({ detail: `Erro HTTP ${res.status}` }));
         setErrorMessage(errData.detail || `Erro ${res.status} ao verificar resposta`);

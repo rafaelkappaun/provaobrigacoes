@@ -111,6 +111,16 @@ def run_migrations():
                     conn.rollback()
                     logger.warning(f"Migração {tbl}.id type falhou: {type(e).__name__}: {e}")
 
+        # Adiciona coluna question_id em question_history (separa ID da questão do ID composto do histórico)
+        try:
+            if not column_exists(conn, "question_history", "question_id"):
+                conn.execute(text("ALTER TABLE question_history ADD COLUMN question_id VARCHAR(120)"))
+                conn.commit()
+                logger.info("Migração: coluna question_id adicionada em question_history")
+        except Exception as e:
+            conn.rollback()
+            logger.warning(f"Migração question_history.question_id falhou: {type(e).__name__}: {e}")
+
         # Remove UNIQUE constraint antiga de topic_mastery.subject
         try:
             indexes = conn.execute(text(

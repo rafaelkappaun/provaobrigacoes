@@ -149,9 +149,11 @@ def post_answer(payload: AnswerPayload, db: Session = Depends(get_db), session_i
         if not question.get("gabarito"):
             raise HTTPException(status_code=422, detail="Questão inválida: campo 'gabarito' ausente")
 
+        question_id_raw = str(question.get("id", "")).strip()[:100]
+        history_id = f"{question_id_raw}_{session_id[:20]}"[:120]
+
         existing = db.query(QuestionHistory).filter(
-            QuestionHistory.id == str(question.get("id", ""))[:115],
-            QuestionHistory.session_id == session_id
+            QuestionHistory.id == history_id
         ).first()
         if existing:
             raise HTTPException(status_code=409, detail="Esta questão já foi respondida anteriormente. Carregue uma nova questão.")

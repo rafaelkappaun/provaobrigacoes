@@ -1,9 +1,9 @@
 from datetime import datetime, timedelta, timezone
+import hashlib
 import json
 import logging
 import os
 import random
-import uuid
 from typing import Dict, Any, List, Optional
 from sqlalchemy.orm import Session
 from database.models import TopicMastery, UserStats, QuestionHistory, ErrorLog, Flashcard
@@ -180,16 +180,21 @@ class AdaptiveEngine:
         is_correct = (selected_option.upper() == correct_option.upper())
         is_insecure = is_correct and (response_time > INSECURE_TIME_LIMIT)
         
-        # Garante ID sempre válido (nunca None/vazio, max 115 chars)
+        # Garante ID da questão sempre válido
         raw_id = question.get("id") or ""
         if not raw_id or not str(raw_id).strip():
-            raw_id = str(uuid.uuid4())
-            logger.warning(f"Questão sem id válido, gerado UUID: {raw_id}")
-        question_id = str(raw_id).strip()[:115]
+            content_str = json.dumps(question, sort_keys=True, ensure_ascii=False)
+            raw_id = "q_auto_" + hashlib.md5(content_str.encode()).hexdigest()[:32]
+            logger.warning(f"Questão sem id válido, gerado hash-based: {raw_id}")
+        question_id = str(raw_id).strip()[:100]
+        
+        # ID composto garante unicidade por (questão, sessão): múltiplos usuários podem responder a mesma questão
+        history_id = f"{question_id}_{session_id[:20]}"[:120]
         
         # 1. Registrar histórico
         q_history = QuestionHistory(
-            id=question_id,
+            id=history_id,
+            question_id=question_id,
             session_id=session_id,
             subject=subject,
             difficulty=question.get("difficulty", "Médio"),
@@ -199,6 +204,7 @@ class AdaptiveEngine:
             is_insecure=is_insecure
         )
         db.add(q_history)
+
         
         # 2. Atualizar estatísticas globais
         stats = db.query(UserStats).filter(UserStats.session_id == session_id).first()
@@ -260,7 +266,6 @@ class AdaptiveEngine:
             mastery.consecutive_errors += 1
             
             # Salvar no log de erros
-            import hashlib
             error_id = hashlib.md5(f"{question['id']}_{session_id}_{datetime.now(timezone.utc).replace(tzinfo=None).timestamp()}".encode()).hexdigest()[:40]
             error_log = ErrorLog(
                 id=error_id,

@@ -43,7 +43,7 @@ export const SimuladoSession: React.FC<SimuladoSessionProps> = ({ apiBase, vespe
       const idx = parseInt(key);
       const q = questions[idx];
       if (!q) return;
-      if (answers[idx] === q.gabarito) correct++;
+      if (answers[idx]?.toUpperCase() === q.gabarito?.toUpperCase()) correct++;
       else if (answers[idx]) incorrect++;
     });
     const totalAnswered = correct + incorrect;
@@ -194,7 +194,7 @@ export const SimuladoSession: React.FC<SimuladoSessionProps> = ({ apiBase, vespe
     
     questions.forEach((q, idx) => {
       const selected = answers[idx];
-      const isCorrect = selected === q.gabarito;
+      const isCorrect = (selected || '').toUpperCase() === (q.gabarito || '').toUpperCase();
       if (isCorrect) correct++;
       
       if (!detailsBySubject[q.subject]) {
@@ -333,8 +333,8 @@ export const SimuladoSession: React.FC<SimuladoSessionProps> = ({ apiBase, vespe
                   const isSelected = answers[currentIndex] === letter;
                   const isSubmitted = submittedIndex === currentIndex;
                   const gabarito = questions[currentIndex].gabarito;
-                  const isWrong = isSubmitted && isSelected && letter !== gabarito;
-                  const isGabarito = isSubmitted && letter === gabarito;
+                  const isWrong = isSubmitted && isSelected && letter.toUpperCase() !== gabarito.toUpperCase();
+                  const isGabarito = isSubmitted && letter.toUpperCase() === gabarito.toUpperCase();
 
                   let optionStyle = "bg-slate-950 border-slate-850 text-slate-300 hover:bg-slate-800";
                   if (isSubmitted) {
@@ -382,7 +382,7 @@ export const SimuladoSession: React.FC<SimuladoSessionProps> = ({ apiBase, vespe
                     ? 'bg-emerald-950/20 border-emerald-500/30 text-emerald-200'
                     : 'bg-red-950/20 border-red-500/30 text-red-200'
                 }`}>
-                  {answers[currentIndex] === questions[currentIndex].gabarito ? (
+                  {(answers[currentIndex] || '').toUpperCase() === (questions[currentIndex].gabarito || '').toUpperCase() ? (
                     <span className="flex items-center gap-2"><CheckCircle2 size={18} /> Correto! {questions[currentIndex].article && `(${questions[currentIndex].article})`}</span>
                   ) : (
                     <div>

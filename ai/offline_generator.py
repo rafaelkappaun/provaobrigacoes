@@ -68,15 +68,16 @@ def get_random_vars():
         "valor": random.choice(VALORES),
     }
 
-def generate_question_offline(subject: str = None, bank: str = None) -> dict:
+def generate_question_offline(subject: str = None, bank: str = None, difficulty: str = None) -> dict:
     if not subject or subject not in SUBJECTS:
         subject = random.choice(SUBJECTS)
     if not bank or bank not in BANKS:
         bank = random.choice(BANKS)
+    if not difficulty or difficulty not in ["Fácil", "Médio", "Difícil"]:
+        difficulty = random.choice(["Fácil", "Médio", "Difícil"])
         
     v = get_random_vars()
     q_id = str(uuid.uuid4())
-    difficulty = random.choice(["Fácil", "Médio", "Difícil"])
     variant = random.randint(0, 1)  # 0 = template original, 1 = variação
     
     # Se a banca for CESPE, geramos no formato Certo/Errado
@@ -237,9 +238,9 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
     # -------------------------------------------------------------
     elif subject == "A quem se deve pagar":
         question_data["article"] = "Art. 308, Art. 309, Art. 310 e Art. 312 do Código Civil"
-        v = random.randint(0, 2)  # 3 variants
+        variant_local = random.randint(0, 2)  # 3 variants
         if is_cespe:
-            if v == 0:
+            if variant_local == 0:
                 question_data["enunciado"] = (
                     f"({bank}) {v['devedor']} realizou o pagamento do débito de {v['valor']} a {v['terceiro']}, que aparentava de forma convincente ser "
                     f"o legítimo credor (credor putativo). Posteriormente, o verdadeiro credor, {v['credor']}, demonstrou que {v['terceiro']} agia com falsidade. "
@@ -252,7 +253,7 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
                     f"O art. 309 do Código Civil consagra a Teoria da Aparência ao dispor que 'o pagamento feito de boa-fé ao credor putativo é válido, "
                     f"ainda provado depois que não era credor'. A boa-fé do devedor é o requisito essencial. Portanto, a afirmação está CERTA."
                 )
-            elif v == 1:
+            elif variant_local == 1:
                 question_data["enunciado"] = (
                     f"({bank}) {v['devedor']} pagou o valor de {v['valor']} a {v['terceiro']}, pessoa relativamente incapaz que se apresentava "
                     f"como credor, sem que {v['terceiro']} tivesse capacidade para dar quitação. {v['devedor']} não consegue provar que o valor "
@@ -282,7 +283,7 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
                     f"Portanto, a afirmação está CERTA."
                 )
         else:
-            if v == 0:
+            if variant_local == 0:
                 question_data["enunciado"] = (
                     f"({bank}) {v['devedor']} contraiu uma obrigação perante {v['credor']} no valor de {v['valor']} referente a {v['contrato']}. "
                     f"No dia do vencimento, {v['devedor']} realizou o pagamento de boa-fé a {v['terceiro']}, pessoa que, por circunstâncias fáticas, "
@@ -303,7 +304,7 @@ def generate_question_offline(subject: str = None, bank: str = None) -> dict:
                     f"que foi induzido a erro escusável pela aparência de credor do receptor. O verdadeiro credor ({v['credor']}) deve buscar o "
                     f"ressarcimento contra quem recebeu indevidamente ({v['terceiro']})."
                 )
-            elif v == 1:
+            elif variant_local == 1:
                 question_data["enunciado"] = (
                     f"({bank}) {v['credor']} faleceu antes do vencimento da dívida de {v['valor']} que {v['devedor']} havia contraído mediante "
                     f"{v['contrato']}. {v['devedor']} efetuou o pagamento a {v['terceiro']}, irmão de {v['credor']}, que se apresentou como herdeiro e apresentou "

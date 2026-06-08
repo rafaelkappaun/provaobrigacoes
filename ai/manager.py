@@ -134,12 +134,12 @@ class AIProviderManager:
 
         # 3. Fallback offline dinâmico
         logger.warning("Todos provedores de IA falharam → offline dinâmico")
-        return generate_question_offline(subject, bank)
+        return generate_question_offline(subject, bank, difficulty)
 
     @classmethod
     def _pick_from_seed_pool(cls, subject: str, bank: str,
                               db: Any = None, session_id: str = None) -> Optional[Dict[str, Any]]:
-        """Escolhe questão do seed pool, evitando as já respondidas"""
+        """Escolhe questão do seed pool, evitando as já respondidas por esta sessão"""
         if not _seed_pool:
             return None
 
@@ -151,24 +151,36 @@ class AIProviderManager:
         if not candidates:
             return None
 
-        # Se temos db/session, filtra já respondidas
+        # Se temos db/session, filtra já respondidas por esta sessão usando question_id
         if db is not None and session_id is not None and candidates:
             from database.models import QuestionHistory
-            ids = [q["id"] for q in candidates]
-            answered_ids = set(
-                row[0] for row in db.query(QuestionHistory.id)
-                .filter(QuestionHistory.session_id == session_id)
-                .filter(QuestionHistory.id.in_(ids))
-                .all()
-            )
-            candidates = [q for q in candidates if q["id"] not in answered_ids]
+            candidate_ids = [q["id"] for q in candidates]
+            # Busca pelo campo question_id (novo) ou por id que começa com o question_id (legado)
+            try:
+                answered_qids = set(
+                    row[0] for row in db.query(QuestionHistory.question_id)
+                    .filter(QuestionHistory.session_id == session_id)
+                    .filter(QuestionHistory.question_id.in_(candidate_ids))
+                    .all()
+                    if row[0]
+                )
+            except Exception:
+                answered_qids = set()
+            candidates = [q for q in candidates if q["id"] not in answered_qids]
 
         if not candidates:
             return None
 
-        q = random.choice(candidates)
+        # Deduplica por texto das alternativas para evitar questões com opções idênticas
+        opt_groups: dict = {}
+        for q in candidates:
+            opt_key = json.dumps(q.get("options", {}), sort_keys=True)
+            opt_groups.setdefault(opt_key, []).append(q)
+        group = random.choice(list(opt_groups.values()))
+        q = random.choice(group)
         logger.info(f"Seed pool: questão {q['id'][:8]} para {subject}/{bank}")
         return q
+
 
     @classmethod
     def ask_professor(cls, context: Dict[str, Any], query: str) -> str:
