@@ -1,0 +1,218 @@
+[
+  {
+    "id": 1,
+    "exam": "OAB XXXVIII",
+    "year": 2023,
+    "subject": "Sujeitos: Devedores solidários + Obrigação divisível (arts. 257, 275 CC)",
+    "bank": "FGV",
+    "difficulty": "Médio",
+    "enunciado": "Os irmãos Eduardo e Letícia herdaram um apartamento de sua mãe. Concluído o inventário, decidiram vender o apartamento ao casal Pedro e Mariana. Para tanto, as partes celebraram contrato de compra e venda. Pedro e Mariana se obrigaram, solidariamente, a pagar o preço pactuado (R$ 600.000,00) no prazo de trinta dias. Não foi avençada cláusula de solidariedade ativa. Alcançado o prazo contratual, Pedro e Mariana não pagaram o preço. Tendo em vista a situação hipotética apresentada, assinale a afirmativa correta.",
+    "alternatives": {
+      "A": "Eduardo, sozinho, tem direito de cobrar a integralidade do preço pactuado, R$ 600.000,00, de Mariana, sozinha.",
+      "B": "Letícia, sozinha, tem direito de cobrar apenas a metade do preço pactuado, R$ 300.000,00, de Pedro, sozinho.",
+      "C": "Letícia, sozinha, tem direito de cobrar apenas um quarto do preço pactuado, R$ 150.000,00, de Mariana, sozinha.",
+      "D": "Eduardo e Letícia não podem pleitear sozinhos o pagamento do preço, ainda que parcial."
+    },
+    "gabarito": "B",
+    "legal_basis": "CC, arts. 257 e 275",
+    "explanation": "A obrigação é divisível (pagamento em dinheiro) e não há solidariedade ativa. Presume-se dividida em tantas obrigações iguais e distintas quantos os credores (art. 257). Assim, Letícia pode cobrar sua metade (R$300k) de qualquer dos devedores solidários, inclusive Pedro (art. 275). Eduardo não pode cobrar a integralidade porque não há solidariedade ativa."
+  },
+  {
+    "id": 2,
+    "exam": "OAB XXXVIII",
+    "year": 2023,
+    "subject": "Fiança – Solidariedade entre fiadores, acessórios (arts. 822, 829 CC)",
+    "bank": "FGV",
+    "difficulty": "Médio",
+    "enunciado": "Renata alugou um imóvel a Tadeu. Como garantia das obrigações de Tadeu, Luzia e Humberto prestaram fiança a Renata. Tadeu descumpriu suas obrigações contratuais, deixando de pagar as contraprestações ajustadas. Diante desse quadro hipotético, assinale a afirmativa correta.",
+    "alternatives": {
+      "A": "Não havendo limitação contratual, Renata poderá cobrar de Luzia, sozinha, todos os acessórios da dívida principal, inclusive as despesas judiciais, desde a citação dos fiadores.",
+      "B": "Caso sejam demandados, Luzia e Humberto não têm direito de exigir que sejam primeiro executados os bens de Tadeu, pois, salvo disposição expressa em sentido contrário, não há benefício de ordem na fiança.",
+      "C": "Luzia e Humberto não respondem solidariamente pelas obrigações decorrentes do contrato de fiança, a não ser que haja disposição expressa.",
+      "D": "A fiança constitui contrato informal, entre Renata e os fiadores (Luzia e Humberto), e poderia ter sido celebrada ainda que contrariamente à vontade de Tadeu. Ademais, não admite interpretação extensiva."
+    },
+    "gabarito": "A",
+    "legal_basis": "CC, arts. 819, 822 e 829",
+    "explanation": "A fiança não limitada compreende todos os acessórios da dívida, inclusive despesas judiciais desde a citação (art. 822). Os fiadores prestaram fiança conjuntamente, importando solidariedade entre eles salvo reserva do benefício de divisão (art. 829). O benefício de ordem é regra (art. 827), exceto se renunciado. A fiança é contrato formal (art. 819)."
+  },
+  {
+    "id": 3,
+    "exam": "OAB XXXIX",
+    "year": 2023,
+    "subject": "Mora do devedor + Perecimento da coisa + Perdas e danos (arts. 239, 399, 402 CC)",
+    "bank": "FGV",
+    "difficulty": "Médio",
+    "enunciado": "Marcelo alugou um cavalo do haras Galopante para, com ele, disputar uma corrida no dia 15, comprometendo-se a devolvê-lo no dia seguinte à corrida (dia 16). Entretanto, Marcelo se afeiçoou pelo animal e não o devolveu no prazo estipulado, usando-o para passeios em sua fazenda. O haras, com isso, deixou de alugar o animal para outro jóquei que pretendia correr com ele no dia 18 e já o havia reservado. Para completar, no dia 20, em um dos passeios com Marcelo, o cavalo se assustou com uma cobra e sofreu uma queda. No acidente, fraturou a perna e teve que ser sacrificado. Diante disso, assinale a opção que indica os prejuízos que o haras Galopante pode exigir de Marcelo devido à falta do cavalo.",
+    "alternatives": {
+      "A": "Deve ser incluído o aluguel que deixou de receber do outro jóquei, mas não o equivalente do animal, porque Marcelo ficou liberado da responsabilidade pela impossibilidade da prestação a partir do dia 20, eis que decorrente de caso fortuito.",
+      "B": "Devem ser excluídos tanto o aluguel que receberia do outro jóquei, por se tratar de dano hipotético, como o equivalente do animal, pois Marcelo ficou liberado da responsabilidade pela impossibilidade da prestação a partir do dia 20, eis que decorrente de caso fortuito.",
+      "C": "Deve ser incluído o equivalente pecuniário do cavalo, tendo em vista a responsabilidade de Marcelo pela impossibilidade da prestação enquanto estava em mora, mas excluído o aluguel que receberia do outro jóquei, por se tratar de dano hipotético.",
+      "D": "Devem ser incluídos tanto o aluguel que deixou de receber do outro jóquei como o equivalente pecuniário do cavalo, tendo em vista a responsabilidade de Marcelo pela impossibilidade da prestação, enquanto estava em mora."
+    },
+    "gabarito": "D",
+    "legal_basis": "CC, arts. 239, 399 e 402",
+    "explanation": "Marcelo estava em mora (não devolveu o cavalo no prazo). Durante a mora, responde pela impossibilidade da prestação mesmo que decorrente de caso fortuito (art. 399). Deve indenizar perdas e danos (art. 402), que incluem tanto o valor do bem quanto o que o credor deixou de lucrar (lucros cessantes - o aluguel que deixou de receber do outro jóquei)."
+  },
+  {
+    "id": 4,
+    "exam": "OAB XXXIX",
+    "year": 2023,
+    "subject": "Pagamento indevido / Repetição de indébito (arts. 876, 877 CC)",
+    "bank": "FGV",
+    "difficulty": "Médio",
+    "enunciado": "Ana comprou de Miguel um carro usado, por R$ 60.000,00, e combinou de fazer o pagamento à vista, por PIX. Ocorre que, na hora de digitar a chave PIX de Miguel – seu número de celular -, Ana errou um dígito, e acabou enviando o pagamento, por coincidência, para uma pessoa chamada José Miguel. Ao receber o comprovante, Miguel alertou a compradora para o equívoco. Ana, então, entrou imediatamente em contato com José Miguel por telefone, pedindo a restituição do valor transferido. Em seguida, encaminhou notificação extrajudicial, requerendo a restituição do valor. José Miguel, todavia, esquivou-se de fazê-lo. Sobre a orientação dada, assinale a afirmativa correta.",
+    "alternatives": {
+      "A": "O fato narrado configura doação de Ana a José Miguel, que ela somente poderia discutir por meio de ação anulatória, provando algum dos defeitos dos negócios jurídicos.",
+      "B": "Em eventual ação de Ana contra José Miguel, provando a autora o erro no pagamento, deve o réu ser condenado a restituir à autora apenas a quantia nominal indevidamente recebida.",
+      "C": "Em eventual ação de Ana contra José Miguel, provando a autora o erro no pagamento, deve o réu ser condenado a restituir à autora a quantia indevidamente recebida, com os acréscimos da mora, desde a data do fato, cabendo a ele, todavia, eventuais rendimentos que tenha auferido por ter investido o montante.",
+      "D": "Em eventual ação de Ana contra José Miguel, provando a autora o erro no pagamento, deve o réu ser condenado a restituir à autora a quantia indevidamente recebida, com os acréscimos da mora, desde a data do fato, bem como eventuais rendimentos que José Miguel tenha auferido por ter investido o montante, vez que se considera possuidor de má-fé."
+    },
+    "gabarito": "D",
+    "legal_basis": "CC, arts. 876 e 877",
+    "explanation": "Todo aquele que recebeu o que não lhe era devido fica obrigado a restituir (art. 876). José Miguel está de má-fé (sabia que não era devido e recusou devolução). O possuidor de má-fé deve restituir não só o valor com acréscimos de mora desde o recebimento, mas também os rendimentos que auferiu (art. 877 c/c art. 1.216 CC)."
+  },
+  {
+    "id": 5,
+    "exam": "OAB XLII",
+    "year": 2024,
+    "subject": "Obrigação indivisível – Adimplemento por um codevedor – Sub-rogação (art. 259 CC)",
+    "bank": "FGV",
+    "difficulty": "Médio",
+    "enunciado": "Ivan, André e Caio celebraram negócio jurídico pelo qual se obrigaram a entregar um veículo da marca M a Bruna. Na data avençada para o cumprimento da obrigação, Ivan deu à Bruna um carro da marca M de sua propriedade. Sobre a situação hipotética apresentada, assinale a afirmativa correta.",
+    "alternatives": {
+      "A": "Bruna pode exigir de André e de Caio as suas respectivas cotas partes na dívida.",
+      "B": "Ivan pode cobrar de André e de Caio, em dinheiro, as respectivas cotas-partes no débito.",
+      "C": "André e Caio permanecem coobrigados perante Bruna pela parte que lhes cabe na dívida.",
+      "D": "Tanto André como Caio permanecem responsáveis pela entrega de um carro, agora perante Ivan."
+    },
+    "gabarito": "B",
+    "legal_basis": "CC, art. 259 e parágrafo único",
+    "explanation": "Trata-se de obrigação indivisível (entrega de veículo). Cada devedor é obrigado pela dívida toda (art. 259). Ivan pagou integralmente, sub-rogando-se no direito do credor em relação aos outros coobrigados. Como a prestação já foi cumprida, André e Caio devem a Ivan suas cotas-partes em dinheiro (parágrafo único)."
+  },
+  {
+    "id": 6,
+    "exam": "OAB XLI",
+    "year": 2024,
+    "subject": "Cessão de crédito (arts. 286, 290, 292, 296 CC)",
+    "bank": "FGV",
+    "difficulty": "Médio",
+    "enunciado": "Adriana é fisioterapeuta e prestou serviços a Vitória (sessões de fisioterapia). Como contraprestação ao serviço prestado, Vitória se comprometeu a pagar a quantia de R$1.000,00 a Adriana. A obrigação foi registrada em instrumento contratual escrito. Posteriormente, Adriana cedeu seu crédito contra Vitória para Paulo. Sobre a cessão do crédito de Adriana para Paulo, assinale a afirmativa correta.",
+    "alternatives": {
+      "A": "É inválida, pois a natureza do crédito resultante de contrato de prestação de serviços não é compatível com a cessão.",
+      "B": "É ineficaz perante Vitória, salvo se ela tiver sido devidamente notificada do referido negócio ou se ela tiver se declarado ciente da cessão feita.",
+      "C": "Antes de ter tido conhecimento dela, Vitória não poderá opor a Paulo o eventual pagamento da dívida que já tenha efetuado a Adriana.",
+      "D": "Não havendo estipulação em contrário, caso Vitória se torne insolvente, Adriana responderá a Paulo pela dívida cedida."
+    },
+    "gabarito": "B",
+    "legal_basis": "CC, arts. 286 e 290",
+    "explanation": "O credor pode ceder seu crédito se a isso não se opuser a natureza da obrigação, a lei ou convenção com o devedor (art. 286). Não há proibição. A cessão é ineficaz perante o devedor enquanto não notificada (art. 290). Se Vitória pagar a Adriana antes da notificação, estará desobrigada (art. 292). O cedente não responde pela solvência do devedor salvo estipulação em contrário (art. 296)."
+  },
+  {
+    "id": 7,
+    "exam": "OAB XXXVI",
+    "year": 2022,
+    "subject": "Solidariedade ativa e passiva (arts. 264, 267, 275 CC)",
+    "bank": "FGV",
+    "difficulty": "Médio",
+    "enunciado": "João, Cláudia e Maria celebraram contrato de compra e venda de um carro com Carlos e Paula. Pelo respectivo contrato, Carlos e Paula se comprometeram, como devedores solidários, ao pagamento de R$ 50.000,00. Ficou estabelecido, ainda, solidariedade entre os credores João, Cláudia e Maria. Diante do enunciado, assinale a afirmativa correta.",
+    "alternatives": {
+      "A": "O pagamento feito por Carlos ou por Paula não extingue a dívida, ainda que parcialmente.",
+      "B": "Qualquer dos credores tem direito a exigir e a receber de Carlos ou de Paula, parcial ou totalmente, a dívida comum.",
+      "C": "Impossibilitando-se a prestação por culpa de Carlos, extingue-se a solidariedade, e apenas este responde pelo equivalente.",
+      "D": "Carlos e Paula só se desonerarão pagando a todos os credores conjuntamente."
+    },
+    "gabarito": "B",
+    "legal_basis": "CC, arts. 267 e 275",
+    "explanation": "Na solidariedade ativa, qualquer credor pode exigir do devedor a dívida integral (art. 267). Na solidariedade passiva, o credor pode exigir de qualquer devedor a totalidade (art. 275). Se a prestação se impossibilitar por culpa de um devedor, todos permanecem obrigados pelo equivalente, mas o culpado responde pelas perdas e danos (art. 279). O pagamento a qualquer credor extingue a dívida."
+  },
+  {
+    "id": 8,
+    "exam": "OAB XXXVII",
+    "year": 2023,
+    "subject": "Obrigação indivisível + Perdas e danos (arts. 235, 236 CC)",
+    "bank": "FGV",
+    "difficulty": "Médio",
+    "enunciado": "Rodrigo e Juliana celebraram contrato de compra e venda com Márcia, visando à aquisição de 20 (vinte) cavalos da raça mangalarga, de propriedade desta última. O contrato possui cláusula prevendo a solidariedade ativa de Rodrigo e Juliana, e que a entrega será feita de uma única vez. Dez dias antes da data pactuada para entrega dos animais, Márcia, culposamente, esqueceu aberta a porta do curral onde os animais estavam, o que ocasionou a fuga dos equinos. No dia combinado, Márcia dispunha de apenas cinco cavalos, os quais foram oferecidos a Rodrigo e Juliana como parte do pagamento. Acerca do caso apresentado, assinale a afirmativa correta.",
+    "alternatives": {
+      "A": "Por se tratar de obrigação de entrega de coisa a dois credores, a previsão de solidariedade ativa contratual é desnecessária, eis que decorrente de disposição expressa do Código Civil.",
+      "B": "Rodrigo e Juliana poderão optar por receber os cinco cavalos, com abatimento do preço, ou considerar resolvida a obrigação e, tanto num como noutro caso, exigir indenização das perdas e danos.",
+      "C": "Caso Rodrigo e Juliana optem pela conversão da obrigação em perdas e danos, a solidariedade não subsistirá.",
+      "D": "Márcia poderá compelir Rodrigo e Juliana a receberem cinco cavalos, posto se tratar de obrigação divisível."
+    },
+    "gabarito": "B",
+    "legal_basis": "CC, arts. 235 e 236",
+    "explanation": "A obrigação de entregar 20 cavalos de uma só vez é indivisível. Com a perda parcial por culpa do devedor (art. 235), o credor pode: (a) exigir a parte restante com abatimento do preço; ou (b) resolver a obrigação com perdas e danos. A solidariedade ativa é contratual, não presumida (art. 265)."
+  },
+  {
+    "id": 9,
+    "exam": "OAB XXVI",
+    "year": 2018,
+    "subject": "Comodato – Mora do devedor – Perecimento da coisa (art. 399 CC)",
+    "bank": "FGV",
+    "difficulty": "Médio",
+    "enunciado": "Lúcio, comodante, celebrou contrato de comodato com Pedro, comodatário, no dia 1º de outubro de 2016, pelo prazo de dois meses. O objeto era um carro da marca Y no valor de R$ 30.000,00. A devolução do bem deveria ser feita na cidade Alfa, domicílio do comodante, em 1º de dezembro de 2016. Pedro, no entanto, não devolveu o bem na data marcada e resolveu viajar com amigos para o litoral até a virada do ano. Em 1º de janeiro de 2017, desabou um violento temporal sobre a cidade Alfa, e Pedro, ao voltar da viagem, encontra o carro destruído. Com base nos fatos narrados, sobre a posição de Lúcio, assinale a afirmativa correta.",
+    "alternatives": {
+      "A": "Fará jus a perdas e danos, visto que Pedro não devolveu o carro na data prevista.",
+      "B": "Nada receberá, pois o perecimento se deu em razão de fato fortuito ou de força maior.",
+      "C": "Não terá direito a perdas e danos, pois cedeu o uso do bem a Pedro.",
+      "D": "Receberá 50% do valor do bem, pois, por fato inimputável a Pedro, o bem não foi devolvido."
+    },
+    "gabarito": "A",
+    "legal_basis": "CC, art. 399",
+    "explanation": "Pedro estava em mora (não devolveu o carro em 01/12/2016). Durante a mora, o devedor responde pela impossibilidade da prestação mesmo que decorrente de caso fortuito ou força maior (art. 399). Lúcio faz jus a perdas e danos pelo valor integral do carro. A tempestade não exclui a responsabilidade porque o perecimento ocorreu durante o período de mora."
+  },
+  {
+    "id": 10,
+    "exam": "OAB XXV",
+    "year": 2018,
+    "subject": "Cláusula penal moratória – Cumulação com obrigação principal (arts. 408, 409, 411 CC)",
+    "bank": "FGV",
+    "difficulty": "Médio",
+    "enunciado": "Em 05 de dezembro de 2016, Sérgio, mediante contrato de compra e venda, adquiriu de Fernando um computador seminovo (ano 2014) da marca Massa pelo valor de R$ 5.000,00. O pagamento foi integralizado à vista, no mesmo dia, e foi previsto no contrato que o bem seria entregue em até um mês, devendo Fernando contatar Sérgio, por telefone, para que este buscasse o computador em sua casa. No contrato, também foi prevista multa de R$ 500,00 caso o bem não fosse entregue no prazo combinado. Em 06 de janeiro de 2017, Sérgio ligou para Fernando perguntando pelo computador, mas teve como resposta que o atraso na entrega se deu porque a irmã de Fernando, Ana, que iria trazer um computador novo para ele do exterior, tinha perdido o voo e só chegaria após uma semana. Por tal razão, Fernando ainda dependia do computador antigo para trabalhar e não poderia entregá-lo de imediato a Sérgio. Acerca dos fatos narrados, assinale a afirmativa correta.",
+    "alternatives": {
+      "A": "Sérgio poderá exigir de Fernando a execução específica da obrigação (entrega do bem) ou a cláusula penal de R$ 500,00, não podendo ser cumulada a multa com a obrigação principal.",
+      "B": "Sérgio poderá exigir de Fernando a execução específica da obrigação (entrega do bem) simultaneamente à multa de R$ 500,00, tendo em vista ser cláusula penal moratória.",
+      "C": "Sérgio somente poderá exigir de Fernando a execução específica da obrigação (entrega do bem), não a multa, pois o atraso foi por culpa de terceiro (Ana), e não de Fernando.",
+      "D": "Sérgio somente poderá exigir de Fernando a cláusula penal de R$ 500,00, não a execução específica da obrigação (entrega do bem), que depende de terceiro (Ana)."
+    },
+    "gabarito": "B",
+    "legal_basis": "CC, arts. 408, 411 e 412",
+    "explanation": "A cláusula penal é moratória (destinada a garantir o cumprimento no prazo). O devedor responde independentemente de culpa pela mora (art. 408). A cláusula penal moratória pode ser cumulada com a obrigação principal (art. 411). A obrigação de entregar o computador subsiste juntamente com a multa pelo atraso. O fato de terceiro não exclui a responsabilidade de Fernando."
+  },
+  {
+    "id": 11,
+    "exam": "OAB XXII",
+    "year": 2017,
+    "subject": "Cláusula penal compensatória – Inadimplemento absoluto (arts. 390, 394, 475 CC)",
+    "bank": "FGV",
+    "difficulty": "Médio",
+    "enunciado": "Festas Ltda., compradora, celebrou, após negociações paritárias, contrato de compra e venda com Chocolates S/A, vendedora. O objeto do contrato eram 100 caixas de chocolate, pelo preço total de R$ 1.000,00, a serem entregues no dia 1º de novembro de 2016, data em que se comemorou o aniversário de 50 anos de existência da sociedade. No contrato, estava prevista uma multa de R$ 1.000,00 caso houvesse atraso na entrega. Chocolates S/A, devido ao excesso de encomendas, não conseguiu entregar as caixas na data combinada, mas somente dois dias depois. Festas Ltda., dizendo que a comemoração já havia acontecido, recusou-se a receber e ainda cobrou a multa. Por sua vez, Chocolates S/A não aceitou pagar a multa, afirmando que o atraso de dois dias não justificava sua cobrança e que o produto vendido era o melhor do mercado. Sobre os fatos narrados, assinale a afirmativa correta.",
+    "alternatives": {
+      "A": "Festas Ltda. tem razão, pois houve o inadimplemento absoluto por perda da utilidade da prestação e a multa é uma cláusula penal compensatória.",
+      "B": "Chocolates S/A não deve pagar a multa, pois a cláusula penal, quantificada em valor idêntico ao valor da prestação principal, é abusiva.",
+      "C": "Chocolates S/A adimpliu sua prestação, ainda que dois dias depois, razão pela qual nada deve a título de multa.",
+      "D": "Festas Ltda. só pode exigir 2% de multa (R$ 20,00), teto da cláusula penal, segundo o Código de Defesa do Consumidor."
+    },
+    "gabarito": "A",
+    "legal_basis": "CC, arts. 394, 408 e 475",
+    "explanation": "Houve inadimplemento absoluto: os chocolates perderam a utilidade para o credor (a festa já havia passado). A cláusula penal é compensatória, substituindo a obrigação principal (art. 410). O valor idêntico ao da obrigação principal não é abusivo (art. 412 permite até o valor da obrigação). A relação não é de consumo (negociações paritárias). Festas Ltda. pode exigir a multa integral de R$1.000,00."
+  },
+  {
+    "id": 12,
+    "exam": "OAB XXXVII",
+    "year": 2023,
+    "subject": "Consignação em pagamento – Procedimento (arts. 335, 336 CC; arts. 539, 547 CPC)",
+    "bank": "FGV",
+    "difficulty": "Médio",
+    "enunciado": "Vitor, residente em Salvador/BA, precisou se mudar para Fortaleza/CE, por motivos profissionais. Para realizar sua mudança, propôs pagar uma quantia de R$ 10.000,00 (dez mil reais) para Danilo e Juarez, além de arcar com todos os custos da viagem. Por não ter acompanhado o serviço, Vitor não sabe quem efetivamente o fez. Após o término da mudança, Vitor tentou quitar a dívida, mas não sabia a quem pagar, pois ambos afirmaram ser titulares do crédito. Sendo assim, procurou você, como advogado(a), pois queria fazer o pagamento de forma consignada para extinguir a obrigação. Na qualidade de advogado de Vitor, assinale a opção que indica a posição acertada no tocante ao procedimento especial de ação de consignação em pagamento.",
+    "alternatives": {
+      "A": "Vitor requererá o depósito e a citação de Danilo, e, caso posteriormente se entenda não ser ele o titular, fará a citação de Juarez.",
+      "B": "Vitor deverá requerer o depósito e a citação de Danilo e Juarez para que eles provem quem tem direito ao recebimento da quantia.",
+      "C": "Vitor não poderá utilizar a consignação, devendo ajuizar ação declaratória para solucionar a dúvida sobre o credor.",
+      "D": "Vitor deverá requerer o depósito e citar Danilo e Juarez e, quando um deles levantar o depósito, o outro será excluído."
+    },
+    "gabarito": "B",
+    "legal_basis": "CC, art. 335, IV; CPC, arts. 547 e 548",
+    "explanation": "Havendo dúvida sobre quem deva legitimamente receber o pagamento (art. 335, IV CC), cabe consignação extrajudicial ou ação de consignação. No procedimento especial, o autor requer o depósito e cita todos os que afirmam ser credores (art. 547 CPC), para que provem seu direito. O depósito libera o devedor (art. 334 CC)."
+  }
+]
