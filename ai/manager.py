@@ -126,6 +126,10 @@ class AIProviderManager:
                 question = cls._call_provider(current_prov, key, prompt, config.get("temperature", 0.3))
                 if question and isinstance(question, dict):
                     if all(k in question for k in ("enunciado", "gabarito", "options")):
+                        question["subject"] = subject
+                        question["bank"] = bank
+                        if "difficulty" not in question:
+                            question["difficulty"] = difficulty
                         logger.info(f"Questão gerada com SUCESSO via {current_prov}")
                         return question
                     logger.warning(f"Resposta do {current_prov} com campos faltando: {list(question.keys())}")
@@ -178,6 +182,31 @@ class AIProviderManager:
             opt_groups.setdefault(opt_key, []).append(q)
         group = random.choice(list(opt_groups.values()))
         q = random.choice(group)
+
+        # Se temos db/session, evita conteúdo similar já respondido nesta sessão
+        if db is not None and session_id is not None:
+            try:
+                from database.models import QuestionHistory
+                answered = db.query(QuestionHistory.question_json).filter(
+                    QuestionHistory.session_id == session_id,
+                    QuestionHistory.question_json.isnot(None)
+                ).all()
+                answered_opts = set()
+                for row in answered:
+                    try:
+                        qj = json.loads(row[0]) if isinstance(row[0], str) else row[0]
+                        if qj and "options" in qj:
+                            answered_opts.add(json.dumps(qj["options"], sort_keys=True))
+                    except Exception:
+                        pass
+                if json.dumps(q.get("options", {}), sort_keys=True) in answered_opts:
+                    remaining = [g for g in opt_groups if g not in answered_opts]
+                    if remaining:
+                        group = opt_groups[random.choice(remaining)]
+                        q = random.choice(group)
+            except Exception:
+                pass
+
         logger.info(f"Seed pool: questão {q['id'][:8]} para {subject}/{bank}")
         return q
 

@@ -868,69 +868,6 @@
       "explanation": "A alternativa A reflete o art. 396 do CC: 'Não havendo fato ou omissão imputável ao devedor, não incorre este em mora'. A mora do devedor exige culpa. A alternativa B está incorreta porque o devedor responde pela impossibilidade *a menos que* prove que o dano sobreviria mesmo com o cumprimento pontual (art. 399). A alternativa C erra porque a mora do credor subtrai o devedor da responsabilidade pela conservação, salvo dolo (art. 400). A alternativa E erra pois se não há termo, a mora exige interpelação (art. 397, parágrafo único)."
     },
     {
-      "id": "c44e308c-81e4-42dc-8b5e-8f59aa1dc070",
-      "subject": "Mora do devedor",
-      "bank": "CESPE",
-      "difficulty": "Fácil",
-      "enunciado": "(CESPE) Se Rodrigo (devedor) incorrer em atraso culposo no cumprimento de obrigação líquida e com prazo certo ajustada com Juliana, a mora operar-se-á de pleno direito no vencimento (mora ex re), dispensando-se qualquer notificação judicial.",
-      "options": {
-        "A": "CERTO",
-        "B": "ERRADO"
-      },
-      "gabarito": "A",
-      "article": "Art. 394, Art. 395 e Art. 396 do Código Civil",
-      "legal_basis": "Art. 397, caput, do Código Civil.",
-      "explanation": "Segundo o art. 397 do CC, 'o inadimplemento da obrigação, positiva e líquida, no seu termo, constitui de pleno direito em mora o devedor' (regra dies interpellat pro homine). A mora ex re dispensa interpelação. Portanto, a afirmação está CERTA."
-    },
-    {
-      "id": "1987ecec-4d31-45ff-ab2c-e9ded42127e3",
-      "subject": "Mora do credor",
-      "bank": "CESPE",
-      "difficulty": "Médio",
-      "enunciado": "(CESPE) Se Thiago (devedor) incorrer em atraso culposo no cumprimento de obrigação líquida e com prazo certo ajustada com Camila, a mora operar-se-á de pleno direito no vencimento (mora ex re), dispensando-se qualquer notificação judicial.",
-      "options": {
-        "A": "CERTO",
-        "B": "ERRADO"
-      },
-      "gabarito": "A",
-      "article": "Art. 394, Art. 395 e Art. 396 do Código Civil",
-      "legal_basis": "Art. 397, caput, do Código Civil.",
-      "explanation": "Segundo o art. 397 do CC, 'o inadimplemento da obrigação, positiva e líquida, no seu termo, constitui de pleno direito em mora o devedor' (regra dies interpellat pro homine). A mora ex re dispensa interpelação. Portanto, a afirmação está CERTA."
-    },
-    {
-      "id": "0fcbe1a0-5495-4002-b320-656a66cce715",
-      "subject": "Inadimplemento absoluto",
-      "bank": "CESPE",
-      "difficulty": "Difícil",
-      "enunciado": "(CESPE) O devedor Rodrigo responde pelos prejuízos decorrentes de caso fortuito ou força maior se estes ocorrerem durante o atraso (mora), a menos que prove que o dano ocorreria mesmo se a obrigação tivesse sido cumprida a tempo.",
-      "options": {
-        "A": "CERTO",
-        "B": "ERRADO"
-      },
-      "gabarito": "A",
-      "article": "Art. 389, Art. 393 e Art. 402 do Código Civil",
-      "legal_basis": "Art. 399 do Código Civil.",
-      "explanation": "O devedor em mora responde pelo caso fortuito ou força maior. Trata-se da perpetuação da obrigação (perpetuatio obligationis) prevista no art. 399, onde ele só se exime se provar a inevitabilidade do dano mesmo adimplindo tempestivamente. Portanto, a afirmação está CERTA."
-    },
-    {
-      "id": "63396e79-d9f7-41ea-a18b-2c878ac2d24c",
-      "subject": "Perdas e danos",
-      "bank": "VUNESP",
-      "difficulty": "Médio",
-      "enunciado": "(VUNESP) Gustavo descumpriu culposamente contrato de prestação de serviços no valor de R$ 10.000,00 celebrado com Letícia. Como consequência direta e imediata do inadimplemento absoluto da obrigação, Letícia sofreu prejuízos materiais. Acerca das normas de Inadimplemento e Perdas e Danos previstas no Código Civil, assinale a opção correta:",
-      "options": {
-        "A": "As perdas e danos devidas ao credor abrangem apenas o que ele efetivamente perdeu (dano emergente), sendo vedada a condenação por lucros cessantes no direito civil brasileiro.",
-        "B": "O devedor responde por caso fortuito ou de força maior mesmo que não tenha expressamente se responsabilizado por eles no contrato.",
-        "C": "Salvo as exceções previstas em lei, as perdas e danos abrangem, além do que o credor efetivamente perdeu, o que razoavelmente deixou de lucrar, desde que consequência direta e imediata do inadimplemento.",
-        "D": "Os juros de mora em perdas e danos decorrentes de responsabilidade contratual contam-se unicamente a partir da citação inicial do devedor.",
-        "E": "Nas obrigações de pagar em dinheiro, se o credor provar que o juro da mora não cobre o prejuízo, o juiz não poderá conceder indenização suplementar."
-      },
-      "gabarito": "C",
-      "article": "Art. 389, Art. 393 e Art. 402 do Código Civil",
-      "legal_basis": "Art. 389, Art. 393, Art. 402, Art. 403 e Art. 404 do Código Civil.",
-      "explanation": "A alternativa C retrata o art. 402 do CC, dispondo sobre a composição das perdas e danos (danos emergentes + lucros cessantes). A alternativa A erra ao vedar lucros cessantes. A alternativa B erra porque o devedor *não* responde por caso fortuito ou força maior se não se responsabilizou por eles (art. 393). A alternativa E erra ao ignorar o art. 404, parágrafo único, que autoriza indenização suplementar se os juros moratórios não cobrirem o prejuízo."
-    },
-    {
       "id": "7d9eb32a-41da-49c6-a8be-3c78a3173b11",
       "subject": "Juros legais",
       "bank": "VUNESP",
@@ -1157,60 +1094,6 @@
       "article": "Art. 381 do Código Civil",
       "legal_basis": "Art. 381 e Art. 384 do Código Civil.",
       "explanation": "A reunião das qualidades de credor e devedor na mesma pessoa gera extinção da obrigação por confusão (art. 381, CC). Se a confusão cessar por causa superveniente (como a anulação do inventário/testamento), a obrigação renasce com todos os seus acessórios e garantias (art. 384, CC)."
-    },
-    {
-      "id": "3799a9a9-2e2f-4d54-a631-e3d893c00708",
-      "subject": "Mora - Geral",
-      "bank": "OAB",
-      "difficulty": "Difícil",
-      "enunciado": "(OAB) Thiago firmou contrato de empréstimo de insumos agrícolas com Beatriz. No vencimento do prazo para entrega do valor de R$ 200.000,00, Thiago não realiza o pagamento. Com base na disciplina da mora no Código Civil brasileiro, assinale a opção correta:",
-      "options": {
-        "A": "Não havendo fato ou omissão imputável ao devedor (ausência de culpa), este não incorre em mora.",
-        "B": "O devedor em mora responde pela impossibilidade da prestação, exceto se provar que a impossibilidade ocorreria mesmo se tivesse adimplido tempestivamente.",
-        "C": "A mora do credor (mora accipiendi) não isenta o devedor de responsabilidade pela conservação da coisa nem obsta a cobrança de juros moratórios standard.",
-        "D": "Para purgar a mora, basta ao devedor oferecer ao credor a prestação devida no valor principal, independentemente de juros ou perdas e danos.",
-        "E": "Se a obrigação não tiver prazo determinado, a mora do devedor (mora ex persona) ocorre no momento exato do inadimplemento material da prestação."
-      },
-      "gabarito": "A",
-      "article": "Art. 394, Art. 395 e Art. 396 do Código Civil",
-      "legal_basis": "Art. 396, Art. 399, Art. 400 e Art. 401 do Código Civil.",
-      "explanation": "A alternativa A reflete o art. 396 do CC: 'Não havendo fato ou omissão imputável ao devedor, não incorre este em mora'. A mora do devedor exige culpa. A alternativa B está incorreta porque o devedor responde pela impossibilidade *a menos que* prove que o dano sobreviria mesmo com o cumprimento pontual (art. 399). A alternativa C erra porque a mora do credor subtrai o devedor da responsabilidade pela conservação, salvo dolo (art. 400). A alternativa E erra pois se não há termo, a mora exige interpelação (art. 397, parágrafo único)."
-    },
-    {
-      "id": "0e34e17f-714f-4f32-9334-5ab469fa9788",
-      "subject": "Mora do credor",
-      "bank": "OAB",
-      "difficulty": "Difícil",
-      "enunciado": "(OAB) João firmou contrato de financiamento de maquinário industrial com Patrícia. No vencimento do prazo para entrega do valor de R$ 5.000,00, João não realiza o pagamento. Com base na disciplina da mora no Código Civil brasileiro, assinale a opção correta:",
-      "options": {
-        "A": "Não havendo fato ou omissão imputável ao devedor (ausência de culpa), este não incorre em mora.",
-        "B": "O devedor em mora responde pela impossibilidade da prestação, exceto se provar que a impossibilidade ocorreria mesmo se tivesse adimplido tempestivamente.",
-        "C": "A mora do credor (mora accipiendi) não isenta o devedor de responsabilidade pela conservação da coisa nem obsta a cobrança de juros moratórios standard.",
-        "D": "Para purgar a mora, basta ao devedor oferecer ao credor a prestação devida no valor principal, independentemente de juros ou perdas e danos.",
-        "E": "Se a obrigação não tiver prazo determinado, a mora do devedor (mora ex persona) ocorre no momento exato do inadimplemento material da prestação."
-      },
-      "gabarito": "A",
-      "article": "Art. 394, Art. 395 e Art. 396 do Código Civil",
-      "legal_basis": "Art. 396, Art. 399, Art. 400 e Art. 401 do Código Civil.",
-      "explanation": "A alternativa A reflete o art. 396 do CC: 'Não havendo fato ou omissão imputável ao devedor, não incorre este em mora'. A mora do devedor exige culpa. A alternativa B está incorreta porque o devedor responde pela impossibilidade *a menos que* prove que o dano sobreviria mesmo com o cumprimento pontual (art. 399). A alternativa C erra porque a mora do credor subtrai o devedor da responsabilidade pela conservação, salvo dolo (art. 400). A alternativa E erra pois se não há termo, a mora exige interpelação (art. 397, parágrafo único)."
-    },
-    {
-      "id": "d720e992-299b-4ded-9d93-ebdd460223be",
-      "subject": "Inadimplemento absoluto",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB) Pedro descumpriu culposamente contrato de prestação de serviços no valor de R$ 120.000,00 celebrado com Ana. Como consequência direta e imediata do inadimplemento absoluto da obrigação, Ana sofreu prejuízos materiais. Acerca das normas de Inadimplemento e Perdas e Danos previstas no Código Civil, assinale a opção correta:",
-      "options": {
-        "A": "As perdas e danos devidas ao credor abrangem apenas o que ele efetivamente perdeu (dano emergente), sendo vedada a condenação por lucros cessantes no direito civil brasileiro.",
-        "B": "O devedor responde por caso fortuito ou de força maior mesmo que não tenha expressamente se responsabilizado por eles no contrato.",
-        "C": "Salvo as exceções previstas em lei, as perdas e danos abrangem, além do que o credor efetivamente perdeu, o que razoavelmente deixou de lucrar, desde que consequência direta e imediata do inadimplemento.",
-        "D": "Os juros de mora em perdas e danos decorrentes de responsabilidade contratual contam-se unicamente a partir da citação inicial do devedor.",
-        "E": "Nas obrigações de pagar em dinheiro, se o credor provar que o juro da mora não cobre o prejuízo, o juiz não poderá conceder indenização suplementar."
-      },
-      "gabarito": "C",
-      "article": "Art. 389, Art. 393 e Art. 402 do Código Civil",
-      "legal_basis": "Art. 389, Art. 393, Art. 402, Art. 403 e Art. 404 do Código Civil.",
-      "explanation": "A alternativa C retrata o art. 402 do CC, dispondo sobre a composição das perdas e danos (danos emergentes + lucros cessantes). A alternativa A erra ao vedar lucros cessantes. A alternativa B erra porque o devedor *não* responde por caso fortuito ou força maior se não se responsabilizou por eles (art. 393). A alternativa E erra ao ignorar o art. 404, parágrafo único, que autoriza indenização suplementar se os juros moratórios não cobrirem o prejuízo."
     },
     {
       "id": "04cf3a22-0c9d-47d4-916f-65d5fa67041e",
