@@ -1,5 +1,6 @@
 import random
 import uuid
+from typing import Dict, Any
 
 # Os 23 assuntos obrigatórios baseados nos artigos 304 a 420 do Código Civil
 SUBJECTS = [
@@ -67,6 +68,21 @@ def get_random_vars():
         "cidade": random.choice(CIDADES),
         "valor": random.choice(VALORES),
     }
+
+def _shuffle_options(q: Dict[str, Any]) -> None:
+    options = q.get("options")
+    gabarito = q.get("gabarito", "")
+    if not options or not gabarito or gabarito not in options:
+        return
+    keys = sorted(options.keys())
+    correct_text = options[gabarito]
+    random.shuffle(keys)
+    q["options"] = {k: options[old_k] for k, old_k in zip(sorted(keys), keys)}
+    for k, v in q["options"].items():
+        if v == correct_text:
+            q["gabarito"] = k
+            break
+
 
 def generate_question_offline(subject: str = None, bank: str = None, difficulty: str = None) -> dict:
     if not subject or subject not in SUBJECTS:
@@ -1618,4 +1634,6 @@ def generate_question_offline(subject: str = None, bank: str = None, difficulty:
                 f"prestação diversa da devida, mesmo que de maior valor. O adimplemento exige exatidão no objeto."
             )
             
+    # Embaralha as alternativas para evitar que o gabarito seja sempre a mesma letra no mesmo assunto
+    _shuffle_options(question_data)
     return question_data
