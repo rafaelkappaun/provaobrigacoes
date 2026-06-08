@@ -1,15 +1,24 @@
 import os
 import base64
 import logging
-from cryptography.fernet import Fernet
-from cryptography.hazmat.primitives import hashes
-from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 
 logger = logging.getLogger("crypto")
 
 SALT = b"jus_obrigacoes_salt_2024"
 
-def _get_fernet() -> Fernet | None:
+try:
+    from cryptography.fernet import Fernet
+    from cryptography.hazmat.primitives import hashes
+    from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+    HAS_CRYPTOGRAPHY = True
+except ImportError:
+    logger.warning("biblioteca 'cryptography' não encontrada — chaves serão salvas em texto puro")
+    HAS_CRYPTOGRAPHY = False
+
+
+def _get_fernet():
+    if not HAS_CRYPTOGRAPHY:
+        return None
     password = os.getenv("ENCRYPTION_KEY", "").encode()
     if not password:
         logger.warning("ENCRYPTION_KEY não definida no .env — chaves de API serão salvas em texto puro!")
