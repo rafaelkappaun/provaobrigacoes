@@ -76,10 +76,16 @@ export const ArticleLibrary: React.FC<ArticleLibraryProps> = ({ apiBase, onNavig
           <Search size={18} />
         </div>
         <input
-          type="text"
+          type="search"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Pesquisar por número do artigo, assunto ou palavra-chave (ex: mora, novação, sub-rogação)..."
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
+          inputMode="search"
+          enterKeyHint="search"
           className="w-full bg-slate-900 border border-slate-800 rounded-xl pl-10 pr-4 py-3 text-sm font-semibold text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 shadow-md"
         />
       </div>

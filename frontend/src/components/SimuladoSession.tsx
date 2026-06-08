@@ -128,12 +128,44 @@ export const SimuladoSession: React.FC<SimuladoSessionProps> = ({ apiBase, vespe
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [submitProgress, setSubmitProgress] = useState<number>(0);
 
+  const submitAnswerWithRetry = async (q: Question, index: number, maxRetries = 3): Promise<boolean> => {
+    const now = Date.now();
+    const ans = answers[index] || '';
+    const startTime = questionStartTimes.current[index] || now - 30000;
+    const elapsed = (now - startTime) / 1000;
+
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        const res = await apiFetch(apiBase, '/question/answer', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            question: q,
+            selected_option: ans,
+            response_time: Math.max(1, elapsed)
+          })
+        });
+        setSubmitProgress(prev => prev + 1);
+        if (res.ok) return true;
+        if (res.status === 409) return true;
+        const err = await res.json().catch(() => ({ detail: 'Erro de rede' }));
+        console.error(`Tentativa ${attempt}/${maxRetries} - Erro na questão ${index + 1}:`, err.detail);
+      } catch (e) {
+        console.error(`Tentativa ${attempt}/${maxRetries} - Falha de rede na questão ${index + 1}:`, e);
+      }
+      if (attempt < maxRetries) {
+        await new Promise(r => setTimeout(r, 1000 * attempt));
+      }
+    }
+    console.error(`Questão ${index + 1} não foi registrada após ${maxRetries} tentativas.`);
+    return false;
+  };
+
   const finishSimulado = async () => {
     stopTimer();
     setSubmitting(true);
     setSubmitProgress(0);
     
-    const now = Date.now();
     const batchSize = 5;
     const results = [];
     
@@ -142,33 +174,15 @@ export const SimuladoSession: React.FC<SimuladoSessionProps> = ({ apiBase, vespe
       const batchResults = await Promise.allSettled(
         batch.map(async (q, bi) => {
           const i = start + bi;
-          const ans = answers[i] || '';
-          const startTime = questionStartTimes.current[i] || now - 30000;
-          const elapsed = (now - startTime) / 1000;
-          
-          const res = await apiFetch(apiBase, '/question/answer', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              question: q,
-              selected_option: ans,
-              response_time: Math.max(1, elapsed)
-            })
-          });
-          setSubmitProgress(prev => prev + 1);
-          if (!res.ok) {
-            const err = await res.json().catch(() => ({ detail: 'Erro de rede' }));
-            console.error(`Erro na questão ${i + 1}:`, err.detail);
-          }
-          return res;
+          return submitAnswerWithRetry(q, i);
         })
       );
       results.push(...batchResults);
     }
     
-    const failed = results.filter(r => r.status === 'rejected').length;
+    const failed = results.filter(r => r.status === 'fulfilled' && r.value === false).length;
     if (failed > 0) {
-      console.error(`${failed} questão(ões) não foram registradas devido a erro de rede.`);
+      console.error(`${failed} questão(ões) não foram registradas após retentativas.`);
     }
     
     setSubmitting(false);

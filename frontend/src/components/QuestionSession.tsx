@@ -403,6 +403,11 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, subje
                 value={professorQuery}
                 onChange={(e) => setProfessorQuery(e.target.value)}
                 placeholder="Ex: Por que não aplicamos a novação subjetiva aqui?"
+                autoComplete="off"
+                autoCorrect="off"
+                autoCapitalize="off"
+                spellCheck="false"
+                inputMode="text"
                 className="flex-1 bg-slate-900 border border-slate-800 rounded-lg px-4 py-2 text-base text-slate-200 focus:outline-none focus:border-indigo-500 font-semibold"
               />
               <button

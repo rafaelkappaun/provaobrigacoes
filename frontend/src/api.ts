@@ -29,7 +29,12 @@ export function getSessionId(): string {
   }
 }
 
+const FETCH_TIMEOUT = 30_000;
+
 export function apiFetch(apiBase: string, url: string, options?: RequestInit): Promise<Response> {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT);
+
   const headers: Record<string, string> = {
     'X-Session-Id': getSessionId(),
   };
@@ -37,5 +42,18 @@ export function apiFetch(apiBase: string, url: string, options?: RequestInit): P
     const existing = options.headers as Record<string, string>;
     Object.assign(headers, existing);
   }
-  return fetch(`${apiBase}${url}`, { ...options, headers });
+
+  const signal = options?.signal ? anySignal(options.signal, controller.signal) : controller.signal;
+
+  return fetch(`${apiBase}${url}`, { ...options, headers, signal })
+    .finally(() => clearTimeout(timeoutId));
+}
+
+function anySignal(...signals: AbortSignal[]): AbortSignal {
+  const controller = new AbortController();
+  for (const s of signals) {
+    if (s.aborted) { controller.abort(s.reason); return controller.signal; }
+    s.addEventListener('abort', () => controller.abort(s.reason), { once: true });
+  }
+  return controller.signal;
 }

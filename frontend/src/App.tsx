@@ -151,7 +151,7 @@ export default function App() {
       {/* CONTEÚDO PRINCIPAL COM TOP BAR RESPONSIVA */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* TOP BAR MOBILE */}
-        <header className="lg:hidden flex items-center justify-between p-4 min-h-14 bg-slate-900 border-b border-slate-800">
+        <header className="lg:hidden flex items-center justify-between p-4 min-h-14 bg-slate-900 border-b border-slate-800 safe-top">
           <div className="flex items-center gap-2.5">
             <div className="p-1.5 bg-indigo-650 text-white rounded-lg">
               <Award size={16} />
@@ -176,7 +176,7 @@ export default function App() {
 
         {/* MENU MOBILE EXPANDIDO */}
         {mobileMenuOpen && (
-          <div className="lg:hidden fixed inset-0 top-14 bg-slate-950 z-50 flex flex-col p-4 space-y-2 overflow-y-auto animate-fade-in border-t border-slate-900">
+          <div className="lg:hidden fixed inset-0 top-14 bg-slate-950 z-50 flex flex-col p-4 space-y-2 overflow-y-auto animate-fade-in border-t border-slate-900 safe-bottom">
             {menuItems.map(item => {
               const Icon = item.icon;
               const isActive = activeTab === item.id;

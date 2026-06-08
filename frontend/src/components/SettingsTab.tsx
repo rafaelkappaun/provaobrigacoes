@@ -164,7 +164,7 @@ export const SettingsTab: React.FC<SettingsTabProps> = ({ apiBase }) => {
                   step="0.1"
                   value={config.temperature}
                   onChange={(e) => updateField('temperature', parseFloat(e.target.value))}
-                  className="w-full accent-indigo-500 h-1.5 bg-slate-950 rounded-lg cursor-pointer"
+                  className="w-full accent-indigo-500 h-1.5 bg-slate-950 rounded-lg cursor-pointer appearance-none"
                 />
                 <span className="text-[10px] text-slate-500 block">Menor = mais literal e preciso. Maior = mais criativo.</span>
               </div>
@@ -189,7 +189,12 @@ export const SettingsTab: React.FC<SettingsTabProps> = ({ apiBase }) => {
                   value={config.groq_api_key}
                   onChange={(e) => updateField('groq_api_key', e.target.value)}
                   placeholder="gsk_..."
-                  className="w-full bg-slate-950 border border-slate-850 rounded-lg px-4 py-2.5 text-sm text-slate-200 placeholder-slate-650 focus:outline-none focus:border-emerald-500 font-semibold"
+                  autoComplete="off"
+                  autoCorrect="off"
+                  autoCapitalize="off"
+                  spellCheck="false"
+                  inputMode="url"
+                  className="w-full bg-slate-950 border border-slate-850 rounded-lg px-4 py-2.5 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 font-semibold"
                 />
                 <p className="text-[10px] text-emerald-600/80 mt-1">Crie sua chave grátis em <span className="underline">console.groq.com/keys</span> — modelo Llama 3.3 70B, rápido e sem limitação de cota.</p>
               </div>
@@ -202,7 +207,12 @@ export const SettingsTab: React.FC<SettingsTabProps> = ({ apiBase }) => {
                   value={config.deepseek_api_key}
                   onChange={(e) => updateField('deepseek_api_key', e.target.value)}
                   placeholder="sk-..."
-                  className="w-full bg-slate-950 border border-slate-850 rounded-lg px-4 py-2.5 text-sm text-slate-200 placeholder-slate-650 focus:outline-none focus:border-indigo-500 font-semibold"
+                  autoComplete="off"
+                  autoCorrect="off"
+                  autoCapitalize="off"
+                  spellCheck="false"
+                  inputMode="url"
+                  className="w-full bg-slate-950 border border-slate-850 rounded-lg px-4 py-2.5 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 font-semibold"
                 />
               </div>
 
@@ -214,7 +224,12 @@ export const SettingsTab: React.FC<SettingsTabProps> = ({ apiBase }) => {
                   value={config.openrouter_api_key}
                   onChange={(e) => updateField('openrouter_api_key', e.target.value)}
                   placeholder="sk-or-v1-..."
-                  className="w-full bg-slate-950 border border-slate-850 rounded-lg px-4 py-2.5 text-sm text-slate-200 placeholder-slate-650 focus:outline-none focus:border-indigo-500 font-semibold"
+                  autoComplete="off"
+                  autoCorrect="off"
+                  autoCapitalize="off"
+                  spellCheck="false"
+                  inputMode="url"
+                  className="w-full bg-slate-950 border border-slate-850 rounded-lg px-4 py-2.5 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 font-semibold"
                 />
               </div>
 
@@ -226,7 +241,12 @@ export const SettingsTab: React.FC<SettingsTabProps> = ({ apiBase }) => {
                   value={config.gemini_api_key}
                   onChange={(e) => updateField('gemini_api_key', e.target.value)}
                   placeholder="AIzaSy..."
-                  className="w-full bg-slate-950 border border-slate-850 rounded-lg px-4 py-2.5 text-sm text-slate-200 placeholder-slate-650 focus:outline-none focus:border-indigo-500 font-semibold"
+                  autoComplete="off"
+                  autoCorrect="off"
+                  autoCapitalize="off"
+                  spellCheck="false"
+                  inputMode="url"
+                  className="w-full bg-slate-950 border border-slate-850 rounded-lg px-4 py-2.5 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 font-semibold"
                 />
               </div>
 
@@ -239,7 +259,12 @@ export const SettingsTab: React.FC<SettingsTabProps> = ({ apiBase }) => {
                     value={config.qwen_api_key}
                     onChange={(e) => updateField('qwen_api_key', e.target.value)}
                     placeholder="Chave Qwen..."
-                    className="w-full bg-slate-950 border border-slate-850 rounded-lg px-4 py-2.5 text-sm text-slate-200 placeholder-slate-650 focus:outline-none focus:border-indigo-500 font-semibold"
+                    autoComplete="off"
+                    autoCorrect="off"
+                    autoCapitalize="off"
+                    spellCheck="false"
+                    inputMode="url"
+                    className="w-full bg-slate-950 border border-slate-850 rounded-lg px-4 py-2.5 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 font-semibold"
                   />
                 </div>
                 <div className="space-y-1">
@@ -249,7 +274,12 @@ export const SettingsTab: React.FC<SettingsTabProps> = ({ apiBase }) => {
                     value={config.mistral_api_key}
                     onChange={(e) => updateField('mistral_api_key', e.target.value)}
                     placeholder="Chave Mistral..."
-                    className="w-full bg-slate-950 border border-slate-850 rounded-lg px-4 py-2.5 text-sm text-slate-200 placeholder-slate-650 focus:outline-none focus:border-indigo-500 font-semibold"
+                    autoComplete="off"
+                    autoCorrect="off"
+                    autoCapitalize="off"
+                    spellCheck="false"
+                    inputMode="url"
+                    className="w-full bg-slate-950 border border-slate-850 rounded-lg px-4 py-2.5 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 font-semibold"
                   />
                 </div>
               </div>

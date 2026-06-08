@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#0b0f19" />
     <title>JUS OBRIGAÇÕES MASTER - Estudos Inteligentes</title>
     <script>
       window.addEventListener('error', function(e) {
@@ -84,12 +85,15 @@
             logBox.style.padding = '8px';
             logBox.style.zIndex = '9999999';
             logBox.style.borderTop = '2px solid #3b82f6';
+            logBox.style.pointerEvents = 'none';
+            logBox.style.paddingBottom = 'env(safe-area-inset-bottom)';
             document.body.appendChild(logBox);
           }
           var line = document.createElement('div');
           line.style.borderBottom = '1px solid #1e293b';
           line.style.padding = '3px 0';
           line.style.whiteSpace = 'pre-wrap';
+          line.style.pointerEvents = 'auto';
           var color = '#e2e8f0';
           if (type === 'ERROR') color = '#ef4444';
           if (type === 'WARN') color = '#fbbf24';
