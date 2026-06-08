@@ -51,10 +51,13 @@ export const SimuladoSession: React.FC<SimuladoSessionProps> = ({ apiBase, vespe
     return { correct, incorrect, totalAnswered, remaining };
   }, [answers, questions]);
 
+  const simuladoStartRef = useRef<number>(0);
+
   const startTimer = () => {
     setSeconds(0);
+    simuladoStartRef.current = Date.now();
     timerRef.current = setInterval(() => {
-      setSeconds(prev => prev + 1);
+      setSeconds(Math.floor((Date.now() - simuladoStartRef.current) / 1000));
     }, 1000);
   };
 

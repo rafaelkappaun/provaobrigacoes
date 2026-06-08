@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { LayoutDashboard, PlayCircle, Layers, BookOpen, ShieldAlert, Award, FileText, Menu, X, Flame, Loader2 } from 'lucide-react';
 import { Dashboard, type DashboardData } from './components/Dashboard';
 import { QuestionSession } from './components/QuestionSession';
@@ -19,28 +19,41 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [extraProps, setExtraProps] = useState<Record<string, unknown>>({});
 
-  const loadDashboard = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const res = await apiFetch(API_BASE, '/dashboard');
-      if (res.ok) {
-        const data = await res.json();
-        setDashboardData(data);
-      } else {
-        setError(`Erro do servidor (${res.status}): Não foi possível carregar as informações do painel.`);
-      }
-    } catch (e) {
-      console.error("Erro de conexão com o servidor:", e);
-      setError("Não foi possível conectar ao servidor. Verifique sua conexão com a internet.");
-    } finally {
-      setLoading(false);
+  const fetchDashboardData = useCallback(async (): Promise<DashboardData> => {
+    const res = await apiFetch(API_BASE, '/dashboard');
+    if (res.ok) {
+      return await res.json();
     }
+    throw new Error(`Erro do servidor (${res.status})`);
   }, []);
 
+  const isLoadingRef = useRef(false);
+
   useEffect(() => {
-    loadDashboard();
-  }, [loadDashboard]);
+    if (isLoadingRef.current) return;
+    isLoadingRef.current = true;
+    setLoading(true);
+    setError(null);
+    fetchDashboardData()
+      .then(data => { setDashboardData(data); })
+      .catch(e => {
+        console.error("Erro de conexão com o servidor:", e);
+        setError("Não foi possível conectar ao servidor. Verifique sua conexão com a internet.");
+      })
+      .finally(() => { setLoading(false); isLoadingRef.current = false; });
+  }, [fetchDashboardData]);
+
+  const handleRetry = useCallback(() => {
+    setLoading(true);
+    setError(null);
+    fetchDashboardData()
+      .then(data => setDashboardData(data))
+      .catch(e => {
+        console.error(e);
+        setError("Não foi possível conectar ao servidor. Verifique sua conexão com a internet.");
+      })
+      .finally(() => setLoading(false));
+  }, [fetchDashboardData]);
 
   const handleNavigate = (tab: string, extra: Record<string, unknown> = {}) => {
     setExtraProps(extra);
@@ -138,7 +151,7 @@ export default function App() {
       {/* CONTEÚDO PRINCIPAL COM TOP BAR RESPONSIVA */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* TOP BAR MOBILE */}
-        <header className="lg:hidden flex items-center justify-between p-4 bg-slate-900 border-b border-slate-800">
+        <header className="lg:hidden flex items-center justify-between p-4 min-h-14 bg-slate-900 border-b border-slate-800">
           <div className="flex items-center gap-2.5">
             <div className="p-1.5 bg-indigo-650 text-white rounded-lg">
               <Award size={16} />
@@ -163,7 +176,7 @@ export default function App() {
 
         {/* MENU MOBILE EXPANDIDO */}
         {mobileMenuOpen && (
-          <div className="lg:hidden fixed inset-0 top-14 bg-slate-950 z-50 flex flex-col p-4 space-y-2 animate-fade-in border-t border-slate-900">
+          <div className="lg:hidden fixed inset-0 top-14 bg-slate-950 z-50 flex flex-col p-4 space-y-2 overflow-y-auto animate-fade-in border-t border-slate-900">
             {menuItems.map(item => {
               const Icon = item.icon;
               const isActive = activeTab === item.id;
@@ -200,7 +213,7 @@ export default function App() {
               <h2 className="text-lg font-bold text-white">Falha na Sincronização</h2>
               <p className="text-sm text-slate-400">{error}</p>
               <button 
-                onClick={loadDashboard}
+                onClick={handleRetry}
                 className="px-5 py-2.5 bg-indigo-650 hover:bg-indigo-500 text-white rounded-xl text-sm font-bold shadow-lg shadow-indigo-600/15 transition-all"
               >
                 Tentar Novamente

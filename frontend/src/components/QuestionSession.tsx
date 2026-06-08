@@ -98,7 +98,7 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, subje
     setSeconds(0);
     startTimeRef.current = Date.now();
     timerRef.current = setInterval(() => {
-      setSeconds(prev => prev + 1);
+      setSeconds(Math.floor((Date.now() - startTimeRef.current) / 1000));
     }, 1000);
   }, [stopTimer]);
 
@@ -403,7 +403,7 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, subje
                 value={professorQuery}
                 onChange={(e) => setProfessorQuery(e.target.value)}
                 placeholder="Ex: Por que não aplicamos a novação subjetiva aqui?"
-                className="flex-1 bg-slate-900 border border-slate-800 rounded-lg px-4 py-2 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 font-semibold"
+                className="flex-1 bg-slate-900 border border-slate-800 rounded-lg px-4 py-2 text-base text-slate-200 focus:outline-none focus:border-indigo-500 font-semibold"
               />
               <button
                 type="submit"
