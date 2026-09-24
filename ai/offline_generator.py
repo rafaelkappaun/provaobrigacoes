@@ -260,7 +260,7 @@ def generate_question_offline(subject: str, bank: str = "FGV", difficulty: str =
             "A": "O alienante tem direito a todo o preço se agiu de boa-fé; contudo, a alienação pode ser anulada pelo adquirente se provar que o alienante não ignorava a consumação do sinistro.",
             "B": "A venda de coisa exposta a risco pretérito é nula ipso facto, independentemente da boa ou má-fé dos contratantes.",
             "C": "O adquirente nunca poderá anular o contrato, pois a assunção de risco transfere responsabilidade absoluta e irretratável.",
-            "D": "O alienante só terá direito ao preço se a mercadoria for resgatada com avaria parcial."
+            "D": "O alienante só terá direito ao preço caso a mercadoria resgatada mantenha seu valor originário integral sem nenhuma depreciação."
         }
         gabarito = "A"
         art = "Arts. 460 e 461 do Código Civil"
@@ -275,10 +275,10 @@ def generate_question_offline(subject: str, bank: str = "FGV", difficulty: str =
             f"No momento da outorga da escritura, {p1} recusou-se a assinar o contrato definitivo. Com base nos arts. 462 a 464 do Código Civil:"
         )
         opts = {
-            "A": "O contrato preliminar é nulo, pois promessa de compra e venda de imóvel de valor superior a 30 salários mínimos exige escritura pública por atração de forma.",
+            "A": "O contrato preliminar é nulo de pleno direito no plano da validade, pois a promessa de compra e venda imobiliária atrai obrigatoriamente a forma solene pública da escritura do art. 108 do Código Civil.",
             "B": "O contrato preliminar é plenamente válido, pois, exceto quanto à forma, deve conter os requisitos essenciais do definitivo; {p2} pode exigir a celebração do definitivo ou obter sentença com efeito de adjudicação compulsória.",
-            "C": "{p2} tem direito exclusivamente a perdas e danos, sendo vedado ao juiz conferir sentença que supra a vontade de {p1}.",
-            "D": "O contrato preliminar não obriga os contraentes até que seja registrado na matrícula do Registro de Imóveis."
+            "C": "{p2} tem direito exclusivamente a exigir perdas e danos compensatórios pelo inadimplemento, sendo defeso ao juiz proferir decisão judicial com efeito substitutivo da manifestação de vontade recusada.",
+            "D": "O contrato preliminar é ineficaz entre as partes signatárias enquanto não for averbado junto à matrícula do Registro Imobiliário competente para fins de publicidade e oponibilidade erga omnes."
         }
         gabarito = "B"
         art = "Arts. 462, 463 e 464 do Código Civil"
@@ -293,10 +293,10 @@ def generate_question_offline(subject: str, bank: str = "FGV", difficulty: str =
             f"Não havendo estipulação contratual expressa sobre prazo, a indicação da pessoa (electio amici) deve ser comunicada à outra parte no prazo de:"
         )
         opts = {
-            "A": "5 (cinco) dias da data da conclusão do contrato, devendo a aceitação da pessoa nomeada revestir a mesma forma do negócio.",
-            "B": "15 (quinze) dias da tradição da coisa, por notificação judicial obrigatória.",
-            "C": "30 (trinta) dias úteis, operando efeitos unicamente ex nunc (a partir da aceitação).",
-            "D": "1 (um) ano, sob pena de decadência do direito potestativo de indicação."
+            "A": "5 (cinco) dias da data da conclusão do negócio, devendo a aceitação da pessoa nomeada revestir rigorosamente a mesma forma solene que foi empregada para a celebração do contrato preliminar.",
+            "B": "15 (quinze) dias da imissão provisória na posse do bem, mediante expedição obrigatória de notificação premonitória judicial ou extrajudicial para a ratificação expressa das partes contratantes.",
+            "C": "30 (trinta) dias úteis a contar do pagamento da primeira parcela ajustada, operando a indicação efeitos estritamente prospectivos (ex nunc) a partir da lavratura da escritura pública definitiva.",
+            "D": "1 (um) ano contado da celebração da avença, sob pena de extinção peremptória do direito potestativo de nomeação e conversão compulsória do estipulante em mandatário com poderes especiais."
         }
         gabarito = "A"
         art = "Art. 468 do Código Civil"
@@ -310,10 +310,10 @@ def generate_question_offline(subject: str, bank: str = "FGV", difficulty: str =
             f"o Contrato com Pessoa a Declarar distingue-se do Mandato e da Estipulação em Favor de Terceiro porque:"
         )
         opts = {
-            "A": "No Contrato com Pessoa a Declarar, o estipulante contrata em nome próprio e permanece pessoalmente vinculado se a nomeação falhar ou o terceiro for insolvente; além disso, o terceiro assume a posição de parte contratual integral.",
-            "B": "Na Estipulação em Favor de Terceiro, o terceiro passa a suportar todas as obrigações pecuniárias contratuais assumidas pelo estipulante.",
-            "C": "No Mandato, o mandatário age em nome próprio e assume pessoalmente todos os riscos de insolvência do mandante.",
-            "D": "O Contrato com Pessoa a Declarar é modalidade de cessão de crédito pura, prescindindo de notificação ou aceitação do devedor."
+            "A": "No Contrato com Pessoa a Declarar, o estipulante contrata em nome próprio e permanece vinculado se a indicação for ineficaz, passando o terceiro nomeado a assumir a posição de contratante retroativamente.",
+            "B": "Na Estipulação em Favor de Terceiro, o terceiro beneficiário assume automaticamente a posição passiva de devedor solidário de todos os encargos e despesas decorrentes da execução continuada do contrato.",
+            "C": "No Mandato, o mandatário age sempre em nome próprio e por sua conta e risco perante terceiros, assumindo pessoalmente a garantia integral contra a insolvência e o inadimplemento culposo do mandante.",
+            "D": "O Contrato com Pessoa a Declarar consubstancia cessão ordinária de posição contratual que opera efeitos prospectivos (ex nunc), prescindindo de expressa anuência ou homologação do contratante originário."
         }
         gabarito = "A"
         art = "Arts. 467 a 471 e Art. 436 do Código Civil"
@@ -362,10 +362,10 @@ def generate_question_offline(subject: str, bank: str = "FGV", difficulty: str =
             f"o adquirente pode valer-se das ações edilícias (arts. 441 e 442 do CC). Sobre essas ações, assinale a opção correta:"
         )
         opts = {
-            "A": "O adquirente tem o direito potestativo de escolher entre a Ação Redibitória (para enjeitar a coisa e rescindir o contrato) e a Ação Estimatória ou Quanti Minoris (para obter abatimento proporcional no preço).",
-            "B": "Cabe ao vendedor a escolha irretratável de conceder o desconto no preço ou desfazer o negócio jurídico.",
-            "C": "O comprador pode ajuizar conjuntamente a Ação Redibitória para devolver a coisa e simultaneamente a Ação Estimatória para obter abatimento sobre o mesmo bem.",
-            "D": "A Ação Redibitória destina-se unicamente ao conserto da peça viciada mediante obrigação de fazer imposta ao alienante."
+            "A": "O adquirente tem o direito potestativo de optar entre a Ação Redibitória (para enjeitar a coisa e rescindir o contrato) e a Ação Estimatória (para obter abatimento proporcional no preço ajustado).",
+            "B": "Cabe privativamente ao alienante a faculdade discricionária de escolher entre restituir o preço ou autorizar o abatimento proporcional do valor, visando privilegiar a conservação do negócio jurídico.",
+            "C": "O adquirente pode cumular a Ação Redibitória de devolução com a Ação Quanti Minoris de abatimento sobre o mesmo bem, pleiteando concomitantemente a resolução integral e a manutenção do contrato.",
+            "D": "A Ação Redibitória restringe-se à imposição de obrigação de fazer consistente no conserto ou substituição das peças viciadas no prazo judicial cominatório de até trinta dias úteis."
         }
         gabarito = "A"
         art = "Arts. 441 e 442 do Código Civil"
@@ -380,10 +380,10 @@ def generate_question_offline(subject: str, bank: str = "FGV", difficulty: str =
             f"Sobre a distinção entre Vício Redibitório e Entrega de Coisa Diversa ('Aliud pro alio'), é correto afirmar:"
         )
         opts = {
-            "A": "Ambos os casos caracterizam vícios redibitórios típicos, sujeitando-se aos exíguos prazos decadenciais do Art. 445 do Código Civil.",
-            "B": "A entrega de coisa diversa da contratada (aliud pro alio) constitui inadimplemento da obrigação de dar/entregar (arts. 389 e 475), não se confundindo com vício redibitório, no qual a coisa entregue é a contratada, porém com defeito oculto.",
-            "C": "O vício redibitório ocorre quando o vendedor entrega objeto de espécie diferente, aplicando-se o prazo prescricional de 10 anos.",
-            "D": "A esterilidade do reprodutor configura aliud pro alio, ensejando apenas ação de anulação por erro substancial sobre o objeto."
+            "A": "Ambos os casos configuram vícios redibitórios intrínsecos típicos da coisa recebida, sujeitando-se com rigor aos exíguos prazos decadenciais previstos no art. 445 do Código Civil brasileiro.",
+            "B": "A entrega de coisa diversa (aliud pro alio) consubstancia inadimplemento com prazos prescricionais gerais, ao passo que o vício redibitório é defeito oculto na própria coisa contratada e entregue.",
+            "C": "A entrega de cevada por café caracteriza vício redibitório oculto na mercadoria, aplicando-se o prazo prescricional trienal de reparação civil regulado no art. 206, § 3º, V, do Código Civil.",
+            "D": "A esterilidade do touro reprodutor configura entrega de coisa diversa (aliud pro alio), retirando do adquirente a possibilidade de pleitear a resolução ou o abatimento de preço por ação edilícia."
         }
         gabarito = "B"
         art = "Arts. 389, 441 e 475 do Código Civil e Doutrina"
@@ -398,10 +398,10 @@ def generate_question_offline(subject: str, bank: str = "FGV", difficulty: str =
             f"De acordo com o Art. 445 do Código Civil, o prazo para {p1} ajuizar ação edilícia:"
         )
         opts = {
-            "A": "É prescricional de 5 anos, por equiparação à responsabilidade pelo fato do serviço.",
-            "B": "Decai em 30 dias contados da entrega das chaves, sendo improrrogável mesmo diante de defeito de conhecimento tardio.",
-            "C": "É decadencial de 1 ano, contado a partir do momento em que {p1} teve ciência do vício oculto, respeitado o prazo de garantia legal de até 1 ano da posse para manifestação do defeito em imóveis.",
-            "D": "Prescreve em 180 dias contados do registro do título translativo no Registro Geral de Imóveis."
+            "A": "O prazo é de natureza prescricional e decenal, fundado na responsabilidade civil genérica por inadimplemento culposo, contando-se a partir da imissão do adquirente na posse efetiva do bem imóvel.",
+            "B": "O prazo é decadencial de trinta dias úteis a contar da tradição originária das chaves, sendo peremptório e insuscetível de dilação mesmo diante de defeito oculto de conhecimento tardio.",
+            "C": "O prazo é decadencial de 1 ano contado da ciência do defeito, respeitado o prazo máximo de garantia legal de até 1 ano da posse para que o vício oculto por sua natureza venha a se manifestar.",
+            "D": "O prazo é decadencial de cinco anos contados da expedição do habite-se municipal, aplicando-se o regime da garantia legal contra defeitos de solidez e segurança previstos para a empreitada."
         }
         gabarito = "C"
         art = "Art. 445 e seu § 1º do Código Civil"

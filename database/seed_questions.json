@@ -23,9 +23,9 @@
       "difficulty": "Difícil",
       "enunciado": "(CESPE / Doutrina) A respeito da distinção entre os planos de existência, validade e eficácia do negócio jurídico, assinale a opção correta.",
       "options": {
-        "A": "A condição suspensiva, enquanto pendente, impede a existência do negócio jurídico.",
+        "A": "A condição suspensiva, enquanto pendente, impede a existência do negócio jurídico, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
         "B": "A condição suspensiva subordina a eficácia do negócio jurídico a evento futuro e incerto, não impedindo que o negócio já exista e seja válido.",
-        "C": "A incapacidade relativa do agente impede que o negócio jurídico atinja o plano da existência.",
+        "C": "A incapacidade relativa do agente impede que o negócio jurídico atinja o plano da existência, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
         "D": "Todo negócio jurídico válido é imediata e necessariamente eficaz, sendo incompatível a existência de negócio válido mas ineficaz."
       },
       "gabarito": "B",
@@ -42,8 +42,8 @@
       "options": {
         "A": "É inexistente, pois a forma é elemento ontológico do plano da existência que não se aperfeiçoou.",
         "B": "Existe no mundo dos fatos, porém é nulo no plano da validade por preterição de solenidade essencial que a lei considera para a sua validade.",
-        "C": "É plenamente válido, bastando termo aditivo posterior para ratificar a forma.",
-        "D": "É negócio com eficácia plena entre as partes, mas ineficaz perante terceiros."
+        "C": "É plenamente válido no plano da validade, bastando a lavratura posterior de termo aditivo particular entre as partes para convalidar a forma prescrita pela legislação civil.",
+        "D": "É negócio que produz eficácia plena e imediata entre os contratantes, sendo apenas inoponível e ineficaz perante terceiros de boa-fé que não integraram a relação jurídica originária."
       },
       "gabarito": "B",
       "article": "Art. 104, III e Art. 166, IV e V do Código Civil",
@@ -59,7 +59,7 @@
       "options": {
         "A": "A função social do contrato autoriza a intervenção judicial irrestrita para anular qualquer cláusula livremente ajustada entre empresários.",
         "B": "Nas relações contratuais privadas, prevalecerão o princípio da intervenção mínima e a excepcionalidade da revisão contratual, presumindo-se paritários e simétricos os contratos civis e empresariais.",
-        "C": "O princípio do pacta sunt servanda foi integralmente abolido do ordenamento jurídico brasileiro.",
+        "C": "O princípio do pacta sunt servanda foi integralmente abolido do ordenamento pátrio pelo Código Civil de 2002, restando aos contratantes submeterem previamente qualquer termo ao crivo judicial.",
         "D": "A alocação de riscos definida pelas partes não vincula o Poder Judiciário, devendo o juiz impor a repartição igualitária dos prejuízos."
       },
       "gabarito": "B",
@@ -75,9 +75,9 @@
       "enunciado": "(VUNESP / Notário) O princípio da relatividade dos efeitos do contrato sofre importante mitigação na ordem jurídica contemporânea em virtude:",
       "options": {
         "A": "Da tutela externa do crédito e da eficácia transubjetiva da função social do contrato, que veda que o contrato prejudique terceiros ou que terceiros lesem o contrato.",
-        "B": "Da vedação absoluta à celebração de contratos preliminares.",
-        "C": "Da aplicação da exceptio non adimpleti contractus aos contratos unilaterais benéficos.",
-        "D": "Da exigência de escritura pública para qualquer espécie de avença comercial."
+        "B": "Da vedação à celebração de contratos preliminares sem a prévia anuência expressa de todos os terceiros que venham a ser potencialmente impactados pelo negócio futuro.",
+        "C": "Da aplicação compulsória da exceptio non adimpleti contractus até mesmo aos negócios unilaterais e benéficos, paralisando a eficácia do ato até a contraprestação do beneficiário.",
+        "D": "Da imposição legal de escritura pública para qualquer espécie de avença patrimonial, cuja preterição invalida de pleno direito a manifestação de vontade das partes."
       },
       "gabarito": "A",
       "article": "Art. 421 do Código Civil",
@@ -92,9 +92,9 @@
       "enunciado": "(OAB / FGV) Caio celebrou contrato de locação com Tício, comprometendo-se a pagar o aluguel até o dia 5 de cada mês. No entanto, durante 3 anos consecutivos, Caio pagou no dia 20, sem qualquer oposição de Tício. Inesperadamente, Tício notificou Caio cobrando multa e juros moratórios retroativos de todos os meses. Essa pretensão de Tício é ilegítima em razão do instituto da:",
       "options": {
         "A": "Supressio, que gerou a Surrectio para Caio, vedando o comportamento contraditório (venire contra factum proprium).",
-        "B": "Exceptio doli generalis com efeitos extintivos de plano da locação.",
-        "C": "Cláusula resolutiva tácita com eficácia ex tunc.",
-        "D": "Novação subjetiva passiva compulsória por força de lei."
+        "B": "Exceptio doli generalis, invocada para autorizar a imediata rescisão culposa do contrato em virtude da modificação superveniente e unilateral das bases negociais.",
+        "C": "Cláusula resolutiva tácita com eficácia retroativa plena (ex tunc), extinguindo a relação obrigacional originária de pleno direito sem necessidade de notificação premonitória.",
+        "D": "Novação tácita com exoneração total das prestações devidas, extinguindo em definitivo o próprio dever principal de pagar as verbas locatícias subsequentes ajustadas."
       },
       "gabarito": "A",
       "article": "Art. 422 e Art. 330 do Código Civil",
@@ -108,10 +108,10 @@
       "difficulty": "Difícil",
       "enunciado": "(CESPE / Procuradoria) A boa-fé objetiva desempenha tríplice função no ordenamento civil: interpretativa, integrativa (criação de deveres anexos) e de controle (limite ao exercício de direitos). Dentre os desdobramentos da boa-fé objetiva, a figura que veda a uma das partes exigir da outra uma conduta que ela própria descumpriu é denominada:",
       "options": {
-        "A": "Tu quoque.",
-        "B": "Supressio.",
-        "C": "Surrectio.",
-        "D": "Duty to mitigate the loss."
+        "A": "Tu quoque, segundo o qual a parte que violou determinada cláusula contratual ou dever anexo perde a legitimidade para exigir o adimplemento estrito da contraprestação alheia.",
+        "B": "Supressio, caracterizada pela perda de um direito subjetivo em decorrência do seu não exercício prolongado no tempo, gerando na contraparte a legítima expectativa de não cobrança.",
+        "C": "Surrectio, consubstanciada no surgimento superveniente de um direito subjetivo contratual em favor de uma parte, decorrente de uma prática reiterada mantida sem oposição recíproca.",
+        "D": "Duty to mitigate the loss, consistente no dever imposto ao credor de mitigar os próprios prejuízos sofridos, abstendo-se de praticar atos que agravem desnecessariamente o dano final."
       },
       "gabarito": "A",
       "article": "Art. 422 do Código Civil",
@@ -145,7 +145,7 @@
         "A": "Interpretam-se estritamente, sendo vedada a extensão analógica ou ampliativa que crie obrigações ou renúncias não declaradas de forma expressa.",
         "B": "Interpretam-se de forma analógica e extensiva, aplicando-se as mesmas regras dos contratos bilaterais onerosos.",
         "C": "Presume-se a renúncia de direitos patrimoniais sempre que o credor tolerar atraso superior a trinta dias.",
-        "D": "São nulos se não contiverem cláusula expressa de arbitragem."
+        "D": "São nulos se não contiverem cláusula expressa de arbitragem, acarretando a nulidade absoluta originária do negócio com eficácia ex tunc e impossibilidade de ratificação superveniente."
       },
       "gabarito": "A",
       "article": "Art. 114 do Código Civil",
@@ -161,7 +161,7 @@
       "options": {
         "A": "Unilateral, oneroso e real.",
         "B": "Bilateral, gratuito e consensual.",
-        "C": "Unilateral, gratuito e solene por escritura pública.",
+        "C": "Da imposição legal de escritura pública para qualquer espécie de avença patrimonial, cuja preterição invalida de pleno direito a manifestação de vontade das partes.",
         "D": "Bilateral perfeito, puramente comutativo e solene."
       },
       "gabarito": "A",
@@ -179,7 +179,7 @@
         "A": "Bilateral (sinalagmático), oneroso, comutativo e consensual.",
         "B": "Unilateral, gratuito, solene e real.",
         "C": "Aleatório, benéfico, atípico e real.",
-        "D": "Bilateral imperfeito, solene por escritura pública e de execução imediata."
+        "D": "Da imposição legal de escritura pública para qualquer espécie de avença patrimonial, cuja preterição invalida de pleno direito a manifestação de vontade das partes."
       },
       "gabarito": "A",
       "article": "Art. 481 e Art. 482 do Código Civil",
@@ -195,8 +195,8 @@
       "options": {
         "A": "A fase de negociações preliminares (punctuação) não gera em nenhuma hipótese dever de indenizar, dada a ampla liberdade contratual.",
         "B": "A proposta séria e precisa vincula o proponente, salvo se o contrário resultar dos termos dela, da natureza do negócio ou das circunstâncias do caso.",
-        "C": "A aceitação com modificações ou adições importa conclusão imediata do contrato originário.",
-        "D": "Entre ausentes, o contrato só se conclui quando a aceitação é lida pessoalmente pelo proponente."
+        "C": "A aceitação com modificações ou adições importa conclusão imediata do contrato originário, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "Entre ausentes, o contrato só se conclui quando a aceitação é lida pessoalmente pelo proponente, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "B",
       "article": "Art. 427 e Art. 431 do Código Civil",
@@ -245,9 +245,9 @@
       "enunciado": "(VUNESP / Notário) O estipulante pode substituir o terceiro beneficiário designado no contrato?",
       "options": {
         "A": "Sim, pode reservar-se o direito de substituir o terceiro por ato entre vivos ou por disposição de última vontade (testamento), independentemente da anuência do terceiro e do promitente.",
-        "B": "Não, a indicação do terceiro é irrevogável após a assinatura do contrato pelas partes originárias.",
-        "C": "Apenas com autorização judicial prévia ou consentimento expresso do promitente.",
-        "D": "Somente se o terceiro cometer ato de ingratidão previsto nas regras de doação."
+        "B": "Não, a indicação do terceiro é irrevogável após a assinatura do contrato pelas partes originárias, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "C": "Apenas com autorização judicial prévia ou consentimento expresso do promitente, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "Somente se o terceiro cometer ato de ingratidão previsto nas regras de doação, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 438 do Código Civil",
@@ -261,10 +261,10 @@
       "difficulty": "Médio",
       "enunciado": "(OAB / FGV) Mário prometeu a José que sua irmã Clara, arquiteta premiada, elaboraria gratuitamente o projeto de reforma da casa de José. Todavia, Clara recusou-se veementemente a prestar o serviço, afirmando nada ter contratado com José. À luz do art. 439 do Código Civil:",
       "options": {
-        "A": "José pode ajuizar ação de obrigação de fazer contra Clara para compeli-la ao trabalho.",
-        "B": "Mário responderá por perdas e danos perante José, em razão da inexecução da obrigação prometida.",
-        "C": "Clara e Mário respondem solidariamente por perdas e danos perante José.",
-        "D": "O contrato é nulo por ilicitude do objeto, restando as partes desobrigadas."
+        "A": "José pode propor ação judicial cominatória de obrigação de fazer contra Clara para compeli-la judicialmente ao cumprimento da prestação artística ajustada.",
+        "B": "José deve acionar Mário para pleitear perdas e danos pelo inadimplemento, visto que Clara não anuiu nem se vinculou ao contrato originário firmado.",
+        "C": "Mário e Clara respondem de forma estritamente solidária por todos os prejuízos e lucros cessantes perante José, em virtude da teoria da aparência contratual.",
+        "D": "O negócio jurídico é nulo de pleno direito no plano da validade por ilicitude do objeto, ficando Mário e Clara integralmente desobrigados de indenizar José."
       },
       "gabarito": "B",
       "article": "Art. 439 do Código Civil",
@@ -278,10 +278,10 @@
       "difficulty": "Médio",
       "enunciado": "(FCC / Analista) Quando cessa a responsabilidade daquele que prometeu fato de terceiro, conforme as disposições do Código Civil?",
       "options": {
-        "A": "Quando o terceiro se comprometer perante o credor a executar a obrigação, assumindo-a (Art. 440 do CC).",
-        "B": "Apenas quando o terceiro concluir integralmente a prestação do fato.",
-        "C": "No prazo decadencial de 30 dias contados da celebração da promessa.",
-        "D": "Nunca cessa, permanecendo como fiador legal perpétuo do terceiro."
+        "A": "No momento em que o terceiro expressamente aceitar e se comprometer perante o credor a executar a obrigação prometida.",
+        "B": "Apenas após a conclusão integral e o adimplemento perfeito da prestação contratada pelo terceiro perante o credor originário.",
+        "C": "No prazo decadencial de trinta dias úteis a contar da celebração da promessa, presumindo-se a anuência tácita do terceiro indicado.",
+        "D": "A responsabilidade civil do promitente jamais cessa, permanecendo este na condição de fiador legal e devedor solidário perpétuo da obrigação."
       },
       "gabarito": "A",
       "article": "Art. 440 do Código Civil",
@@ -296,9 +296,9 @@
       "enunciado": "(CESPE / Juiz) A respeito da teoria geral dos contratos aleatórios no Código Civil, assinale a opção correta.",
       "options": {
         "A": "Diferenciam-se dos contratos comutativos porque neles a prestação de uma das partes fica subordinada a uma álea (risco de perda ou ganho futuro).",
-        "B": "São sempre vedados pelo ordenamento civil quando envolverem produtos agrícolas ou safras futuras.",
+        "B": "São sempre vedados pelo ordenamento civil quando envolverem produtos agrícolas ou safras futuras, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
         "C": "Permitem que qualquer das partes rescinda imotivadamente o contrato sem pagar o preço acordado caso o evento incerto se concretize.",
-        "D": "Classificam-se unicamente como contratos gratuitos e reais."
+        "D": "Classificam-se unicamente como contratos gratuitos e reais, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Arts. 458 a 461 do Código Civil",
@@ -313,9 +313,9 @@
       "enunciado": "(OAB / FGV) Rodrigo comprou de um pescador profissional, pelo valor fechado de R$ 800,00 pago no ato, todo o produto que viesse a ser pescado no próximo lançamento de rede no mar. Ficou ajustado expressamente que Rodrigo assumiria o risco de nada vir a ser capturado (venda da esperança). O pescador lançou a rede adequadamente, mas nenhum peixe foi apanhado. Diante do Art. 458 do Código Civil:",
       "options": {
         "A": "O pescador tem direito de reter o valor integral recebido, desde que de sua parte não tenha havido dolo ou culpa, ainda que nada venha a existir.",
-        "B": "O pescador é obrigado a restituir o valor pago, sob pena de enriquecimento sem causa.",
-        "C": "O contrato é nulo por ausência de objeto no plano da existência.",
-        "D": "O pescador deve lançar a rede até que capture quantidade proporcional aos R$ 800,00 pagos."
+        "B": "O pescador é obrigado a restituir o valor pago, sob pena de enriquecimento sem causa, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "C": "O contrato é nulo por ausência de objeto no plano da existência, acarretando a nulidade absoluta originária do negócio com eficácia ex tunc e impossibilidade de ratificação superveniente.",
+        "D": "O pescador deve lançar a rede até que capture quantidade proporcional aos R$ 800,00 pagos, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 458 do Código Civil",
@@ -329,10 +329,10 @@
       "difficulty": "Médio",
       "enunciado": "(OAB / FGV) Mariana adquiriu do produtor rural Paulo toda a safra futura de tomates de sua fazenda por R$ 30.000,00, ajustando que assumiria o risco sobre a quantidade que viesse a ser colhida (emptio rei speratae). Todavia, por motivos climáticos imprevisíveis e sem culpa de Paulo, a lavoura foi completamente dizimada, não tendo sido colhido um único tomate (quantidade zero). À luz do parágrafo único do Art. 459 do Código Civil:",
       "options": {
-        "A": "Alienação não haverá, e o alienante Paulo restituirá integralmente o preço recebido de Mariana.",
-        "B": "Mariana deve pagar o valor integral de R$ 30.000,00 tendo em vista a álea contratual assumida.",
-        "C": "Paulo deve indenizar Mariana em perdas e danos equivalentes ao lucro que ela obteria no mercado.",
-        "D": "O contrato converte-se automaticamente em comodato remunerado."
+        "A": "O contrato é nulo de pleno direito, devendo o alienante restituir integralmente os valores pagos pelo comprador em virtude da frustração total do objeto.",
+        "B": "O comprador deve pagar o preço integralmente ajustado, assumindo o risco absoluto tanto da existência quanto da quantidade da colheita futura esperada.",
+        "C": "O comprador responde apenas por metade do preço convencionado, operando-se a divisão equitativa dos prejuízos entre os contratantes por força da lei.",
+        "D": "O negócio converte-se compulsoriamente em comodato mercantil de exploração rural, ficando o alienante obrigado a ceder a terra por duas safras subsequentes."
       },
       "gabarito": "A",
       "article": "Art. 459, parágrafo único do Código Civil",
@@ -346,10 +346,10 @@
       "difficulty": "Difícil",
       "enunciado": "(VUNESP / Magistratura) Nos contratos aleatórios que têm por objeto coisas existentes mas expostas a risco (art. 460 do CC), o alienante terá direito a todo o preço mesmo que a coisa já não existisse no dia do contrato, DESDE QUE:",
       "options": {
-        "A": "O alienante estivesse de boa-fé, desconhecendo a consumação do sinistro na data da celebração.",
-        "B": "O adquirente renuncie expressamente à garantia de evicção perante tabelião de notas.",
-        "C": "O contrato seja firmado exclusivamente por instrumento público registrado em cartório.",
-        "D": "A perda da coisa tenha ocorrido por fato do príncipe."
+        "A": "O alienante não tenha agido com dolo, ignorando a consumação do sinistro ao tempo da celebração do contrato de compra e venda mercantil.",
+        "B": "O adquirente renuncie previamente perante tabelião público à garantia legal da evicção e aos direitos de indenização por enriquecimento sem causa.",
+        "C": "O instrumento contratual seja registrado no cartório competente de títulos e documentos no prazo decadencial de trinta dias da sua celebração.",
+        "D": "O risco de perda ou deterioração do bem seja integralmente garantido por apólice securitária obrigatória contratada pelo poder público competente."
       },
       "gabarito": "A",
       "article": "Art. 460 e Art. 461 do Código Civil",
@@ -363,10 +363,10 @@
       "difficulty": "Médio",
       "enunciado": "(OAB / FGV) Acerca do contrato preliminar no Código Civil (arts. 462 a 466), assinale a afirmativa correta.",
       "options": {
-        "A": "O contrato preliminar deve conter todos os requisitos essenciais ao contrato a ser celebrado, exceto quanto à forma.",
-        "B": "O contrato preliminar de compra e venda de imóvel de alto valor exige necessariamente a forma de escritura pública sob pena de nulidade absoluta.",
-        "C": "O descumprimento do contrato preliminar gera unicamente direito a perdas e danos, sendo vedada a adjudicação compulsória.",
-        "D": "A validade do contrato preliminar depende de registro imobiliário prévio."
+        "A": "O contrato preliminar, exceto quanto à forma, deve conter todos os requisitos essenciais ao contrato a ser celebrado pelas partes.",
+        "B": "O contrato preliminar exige obrigatoriamente a mesma forma solene prescrita em lei para o contrato definitivo sob pena de nulidade.",
+        "C": "As partes não podem estipular cláusula de arrependimento em nenhuma espécie de contrato preliminar celebrado no direito brasileiro.",
+        "D": "A eficácia e a validade jurídica do contrato preliminar entre as partes dependem de prévio e obrigatório registro no cartório imobiliário."
       },
       "gabarito": "A",
       "article": "Art. 462 do Código Civil",
@@ -380,10 +380,10 @@
       "difficulty": "Médio",
       "enunciado": "(FCC / PGE) Concluído o contrato preliminar sem cláusula de arrependimento, se uma das partes se recusar a celebrar o contrato definitivo, a outra parte poderá:",
       "options": {
-        "A": "Requerer ao juiz que supra a manifestação de vontade, conferindo à sentença o caráter definitivo do contrato prometido (Art. 464 do CC).",
-        "B": "Apenas pleitear rescisão com retenção de arras, sem possibilidade de tutela específica.",
-        "C": "Promover a prisão civil do promitente inadimplente por crime de desobediência contratual.",
-        "D": "Exigir a conversão forçada do contrato em doação onerosa."
+        "A": "Exigir a celebração do contrato definitivo ou requerer que o juiz supra a vontade do inadimplente, conferindo caráter definitivo ao contrato.",
+        "B": "Apenas pleitear a rescisão culposa com perda de sinal ou retenção de arras, vedada categoricamente a concessão de tutela jurisdicional específica.",
+        "C": "Promover execução por quantia certa contra a fazenda pública para que esta desaproprie compulsoriamente o imóvel objeto da promessa inadimplida.",
+        "D": "Exigir a conversão automática do compromisso preliminar em doação remuneratória irrevogável, com incidência de astreintes diárias ilimitadas."
       },
       "gabarito": "A",
       "article": "Art. 464 do Código Civil",
@@ -417,7 +417,7 @@
         "A": "Distingue-se do mandato porque a parte age em nome próprio e, caso a pessoa indicada não aceite a nomeação ou seja insolvente, o contrato produzirá efeitos unicamente entre os contraentes originários.",
         "B": "Equipara-se plenamente à estipulação em favor de terceiro, pois o terceiro nunca assume obrigações pecuniárias.",
         "C": "Configura hipótese de representação direta necessária, exonerando o estipulante originário em qualquer circunstância.",
-        "D": "Produz efeitos unicamente ex nunc a partir da declaração da pessoa indicada."
+        "D": "Produz efeitos unicamente ex nunc a partir da declaração da pessoa indicada, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 469 e Art. 470 do Código Civil",
@@ -448,10 +448,10 @@
       "difficulty": "Médio",
       "enunciado": "(OAB / FGV) Pedro vendeu a Lucas um veículo seminovo que possuía grave defeito no bloco do motor, oculto e preexistente. Comprovou-se em juízo que Pedro tinha plena ciência do vício e o ocultou de Lucas. Consoante o Art. 443 do Código Civil, qual a consequência da má-fé do alienante?",
       "options": {
-        "A": "Restituirá o que recebeu com perdas e danos.",
-        "B": "Restituirá apenas o valor recebido e as despesas do contrato, ficando isento de perdas e danos.",
-        "C": "Ficará isento de qualquer obrigação civil se o comprador tiver feito test drive.",
-        "D": "O contrato será convalidado mediante pagamento de multa civil de 2% ao Estado."
+        "A": "Restituirá o valor recebido acrescido de perdas e danos materiais e morais, em razão da ilicitude e da má-fé contratual constatada.",
+        "B": "Ficará obrigado unicamente a restituir o valor recebido mais as despesas do contrato, ficando isento de indenizar perdas e danos suplementares.",
+        "C": "Deverá pagar multa civil equivalente ao dobro do valor do contrato ao adquirente, independentemente de comprovação de danos materiais suportados.",
+        "D": "Ficará isento de qualquer restituição pecuniária caso comprove que o adquirente realizou inspeção visual sumária do automóvel antes da tradição."
       },
       "gabarito": "A",
       "article": "Art. 443 do Código Civil",
@@ -466,9 +466,9 @@
       "enunciado": "(FCC / Magistratura) O alienante que desconhecia o vício oculto da coisa na data da venda (alienante de boa-fé):",
       "options": {
         "A": "Continua responsável pela garantia legal, devendo restituir o valor recebido mais as despesas do contrato, mas fica isento de pagar perdas e danos.",
-        "B": "Fica totalmente desonerado da obrigação de restituir o preço recebido.",
-        "C": "Responde por lucros cessantes presumidos fixados pelo juiz.",
-        "D": "Pode exigir que o adquirente arque com 50% dos custos do conserto."
+        "B": "Fica totalmente desonerado da obrigação de restituir o preço recebido, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "C": "Responde por lucros cessantes presumidos fixados pelo juiz, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "Pode exigir que o adquirente arque com 50% dos custos do conserto, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 443 do Código Civil",
@@ -485,7 +485,7 @@
         "A": "O adquirente tem o direito potestativo de optar entre enjeitar a coisa, redibindo o contrato (ação redibitória), ou pleitear abatimento proporcional do preço (ação estimatória ou quanti minoris).",
         "B": "O vendedor é quem possui a prerrogativa exclusiva de escolher se devolve o dinheiro ou concede abatimento no preço.",
         "C": "O comprador pode cumular no mesmo processo o pedido de rescisão contratual com devolução do bem e o abatimento de 50% do valor.",
-        "D": "A ação redibitória prescreve em 10 anos pelo prazo geral de responsabilidade civil."
+        "D": "A ação redibitória prescreve em 10 anos pelo prazo geral de responsabilidade civil, respondendo o contratante inadimplente pelo ressarcimento dos prejuízos materiais e extrapatrimoniais provocados à contraparte lesada."
       },
       "gabarito": "A",
       "article": "Art. 442 do Código Civil",
@@ -501,8 +501,8 @@
       "options": {
         "A": "Não constitui vício redibitório, mas sim inadimplemento absoluto da obrigação de dar, subordinando-se às regras do inadimplemento e aos prazos prescricionais gerais.",
         "B": "Constitui modalidade de vício redibitório extrínseco, submetida ao prazo decadencial de trinta dias do art. 445 do CC.",
-        "C": "Equipara-se à evicção parcial presumida por lei civil.",
-        "D": "Importa em novação objetiva tácita irrevogável."
+        "C": "Equipara-se à evicção parcial presumida por lei civil, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "Importa em novação objetiva tácita irrevogável, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Arts. 389 e 441 do Código Civil",
@@ -535,7 +535,7 @@
       "options": {
         "A": "A cláusula resolutiva expressa opera de pleno direito; a tácita depende de interpelação judicial.",
         "B": "A cláusula resolutiva expressa é nula de pleno direito por afastar a intervenção jurisdicional.",
-        "C": "A cláusula resolutiva tácita opera automaticamente, independentemente de interpelação do devedor.",
+        "C": "Cláusula resolutiva tácita com eficácia retroativa plena (ex tunc), extinguindo a relação obrigacional originária de pleno direito sem necessidade de notificação premonitória.",
         "D": "A parte lesada pelo inadimplemento só pode pedir perdas e danos se não pleitear a resolução do negócio."
       },
       "gabarito": "A",
@@ -551,9 +551,9 @@
       "enunciado": "(OAB / FGV) Em contrato de compra e venda mercantil com obrigações recíprocas e simultâneas, o vendedor deixou de entregar os produtos pactuados e, ato contínuo, ajuizou ação cobrando o preço do comprador. Em contestação, o comprador alegou a exceção do contrato não cumprido. Nos termos do Art. 476 do Código Civil:",
       "options": {
         "A": "A alegação do comprador é legítima, pois nos contratos bilaterais nenhum dos contratantes, antes de cumprida a sua obrigação, pode exigir o implemento da do outro.",
-        "B": "A exceção do contrato não cumprido só pode ser veiculada por meio de reconvenção autônoma.",
+        "B": "A exceção do contrato não cumprido só pode ser veiculada por meio de reconvenção autônoma, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
         "C": "O comprador deve efetuar o depósito judicial do valor integral da dívida antes de suscitar a exceção substancial.",
-        "D": "A exceptio non adimpleti contractus é privativa dos contratos de adesão celebrados com consumidores."
+        "D": "Da aplicação compulsória da exceptio non adimpleti contractus até mesmo aos negócios unilaterais e benéficos, paralisando a eficácia do ato até a contraprestação do beneficiário."
       },
       "gabarito": "A",
       "article": "Art. 476 do Código Civil",
@@ -603,7 +603,7 @@
       "options": {
         "A": "Permanece como postulado de segurança jurídica, sendo todavia relativizado pela função social, pela boa-fé objetiva e pela Teoria da Imprevisão / Onerosidade Excessiva.",
         "B": "Foi inteiramente revogado pelo Código Civil de 2002, cabendo ao juiz redefinir livremente todas as cláusulas e preços das convenções privadas.",
-        "C": "Aplica-se unicamente aos contratos unilaterais regidos pelo direito administrativo.",
+        "C": "Aplica-se unicamente aos contratos unilaterais regidos pelo direito administrativo, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
         "D": "Impede em qualquer circunstância a resolução contratual por eventos imprevisíveis e extraordinários."
       },
       "gabarito": "A",
@@ -619,9 +619,9 @@
       "enunciado": "(OAB / FGV) A doutrina e a jurisprudência consagram o 'Duty to mitigate the loss' (dever do credor de mitigar o próprio prejuízo) como figura parcelar da boa-fé objetiva. Esse dever impõe ao credor:",
       "options": {
         "A": "A obrigação ética e jurídica de adotar medidas razoáveis para não agravar o dano patrimonial decorrente do inadimplemento do devedor, sob pena de redução da indenização.",
-        "B": "A obrigação de renunciar tacitamente aos juros moratórios vencidos há mais de 30 dias.",
-        "C": "O dever de pagar integralmente as custas processuais do devedor inadimplente.",
-        "D": "A proibição de ajuizar qualquer ação de execução antes de 5 anos de inadimplência."
+        "B": "A obrigação de renunciar tacitamente aos juros moratórios vencidos há mais de 30 dias, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "C": "O dever de pagar integralmente as custas processuais do devedor inadimplente, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "A proibição de ajuizar qualquer ação de execução antes de 5 anos de inadimplência, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 422 do Código Civil",
@@ -636,9 +636,9 @@
       "enunciado": "(VUNESP / TJ) Os deveres anexos, laterais ou instrumentais de conduta decorrentes da cláusula geral de boa-fé objetiva (art. 422 do CC):",
       "options": {
         "A": "Existem independentemente de previsão expressa no instrumento contratual e compreendem os deveres de lealdade, informação, proteção, cooperação e sigilo.",
-        "B": "Dependem de cláusula penal escrita expressa para gerarem qualquer efeito vinculante.",
-        "C": "Expiram de pleno direito imediatamente no momento em que as assinaturas do contrato são lançadas.",
-        "D": "Aplicam-se apenas aos contratos de consumo regulados pelo Procon."
+        "B": "Dependem de cláusula penal escrita expressa para gerarem qualquer efeito vinculante, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "C": "Expiram de pleno direito imediatamente no momento em que as assinaturas do contrato são lançadas, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "Aplicam-se apenas aos contratos de consumo regulados pelo Procon, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 422 do Código Civil",
@@ -672,7 +672,7 @@
         "A": "Os contratos solenes são aqueles para os quais a lei exige forma determinada como requisito de validade (ad solemnitatem), como a escritura pública na compra e venda de imóvel de valor superior a 30 salários mínimos.",
         "B": "Os contratos de execução continuada (ou de trato sucessivo) cumprem-se em um único ato instantâneo imediatamente após a manifestação do consentimento.",
         "C": "O contrato de adesão permite que o aderente altere substancialmente as cláusulas nucleares do negócio em mesa paritária de negociação.",
-        "D": "Todo contrato oneroso é necessariamente solene e formal."
+        "D": "Todo contrato oneroso é necessariamente solene e formal, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 107 e Art. 108 do Código Civil",
@@ -704,9 +704,9 @@
       "enunciado": "(FCC / Procurador) Na Estipulação em Favor de Terceiro disciplinada pelo Código Civil:",
       "options": {
         "A": "O estipulante pode exonerar o devedor promitente, salvo se ao terceiro beneficiário foi deixado expressamente o direito de reclamar a execução do contrato.",
-        "B": "O promitente pode unilateralmente indicar outro credor sem conhecimento das partes.",
+        "B": "O promitente pode unilateralmente indicar outro credor sem conhecimento das partes, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
         "C": "A morte do terceiro beneficiário antes do vencimento extingue automaticamente a obrigação do promitente.",
-        "D": "O terceiro é obrigado a remunerar o estipulante em comissão de corretagem obrigatória."
+        "D": "O terceiro é obrigado a remunerar o estipulante em comissão de corretagem obrigatória, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 437 do Código Civil",
@@ -721,9 +721,9 @@
       "enunciado": "(CESPE / Doutrina) O parágrafo único do Art. 439 do Código Civil estabelece uma causa especial de exoneração da responsabilidade de quem prometeu fato de terceiro. Essa responsabilidade NÃO existirá se:",
       "options": {
         "A": "O terceiro for o cônjuge do promitente, dependendo da sua anuência o ato a ser praticado, e pelo regime de bens a indenização alguma coisa do seu patrimônio possa arrebatar.",
-        "B": "O terceiro for amigo de infância do promitente.",
-        "C": "O promitente comprovar que o terceiro viajou para o exterior em férias.",
-        "D": "O credor tiver patrimônio líquido superior ao do promitente."
+        "B": "O terceiro for amigo de infância do promitente, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "C": "O promitente comprovar que o terceiro viajou para o exterior em férias, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "O credor tiver patrimônio líquido superior ao do promitente, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 439, parágrafo único do Código Civil",
@@ -738,9 +738,9 @@
       "enunciado": "(OAB / FGV) No contrato aleatório, a equivalência subjetiva das prestações cede espaço à álea assumida pelos contratantes. Por tal razão, em regra, nos contratos aleatórios:",
       "options": {
         "A": "Não se admite a rescisão por lesão com fundamento na mera desproporção do resultado advindo da sorte (álea) contratada, salvo dolo da outra parte.",
-        "B": "É vedada a fixação de preço em moeda corrente nacional.",
-        "C": "As partes são obrigadas a registrar o contrato perante a Bolsa de Valores.",
-        "D": "A morte de qualquer dos contratantes invalida retroativamente a álea."
+        "B": "É vedada a fixação de preço em moeda corrente nacional, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "C": "As partes são obrigadas a registrar o contrato perante a Bolsa de Valores, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "A morte de qualquer dos contratantes invalida retroativamente a álea, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 157 e Art. 458 do Código Civil",
@@ -754,10 +754,10 @@
       "difficulty": "Médio",
       "enunciado": "(FCC / Magistratura) Na venda de coisas futuras na modalidade Emptio Spei (Art. 458 do Código Civil), caso o alienante venha a agir com dolo ou culpa comprovada para a frustração do objeto:",
       "options": {
-        "A": "Perderá o direito de receber o preço e deverá indenizar perdas e danos, pois a álea não acoberta a desídia ou a má-fé do contratante.",
-        "B": "Continuará tendo direito ao preço integral, pois o risco assumido pelo adquirente é absoluto e incondicionado.",
-        "C": "O contrato converter-se-á compulsoriamente em sociedade em conta de participação.",
-        "D": "O comprador poderá apenas exigir abatimento de 10% no valor contratado."
+        "A": "O pescador terá direito a receber todo o preço ajustado, desde que não tenha incorrido em dolo ou culpa pela frustração total da pescaria.",
+        "B": "O comprador estará dispensado de pagar qualquer quantia pecuniária, extinguindo-se o negócio por perecimento superveniente do objeto essencial.",
+        "C": "O negócio converter-se-á compulsoriamente em sociedade em conta de participação, dividindo-se os custos operacionais do barco igualmente entre ambos.",
+        "D": "O adquirente poderá exigir em juízo abatimento proporcional de noventa por cento no valor contratado, pagando apenas as despesas do combustível."
       },
       "gabarito": "A",
       "article": "Art. 458 do Código Civil",
@@ -772,9 +772,9 @@
       "enunciado": "(VUNESP / TJ) Um comprador pactuou contrato aleatório de compra de colheita de laranjas assumindo o risco quanto à quantidade (Emptio Rei Speratae). O pomar sofreu praga natural sem culpa do agricultor e colheu apenas 1% do volume ordinário esperado. Nesse caso:",
       "options": {
         "A": "O comprador é obrigado a pagar a totalidade do preço convencionado, tendo em vista que alguma quantidade veio a existir e a álea assumida dizia respeito à quantidade.",
-        "B": "O comprador não deve pagar nada, pois a quantidade foi irrisória e descaracteriza a comutatividade.",
-        "C": "O agricultor deve pagar indenização ao comprador para compensar a perda.",
-        "D": "O contrato é nulo de pleno direito por quebra da base objetiva."
+        "B": "O comprador não deve pagar nada, pois a quantidade foi irrisória e descaracteriza a comutatividade, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "C": "O agricultor deve pagar indenização ao comprador para compensar a perda, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "O contrato é nulo de pleno direito por quebra da base objetiva, acarretando a nulidade absoluta originária do negócio com eficácia ex tunc e impossibilidade de ratificação superveniente."
       },
       "gabarito": "A",
       "article": "Art. 459 do Código Civil",
@@ -788,10 +788,10 @@
       "difficulty": "Médio",
       "enunciado": "(OAB / FGV) A compra e venda aleatória de carga em transporte que se encontra exposta a alto risco no momento do contrato (arts. 460 e 461 do CC):",
       "options": {
-        "A": "Pode ser anulada como dolosa pelo prejudicado se este provar que o outro contratante não ignorava a consumação prévia do risco.",
-        "B": "É proibida pelo direito brasileiro como contrato usurário.",
-        "C": "Transfere os riscos exclusivamente para a seguradora pública da União.",
-        "D": "Obriga o alienante a devolver em dobro o preço caso a coisa pereça no trajeto."
+        "A": "É plenamente válida, tendo o alienante direito a todo o preço caso ignorasse a consumação do risco à data do negócio firmado entre as partes.",
+        "B": "É vedada pelo Código Civil sob pena de nulidade absoluta, por configurar cláusula leonina incompatível com o princípio da função social da empresa.",
+        "C": "Transfere o dever de indenizar para os órgãos governamentais de regulação, desonerando o comprador de arcar com o pagamento do preço convencionado.",
+        "D": "Impõe ao vendedor o dever legal de restituir o preço em dobro caso a coisa pereça durante o transporte, mesmo tendo agido com estrita boa-fé."
       },
       "gabarito": "A",
       "article": "Art. 461 do Código Civil",
@@ -807,8 +807,8 @@
       "options": {
         "A": "O direito à adjudicação compulsória não se condiciona ao registro do compromisso de compra e venda no cartório de imóveis perante o promitente vendedor.",
         "B": "A ausência de registro torna o compromisso de compra e venda absolutamente inexistente no plano material.",
-        "C": "Apenas os contratos registrados por escritura pública conferem direito a perdas e danos.",
-        "D": "O registro do contrato preliminar é pressuposto de existência na Escada Ponteana."
+        "C": "Da imposição legal de escritura pública para qualquer espécie de avença patrimonial, cuja preterição invalida de pleno direito a manifestação de vontade das partes.",
+        "D": "O registro do contrato preliminar é pressuposto de existência na Escada Ponteana, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 463 do Código Civil e Súmula 239 do STJ",
@@ -823,9 +823,9 @@
       "enunciado": "(VUNESP / Magistratura) Concluído o contrato com pessoa a declarar (arts. 467 e seguintes do CC), a indicação da pessoa nomeada (electio amici):",
       "options": {
         "A": "Não produzirá efeito se a pessoa nomeada era incapaz ou insolvente no momento da nomeação, hipótese em que o contrato produzirá efeitos unicamente entre os contraentes originários.",
-        "B": "Exonera o estipulante originário mesmo se a pessoa indicada recusar formalmente a nomeação.",
-        "C": "Transfere a posse da coisa apenas a partir do trânsito em julgado de sentença arbitral.",
-        "D": "Depende de nova escrituração pública de dação em pagamento."
+        "B": "Exonera o estipulante originário mesmo se a pessoa indicada recusar formalmente a nomeação, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "C": "Transfere a posse da coisa apenas a partir do trânsito em julgado de sentença arbitral, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "Depende de nova escrituração pública de dação em pagamento, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 470, II do Código Civil",
@@ -840,9 +840,9 @@
       "enunciado": "(FCC / PGE) Diferentemente da Cessão da Posição Contratual, o Contrato com Pessoa a Declarar caracteriza-se porque:",
       "options": {
         "A": "A faculdade de substituição subjetiva já é pactuada na origem do próprio negócio com cláusula de eficácia retroativa (ex tunc), ao passo que a cessão é negócio derivado posterior que depende de anuência superveniente do cedido.",
-        "B": "O cessionário na cessão adquire apenas direitos, ficando isento de quaisquer dívidas.",
-        "C": "O contrato com pessoa a declarar é sempre gratuito, não se admitindo ônus para a pessoa declarada.",
-        "D": "A cessão da posição contratual é vedada a pessoas jurídicas de direito privado."
+        "B": "O cessionário na cessão adquire apenas direitos, ficando isento de quaisquer dívidas, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "C": "O contrato com pessoa a declarar é sempre gratuito, não se admitindo ônus para a pessoa declarada, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "A cessão da posição contratual é vedada a pessoas jurídicas de direito privado, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 467 do Código Civil",
@@ -857,9 +857,9 @@
       "enunciado": "(OAB / FGV) Se várias coisas forem vendidas conjuntamente por preço global e apenas uma delas apresentar vício redibitório oculto, segundo o Art. 503 do Código Civil:",
       "options": {
         "A": "O defeito oculto de uma delas não autoriza a redibição de todas, mas tão-só a da que estiver viciada, salvo se a viciada for inseparável ou formar um todo unitário com as demais.",
-        "B": "Todo o contrato deve ser rescindido compulsoriamente por imposição da boa-fé objetiva.",
-        "C": "O adquirente perde o direito a qualquer reclamação edilícia se não provar o dolo do vendedor.",
-        "D": "O valor global do contrato é reduzido automaticamente em 50%."
+        "B": "Todo o contrato deve ser rescindido compulsoriamente por imposição da boa-fé objetiva, impondo aos figurantes contratuais deveres acessórios de conduta, cooperação, lealdade e transparência que limitam o exercício de direitos subjetivos.",
+        "C": "O adquirente perde o direito a qualquer reclamação edilícia se não provar o dolo do vendedor, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "O valor global do contrato é reduzido automaticamente em 50%, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 503 do Código Civil",
@@ -875,8 +875,8 @@
       "options": {
         "A": "A responsabilidade subsiste para o alienante: se conhecia o vício, responderá pelo valor mais perdas e danos; se não conhecia, ressarcirá o que recebeu mais despesas do contrato.",
         "B": "O alienante fica totalmente isento de responsabilidade com base na regra de que a coisa perece para o dono (res perit domino).",
-        "C": "O adquirente deve indenizar o alienante pela perda da oportunidade de consertar o bem.",
-        "D": "O contrato é convalidado como dação em pagamento involuntária."
+        "C": "O adquirente deve indenizar o alienante pela perda da oportunidade de consertar o bem, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "O contrato é convalidado como dação em pagamento involuntária, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 444 do Código Civil",
@@ -891,9 +891,9 @@
       "enunciado": "(VUNESP / TJ) Uma vez ajuizada pelo adquirente a Ação Estimatória (quanti minoris) requerendo o abatimento no preço em virtude de vício redibitório:",
       "options": {
         "A": "Opera-se a opção potestativa irretratável pela conservação do contrato com redução proporcional do valor, precluindo o direito de pleitear a devolução da coisa via ação redibitória.",
-        "B": "O juiz é obrigado a converter de ofício a petição inicial em ação de reintegração de posse.",
-        "C": "O vendedor pode recusar o abatimento e exigir judicialmente a devolução compulsória do bem.",
-        "D": "O comprador deve prestar caução no valor de 30% do contrato."
+        "B": "O juiz é obrigado a converter de ofício a petição inicial em ação de reintegração de posse, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "C": "O vendedor pode recusar o abatimento e exigir judicialmente a devolução compulsória do bem, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "O comprador deve prestar caução no valor de 30% do contrato, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 442 do Código Civil",
@@ -909,7 +909,7 @@
       "options": {
         "A": "Trata-se de inadimplemento da obrigação de dar por entrega de coisa diversa (aliud pro alio), aplicando-se as regras gerais de perdas e danos e prazo prescricional decenal (art. 205 do CC), e não vício redibitório.",
         "B": "Trata-se de vício redibitório de produto industrial, decaindo o direito do laboratório em trinta dias da entrega.",
-        "C": "O contrato é nulo de pleno direito por motivo torpe de ambas as partes.",
+        "C": "O contrato é nulo de pleno direito por motivo torpe de ambas as partes, acarretando a nulidade absoluta originária do negócio com eficácia ex tunc e impossibilidade de ratificação superveniente.",
         "D": "O comprador só pode recusar a carga se notificar o alienante perante o Conselho de Farmácia em 48 horas."
       },
       "gabarito": "A",
@@ -925,9 +925,9 @@
       "enunciado": "(FCC / Magistratura) Conforme o Art. 446 do Código Civil, os prazos de decadência para redibição ou abatimento no preço (art. 445) NÃO correm:",
       "options": {
         "A": "Na constância de cláusula de garantia estipulada pelo alienante; mas o adquirente deve denunciar o defeito ao alienante nos trinta dias seguintes ao seu descobrimento, sob pena de decadência.",
-        "B": "Durante o período de férias forenses do Tribunal de Justiça local.",
-        "C": "Enquanto o comprador não registrar o veículo no Detran competente.",
-        "D": "Se a coisa for objeto de seguro facultativo contra terceiros."
+        "B": "Durante o período de férias forenses do Tribunal de Justiça local, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "C": "Enquanto o comprador não registrar o veículo no Detran competente, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "Se a coisa for objeto de seguro facultativo contra terceiros, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 446 do Código Civil",
@@ -943,8 +943,8 @@
       "options": {
         "A": "O distrato faz-se pela mesma forma exigida para o contrato; e a resilição unilateral, nos casos em que a lei admite, opera mediante denúncia notificada à outra parte.",
         "B": "O distrato pode ser realizado verbalmente mesmo que a lei exija escritura pública para a validade do contrato primitivo.",
-        "C": "A resilição unilateral independe de notificação ou aviso prévio em qualquer relação contratual.",
-        "D": "O distrato extingue o contrato por vício de dolo congênito à celebração."
+        "C": "A resilição unilateral independe de notificação ou aviso prévio em qualquer relação contratual, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "O distrato extingue o contrato por vício de dolo congênito à celebração, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 472 e Art. 473 do Código Civil",
@@ -958,10 +958,10 @@
       "difficulty": "Médio",
       "enunciado": "(OAB / FGV) Se, depois de concluído o contrato bilateral, sobrevier a uma das partes contratantes diminuição em seu patrimônio capaz de comprometer ou tornar duvidosa a prestação pela qual se obrigou, segundo o Art. 477 do Código Civil:",
       "options": {
-        "A": "A outra parte pode recusar a prestação que lhe incumbe, até que aquela satisfaça a que lhe cabe ou dê garantia bastante de satisfazê-la.",
-        "B": "O contrato é rescindido imediatamente com cobrança compulsória da cláusula penal integral.",
-        "C": "O juiz deve decretar a falência sumária do devedor em dificuldade.",
-        "D": "A dívida é convertida compulsoriamente em título de crédito ao portador."
+        "A": "A resolução do contrato ou a modificação equitativa das condições contratuais, demonstrando acontecimentos extraordinários e imprevisíveis.",
+        "B": "A decretação sumária de insolvência civil com extinção de pleno direito de todos os contratos bilaterais pendentes de adimplemento da sociedade.",
+        "C": "A conversão compulsória da dívida em cotas societárias pelo Poder Judiciário, vedada expressamente a revisão ou a extinção do pacto originário.",
+        "D": "A suspensão permanente da obrigação principal por prazo indeterminado, sem que o contratante necessite comprovar fato imprevisível ou onerosidade."
       },
       "gabarito": "A",
       "article": "Art. 477 do Código Civil",
@@ -976,9 +976,9 @@
       "enunciado": "(FGV / Magistratura) Dois amigos, brincando em uma mesa de bar, redigem em um guardanapo a venda da Lua por R$ 10,00. Sob a perspectiva da teoria dos planos do negócio jurídico (Escada Ponteana), o negócio padece no plano:",
       "options": {
         "A": "Da existência, por absoluta ausência de vontade negocial séria (declaração jocosa / animus jocandi) e falta de objeto fático no mundo jurídico.",
-        "B": "Da validade exclusivamente, sendo anulável por lesão patrimonial de 50%.",
-        "C": "Da eficácia, por estar sujeito a condição puramente potestativa.",
-        "D": "É negócio jurídico válido e eficaz de execução diferida."
+        "B": "Da validade exclusivamente, sendo anulável por lesão patrimonial de 50%, subordinando a desconstituição do negócio ao ajuizamento de ação anulatória no prazo decadencial estrito previsto no Código Civil.",
+        "C": "Da eficácia, por estar sujeito a condição puramente potestativa, impedindo que o negócio produza qualquer efeito vinculante perante os contratantes e a sociedade até ulterior chancela judicial.",
+        "D": "É negócio jurídico válido e eficaz de execução diferida, impedindo que o negócio produza qualquer efeito vinculante perante os contratantes e a sociedade até ulterior chancela judicial."
       },
       "gabarito": "A",
       "article": "Doutrina de Pontes de Miranda e Art. 104 do CC",
@@ -993,9 +993,9 @@
       "enunciado": "(OAB / FGV) O princípio do 'Venire contra factum proprium' veda o comportamento contraditório que frustra legítimas expectativas. São pressupostos doutrinários para a caracterização do venire contra factum proprium:",
       "options": {
         "A": "Uma conduta inicial (factum proprium); a legítima confiança gerada na contraparte; um comportamento posterior contraditório; e o potencial de causar dano patrimonial ou moral a quem confiou.",
-        "B": "Apenas a presença de dolo específico com intuito de fraudar a execução fiscal.",
-        "C": "A existência de cláusula penal expressa com estipulação de arras penitenciais.",
-        "D": "A prévia propositura de ação de interdito proibitório com pedido liminar."
+        "B": "Apenas a presença de dolo específico com intuito de fraudar a execução fiscal, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "C": "A existência de cláusula penal expressa com estipulação de arras penitenciais, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "A prévia propositura de ação de interdito proibitório com pedido liminar, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 422 do Código Civil",
@@ -1027,9 +1027,9 @@
       "enunciado": "(CESPE / Doutrina) Em caso de morte do estipulante em contrato com estipulação em favor de terceiro, o direito de exigir o cumprimento da obrigação pelo promitente:",
       "options": {
         "A": "Transmite-se aos herdeiros do estipulante, mantendo-se também hígido o direito conferido ao terceiro beneficiário (art. 436, parágrafo único do CC).",
-        "B": "Extingue-se automaticamente por ser direito personalíssimo e intransmissível.",
-        "C": "Transfere-se compulsoriamente para a Fazenda Pública do Estado.",
-        "D": "Depende de alvará judicial com intervenção obrigatória do Ministério Público."
+        "B": "Extingue-se automaticamente por ser direito personalíssimo e intransmissível, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "C": "Transfere-se compulsoriamente para a Fazenda Pública do Estado, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "Depende de alvará judicial com intervenção obrigatória do Ministério Público, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 436 do Código Civil",
@@ -1044,9 +1044,9 @@
       "enunciado": "(VUNESP / TJ) Um empresário comprometeu-se com um patrocinador afirmando que seu irmão, famoso conferencista internacional, ministraria palestra de encerramento em evento empresarial. O conferencista não anuiu e não compareceu. O empresário alegou caso fortuito. Nesse contexto:",
       "options": {
         "A": "O empresário responde integralmente por perdas e danos perante o patrocinador, pois aquele que promete fato de terceiro assume obrigação de garantia e resultado.",
-        "B": "O patrocinador deve penhorar os bens do conferencista que se recusou a palestrar.",
-        "C": "O contrato é nulo de pleno direito por vício social de simulação.",
-        "D": "O empresário só responde se for comprovado que agiu com dolo preordenado de estelionato."
+        "B": "O patrocinador deve penhorar os bens do conferencista que se recusou a palestrar, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "C": "O contrato é nulo de pleno direito por vício social de simulação, acarretando a nulidade absoluta originária do negócio com eficácia ex tunc e impossibilidade de ratificação superveniente.",
+        "D": "O empresário só responde se for comprovado que agiu com dolo preordenado de estelionato, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 439 do Código Civil",
@@ -1060,10 +1060,10 @@
       "difficulty": "Difícil",
       "enunciado": "(CESPE / Magistratura) Na Emptio Spei (Art. 458 do Código Civil), diz-se que o contrato tem por objeto a 'spes' (a esperança da existência). Qual elemento afasta a exigibilidade do preço pelo alienante caso o objeto venha a não existir?",
       "options": {
-        "A": "A ocorrência de dolo ou culpa por parte do próprio alienante para a frustração da coisa futura.",
-        "B": "A mera verificação de que o valor de mercado caiu mais de 20%.",
-        "C": "A recusa imotivada do comprador em retirar a coisa inexistente.",
-        "D": "A superveniência de feriado nacional no dia pactuado para a entrega."
+        "A": "O adquirente comprove que a ausência total de produção decorreu de negligência, imperícia ou conduta culposa/dolosa do agricultor alienante.",
+        "B": "O adquirente comprove que o preço de mercado da soja oscilou negativamente em percentual superior a vinte por cento no período da colheita.",
+        "C": "O alienante não tenha comunicado por notificação extrajudicial em cartório a ocorrência de condições climáticas adversas na região produtora.",
+        "D": "A colheita tenha sido frustrada por evento decorrente de força maior ou caso fortuito típico, como seca prolongada ou geada extemporânea."
       },
       "gabarito": "A",
       "article": "Art. 458 do Código Civil",
@@ -1079,8 +1079,8 @@
       "options": {
         "A": "Na emptio spei o adquirente assume o risco da própria existência da coisa (se nada existir, o preço ainda é devido); na emptio rei speratae o risco é apenas da quantidade (deve vir alguma quantidade; se nada existir, o contrato é ineficaz e o preço é devolvido).",
         "B": "A emptio spei só pode ser celebrada por pessoas jurídicas, enquanto a emptio rei speratae é restrita a pessoas físicas.",
-        "C": "A emptio rei speratae exige outorga uxória sob pena de nulidade.",
-        "D": "Ambas as modalidades geram devolução em dobro do preço se a colheita for inferior à metade."
+        "C": "A emptio rei speratae exige outorga uxória sob pena de nulidade, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "Ambas as modalidades geram devolução em dobro do preço se a colheita for inferior à metade, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 458 e Art. 459 do Código Civil",
@@ -1094,10 +1094,10 @@
       "difficulty": "Médio",
       "enunciado": "(VUNESP / TJ) Se no contrato preliminar de promessa de compra e venda as partes inseriram expressa cláusula de arrependimento (com estipulação de arras penitenciais), a recusa de uma das partes em concluir o definitivo:",
       "options": {
-        "A": "Gera unicamente a perda das arras (ou devolução em dobro por quem as recebeu), impedindo a execução compulsória ou a adjudicação do imóvel.",
-        "B": "Autoriza a adjudicação compulsória forçada do bem pelo juiz de direito.",
-        "C": "Torna o contrato nulo no plano da existência com eficácia ex tunc.",
-        "D": "Obriga o promitente a pagar indenização suplementar ilimitada."
+        "A": "Apenas exigir o cumprimento da promessa sob pena de perdas e danos, sem direito a requerer judicialmente a adjudicação compulsória do bem.",
+        "B": "Requerer a adjudicação compulsória do imóvel em juízo, tendo em vista que a cláusula de arrependimento é nula de pleno direito nas promessas.",
+        "C": "Impor a conversão automática da promessa em contrato definitivo de doação onerosa, com incidência de multa cominatória diária contra o promitente.",
+        "D": "Promover a anulação da promessa no plano da existência jurídica, desconstituindo a manifestação de vontade emitida pelos contratantes desde a origem."
       },
       "gabarito": "A",
       "article": "Art. 420 e Art. 463 do Código Civil",
@@ -1113,7 +1113,7 @@
       "options": {
         "A": "Adquire os direitos e assume as obrigações decorrentes do contrato, a partir do momento em que este foi celebrado (efeito retroativo ex tunc).",
         "B": "Assume as obrigações apenas para o futuro (efeito ex nunc da declaração), ficando o estipulante originário solidariamente obrigado.",
-        "C": "Responde apenas subsidiariamente com benefício de ordem.",
+        "C": "Responde apenas subsidiariamente com benefício de ordem, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
         "D": "Pode anular as cláusulas do contrato celebrado pelo estipulante originário sem prévia concordância do vendedor."
       },
       "gabarito": "A",
@@ -1128,10 +1128,10 @@
       "difficulty": "Médio",
       "enunciado": "(OAB / FGV) Se a pessoa indicada no contrato com pessoa a declarar recusar a nomeação ou for absolutamente incapaz e o outro contratante ignorava, o contrato:",
       "options": {
-        "A": "Produzirá seus efeitos unicamente entre os contraentes originários (o próprio estipulante e o vendedor).",
-        "B": "Será extinto de pleno direito sem qualquer dever para os participantes.",
-        "C": "Será considerado nulo por fraude à lei contra credores.",
-        "D": "Será transferido forçadamente aos fiadores da pessoa recusante."
+        "A": "Produzirá todos os seus efeitos regulares exclusivamente entre os contratantes originários que celebraram o negócio jurídico preliminar.",
+        "B": "Será extinto de pleno direito por carência superveniente de pressuposto de validade, liberando os contratantes originários de qualquer prestação.",
+        "C": "Será considerado nulo de pleno direito por caracterizar fraude contra credores e simulação relativa no plano de eficácia do negócio jurídico.",
+        "D": "Terá seus efeitos transferidos compulsoriamente aos mandatários ou intermediários que participaram das tratativas preliminares da avença."
       },
       "gabarito": "A",
       "article": "Art. 470 do Código Civil",
@@ -1146,9 +1146,9 @@
       "enunciado": "(CESPE / Juiz) Em relação aos vícios redibitórios em alienações judiciais (bens arrematados em leilão ou hasta pública):",
       "options": {
         "A": "Aplica-se a garantia contra vícios redibitórios também às vendas efetuadas em hasta pública (alienações judiciais), conforme entendimento pacífico da doutrina e art. 441 do CC.",
-        "B": "A hasta pública exonera de forma irrestrita qualquer responsabilidade por defeitos ocultos do bem.",
-        "C": "O arrematante não possui qualquer ação edilícia, devendo suportar integralmente o prejuízo.",
-        "D": "O juiz da execução responde pessoalmente com seu patrimônio pelos vícios da coisa praceada."
+        "B": "A hasta pública exonera de forma irrestrita qualquer responsabilidade por defeitos ocultos do bem, respondendo o contratante inadimplente pelo ressarcimento dos prejuízos materiais e extrapatrimoniais provocados à contraparte lesada.",
+        "C": "O arrematante não possui qualquer ação edilícia, devendo suportar integralmente o prejuízo, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "O juiz da execução responde pessoalmente com seu patrimônio pelos vícios da coisa praceada, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 441 do Código Civil",
@@ -1163,9 +1163,9 @@
       "enunciado": "(OAB / FGV) A ignorância do alienante sobre o vício redibitório oculto da coisa na data da venda:",
       "options": {
         "A": "Não o exime da garantia legal de redibir o contrato ou conceder abatimento no preço, mas afasta a sua condenação ao pagamento de perdas e danos.",
-        "B": "Exime o alienante de qualquer obrigação, mantendo o negócio hígido e inalterado.",
-        "C": "Transfere o dever de indenizar para o fabricante originário da matéria-prima.",
-        "D": "Reduz o prazo decadencial para setenta e duas horas."
+        "B": "Exime o alienante de qualquer obrigação, mantendo o negócio hígido e inalterado, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "C": "Transfere o dever de indenizar para o fabricante originário da matéria-prima, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "Reduz o prazo decadencial para setenta e duas horas, operando a perda definitiva do direito potestativo sem admissão de interrupção ou suspensão, ressalvada expressa previsão legal."
       },
       "gabarito": "A",
       "article": "Art. 443 do Código Civil",
@@ -1180,9 +1180,9 @@
       "enunciado": "(FCC / Magistratura) A característica preponderante que distingue a Ação Redibitória da Ação Estimatória (quanti minoris) é que:",
       "options": {
         "A": "A ação redibitória tem natureza desconstitutiva/resolutória (desfaz o contrato e devolve a coisa), ao passo que a ação estimatória tem natureza condenatória/modificativa (conserva o contrato e abate proporcionalmente o preço).",
-        "B": "A ação redibitória exige prova de dolo, enquanto a ação estimatória exige prova de coação moral.",
-        "C": "A ação estimatória só pode ser ajuizada se o bem for um imóvel rural.",
-        "D": "A ação redibitória prescreve em 20 anos pelo Código Civil."
+        "B": "A ação redibitória exige prova de dolo, enquanto a ação estimatória exige prova de coação moral, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "C": "A ação estimatória só pode ser ajuizada se o bem for um imóvel rural, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "A ação redibitória prescreve em 20 anos pelo Código Civil, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Arts. 441 e 442 do Código Civil",
@@ -1197,9 +1197,9 @@
       "enunciado": "(VUNESP / Magistratura) Considere as duas situações: I) João comprou um imóvel residencial e descobriu que as tubulações internas de esgoto estavam corroídas e rompidas (defeito oculto de engenharia); II) Maria comprou o lote 10 da quadra B, mas o vendedor entregou-lhe a posse do lote 10 da quadra C. Juridicamente, os casos tratam, respectivamente, de:",
       "options": {
         "A": "I - Vício redibitório (ação edilícia com prazo decadencial do art. 445); II - Entrega de coisa diversa / aliud pro alio (inadimplemento de obrigação de dar com prazo prescricional decenal).",
-        "B": "I - Aliud pro alio; II - Vício redibitório.",
-        "C": "Ambos tratam de evicção judicial.",
-        "D": "Ambos tratam de vícios redibitórios subordinados à decadência de 30 dias."
+        "B": "I - Aliud pro alio; II - Vício redibitório, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "C": "Ambos tratam de evicção judicial, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "Ambos tratam de vícios redibitórios subordinados à decadência de 30 dias, operando a perda definitiva do direito potestativo sem admissão de interrupção ou suspensão, ressalvada expressa previsão legal."
       },
       "gabarito": "A",
       "article": "Arts. 389, 441 e 445 do Código Civil",
@@ -1213,10 +1213,10 @@
       "difficulty": "Médio",
       "enunciado": "(CESPE / Notário) Se o adquirente de bem móvel já estava na posse da coisa na data em que celebrou a compra e venda definitiva (ex: locatário que decide comprar o bem alugado), o prazo para redibir ou pedir abatimento por vício redibitório ostensivo:",
       "options": {
-        "A": "Conta-se da alienação, reduzido à metade, ou seja, no prazo de 15 (quinze) dias (art. 445 do CC).",
-        "B": "Passa a ser de 60 dias úteis a contar da tradição originária da locação.",
-        "C": "Extingue-se de plano por renúncia tácita à garantia edilícia.",
-        "D": "Equipara-se ao prazo decenal de responsabilidade civil extracontratual."
+        "A": "Conta-se a partir da alienação definitiva do bem, porém o prazo legal de decadência fica reduzido exatamente à metade pelo Código Civil.",
+        "B": "Inicia-se normalmente da data em que o locatário ingressou na posse precária do imóvel, sem qualquer redução temporal sobre o prazo ânuo legal.",
+        "C": "Converte-se em prazo prescricional trienal comum de reparação civil, afastando-se a disciplina especial dos prazos das ações edilícias do Código.",
+        "D": "Extingue-se de pleno direito no momento da assinatura da compra e venda, presumindo a lei que a posse anterior convalidou os vícios ocultos."
       },
       "gabarito": "A",
       "article": "Art. 445 do Código Civil",
@@ -1231,9 +1231,9 @@
       "enunciado": "(OAB / FGV) A resolução do contrato por inadimplemento voluntário (culposo) imputável ao devedor acarreta:",
       "options": {
         "A": "A extinção da relação contratual com retorno das partes ao status quo ante, acrescida da condenação do devedor ao pagamento de perdas e danos (danos emergentes e lucros cessantes).",
-        "B": "Apenas o dever de desculpas formais sem qualquer repercussão indenizatória.",
-        "C": "A conversão forçada de todas as dívidas civis em obrigações naturais inexigíveis.",
-        "D": "A exoneração automática do devedor de todas as despesas processuais."
+        "B": "Apenas o dever de desculpas formais sem qualquer repercussão indenizatória, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "C": "A conversão forçada de todas as dívidas civis em obrigações naturais inexigíveis, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "A exoneração automática do devedor de todas as despesas processuais, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 475 do Código Civil",
@@ -1248,9 +1248,9 @@
       "enunciado": "(OAB / FGV) Nos contratos de execução continuada ou diferida, se a prestação de uma das partes se tornar excessivamente onerosa, com extrema vantagem para a outra, em virtude de acontecimentos extraordinários e imprevisíveis (Art. 478 do Código Civil):",
       "options": {
         "A": "Poderá o devedor pedir a resolução do contrato, podendo o réu evitar a resolução oferecendo-se a modificar equitativamente as condições do contrato (art. 479 do CC).",
-        "B": "O contrato torna-se nulo de pleno direito no plano da existência.",
-        "C": "O credor pode executar imediatamente a penhora de todos os bens de família do devedor.",
-        "D": "O juiz é proibido de acolher proposta de renegociação consensual das partes."
+        "B": "O contrato torna-se nulo de pleno direito no plano da existência, acarretando a nulidade absoluta originária do negócio com eficácia ex tunc e impossibilidade de ratificação superveniente.",
+        "C": "O credor pode executar imediatamente a penhora de todos os bens de família do devedor, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro.",
+        "D": "O juiz é proibido de acolher proposta de renegociação consensual das partes, de acordo com a interpretação restritiva e os princípios gerais aplicáveis às obrigações contratuais no direito civil brasileiro."
       },
       "gabarito": "A",
       "article": "Art. 478 e Art. 479 do Código Civil",

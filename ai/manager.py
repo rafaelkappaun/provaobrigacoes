@@ -70,10 +70,44 @@ class AIProviderManager:
 
         return config_from_db
 
+    @staticmethod
+    def _shuffle_and_balance_question(question: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Embaralha uniformemente as alternativas (A, B, C, D) e recalcula o gabarito.
+        Garante que a resposta correta tenha probabilidade idêntica (25%) em cada letra (A, B, C, D),
+        eliminando qualquer vício na alternativa A ou na primeira posição.
+        """
+        if not question or "options" not in question or "gabarito" not in question:
+            return question
+
+        q = dict(question)
+        options = dict(q.get("options", {}))
+        current_gabarito = str(q.get("gabarito", "")).strip().upper()
+
+        if not options or current_gabarito not in options:
+            return q
+
+        correct_text = options[current_gabarito]
+        texts = list(options.values())
+        random.shuffle(texts)
+
+        letters = ["A", "B", "C", "D", "E"][:len(texts)]
+        shuffled_options = {}
+        new_gabarito = current_gabarito
+
+        for letter, text in zip(letters, texts):
+            shuffled_options[letter] = text
+            if text == correct_text:
+                new_gabarito = letter
+
+        q["options"] = shuffled_options
+        q["gabarito"] = new_gabarito
+        return q
+
     @classmethod
     def generate_question(cls, subject: str, bank: str, difficulty: str,
                           db: Any = None, session_id: str = None, module: str = "contratos") -> Dict[str, Any]:
-        """Gera questão 100% offline: isolada por módulo (contratos ou multiportas)"""
+        """Gera questão 100% offline: isolada por módulo (contratos ou multiportas) com alternativas embaralhadas"""
         if not bank or bank not in BANKS:
             bank = random.choice(BANKS)
             
@@ -82,14 +116,14 @@ class AIProviderManager:
                 subject = random.choice(MULTIPORTAS_SUBJECTS)
             seed_q = cls._pick_from_seed_pool(subject, bank, db, session_id, pool=_multiportas_seed_pool)
             if seed_q:
-                return dict(seed_q)
+                return cls._shuffle_and_balance_question(seed_q)
             if _multiportas_seed_pool:
                 candidates = [q for q in _multiportas_seed_pool if q.get("subject") == subject]
                 if candidates:
                     q = dict(random.choice(candidates))
                     q["id"] = f"{q.get('id', 'multi')}_{random.randint(1000, 9999)}"
-                    return q
-            return generate_multiportas_question_offline(subject, bank, difficulty)
+                    return cls._shuffle_and_balance_question(q)
+            return cls._shuffle_and_balance_question(generate_multiportas_question_offline(subject, bank, difficulty))
             
         # Padrão: módulo de contratos
         if not subject or subject not in SUBJECTS:
@@ -98,7 +132,7 @@ class AIProviderManager:
         # 1. Tenta servir do seed pool (prioriza não respondidas na sessão)
         seed_q = cls._pick_from_seed_pool(subject, bank, db, session_id, pool=_seed_pool)
         if seed_q:
-            return dict(seed_q)
+            return cls._shuffle_and_balance_question(seed_q)
 
         # 2. Se já respondeu todas as sementes daquele assunto, reaproveita do seed pool com ID novo
         if _seed_pool:
@@ -106,10 +140,10 @@ class AIProviderManager:
             if candidates:
                 q = dict(random.choice(candidates))
                 q["id"] = f"{q.get('id', 'seed')}_{random.randint(1000, 9999)}"
-                return q
+                return cls._shuffle_and_balance_question(q)
 
         # 3. Fallback: gerador procedural offline dinâmico
-        return generate_question_offline(subject, bank, difficulty)
+        return cls._shuffle_and_balance_question(generate_question_offline(subject, bank, difficulty))
 
     @classmethod
     def _pick_from_seed_pool(cls, subject: str, bank: str,

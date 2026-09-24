@@ -164,7 +164,7 @@
         "A": "A autotutela caracteriza-se pela presença de um terceiro investido de poder para impor sua decisão soberana sobre os litigantes.",
         "B": "Na autocomposição, a solução do litígio é alcançada pelas próprias partes interessadas, seja diretamente ou com auxílio de terceiro facilitador neutro.",
         "C": "A heterocomposição restringe-se exclusivamente aos litígios decididos perante a Justiça do Trabalho, não se aplicando ao juízo arbitral.",
-        "D": "A autocomposição é vedada em conflitos que envolvam direitos patrimoniais disponíveis entre sujeitos capazes."
+        "D": "A autocomposição é vedada em conflitos que envolvam direitos patrimoniais disponíveis entre sujeitos capazes, assegurando o devido processo legal e a ampla defesa no tratamento adequado dos litígios no direito brasileiro contemporâneo."
       },
       "gabarito": "B",
       "article": "Teoria Geral dos Métodos de Resolução de Conflitos",
@@ -181,7 +181,7 @@
         "A": "A autotutela caracteriza-se pela presença de um terceiro investido de poder para impor sua decisão soberana sobre os litigantes.",
         "B": "Na autocomposição, a solução do litígio é alcançada pelas próprias partes interessadas, seja diretamente ou com auxílio de terceiro facilitador neutro.",
         "C": "A heterocomposição restringe-se exclusivamente aos litígios decididos perante a Justiça do Trabalho, não se aplicando ao juízo arbitral.",
-        "D": "A autocomposição é vedada em conflitos que envolvam direitos patrimoniais disponíveis entre sujeitos capazes."
+        "D": "A autocomposição é vedada em conflitos que envolvam direitos patrimoniais disponíveis entre sujeitos capazes, assegurando o devido processo legal e a ampla defesa no tratamento adequado dos litígios no direito brasileiro contemporâneo."
       },
       "gabarito": "B",
       "article": "Teoria Geral dos Métodos de Resolução de Conflitos",
@@ -198,7 +198,7 @@
         "A": "A autotutela caracteriza-se pela presença de um terceiro investido de poder para impor sua decisão soberana sobre os litigantes.",
         "B": "Na autocomposição, a solução do litígio é alcançada pelas próprias partes interessadas, seja diretamente ou com auxílio de terceiro facilitador neutro.",
         "C": "A heterocomposição restringe-se exclusivamente aos litígios decididos perante a Justiça do Trabalho, não se aplicando ao juízo arbitral.",
-        "D": "A autocomposição é vedada em conflitos que envolvam direitos patrimoniais disponíveis entre sujeitos capazes."
+        "D": "A autocomposição é vedada em conflitos que envolvam direitos patrimoniais disponíveis entre sujeitos capazes, assegurando o devido processo legal e a ampla defesa no tratamento adequado dos litígios no direito brasileiro contemporâneo."
       },
       "gabarito": "B",
       "article": "Teoria Geral dos Métodos de Resolução de Conflitos",
@@ -365,10 +365,10 @@
       "difficulty": "Médio",
       "enunciado": "(OAB) Analise as seguintes hipóteses práticas de conflito:\nI. Disputa de guarda de filhos menores entre ex-cônjuges com histórico de mágoas e desgaste afetivo acumulado.\nII. Invasão violenta e repentina de fazenda rural, com reação imediata e comedida do possuidor para restituir a posse.\nIII. Controvérsia técnica de engenharia sobre cálculo de royalties entre duas grandes multinacionais de energia.\nDe acordo com a teoria da adequação dos métodos de resolução de conflitos, os mecanismos mais adequados para os casos I, II e III são, respectivamente:",
       "options": {
-        "A": "I - Arbitragem; II - Conciliação; III - Autotutela.",
+        "A": "I - Arbitragem compulsória de família; II - Conciliação prévia em juizado especial; III - Autotutela judicial repressiva privativa do Estado.",
         "B": "I - Mediação; II - Autotutela (desforço imediato); III - Arbitragem.",
-        "C": "I - Conciliação; II - Mediação; III - Jurisdição estatal obrigatória.",
-        "D": "I - Autotutela; II - Jurisdição estatal; III - Mediação comunitária."
+        "C": "I - Conciliação direta sem vínculo continuado; II - Mediação comunitária protelatória; III - Jurisdição estatal contenciosa obrigatória perante vara cível.",
+        "D": "I - Autotutela das partes mediante coação legítima; II - Jurisdição estatal privativa de urgência; III - Mediação informal sem força executiva vinculante."
       },
       "gabarito": "B",
       "article": "Art. 165 CPC/2015, Art. 1.210, §1º do CC e Lei 9.307/1996",
@@ -382,10 +382,10 @@
       "difficulty": "Médio",
       "enunciado": "(FGV) Analise as seguintes hipóteses práticas de conflito:\nI. Disputa de guarda de filhos menores entre ex-cônjuges com histórico de mágoas e desgaste afetivo acumulado.\nII. Invasão violenta e repentina de fazenda rural, com reação imediata e comedida do possuidor para restituir a posse.\nIII. Controvérsia técnica de engenharia sobre cálculo de royalties entre duas grandes multinacionais de energia.\nDe acordo com a teoria da adequação dos métodos de resolução de conflitos, os mecanismos mais adequados para os casos I, II e III são, respectivamente:",
       "options": {
-        "A": "I - Arbitragem; II - Conciliação; III - Autotutela.",
+        "A": "I - Arbitragem compulsória de família; II - Conciliação prévia em juizado especial; III - Autotutela judicial repressiva privativa do Estado.",
         "B": "I - Mediação; II - Autotutela (desforço imediato); III - Arbitragem.",
-        "C": "I - Conciliação; II - Mediação; III - Jurisdição estatal obrigatória.",
-        "D": "I - Autotutela; II - Jurisdição estatal; III - Mediação comunitária."
+        "C": "I - Conciliação direta sem vínculo continuado; II - Mediação comunitária protelatória; III - Jurisdição estatal contenciosa obrigatória perante vara cível.",
+        "D": "I - Autotutela das partes mediante coação legítima; II - Jurisdição estatal privativa de urgência; III - Mediação informal sem força executiva vinculante."
       },
       "gabarito": "B",
       "article": "Art. 165 CPC/2015, Art. 1.210, §1º do CC e Lei 9.307/1996",
@@ -399,10 +399,10 @@
       "difficulty": "Médio",
       "enunciado": "(CESPE) Analise as seguintes hipóteses práticas de conflito:\nI. Disputa de guarda de filhos menores entre ex-cônjuges com histórico de mágoas e desgaste afetivo acumulado.\nII. Invasão violenta e repentina de fazenda rural, com reação imediata e comedida do possuidor para restituir a posse.\nIII. Controvérsia técnica de engenharia sobre cálculo de royalties entre duas grandes multinacionais de energia.\nDe acordo com a teoria da adequação dos métodos de resolução de conflitos, os mecanismos mais adequados para os casos I, II e III são, respectivamente:",
       "options": {
-        "A": "I - Arbitragem; II - Conciliação; III - Autotutela.",
+        "A": "I - Arbitragem compulsória de família; II - Conciliação prévia em juizado especial; III - Autotutela judicial repressiva privativa do Estado.",
         "B": "I - Mediação; II - Autotutela (desforço imediato); III - Arbitragem.",
-        "C": "I - Conciliação; II - Mediação; III - Jurisdição estatal obrigatória.",
-        "D": "I - Autotutela; II - Jurisdição estatal; III - Mediação comunitária."
+        "C": "I - Conciliação direta sem vínculo continuado; II - Mediação comunitária protelatória; III - Jurisdição estatal contenciosa obrigatória perante vara cível.",
+        "D": "I - Autotutela das partes mediante coação legítima; II - Jurisdição estatal privativa de urgência; III - Mediação informal sem força executiva vinculante."
       },
       "gabarito": "B",
       "article": "Art. 165 CPC/2015, Art. 1.210, §1º do CC e Lei 9.307/1996",
@@ -569,7 +569,7 @@
       "difficulty": "Médio",
       "enunciado": "(OAB) A expressão 'Tribunal Multiportas' (Multi-door Courthouse), formulada pelo jurista Frank Sander na Conferência de Pound (1976), fundamenta a política judiciária contemporânea adotada pelo CPC/2015 e pelo CNJ. O objetivo central deste modelo é:",
       "options": {
-        "A": "Privatizar integralmente o Poder Judiciário, extinguindo as varas cíveis em prol de empresas de cobrança.",
+        "A": "Privatizar integralmente o Poder Judiciário, extinguindo as varas cíveis em prol de empresas de cobrança, assegurando o devido processo legal e a ampla defesa no tratamento adequado dos litígios no direito brasileiro contemporâneo.",
         "B": "Estruturar o Judiciário como um centro de justiça abrangente, que analisa a natureza de cada conflito e o encaminha para a via de solução mais adequada (porta mais adequada).",
         "C": "Impedir que qualquer litígio patrimonial tenha acesso a um juiz togado antes de decorridos 3 anos de tentativa de conciliação.",
         "D": "Exigir pagamento de taxas adicionais para partes que optem por conciliação antes do ajuizamento da petição inicial."
@@ -586,7 +586,7 @@
       "difficulty": "Médio",
       "enunciado": "(FGV) A expressão 'Tribunal Multiportas' (Multi-door Courthouse), formulada pelo jurista Frank Sander na Conferência de Pound (1976), fundamenta a política judiciária contemporânea adotada pelo CPC/2015 e pelo CNJ. O objetivo central deste modelo é:",
       "options": {
-        "A": "Privatizar integralmente o Poder Judiciário, extinguindo as varas cíveis em prol de empresas de cobrança.",
+        "A": "Privatizar integralmente o Poder Judiciário, extinguindo as varas cíveis em prol de empresas de cobrança, assegurando o devido processo legal e a ampla defesa no tratamento adequado dos litígios no direito brasileiro contemporâneo.",
         "B": "Estruturar o Judiciário como um centro de justiça abrangente, que analisa a natureza de cada conflito e o encaminha para a via de solução mais adequada (porta mais adequada).",
         "C": "Impedir que qualquer litígio patrimonial tenha acesso a um juiz togado antes de decorridos 3 anos de tentativa de conciliação.",
         "D": "Exigir pagamento de taxas adicionais para partes que optem por conciliação antes do ajuizamento da petição inicial."
@@ -603,7 +603,7 @@
       "difficulty": "Médio",
       "enunciado": "(CESPE) A expressão 'Tribunal Multiportas' (Multi-door Courthouse), formulada pelo jurista Frank Sander na Conferência de Pound (1976), fundamenta a política judiciária contemporânea adotada pelo CPC/2015 e pelo CNJ. O objetivo central deste modelo é:",
       "options": {
-        "A": "Privatizar integralmente o Poder Judiciário, extinguindo as varas cíveis em prol de empresas de cobrança.",
+        "A": "Privatizar integralmente o Poder Judiciário, extinguindo as varas cíveis em prol de empresas de cobrança, assegurando o devido processo legal e a ampla defesa no tratamento adequado dos litígios no direito brasileiro contemporâneo.",
         "B": "Estruturar o Judiciário como um centro de justiça abrangente, que analisa a natureza de cada conflito e o encaminha para a via de solução mais adequada (porta mais adequada).",
         "C": "Impedir que qualquer litígio patrimonial tenha acesso a um juiz togado antes de decorridos 3 anos de tentativa de conciliação.",
         "D": "Exigir pagamento de taxas adicionais para partes que optem por conciliação antes do ajuizamento da petição inicial."
@@ -620,7 +620,7 @@
       "difficulty": "Médio",
       "enunciado": "(OAB) Os Juizados Especiais representam um dos mais expressivos instrumentos de democratização do acesso à justiça no Brasil. Sobre a trajetória legislativa e os princípios fundamentais da Lei nº 9.099/1995 (Art. 2º), assinale a afirmativa correta:",
       "options": {
-        "A": "Os Juizados Especiais foram criados pelo CPC de 2015, revogando o modelo da Lei nº 9.099/1995.",
+        "A": "Os Juizados Especiais foram criados pelo CPC de 2015, revogando o modelo da Lei nº 9.099/1995, regidos pelos critérios da oralidade, simplicidade, informalidade, economia processual e celeridade instituídos pela Lei 9.099/1995.",
         "B": "O processo perante os Juizados Especiais orientar-se-á pelos critérios da oralidade, simplicidade, informalidade, economia processual e celeridade, buscando sempre que possível a conciliação ou a transação.",
         "C": "A Lei nº 9.099/1995 veda a realização de audiência de conciliação nas causas cujo valor ultrapasse 5 salários mínimos.",
         "D": "A Constituição Federal de 1988 vedou expressamente a criação de juizados especiais providos por juízes leigos."
@@ -637,7 +637,7 @@
       "difficulty": "Médio",
       "enunciado": "(FGV) Os Juizados Especiais representam um dos mais expressivos instrumentos de democratização do acesso à justiça no Brasil. Sobre a trajetória legislativa e os princípios fundamentais da Lei nº 9.099/1995 (Art. 2º), assinale a afirmativa correta:",
       "options": {
-        "A": "Os Juizados Especiais foram criados pelo CPC de 2015, revogando o modelo da Lei nº 9.099/1995.",
+        "A": "Os Juizados Especiais foram criados pelo CPC de 2015, revogando o modelo da Lei nº 9.099/1995, regidos pelos critérios da oralidade, simplicidade, informalidade, economia processual e celeridade instituídos pela Lei 9.099/1995.",
         "B": "O processo perante os Juizados Especiais orientar-se-á pelos critérios da oralidade, simplicidade, informalidade, economia processual e celeridade, buscando sempre que possível a conciliação ou a transação.",
         "C": "A Lei nº 9.099/1995 veda a realização de audiência de conciliação nas causas cujo valor ultrapasse 5 salários mínimos.",
         "D": "A Constituição Federal de 1988 vedou expressamente a criação de juizados especiais providos por juízes leigos."
@@ -654,7 +654,7 @@
       "difficulty": "Médio",
       "enunciado": "(CESPE) Os Juizados Especiais representam um dos mais expressivos instrumentos de democratização do acesso à justiça no Brasil. Sobre a trajetória legislativa e os princípios fundamentais da Lei nº 9.099/1995 (Art. 2º), assinale a afirmativa correta:",
       "options": {
-        "A": "Os Juizados Especiais foram criados pelo CPC de 2015, revogando o modelo da Lei nº 9.099/1995.",
+        "A": "Os Juizados Especiais foram criados pelo CPC de 2015, revogando o modelo da Lei nº 9.099/1995, regidos pelos critérios da oralidade, simplicidade, informalidade, economia processual e celeridade instituídos pela Lei 9.099/1995.",
         "B": "O processo perante os Juizados Especiais orientar-se-á pelos critérios da oralidade, simplicidade, informalidade, economia processual e celeridade, buscando sempre que possível a conciliação ou a transação.",
         "C": "A Lei nº 9.099/1995 veda a realização de audiência de conciliação nas causas cujo valor ultrapasse 5 salários mínimos.",
         "D": "A Constituição Federal de 1988 vedou expressamente a criação de juizados especiais providos por juízes leigos."

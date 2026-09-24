@@ -244,10 +244,10 @@ def generate_multiportas_question_offline(subject: str, bank: str = "FGV", diffi
             f"De acordo com a teoria da adequação dos métodos de resolução de conflitos, os mecanismos mais adequados para os casos I, II e III são, respectivamente:"
         )
         options = {
-            "A": "I - Arbitragem; II - Conciliação; III - Autotutela.",
-            "B": "I - Mediação; II - Autotutela (desforço imediato); III - Arbitragem.",
-            "C": "I - Conciliação; II - Mediação; III - Jurisdição estatal obrigatória.",
-            "D": "I - Autotutela; II - Jurisdição estatal; III - Mediação comunitária."
+            "A": "I - Arbitragem compulsória de família; II - Conciliação prévia em juizado especial cível; III - Autotutela judicial de urgência privativa do Estado.",
+            "B": "I - Mediação (foco nas relações continuadas); II - Autotutela lícita (desforço possessório imediato e proporcional); III - Arbitragem (expertise técnica e sigilo).",
+            "C": "I - Conciliação direta sem vínculo continuado; II - Mediação comunitária protelatória; III - Jurisdição estatal contenciosa obrigatória sem juízo arbitral.",
+            "D": "I - Autotutela das partes mediante coação legítima; II - Jurisdição estatal privativa de urgência; III - Mediação informal sem força executiva vinculante."
         }
         gabarito = "B"
         article = "Art. 165 CPC/2015, Art. 1.210, §1º do CC e Lei 9.307/1996"
@@ -297,10 +297,10 @@ def generate_multiportas_question_offline(subject: str, bank: str = "FGV", diffi
             f"Assinale a alternativa que identifica CORRETAMENTE a Terceira Onda Renovatória:"
         )
         options = {
-            "A": "Criação de defensorias públicas para a assistência judiciária dos necessitados.",
-            "B": "Tutela coletiva de direitos difusos e coletivos por meio de ação civil pública.",
-            "C": "Enfoque no acesso à representação adequada e no estímulo aos métodos alternativos/consensuais de resolução de conflitos (ADRs).",
-            "D": "Digitalização completa dos autos e implantação do processo judicial eletrônico unificado."
+            "A": "Primeira Onda: voltada precipuamente à criação de defensorias públicas para garantir assistência judiciária integral e gratuita aos necessitados.",
+            "B": "Segunda Onda: orientada à representação processual dos interesses difusos e coletivos, materializada pela disciplina da ação civil pública.",
+            "C": "Terceira Onda: centrada no novo enfoque do acesso à ordem jurídica justa através do estímulo aos métodos adequados de resolução de litígios (ADRs).",
+            "D": "Quarta Onda: direcionada exclusivamente à virtualização e à informatização integral da tramitação do processo judicial eletrônico."
         }
         gabarito = "C"
         article = "Doutrina de Acesso à Justiça (Mauro Cappelletti e Bryant Garth)"
@@ -314,10 +314,10 @@ def generate_multiportas_question_offline(subject: str, bank: str = "FGV", diffi
             f"fundamenta a política judiciária contemporânea adotada pelo CPC/2015 e pelo CNJ. O objetivo central deste modelo é:"
         )
         options = {
-            "A": "Privatizar integralmente o Poder Judiciário, extinguindo as varas cíveis em prol de empresas de cobrança.",
-            "B": "Estruturar o Judiciário como um centro de justiça abrangente, que analisa a natureza de cada conflito e o encaminha para a via de solução mais adequada (porta mais adequada).",
-            "C": "Impedir que qualquer litígio patrimonial tenha acesso a um juiz togado antes de decorridos 3 anos de tentativa de conciliação.",
-            "D": "Exigir pagamento de taxas adicionais para partes que optem por conciliação antes do ajuizamento da petição inicial."
+            "A": "Privatizar integralmente o Poder Judiciário estatal, transferindo as demandas patrimoniais para escritórios privados de cobrança.",
+            "B": "Estruturar o Judiciário como um centro integrador de justiça, que analisa a controvérsia e a direciona para a via de solução mais adequada e célere.",
+            "C": "Impedir que qualquer litígio cível tenha acesso à decisão de um juiz togado antes de decorridos três anos de tentativas infrutíferas de acordo.",
+            "D": "Impor cobrança de custas em dobro contra o autor que ajuizar ação judicial sem prévia tentativa comprovada de mediação extrajudicial."
         }
         gabarito = "B"
         article = "Conferência de Pound (Frank Sander, 1976) e Res. CNJ nº 125/2010"
@@ -331,10 +331,10 @@ def generate_multiportas_question_offline(subject: str, bank: str = "FGV", diffi
             f"Sobre a trajetória legislativa e os princípios fundamentais da Lei nº 9.099/1995 (Art. 2º), assinale a afirmativa correta:"
         )
         options = {
-            "A": "Os Juizados Especiais foram criados pelo CPC de 2015, revogando o modelo da Lei nº 9.099/1995.",
-            "B": "O processo perante os Juizados Especiais orientar-se-á pelos critérios da oralidade, simplicidade, informalidade, economia processual e celeridade, buscando sempre que possível a conciliação ou a transação.",
-            "C": "A Lei nº 9.099/1995 veda a realização de audiência de conciliação nas causas cujo valor ultrapasse 5 salários mínimos.",
-            "D": "A Constituição Federal de 1988 vedou expressamente a criação de juizados especiais providos por juízes leigos."
+            "A": "Os Juizados Especiais foram criados pelo CPC de 2015, o qual extinguiu integralmente a sistemática autônoma da Lei nº 9.099/1995.",
+            "B": "O processo perante os Juizados orienta-se pela oralidade, simplicidade, informalidade, economia processual e celeridade, buscando a conciliação.",
+            "C": "A Lei nº 9.099/1995 veda a realização de audiência conciliatória nas causas cujo valor controvertido ultrapasse dez salários mínimos.",
+            "D": "A Constituição Federal de 1988 vedou a atuação de juízes leigos e conciliadores, exigindo presença privativa de magistrados togados vitalícios."
         }
         gabarito = "B"
         article = "Art. 2º da Lei nº 9.099/1995 e Art. 98, I da CF/88"
@@ -349,15 +349,31 @@ def generate_multiportas_question_offline(subject: str, bank: str = "FGV", diffi
             f"A esse respeito, assinale a opção correta:"
         )
         options = {
-            "A": "A cláusula compromissória cheia obriga as partes a submeterem suas controvérsias ao juízo arbitral, ensejando a extinção da ação judicial sem resolução de mérito caso uma das partes acione o Judiciário.",
-            "B": "O STF declarou inconstitucional a Lei nº 9.307/1996 por considerar que o juízo arbitral viola o princípio da inafastabilidade da jurisdição.",
-            "C": "A arbitragem no Brasil é permitida para qualquer matéria, inclusive crimes hediondos e estado de filiação civil.",
-            "D": "A Lei nº 13.129/2015 revogou a possibilidade de órgãos da Administração Pública utilizarem a arbitragem para dirimir litígios sobre contratos administrativos."
+            "A": "A convenção de arbitragem possui eficácia vinculante negativa, obrigando o juiz togado a extinguir o processo sem julgamento do mérito.",
+            "B": "O STF declarou inconstitucional a Lei nº 9.307/1996 por entender que a decisão arbitral fere o princípio da inafastabilidade da jurisdição.",
+            "C": "A arbitragem no Brasil é permitida para dirimir quaisquer espécies de controvérsias, inclusive crimes graves e estado de filiação civil.",
+            "D": "A Lei nº 13.129/2015 revogou a possibilidade de entes da Administração Pública direta utilizarem a arbitragem em contratos administrativos."
         }
         gabarito = "A"
         article = "Art. 485, VII do CPC/2015 e Lei nº 9.307/1996 (AgRg na SE 5.206/STF)"
         legal_basis = "A convenção de arbitragem afasta a jurisdição estatal, ensejando a extinção do processo sem resolução de mérito pelo juiz togado (art. 485, VII, CPC)."
         explanation = "Com a constitucionalidade afirmada pelo STF no AgRg na SE 5.206, a convenção de arbitragem possui eficácia vinculante negativa, impedindo o julgamento da causa pelo Judiciário estatal."
+
+    # Embaralha alternativas mantendo consistência do gabarito
+    keys = ["A", "B", "C", "D"]
+    correct_text = options[gabarito]
+    other_texts = [options[k] for k in keys if k != gabarito]
+    random.shuffle(other_texts)
+
+    new_correct_key = random.choice(keys)
+    new_options = {}
+    other_idx = 0
+    for k in keys:
+        if k == new_correct_key:
+            new_options[k] = correct_text
+        else:
+            new_options[k] = other_texts[other_idx]
+            other_idx += 1
 
     return {
         "id": f"q_multi_{uuid.uuid4().hex[:12]}",
@@ -365,8 +381,8 @@ def generate_multiportas_question_offline(subject: str, bank: str = "FGV", diffi
         "bank": bank,
         "difficulty": difficulty,
         "enunciado": enunciado,
-        "options": options,
-        "gabarito": gabarito,
+        "options": new_options,
+        "gabarito": new_correct_key,
         "article": article,
         "legal_basis": legal_basis,
         "explanation": explanation
