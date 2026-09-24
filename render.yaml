@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: jus-obrigacoes-master
+    name: jus-provas
     env: docker
     region: ohio
     plan: free
@@ -8,9 +8,9 @@ services:
       - key: DATABASE_URL
         sync: false
       - key: CORS_ORIGINS
-        value: https://jus-obrigacoes-master.onrender.com
+        value: "*"
       - key: VITE_API_BASE
-        value: https://jus-obrigacoes-master.onrender.com/api
+        value: /api
       - key: GROQ_API_KEY
         sync: false
       - key: OPENROUTER_API_KEY

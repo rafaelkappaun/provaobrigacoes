@@ -39,7 +39,7 @@ logger = logging.getLogger("backend")
 Base.metadata.create_all(bind=engine)
 run_migrations()
 
-app = FastAPI(title="JUS CONTRATOS MASTER - API Backend")
+app = FastAPI(title="JUS PROVAS - API Backend")
 
 # CORS: em produção, configure CORS_ORIGINS com os domínios permitidos (separados por vírgula)
 cors_origins_env = os.getenv("CORS_ORIGINS", "")
@@ -111,7 +111,7 @@ class ProfessorChatPayload(BaseModel):
 
 @app.get("/health")
 def health_check():
-    return {"status": "ok", "service": "jus-contratos-master"}
+    return {"status": "ok", "service": "jus-provas"}
 
 @app.get("/api/dashboard")
 def get_dashboard(db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
