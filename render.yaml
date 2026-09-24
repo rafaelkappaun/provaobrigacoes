@@ -12,7 +12,7 @@ services:
       - key: VITE_API_BASE
         value: /api
       - key: ACTIVE_PROVIDER
-        value: deepseek
+        value: offline
       - key: DEEPSEEK_API_KEY
         sync: false
       - key: GROQ_API_KEY

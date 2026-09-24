@@ -1,6 +1,32 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { ArrowRight, HelpCircle, AlertTriangle, CheckCircle, Flame, Send, Loader2 } from 'lucide-react';
-import { apiFetch } from '../api';
+import { ArrowRight, CheckCircle2, XCircle, Clock, Filter, User, Award, BookOpen, AlertCircle } from 'lucide-react';
+import { apiFetch, saveLocalAnswer, getCurrentProfile } from '../api';
+
+const CONTRATOS_SUBJECTS = [
+  "Todos os Temas (Automático)",
+  "Planos do Negócio Jurídico (Escada Ponteana)",
+  "Princípios do Direito Contratual",
+  "Boa-fé Objetiva e Figuras Parcelares",
+  "Interpretação dos Contratos no Direito Brasileiro",
+  "Classificação dos Contratos",
+  "Etapas de Formação do Contrato",
+  "Estipulação em Favor de Terceiro",
+  "Promessa de Fato de Terceiro",
+  "Contratos Aleatórios - Conceito e Espécies",
+  "Contrato Aleatório: Emptio Spei",
+  "Contrato Aleatório: Emptio Rei Speratae",
+  "Contrato Aleatório: Coisas Existentes Expostas a Risco",
+  "Contrato Preliminar / Promessa de Contratar",
+  "Contrato com Pessoa a Declarar",
+  "Contrato com Pessoa a Declarar vs. Outros Contratos",
+  "Vícios Redibitórios - Conceito e Requisitos",
+  "Efeitos da Boa-fé e Má-fé do Alienante no Vício",
+  "Ações Edilícias (Redibitória e Estimatória/Quanti Minoris)",
+  "Vício Redibitório vs. Entrega de Coisa Diversa (Aliud Pro Alio)",
+  "Prazos Decadenciais dos Vícios Redibitórios",
+  "Extinção dos Contratos - Resolução e Cláusula Resolutiva",
+  "Exceção do Contrato Não Cumprido e Onerosidade Excessiva"
+];
 
 interface Question {
   id: string;
@@ -23,30 +49,10 @@ interface ProfessorFeedback {
   legal_basis: string;
 }
 
-interface FlashcardReinforce {
-  front: string;
-  back: string;
-}
-
-interface Reinforcement {
-  type: 'reforco_normal' | 'modo_intensivo';
-  summary_30s?: string;
-  summary_2min?: string;
-  summary_5min?: string;
-  summary?: string;
-  jurisprudence?: string;
-  flashcards: FlashcardReinforce[];
-  mind_map?: string;
-  intensive_questions?: Question[];
-  message?: string;
-}
-
 interface AnswerResponse {
   is_correct: boolean;
   is_insecure: boolean;
   feedback: ProfessorFeedback;
-  new_intensive_triggered: boolean;
-  reinforcement: Reinforcement | null;
   topic_status: string;
   topic_success_rate: number;
 }
@@ -57,32 +63,20 @@ interface QuestionSessionProps {
   onSessionFinished?: () => void;
 }
 
-const BANKS = ["FGV", "OAB", "CESPE", "FCC", "VUNESP", "AOCP", "FMP", "Consulplan"];
-const pickRandomBank = () => BANKS[Math.floor(Math.random() * BANKS.length)];
-
 export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, subject, onSessionFinished }) => {
+  const [currentSubject, setCurrentSubject] = useState<string>(subject || '');
   const [question, setQuestion] = useState<Question | null>(null);
   const [selectedOption, setSelectedOption] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [checking, setChecking] = useState<boolean>(false);
-  
-  // Resposta e Feedbacks
   const [response, setResponse] = useState<AnswerResponse | null>(null);
-  const [activeReinforceTab, setActiveReinforceTab] = useState<'summary' | 'summary_2min' | 'summary_5min' | 'flashcards' | 'mindmap' | 'questions'>('summary');
-  const [flippedCards, setFlippedCards] = useState<{ [key: number]: boolean }>({});
-  
   const [errorMessage, setErrorMessage] = useState<string>('');
-
-  // Chat com Professor
-  const [professorQuery, setProfessorQuery] = useState<string>('');
-  const [professorResponse, setProfessorResponse] = useState<string>('');
-  const [professorLoading, setProfessorLoading] = useState<boolean>(false);
   
-  // Trava anti-duplo clique
+  // Trava anti-duplo envio
   const submittingRef = useRef<boolean>(false);
   const mountedRef = useRef<boolean>(true);
   
-  // Cronômetro e métricas
+  // Cronômetro da questão
   const [seconds, setSeconds] = useState<number>(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const startTimeRef = useRef<number>(0);
@@ -103,56 +97,80 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, subje
     }, 1000);
   }, [stopTimer]);
 
-  const fetchNextQuestion = useCallback(async () => {
-    setLoading(true);
-    setResponse(null);
-    setSelectedOption('');
-    setProfessorResponse('');
-    setProfessorQuery('');
-    setFlippedCards({});
-    setActiveReinforceTab('summary');
-    setErrorMessage('');
-    
-    const randomBank = pickRandomBank();
-    const subjectParam = subject ? `&subject=${encodeURIComponent(subject)}` : '';
-    try {
-      const res = await apiFetch(apiBase, `/question/next?bank=${randomBank}${subjectParam}`);
-      if (res.ok) {
-        const data = await res.json();
-        setQuestion(data);
-        if (mountedRef.current) startTimer();
-      } else {
-        const errData = await res.json().catch(() => ({ detail: `Erro HTTP ${res.status}` }));
-        setErrorMessage(errData.detail || `Erro ${res.status} ao carregar questão`);
-      }
-    } catch (e) {
-      console.error("Erro ao carregar questão:", e);
-      setErrorMessage("Erro de conexão ao carregar questão. Verifique o servidor.");
-    } finally {
-      setLoading(false);
-    }
-  }, [apiBase, subject, startTimer]);
-
-  // Carrega questão ao iniciar
   useEffect(() => {
     mountedRef.current = true;
-    Promise.resolve().then(() => {
-      fetchNextQuestion();
-    });
     return () => {
       mountedRef.current = false;
       stopTimer();
     };
-  }, [fetchNextQuestion, stopTimer]);
+  }, [stopTimer]);
 
-  const handleSubmit = async () => {
-    if (!question || !selectedOption || checking || submittingRef.current) return;
-    submittingRef.current = true;
-    
-    setChecking(true);
+  // Se o prop subject mudar externamente, atualiza o assunto
+  useEffect(() => {
+    if (subject !== undefined) {
+      setCurrentSubject(subject);
+    }
+  }, [subject]);
+
+  const fetchNextQuestion = useCallback(async (forcedSubject?: string) => {
     stopTimer();
-    const responseTime = (Date.now() - startTimeRef.current) / 1000;
-    
+    setLoading(true);
+    setErrorMessage('');
+    setSelectedOption('');
+    setResponse(null);
+
+    const targetSub = forcedSubject !== undefined ? forcedSubject : currentSubject;
+    let url = `/question/next`;
+    const params = new URLSearchParams();
+    if (targetSub && targetSub !== "Todos os Temas (Automático)") {
+      params.append('subject', targetSub);
+    }
+    const queryString = params.toString();
+    if (queryString) {
+      url += `?${queryString}`;
+    }
+
+    try {
+      const res = await apiFetch(apiBase, url);
+      if (!mountedRef.current) return;
+      if (res.ok) {
+        const data = await res.json();
+        setQuestion(data);
+        startTimer();
+      } else {
+        setErrorMessage(`Não foi possível carregar a questão (${res.status}). Tente novamente.`);
+      }
+    } catch (e) {
+      if (!mountedRef.current) return;
+      console.error(e);
+      setErrorMessage("Erro de conexão ao carregar questão. Verifique se o servidor está ativo.");
+    } finally {
+      if (mountedRef.current) {
+        setLoading(false);
+      }
+    }
+  }, [apiBase, currentSubject, startTimer, stopTimer]);
+
+  // Carrega primeira questão ao montar ou quando o assunto muda
+  useEffect(() => {
+    fetchNextQuestion();
+  }, [fetchNextQuestion]);
+
+  const handleSelectOption = (key: string) => {
+    if (response || checking) return; // Não altera após responder
+    setSelectedOption(key);
+  };
+
+  const handleSubmitAnswer = async () => {
+    if (!selectedOption || !question || checking || response) return;
+    if (submittingRef.current) return;
+    submittingRef.current = true;
+
+    stopTimer();
+    const responseTime = Math.max(1, (Date.now() - startTimeRef.current) / 1000);
+    setChecking(true);
+    setErrorMessage('');
+
     try {
       const res = await apiFetch(apiBase, '/question/answer', {
         method: 'POST',
@@ -163,448 +181,301 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, subje
           response_time: responseTime
         })
       });
-      
+
+      if (!mountedRef.current) return;
+
       if (res.ok) {
-        const data = await res.json();
+        const data: AnswerResponse = await res.json();
         setResponse(data);
-        setErrorMessage('');
+
+        // Salva histórico no armazenamento local
+        saveLocalAnswer({
+          questionId: question.id,
+          subject: question.subject,
+          bank: question.bank,
+          difficulty: question.difficulty,
+          selectedOption: selectedOption,
+          gabarito: question.gabarito,
+          isCorrect: data.is_correct,
+          responseTime: responseTime,
+          enunciado: question.enunciado?.slice(0, 150)
+        });
       } else if (res.status === 409) {
-        // Questão já respondida (duplo envio ou race condition) → carrega próxima
         setErrorMessage('Esta questão já foi respondida anteriormente. Carregando próxima...');
-        setTimeout(() => fetchNextQuestion(), 1500);
+        setTimeout(() => fetchNextQuestion(), 1200);
       } else {
         const errData = await res.json().catch(() => ({ detail: `Erro HTTP ${res.status}` }));
-        setErrorMessage(errData.detail || `Erro ${res.status} ao verificar resposta`);
+        setErrorMessage(errData.detail || `Erro ${res.status} ao verificar resposta.`);
       }
     } catch (e) {
+      if (!mountedRef.current) return;
       console.error("Erro ao verificar resposta:", e);
-      setErrorMessage("Erro de conexão ao verificar resposta. Verifique o servidor.");
+      setErrorMessage("Erro de conexão ao verificar resposta.");
     } finally {
-      setChecking(false);
-      submittingRef.current = false;
-    }
-  };
-
-
-  const handleAskProfessor = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!professorQuery.trim() || !question || professorLoading) return;
-    
-    setProfessorLoading(true);
-    setProfessorResponse('');
-    
-    try {
-      const res = await apiFetch(apiBase, '/ai/professor/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          context: question,
-          query: professorQuery
-        })
-      });
-      
-      if (res.ok) {
-        const data = await res.json();
-        setProfessorResponse(data.response);
-      } else {
-        setProfessorResponse("Desculpe, ocorreu um erro ao contatar o professor virtual.");
+      if (mountedRef.current) {
+        setChecking(false);
+        submittingRef.current = false;
       }
-    } catch (e) {
-      console.error(e);
-      setProfessorResponse("Desculpe, ocorreu um erro de conexão com o professor virtual.");
-    } finally {
-      setProfessorLoading(false);
     }
   };
 
-  const toggleCard = (index: number) => {
-    setFlippedCards(prev => ({
-      ...prev,
-      [index]: !prev[index]
-    }));
+  const formatTimer = (totalSecs: number) => {
+    const mins = Math.floor(totalSecs / 60);
+    const secs = totalSecs % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
   return (
-    <div className="max-w-3xl mx-auto space-y-6 pb-24">
-      {/* Barra superior com botão de voltar e indicador de assunto */}
-      <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-3">
-        <button 
-          onClick={onSessionFinished} 
-          className="px-3 py-1 bg-slate-950 hover:bg-slate-800 border border-slate-850 rounded-lg text-xs font-bold text-slate-400 hover:text-slate-200 transition-all"
-        >
-          ← Painel
-        </button>
-        {subject && (
-          <span className="text-xs font-bold text-indigo-400 bg-indigo-950/40 px-3 py-1.5 rounded-lg border border-indigo-800/40 truncate max-w-[250px]">
-            📚 {subject}
-          </span>
-        )}
+    <div className="max-w-3xl mx-auto space-y-6 pb-20 animate-fade-in">
+      {/* BARRA SUPERIOR: Voltar, Usuário, Filtro de Tema e Cronômetro */}
+      <div className="p-3.5 rounded-2xl bg-slate-900 border border-slate-800 flex flex-wrap items-center justify-between gap-3 shadow-md">
+        <div className="flex items-center gap-2">
+          {onSessionFinished && (
+            <button 
+              onClick={onSessionFinished} 
+              className="px-3 py-1.5 bg-slate-950 hover:bg-slate-800 border border-slate-800 rounded-lg text-xs font-bold text-slate-300 transition-all flex items-center gap-1"
+            >
+              ← Painel
+            </button>
+          )}
+          <div className="flex items-center gap-1.5 px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800 text-[11px] font-bold text-slate-400">
+            <User size={13} className="text-indigo-400" />
+            <span className="text-white truncate max-w-[120px]">{getCurrentProfile().name}</span>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3 flex-1 justify-end">
+          {/* Seletor de Conteúdo */}
+          <div className="flex items-center gap-1.5 max-w-xs w-full sm:w-auto">
+            <Filter size={13} className="text-indigo-400 shrink-0" />
+            <select
+              value={currentSubject || "Todos os Temas (Automático)"}
+              onChange={(e) => {
+                const val = e.target.value === "Todos os Temas (Automático)" ? "" : e.target.value;
+                setCurrentSubject(val);
+                fetchNextQuestion(val);
+              }}
+              className="bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs font-bold text-slate-200 focus:outline-none focus:border-indigo-500 w-full truncate"
+            >
+              {CONTRATOS_SUBJECTS.map((s) => (
+                <option key={s} value={s} className="bg-slate-900 text-slate-200">
+                  {s}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Cronômetro */}
+          <div className="flex items-center gap-1.5 px-2.5 py-1 bg-slate-950 border border-slate-800 rounded-lg text-xs font-mono font-bold text-slate-300 shrink-0">
+            <Clock size={13} className="text-indigo-400" />
+            <span>{formatTimer(seconds)}</span>
+          </div>
+        </div>
       </div>
 
-      {/* Box de Estudo Principal */}
-      <div className="p-6 md:p-8 rounded-2xl bg-slate-900 border border-slate-800 shadow-xl relative min-h-[300px] flex flex-col justify-between">
-        {loading ? (
-          <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-900/60 rounded-2xl z-10 space-y-3">
-            <Loader2 className="animate-spin text-indigo-500" size={40} />
-            <p className="text-sm font-medium text-slate-400">O Professor está preparando seu caso concreto...</p>
+      {/* MENSAGEM DE ERRO (SE HOUVER) */}
+      {errorMessage && (
+        <div className="p-3.5 rounded-xl bg-rose-950/40 border border-rose-800 text-rose-300 text-xs font-semibold flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <AlertCircle size={16} className="text-rose-400 shrink-0" />
+            <span>{errorMessage}</span>
           </div>
-        ) : null}
+          <button
+            onClick={() => fetchNextQuestion()}
+            className="px-2.5 py-1 bg-rose-900 hover:bg-rose-800 text-white rounded text-xs font-bold shrink-0"
+          >
+            Tentar Novamente
+          </button>
+        </div>
+      )}
 
-        {question && (
-          <div className="space-y-6 w-full">
-            {/* Meta do Caso */}
-            <div className="flex justify-between items-center text-xs border-b border-slate-800 pb-4">
-              <div className="space-y-1">
-                <p className="font-extrabold text-indigo-400 tracking-wider uppercase">{question.subject}</p>
-                <p className="text-slate-500 font-medium">{question.bank} • Dificuldade {question.difficulty}</p>
+      {/* ESTADO DE CARREGAMENTO */}
+      {loading ? (
+        <div className="p-16 rounded-2xl bg-slate-900 border border-slate-800 text-center space-y-4">
+          <div className="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mx-auto" />
+          <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Carregando questão...</p>
+        </div>
+      ) : question ? (
+        <div className="space-y-6">
+          {/* CARD DA QUESTÃO */}
+          <div className="p-6 md:p-8 rounded-2xl bg-slate-900 border border-slate-800 shadow-xl space-y-6">
+            {/* Cabeçalho da Questão */}
+            <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800">
+              <div className="flex items-center gap-2">
+                <span className="px-2.5 py-1 rounded bg-indigo-950 text-indigo-400 border border-indigo-800 text-xs font-black uppercase">
+                  {question.bank || 'OAB'}
+                </span>
+                <span className="text-xs font-extrabold text-slate-300">
+                  {question.subject}
+                </span>
               </div>
-              <div className="px-3 py-1 rounded-full bg-slate-950 border border-slate-800 font-mono text-slate-300 font-bold">
-                ⏱️ {Math.floor(seconds / 60)}:{(seconds % 60).toString().padStart(2, '0')}
-              </div>
+              <span className="text-[11px] font-semibold text-slate-500">
+                {question.difficulty || 'Nível Médio'}
+              </span>
             </div>
 
             {/* Enunciado do Caso Concreto */}
-            <div className="text-slate-100 leading-relaxed font-medium text-base md:text-lg bg-slate-950/40 p-5 rounded-xl border border-slate-800/40 text-left">
+            <div className="text-sm md:text-base text-slate-100 font-medium leading-relaxed whitespace-pre-line">
               {question.enunciado}
             </div>
 
-            {/* Alternativas de Resposta */}
-            <div className="space-y-3 text-left">
-              {Object.entries(question.options).map(([letter, text]) => {
-                const isSelected = selectedOption === letter;
-                const isCorrect = response?.is_correct;
-                const showResults = response !== null;
-                const isThisGabarito = question.gabarito === letter;
+            {/* Alternativas (A, B, C, D) */}
+            <div className="space-y-3 pt-2">
+              {Object.entries(question.options || {}).map(([key, text]) => {
+                const isSelected = selectedOption === key;
+                const isUserWrong = response && !response.is_correct && isSelected;
+                const isOfficialRight = response && key === question.gabarito;
+
+                let optionStyles = 'bg-slate-950/80 border-slate-800 hover:border-slate-700 text-slate-200';
                 
-                let optionStyle = "bg-slate-950 hover:bg-slate-800 border-slate-800 text-slate-300 hover:border-slate-700";
-                
-                if (isSelected) {
-                  optionStyle = "bg-indigo-950/40 border-indigo-500 text-indigo-300 shadow-md shadow-indigo-500/5";
-                }
-                
-                if (showResults) {
-                  if (isThisGabarito) {
-                    optionStyle = "bg-emerald-950/40 border-emerald-500 text-emerald-300 shadow-md shadow-emerald-500/5";
-                  } else if (isSelected && !isCorrect) {
-                    optionStyle = "bg-red-950/40 border-red-500 text-red-300 shadow-md shadow-red-500/5";
+                if (response) {
+                  if (isOfficialRight) {
+                    optionStyles = 'bg-emerald-950/40 border-emerald-500 text-emerald-200 font-semibold shadow-[0_0_12px_rgba(16,185,129,0.15)]';
+                  } else if (isUserWrong) {
+                    optionStyles = 'bg-rose-950/40 border-rose-500 text-rose-200 line-through opacity-90';
                   } else {
-                    optionStyle = "opacity-50 border-slate-900 bg-slate-950 text-slate-500 pointer-events-none";
+                    optionStyles = 'bg-slate-950/40 border-slate-850 text-slate-500 opacity-60';
                   }
+                } else if (isSelected) {
+                  optionStyles = 'bg-indigo-950/60 border-indigo-500 text-white font-semibold ring-1 ring-indigo-500 shadow-md shadow-indigo-600/10';
                 }
 
                 return (
                   <button
-                    key={letter}
-                    disabled={showResults || checking}
-                    onClick={() => setSelectedOption(letter)}
-                    className={`w-full p-4 rounded-xl border-2 transition-all duration-200 flex items-start gap-4 font-semibold text-sm ${optionStyle}`}
+                    key={key}
+                    disabled={!!response || checking}
+                    onClick={() => handleSelectOption(key)}
+                    className={`w-full text-left p-4 rounded-xl border transition-all flex items-start gap-3.5 ${optionStyles}`}
                   >
-                    <span className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-black border transition-all ${
-                      isSelected 
-                        ? 'bg-indigo-600 text-white border-indigo-500' 
-                        : showResults && isThisGabarito
-                        ? 'bg-emerald-600 text-white border-emerald-500'
-                        : showResults && isSelected && !isCorrect
-                        ? 'bg-red-600 text-white border-red-500'
-                        : 'bg-slate-900 border-slate-800 text-slate-400'
+                    <span className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-black shrink-0 ${
+                      response && isOfficialRight
+                        ? 'bg-emerald-500 text-slate-950 font-black'
+                        : response && isUserWrong
+                        ? 'bg-rose-500 text-white font-black'
+                        : isSelected
+                        ? 'bg-indigo-600 text-white font-black'
+                        : 'bg-slate-900 border border-slate-800 text-slate-400'
                     }`}>
-                      {letter}
+                      {key}
                     </span>
-                    <span className="flex-1 leading-snug">{text}</span>
+                    <span className="text-xs md:text-sm leading-snug pt-0.5 flex-1">{text}</span>
                   </button>
                 );
               })}
             </div>
-          </div>
-        )}
 
-        {/* Barra de ação inferior */}
-        <div className="border-t border-slate-800 pt-6 mt-6 flex justify-between items-center gap-4">
-          <div className="text-xs text-slate-500 font-semibold">
-            {question && `Caso Código Civil: ${question.article || 'Vários artigos'}`}
-          </div>
-          
-          {!response ? (
-            <button
-              disabled={!selectedOption || checking || loading}
-              onClick={handleSubmit}
-              className={`px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-all duration-300 shadow-md ${
-                selectedOption && !checking
-                  ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-indigo-600/15'
-                  : 'bg-slate-800 text-slate-500 border border-slate-800/80 cursor-not-allowed'
-              }`}
-            >
-              {checking ? (
-                <>
-                  <Loader2 className="animate-spin" size={18} />
-                  Corrigindo...
-                </>
-              ) : (
-                <>
-                  Verificar <ArrowRight size={16} />
-                </>
-              )}
-            </button>
-          ) : (
-            <button
-              onClick={fetchNextQuestion}
-              className="px-6 py-3 rounded-xl font-bold bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/15 flex items-center gap-2 transition-all duration-300"
-            >
-              Continuar <ArrowRight size={16} />
-            </button>
-          )}
-        </div>
-      </div>
-
-      {/* Mensagem de Erro */}
-      {errorMessage && (
-        <div className="p-4 rounded-xl bg-red-950/30 border border-red-500/40 text-red-300 text-sm font-semibold flex items-start gap-3">
-          <AlertTriangle size={18} className="shrink-0 mt-0.5" />
-          <span>{errorMessage}</span>
-        </div>
-      )}
-
-      {/* Painel de Correção Deslizante / Relatório de Professor */}
-      {response && (
-        <div className={`p-6 rounded-2xl border transition-all duration-300 animate-slide-up space-y-6 ${
-          response.is_correct 
-            ? response.is_insecure 
-              ? 'bg-amber-950/20 border-amber-500/30 text-amber-200 glow-warning' 
-              : 'bg-emerald-950/20 border-emerald-500/30 text-emerald-200 glow-success'
-            : 'bg-red-950/20 border-red-500/30 text-red-200 glow-danger'
-        }`}>
-          {/* Título de Correção */}
-          <div className="flex items-center gap-3">
-            {response.is_correct ? (
-              response.is_insecure ? (
-                <AlertTriangle className="text-amber-400" size={24} />
-              ) : (
-                <CheckCircle className="text-emerald-400" size={24} />
-              )
-            ) : (
-              <AlertTriangle className="text-red-400" size={24} />
-            )}
-            <h4 className="text-lg font-black tracking-tight">{response.feedback.title}</h4>
-          </div>
-
-          <p className="text-sm font-semibold opacity-90 leading-snug">{response.feedback.intro}</p>
-
-          {/* Raciocínio Didático */}
-          <div className="p-5 rounded-xl bg-slate-950/60 border border-slate-800 text-slate-300 space-y-4 text-left">
-            <h5 className="text-xs font-extrabold tracking-widest text-indigo-400 uppercase">Explicação do Professor Virtual</h5>
-            <div className="text-sm leading-relaxed whitespace-pre-wrap">
-              {response.feedback.body}
-            </div>
-          </div>
-
-          {/* Seção de Pergunta Direta ao Professor */}
-          <div className="p-5 rounded-xl bg-slate-950/60 border border-slate-800 space-y-4 text-left">
-            <h5 className="text-xs font-extrabold tracking-widest text-indigo-400 uppercase flex items-center gap-2">
-              <HelpCircle size={14} /> Dúvida Adicional sobre este Caso?
-            </h5>
-            <form onSubmit={handleAskProfessor} className="flex gap-2">
-              <input
-                type="text"
-                value={professorQuery}
-                onChange={(e) => setProfessorQuery(e.target.value)}
-                placeholder="Ex: Por que não aplicamos a novação subjetiva aqui?"
-                autoComplete="off"
-                autoCorrect="off"
-                autoCapitalize="off"
-                spellCheck="false"
-                inputMode="text"
-                className="flex-1 bg-slate-900 border border-slate-800 rounded-lg px-4 py-2 text-base text-slate-200 focus:outline-none focus:border-indigo-500 font-semibold"
-              />
-              <button
-                type="submit"
-                disabled={!professorQuery.trim() || professorLoading}
-                className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 disabled:bg-slate-800 text-white font-bold text-xs rounded-lg transition-all flex items-center gap-1.5"
-              >
-                {professorLoading ? <Loader2 className="animate-spin" size={14} /> : <Send size={14} />} Enviar
-              </button>
-            </form>
-
-            {professorResponse && (
-              <div className="p-4 rounded-lg bg-slate-900 border border-slate-800/80 text-sm text-slate-300 leading-relaxed whitespace-pre-wrap">
-                <strong className="text-indigo-400 block mb-1">Resposta do Professor:</strong>
-                {professorResponse}
+            {/* BOTÃO CONFIRMAR RESPOSTA (ANTES DE RESPONDER) */}
+            {!response && (
+              <div className="pt-4 flex justify-end">
+                <button
+                  disabled={!selectedOption || checking}
+                  onClick={handleSubmitAnswer}
+                  className={`px-8 py-3.5 rounded-xl text-sm font-extrabold shadow-lg transition-all flex items-center gap-2 ${
+                    selectedOption && !checking
+                      ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-indigo-600/30'
+                      : 'bg-slate-800 text-slate-500 cursor-not-allowed border border-slate-700/50'
+                  }`}
+                >
+                  {checking ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      Verificando...
+                    </>
+                  ) : (
+                    <>
+                      Confirmar Resposta <ArrowRight size={16} />
+                    </>
+                  )}
+                </button>
               </div>
             )}
           </div>
 
-          {/* Bloco de REFORÇO AUTOMÁTICO em caso de erro */}
-          {response.reinforcement && (
-            <div className="p-6 rounded-xl bg-slate-950/40 border border-indigo-500/20 text-left space-y-5">
-              <div className="flex items-center gap-2 border-b border-slate-800 pb-3">
-                <Flame className="text-orange-500" size={20} />
-                <h5 className="text-sm font-extrabold text-white uppercase tracking-wider">
-                  {response.reinforcement.type === 'modo_intensivo' ? '🔥 Pacote de Modo Intensivo' : '📚 Reforço Pedagógico Automático'}
-                </h5>
+          {/* FEEDBACK IMEDIATO DA RESPOSTA (APÓS RESPONDER) */}
+          {response && (
+            <div className="space-y-4 animate-slide-up">
+              {/* BANNER DE RESULTADO */}
+              <div className={`p-5 rounded-2xl border flex items-center justify-between gap-4 ${
+                response.is_correct 
+                  ? 'bg-emerald-950/30 border-emerald-500/30 text-emerald-200' 
+                  : 'bg-rose-950/30 border-rose-500/30 text-rose-200'
+              }`}>
+                <div className="flex items-center gap-3">
+                  <div className={`p-2.5 rounded-xl ${
+                    response.is_correct ? 'bg-emerald-500/20 text-emerald-400' : 'bg-rose-500/20 text-rose-400'
+                  }`}>
+                    {response.is_correct ? <CheckCircle2 size={24} /> : <XCircle size={24} />}
+                  </div>
+                  <div>
+                    <h3 className="text-base font-extrabold text-white">
+                      {response.is_correct ? 'Parabéns! Resposta Correta!' : 'Resposta Incorreta'}
+                    </h3>
+                    <p className="text-xs opacity-90">
+                      {response.is_correct 
+                        ? `Você acertou marcando a alternativa ${selectedOption}.` 
+                        : `Você marcou ${selectedOption}, mas a resposta certa é a alternativa ${question.gabarito}.`}
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => fetchNextQuestion()}
+                  className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-extrabold rounded-xl transition-all shadow-lg shadow-indigo-600/20 flex items-center gap-2 shrink-0"
+                >
+                  Próxima Questão <ArrowRight size={14} />
+                </button>
               </div>
 
-              {/* Tabs de Reforço */}
-              <div className="flex border-b border-slate-800 flex-wrap">
-                <button
-                  onClick={() => setActiveReinforceTab('summary')}
-                  className={`px-4 py-2 text-xs font-bold -mb-px transition-all ${
-                    activeReinforceTab === 'summary' 
-                      ? 'border-b-2 border-indigo-500 text-indigo-400' 
-                      : 'text-slate-500 hover:text-slate-300'
-                  }`}
-                >
-                  Resumo 30s
-                </button>
-                {response.reinforcement.summary_2min && (
+              {/* CARD DE FUNDAMENTAÇÃO LEGAL E EXPLICAÇÃO */}
+              <div className="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-4 shadow-lg">
+                {/* Artigo da Lei */}
+                <div className="flex items-center gap-2 text-xs font-bold text-indigo-400 uppercase tracking-wider">
+                  <BookOpen size={16} />
+                  <span>Fundamentação Legal: {question.article || 'Código Civil'}</span>
+                </div>
+
+                {/* Texto da Lei */}
+                {question.legal_basis && (
+                  <blockquote className="p-3.5 bg-slate-950/80 border-l-4 border-indigo-500 rounded-r-xl text-xs md:text-sm text-slate-300 italic leading-relaxed">
+                    "{question.legal_basis}"
+                  </blockquote>
+                )}
+
+                {/* Raciocínio Didático / Análise */}
+                {question.explanation && (
+                  <div className="space-y-1.5 pt-1">
+                    <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                      Explicação & Análise da Questão:
+                    </p>
+                    <p className="text-xs md:text-sm text-slate-200 leading-relaxed whitespace-pre-line">
+                      {question.explanation}
+                    </p>
+                  </div>
+                )}
+
+                {/* Aproveitamento no Conteúdo e Meta 90% */}
+                <div className="pt-3 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs">
+                  <div className="flex items-center gap-2 text-slate-400">
+                    <Award size={15} className="text-amber-400" />
+                    <span>Aproveitamento em <strong className="text-white">{question.subject}</strong>:</span>
+                    <span className={`font-bold ${response.topic_success_rate >= 90 ? 'text-emerald-400' : 'text-amber-400'}`}>
+                      {response.topic_success_rate}%
+                    </span>
+                    <span className="text-[11px] text-slate-500">(Meta: 90%)</span>
+                  </div>
+
                   <button
-                    onClick={() => setActiveReinforceTab('summary_2min')}
-                    className={`px-4 py-2 text-xs font-bold -mb-px transition-all ${
-                      activeReinforceTab === 'summary_2min' 
-                        ? 'border-b-2 border-indigo-500 text-indigo-400' 
-                        : 'text-slate-500 hover:text-slate-300'
-                    }`}
+                    onClick={() => fetchNextQuestion()}
+                    className="text-indigo-400 hover:text-indigo-300 font-bold flex items-center gap-1 transition-all"
                   >
-                    Resumo 2min
+                    Próxima Questão →
                   </button>
-                )}
-                {response.reinforcement.summary_5min && (
-                  <button
-                    onClick={() => setActiveReinforceTab('summary_5min')}
-                    className={`px-4 py-2 text-xs font-bold -mb-px transition-all ${
-                      activeReinforceTab === 'summary_5min' 
-                        ? 'border-b-2 border-indigo-500 text-indigo-400' 
-                        : 'text-slate-500 hover:text-slate-300'
-                    }`}
-                  >
-                    Resumo 5min
-                  </button>
-                )}
-                <button
-                  onClick={() => setActiveReinforceTab('flashcards')}
-                  className={`px-4 py-2 text-xs font-bold -mb-px transition-all ${
-                    activeReinforceTab === 'flashcards' 
-                      ? 'border-b-2 border-indigo-500 text-indigo-400' 
-                      : 'text-slate-500 hover:text-slate-300'
-                  }`}
-                >
-                  Flashcards ({response.reinforcement.flashcards.length})
-                </button>
-                {response.reinforcement.mind_map && (
-                  <button
-                    onClick={() => setActiveReinforceTab('mindmap')}
-                    className={`px-4 py-2 text-xs font-bold -mb-px transition-all ${
-                      activeReinforceTab === 'mindmap' 
-                        ? 'border-b-2 border-indigo-500 text-indigo-400' 
-                        : 'text-slate-500 hover:text-slate-300'
-                    }`}
-                  >
-                    Mapa Mental
-                  </button>
-                )}
-                {response.reinforcement.intensive_questions && (
-                  <button
-                    onClick={() => setActiveReinforceTab('questions')}
-                    className={`px-4 py-2 text-xs font-bold -mb-px transition-all ${
-                      activeReinforceTab === 'questions' 
-                        ? 'border-b-2 border-indigo-500 text-indigo-400' 
-                        : 'text-slate-500 hover:text-slate-300'
-                    }`}
-                  >
-                    10 Questões 🎯
-                  </button>
-                )}
-              </div>
-
-              {/* Conteúdo da Tab de Reforço */}
-              <div className="py-2">
-                {activeReinforceTab === 'summary' && (
-                  <div className="space-y-4">
-                    <div className="text-sm text-slate-300 whitespace-pre-wrap leading-relaxed">
-                      {response.reinforcement.summary_30s || response.reinforcement.summary}
-                    </div>
-                    {response.reinforcement.jurisprudence && (
-                      <div className="p-3 bg-indigo-950/20 border border-indigo-900/60 rounded-lg text-xs italic text-indigo-300">
-                        {response.reinforcement.jurisprudence}
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {activeReinforceTab === 'summary_2min' && response.reinforcement.summary_2min && (
-                  <div className="text-sm text-slate-300 whitespace-pre-wrap leading-relaxed">
-                    {response.reinforcement.summary_2min}
-                  </div>
-                )}
-
-                {activeReinforceTab === 'summary_5min' && response.reinforcement.summary_5min && (
-                  <div className="text-sm text-slate-300 whitespace-pre-wrap leading-relaxed">
-                    {response.reinforcement.summary_5min}
-                  </div>
-                )}
-
-                {activeReinforceTab === 'flashcards' && (
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {response.reinforcement.flashcards.map((fc, i) => {
-                      const isFlipped = flippedCards[i] || false;
-                      return (
-                        <div 
-                          key={i} 
-                          onClick={() => toggleCard(i)}
-                          className="h-36 perspective-1000 cursor-pointer"
-                        >
-                          <div className={`relative w-full h-full text-center transition-transform duration-500 transform-style-3d ${
-                            isFlipped ? 'rotate-y-180' : ''
-                          }`}>
-                            <div className="absolute inset-0 w-full h-full bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col justify-center items-center text-xs font-bold text-slate-200 backface-hidden shadow-md">
-                              <p className="line-clamp-4">{fc.front}</p>
-                              <span className="absolute bottom-2 text-[10px] text-slate-500 font-semibold tracking-widest uppercase">Girar Card</span>
-                            </div>
-                            <div className="absolute inset-0 w-full h-full bg-indigo-950 border border-indigo-900 rounded-xl p-4 flex flex-col justify-center items-center text-xs font-semibold text-indigo-200 rotate-y-180 backface-hidden shadow-md overflow-y-auto">
-                              <p className="leading-snug">{fc.back}</p>
-                              <span className="absolute bottom-2 text-[10px] text-indigo-400 font-semibold tracking-widest uppercase">Frente</span>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
-
-                {activeReinforceTab === 'mindmap' && response.reinforcement.mind_map && (
-                  <pre className="p-4 rounded-xl bg-slate-900 border border-slate-850 font-mono text-xs text-indigo-300 overflow-x-auto whitespace-pre leading-relaxed">
-                    {response.reinforcement.mind_map}
-                  </pre>
-                )}
-
-                {activeReinforceTab === 'questions' && response.reinforcement.intensive_questions && (
-                  <div className="space-y-4">
-                    <p className="text-xs font-bold text-indigo-400 uppercase tracking-wider">10 Questões Inéditas para Praticar</p>
-                    <div className="space-y-3 max-h-96 overflow-y-auto">
-                      {response.reinforcement.intensive_questions.map((q, i) => (
-                        <div key={i} className="p-4 rounded-xl bg-slate-950 border border-slate-800 text-left">
-                          <div className="flex items-center gap-2 mb-2">
-                            <span className="px-2 py-0.5 text-[10px] font-black bg-indigo-900/50 text-indigo-400 rounded">{q.bank}</span>
-                            <span className="text-[10px] text-slate-500 font-semibold">Q{i + 1}</span>
-                          </div>
-                          <p className="text-xs font-semibold text-slate-200 leading-relaxed mb-3">{q.enunciado}</p>
-                          <div className="space-y-1">
-                            {Object.entries(q.options || {}).map(([key, val]) => (
-                              <div key={key} className={`flex items-start gap-2 text-xs p-2 rounded ${key === q.gabarito ? 'bg-emerald-950/30 text-emerald-300' : 'text-slate-400'}`}>
-                                <span className="w-4 h-4 rounded flex items-center justify-center text-[10px] font-black bg-slate-950 border border-slate-800 shrink-0">{key}</span>
-                                <span>{val as string}</span>
-                              </div>
-                            ))}
-                          </div>
-                          <p className="text-[10px] text-indigo-400 font-bold mt-2">{q.article}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
+                </div>
               </div>
             </div>
           )}
         </div>
-      )}
+      ) : null}
     </div>
   );
 };

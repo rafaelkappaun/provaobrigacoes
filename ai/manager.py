@@ -95,51 +95,24 @@ class AIProviderManager:
     @classmethod
     def generate_question(cls, subject: str, bank: str, difficulty: str,
                           db: Any = None, session_id: str = None) -> Dict[str, Any]:
-        """Gera questão: alterna entre seed pool, IA e offline para maior variedade"""
+        """Gera questão 100% offline: utiliza pool de questões e gerador procedural sem consumir cota de IA"""
         if not bank or bank not in BANKS:
             bank = random.choice(BANKS)
         
-        config = cls.get_config()
-        provider = config.get("active_provider", "offline")
-        has_ai = provider != "offline" and config.get(f"{provider}_api_key")
-        
-        # 1. Tenta servir do seed pool (com chance de pular se AI disponível para variar)
-        use_seed_first = not (has_ai and random.random() < 0.6)
-        if use_seed_first:
-            seed_q = cls._pick_from_seed_pool(subject, bank, db, session_id)
-            if seed_q:
-                return seed_q
+        # 1. Tenta servir do seed pool (prioriza não respondidas na sessão)
+        seed_q = cls._pick_from_seed_pool(subject, bank, db, session_id)
+        if seed_q:
+            return dict(seed_q)
 
-        # 2. Tenta gerar com IA online
-        prompt = cls._build_question_prompt(subject, bank, difficulty)
+        # 2. Se já respondeu todas as sementes daquele assunto, reaproveita do seed pool com ID novo
+        if _seed_pool:
+            candidates = [q for q in _seed_pool if q.get("subject") == subject]
+            if candidates:
+                q = dict(random.choice(candidates))
+                q["id"] = f"{q.get('id', 'seed')}_{random.randint(1000, 9999)}"
+                return q
 
-        all_providers = ["groq", "deepseek", "openrouter", "gemini", "qwen", "mistral"]
-        providers_order = [provider] if provider != "offline" else []
-        for p in all_providers:
-            if p not in providers_order:
-                providers_order.append(p)
-
-        for current_prov in providers_order:
-            key = config.get(f"{current_prov}_api_key")
-            if not key:
-                continue
-            try:
-                logger.info(f"Tentando gerar questão com {current_prov}...")
-                question = cls._call_provider(current_prov, key, prompt, config.get("temperature", 0.3))
-                if question and isinstance(question, dict):
-                    if all(k in question for k in ("enunciado", "gabarito", "options")):
-                        question["subject"] = subject
-                        question["bank"] = bank
-                        if "difficulty" not in question:
-                            question["difficulty"] = difficulty
-                        logger.info(f"Questão gerada com SUCESSO via {current_prov}")
-                        return question
-                    logger.warning(f"Resposta do {current_prov} com campos faltando: {list(question.keys())}")
-            except Exception as e:
-                logger.error(f"Falha com {current_prov}: {e}")
-
-        # 3. Fallback offline dinâmico
-        logger.warning("Todos provedores de IA falharam → offline dinâmico")
+        # 3. Fallback: gerador procedural offline dinâmico
         return generate_question_offline(subject, bank, difficulty)
 
     @classmethod
@@ -214,37 +187,7 @@ class AIProviderManager:
 
     @classmethod
     def ask_professor(cls, context: Dict[str, Any], query: str) -> str:
-        """Professor Virtual com IA ou fallback offline"""
-        config = cls.get_config()
-        provider = config.get("active_provider", "offline")
-
-        prompt = (
-            f"Você é um Professor de Direito Civil especialista em Direito dos Contratos e Teoria Geral do Negócio Jurídico do Código Civil.\n"
-            f"Um estudante tem uma dúvida sobre a seguinte questão de prova de Contratos:\n\n"
-            f"Tema: {context.get('subject')}\n"
-            f"Banca: {context.get('bank')}\n"
-            f"Enunciado: {context.get('enunciado')}\n"
-            f"Artigo Relacionado: {context.get('article')}\n"
-            f"Fundamentação legal: {context.get('legal_basis')}\n"
-            f"Explicação da questão: {context.get('explanation')}\n\n"
-            f"Dúvida do estudante: \"{query}\"\n\n"
-            f"Responda a dúvida de forma clara, didática, citando a lei correspondente (Código Civil), os planos do negócio jurídico ou a jurisprudência aplicável de forma simples."
-        )
-
-        providers_order = [provider, "groq", "deepseek", "openrouter", "offline"]
-        for current_prov in providers_order:
-            if current_prov == "offline":
-                return cls._offline_professor_response(context, query)
-            key = config.get(f"{current_prov}_api_key")
-            if not key:
-                continue
-            try:
-                resp = cls.call_text_provider(current_prov, key, prompt, 0.5)
-                if resp:
-                    return resp
-            except Exception as e:
-                logger.error(f"Erro chat Professor com {current_prov}: {e}")
-
+        """Professor Virtual 100% offline com fundamentação direta na lei"""
         return cls._offline_professor_response(context, query)
 
     @staticmethod
@@ -446,11 +389,10 @@ class AIProviderManager:
     @staticmethod
     def _offline_professor_response(context: Dict[str, Any], query: str) -> str:
         return (
-            f"Olá! Estou no Modo Offline, mas posso ajudar com base na lei.\n\n"
-            f"Esta questão aborda **{context.get('subject')}** e fundamenta-se no **{context.get('article')}**.\n\n"
-            f"**Base Legal:**\n\"{context.get('legal_basis')}\"\n\n"
-            f"**Explicação:**\n{context.get('explanation')}\n\n"
-            f"No Direito das Obrigações (arts. 304 a 420), a literalidade da lei define as regras de pagamento, "
-            f"sub-rogação, dação, cláusula penal e arras. Para respostas personalizadas, "
-            f"configure uma chave de IA (Gemini ou OpenRouter) no arquivo .env do servidor."
+            f"Olá! Segue a fundamentação jurídica desta questão:\n\n"
+            f"• **Assunto:** {context.get('subject')}\n"
+            f"• **Dispositivo Legal:** {context.get('article')}\n\n"
+            f"**Texto da Lei (Código Civil):**\n\"{context.get('legal_basis')}\"\n\n"
+            f"**Análise da Questão:**\n{context.get('explanation')}\n\n"
+            f"💡 **Dica de Estudo:** Para fixar este conteúdo e alcançar 90% de acertos, memorize a redação do {context.get('article')} e preste atenção aos requisitos e prazos legais."
         )

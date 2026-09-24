@@ -1,35 +1,52 @@
-import React from 'react';
-import { Flame, Clock, Award, CheckCircle, BookOpen, AlertTriangle, ArrowRight, Play, Zap, Shield } from 'lucide-react';
+import React, { useState } from 'react';
+import { 
+  Award, 
+  CheckCircle, 
+  XCircle, 
+  BookOpen, 
+  ArrowRight, 
+  Play, 
+  Target, 
+  Sparkles, 
+  Search,
+  Check,
+  ChevronRight
+} from 'lucide-react';
 
-export interface Subject {
+export interface SubjectDetail {
   subject: string;
   questions_answered: number;
   questions_correct: number;
   questions_incorrect: number;
   success_rate: number;
-  status: 'Critico' | 'Intermediario' | 'Dominado';
+  status: 'Dominado' | 'Intermediario' | 'Critico' | 'NaoIniciado';
   consecutive_errors: number;
   consecutive_correct: number;
-  mastery_target: string;
-  is_intensive: boolean;
-  needs_recovery: boolean;
+  is_goal_achieved: boolean;
+  needed_for_90: number;
+  articles?: string;
+  key_concept?: string;
+  trap?: string;
 }
 
 export interface DashboardData {
   overall_success_rate: number;
   questions_answered: number;
   questions_correct: number;
+  questions_incorrect?: number;
   total_time_seconds: number;
   streak_days: number;
+  meta_target?: number;
   meta_achieved: boolean;
   meta_progress: number;
   ranking: string;
   ranking_emoji: string;
-  criticos_count: number;
-  intermediarios_count: number;
   dominados_count: number;
-  intensive_subject: string | null;
-  subjects: Subject[];
+  intermediarios_count: number;
+  criticos_count: number;
+  nao_iniciados_count?: number;
+  subjects: SubjectDetail[];
+  study_recommendations?: SubjectDetail[];
   next_step: string;
 }
 
@@ -39,458 +56,370 @@ interface DashboardProps {
 }
 
 export const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
-  const formatTime = (seconds: number) => {
-    const hrs = Math.floor(seconds / 3600);
-    const mins = Math.floor((seconds % 3600) / 60);
-    const secs = seconds % 60;
-    return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-  };
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filterStatus, setFilterStatus] = useState<'all' | 'need_study' | 'mastered'>('all');
 
-  const parte1Subjects = data.subjects.filter(s => 
-    [
-      "Planos do Negócio Jurídico (Escada Ponteana)",
-      "Princípios do Direito Contratual",
-      "Boa-fé Objetiva e Figuras Parcelares",
-      "Interpretação dos Contratos no Direito Brasileiro",
-      "Classificação dos Contratos",
-      "Etapas de Formação do Contrato",
-      "Estipulação em Favor de Terceiro",
-      "Promessa de Fato de Terceiro"
-    ].includes(s.subject)
-  );
+  // Recomendações: assuntos abaixo de 90%
+  const recommendations = data.study_recommendations || data.subjects.filter(s => !s.is_goal_achieved);
 
-  const parte2Subjects = data.subjects.filter(s => 
-    [
-      "Contratos Aleatórios - Conceito e Espécies",
-      "Contrato Aleatório: Emptio Spei",
-      "Contrato Aleatório: Emptio Rei Speratae",
-      "Contrato Aleatório: Coisas Existentes Expostas a Risco",
-      "Contrato Preliminar / Promessa de Contratar",
-      "Contrato com Pessoa a Declarar",
-      "Contrato com Pessoa a Declarar vs. Outros Contratos",
-      "Vícios Redibitórios - Conceito e Requisitos",
-      "Efeitos da Boa-fé e Má-fé do Alienante no Vício",
-      "Ações Edilícias (Redibitória e Estimatória/Quanti Minoris)",
-      "Vício Redibitório vs. Entrega de Coisa Diversa (Aliud Pro Alio)",
-      "Prazos Decadenciais dos Vícios Redibitórios",
-      "Extinção dos Contratos - Resolução e Cláusula Resolutiva",
-      "Exceção do Contrato Não Cumprido e Onerosidade Excessiva"
-    ].includes(s.subject)
-  );
-
-  const renderStatusTag = (sub: Subject) => {
-    if (sub.is_intensive) {
-      return (
-        <span className="px-2 py-0.5 text-xs font-semibold rounded bg-red-950/60 text-red-400 border border-red-800 animate-pulse flex items-center gap-1">
-          <Zap size={10} className="fill-current" /> INTENSIVO
-        </span>
-      );
-    }
-    if (sub.status === 'Dominado' || sub.consecutive_correct >= 5) {
-      return (
-        <div className="flex items-center gap-1">
-          <span className="px-2 py-0.5 text-xs font-semibold rounded bg-emerald-950/40 text-emerald-400 border border-emerald-900/60 font-medium">🟢 Dominado</span>
-        </div>
-      );
-    }
-    if (sub.questions_answered === 0) {
-      return (
-        <div className="flex items-center gap-1">
-          <span className="px-2 py-0.5 text-xs font-semibold rounded bg-slate-800/60 text-slate-400 border border-slate-700">⬜ Novo</span>
-          <span className="text-xs font-bold text-amber-400">0/5</span>
-        </div>
-      );
-    }
-    return (
-      <div className="flex items-center gap-1">
-        <span className={`px-2 py-0.5 text-xs font-semibold rounded ${
-          sub.status === 'Critico'
-            ? 'bg-red-950/40 text-red-400 border border-red-900/60'
-            : 'bg-amber-950/40 text-amber-400 border border-amber-900/60'
-        }`}>
-          {sub.status === 'Critico' ? '🔴 Crítico' : '🟡 Intermediário'}
-        </span>
-        <span className={`text-xs font-bold ${sub.consecutive_correct > 0 ? 'text-amber-400' : 'text-slate-500'}`}>
-          {sub.consecutive_correct}/{sub.mastery_target || '5'}
-        </span>
-      </div>
-    );
-  };
+  // Filtragem da lista geral de assuntos
+  const filteredSubjects = data.subjects.filter(s => {
+    const matchesSearch = s.subject.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          (s.articles && s.articles.toLowerCase().includes(searchTerm.toLowerCase()));
+    if (!matchesSearch) return false;
+    if (filterStatus === 'need_study') return !s.is_goal_achieved;
+    if (filterStatus === 'mastered') return s.is_goal_achieved;
+    return true;
+  });
 
   return (
-    <div className="space-y-8 animate-fade-in pb-12">
-      {/* Banner Principal */}
-      <div className="relative rounded-2xl bg-gradient-to-r from-indigo-900/40 via-indigo-950/50 to-slate-900 border border-indigo-500/20 p-6 md:p-8 overflow-hidden">
-        <div className="absolute right-0 bottom-0 top-0 opacity-10 flex items-center pointer-events-none pr-8">
-          <Award size={260} className="text-indigo-400 animate-float" />
-        </div>
-        <div className="max-w-2xl space-y-4">
-          <span className="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 uppercase tracking-widest">
-            Direito Civil Adaptativo
-          </span>
-          <h1 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-            Domine o Questionário da Prova de Contratos
-          </h1>
-          <p className="text-slate-300 leading-relaxed text-sm md:text-base">
-            Preparação inteligente baseada na Escada Ponteana, Princípios, Boa-fé, Contratos Aleatórios, Contrato Preliminar, Pessoa a Declarar e Vícios Redibitórios (Código Civil).
-          </p>
-          
-          {data.intensive_subject && (
-            <div className="p-4 rounded-xl bg-red-950/30 border border-red-500/30 text-red-200 text-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-3 shadow-lg">
-              <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-red-500/20 text-red-400">
-                  <Flame className="animate-pulse" size={20} />
-                </div>
-                <div>
-                  <p className="font-bold text-red-300">🔥 Modo Intensivo Ativado!</p>
-                  <p className="text-xs text-red-400/90">Tema bloqueado: <strong className="text-white">{data.intensive_subject}</strong> (Obtenha 80% de acertos para desbloquear novos temas).</p>
-                </div>
-              </div>
-              <button 
-                onClick={() => onNavigate('estudo')}
-                className="px-4 py-2 text-xs font-bold bg-red-600 hover:bg-red-500 text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-red-600/20 flex items-center gap-1.5 self-end md:self-auto"
-              >
-                Superar Tema <ArrowRight size={14} />
-              </button>
+    <div className="max-w-5xl mx-auto space-y-8 animate-fade-in pb-16">
+      {/* BANNER PRINCIPAL: META 90% */}
+      <div className="relative rounded-2xl bg-gradient-to-br from-indigo-950/80 via-slate-900 to-slate-950 border border-indigo-500/30 p-6 md:p-8 shadow-xl overflow-hidden">
+        <div className="absolute -right-8 -top-8 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+        
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
+          <div className="space-y-3 max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-bold tracking-wider uppercase">
+              <Target size={14} className="text-indigo-400" />
+              Meta de Aprovação: 90% de Acertos
             </div>
-          )}
+            
+            <h1 className="text-2xl md:text-3xl font-black text-white tracking-tight">
+              Desempenho & Onde Estudar
+            </h1>
+            
+            <p className="text-slate-300 text-sm leading-relaxed">
+              {data.next_step}
+            </p>
+            
+            {/* Barra de Progresso Rumo aos 90% */}
+            <div className="pt-2 space-y-1.5">
+              <div className="flex justify-between text-xs font-bold">
+                <span className="text-slate-400">Progresso Geral:</span>
+                <span className={`text-sm ${data.overall_success_rate >= 90 ? 'text-emerald-400 font-extrabold' : 'text-indigo-300'}`}>
+                  {data.overall_success_rate}% de acertos {data.overall_success_rate >= 90 && '🎉'}
+                </span>
+              </div>
+              
+              <div className="relative w-full h-3 bg-slate-800/80 rounded-full overflow-hidden border border-slate-700/50">
+                {/* Linha indicadora dos 90% */}
+                <div 
+                  className="absolute top-0 bottom-0 w-0.5 bg-amber-400 z-10 shadow-[0_0_8px_rgba(251,191,36,0.8)]"
+                  style={{ left: '90%' }}
+                  title="Meta de 90%"
+                />
+                {/* Barra preenchida */}
+                <div 
+                  className={`h-full rounded-full transition-all duration-700 ${
+                    data.overall_success_rate >= 90 
+                      ? 'bg-gradient-to-r from-emerald-500 to-teal-400' 
+                      : 'bg-gradient-to-r from-indigo-500 to-indigo-400'
+                  }`}
+                  style={{ width: `${Math.min(100, data.overall_success_rate)}%` }}
+                />
+              </div>
+              <div className="flex justify-between text-[11px] text-slate-500">
+                <span>0%</span>
+                <span className="text-amber-400 font-bold ml-auto pr-8">Meta: 90%</span>
+                <span>100%</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Botão de ação rápida */}
+          <div className="w-full md:w-auto shrink-0 flex flex-col sm:flex-row md:flex-col gap-3">
+            <button
+              onClick={() => onNavigate('estudo')}
+              className="px-6 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold rounded-xl text-sm shadow-lg shadow-indigo-600/30 transition-all flex items-center justify-center gap-2"
+            >
+              <Play size={16} fill="currentColor" />
+              Praticar Questões Agora
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Grid de Estatísticas Globais */}
+      {/* CARDS DE ESTATÍSTICAS RÁPIDAS */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {/* Taxa de acerto */}
-        <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col justify-between space-y-4 glow-card">
-          <div className="flex justify-between items-center text-slate-400">
-            <span className="text-xs font-semibold tracking-wider uppercase">Taxa de Acertos</span>
-            <Award className="text-indigo-400" size={18} />
+        {/* Total Respondidas */}
+        <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 space-y-1">
+          <div className="flex items-center justify-between text-slate-400 text-xs font-bold uppercase tracking-wider">
+            <span>Respondidas</span>
+            <BookOpen size={16} className="text-indigo-400" />
           </div>
-          <div className="space-y-1">
-            <div className="flex items-baseline gap-1.5">
-              <span className={`text-3xl font-extrabold tracking-tight ${data.overall_success_rate >= 95 ? 'text-emerald-400' : 'text-white'}`}>
-                {data.overall_success_rate}%
-              </span>
-              <span className="text-xs text-slate-500">/ 95% meta</span>
-            </div>
-            <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
-              <div 
-                className={`h-full rounded-full transition-all duration-500 ${data.overall_success_rate >= 95 ? 'bg-emerald-500' : 'bg-indigo-500'}`}
-                style={{ width: `${Math.min(100, data.overall_success_rate)}%` }}
-              />
-            </div>
-          </div>
+          <p className="text-2xl font-black text-white">{data.questions_answered}</p>
+          <p className="text-[11px] text-slate-500">Total de questões feitas</p>
         </div>
 
-        {/* Questões Respondidas */}
-        <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col justify-between space-y-4 glow-card">
-          <div className="flex justify-between items-center text-slate-400">
-            <span className="text-xs font-semibold tracking-wider uppercase">Questões Respondidas</span>
-            <CheckCircle className="text-indigo-400" size={18} />
+        {/* Quantidade de Acertos */}
+        <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 space-y-1">
+          <div className="flex items-center justify-between text-emerald-400 text-xs font-bold uppercase tracking-wider">
+            <span>Acertos</span>
+            <CheckCircle size={16} />
           </div>
+          <p className="text-2xl font-black text-emerald-400">{data.questions_correct}</p>
+          <p className="text-[11px] text-slate-500">
+            {data.questions_answered > 0 ? `${data.overall_success_rate}% de aproveitamento` : 'Ainda não iniciado'}
+          </p>
+        </div>
+
+        {/* Quantidade de Erros */}
+        <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 space-y-1">
+          <div className="flex items-center justify-between text-rose-400 text-xs font-bold uppercase tracking-wider">
+            <span>Erros</span>
+            <XCircle size={16} />
+          </div>
+          <p className="text-2xl font-black text-rose-400">
+            {data.questions_answered - data.questions_correct}
+          </p>
+          <p className="text-[11px] text-slate-500">Oportunidades de revisão</p>
+        </div>
+
+        {/* Conteúdos em 90%+ */}
+        <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 space-y-1">
+          <div className="flex items-center justify-between text-amber-400 text-xs font-bold uppercase tracking-wider">
+            <span>Meta 90%</span>
+            <Award size={16} />
+          </div>
+          <p className="text-2xl font-black text-amber-400">
+            {data.dominados_count} <span className="text-xs text-slate-500 font-semibold">/ {data.subjects.length} temas</span>
+          </p>
+          <p className="text-[11px] text-slate-500">
+            {data.dominados_count === data.subjects.length ? 'Todos dominados!' : `Faltam ${data.subjects.length - data.dominados_count} para os 90%`}
+          </p>
+        </div>
+      </div>
+
+      {/* SEÇÃO PRINCIPAL: ONDE ESTUDAR MAIS ATÉ 90% */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
           <div className="space-y-0.5">
-            <span className="text-3xl font-extrabold tracking-tight text-white">
-              {data.questions_answered}
-            </span>
-            <p className="text-xs text-slate-500">
-              {data.questions_correct} acertos corretos
+            <h2 className="text-lg font-black text-white flex items-center gap-2">
+              <Sparkles size={18} className="text-amber-400" />
+              Onde Estudar Mais (Rumo aos 90%)
+            </h2>
+            <p className="text-xs text-slate-400">
+              Conteúdos prioritários que ainda não atingiram 90% de acertos, com artigos do Código Civil e dicas para memorizar.
             </p>
           </div>
+          <span className="text-xs font-bold px-2.5 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-lg">
+            {recommendations.length} {recommendations.length === 1 ? 'conteúdo pendente' : 'conteúdos pendentes'}
+          </span>
         </div>
 
-        {/* Tempo de estudo */}
-        <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col justify-between space-y-4 glow-card">
-          <div className="flex justify-between items-center text-slate-400">
-            <span className="text-xs font-semibold tracking-wider uppercase">Tempo de Estudo</span>
-            <Clock className="text-indigo-400" size={18} />
-          </div>
-          <div className="space-y-0.5">
-            <span className="text-3xl font-extrabold tracking-tight text-white">
-              {formatTime(data.total_time_seconds)}
-            </span>
-            <p className="text-xs text-slate-500">Foco e aprendizado ativo</p>
-          </div>
-        </div>
-
-        {/* Sequência de estudos */}
-        <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col justify-between space-y-4 glow-card">
-          <div className="flex justify-between items-center text-slate-400">
-            <span className="text-xs font-semibold tracking-wider uppercase">Streak (Sequência)</span>
-            <Flame className="text-orange-500 fill-orange-500/20" size={18} />
-          </div>
-          <div className="space-y-0.5">
-            <span className="text-3xl font-extrabold tracking-tight text-white flex items-center gap-2">
-              {data.streak_days} {data.streak_days === 1 ? 'Dia' : 'Dias'}
-            </span>
-            <p className="text-xs text-slate-500">Mantenha a chama ativa!</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Ranking Pessoal e Meta 95% */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div className="p-5 rounded-2xl bg-gradient-to-r from-amber-950/20 to-slate-900 border border-amber-500/20 flex items-center gap-4 glow-card">
-          <div className="text-3xl">{data.ranking_emoji}</div>
-          <div>
-            <p className="text-xs font-bold text-amber-400 uppercase tracking-wider">Ranking Pessoal</p>
-            <p className="text-lg font-extrabold text-white">{data.ranking}</p>
-            <p className="text-[10px] text-slate-500">Responda mais questões para subir de nível</p>
-          </div>
-        </div>
-        <div className="p-5 rounded-2xl bg-gradient-to-r from-indigo-950/20 to-slate-900 border border-indigo-500/20 flex items-center gap-4 glow-card">
-          <div className="p-2 rounded-xl bg-indigo-500/10">
-            <Award className="text-indigo-400" size={28} />
-          </div>
-          <div className="flex-1">
-            <div className="flex justify-between items-center">
-              <p className="text-xs font-bold text-indigo-400 uppercase tracking-wider">Meta 95%</p>
-              <span className="text-lg font-extrabold text-white">{data.meta_progress}%</span>
+        {recommendations.length === 0 ? (
+          <div className="p-8 rounded-2xl bg-emerald-950/20 border border-emerald-500/30 text-center space-y-3">
+            <div className="w-12 h-12 mx-auto rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+              <Award size={28} />
             </div>
-            <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden mt-1">
-              <div className="h-full rounded-full bg-indigo-500 transition-all duration-500" style={{ width: `${Math.min(100, data.meta_progress)}%` }} />
-            </div>
-            <p className="text-[10px] text-slate-500 mt-1">{data.meta_achieved ? '🏆 DOMÍNIO ALCANÇADO!' : 'Continue estudando para atingir 95%'}</p>
+            <h3 className="text-lg font-bold text-white">Parabéns! Meta de 90% atingida em todos os temas!</h3>
+            <p className="text-xs text-slate-300 max-w-md mx-auto">
+              Você alcançou pelo menos 90% de acertos em cada um dos 22 conteúdos da prova de Contratos. Continue praticando para manter o conhecimento fresco.
+            </p>
           </div>
-        </div>
-      </div>
-
-      {/* Atalhos Rápidos */}
-      <div className="space-y-3">
-        <h3 className="text-lg font-bold text-white tracking-tight">Atalhos de Estudos</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <button 
-            onClick={() => onNavigate('estudo')}
-            className="flex items-center justify-between p-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold transition-all shadow-lg hover:shadow-indigo-600/20 group text-left"
-          >
-            <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-white/10">
-                <Play size={18} fill="currentColor" />
-              </div>
-              <div>
-                <p className="text-sm font-extrabold">Estudar Agora</p>
-                <p className="text-xs text-indigo-200 font-normal">Questões adaptativas</p>
-              </div>
-            </div>
-            <ArrowRight size={18} className="transform group-hover:translate-x-1 transition-transform" />
-          </button>
-
-          <button 
-            onClick={() => onNavigate('simulado')}
-            className="flex items-center justify-between p-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold transition-all border border-slate-800 group text-left"
-          >
-            <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-indigo-500/10 text-indigo-400">
-                <Shield size={18} />
-              </div>
-              <div>
-                <p className="text-sm font-extrabold">Simulado Rápido</p>
-                <p className="text-xs text-slate-400 font-normal">Testar conhecimentos</p>
-              </div>
-            </div>
-            <ArrowRight size={18} className="text-slate-400 transform group-hover:translate-x-1 transition-transform" />
-          </button>
-
-          <button 
-            onClick={() => onNavigate('simulado', { vespera: true })}
-            className="flex items-center justify-between p-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold transition-all border border-slate-800 group text-left"
-          >
-            <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-orange-500/10 text-orange-400">
-                <Flame size={18} />
-              </div>
-              <div>
-                <p className="text-sm font-extrabold">Revisão de Véspera</p>
-                <p className="text-xs text-slate-400 font-normal">50 itens prioritários</p>
-              </div>
-            </div>
-            <ArrowRight size={18} className="text-slate-400 transform group-hover:translate-x-1 transition-transform" />
-          </button>
-
-          <button 
-            onClick={() => onNavigate('erros')}
-            className="flex items-center justify-between p-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold transition-all border border-slate-800 group text-left"
-          >
-            <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-red-500/10 text-red-400">
-                <AlertTriangle size={18} />
-              </div>
-              <div>
-                <p className="text-sm font-extrabold">Treinar Erros</p>
-                <p className="text-xs text-slate-400 font-normal">Foco no que errou</p>
-              </div>
-            </div>
-            <ArrowRight size={18} className="text-slate-400 transform group-hover:translate-x-1 transition-transform" />
-          </button>
-        </div>
-      </div>
-
-      {/* Próximo Passo Inteligente */}
-      {data.next_step && (
-        <div className="p-4 rounded-xl bg-gradient-to-r from-indigo-950/30 to-slate-900 border border-indigo-500/15 flex items-start gap-3 glow-card">
-          <div className="text-lg shrink-0 mt-0.5">💡</div>
-          <div>
-            <p className="text-xs font-bold text-indigo-400 uppercase tracking-wider mb-0.5">Próximo Passo</p>
-            <p className="text-sm text-slate-200 font-semibold">{data.next_step}</p>
-          </div>
-        </div>
-      )}
-
-      {/* Revisão Urgente */}
-      {data.subjects.filter(s => s.needs_recovery).length > 0 && (
-        <div className="space-y-3">
-          <div className="flex items-center gap-2">
-            <AlertTriangle size={18} className="text-red-400" />
-            <h3 className="text-lg font-bold text-red-300 tracking-tight">Revisão Urgente</h3>
-            <span className="px-2 py-0.5 text-[10px] font-bold rounded bg-red-950/60 text-red-400 border border-red-800">
-              Abaixo de 90%
-            </span>
-          </div>
-          <div className="p-4 rounded-xl bg-red-950/20 border border-red-500/20">
-            <p className="text-xs text-red-300/80 mb-3">Você está com menos de 90% de acertos nestes temas. Clique em <strong>Recuperar</strong> para revisar com foco nas questões que errou.</p>
-            <div className="flex flex-wrap gap-2">
-              {data.subjects.filter(s => s.needs_recovery).map(sub => (
-                <button
-                  key={sub.subject}
-                  onClick={() => onNavigate('estudo', { subject: sub.subject, recovery: true })}
-                  className="flex items-center gap-2 px-3 py-2 rounded-lg bg-red-950/40 border border-red-800/60 hover:bg-red-900/40 hover:border-red-600 transition-all text-left"
-                >
-                  <div className="p-1 rounded bg-red-500/20 text-red-400">
-                    <AlertTriangle size={14} />
-                  </div>
-                  <div className="text-xs">
-                    <p className="font-bold text-red-200">{sub.subject}</p>
-                    <p className="text-red-400/80">{sub.questions_correct}/{sub.questions_answered} corretas ({sub.success_rate}%)</p>
-                  </div>
-                  <ArrowRight size={14} className="text-red-400 shrink-0" />
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Jornada Adaptativa dos Temas */}
-      <div className="space-y-6">
-        <div className="flex justify-between items-center">
-          <h3 className="text-lg font-bold text-white tracking-tight">Grade de Temas do Código Civil</h3>
-          <div className="flex items-center gap-4 text-xs text-slate-400">
-            <span className="flex items-center gap-1">🔴 Crítico</span>
-            <span className="flex items-center gap-1">🟡 Intermediário</span>
-            <span className="flex items-center gap-1">🟢 Dominado (5/5 consecutivos)</span>
-          </div>
-        </div>
-
-        {/* Categoria 1: Teoria Geral, Princípios e Formação */}
-        <div className="space-y-4 p-6 rounded-2xl bg-slate-900 border border-slate-800">
-          <h4 className="text-sm font-extrabold text-indigo-400 uppercase tracking-widest flex items-center gap-2">
-            <BookOpen size={16} /> Bloco 1: Teoria Geral, Princípios, Interpretação e Formação
-          </h4>
+        ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {parte1Subjects.map(sub => (
-              <button
-                key={sub.subject}
-                onClick={() => onNavigate('estudo', { subject: sub.subject })}
-                className="p-4 rounded-xl bg-slate-950 border border-slate-800/60 hover:border-indigo-500/40 hover:bg-slate-900/60 transition-all flex flex-col justify-between gap-3 text-left w-full cursor-pointer"
+            {recommendations.slice(0, 6).map((item) => (
+              <div 
+                key={item.subject}
+                className="p-5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition-all flex flex-col justify-between space-y-4 shadow-md"
               >
-                <div className="flex items-start justify-between gap-2">
-                  <span className="text-sm font-bold text-slate-200 line-clamp-1">{sub.subject}</span>
-                  {renderStatusTag(sub)}
-                </div>
-                <div className="space-y-1">
-                  <div className="flex justify-between text-xs text-slate-500">
-                    <span className="text-emerald-400">✅ {sub.questions_correct} corretas</span>
-                    <span className={sub.questions_incorrect > 0 ? 'text-red-400' : 'text-slate-500'}>❌ {sub.questions_incorrect} incorretas</span>
+                <div className="space-y-2.5">
+                  <div className="flex items-start justify-between gap-2">
+                    <span className="text-xs font-black text-indigo-400 bg-indigo-950/50 border border-indigo-800/50 px-2 py-0.5 rounded">
+                      {item.articles || 'Código Civil'}
+                    </span>
+                    <span className={`text-[11px] font-bold px-2 py-0.5 rounded ${
+                      item.questions_answered === 0 
+                        ? 'bg-slate-800 text-slate-400' 
+                        : item.success_rate < 60 
+                        ? 'bg-rose-950/50 text-rose-400 border border-rose-800/40' 
+                        : 'bg-amber-950/50 text-amber-400 border border-amber-800/40'
+                    }`}>
+                      {item.questions_answered === 0 ? 'Não Iniciado' : `${item.success_rate}% de acertos`}
+                    </span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="flex-1 w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
+
+                  <h3 className="text-sm font-bold text-white leading-snug">
+                    {item.subject}
+                  </h3>
+
+                  {/* Resumo do que estudar */}
+                  {item.key_concept && (
+                    <p className="text-xs text-slate-300 leading-relaxed bg-slate-950/60 p-2.5 rounded-lg border border-slate-850">
+                      📖 <strong className="text-white">O que estudar:</strong> {item.key_concept}
+                    </p>
+                  )}
+
+                  {/* Pegadinha de prova */}
+                  {item.trap && (
+                    <p className="text-[11px] text-amber-300/90 leading-relaxed bg-amber-950/20 p-2 rounded border border-amber-900/30">
+                      ⚡ <strong className="text-amber-200">Atenção em prova:</strong> {item.trap}
+                    </p>
+                  )}
+                </div>
+
+                <div className="pt-2 border-t border-slate-850 flex items-center justify-between gap-3">
+                  <div className="text-[11px] text-slate-400">
+                    {item.questions_answered === 0 ? (
+                      <span className="text-slate-400">Faça ao menos 3 questões</span>
+                    ) : (
+                      <span>
+                        Faltam <strong className="text-amber-400">~{item.needed_for_90} acertos</strong> para os 90%
+                      </span>
+                    )}
+                  </div>
+
+                  <button
+                    onClick={() => onNavigate('estudo', { subject: item.subject })}
+                    className="px-3.5 py-1.5 bg-indigo-650 hover:bg-indigo-500 text-white text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 shadow"
+                  >
+                    Praticar <ChevronRight size={14} />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* SEÇÃO: QUANTIDADE DE ACERTOS DE CADA CONTEÚDO (TODOS OS 22 TEMAS) */}
+      <div className="space-y-4 pt-4 border-t border-slate-800/60">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="space-y-0.5">
+            <h2 className="text-lg font-black text-white flex items-center gap-2">
+              <CheckCircle size={18} className="text-emerald-400" />
+              Acertos por Conteúdo (22 Temas)
+            </h2>
+            <p className="text-xs text-slate-400">
+              Acompanhe a quantidade exata de acertos e o percentual em cada conteúdo.
+            </p>
+          </div>
+
+          {/* Filtros e Busca */}
+          <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+            <div className="relative flex-1 sm:w-48">
+              <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Buscar tema ou artigo..."
+                className="w-full pl-8 pr-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+              />
+            </div>
+
+            <div className="flex bg-slate-900 border border-slate-800 rounded-lg p-0.5 text-xs font-bold">
+              <button
+                onClick={() => setFilterStatus('all')}
+                className={`px-2.5 py-1 rounded ${filterStatus === 'all' ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:text-white'}`}
+              >
+                Todos ({data.subjects.length})
+              </button>
+              <button
+                onClick={() => setFilterStatus('need_study')}
+                className={`px-2.5 py-1 rounded ${filterStatus === 'need_study' ? 'bg-amber-600 text-white' : 'text-slate-400 hover:text-white'}`}
+              >
+                Abaixo de 90% ({recommendations.length})
+              </button>
+              <button
+                onClick={() => setFilterStatus('mastered')}
+                className={`px-2.5 py-1 rounded ${filterStatus === 'mastered' ? 'bg-emerald-600 text-white' : 'text-slate-400 hover:text-white'}`}
+              >
+                ≥ 90% ({data.dominados_count})
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* LISTAGEM DOS CONTEÚDOS */}
+        <div className="space-y-2.5">
+          {filteredSubjects.map((sub) => {
+            const is90 = sub.is_goal_achieved;
+            return (
+              <div 
+                key={sub.subject}
+                className={`p-4 rounded-xl border transition-all ${
+                  is90 
+                    ? 'bg-slate-900/60 border-emerald-500/20 hover:border-emerald-500/40' 
+                    : sub.questions_answered === 0
+                    ? 'bg-slate-900/40 border-slate-800 hover:border-slate-700'
+                    : 'bg-slate-900 border-slate-800 hover:border-indigo-500/30'
+                } flex flex-col md:flex-row items-start md:items-center justify-between gap-3`}
+              >
+                <div className="space-y-1 flex-1">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h4 className="text-sm font-bold text-white">
+                      {sub.subject}
+                    </h4>
+                    {sub.articles && (
+                      <span className="text-[10px] font-semibold text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded">
+                        {sub.articles}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Barra de Progresso do Conteúdo */}
+                  <div className="flex items-center gap-3 pt-1 max-w-md">
+                    <div className="relative flex-1 h-2 bg-slate-800 rounded-full overflow-hidden">
                       <div 
-                        className={`h-full rounded-full transition-all duration-300 ${
-                          sub.is_intensive ? 'bg-red-600 animate-pulse' :
-                          sub.status === 'Critico' ? 'bg-red-500' : 
-                          sub.status === 'Intermediario' ? 'bg-amber-500' : 'bg-emerald-500'
+                        className="absolute top-0 bottom-0 w-0.5 bg-amber-400 z-10"
+                        style={{ left: '90%' }}
+                        title="Meta 90%"
+                      />
+                      <div 
+                        className={`h-full rounded-full transition-all duration-500 ${
+                          is90 
+                            ? 'bg-emerald-500' 
+                            : sub.success_rate >= 70 
+                            ? 'bg-indigo-500' 
+                            : 'bg-amber-500'
                         }`}
-                        style={{ width: `${sub.questions_answered > 0 ? sub.success_rate : 0}%` }}
+                        style={{ width: `${Math.min(100, sub.success_rate)}%` }}
                       />
                     </div>
-                    <span className="text-xs font-bold text-slate-400 shrink-0">{sub.success_rate}%</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-[10px] text-slate-500">🔥</span>
-                    {[1,2,3,4,5].map(step => (
-                      <div key={step} className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center ${
-                        step <= sub.consecutive_correct
-                          ? 'bg-emerald-500/40 border-emerald-500'
-                          : 'bg-slate-800 border-slate-700'
-                      }`}>
-                        {step <= sub.consecutive_correct && (
-                          <span className="text-[8px] text-emerald-300 font-bold">✓</span>
-                        )}
-                      </div>
-                    ))}
-                    <span className="text-[10px] text-slate-500 ml-1">
-                      {sub.consecutive_correct >= 5 ? '✅ Dominado!' : `${sub.consecutive_correct}/5`}
+                    <span className="text-xs font-bold text-slate-400 w-12 text-right">
+                      {sub.questions_answered === 0 ? '0%' : `${sub.success_rate}%`}
                     </span>
                   </div>
                 </div>
-              </button>
-            ))}
-          </div>
-        </div>
 
-        {/* Categoria 2: Contratos Aleatórios, Preliminar, Pessoa a Declarar e Vícios Redibitórios */}
-        <div className="space-y-4 p-6 rounded-2xl bg-slate-900 border border-slate-800">
-          <h4 className="text-sm font-extrabold text-indigo-400 uppercase tracking-widest flex items-center gap-2">
-            <AlertTriangle size={16} /> Bloco 2: Contratos Aleatórios, Preliminares, Pessoa a Declarar e Vícios Redibitórios
-          </h4>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {parte2Subjects.map(sub => (
-              <button
-                key={sub.subject}
-                onClick={() => onNavigate('estudo', { subject: sub.subject })}
-                className="p-4 rounded-xl bg-slate-950 border border-slate-800/60 hover:border-indigo-500/40 hover:bg-slate-900/60 transition-all flex flex-col justify-between gap-3 text-left w-full cursor-pointer"
-              >
-                <div className="flex items-start justify-between gap-2">
-                  <span className="text-sm font-bold text-slate-200 line-clamp-1">{sub.subject}</span>
-                  {renderStatusTag(sub)}
+                {/* Acertos e Status */}
+                <div className="flex items-center gap-4 self-end md:self-auto shrink-0">
+                  <div className="text-right">
+                    <p className="text-xs font-black text-white">
+                      {sub.questions_correct} <span className="text-slate-500 font-normal">/ {sub.questions_answered} acertos</span>
+                    </p>
+                    <p className="text-[10px]">
+                      {is90 ? (
+                        <span className="text-emerald-400 font-bold flex items-center gap-1 justify-end">
+                          <Check size={12} /> Meta 90% Atingida
+                        </span>
+                      ) : sub.questions_answered === 0 ? (
+                        <span className="text-slate-500">Não iniciado</span>
+                      ) : (
+                        <span className="text-amber-400 font-medium">
+                          Faltam ~{sub.needed_for_90} acertos
+                        </span>
+                      )}
+                    </p>
+                  </div>
+
+                  <button
+                    onClick={() => onNavigate('estudo', { subject: sub.subject })}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1 ${
+                      is90
+                        ? 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                        : 'bg-indigo-650 text-white hover:bg-indigo-500 shadow-md shadow-indigo-600/20'
+                    }`}
+                  >
+                    Treinar <ArrowRight size={13} />
+                  </button>
                 </div>
-                <div className="space-y-1">
-                  <div className="flex justify-between text-xs text-slate-500">
-                    <span className="text-emerald-400">✅ {sub.questions_correct} corretas</span>
-                    <span className={sub.questions_incorrect > 0 ? 'text-red-400' : 'text-slate-500'}>❌ {sub.questions_incorrect} incorretas</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="flex-1 w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
-                      <div 
-                        className={`h-full rounded-full transition-all duration-300 ${
-                          sub.is_intensive ? 'bg-red-600 animate-pulse' :
-                          sub.status === 'Critico' ? 'bg-red-500' : 
-                          sub.status === 'Intermediario' ? 'bg-amber-500' : 'bg-emerald-500'
-                        }`}
-                        style={{ width: `${sub.questions_answered > 0 ? sub.success_rate : 0}%` }}
-                      />
-                    </div>
-                    <span className="text-xs font-bold text-slate-400 shrink-0">{sub.success_rate}%</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-[10px] text-slate-500">🔥</span>
-                    {[1,2,3,4,5].map(step => (
-                      <div key={step} className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center ${
-                        step <= sub.consecutive_correct
-                          ? 'bg-emerald-500/40 border-emerald-500'
-                          : 'bg-slate-800 border-slate-700'
-                      }`}>
-                        {step <= sub.consecutive_correct && (
-                          <span className="text-[8px] text-emerald-300 font-bold">✓</span>
-                        )}
-                      </div>
-                    ))}
-                    <span className="text-[10px] text-slate-500 ml-1">
-                      {sub.consecutive_correct >= 5 ? '✅ Dominado!' : `${sub.consecutive_correct}/5`}
-                    </span>
-                  </div>
-                </div>
-              </button>
-            ))}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

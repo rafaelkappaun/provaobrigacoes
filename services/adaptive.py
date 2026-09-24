@@ -12,8 +12,123 @@ from ai.manager import AIProviderManager
 
 logger = logging.getLogger("AdaptiveEngine")
 
+import math
+
 # Limite para considerar acerto inseguro (em segundos)
 INSECURE_TIME_LIMIT = 45.0
+
+TOPIC_STUDY_GUIDE: Dict[str, Dict[str, str]] = {
+    "Planos do Negócio Jurídico (Escada Ponteana)": {
+        "articles": "Arts. 104, 166 e 171 do Código Civil",
+        "key_concept": "Teoria de Pontes de Miranda: 1) Existência (agente, vontade, objeto e forma); 2) Validade (capacidade, vontade livre, objeto lícito/possível, forma prescrita/não defesa); 3) Eficácia (condição, termo e encargo).",
+        "trap": "Incapacidade ou ilicitude gera nulidade/anulabilidade no plano da validade. O negócio existe no mundo fático, mas é inválido."
+    },
+    "Princípios do Direito Contratual": {
+        "articles": "Arts. 421 e 421-A do Código Civil (Lei da Liberdade Econômica)",
+        "key_concept": "Contratos civis e empresariais presumem-se paritários e simétricos. Prevalecem a autonomia privada, a intervenção mínima judicial e a observância estrita da alocação de riscos acordada pelas partes.",
+        "trap": "A função social do contrato não autoriza o juiz a reescrever cláusulas livremente ajustadas entre partes capazes."
+    },
+    "Boa-fé Objetiva e Figuras Parcelares": {
+        "articles": "Arts. 113, 187 e 422 do Código Civil",
+        "key_concept": "Padrão de lealdade e eticidade nas fases pré, durante e pós-contratual. Figuras: Venire contra factum proprium (vedação a comportamento contraditório), Supressio (perda de direito pela inércia), Surrectio (nascimento de prerrogativa pelo costume), Tu quoque e Duty to mitigate.",
+        "trap": "Aceitar pagamentos sem ressalvas em data diversa durante longo período gera Supressio, impedindo cobrança retroativa de encargos."
+    },
+    "Interpretação dos Contratos no Direito Brasileiro": {
+        "articles": "Arts. 112 e 113 do Código Civil",
+        "key_concept": "Nas declarações de vontade atender-se-á mais à intenção comum das partes do que ao sentido estrito e literal da linguagem. Devem ser interpretados conforme a boa-fé e os usos do lugar da celebração.",
+        "trap": "Em contratos de adesão, cláusulas ambíguas ou contraditórias devem ser interpretadas a favor do aderente (contra proferentem)."
+    },
+    "Classificação dos Contratos": {
+        "articles": "Teoria Geral dos Contratos (Código Civil)",
+        "key_concept": "Unilaterais (obrigação para apenas uma parte) vs. Bilaterais (obrigações recíprocas/sinalagma). Gratuitos vs. Onerosos. Comutativos (prestações certas) vs. Aleatórios (álea/risco).",
+        "trap": "Todo contrato é bilateral na sua formação (exige duas partes), mas pode ser classificado como unilateral quanto aos seus efeitos obrigacionais (ex: doação pura)."
+    },
+    "Etapas de Formação do Contrato": {
+        "articles": "Arts. 427 a 435 do Código Civil",
+        "key_concept": "Fases: 1) Negociações preliminares (puntuação); 2) Proposta/Policitação (vinculante, salvo as exceções do art. 428); 3) Aceitação tempestiva; 4) Conclusão. Contrato entre ausentes aperfeiçoa-se pela teoria da expedição.",
+        "trap": "Lugar da celebração: considera-se celebrado o contrato no lugar em que foi proposto (art. 435 CC)."
+    },
+    "Estipulação em Favor de Terceiro": {
+        "articles": "Arts. 436 a 438 do Código Civil",
+        "key_concept": "O estipulante pode exigir o cumprimento da obrigação a favor do terceiro, e o terceiro também pode exigi-la. O estipulante pode substituir o terceiro a qualquer momento por ato inter vivos ou testamento.",
+        "trap": "Se ao terceiro for deixado o direito de reclamar a execução, o estipulante não pode exonerar o devedor sem a concordância expressa do terceiro."
+    },
+    "Promessa de Fato de Terceiro": {
+        "articles": "Arts. 439 e 440 do Código Civil",
+        "key_concept": "Aquele que tiver prometido fato de terceiro responderá por perdas e danos se o terceiro não cumprir. Se o terceiro aceitar a obrigação perante o credor, o promitente original fica totalmente exonerado.",
+        "trap": "A obrigação não existirá se o terceiro for cônjuge do promitente nas hipóteses previstas em lei."
+    },
+    "Contratos Aleatórios - Conceito e Espécies": {
+        "articles": "Arts. 458 a 461 do Código Civil",
+        "key_concept": "Contratos em que a prestação de uma das partes depende de evento futuro e incerto (álea deliberada). Dividem-se em álea sobre coisas futuras (emptio spei e emptio rei speratae) e álea sobre coisas existentes expostas a risco.",
+        "trap": "Sem a assunção de risco voluntária pelas partes não há contrato aleatório, mas sim negócio comutativo sujeito às regras ordinárias."
+    },
+    "Contrato Aleatório: Emptio Spei": {
+        "articles": "Art. 458 do Código Civil",
+        "key_concept": "Alienação da esperança: o risco assumido pelo adquirente é sobre a própria existência da coisa. O alienante tem direito ao preço total mesmo que nada venha a existir, desde que não tenha havido dolo ou culpa.",
+        "trap": "Exemplo da rede jogada ao mar: o adquirente paga o valor total combinado mesmo se vier completamente vazia."
+    },
+    "Contrato Aleatório: Emptio Rei Speratae": {
+        "articles": "Art. 459 do Código Civil",
+        "key_concept": "Alienação da coisa esperada: o risco assumido é sobre a quantidade da coisa. O alienante terá direito ao preço integral desde que qualquer quantidade venha a existir. Se NADA vier a existir, o contrato é ineficaz e o preço não é devido.",
+        "trap": "Diferença vital: no Emptio Spei o preço é devido mesmo com zero de colheita; no Emptio Rei Speratae deve existir ao menos uma quantidade mínima."
+    },
+    "Contrato Aleatório: Coisas Existentes Expostas a Risco": {
+        "articles": "Arts. 460 e 461 do Código Civil",
+        "key_concept": "Refere-se a coisas existentes, mas sujeitas a risco assumido pelo adquirente. O alienante terá direito a todo o preço mesmo que a coisa já não existisse no todo ou em parte na data do negócio.",
+        "trap": "O negócio é anulável por dolo se o alienante já sabia da consumação do risco (ex: perda da mercadoria em alto-mar antes da venda)."
+    },
+    "Contrato Preliminar / Promessa de Contratar": {
+        "articles": "Arts. 462 a 466 do Código Civil",
+        "key_concept": "O contrato preliminar deve conter todos os requisitos essenciais do contrato a ser celebrado, exceto a forma. Permite execução específica perante o Judiciário para suprir a vontade da parte recalcitrante.",
+        "trap": "A forma pública (ex: escritura) não é obrigatória no pré-contrato, ainda que o contrato definitivo dependa dela por lei."
+    },
+    "Contrato com Pessoa a Declarar": {
+        "articles": "Arts. 467 a 471 do Código Civil",
+        "key_concept": "Cláusula pro amico: faculdade concedida a uma parte de indicar terceiro que assumirá seus direitos e obrigações. Prazo legal de indicação: 5 dias. A indicação deve obedecer à mesma forma do contrato originário.",
+        "trap": "A aceitação do terceiro opera com eficácia retroativa ex tunc (desde o momento da celebração original)."
+    },
+    "Contrato com Pessoa a Declarar vs. Outros Contratos": {
+        "articles": "Arts. 467 a 471 do CC vs. Cessão e Mandato",
+        "key_concept": "Com a nomeação válida, o contratante originário sai totalmente da relação. Se a pessoa indicada for incapaz ou insolvente ao tempo da nomeação, o contrato produz efeitos entre os signatários originais.",
+        "trap": "Diferente da cessão de contrato (que opera ex nunc) e do mandato (onde o mandatário age desde o início em nome alheio)."
+    },
+    "Vícios Redibitórios - Conceito e Requisitos": {
+        "articles": "Arts. 441 e 442 do Código Civil",
+        "key_concept": "Defeito oculto pré-existente à tradição em contrato comutativo ou doação onerosa que torne a coisa imprópria ao uso a que se destina ou diminua sensivelmente seu valor. Não se aplica a doação pura.",
+        "trap": "O defeito deve ser oculto e pré-existente. Defeitos aparentes ou surgidos após a entrega não geram redibição civil."
+    },
+    "Efeitos da Boa-fé e Má-fé do Alienante no Vício": {
+        "articles": "Art. 443 do Código Civil",
+        "key_concept": "Se o alienante conhecia o vício (má-fé): restitui o valor recebido + perdas e danos. Se não conhecia o vício (boa-fé): restitui apenas o valor recebido + despesas contratuais.",
+        "trap": "A responsabilidade civil do alienante subsiste mesmo se a coisa perecer em poder do adquirente, caso o perecimento decorra do vício oculto (art. 444)."
+    },
+    "Ações Edilícias (Redibitória e Estimatória/Quanti Minoris)": {
+        "articles": "Arts. 441 e 442 do Código Civil",
+        "key_concept": "Opções exclusivas do adquirente: 1) Ação Redibitória: rescindir o contrato e reaver o valor pago; OU 2) Ação Estimatória (Quanti Minoris): conservar a coisa e pleitear abatimento proporcional no preço.",
+        "trap": "As ações edilícias são alternativas e excludentes: o autor não pode cumular redibição com abatimento pelo mesmo defeito."
+    },
+    "Vício Redibitório vs. Entrega de Coisa Diversa (Aliud Pro Alio)": {
+        "articles": "Art. 441 CC vs. Arts. 389 e 205 do Código Civil",
+        "key_concept": "No vício redibitório entrega-se a coisa contratada com defeito funcional oculto (prazo decadencial curto). No aliud pro alio entrega-se coisa substancialmente diferente da pactuada (inadimplemento contratual com prazo prescricional decenal).",
+        "trap": "Entregar sementes de espécie botânica distinta da comprada é aliud pro alio (inadimplemento), sujeito a prazo prescricional geral de 10 anos."
+    },
+    "Prazos Decadenciais dos Vícios Redibitórios": {
+        "articles": "Arts. 445 e 446 do Código Civil",
+        "key_concept": "Regra geral contada da tradição: 30 dias para bens móveis e 1 ano para imóveis. Se o vício só puder ser conhecido mais tarde: prazo móvel é de 180 dias e imóvel de 1 ano para o vício aparecer; contam-se então 30 dias (móveis) ou 1 ano (imóveis) da ciência.",
+        "trap": "A garantia contratual suspende a contagem legal, mas o adquirente deve denunciar o defeito ao alienante nos 30 dias seguintes ao descobrimento sob pena de decadência."
+    },
+    "Extinção dos Contratos - Resolução e Cláusula Resolutiva": {
+        "articles": "Arts. 474 e 475 do Código Civil",
+        "key_concept": "A cláusula resolutiva expressa opera de pleno direito; a tácita depende de interpelação judicial. A parte prejudicada pelo inadimplemento pode pedir a resolução ou exigir o cumprimento, cabendo sempre indenização por perdas e danos.",
+        "trap": "A resolução decorre do descumprimento culposo ou fortuito; difere da resilição (unilateral/denúncia ou bilateral/distrato) e da rescisão."
+    },
+    "Exceção do Contrato Não Cumprido e Onerosidade Excessiva": {
+        "articles": "Arts. 476 a 480 do Código Civil",
+        "key_concept": "Exceptio non adimpleti contractus (art. 476): nenhum contratante pode exigir a prestação do outro sem antes ter cumprido a sua. Onerosidade excessiva (art. 478): resolução em contratos de execução continuada/diferida por evento extraordinário e imprevisível.",
+        "trap": "A resolução por onerosidade excessiva pode ser evitada se a parte contrária oferecer modificação equitativa das condições contratuais (art. 479)."
+    }
+}
 
 class AdaptiveEngine:
     @staticmethod
@@ -63,7 +178,7 @@ class AdaptiveEngine:
 
     @classmethod
     def get_dashboard_data(cls, db: Session, session_id: str = "default") -> Dict[str, Any]:
-        """Obtém todas as métricas para a tela inicial"""
+        """Obtém todas as métricas com foco na Meta de 90% de acertos e recomendações de estudo"""
         cls.initialize_topics_if_needed(db, session_id)
         
         stats = db.query(UserStats).filter(UserStats.session_id == session_id).first()
@@ -86,39 +201,80 @@ class AdaptiveEngine:
         total_correct = stats.questions_correct
         overall_success_rate = (total_correct / total_answered * 100.0) if total_answered > 0 else 0.0
         
-        # Conta tópicos por status
-        criticos = sum(1 for t in topics if t.status == "Critico")
-        intermediarios = sum(1 for t in topics if t.status == "Intermediario")
-        dominados = sum(1 for t in topics if t.status == "Dominado")
-        
-        # Verifica se existe algum tema em Modo Intensivo
-        intensive_subject = None
-        for t in topics:
-            if t.consecutive_errors >= 3:
-                intensive_subject = t.subject
-                break
-                
-        # Detalhamento de cada assunto
+        # Detalhamento de cada assunto com cálculo para meta 90%
         subjects_detail = []
+        study_recommendations = []
+        
         for t in topics:
-            needs_recovery = t.questions_answered >= 3 and t.success_rate < 90.0
-            subjects_detail.append({
+            guide = TOPIC_STUDY_GUIDE.get(t.subject, {
+                "articles": "Código Civil Brasileiro",
+                "key_concept": f"Revisar o conceito e principais requisitos legais de {t.subject}.",
+                "trap": "Atenção aos prazos legais e exceções expressas na lei."
+            })
+            
+            is_goal_achieved = (t.questions_answered >= 3 and t.success_rate >= 90.0)
+            
+            # Cálculo de acertos necessários para atingir 90%:
+            # (correct + x) / (answered + x) >= 0.9 => 0.1x >= 0.9*answered - correct
+            if is_goal_achieved:
+                needed_for_90 = 0
+            elif t.questions_answered == 0:
+                needed_for_90 = 3
+            else:
+                raw_needed = (0.9 * t.questions_answered - t.questions_correct) / 0.1
+                needed_for_90 = max(1, min(15, math.ceil(raw_needed)))
+                
+            # Status pedagógico claro
+            if t.questions_answered == 0:
+                display_status = "NaoIniciado"
+            elif is_goal_achieved:
+                display_status = "Dominado"
+            elif t.success_rate >= 70.0:
+                display_status = "Intermediario"
+            else:
+                display_status = "Critico"
+                
+            sub_info = {
                 "subject": t.subject,
                 "questions_answered": t.questions_answered,
                 "questions_correct": t.questions_correct,
                 "questions_incorrect": t.questions_answered - t.questions_correct,
                 "success_rate": round(t.success_rate, 1),
-                "status": t.status,
+                "status": display_status,
                 "consecutive_errors": t.consecutive_errors,
                 "consecutive_correct": t.consecutive_correct,
-                "mastery_target": "5/5",
-                "is_intensive": t.consecutive_errors >= 3,
-                "needs_recovery": needs_recovery
-            })
+                "is_goal_achieved": is_goal_achieved,
+                "needed_for_90": needed_for_90,
+                "articles": guide["articles"],
+                "key_concept": guide["key_concept"],
+                "trap": guide["trap"]
+            }
+            subjects_detail.append(sub_info)
             
-        # Ranking pessoal (faixa)
-        if total_answered >= 100:
-            ranking = "Mestre em Obrigações"
+            # Se ainda não atingiu a meta de 90%, entra na lista de recomendações de estudo
+            if not is_goal_achieved:
+                # Prioridade: menor taxa de acerto primeiro; depois os com mais erros
+                priority_score = (100.0 - t.success_rate) + (20 if t.questions_answered > 0 else 0)
+                study_recommendations.append({
+                    **sub_info,
+                    "priority_score": priority_score
+                })
+
+        # Ordena recomendações: maior prioridade primeiro
+        study_recommendations.sort(key=lambda x: x["priority_score"], reverse=True)
+        # Remove campo de cálculo interno
+        for rec in study_recommendations:
+            rec.pop("priority_score", None)
+
+        # Contagem por status
+        dominados_count = sum(1 for s in subjects_detail if s["is_goal_achieved"])
+        criticos_count = sum(1 for s in subjects_detail if s["status"] == "Critico")
+        intermediarios_count = sum(1 for s in subjects_detail if s["status"] == "Intermediario")
+        nao_iniciados_count = sum(1 for s in subjects_detail if s["status"] == "NaoIniciado")
+            
+        # Ranking pessoal
+        if total_answered >= 100 and overall_success_rate >= 80:
+            ranking = "Mestre em Contratos"
             ranking_emoji = "👑"
         elif total_answered >= 50:
             ranking = "Jurista Expert"
@@ -129,53 +285,46 @@ class AdaptiveEngine:
         elif total_answered >= 10:
             ranking = "Aprendiz Dedicado"
             ranking_emoji = "🥈"
-        elif total_answered >= 5:
+        elif total_answered >= 3:
             ranking = "Iniciante"
             ranking_emoji = "🥉"
         else:
             ranking = "Novato"
             ranking_emoji = "🌱"
             
-        # Próximo passo: orientação inteligente
-        meta_achieved_flag = overall_success_rate >= 95.0 and total_answered >= 50
-        next_step = "Continue praticando para atingir 95% de acertos em todos os temas."
+        # Orientação pedagógica direta para a Meta de 90%
+        meta_achieved_flag = overall_success_rate >= 90.0 and total_answered >= 30 and dominados_count >= 15
         if total_answered == 0:
-            next_step = "🌟 Responda sua primeira questão para começar sua jornada!"
+            next_step = "🌟 Responda sua primeira questão para iniciar seu diagnóstico rumo aos 90%!"
+        elif meta_achieved_flag:
+            next_step = "🏆 Parabéns! Você atingiu a Meta de 90% de acertos nos conteúdos de Contratos!"
+        elif study_recommendations:
+            top_rec = study_recommendations[0]
+            if top_rec["questions_answered"] == 0:
+                next_step = f"📖 Inicie os estudos de '{top_rec['subject']}' ({top_rec['articles']}) para cobrir todo o edital."
+            else:
+                next_step = f"🎯 Prioridade de Estudo: Pratique '{top_rec['subject']}' ({top_rec['success_rate']}%). Faltam cerca de {top_rec['needed_for_90']} acertos para os 90%!"
         else:
-            env_keys = ["GROQ_API_KEY", "DEEPSEEK_API_KEY", "OPENROUTER_API_KEY", "GEMINI_API_KEY"]
-            has_ai_key = any(os.getenv(k) for k in env_keys)
-            if not has_ai_key:
-                ai_status = AIProviderManager.get_config()
-                has_any_key = any(ai_status.get(f"{p}_api_key") for p in ["groq", "deepseek", "openrouter", "gemini", "qwen", "mistral"])
-                if not has_any_key:
-                    next_step = "🔑 Configure uma chave de IA gratuita (Groq) no arquivo .env para gerar questões ilimitadas personalizadas."
-            if meta_achieved_flag:
-                next_step = "🏆 Meta 95% atingida! Faça um simulado completo para fixar o conhecimento."
-            elif intensive_subject:
-                next_step = f"🔥 Modo Intensivo ativo em '{intensive_subject}'. Estude este tema para desbloquear os demais."
-            elif criticos > 0:
-                criticos_names = [t.subject for t in topics if t.status == "Critico"][:3]
-                next_step = f"🎯 Foco total nos temas críticos: {', '.join(criticos_names)}. Pratique até atingir 60%."
-            elif intermediarios > 0:
-                next_step = f"📈 Você está evoluindo! Reforce {intermediarios} temas intermediários para chegar ao domínio total."
-            elif dominados == len(topics) and dominados > 0:
-                next_step = "💪 Domínio total! Você já domina todos os temas. Tente o modo simulado para se desafiar ainda mais."
+            next_step = "💪 Continue respondendo questões para consolidar sua taxa de 90% em todos os temas."
 
         return {
             "overall_success_rate": round(overall_success_rate, 1),
             "questions_answered": total_answered,
             "questions_correct": total_correct,
+            "questions_incorrect": total_answered - total_correct,
             "total_time_seconds": stats.total_time_seconds,
             "streak_days": stats.streak_days,
-            "meta_achieved": overall_success_rate >= 95.0 and total_answered >= 50,
-            "meta_progress": round(min(100, overall_success_rate / 95.0 * 100), 1) if total_answered > 0 else 0,
+            "meta_target": 90.0,
+            "meta_achieved": meta_achieved_flag,
+            "meta_progress": round(min(100, (overall_success_rate / 90.0) * 100), 1) if total_answered > 0 else 0,
             "ranking": ranking,
             "ranking_emoji": ranking_emoji,
-            "criticos_count": criticos,
-            "intermediarios_count": intermediarios,
-            "dominados_count": dominados,
-            "intensive_subject": intensive_subject,
+            "dominados_count": dominados_count,
+            "intermediarios_count": intermediarios_count,
+            "criticos_count": criticos_count,
+            "nao_iniciados_count": nao_iniciados_count,
             "subjects": subjects_detail,
+            "study_recommendations": study_recommendations,
             "next_step": next_step
         }
 

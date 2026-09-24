@@ -256,3 +256,19 @@ def test_convert_errors_to_flashcards():
     data = response.json()
     assert "count" in data
     assert "message" in data
+
+
+def test_dashboard_meta_90_and_study_recommendations():
+    """Verifica se o dashboard foca na Meta de 90% e entrega recomendações pedagógicas de estudo"""
+    response = client.get("/api/dashboard")
+    assert response.status_code == 200
+    data = response.json()
+    assert data.get("meta_target") == 90.0
+    assert "study_recommendations" in data
+    assert isinstance(data["study_recommendations"], list)
+    assert len(data["study_recommendations"]) > 0
+    first_rec = data["study_recommendations"][0]
+    assert "subject" in first_rec
+    assert "articles" in first_rec
+    assert "needed_for_90" in first_rec
+    assert "key_concept" in first_rec
