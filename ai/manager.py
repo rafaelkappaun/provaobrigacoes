@@ -107,22 +107,30 @@ class AIProviderManager:
     @classmethod
     def generate_question(cls, subject: str, bank: str, difficulty: str,
                           db: Any = None, session_id: str = None, module: str = "contratos") -> Dict[str, Any]:
-        """Gera questão 100% offline: isolada por módulo (contratos ou multiportas) com alternativas embaralhadas"""
+        """Gera questão 100% offline: isolada por módulo (contratos ou multiportas), sem repetição de questões já respondidas"""
         if not bank or bank not in BANKS:
             bank = random.choice(BANKS)
             
         if module == "multiportas":
             if not subject or subject not in MULTIPORTAS_SUBJECTS:
                 subject = random.choice(MULTIPORTAS_SUBJECTS)
+            
+            # 1. Tenta servir do seed pool para o assunto solicitado (evitando já respondidas na sessão)
             seed_q = cls._pick_from_seed_pool(subject, bank, db, session_id, pool=_multiportas_seed_pool)
             if seed_q:
-                return cls._shuffle_and_balance_question(seed_q)
-            if _multiportas_seed_pool:
-                candidates = [q for q in _multiportas_seed_pool if q.get("subject") == subject]
-                if candidates:
-                    q = dict(random.choice(candidates))
-                    q["id"] = f"{q.get('id', 'multi')}_{random.randint(1000, 9999)}"
-                    return cls._shuffle_and_balance_question(q)
+                return cls._shuffle_and_balance_question(dict(seed_q))
+                
+            # 2. Se já respondeu todas as sementes deste assunto, busca outros assuntos de Multiportas com questões pendentes
+            other_subjects = [s for s in MULTIPORTAS_SUBJECTS if s != subject]
+            random.shuffle(other_subjects)
+            for alt_subj in other_subjects:
+                alt_q = cls._pick_from_seed_pool(alt_subj, bank, db, session_id, pool=_multiportas_seed_pool)
+                if alt_q:
+                    logger.info(f"Multiportas: assunto '{subject}' esgotado na sessão. Redirecionando para '{alt_subj}'.")
+                    return cls._shuffle_and_balance_question(dict(alt_q))
+            
+            # 3. Se TODOS os 14 assuntos e 56 sementes foram respondidos na sessão, gera procedural inédito
+            logger.info("Multiportas: todas as sementes da sessão esgotadas. Gerando procedural inédito.")
             return cls._shuffle_and_balance_question(generate_multiportas_question_offline(subject, bank, difficulty))
             
         # Padrão: módulo de contratos
@@ -132,90 +140,80 @@ class AIProviderManager:
         # 1. Tenta servir do seed pool (prioriza não respondidas na sessão)
         seed_q = cls._pick_from_seed_pool(subject, bank, db, session_id, pool=_seed_pool)
         if seed_q:
-            return cls._shuffle_and_balance_question(seed_q)
+            return cls._shuffle_and_balance_question(dict(seed_q))
 
-        # 2. Se já respondeu todas as sementes daquele assunto, reaproveita do seed pool com ID novo
-        if _seed_pool:
-            candidates = [q for q in _seed_pool if q.get("subject") == subject]
-            if candidates:
-                q = dict(random.choice(candidates))
-                q["id"] = f"{q.get('id', 'seed')}_{random.randint(1000, 9999)}"
-                return cls._shuffle_and_balance_question(q)
+        # 2. Se já respondeu todas as sementes deste assunto, busca outros assuntos de Contratos com questões pendentes
+        other_subjects = [s for s in SUBJECTS if s != subject]
+        random.shuffle(other_subjects)
+        for alt_subj in other_subjects:
+            alt_q = cls._pick_from_seed_pool(alt_subj, bank, db, session_id, pool=_seed_pool)
+            if alt_q:
+                logger.info(f"Contratos: assunto '{subject}' esgotado na sessão. Redirecionando para '{alt_subj}'.")
+                return cls._shuffle_and_balance_question(dict(alt_q))
 
         # 3. Fallback: gerador procedural offline dinâmico
+        logger.info("Contratos: todas as sementes da sessão esgotadas. Gerando procedural inédito.")
         return cls._shuffle_and_balance_question(generate_question_offline(subject, bank, difficulty))
 
     @classmethod
     def _pick_from_seed_pool(cls, subject: str, bank: str,
                               db: Any = None, session_id: str = None,
                               pool: Optional[List[Dict[str, Any]]] = None) -> Optional[Dict[str, Any]]:
-        """Escolhe questão do seed pool do respectivo módulo, evitando as já respondidas por esta sessão"""
+        """Escolhe questão do seed pool do respectivo módulo, garantindo que TODAS as questões não respondidas sejam aproveitadas"""
         active_pool = pool if pool is not None else _seed_pool
         if not active_pool:
             return None
 
-        # Filtra por assunto + banca
-        candidates = [q for q in active_pool if q["subject"] == subject and q["bank"] == bank]
-        if not candidates:
-            # Tenta qualquer banca para o assunto
-            candidates = [q for q in active_pool if q["subject"] == subject]
-        if not candidates:
+        # 1. Pega todas as questões do assunto no pool
+        subject_candidates = [q for q in active_pool if q.get("subject") == subject]
+        if not subject_candidates:
             return None
 
-        # Se temos db/session, filtra já respondidas por esta sessão usando question_id
-        if db is not None and session_id is not None and candidates:
-            from database.models import QuestionHistory
-            candidate_ids = [q["id"] for q in candidates]
-            # Busca pelo campo question_id (novo) ou por id que começa com o question_id (legado)
-            try:
-                answered_qids = set(
-                    row[0] for row in db.query(QuestionHistory.question_id)
-                    .filter(QuestionHistory.session_id == session_id)
-                    .filter(QuestionHistory.question_id.in_(candidate_ids))
-                    .all()
-                    if row[0]
-                )
-            except Exception:
-                answered_qids = set()
-            candidates = [q for q in candidates if q["id"] not in answered_qids]
-
-        if not candidates:
-            return None
-
-        # Deduplica por texto das alternativas para evitar questões com opções idênticas
-        opt_groups: dict = {}
-        for q in candidates:
-            opt_key = json.dumps(q.get("options", {}), sort_keys=True)
-            opt_groups.setdefault(opt_key, []).append(q)
-        group = random.choice(list(opt_groups.values()))
-        q = random.choice(group)
-
-        # Se temos db/session, evita conteúdo similar já respondido nesta sessão
+        # 2. Se temos db/session, filtra rigorosamente as já respondidas por esta sessão
         if db is not None and session_id is not None:
+            from database.models import QuestionHistory
             try:
-                from database.models import QuestionHistory
-                answered = db.query(QuestionHistory.question_json).filter(
-                    QuestionHistory.session_id == session_id,
-                    QuestionHistory.question_json.isnot(None)
+                history_rows = db.query(QuestionHistory.question_id, QuestionHistory.id).filter(
+                    QuestionHistory.session_id == session_id
                 ).all()
-                answered_opts = set()
-                for row in answered:
-                    try:
-                        qj = json.loads(row[0]) if isinstance(row[0], str) else row[0]
-                        if qj and "options" in qj:
-                            answered_opts.add(json.dumps(qj["options"], sort_keys=True))
-                    except Exception:
-                        pass
-                if json.dumps(q.get("options", {}), sort_keys=True) in answered_opts:
-                    remaining = [g for g in opt_groups if g not in answered_opts]
-                    if remaining:
-                        group = opt_groups[random.choice(remaining)]
-                        q = random.choice(group)
-            except Exception:
-                pass
+                answered_ids = set()
+                session_suffix = f"_{session_id[:20]}"
+                for qid, hid in history_rows:
+                    if qid:
+                        clean_qid = str(qid).strip()
+                        answered_ids.add(clean_qid)
+                        if "_" in clean_qid:
+                            answered_ids.add(clean_qid.rsplit("_", 1)[0])
+                    if hid:
+                        clean_hid = str(hid).strip()
+                        answered_ids.add(clean_hid)
+                        if session_suffix in clean_hid:
+                            base_hid = clean_hid.split(session_suffix)[0]
+                            answered_ids.add(base_hid)
+                            if "_" in base_hid:
+                                answered_ids.add(base_hid.rsplit("_", 1)[0])
+                
+                # Exclui qualquer questão do assunto que já tenha sido respondida
+                unanswered = [
+                    q for q in subject_candidates 
+                    if q["id"] not in answered_ids and not any(q["id"] == aid or q["id"].startswith(aid) for aid in answered_ids)
+                ]
+            except Exception as e:
+                logger.warning(f"Erro ao verificar histórico de questões respondidas: {e}")
+                unanswered = subject_candidates
+        else:
+            unanswered = subject_candidates
 
-        logger.info(f"Seed pool: questão {q['id'][:8]} para {subject}/{bank}")
-        return q
+        if not unanswered:
+            return None
+
+        # 3. Entre as NÃO respondidas, dá preferência à banca solicitada se houver; senão, aceita qualquer banca do assunto
+        bank_matches = [q for q in unanswered if q.get("bank") == bank]
+        candidates_to_pick = bank_matches if bank_matches else unanswered
+
+        q = random.choice(candidates_to_pick)
+        logger.info(f"Seed pool: questão {q['id']} selecionada para '{subject}' (banca {q.get('bank')}, restam {len(unanswered)} no assunto)")
+        return dict(q)
 
     @classmethod
     def ask_professor(cls, context: Dict[str, Any], query: str) -> str:

@@ -59,24 +59,24 @@ MULTIPORTAS_STUDY_GUIDE: Dict[str, Dict[str, str]] = {
         "trap": "A sentença arbitral tem a mesma eficácia da sentença judicial e constitui título executivo judicial (art. 515, VII, CPC), dispensando homologação pelo Judiciário."
     },
     "Casos Práticos e Adequação dos Métodos (Autotutela, Hetero e Auto)": {
-        "articles": "Art. 165, §§ 2º e 3º do CPC/2015 e Art. 1.210, §1º do CC",
-        "key_concept": "Adequação prática: Mediação para conflitos relacionais continuados (família, vizinhança, societário); Conciliação para litígios pontuais sem vínculo prévio (consumo, batida de carro); Arbitragem para disputas técnicas e empresariais patrimoniais; Autotutela para desforço possessório imediato.",
-        "trap": "Usar conciliação em disputa familiar complexa agrava o conflito; a lei determina expressamente a mediação quando houver vínculo anterior entre as partes (art. 165, § 3º, CPC)."
+        "articles": "Art. 165 do CPC/2015, Art. 1.210 do CC e Lei 9.307/1996",
+        "key_concept": "Critérios de adequação: vínculos relacionais prévios e duradouros exigem Mediação; relações pontuais sem vínculo prévio exigem Conciliação; direitos patrimoniais empresariais com sigilo e especialidade exigem Arbitragem; ameaça injusta iminente à posse exige Autotutela proporcional.",
+        "trap": "Não existe método universalmente superior: a escolha do método adequado deve respeitar a natureza do conflito e a relação das partes."
     },
     "Processos Autocompositivos vs. Heterocompositivos": {
-        "articles": "Teoria Geral dos Conflitos e CPC/2015",
-        "key_concept": "Autocomposição: solução construída pelas partes, empoderamento, foco no futuro (ganha-ganha), confidencialidade e maior taxa de cumprimento espontâneo. Heterocomposição: decisão imposta de cima para baixo, foco no passado (ganha-perde), dependência de coerção estatal.",
-        "trap": "Na heterocomposição a sentença muitas vezes encerra o processo, mas não encerra o conflito sociológico subjacente entre as partes."
+        "articles": "Doutrina de Métodos Adequados e Resolução CNJ 125/2010",
+        "key_concept": "Autocomposição: solução consensual construída pelas partes (ganha-ganha), preserva relações futuras e tem altíssimo cumprimento voluntário. Heterocomposição: imposição coercitiva por terceiro juiz/árbitro (ganha-perde), foco no passado e na culpa.",
+        "trap": "Na autocomposição o terceiro jamais profere juízo condenatório nem impõe sanção; a autoridade decorre da concordância de vontades das partes."
     },
     "Princípios da Resolução de Conflitos e Acesso à Justiça": {
-        "articles": "Art. 5º, XXXV e LXXVIII da CF/88, Art. 166 do CPC e Art. 2º da Lei 13.140/15",
-        "key_concept": "Princípios fundamentais: Confidencialidade, Imparcialidade, Independência, Autonomia da vontade das partes, Oralidade, Informalidade, Boa-fé, Razoável duração do processo e Acesso à Ordem Jurídica Justa.",
-        "trap": "O dever de confidencialidade vincula mediadores, conciliadores e partes: informações reveladas na sessão não podem ser usadas como prova em futuro processo judicial (art. 166, § 1º, CPC)."
+        "articles": "Art. 166 do CPC/2015 e Lei 13.140/2015",
+        "key_concept": "Princípios cardeais: independência, imparcialidade da intervenção, autonomia da vontade das partes, confidencialidade absoluta, oralidade, informalidade e decisão informada.",
+        "trap": "A confidencialidade é ampla: nenhuma informação ou proposta revelada em sessão de mediação pode servir de prova em processo judicial futuro (art. 166, §§ 1º e 2º, CPC)."
     },
     "Evolução Histórica dos Métodos Consensuais": {
-        "articles": "Doutrina Internacional e Frank Sander (Pound Conference, 1976)",
-        "key_concept": "Relatório Cappelletti e Garth (Três Ondas Renovatórias de Acesso à Justiça: 1ª Assistência jurídica aos pobres, 2ª Direitos difusos/coletivos, 3ª Abordagem ampla com métodos alternativos). Frank Sander na Conferência de Pound (1976) concebe a Justiça Multiportas.",
-        "trap": "A Terceira Onda de Cappelletti e Garth é exatamente o enfoque no aperfeiçoamento dos métodos de solução e representação adequada dos conflitos."
+        "articles": "Doutrina de Mauro Cappelletti e Bryant Garth (Acesso à Justiça)",
+        "key_concept": "Ondas de Cappelletti: 1ª Onda (Assistência Judiciária aos hipossuficientes financeiramente); 2ª Onda (Tutela e representação dos Direitos Difusos e Coletivos); 3ª Onda (Enfoque integral de acesso à ordem jurídica justa através das ADRs).",
+        "trap": "A terceira onda renovatória não descarta a via judicial, mas amplia o espectro de portas adequadas para entrega de pacificação efetiva."
     },
     "Objetivos do Modelo Multiportas": {
         "articles": "Resolução CNJ 125/2010 e Art. 3º do CPC/2015",
@@ -95,11 +95,14 @@ MULTIPORTAS_STUDY_GUIDE: Dict[str, Dict[str, str]] = {
     }
 }
 
-NOMES = ["Ana", "Bruno", "Carlos", "Daniela", "Eduardo", "Fernanda", "Gustavo", "Helena", "Igor", "Juliana", "Lucas", "Mariana", "Rodrigo", "Tatiana"]
-EMPRESAS = ["Alfa Engenharia", "Beta Logística", "Gama Cosméticos", "Delta Tecnologia", "Ômega Varejo", "Solaris Construtora"]
+NOMES = ["Adriano", "Beatriz", "Caio", "Débora", "Estêvão", "Flávia", "Gabriel", "Heloísa", "Ismael", "Júlia", "Leandro", "Manuela", "Otávio", "Priscila", "Renato", "Sabrina", "Tiago", "Valéria"]
+EMPRESAS = ["Alfa Logística", "Beta Softwares", "Gama Biofarmacêutica", "Delta Agrícola", "Ômega Energia Solar", "Titan Infraestrutura", "Vértice Construtora", "Horizonte Alimentos"]
 
 def generate_multiportas_question_offline(subject: str, bank: str = "FGV", difficulty: str = "Médio") -> Dict[str, Any]:
-    """Gera proceduralmente questões técnicas completas sobre os 14 temas do questionário de Modelo Multiportas"""
+    """
+    Gera proceduralmente questões técnicas sobre os 14 temas de Modelo Multiportas.
+    Possui múltiplos cenários factuais distintos por assunto (garantindo diversidade e zero repetições idênticas).
+    """
     if subject not in MULTIPORTAS_SUBJECTS:
         subject = random.choice(MULTIPORTAS_SUBJECTS)
     if bank not in MULTIPORTAS_BANKS:
@@ -109,257 +112,427 @@ def generate_multiportas_question_offline(subject: str, bank: str = "FGV", diffi
     p2 = random.choice([n for n in NOMES if n != p1])
     emp1 = random.choice(EMPRESAS)
     emp2 = random.choice([e for e in EMPRESAS if e != emp1])
+    scenario_idx = random.choice([0, 1, 2])
 
     # 1. NOÇÃO DE CONFLITO DE DIREITO E CONFLITO SOCIAL
     if subject == "Noção de Conflito de Direito e Conflito Social":
-        enunciado = (
-            f"({bank}) {p1} e {p2} são vizinhos em um condomínio residencial e divergem reiteradamente sobre ruídos noturnos, "
-            f"gerando animosidade pessoal. Após meses de tensão, {p1} ingressa com ação de obrigação de não fazer com pedido indenizatório. "
-            f"À luz da Teoria Geral dos Conflitos e da lição clássica de Francesco Carnelutti sobre a lide, assinale a afirmativa correta:"
-        )
+        if scenario_idx == 0:
+            enunciado = (
+                f"({bank}) {p1} e {p2} fundaram uma sociedade de tecnologia da informação e, após divergências estratégicas, "
+                f"passaram a nutrir forte animosidade interpessoal mútua. Em determinado momento, {p1} notificou formalmente {p2} "
+                f"exigindo apuração de haveres e pagamento de sua participação societária, pretensão expressamente recusada por {p2}. "
+                f"À luz da Teoria Geral dos Conflitos e da clássica lição de Francesco Carnelutti, é correto afirmar:"
+            )
+        elif scenario_idx == 1:
+            enunciado = (
+                f"({bank}) {emp1} e {emp2} mantinham parceria comercial no agronegócio regional. Em razão de quebra de safra, "
+                f"instaurou-se um clima de insatisfação mútua no relacionamento empresarial. A controvérsia adquiriu status de lide jurídica "
+                f"apenas quando {emp1} demandou a retenção de maquinários e {emp2} opôs resistência formal fundada em cláusula de força maior. "
+                f"Sobre a transição entre conflito social e lide de direito (Carnelutti), assinale a afirmativa correta:"
+            )
+        else:
+            enunciado = (
+                f"({bank}) Dois cirurgiões cooperados em um hospital privado, {p1} e {p2}, desenvolveram divergências sobre a escala "
+                f"de plantões cirúrgicos, gerando tensão relacional continuada. A questão desbordou do âmbito meramente social e configurou "
+                f"lide jurídica no instante em que {p1} postulou indenização por danos materiais e {p2} recusou categoricamente a pretensão. "
+                f"Considerando a lição de Carnelutti sobre o conceito de lide, assinale a opção correta:"
+            )
         options = {
-            "A": "O conflito social e a lide jurídica são termos sinônimos, pois qualquer insatisfação interpessoal constitui automaticamente pretensão jurídica processável.",
-            "B": "O conflito social é o substrato sociológico da convivência humana, ao passo que a lide é o conflito de interesses qualificado por uma pretensão resistida com relevância jurídica.",
-            "C": "A jurisdição estatal tem por função exclusiva solucionar conflitos psicológicos internos, sendo irrelevante a existência de pretensão jurídica.",
-            "D": "Para haver lide, basta a manifestação unilateral de vontade de uma parte, dispensando-se a resistência da parte adversa."
+            "A": "O conflito social e a lide jurídica coincidem rigorosamente no plano fático, pois qualquer mal-estar interpessoal autoriza a tutela jurisdicional contenciosa imediata.",
+            "B": "O conflito social decorre da convivência coletiva e da escassez de bens, enquanto a lide jurídica exige um conflito de interesses qualificado por pretensão resistida juridicamente tutelada.",
+            "C": "A lide jurídica prescinde de resistência do adversário, bastando a manifestação de insatisfação moral unilateral de qualquer interessado perante o Poder Judiciário.",
+            "D": "O ordenamento jurídico processual veda a autocomposição em situações decorrentes de conflitos interpessoais puros desprovidos de previsão típica expressa em lei civil."
         }
         gabarito = "B"
         article = "Teoria Geral do Processo (Francesco Carnelutti) e CPC/2015"
         legal_basis = "A lide é o conflito de interesses qualificado por uma pretensão resistida. O conflito social precede a lide e nem sempre possui enquadramento jurídico direto."
-        explanation = "Segundo a clássica doutrina carneluttiana, a lide exige um conflito intersubjetivo em que há pretensão de uma parte subordinar o interesse alheio ao seu, com resistência da outra. O conflito social é mais amplo e sociológico."
+        explanation = "Segundo a clássica doutrina carneluttiana, a lide exige um conflito intersubjetivo qualificado por pretensão que encontra resistência da parte contrária. O conflito social é amplo e sociológico."
 
     # 2. ENFRENTAMENTO DOS CONFLITOS VS. JURISDIÇÃO
     elif subject == "Enfrentamento dos Conflitos vs. Jurisdição":
-        enunciado = (
-            f"({bank}) Diante do expressivo aumento no acervo de processos pendentes de julgamento no Judiciário brasileiro, "
-            f"doutrina e jurisprudência debatem a crise do modelo contencioso tradicional. Sobre a evolução do enfrentamento de conflitos "
-            f"em contraposição ao modelo tradicional de jurisdição estatal, é correto afirmar que:"
-        )
+        if scenario_idx == 0:
+            enunciado = (
+                f"({bank}) O Poder Judiciário brasileiro enfrenta histórico congestionamento processual, decorrente da arraigada "
+                f"'cultura da sentença', onde litígios civis rotineiros são massivamente judicializados. Sobre a transformação paradigmática "
+                f"do enfrentamento de conflitos trazida pelo CPC/2015 em contraposição à jurisdição tradicional, assinale a afirmativa correta:"
+            )
+        elif scenario_idx == 1:
+            enunciado = (
+                f"({bank}) No contexto da moderna teoria do Direito Processual Civil, discute-se a superação do monopólio estatal absoluto "
+                f"da prestação jurisdicional e a afirmação de modelos cooperativos de pacificação social (Art. 3º do CPC). "
+                f"A respeito desse novo modelo de enfrentamento dos litígios, é correto assinalar:"
+            )
+        else:
+            enunciado = (
+                f"({bank}) Ao analisar a prestação da tutela jurídica contemporânea, juristas sustentam que a adjudicação formal por sentença "
+                f"estatal frequentemente declara vencedores e perdedores, mas não dissolve a animosidade subjacente entre os cidadãos. "
+                f"Diante dessa realidade, o modelo multiportas propõe:"
+            )
         options = {
-            "A": "O CPC/2015 consagrou o princípio do monopólio estrito da jurisdição estatal, vedando a atuação de terceiros particulares na solução de controvérsias civis.",
-            "B": "O modelo multiportas propõe a substituição da 'cultura da sentença' pela 'cultura da pacificação', na qual o Judiciário e a sociedade estimulam métodos consensuais e adequados a cada litígio.",
-            "C": "A sentença judicial tradicional é reconhecida como o único mecanismo capaz de restaurar os laços sociais fraturados entre as partes conflitantes.",
-            "D": "O acesso à justiça previsto na Constituição de 1988 restringe-se estritamente ao direito de receber uma sentença proferida por juiz togado."
+            "A": "O restabelecimento do monopólio jurisdicional absoluto pelo Estado, vedando a autotutela mitigada e a via arbitral em litígios patrimoniais privados.",
+            "B": "A substituição gradativa da 'cultura da sentença' pela 'cultura da pacificação', onde o Estado e os operadores estimulam ativamente métodos consensuais adequados ao litígio.",
+            "C": "A supressão do direito constitucional de ação judicial para cidadãos que recusarem submeter controvérsias cíveis a câmaras privadas de mediação prévia.",
+            "D": "A atribuição de poder decisório coercitivo imediato a mediadores comunitários para proferir sentenças com trânsito em julgado material sem controle judicial."
         }
         gabarito = "B"
         article = "Art. 3º do CPC/2015 e Art. 5º, XXXV da CF/88"
-        legal_basis = "O Estado promoverá, sempre que possível, a solução consensual dos conflitos. A conciliação, a mediação e outros métodos de solução consensual de conflitos deverão ser estimulados por juízes, advogados, defensores e promotores."
-        explanation = "A superação da 'cultura da sentença' visa transformar o Judiciário em um centro distribuidor de justiça multiportas, onde a solução consensual é incentivada como meio prioritário de pacificação efetiva (Art. 3º, §§ 2º e 3º, CPC)."
+        legal_basis = "O Estado promoverá, sempre que possível, a solução consensual dos conflitos. A conciliação, a mediação e outros métodos deverão ser estimulados por juízes, advogados, defensores e promotores."
+        explanation = "A transição da 'cultura da sentença' para a 'cultura da pacificação' descentraliza a resposta judicial contenciosa, incentivando vias autocompositivas e métodos adequados (Art. 3º, §§ 2º e 3º, CPC)."
 
     # 3. CONSTRUÇÃO LEGISLATIVA NO ENFRENTAMENTO DE CONFLITOS
     elif subject == "Construção Legislativa no Enfrentamento de Conflitos":
-        enunciado = (
-            f"({bank}) A disciplina da resolução adequada de conflitos no Brasil passou por importante evolução legislativa e normativa "
-            f"nas últimas décadas. Assinale a alternativa que descreve CORRETAMENTE os principais marcos dessa evolução:"
-        )
+        if scenario_idx == 0:
+            enunciado = (
+                f"({bank}) A construção do arcabouço normativo brasileiro voltado ao tratamento adequado dos conflitos "
+                f"consolidou-se por marcos históricos interligados entre 1995 e 2015. Assinale a alternativa que descreve "
+                f"CORRETAMENTE esse itinerário legislativo e normativo:"
+            )
+        elif scenario_idx == 1:
+            enunciado = (
+                f"({bank}) Ao examinar a Política Judiciária Nacional instituída pelo Conselho Nacional de Justiça (CNJ), "
+                f"doutrinadores apontam uma norma precursora que organizou os Centros Judiciários de Solução de Conflitos e Cidadania (CEJUSCs). "
+                f"Essa norma pioneira e seu desdobramento legal consistem em:"
+            )
+        else:
+            enunciado = (
+                f"({bank}) As reformas legislativas do processo civil brasileiro culminaram na consagração expressa dos métodos "
+                f"consensuais no CPC/2015 e na Lei Federal nº 13.140/2015. A respeito da integração legislativa nesse campo, assinale a opção correta:"
+            )
         options = {
-            "A": "A Resolução 125/2010 do CNJ instituiu a Política Judiciária Nacional de Tratamento Adequado dos Conflitos, marco posteriormente consolidado pelo CPC/2015 e pela Lei de Mediação (Lei nº 13.140/2015).",
-            "B": "A mediação e a conciliação só foram autorizadas no ordenamento brasileiro após a entrada em vigor da Emenda Constitucional nº 45/2004.",
-            "C": "O CPC de 2015 revogou a Lei de Arbitragem (Lei nº 9.307/1996), unificando todos os métodos de resolução de conflitos na jurisdição estatal.",
-            "D": "A Lei dos Juizados Especiais (Lei nº 9.099/1995) estabeleceu a obrigatoriedade da arbitragem em todas as causas de menor complexidade."
+            "A": "A Resolução CNJ nº 125/2010 instituiu a Política Judiciária Nacional de Tratamento Adequado dos Conflitos, marco regulatório posteriormente absorvido pelo CPC/2015 e pela Lei nº 13.140/2015.",
+            "B": "A Lei nº 9.099/1995 extinguiu a exigência de tentativa de conciliação prévia, tornando privativa do juiz togado a homologação de qualquer manifestação de vontade.",
+            "C": "O Código de Processo Civil de 2015 revogou tacitamente a Lei de Arbitragem (Lei nº 9.307/1996), unificando a solução de conflitos na via estatal pública.",
+            "D": "A prática da mediação extrajudicial e judicial no Brasil dependia exclusivamente de provimento individual de cada juiz de primeira instância até o ano de 2022."
         }
         gabarito = "A"
         article = "Resolução CNJ nº 125/2010, CPC/2015 e Lei nº 13.140/2015"
-        legal_basis = "A Resolução CNJ 125/2010 estabeleceu as bases dos Centros Judiciários de Solução de Conflitos (CEJUSCs), que foram recepcionadas e aprofundadas pelo CPC/2015 e pela Lei de Mediação."
-        explanation = "A Resolução 125/2010 do CNJ é o divisor de águas institucional no Brasil, determinando a criação dos CEJUSCs e a formação padronizada de conciliadores e mediadores, recepcionada em lei pelo CPC/15 e Lei 13.140/15."
+        legal_basis = "A Resolução CNJ 125/2010 estabeleceu as diretrizes dos CEJUSCs e a capacitação obrigatória de mediadores, sendo recepcionada e complementada pelo CPC/2015 e pela Lei de Mediação."
+        explanation = "A Resolução 125/2010 foi o marco normativo institucional no Brasil, determinando a instalação dos CEJUSCs e a formação qualificada, confirmada em sede legal pelo CPC/2015 e pela Lei 13.140/2015."
 
     # 4. PRINCIPAIS FORMAS DE RESOLUÇÃO DE CONFLITOS
     elif subject == "Principais Formas de Resolução de Conflitos":
-        enunciado = (
-            f"({bank}) No estudo da Teoria Geral dos Conflitos, as formas de resolução são tradicionalmente categorizadas em "
-            f"autotutela, autocomposição e heterocomposição. A respeito dessas categorias, assinale a afirmativa correta:"
-        )
+        if scenario_idx == 0:
+            enunciado = (
+                f"({bank}) Na sistematização doutrinária das formas de resolução de controvérsias (autotutela, autocomposição e heterocomposição), "
+                f"o ordenamento jurídico estabelece balizas estritas para o uso da força física própria e para a atuação de facilitadores. "
+                f"Sobre essas modalidades fundamentais, assinale a afirmativa correta:"
+            )
+        elif scenario_idx == 1:
+            enunciado = (
+                f"({bank}) {p1}, titular de direito de crédito vencido e não pago por {p2}, cogita os caminhos legais admitidos para obter "
+                f"a satisfação de seu interesse econômico. Ao consultar seu advogado sobre as modalidades clássicas de enfrentamento de litígios, "
+                f"recebe a orientação correta de que:"
+            )
+        else:
+            enunciado = (
+                f"({bank}) A doutrina processual classifica a solução de litígios em autotutela, autocomposição e heterocomposição. "
+                f"Em relação à legitimidade e características operacionais dessas três espécies, é correto afirmar:"
+            )
         options = {
-            "A": "A autotutela caracteriza-se pela presença de um terceiro investido de poder para impor sua decisão soberana sobre os litigantes.",
-            "B": "Na autocomposição, a solução do litígio é alcançada pelas próprias partes interessadas, seja diretamente ou com auxílio de terceiro facilitador neutro.",
-            "C": "A heterocomposição restringe-se exclusivamente aos litígios decididos perante a Justiça do Trabalho, não se aplicando ao juízo arbitral.",
-            "D": "A autocomposição é vedada em conflitos que envolvam direitos patrimoniais disponíveis entre sujeitos capazes."
+            "A": "A autotutela é a regra geral no direito privado moderno, podendo o credor apreender bens móveis do devedor sem previsão legal nem intervenção policial.",
+            "B": "Na autocomposição, o resultado decisório é emanado diretamente das próprias partes litigantes, que constroem a pacificação por via autônoma direta ou auxiliadas por terceiro.",
+            "C": "A heterocomposição depende imperativamente da manifestação favorável de ambos os litigantes quanto ao teor substancial da sentença proferida pelo juiz togado.",
+            "D": "A autocomposição é expressamente proibida em litígios patrimoniais civis que tramitam em varas cíveis da Justiça Comum Estadual."
         }
         gabarito = "B"
-        article = "Teoria Geral dos Métodos de Resolução de Conflitos"
-        legal_basis = "A autocomposição se distingue pelo protagonismo das partes na construção do desfecho do conflito (ex: negociação, conciliação e mediação), enquanto a heterocomposição se pauta na decisão imposta por terceiro (juiz ou árbitro)."
-        explanation = "Na autocomposição, são os próprios titulares do conflito que constroem a decisão (por transação, submissão ou renúncia). Já na heterocomposição, o poder de decidir é delegado ao juiz ou árbitro."
+        article = "Teoria Geral dos Conflitos e Código Civil"
+        legal_basis = "Na autocomposição, os próprios litigantes constroem o desfecho do conflito. Já na heterocomposição, a decisão vinculante cabe a terceiro investido (juiz ou árbitro)."
+        explanation = "O cerne da autocomposição é o protagonismo das partes no desfecho da lide. A autotutela é excepcional e tipificada (ex: desforço possessório imediato - art. 1.210, §1º CC)."
 
     # 5. MÉTODOS ALTERNATIVOS DE RESOLUÇÃO DE CONFLITOS (MASCS/ADRS)
     elif subject == "Métodos Alternativos de Resolução de Conflitos (MASCs/ADRs)":
-        enunciado = (
-            f"({bank}) {p1} e {p2} divergem sobre o cumprimento de um contrato de prestação de serviços. Buscando solucionar a controvérsia, "
-            f"consultam um advogado sobre as diferenças entre os Métodos Adequados de Solução de Conflitos (MASCs). "
-            f"À luz do CPC/2015 (art. 165) e da Lei nº 13.140/2015, assinale a opção correta quanto ao papel de cada condutor:"
-        )
+        if scenario_idx == 0:
+            enunciado = (
+                f"({bank}) Dois herdeiros de quotas societárias de uma empresa familiar em {emp1} estão em litígio duradouro. "
+                f"Paralelamente, a transportadora {emp2} cobra uma fatura isolada e incontroversa de frete contra um cliente eventual. "
+                f"Considerando a diretriz do Art. 165 do CPC/2015 sobre as figuras do mediador e do conciliador, assinale a opção correta:"
+            )
+        elif scenario_idx == 1:
+            enunciado = (
+                f"({bank}) {p1} e {p2} questionam a atuação prática de mediadores e conciliadores no âmbito do Poder Judiciário. "
+                f"À luz do art. 165, §§ 2º e 3º do CPC/2015 e da Lei nº 13.140/2015, assinale a afirmativa correta sobre as atribuições técnicas de cada função:"
+            )
+        else:
+            enunciado = (
+                f"({bank}) No campo dos Métodos Adequados de Solução de Conflitos (MASCs), a distinção metodológica entre mediação, "
+                f"conciliação, negociação e arbitragem orienta a adequada triagem dos litígios no Judiciário. A esse propósito, é correto afirmar:"
+            )
         options = {
-            "A": "O mediador atua preferencialmente onde houver vínculo anterior entre as partes e não propõe soluções, auxiliando os envolvidos a identificar seus interesses; o conciliador pode sugerir soluções para o litígio.",
-            "B": "O mediador tem o dever de redigir propostas impositivas e forçar o acordo, ao passo que o conciliador tem função meramente consultiva.",
-            "C": "O árbitro e o mediador exercem funções idênticas, ambos com poder de proferir sentença irrecorrível vinculante para as partes.",
-            "D": "A negociação exige obrigatoriamente a presença de um conciliador credenciado junto ao Tribunal de Justiça para possuir validade jurídica."
+            "A": "O mediador atua preferencialmente em casos com vínculo relacional anterior entre as partes, facilitando o diálogo sem sugerir soluções; o conciliador atua sem vínculo prévio e pode propor soluções.",
+            "B": "O mediador tem o poder legal de proferir sentença condenatória impositiva se as partes recusarem a primeira proposta conciliatória em audiência.",
+            "C": "O conciliador é terminantemente proibido pela legislação processual civil de apresentar qualquer proposta, cabendo tal função exclusivamente ao árbitro privado.",
+            "D": "A negociação direta entre advogados requer prévia homologação pelo Ministério Público para ter validade e gerar quitação civil."
         }
         gabarito = "A"
         article = "Art. 165, §§ 2º e 3º do CPC/2015"
-        legal_basis = "O conciliador, que atuará preferencialmente nos casos em que não houver vínculo anterior, poderá sugerir soluções. O mediador, que atuará nos casos com vínculo anterior, auxiliará aos interessados a compreender as questões e identificar soluções consensuais."
-        explanation = "Diferença central do CPC/2015: Mediação (vínculo prévio continuado, sem sugestão de propostas pelo terceiro); Conciliação (litígio pontual, sem vínculo prévio, sendo lícito sugerir soluções neutras)."
+        legal_basis = "O conciliador poderá sugerir soluções (casos sem vínculo prévio). O mediador auxiliará os interessados a compreender as questões e identificar soluções consensuais (casos com vínculo prévio)."
+        explanation = "A distinção técnica do CPC/2015 reside no vínculo prévio continuado (mediação, sem proposição de soluções pelo terceiro) versus relação pontual sem vínculo prévio (conciliação, onde sugestões são permitidas)."
 
     # 6. FORMAS DE AUTOCOMPOSIÇÃO E FUNDAMENTOS
     elif subject == "Formas de Autocomposição e Fundamentos":
-        enunciado = (
-            f"({bank}) Em audiência realizada no CEJUSC, {p1} e {p2} decidem pôr fim à ação de cobrança mediante concessões mútuas, "
-            f"ajustando o pagamento parcelado de 70% do valor originalmente pleiteado. Sob o ponto de vista das formas de autocomposição "
-            f"e dos efeitos processuais (Art. 487 do CPC), esse ato configura:"
-        )
+        if scenario_idx == 0:
+            enunciado = (
+                f"({bank}) Em audiência de conciliação perante vara cível, o réu {p1}, convencido das provas documentais apresentadas, "
+                f"declara formalmente concordar com todos os pedidos deduzidos na petição inicial por {p2}. "
+                f"Sob o ângulo das modalidades autocompositivas e dos efeitos processuais (Art. 487 do CPC), essa manifestação constitui:"
+            )
+        elif scenario_idx == 1:
+            enunciado = (
+                f"({bank}) Durante sessão conduzida no CEJUSC, {p1} e {p2} resolvem extinguir litígio contratual mediante recíprocas concessões: "
+                f"{p1} concede desconto financeiro no saldo devedor e {p2} antecipa o pagamento à vista. Esse negócio jurídico autocompositivo representa:"
+            )
+        else:
+            enunciado = (
+                f"({bank}) {p1}, autora de ação de indenização por perdas e danos contra {emp1}, protocola petição abrindo mão definitiva "
+                f"do próprio direito material sobre o qual se funda a pretensão, desonerando a empresa de qualquer obrigação futura. Esse ato configura:"
+            )
         options = {
-            "A": "Submissão, que acarreta a extinção do processo sem julgamento de mérito por carência da ação.",
-            "B": "Transação, modalidade autocompositiva bilateral que dá ensejo à extinção do processo com resolução do mérito.",
-            "C": "Renúncia unilateral ao direito sobre o qual se funda a ação, dependente de homologação pelo Ministério Público.",
-            "D": "Desistência da ação, mantendo aberta a possibilidade de repropositura da mesma demanda em até 2 anos."
+            "A": "Desistência unilateral da demanda, que enseja a extinção do processo sem julgamento do mérito e autoriza a propositura de nova ação.",
+            "B": "Modalidade autocompositiva com resolução de mérito (Art. 487, III do CPC), vinculando as partes e operando coisa julgada material após homologação.",
+            "C": "Autotutela jurisdicional reflexa, que necessita de intervenção em dobro da Defensoria Pública para produzir eficácia perante terceiros.",
+            "D": "Perempção superveniente compulsória, que afasta a incidência dos princípios do contraditório e da ampla defesa."
         }
         gabarito = "B"
-        article = "Art. 487, III, 'b' do CPC/2015 e Art. 840 do Código Civil"
-        legal_basis = "Haverá resolução de mérito quando o juiz homologar a transação (art. 487, III, 'b'). É lícito aos interessados prevenirem ou terminarem o litígio mediante concessões mútuas (art. 840 CC)."
-        explanation = "A transação é negócio jurídico bilateral no qual as partes fazem concessões recíprocas para extinguir o litígio, produzindo coisa julgada material após homologação judicial."
+        article = "Art. 487, III do CPC/2015 e Art. 840 do Código Civil"
+        legal_basis = "Haverá resolução de mérito quando o juiz homologar o reconhecimento da procedência do pedido, a transação ou a renúncia à pretensão (art. 487, III, CPC)."
+        explanation = "As três grandes formas de autocomposição com resolução de mérito no CPC são a transação (concessões recíprocas), a renúncia (pelo autor) e o reconhecimento da procedência/submissão (pelo réu)."
 
     # 7. FORMAS DE HETEROCOMPOSIÇÃO E FUNDAMENTOS
     elif subject == "Formas de Heterocomposição e Fundamentos":
-        enunciado = (
-            f"({bank}) {emp1} e {emp2} celebraram contrato de fornecimento internacional e inseriram cláusula compromissória arbitral. "
-            f"Surgindo controvérsia de grande vulto patrimonial, optaram por instituir o tribunal arbitral nos termos da Lei nº 9.307/1996. "
-            f"Sobre a heterocomposição e a natureza jurídica da decisão arbitral, assinale a afirmativa correta:"
-        )
+        if scenario_idx == 0:
+            enunciado = (
+                f"({bank}) Duas concessionárias de infraestrutura rodoviária, {emp1} e {emp2}, celebraram contrato com cláusula compromissória "
+                f"arbitral para dirimir litígios de reequilíbrio econômico-financeiro. Surgido o conflito, submeteram a controvérsia a um tribunal arbitral. "
+                f"A respeito da eficácia jurídica da sentença arbitral proferida nos termos da Lei nº 9.307/1996, assinale a afirmativa correta:"
+            )
+        elif scenario_idx == 1:
+            enunciado = (
+                f"({bank}) A heterocomposição se caracteriza pela intervenção de terceiro investido de autoridade decisória impositiva. "
+                f"Ao comparar a jurisdição estatal com a arbitragem privada no ordenamento brasileiro, é correto assinalar que:"
+            )
+        else:
+            enunciado = (
+                f"({bank}) Um investidor e uma construtora litigam perante juízo arbitral em razão de atraso na conclusão de empreendimento comercial. "
+                f"O árbitro profere sentença condenando a construtora ao pagamento de multa contratual líquida. Sobre a executoriedade dessa decisão, é correto afirmar:"
+            )
         options = {
-            "A": "A arbitragem é modalidade autocompositiva, pois o árbitro necessita da concordância expressa de ambas as partes para homologar seu relatório.",
-            "B": "A sentença arbitral é ato de heterocomposição que produz, entre as partes e seus sucessores, os mesmos efeitos da sentença judicial e constitui título executivo judicial.",
-            "C": "A sentença arbitral carece de qualquer eficácia jurídica até que seja homologada por um juiz de direito de primeira instância.",
-            "D": "Apenas o Supremo Tribunal Federal possui competência para instituir tribunais arbitrais em matéria empresarial privada."
+            "A": "A sentença arbitral é mero parecer consultivo desprovido de força executiva, necessitando de processo autônomo de conhecimento no Judiciário para ser executada.",
+            "B": "A sentença arbitral tem a mesma eficácia da sentença judicial e constitui título executivo judicial autônomo (Art. 515, VII, CPC), dispensando homologação pelo Judiciário.",
+            "C": "O laudo arbitral só adquire validade após prévia e expressa ratificação por câmara especializada do Tribunal de Justiça competente.",
+            "D": "A heterocomposição privada por arbitragem é restrita a causas criminais e de estado familiar de incapazes."
         }
         gabarito = "B"
         article = "Art. 31 da Lei nº 9.307/1996 e Art. 515, VII do CPC/2015"
-        legal_basis = "A sentença arbitral produz, entre as partes e seus sucessores, os mesmos efeitos da sentença proferida pelos órgãos do Poder Judiciário e, sendo condenatória, constitui título executivo."
-        explanation = "A arbitragem é heterocomposição privada. O árbitro decide com poder vinculante e sua sentença é título executivo judicial autônomo, dispensando qualquer homologação judicial prévia (art. 31 da Lei 9.307/96)."
+        legal_basis = "A sentença arbitral produz, entre as partes e seus sucessores, os mesmos efeitos da sentença judicial e, sendo condenatória, constitui título executivo (art. 31 Lei 9.307/96)."
+        explanation = "A arbitragem é modalidade plena de heterocomposição. Sua sentença equipara-se à judicial, constituindo título executivo judicial que dispensa homologação do Judiciário."
 
     # 8. CASOS PRÁTICOS E ADEQUAÇÃO DOS MÉTODOS (AUTOTUTELA, HETERO E AUTO)
     elif subject == "Casos Práticos e Adequação dos Métodos (Autotutela, Hetero e Auto)":
-        enunciado = (
-            f"({bank}) Analise as seguintes hipóteses práticas de conflito:\n"
-            f"I. Disputa de guarda de filhos menores entre ex-cônjuges com histórico de mágoas e desgaste afetivo acumulado.\n"
-            f"II. Invasão violenta e repentina de fazenda rural, com reação imediata e comedida do possuidor para restituir a posse.\n"
-            f"III. Controvérsia técnica de engenharia sobre cálculo de royalties entre duas grandes multinacionais de energia.\n"
-            f"De acordo com a teoria da adequação dos métodos de resolução de conflitos, os mecanismos mais adequados para os casos I, II e III são, respectivamente:"
-        )
+        if scenario_idx == 0:
+            enunciado = (
+                f"({bank}) Considere os seguintes cenários fáticos:\n"
+                f"I. Disputa de visitas e convivência familiar de filho menor entre pais que nutrem mágoas afetivas recíprocas.\n"
+                f"II. Invasão noturna e violenta de fazenda produtiva, com desforço físico imediato e moderado do possuidor para repelir os invasores.\n"
+                f"III. Controvérsia técnica e sigilosa sobre patentes de biotecnologia entre multinacionais de grande capacidade financeira.\n"
+                f"Segundo a teoria da adequação dos métodos de resolução de litígios, os mecanismos mais adequados para I, II e III são, respectivamente:"
+            )
+        elif scenario_idx == 1:
+            enunciado = (
+                f"({bank}) Analise as seguintes situações concretas:\n"
+                f"1. Cobrança de indenização por colisão de trânsito entre motoristas desconhecidos sem relação pretérita nem interesse em contato futuro.\n"
+                f"2. Conflito sucessório de partilha entre irmãos coproprietários de empresa familiar centenária com histórico afetivo complexo.\n"
+                f"3. Tentativa de turbação recente de imóvel rural com reação incontinenti e proporcional de segurança própria do proprietário.\n"
+                f"Os métodos recomendados segundo o CPC/2015 e a teoria da resolução adequada são:"
+            )
+        else:
+            enunciado = (
+                f"({bank}) A correta triagem e o encaminhamento do litígio à 'porta' apropriada constituem o pilar do modelo multiportas. "
+                f"Acerca da correspondência entre a natureza do litígio e o método de resolução recomendado, assinale a afirmativa correta:"
+            )
         options = {
-            "A": "I - Arbitragem compulsória de família; II - Conciliação prévia em juizado especial cível; III - Autotutela judicial de urgência privativa do Estado.",
-            "B": "I - Mediação (foco nas relações continuadas); II - Autotutela lícita (desforço possessório imediato e proporcional); III - Arbitragem (expertise técnica e sigilo).",
-            "C": "I - Conciliação direta sem vínculo continuado; II - Mediação comunitária protelatória; III - Jurisdição estatal contenciosa obrigatória sem juízo arbitral.",
-            "D": "I - Autotutela das partes mediante coação legítima; II - Jurisdição estatal privativa de urgência; III - Mediação informal sem força executiva vinculante."
+            "A": "Vínculos relacionais duradouros recomendam Mediação; disputas pontuais patrimoniais recomendam Conciliação; matérias societárias de alta especialidade e sigilo recomendam Arbitragem.",
+            "B": "A autotutela violenta sem limites temporais é o método prioritário recomendado pelo CPC para conflitos societários de grande envergadura econômica.",
+            "C": "Litígios com forte carga afetiva familiar devem ser obrigatoriamente submetidos a arbitragem privada compulsória irrecorrível.",
+            "D": "O modelo multiportas determina que todas as ações indenizatórias sem vínculo prévio devem ser processadas por mediação obrigatória de 12 meses."
         }
-        gabarito = "B"
-        article = "Art. 165 CPC/2015, Art. 1.210, §1º do CC e Lei 9.307/1996"
-        legal_basis = "Mediação para relações continuadas de família (I); Autotutela possessória expressamente autorizada em lei no desforço imediato (II); Arbitragem para matérias técnicas e patrimoniais disponíveis (III)."
-        explanation = "No caso I, há relação prévia continuada (mediação); no caso II, a lei autoriza autotutela moderada e incontinenti (art. 1.210, § 1º, CC); no caso III, litígio técnico patrimonial com partes empresariais (arbitragem)."
+        gabarito = "A"
+        article = "Art. 165 do CPC/2015, Art. 1.210 do CC e Lei 9.307/1996"
+        legal_basis = "Mediação para vínculos continuados; Conciliação para litígios sem vínculo prévio; Arbitragem para direitos patrimoniais disponíveis técnicos com sigilo; Autotutela apenas em hipóteses estritas como desforço imediato."
+        explanation = "A teoria da adequação avalia o método mais eficaz de acordo com as peculiaridades de cada litígio (foco relacional vs. foco pontual no objeto)."
 
     # 9. PROCESSOS AUTOCOMPOSITIVOS VS. HETEROCOMPOSITIVOS
     elif subject == "Processos Autocompositivos vs. Heterocompositivos":
-        enunciado = (
-            f"({bank}) No contraponto analítico entre os processos autocompositivos (mediação e conciliação) e os processos "
-            f"heterocompositivos (jurisdição estatal e arbitragem), assinale a afirmativa INCORRETA:"
-        )
+        if scenario_idx == 0:
+            enunciado = (
+                f"({bank}) Estudos empíricos de jurimetria evidenciam que os acordos construídos em procedimentos autocompositivos "
+                f"apresentam índice de cumprimento espontâneo significativamente superior ao das sentenças condenatórias impostas pelo juiz togado. "
+                f"Essa maior efetividade prática da autocomposição decorre precipuamente de:"
+            )
+        elif scenario_idx == 1:
+            enunciado = (
+                f"({bank}) Ao contrastar a dinâmica dos processos autocompositivos (conciliação e mediação) com os heterocompositivos "
+                f"(jurisdição estatal e arbitragem), a doutrina aponta diferenças estruturais sobre a abordagem do conflito. Assinale a afirmativa correta:"
+            )
+        else:
+            enunciado = (
+                f"({bank}) Em relação aos paradigmas 'ganha-ganha' e 'ganha-perde' na resolução de controvérsias jurídicas, "
+                f"assinale a opção que reflete fielmente o contraponto entre processos autocompositivos e heterocompositivos:"
+            )
         options = {
-            "A": "Nos processos autocompositivos a lógica predominante é a do 'ganha-ganha' (integração de interesses), enquanto na heterocomposição a lógica costuma ser 'ganha-perde'.",
-            "B": "Os processos autocompositivos oferecem maior índice de cumprimento espontâneo do acordo porque a solução decorre da vontade dos próprios litigantes.",
-            "C": "Tanto nos processos autocompositivos quanto nos heterocompositivos, a solução final é outorgada e imposta por um terceiro munido de poder decisório coercitivo.",
-            "D": "A heterocomposição analisa predominantemente os fatos passados para atribuir a razão jurídica, enquanto a mediação foca na preservação das relações para o futuro."
+            "A": "Os processos autocompositivos operam na lógica de integração de interesses mútuos ('ganha-ganha'), promovendo o cumprimento voluntário porque as obrigações foram pactuadas pelos próprios envolvidos.",
+            "B": "A heterocomposição estatal estimula a restauração espontânea da convivência harmônica entre os litigantes, eliminando qualquer sentimento de derrota por parte do réu sucumbente.",
+            "C": "Nos processos autocompositivos a decisão final é imposta de modo coercitivo pelo mediador, que atua como juiz com poderes sancionatórios plenos.",
+            "D": "Os processos heterocompositivos dispensam a aplicação de normas jurídicas positivas, decidindo causas cíveis invariavelmente por critérios de equidade fática arbitrária."
         }
-        gabarito = "C"
-        article = "Teoria Geral dos Conflitos e Métodos Adequados"
-        legal_basis = "Na autocomposição o terceiro NÃO possui poder decisório coercitivo; seu papel limita-se a facilitar a comunicação ou sugerir alternativas sem imposição."
-        explanation = "A afirmativa C é incorreta (logo, o gabarito pretendido), pois na autocomposição o terceiro jamais impõe a decisão — quem decide são as próprias partes."
+        gabarito = "A"
+        article = "Teoria dos Conflitos e Resolução CNJ nº 125/2010"
+        legal_basis = "A autocomposição privilegia a autonomia privada e a construção consensual da solução pelas partes (lógica ganha-ganha), favorecendo o adimplemento voluntário."
+        explanation = "Como a solução autocompositiva é fruto da vontade construída pelas próprias partes e não imposta de fora, ela tem adesão psicológica e fática superior, garantindo maior cumprimento voluntário."
 
     # 10. PRINCÍPIOS DA RESOLUÇÃO DE CONFLITOS E ACESSO À JUSTIÇA
     elif subject == "Princípios da Resolução de Conflitos e Acesso à Justiça":
-        enunciado = (
-            f"({bank}) Durante uma sessão de mediação judicial promovida em um CEJUSC, {p1} revelou fatos comprometedores sobre suas finanças "
-            f"na tentativa de viabilizar uma proposta de composição. Não havendo acordo, {p2} arrolou o mediador como testemunha e juntou "
-            f"as anotações da sessão na ação principal. À luz do art. 166 do CPC e da Lei nº 13.140/2015, assinale a opção correta:"
-        )
+        if scenario_idx == 0:
+            enunciado = (
+                f"({bank}) Durante sessão de mediação judicial realizada no CEJUSC, {p1} revelou informações estratégicas de faturamento "
+                f"visando viabilizar proposta de composição com {p2}. Frustrado o acordo, o advogado de {p2} arrolou o mediador como testemunha "
+                f"e requereu a juntada do rascunho de contas da mediação aos autos judiciais. À luz do art. 166 do CPC e da Lei nº 13.140/2015, assinale a opção correta:"
+            )
+        elif scenario_idx == 1:
+            enunciado = (
+                f"({bank}) O art. 166 do CPC/2015 estabelece os princípios fundamentais da conciliação e da mediação. "
+                f"Entre os princípios expressamente tutelados, destaca-se a confidencialidade das comunicações. Sobre esse princípio, é correto afirmar:"
+            )
+        else:
+            enunciado = (
+                f"({bank}) Em procedimento de mediação envolvendo dissolução de vínculo contratual entre {p1} e {emp1}, as partes debatem "
+                f"propostas sob compromisso ético e legal de sigilo. A respeito da extensão e limites da confidencialidade na autocomposição, assinale a afirmativa correta:"
+            )
         options = {
-            "A": "O mediador é obrigado a testemunhar em juízo relatando todas as confissões ouvidas, prevalecendo a busca da verdade real sobre o segredo da mediação.",
-            "B": "A conduta de {p2} viola o princípio da confidencialidade, sendo inadmissíveis no processo judicial informações, propostas ou documentos produzidos na sessão de mediação.",
-            "C": "O princípio da publicidade absoluta dos atos processuais impede qualquer modalidade de sigilo em sessões realizadas dentro de órgãos do Poder Judiciário.",
-            "D": "A confidencialidade só protege as sessões de conciliação, aplicando-se o princípio da ampla publicidade às mediações."
+            "A": "O princípio da publicidade absoluta impõe que todas as confidências reveladas na mediação sejam encaminhadas de ofício ao juiz da causa para fundamentar a sentença.",
+            "B": "A confidencialidade abrange todas as informações produzidas na sessão, sendo vedado às partes e ao mediador utilizá-las como elemento de prova no processo judicial.",
+            "C": "O mediador é juridicamente obrigado a prestar testemunho em juízo sempre que for intimado pela parte que tiver interesse em provar culpa do adversário.",
+            "D": "A regra da confidencialidade se aplica exclusivamente a sessões extrajudiciais de arbitragem, vigorando a publicidade irrestrita nos CEJUSCs."
         }
         gabarito = "B"
         article = "Art. 166, §§ 1º e 2º do CPC/2015 e Art. 30 da Lei nº 13.140/2015"
         legal_basis = "A confidencialidade estende-se a todas as informações produzidas no curso do procedimento, cujo teor não poderá ser utilizado para fim diverso daquele previsto por expressa deliberação das partes."
-        explanation = "O princípio da confidencialidade é pilar da autocomposição. O mediador não pode atuar como testemunha nem as propostas podem ser usadas como confissão no processo (art. 166, CPC)."
+        explanation = "O mediador e as partes estão submetidos ao sigilo profissional e processual; manifestações, propostas e relatos ouvidos na sessão não podem ser usados como prova no processo (art. 166, CPC)."
 
     # 11. EVOLUÇÃO HISTÓRICA DOS MÉTODOS CONSENSUAIS
     elif subject == "Evolução Histórica dos Métodos Consensuais":
-        enunciado = (
-            f"({bank}) No contexto da evolução histórica do acesso à justiça no direito comparado e no Brasil, o renomado estudo de "
-            f"Mauro Cappelletti e Bryant Garth identificou as chamadas 'Três Ondas Renovatórias de Acesso à Justiça'. "
-            f"Assinale a alternativa que identifica CORRETAMENTE a Terceira Onda Renovatória:"
-        )
+        if scenario_idx == 0:
+            enunciado = (
+                f"({bank}) No clássico estudo sobre os movimentos globais de reforma judiciária conduzido por Mauro Cappelletti e Bryant Garth "
+                f"(Projeto de Florença), foram sistematizadas as chamadas 'Três Ondas Renovatórias de Acesso à Justiça'. "
+                f"Sobre a Terceira Onda Renovatória, assinale a afirmativa correta:"
+            )
+        elif scenario_idx == 1:
+            enunciado = (
+                f"({bank}) A democratização do acesso à justiça evoluiu ao longo do século XX com sucessivos aprimoramentos descritos pela doutrina "
+                f"de Cappelletti e Garth. Assinale a alternativa que correlaciona CORRETAMENTE o objeto da Terceira Onda Renovatória:"
+            )
+        else:
+            enunciado = (
+                f"({bank}) Ao analisar o acesso à ordem jurídica justa, juristas contemporâneos fundamentam a valorização das MASCs "
+                f"na doutrina das ondas de acesso à justiça. Assinale a opção que identifica com precisão as três ondas:"
+            )
         options = {
-            "A": "Primeira Onda: voltada precipuamente à criação de defensorias públicas para garantir assistência judiciária integral e gratuita aos necessitados.",
-            "B": "Segunda Onda: orientada à representação processual dos interesses difusos e coletivos, materializada pela disciplina da ação civil pública.",
-            "C": "Terceira Onda: centrada no novo enfoque do acesso à ordem jurídica justa através do estímulo aos métodos adequados de resolução de litígios (ADRs).",
-            "D": "Quarta Onda: direcionada exclusivamente à virtualização e à informatização integral da tramitação do processo judicial eletrônico."
+            "A": "A Terceira Onda enfoca o acesso à ordem jurídica justa através de um novo olhar sobre o procedimento, incentivando métodos adequados de resolução de litígios (ADRs).",
+            "B": "A Terceira Onda visava primordialmente à instituição da Defensoria Pública para assegurar gratuidade judiciária a pessoas hipossuficientes financeiramente.",
+            "C": "A Terceira Onda restringiu-se à criação da ação civil pública para tutela dos interesses metaindividuais difusos e coletivos.",
+            "D": "A Primeira Onda preconizou a substituição completa dos juizados togados por tribunais de inteligência artificial desprovidos de intervenção humana."
         }
-        gabarito = "C"
+        gabarito = "A"
         article = "Doutrina de Acesso à Justiça (Mauro Cappelletti e Bryant Garth)"
-        legal_basis = "1ª Onda: assistência judiciária aos pobres; 2ª Onda: representação dos interesses difusos; 3ª Onda: novo enfoque no acesso à justiça através dos métodos adequados de resolução de disputas."
-        explanation = "A Terceira Onda de Cappelletti e Garth preconiza uma abordagem ampla sobre o acesso à ordem jurídica justa, com o surgimento e valorização das ADRs (mediação, conciliação e arbitragem)."
+        legal_basis = "1ª Onda: assistência judiciária aos hipossuficientes; 2ª Onda: representação de interesses difusos/coletivos; 3ª Onda: novo enfoque no acesso à justiça por métodos adequados e simplificação de procedimentos."
+        explanation = "A Terceira Onda de Cappelletti e Garth é o fundamento teórico moderno que dá legitimidade ao modelo multiportas e à valorização dos métodos consensuais como formas autênticas de pacificação social."
 
     # 12. OBJETIVOS DO MODELO MULTIPORTAS
     elif subject == "Objetivos do Modelo Multiportas":
-        enunciado = (
-            f"({bank}) A expressão 'Tribunal Multiportas' (Multi-door Courthouse), formulada pelo jurista Frank Sander na Conferência de Pound (1976), "
-            f"fundamenta a política judiciária contemporânea adotada pelo CPC/2015 e pelo CNJ. O objetivo central deste modelo é:"
-        )
+        if scenario_idx == 0:
+            enunciado = (
+                f"({bank}) O conceito de 'Tribunal Multiportas' (Multi-door Courthouse), formulado originalmente pelo professor Frank Sander "
+                f"na Conferência de Pound (1976), inspirou as diretrizes da Resolução CNJ nº 125/2010 e do CPC/2015. O objetivo primordial desse modelo consiste em:"
+            )
+        elif scenario_idx == 1:
+            enunciado = (
+                f"({bank}) A expressão 'Resolução Adequada de Disputas' substitui contemporaneamente o termo 'Métodos Alternativos', "
+                f"reforçando o papel central do modelo multiportas. Sob a ótica do acesso qualificado à justiça, esse modelo tem por meta:"
+            )
+        else:
+            enunciado = (
+                f"({bank}) Diante de litígios complexos no âmbito civil e empresarial, o modelo multiportas atua como um sistema integrador. "
+                f"A esse respeito, assinale a opção que expressa o verdadeiro propósito deste paradigma de justiça:"
+            )
         options = {
-            "A": "Privatizar integralmente o Poder Judiciário estatal, transferindo as demandas patrimoniais para escritórios privados de cobrança.",
-            "B": "Estruturar o Judiciário como um centro integrador de justiça, que analisa a controvérsia e a direciona para a via de solução mais adequada e célere.",
-            "C": "Impedir que qualquer litígio cível tenha acesso à decisão de um juiz togado antes de decorridos três anos de tentativas infrutíferas de acordo.",
-            "D": "Impor cobrança de custas em dobro contra o autor que ajuizar ação judicial sem prévia tentativa comprovada de mediação extrajudicial."
+            "A": "Estruturar o Judiciário como um centro inteligente de triagem, que analisa o perfil da lide e a encaminha à via de pacificação mais adequada e eficaz.",
+            "B": "Privatizar as varas de execução judicial, retirando do Poder Judiciário o monopólio da coerção e do cumprimento de sentenças cíveis.",
+            "C": "Impedir o ajuizamento de ações por consumidores enquanto não comprovarem pagamento de taxa de adesão a plataformas privadas de negociação.",
+            "D": "Eliminar definitivamente a presença de advogados nos processos cíveis para reduzir custos de honorários contratuais e sucumbenciais."
         }
-        gabarito = "B"
-        article = "Conferência de Pound (Frank Sander, 1976) e Res. CNJ nº 125/2010"
-        legal_basis = "O modelo multiportas preconiza que para cada litígio há uma 'porta' mais adequada (negociação, conciliação, mediação, arbitragem ou processo judicial tradicional), garantindo a resposta mais eficaz."
-        explanation = "Frank Sander propôs que o tribunal não tivesse apenas uma porta (a do julgamento contencioso pelo juiz), mas múltiplas portas onde o conflito é triado e submetido ao mecanismo mais apropriado."
+        gabarito = "A"
+        article = "Conferência de Pound (Frank Sander, 1976) e Resolução CNJ nº 125/2010"
+        legal_basis = "O modelo multiportas propõe que o Judiciário ofereça múltiplas portas (conciliação, mediação, arbitragem, adjudicação), direcionando cada caso ao mecanismo metodológico mais compatível."
+        explanation = "O Tribunal Multiportas de Frank Sander concebe o Judiciário como um complexo de portas de acesso onde o litígio é acolhido e encaminhado ao método mais adequado (Appropriate Dispute Resolution)."
 
     # 13. EVOLUÇÃO HISTÓRICA E LEGISLATIVA DOS JUIZADOS ESPECIAIS
     elif subject == "Evolução Histórica e Legislativa dos Juizados Especiais":
-        enunciado = (
-            f"({bank}) Os Juizados Especiais representam um dos mais expressivos instrumentos de democratização do acesso à justiça no Brasil. "
-            f"Sobre a trajetória legislativa e os princípios fundamentais da Lei nº 9.099/1995 (Art. 2º), assinale a afirmativa correta:"
-        )
+        if scenario_idx == 0:
+            enunciado = (
+                f"({bank}) A criação dos Juizados Especiais Cíveis consolidou um novo marco na democratização da justiça no Brasil, "
+                f"partindo da Lei nº 7.244/1984 e alcançando respaldo constitucional no Art. 98, I da CF/88 e na Lei nº 9.099/1995. "
+                f"Sobre a principiologia e o procedimento inaugural desses órgãos, assinale a afirmativa correta:"
+            )
+        elif scenario_idx == 1:
+            enunciado = (
+                f"({bank}) Nos termos do Art. 2º da Lei Federal nº 9.099/1995, o processo perante os Juizados Especiais é informado "
+                f"por critérios axiológicos direcionados à efetividade da tutela. Assinale a opção que elenca CORRETAMENTE esses critérios:"
+            )
+        else:
+            enunciado = (
+                f"({bank}) A Lei nº 9.099/1995 estruturou uma sistemática processual orientada à rápida solução das causas de menor complexidade. "
+                f"A respeito da primazia da composição consensual no rito dos Juizados Especiais, é correto afirmar:"
+            )
         options = {
-            "A": "Os Juizados Especiais foram criados pelo CPC de 2015, o qual extinguiu integralmente a sistemática autônoma da Lei nº 9.099/1995.",
-            "B": "O processo perante os Juizados orienta-se pela oralidade, simplicidade, informalidade, economia processual e celeridade, buscando a conciliação.",
-            "C": "A Lei nº 9.099/1995 veda a realização de audiência conciliatória nas causas cujo valor controvertido ultrapasse dez salários mínimos.",
-            "D": "A Constituição Federal de 1988 vedou a atuação de juízes leigos e conciliadores, exigindo presença privativa de magistrados togados vitalícios."
+            "A": "O rito rege-se pelos critérios da oralidade, simplicidade, informalidade, economia processual e celeridade, buscando, sempre que possível, a conciliação ou a transação.",
+            "B": "A realização de audiência de conciliação nos Juizados Especiais é ato meramente facultativo que só ocorre caso o magistrado togado considere conveniente.",
+            "C": "A Lei nº 9.099/1995 revogou a possibilidade de atuação de conciliadores leigos, exigindo presença privativa e indelegável de juízes de carreira vitalícios.",
+            "D": "Os Juizados Especiais exigem petição inicial rígida com citação prévia por edital e aplicação obrigatória de revelia automática sem audiência inaugural."
         }
-        gabarito = "B"
+        gabarito = "A"
         article = "Art. 2º da Lei nº 9.099/1995 e Art. 98, I da CF/88"
         legal_basis = "O processo orientar-se-á pelos critérios da oralidade, simplicidade, informalidade, economia processual e celeridade, buscando, sempre que possível, a conciliação ou a transação."
-        explanation = "O art. 2º da Lei 9.099/95 estabelece os vetores principiológicos dos Juizados Especiais, priorizando de forma imperativa a autocomposição em sua fase inaugural."
+        explanation = "O art. 2º da Lei 9.099/95 elenca expressamente os princípios fundamentais dos Juizados Especiais, com imperativa busca prioritária pela conciliação e transação."
 
     # 14. EVOLUÇÃO HISTÓRICA E LEGISLATIVA DA ARBITRAGEM NO BRASIL
     else:
-        enunciado = (
-            f"({bank}) A arbitragem no direito brasileiro experimentou profunda transformação com a promulgação da Lei nº 9.307/1996 "
-            f"(Lei Marco Maciel) e a consolidação de sua constitucionalidade pelo Supremo Tribunal Federal (STF). "
-            f"A esse respeito, assinale a opção correta:"
-        )
+        if scenario_idx == 0:
+            enunciado = (
+                f"({bank}) A Lei nº 9.307/1996 (Lei Marco Maciel) inaugurou a era moderna da arbitragem no Brasil, consolidada pelo Supremo Tribunal Federal "
+                f"(STF) no histórico julgamento do AgRg na Sentença Estrangeira Contestada nº 5.206/Espanha. A respeito da eficácia da convenção de arbitragem, assinale a opção correta:"
+            )
+        elif scenario_idx == 1:
+            enunciado = (
+                f"({bank}) A inserção de convenção de arbitragem (cláusula compromissória ou compromisso arbitral) em contratos civis ou empresariais "
+                f"produz relevantes efeitos perante a jurisdição estatal. À luz do CPC/2015 (Art. 485, VII) e da Lei nº 9.307/1996, é correto afirmar:"
+            )
+        else:
+            enunciado = (
+                f"({bank}) Com as atualizações introduzidas pela Lei Federal nº 13.129/2015 na Lei de Arbitragem brasileira, "
+                f"o ordenamento jurídico ampliou a segurança jurídica e o campo de aplicação do instituto. Sobre essas inovações, assinale a afirmativa correta:"
+            )
         options = {
-            "A": "A convenção de arbitragem possui eficácia vinculante negativa, obrigando o juiz togado a extinguir o processo sem julgamento do mérito.",
-            "B": "O STF declarou inconstitucional a Lei nº 9.307/1996 por entender que a decisão arbitral fere o princípio da inafastabilidade da jurisdição.",
-            "C": "A arbitragem no Brasil é permitida para dirimir quaisquer espécies de controvérsias, inclusive crimes graves e estado de filiação civil.",
-            "D": "A Lei nº 13.129/2015 revogou a possibilidade de entes da Administração Pública direta utilizarem a arbitragem em contratos administrativos."
+            "A": "A convenção de arbitragem tem eficácia vinculante negativa, ensejando a extinção do processo estatal sem julgamento do mérito caso a parte invoque a cláusula perante o juiz togado.",
+            "B": "O STF declarou inconstitucional a Lei nº 9.307/1996 por ofensa ao princípio da inafastabilidade da jurisdição previsto no Art. 5º, XXXV da Constituição Federal.",
+            "C": "A arbitragem é terminantemente vedada para entes da Administração Pública direta ou indireta, mesmo após a edição da Lei nº 13.129/2015.",
+            "D": "A celebração de compromisso arbitral não afasta a jurisdição do juiz estatal, que pode reexaminar livremente o mérito do laudo arbitral a qualquer tempo."
         }
         gabarito = "A"
         article = "Art. 485, VII do CPC/2015 e Lei nº 9.307/1996 (AgRg na SE 5.206/STF)"
-        legal_basis = "A convenção de arbitragem afasta a jurisdição estatal, ensejando a extinção do processo sem resolução de mérito pelo juiz togado (art. 485, VII, CPC)."
-        explanation = "Com a constitucionalidade afirmada pelo STF no AgRg na SE 5.206, a convenção de arbitragem possui eficácia vinculante negativa, impedindo o julgamento da causa pelo Judiciário estatal."
+        legal_basis = "A convenção de arbitragem possui efeito negativo vinculante, obrigando o juiz estatal a extinguir o processo sem resolução do mérito (art. 485, VII, CPC)."
+        explanation = "A convenção de arbitragem vincula os contratantes e afasta a competência do Judiciário togado para apreciar o mérito da lide, tendo sua constitucionalidade chancelada pelo STF."
 
-    # Embaralha alternativas mantendo consistência do gabarito
+    # Embaralha alternativas de forma uniforme e balanceada
     keys = ["A", "B", "C", "D"]
     correct_text = options[gabarito]
     other_texts = [options[k] for k in keys if k != gabarito]
@@ -376,7 +549,7 @@ def generate_multiportas_question_offline(subject: str, bank: str = "FGV", diffi
             other_idx += 1
 
     return {
-        "id": f"q_multi_{uuid.uuid4().hex[:12]}",
+        "id": f"q_multi_proc_{uuid.uuid4().hex[:12]}",
         "subject": subject,
         "bank": bank,
         "difficulty": difficulty,
