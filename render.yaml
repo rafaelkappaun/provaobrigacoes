@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: jus-provas
+    name: jus-provas-app
     env: docker
     region: ohio
     plan: free
