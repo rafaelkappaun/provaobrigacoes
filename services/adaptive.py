@@ -8,6 +8,7 @@ from typing import Dict, Any, List, Optional
 from sqlalchemy.orm import Session
 from database.models import TopicMastery, UserStats, QuestionHistory, ErrorLog, Flashcard
 from ai.offline_generator import SUBJECTS
+from ai.multiportas_generator import MULTIPORTAS_SUBJECTS, MULTIPORTAS_STUDY_GUIDE
 from ai.manager import AIProviderManager
 
 logger = logging.getLogger("AdaptiveEngine")
@@ -132,22 +133,27 @@ TOPIC_STUDY_GUIDE: Dict[str, Dict[str, str]] = {
 
 class AdaptiveEngine:
     @staticmethod
-    def initialize_topics_if_needed(db: Session, session_id: str = "default"):
-        """Inicializa todos os 22 assuntos de Contratos no banco de dados se vazios e limpa legados"""
-        # Remove tópicos legados que não pertençam aos 22 temas do questionário
+    def initialize_topics_if_needed(db: Session, session_id: str = "default", module: str = "contratos"):
+        """Inicializa os assuntos do módulo correspondente no banco de dados se vazios e limpa legados"""
+        target_subjects = MULTIPORTAS_SUBJECTS if module == "multiportas" else SUBJECTS
+        
+        # Remove tópicos legados deste módulo e sessão
         db.query(TopicMastery).filter(
             TopicMastery.session_id == session_id,
-            ~TopicMastery.subject.in_(SUBJECTS)
+            TopicMastery.module == module,
+            ~TopicMastery.subject.in_(target_subjects)
         ).delete(synchronize_session=False)
 
-        for subject in SUBJECTS:
+        for subject in target_subjects:
             mastery = db.query(TopicMastery).filter(
                 TopicMastery.subject == subject,
-                TopicMastery.session_id == session_id
+                TopicMastery.session_id == session_id,
+                TopicMastery.module == module
             ).first()
             if not mastery:
                 mastery = TopicMastery(
                     session_id=session_id,
+                    module=module,
                     subject=subject,
                     questions_answered=0,
                     questions_correct=0,
@@ -161,11 +167,15 @@ class AdaptiveEngine:
                 )
                 db.add(mastery)
         
-        # Inicializa stats globais
-        stats = db.query(UserStats).filter(UserStats.session_id == session_id).first()
+        # Inicializa stats globais para o módulo
+        stats = db.query(UserStats).filter(
+            UserStats.session_id == session_id,
+            UserStats.module == module
+        ).first()
         if not stats:
             stats = UserStats(
                 session_id=session_id,
+                module=module,
                 total_time_seconds=0,
                 questions_answered=0,
                 questions_correct=0,
@@ -177,15 +187,19 @@ class AdaptiveEngine:
         db.commit()
 
     @classmethod
-    def get_dashboard_data(cls, db: Session, session_id: str = "default") -> Dict[str, Any]:
+    def get_dashboard_data(cls, db: Session, session_id: str = "default", module: str = "contratos") -> Dict[str, Any]:
         """Obtém todas as métricas com foco na Meta de 90% de acertos e recomendações de estudo"""
-        cls.initialize_topics_if_needed(db, session_id)
+        cls.initialize_topics_if_needed(db, session_id, module=module)
         
-        stats = db.query(UserStats).filter(UserStats.session_id == session_id).first()
+        stats = db.query(UserStats).filter(
+            UserStats.session_id == session_id,
+            UserStats.module == module
+        ).first()
         if not stats:
-            logger.warning("UserStats not found for session %s, creating inline", session_id)
+            logger.warning("UserStats not found for session %s and module %s, creating inline", session_id, module)
             stats = UserStats(
                 session_id=session_id,
+                module=module,
                 total_time_seconds=0,
                 questions_answered=0,
                 questions_correct=0,
@@ -195,19 +209,25 @@ class AdaptiveEngine:
             db.add(stats)
             db.flush()
         
-        topics = db.query(TopicMastery).filter(TopicMastery.session_id == session_id).all()
+        topics = db.query(TopicMastery).filter(
+            TopicMastery.session_id == session_id,
+            TopicMastery.module == module
+        ).all()
         
         total_answered = stats.questions_answered
         total_correct = stats.questions_correct
         overall_success_rate = (total_correct / total_answered * 100.0) if total_answered > 0 else 0.0
         
+        guide_dict = MULTIPORTAS_STUDY_GUIDE if module == "multiportas" else TOPIC_STUDY_GUIDE
+        default_law = "CPC / Leis de Mediação e Arbitragem" if module == "multiportas" else "Código Civil Brasileiro"
+
         # Detalhamento de cada assunto com cálculo para meta 90%
         subjects_detail = []
         study_recommendations = []
         
         for t in topics:
-            guide = TOPIC_STUDY_GUIDE.get(t.subject, {
-                "articles": "Código Civil Brasileiro",
+            guide = guide_dict.get(t.subject, {
+                "articles": default_law,
                 "key_concept": f"Revisar o conceito e principais requisitos legais de {t.subject}.",
                 "trap": "Atenção aos prazos legais e exceções expressas na lei."
             })
@@ -215,7 +235,6 @@ class AdaptiveEngine:
             is_goal_achieved = (t.questions_answered >= 3 and t.success_rate >= 90.0)
             
             # Cálculo de acertos necessários para atingir 90%:
-            # (correct + x) / (answered + x) >= 0.9 => 0.1x >= 0.9*answered - correct
             if is_goal_achieved:
                 needed_for_90 = 0
             elif t.questions_answered == 0:
@@ -253,16 +272,13 @@ class AdaptiveEngine:
             
             # Se ainda não atingiu a meta de 90%, entra na lista de recomendações de estudo
             if not is_goal_achieved:
-                # Prioridade: menor taxa de acerto primeiro; depois os com mais erros
                 priority_score = (100.0 - t.success_rate) + (20 if t.questions_answered > 0 else 0)
                 study_recommendations.append({
                     **sub_info,
                     "priority_score": priority_score
                 })
 
-        # Ordena recomendações: maior prioridade primeiro
         study_recommendations.sort(key=lambda x: x["priority_score"], reverse=True)
-        # Remove campo de cálculo interno
         for rec in study_recommendations:
             rec.pop("priority_score", None)
 
@@ -308,6 +324,7 @@ class AdaptiveEngine:
             next_step = "💪 Continue respondendo questões para consolidar sua taxa de 90% em todos os temas."
 
         return {
+            "module": module,
             "overall_success_rate": round(overall_success_rate, 1),
             "questions_answered": total_answered,
             "questions_correct": total_correct,
@@ -329,11 +346,18 @@ class AdaptiveEngine:
         }
 
     @classmethod
-    def process_answer(cls, db: Session, question: Dict[str, Any], selected_option: str, response_time: float, session_id: str = "default") -> Dict[str, Any]:
-        """Processa a resposta do aluno e atualiza o mecanismo adaptativo"""
-        cls.initialize_topics_if_needed(db, session_id)
-        
+    def process_answer(cls, db: Session, question: Dict[str, Any], selected_option: str, response_time: float, session_id: str = "default", module: str = "contratos") -> Dict[str, Any]:
+        """Processa a resposta do aluno e atualiza o mecanismo adaptativo com isolamento de módulo"""
         subject = question["subject"]
+        if subject in MULTIPORTAS_SUBJECTS:
+            module = "multiportas"
+        elif subject in SUBJECTS:
+            module = "contratos"
+        else:
+            module = question.get("module") or module
+            
+        cls.initialize_topics_if_needed(db, session_id, module=module)
+        
         correct_option = question["gabarito"]
         is_correct = (selected_option.upper() == correct_option.upper())
         is_insecure = is_correct and (response_time > INSECURE_TIME_LIMIT)
@@ -346,7 +370,7 @@ class AdaptiveEngine:
             logger.warning(f"Questão sem id válido, gerado hash-based: {raw_id}")
         question_id = str(raw_id).strip()[:100]
         
-        # ID composto garante unicidade por (questão, sessão): múltiplos usuários podem responder a mesma questão
+        # ID composto garante unicidade por (questão, sessão)
         history_id = f"{question_id}_{session_id[:20]}"[:120]
         
         # 1. Registrar histórico
@@ -354,6 +378,7 @@ class AdaptiveEngine:
             id=history_id,
             question_id=question_id,
             session_id=session_id,
+            module=module,
             subject=subject,
             difficulty=question.get("difficulty", "Médio"),
             bank=question.get("bank", "FGV"),
@@ -363,11 +388,13 @@ class AdaptiveEngine:
         )
         db.add(q_history)
 
-        
-        # 2. Atualizar estatísticas globais
-        stats = db.query(UserStats).filter(UserStats.session_id == session_id).first()
+        # 2. Atualizar estatísticas globais do módulo
+        stats = db.query(UserStats).filter(
+            UserStats.session_id == session_id,
+            UserStats.module == module
+        ).first()
         if not stats:
-            stats = UserStats(session_id=session_id, total_time_seconds=0, questions_answered=0, questions_correct=0, streak_days=0)
+            stats = UserStats(session_id=session_id, module=module, total_time_seconds=0, questions_answered=0, questions_correct=0, streak_days=0)
             db.add(stats)
             db.flush()
         stats.questions_answered += 1
@@ -390,13 +417,14 @@ class AdaptiveEngine:
             stats.streak_days = 1
         stats.last_study_date = datetime.now(timezone.utc).replace(tzinfo=None)
         
-        # 3. Atualizar domínio do assunto (TopicMastery)
+        # 3. Atualizar domínio do assunto (TopicMastery) do módulo
         mastery = db.query(TopicMastery).filter(
             TopicMastery.subject == subject,
-            TopicMastery.session_id == session_id
+            TopicMastery.session_id == session_id,
+            TopicMastery.module == module
         ).first()
         if not mastery:
-            mastery = TopicMastery(session_id=session_id, subject=subject, questions_answered=0, questions_correct=0, consecutive_errors=0, success_rate=0.0, status="Critico")
+            mastery = TopicMastery(session_id=session_id, module=module, subject=subject, questions_answered=0, questions_correct=0, consecutive_errors=0, success_rate=0.0, status="Critico")
             db.add(mastery)
             db.flush()
         mastery.questions_answered += 1
@@ -487,11 +515,14 @@ class AdaptiveEngine:
         }
 
     @classmethod
-    def get_next_subject(cls, db: Session, session_id: str = "default") -> str:
-        """Determina o próximo assunto — distribuição igualitária entre não-dominados"""
-        cls.initialize_topics_if_needed(db, session_id)
+    def get_next_subject(cls, db: Session, session_id: str = "default", module: str = "contratos") -> str:
+        """Determina o próximo assunto isolado por módulo — distribuição igualitária entre não-dominados"""
+        cls.initialize_topics_if_needed(db, session_id, module=module)
         
-        topics = db.query(TopicMastery).filter(TopicMastery.session_id == session_id).all()
+        topics = db.query(TopicMastery).filter(
+            TopicMastery.session_id == session_id,
+            TopicMastery.module == module
+        ).all()
         
         # 1. Modo Intensivo: assunto com 3+ erros consecutivos
         for t in topics:

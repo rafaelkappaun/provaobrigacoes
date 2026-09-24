@@ -11,13 +11,14 @@ from database.connection import SessionLocal
 from database.models import SystemConfig
 from database.crypto import decrypt_value
 from ai.offline_generator import generate_question_offline, SUBJECTS, BANKS
+from ai.multiportas_generator import generate_multiportas_question_offline, MULTIPORTAS_SUBJECTS
 
 load_dotenv()
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("AIProviderManager")
 
-# Carrega o pool de questões seed (gerado pelo ai/generate_seed.py)
+# 1. Carrega o pool de questões seed de Contratos
 _seed_pool: List[Dict[str, Any]] = []
 _seed_file = Path(__file__).resolve().parent.parent / "database" / "seed_questions.json"
 try:
@@ -25,11 +26,21 @@ try:
         with open(_seed_file, "r", encoding="utf-8") as f:
             data = json.load(f)
             _seed_pool = data.get("questions", [])
-        logger.info(f"Seed pool carregado: {len(_seed_pool)} questões de {len(SUBJECTS)} assuntos")
-    else:
-        logger.warning(f"Arquivo seed não encontrado: {_seed_file}. Gere com: python -m ai.generate_seed")
+        logger.info(f"Seed pool Contratos carregado: {len(_seed_pool)} questões de {len(SUBJECTS)} assuntos")
 except Exception as e:
-    logger.error(f"Erro ao carregar seed pool: {e}")
+    logger.error(f"Erro ao carregar seed pool Contratos: {e}")
+
+# 2. Carrega o pool de questões seed de Modelo Multiportas
+_multiportas_seed_pool: List[Dict[str, Any]] = []
+_multiportas_file = Path(__file__).resolve().parent.parent / "database" / "seed_multiportas.json"
+try:
+    if _multiportas_file.exists():
+        with open(_multiportas_file, "r", encoding="utf-8") as f:
+            m_data = json.load(f)
+            _multiportas_seed_pool = m_data.get("questions", [])
+        logger.info(f"Seed pool Multiportas carregado: {len(_multiportas_seed_pool)} questões de {len(MULTIPORTAS_SUBJECTS)} assuntos")
+except Exception as e:
+    logger.error(f"Erro ao carregar seed pool Multiportas: {e}")
 
 class AIProviderManager:
     @staticmethod
@@ -57,50 +68,35 @@ class AIProviderManager:
         except Exception as e:
             logger.warning(f"Não foi possível ler SystemConfig: {e}")
 
-        # Variáveis de ambiente sobrescrevem (prioridade máxima)
-        env_keys = {
-            "active_provider": os.getenv("ACTIVE_PROVIDER"),
-            "gemini_api_key": os.getenv("GEMINI_API_KEY"),
-            "openrouter_api_key": os.getenv("OPENROUTER_API_KEY"),
-            "deepseek_api_key": os.getenv("DEEPSEEK_API_KEY"),
-            "qwen_api_key": os.getenv("QWEN_API_KEY"),
-            "mistral_api_key": os.getenv("MISTRAL_API_KEY"),
-            "groq_api_key": os.getenv("GROQ_API_KEY"),
-            "temperature": os.getenv("TEMPERATURE"),
-        }
-
-        for k, v in env_keys.items():
-            if v is not None:
-                if k == "temperature":
-                    try:
-                        config_from_db[k] = float(v)
-                    except ValueError:
-                        pass
-                else:
-                    config_from_db[k] = v
-
-        # Auto-detecção: se alguma chave de IA foi configurada,
-        # mas o provider ainda é "offline", ativa o melhor disponível
-        # Ordem de preferência: groq (gratuito) > deepseek (barato) > openrouter > gemini > qwen > mistral
-        if config_from_db.get("active_provider") == "offline":
-            preference = ["groq", "deepseek", "openrouter", "gemini", "qwen", "mistral"]
-            for prov in preference:
-                if config_from_db.get(f"{prov}_api_key"):
-                    config_from_db["active_provider"] = prov
-                    logger.info(f"Auto-detecção: provedor ativo definido como '{prov}'")
-                    break
-
         return config_from_db
 
     @classmethod
     def generate_question(cls, subject: str, bank: str, difficulty: str,
-                          db: Any = None, session_id: str = None) -> Dict[str, Any]:
-        """Gera questão 100% offline: utiliza pool de questões e gerador procedural sem consumir cota de IA"""
+                          db: Any = None, session_id: str = None, module: str = "contratos") -> Dict[str, Any]:
+        """Gera questão 100% offline: isolada por módulo (contratos ou multiportas)"""
         if not bank or bank not in BANKS:
             bank = random.choice(BANKS)
-        
+            
+        if module == "multiportas":
+            if not subject or subject not in MULTIPORTAS_SUBJECTS:
+                subject = random.choice(MULTIPORTAS_SUBJECTS)
+            seed_q = cls._pick_from_seed_pool(subject, bank, db, session_id, pool=_multiportas_seed_pool)
+            if seed_q:
+                return dict(seed_q)
+            if _multiportas_seed_pool:
+                candidates = [q for q in _multiportas_seed_pool if q.get("subject") == subject]
+                if candidates:
+                    q = dict(random.choice(candidates))
+                    q["id"] = f"{q.get('id', 'multi')}_{random.randint(1000, 9999)}"
+                    return q
+            return generate_multiportas_question_offline(subject, bank, difficulty)
+            
+        # Padrão: módulo de contratos
+        if not subject or subject not in SUBJECTS:
+            subject = random.choice(SUBJECTS)
+            
         # 1. Tenta servir do seed pool (prioriza não respondidas na sessão)
-        seed_q = cls._pick_from_seed_pool(subject, bank, db, session_id)
+        seed_q = cls._pick_from_seed_pool(subject, bank, db, session_id, pool=_seed_pool)
         if seed_q:
             return dict(seed_q)
 
@@ -117,16 +113,18 @@ class AIProviderManager:
 
     @classmethod
     def _pick_from_seed_pool(cls, subject: str, bank: str,
-                              db: Any = None, session_id: str = None) -> Optional[Dict[str, Any]]:
-        """Escolhe questão do seed pool, evitando as já respondidas por esta sessão"""
-        if not _seed_pool:
+                              db: Any = None, session_id: str = None,
+                              pool: Optional[List[Dict[str, Any]]] = None) -> Optional[Dict[str, Any]]:
+        """Escolhe questão do seed pool do respectivo módulo, evitando as já respondidas por esta sessão"""
+        active_pool = pool if pool is not None else _seed_pool
+        if not active_pool:
             return None
 
         # Filtra por assunto + banca
-        candidates = [q for q in _seed_pool if q["subject"] == subject and q["bank"] == bank]
+        candidates = [q for q in active_pool if q["subject"] == subject and q["bank"] == bank]
         if not candidates:
             # Tenta qualquer banca para o assunto
-            candidates = [q for q in _seed_pool if q["subject"] == subject]
+            candidates = [q for q in active_pool if q["subject"] == subject]
         if not candidates:
             return None
 

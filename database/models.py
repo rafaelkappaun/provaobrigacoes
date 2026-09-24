@@ -11,6 +11,7 @@ class UserStats(Base):
     
     id = Column(Integer, primary_key=True, index=True)
     session_id = Column(String(50), index=True, default="default")
+    module = Column(String(50), index=True, default="contratos")
     total_time_seconds = Column(Integer, default=0)
     questions_answered = Column(Integer, default=0)
     questions_correct = Column(Integer, default=0)
@@ -23,6 +24,7 @@ class TopicMastery(Base):
     
     id = Column(Integer, primary_key=True, index=True)
     session_id = Column(String(50), index=True, default="default")
+    module = Column(String(50), index=True, default="contratos")
     subject = Column(String(100), index=True, nullable=False)
     questions_answered = Column(Integer, default=0)
     questions_correct = Column(Integer, default=0)
@@ -44,6 +46,7 @@ class QuestionHistory(Base):
     id = Column(String(120), primary_key=True, index=True) # composto: question_id + "_" + session_id[:20]
     question_id = Column(String(120), index=True, nullable=True)  # UUID original da questão
     session_id = Column(String(50), index=True, default="default")
+    module = Column(String(50), index=True, default="contratos")
     subject = Column(String(100), index=True, nullable=False)
     difficulty = Column(String(20), nullable=False) # "Facil", "Medio", "Dificil"
     bank = Column(String(50), nullable=False) # "FGV", "CESPE", etc.

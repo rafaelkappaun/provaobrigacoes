@@ -28,6 +28,24 @@ const CONTRATOS_SUBJECTS = [
   "Exceção do Contrato Não Cumprido e Onerosidade Excessiva"
 ];
 
+const MULTIPORTAS_SUBJECTS = [
+  "Todos os Temas (Automático)",
+  "Noção de Conflito de Direito e Conflito Social",
+  "Enfrentamento dos Conflitos vs. Jurisdição",
+  "Construção Legislativa no Enfrentamento de Conflitos",
+  "Principais Formas de Resolução de Conflitos",
+  "Métodos Alternativos de Resolução de Conflitos (MASCs/ADRs)",
+  "Formas de Autocomposição e Fundamentos",
+  "Formas de Heterocomposição e Fundamentos",
+  "Casos Práticos e Adequação dos Métodos (Autotutela, Hetero e Auto)",
+  "Processos Autocompositivos vs. Heterocompositivos",
+  "Princípios da Resolução de Conflitos e Acesso à Justiça",
+  "Evolução Histórica dos Métodos Consensuais",
+  "Objetivos do Modelo Multiportas",
+  "Evolução Histórica e Legislativa dos Juizados Especiais",
+  "Evolução Histórica e Legislativa da Arbitragem no Brasil"
+];
+
 interface Question {
   id: string;
   subject: string;
@@ -59,11 +77,12 @@ interface AnswerResponse {
 
 interface QuestionSessionProps {
   apiBase: string;
+  module?: string;
   subject?: string;
   onSessionFinished?: () => void;
 }
 
-export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, subject, onSessionFinished }) => {
+export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, module = 'contratos', subject, onSessionFinished }) => {
   const [currentSubject, setCurrentSubject] = useState<string>(subject || '');
   const [question, setQuestion] = useState<Question | null>(null);
   const [selectedOption, setSelectedOption] = useState<string>('');
@@ -122,6 +141,7 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, subje
     const targetSub = forcedSubject !== undefined ? forcedSubject : currentSubject;
     let url = `/question/next`;
     const params = new URLSearchParams();
+    params.append('module', module);
     if (targetSub && targetSub !== "Todos os Temas (Automático)") {
       params.append('subject', targetSub);
     }
@@ -149,7 +169,7 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, subje
         setLoading(false);
       }
     }
-  }, [apiBase, currentSubject, startTimer, stopTimer]);
+  }, [apiBase, currentSubject, module, startTimer, stopTimer]);
 
   // Carrega primeira questão ao montar ou quando o assunto muda
   useEffect(() => {
@@ -178,7 +198,8 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, subje
         body: JSON.stringify({
           question: question,
           selected_option: selectedOption,
-          response_time: responseTime
+          response_time: responseTime,
+          module: module
         })
       });
 
@@ -257,7 +278,7 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, subje
               }}
               className="bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs font-bold text-slate-200 focus:outline-none focus:border-indigo-500 w-full truncate"
             >
-              {CONTRATOS_SUBJECTS.map((s) => (
+              {(module === 'multiportas' ? MULTIPORTAS_SUBJECTS : CONTRATOS_SUBJECTS).map((s) => (
                 <option key={s} value={s} className="bg-slate-900 text-slate-200">
                   {s}
                 </option>

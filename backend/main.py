@@ -87,6 +87,7 @@ class AnswerPayload(BaseModel):
     question: Dict[str, Any]
     selected_option: str
     response_time: float
+    module: Optional[str] = "contratos"
 
 class FlashcardReviewPayload(BaseModel):
     is_easy: bool
@@ -114,30 +115,32 @@ def health_check():
     return {"status": "ok", "service": "jus-provas"}
 
 @app.get("/api/dashboard")
-def get_dashboard(db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
+def get_dashboard(module: str = "contratos", db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
     try:
-        data = AdaptiveEngine.get_dashboard_data(db, session_id)
+        data = AdaptiveEngine.get_dashboard_data(db, session_id, module=module)
         return data
     except Exception:
         logger.exception("Falha ao obter dashboard")
         raise HTTPException(status_code=500, detail="Erro ao obter dados do painel")
 
 @app.get("/api/question/next")
-def get_next_question(bank: str = "FGV", subject: Optional[str] = None, db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
+def get_next_question(bank: str = "FGV", subject: Optional[str] = None, module: str = "contratos", db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
     try:
         if not subject:
-            subject = AdaptiveEngine.get_next_subject(db, session_id)
+            subject = AdaptiveEngine.get_next_subject(db, session_id, module=module)
         difficulty = "Médio"
         mastery = db.query(TopicMastery).filter(
             TopicMastery.subject == subject,
-            TopicMastery.session_id == session_id
+            TopicMastery.session_id == session_id,
+            TopicMastery.module == module
         ).first()
         if mastery:
             if mastery.status == "Critico":
                 difficulty = "Fácil"
             elif mastery.status == "Dominado":
                 difficulty = "Difícil"
-        question = AIProviderManager.generate_question(subject, bank, difficulty, db, session_id)
+        question = AIProviderManager.generate_question(subject, bank, difficulty, db, session_id, module=module)
+        question["module"] = module
         return question
     except Exception:
         logger.exception("Falha ao gerar questão")
@@ -153,6 +156,9 @@ def post_answer(payload: AnswerPayload, db: Session = Depends(get_db), session_i
         if not question.get("gabarito"):
             raise HTTPException(status_code=422, detail="Questão inválida: campo 'gabarito' ausente")
 
+        module = payload.module or question.get("module") or "contratos"
+        question["module"] = module
+
         question_id_raw = str(question.get("id", "")).strip()[:100]
         history_id = f"{question_id_raw}_{session_id[:20]}"[:120]
 
@@ -162,7 +168,7 @@ def post_answer(payload: AnswerPayload, db: Session = Depends(get_db), session_i
         if existing:
             raise HTTPException(status_code=409, detail="Esta questão já foi respondida anteriormente. Carregue uma nova questão.")
         result = AdaptiveEngine.process_answer(
-            db, question, payload.selected_option, payload.response_time, session_id
+            db, question, payload.selected_option, payload.response_time, session_id, module=module
         )
         return result
     except HTTPException:

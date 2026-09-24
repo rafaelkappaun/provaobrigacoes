@@ -43,7 +43,7 @@ def column_exists(conn, table_name, column_name):
 ALLOWED_TABLES = {"user_stats", "topic_mastery", "question_history", "flashcards", "error_logs", "system_config"}
 ALLOWED_COLUMNS = {
     "session_id", "consecutive_correct", "groq_api_key", "mastered", "last_reviewed",
-    "question_id",
+    "question_id", "module"
 }
 
 def _safe_ident(name: str, allowed: set[str]) -> str:
@@ -72,6 +72,18 @@ def run_migrations():
             except (ValueError, Exception) as e:
                 if not isinstance(e, ValueError):
                     logger.debug(f"Migração {table}.{column}: {e}")
+
+        for table in ["user_stats", "topic_mastery", "question_history"]:
+            try:
+                safe_table = _safe_ident(table, ALLOWED_TABLES)
+                safe_col = _safe_ident("module", ALLOWED_COLUMNS)
+                if not column_exists(conn, safe_table, safe_col):
+                    conn.execute(text(f"ALTER TABLE {safe_table} ADD COLUMN {safe_col} VARCHAR(50) DEFAULT 'contratos'"))
+                    conn.commit()
+                    logger.info(f"Migração: coluna module adicionada em {table}")
+            except (ValueError, Exception) as e:
+                if not isinstance(e, ValueError):
+                    logger.debug(f"Migração {table}.module: {e}")
 
         for col_name in ["consecutive_correct", "groq_api_key"]:
             try:

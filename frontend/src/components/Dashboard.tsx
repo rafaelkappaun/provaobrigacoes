@@ -52,10 +52,11 @@ export interface DashboardData {
 
 interface DashboardProps {
   data: DashboardData;
+  module?: string;
   onNavigate: (tab: string, extra?: Record<string, unknown>) => void;
 }
 
-export const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
+export const Dashboard: React.FC<DashboardProps> = ({ data, module = 'contratos', onNavigate }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState<'all' | 'need_study' | 'mastered'>('all');
 
@@ -200,7 +201,9 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
               Onde Estudar Mais (Rumo aos 90%)
             </h2>
             <p className="text-xs text-slate-400">
-              Conteúdos prioritários que ainda não atingiram 90% de acertos, com artigos do Código Civil e dicas para memorizar.
+              {module === 'multiportas'
+                ? 'Conteúdos prioritários que ainda não atingiram 90% de acertos, com fundamentos normativos (CPC/15, Lei 9.099/95, Lei 13.140/15) e conceitos-chave.'
+                : 'Conteúdos prioritários que ainda não atingiram 90% de acertos, com artigos do Código Civil e dicas para memorizar.'}
             </p>
           </div>
           <span className="text-xs font-bold px-2.5 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-lg">
@@ -215,7 +218,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
             </div>
             <h3 className="text-lg font-bold text-white">Parabéns! Meta de 90% atingida em todos os temas!</h3>
             <p className="text-xs text-slate-300 max-w-md mx-auto">
-              Você alcançou pelo menos 90% de acertos em cada um dos 22 conteúdos da prova de Contratos. Continue praticando para manter o conhecimento fresco.
+              Você alcançou pelo menos 90% de acertos em cada um dos {data.subjects.length} conteúdos {module === 'multiportas' ? 'do Modelo Multiportas' : 'da matéria'}. Continue praticando para manter o conhecimento fresco.
             </p>
           </div>
         ) : (
@@ -290,7 +293,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
           <div className="space-y-0.5">
             <h2 className="text-lg font-black text-white flex items-center gap-2">
               <CheckCircle size={18} className="text-emerald-400" />
-              Acertos por Conteúdo (22 Temas)
+              Acertos por Conteúdo ({data.subjects.length} Temas)
             </h2>
             <p className="text-xs text-slate-400">
               Acompanhe a quantidade exata de acertos e o percentual em cada conteúdo.
