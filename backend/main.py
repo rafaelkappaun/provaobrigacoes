@@ -39,7 +39,7 @@ logger = logging.getLogger("backend")
 Base.metadata.create_all(bind=engine)
 run_migrations()
 
-app = FastAPI(title="JUS OBRIGAÇÕES MASTER - API Backend")
+app = FastAPI(title="JUS CONTRATOS MASTER - API Backend")
 
 # CORS: em produção, configure CORS_ORIGINS com os domínios permitidos (separados por vírgula)
 cors_origins_env = os.getenv("CORS_ORIGINS", "")
@@ -111,7 +111,7 @@ class ProfessorChatPayload(BaseModel):
 
 @app.get("/health")
 def health_check():
-    return {"status": "ok", "service": "jus-obrigacoes-master"}
+    return {"status": "ok", "service": "jus-contratos-master"}
 
 @app.get("/api/dashboard")
 def get_dashboard(db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
@@ -337,6 +337,27 @@ def train_errors(db: Session = Depends(get_db), session_id: str = Depends(get_se
     except Exception:
         logger.exception("Falha ao criar treino de erros")
         raise HTTPException(status_code=500, detail="Erro ao criar treino de erros")
+
+@app.post("/api/errors/convert-to-flashcards")
+def convert_errors_to_flashcards(db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
+    try:
+        errors = db.query(ErrorLog).filter(
+            ErrorLog.resolved == False,
+            ErrorLog.session_id == session_id
+        ).all()
+        created = 0
+        for err in errors:
+            try:
+                q_data = json.loads(err.question_json)
+                fc = FlashcardManager.create_card_from_error(db, q_data, session_id)
+                if fc:
+                    created += 1
+            except Exception:
+                pass
+        return {"message": f"{created} flashcards gerados a partir dos seus erros!", "count": created}
+    except Exception:
+        logger.exception("Falha ao converter erros em flashcards")
+        raise HTTPException(status_code=500, detail="Erro ao converter erros em flashcards")
 
 @app.get("/api/analytics")
 def get_analytics(db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):

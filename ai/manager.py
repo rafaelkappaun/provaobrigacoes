@@ -212,7 +212,6 @@ class AIProviderManager:
         logger.info(f"Seed pool: questão {q['id'][:8]} para {subject}/{bank}")
         return q
 
-
     @classmethod
     def ask_professor(cls, context: Dict[str, Any], query: str) -> str:
         """Professor Virtual com IA ou fallback offline"""
@@ -220,8 +219,8 @@ class AIProviderManager:
         provider = config.get("active_provider", "offline")
 
         prompt = (
-            f"Você é um Professor de Direito Civil especialista em Direito das Obrigações (arts. 304 a 420 do Código Civil).\n"
-            f"Um estudante tem uma dúvida sobre a seguinte questão de prova:\n\n"
+            f"Você é um Professor de Direito Civil especialista em Direito dos Contratos e Teoria Geral do Negócio Jurídico do Código Civil.\n"
+            f"Um estudante tem uma dúvida sobre a seguinte questão de prova de Contratos:\n\n"
             f"Tema: {context.get('subject')}\n"
             f"Banca: {context.get('bank')}\n"
             f"Enunciado: {context.get('enunciado')}\n"
@@ -229,7 +228,7 @@ class AIProviderManager:
             f"Fundamentação legal: {context.get('legal_basis')}\n"
             f"Explicação da questão: {context.get('explanation')}\n\n"
             f"Dúvida do estudante: \"{query}\"\n\n"
-            f"Responda a dúvida de forma clara, didática, citando a lei correspondente (Código Civil) e explicando o conceito de forma simples."
+            f"Responda a dúvida de forma clara, didática, citando a lei correspondente (Código Civil), os planos do negócio jurídico ou a jurisprudência aplicável de forma simples."
         )
 
         providers_order = [provider, "groq", "deepseek", "openrouter", "offline"]
@@ -259,8 +258,8 @@ class AIProviderManager:
 
         return (
             f"Gere uma questão inédita no estilo da banca {bank}, assunto '{subject}', dificuldade '{difficulty}'.\n"
-            f"Base legal: Código Civil Brasileiro arts. 304 a 420 (Direito das Obrigações).\n"
-            f"Formato: CASO CONCRETO com nomes brasileiros fictícios, profissões, valores, cidades e situações cotidianas (compra e venda, locação, financiamento, prestação de serviços).\n\n"
+            f"Base legal: Código Civil Brasileiro (Direito dos Contratos, Escada Ponteana arts. 104 a 114, Teoria Geral arts. 421 a 480, vícios redibitórios e figuras afins).\n"
+            f"Formato: CASO CONCRETO com nomes brasileiros fictícios, profissões, valores, cidades e situações práticas contratuais.\n\n"
             f"Retorne APENAS JSON válido, sem markdown:\n"
             f"{{\n"
             f'  "id": "q_<uuid>",\n'

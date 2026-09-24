@@ -26,10 +26,10 @@ class ReportGenerator:
         
         if not worst_names:
             # Se não respondeu nada ainda
-            worst_names = ["Mora do devedor", "Dação em pagamento", "Novação"]
+            worst_names = ["Planos do Negócio Jurídico (Escada Ponteana)", "Boa-fé Objetiva e Figuras Parcelares", "Vícios Redibitórios - Conceito e Requisitos"]
             recommendation_txt = (
-                "Você ainda não iniciou suas sessões de estudo. "
-                "Recomendamos responder a pelo menos 15 questões de Mora, Dação em Pagamento e Novação para calibrar o sistema adaptativo."
+                "Você ainda não iniciou suas sessões de estudo de Contratos. "
+                "Recomendamos responder a pelo menos 15 questões de Escada Ponteana, Boa-fé Objetiva e Vícios Redibitórios para calibrar o sistema adaptativo."
             )
         else:
             joined_names = ", ".join(worst_names)
@@ -40,8 +40,8 @@ class ReportGenerator:
 
         # Prompt para a IA gerar um parecer pedagógico customizado
         prompt = (
-            f"Você é um Professor Particular de Direito Civil especialista em concursos públicos.\n"
-            f"Analise o seguinte perfil de desempenho do aluno em Direito das Obrigações:\n\n"
+            f"Você é um Professor Particular de Direito Civil especialista em Direito dos Contratos.\n"
+            f"Analise o seguinte perfil de desempenho do aluno no Questionário de Contratos (Código Civil):\n\n"
             f"- Taxa global de acertos: {round((stats.questions_correct / stats.questions_answered * 100) if stats and stats.questions_answered > 0 else 0.0, 1)}%\n"
             f"- Temas Críticos: {', '.join(criticos) if criticos else 'Nenhum'}\n"
             f"- Temas Intermediários: {', '.join(intermediarios) if intermediarios else 'Nenhum'}\n"

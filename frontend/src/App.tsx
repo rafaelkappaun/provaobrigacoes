@@ -119,7 +119,7 @@ export default function App() {
               <Award size={20} />
             </div>
             <div>
-              <h1 className="text-sm font-black tracking-tight text-white leading-none">JUS OBRIGAÇÕES</h1>
+              <h1 className="text-sm font-black tracking-tight text-white leading-none">JUS CONTRATOS</h1>
               <span className="text-[10px] font-extrabold text-indigo-400 tracking-wider">MASTER V1.0</span>
             </div>
           </div>
@@ -154,7 +154,7 @@ export default function App() {
 
         {/* Footer Sidebar */}
         <div className="p-4 border-t border-slate-850 text-center text-[10px] font-extrabold text-slate-500 tracking-wider">
-          CÓDIGO CIVIL CC/02
+          CÓDIGO CIVIL - CONTRATOS
         </div>
       </aside>
 
@@ -166,7 +166,7 @@ export default function App() {
             <div className="p-1.5 bg-indigo-650 text-white rounded-lg">
               <Award size={16} />
             </div>
-            <span className="text-xs font-black tracking-tight text-white">JUS OBRIGAÇÕES</span>
+            <span className="text-xs font-black tracking-tight text-white">JUS CONTRATOS</span>
           </div>
 
           <div className="flex items-center gap-3">

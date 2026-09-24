@@ -18,7 +18,13 @@ INSECURE_TIME_LIMIT = 45.0
 class AdaptiveEngine:
     @staticmethod
     def initialize_topics_if_needed(db: Session, session_id: str = "default"):
-        """Inicializa todos os 23 assuntos no banco de dados se vazios"""
+        """Inicializa todos os 22 assuntos de Contratos no banco de dados se vazios e limpa legados"""
+        # Remove tópicos legados que não pertençam aos 22 temas do questionário
+        db.query(TopicMastery).filter(
+            TopicMastery.session_id == session_id,
+            ~TopicMastery.subject.in_(SUBJECTS)
+        ).delete(synchronize_session=False)
+
         for subject in SUBJECTS:
             mastery = db.query(TopicMastery).filter(
                 TopicMastery.subject == subject,
@@ -278,6 +284,13 @@ class AdaptiveEngine:
                 resolved=False
             )
             db.add(error_log)
+
+            # Gera instantaneamente um Flashcard personalizado para o aluno treinar esta questão errada
+            try:
+                from flashcards.manager import FlashcardManager
+                FlashcardManager.create_card_from_error(db, question, session_id)
+            except Exception as e:
+                logger.warning(f"Erro ao gerar flashcard automático de erro: {e}")
             
         # Recalcula taxa de sucesso do assunto (apenas para referência)
         mastery.success_rate = (mastery.questions_correct / mastery.questions_answered) * 100.0
@@ -410,7 +423,7 @@ class AdaptiveEngine:
         # Resumo 30s (ultra conciso)
         summary_30s = (
             f"**Resumo de 30s: {subject}**\n\n"
-            f"📍 **Conceito:** {subject} regula como as obrigações são quitadas ou descumpridas.\n"
+            f"📍 **Conceito:** {subject} é tema chave no Questionário de Contratos.\n"
             f"📌 **Artigo-chave:** {article}\n"
             f"⚡ **Pegadinha comum:** {legal_basis[:100]}..."
         )
@@ -419,38 +432,37 @@ class AdaptiveEngine:
         summary_2min = (
             f"**Resumo de 2 minutos: {subject}**\n\n"
             f"**O que é?**\n"
-            f"No Direito das Obrigações (CC/02), {subject.lower()} trata das regras específicas "
-            f"que regem o adimplemento ou inadimplemento das prestações entre credor e devedor.\n\n"
+            f"No Direito dos Contratos do Código Civil, {subject.lower()} cuida dos pressupostos, "
+            f"efeitos e consequências aplicáveis à relação contratual.\n\n"
             f"**Base legal:** {article}\n"
             f"\"{legal_basis[:200]}...\"\n\n"
             f"**Como cai em prova?**\n"
-            f"As bancas (FGV, CESPE, OAB) exploram este tema através de casos concretos com "
-            f"pegadinhas nos detalhes: prazos, quem pode pagar, lugar do pagamento, exceções legais.\n\n"
-            f"**Dica do professor:** Leia o artigo com atenção redobrada aos parágrafos e incisos."
+            f"As bancas (OAB, FGV, CESPE, VUNESP) e provas acadêmicas exploram este tema em casos práticos "
+            f"com pegadinhas sobre prazos, requisitos essenciais, distinções conceituais e efeitos da má-fé.\n\n"
+            f"**Dica do professor:** Revise os requisitos na Escada Ponteana e os prazos decadenciais do Código Civil."
         )
         
         # Resumo 5min (completo, com jurisprudencia e doutrina)
         summary_5min = (
             f"**Resumo de 5 minutos: {subject}**\n\n"
             f"**1. CONCEITO DOUTRINÁRIO**\n"
-            f"{subject} é um dos pilares do Direito das Obrigações. A doutrina clássica (Caio Mário, "
-            f"Pontes de Miranda, Orlando Gomes) ensina que o adimplemento é a realização voluntária "
-            f"da prestação devida, enquanto o inadimplemento é o seu descumprimento total ou parcial.\n\n"
+            f"{subject} compõe o cerne da Teoria Geral dos Contratos e Negócios Jurídicos. "
+            f"A doutrina civilista clássica e contemporânea destaca a relevância da boa-fé objetiva (art. 422), "
+            f"da função social (art. 421) e dos elementos de existência e validade.\n\n"
             f"**2. FUNDAMENTAÇÃO LEGAL**\n"
             f"Artigo principal: {article}\n"
             f"Texto integral: \"{legal_basis}\"\n\n"
             f"**3. JURISPRUDÊNCIA APLICÁVEL**\n"
-            f"O STJ consolidou o entendimento de que a boa-fé objetiva (art. 422, CC) deve nortear "
-            f"as relações obrigacionais, vedando comportamentos contraditórios (venire contra factum proprium).\n\n"
+            f"O STJ consolidou entendimento sobre a tutela da confiança, a vedação de venire contra factum proprium "
+            f"e a preservação da autonomia privada com intervenção mínima.\n\n"
             f"**4. ANÁLISE DO CASO CONCRETO**\n"
             f"{explanation[:300]}...\n\n"
             f"**5. PONTOS DE PROVA (MAIS COBRADOS)**\n"
-            f"• Distinção entre mora e inadimplemento absoluto\n"
-            f"• Efeitos do pagamento por terceiro (interessado vs não interessado)\n"
-            f"• Sub-rogação legal vs convencional\n"
-            f"• Novação objetiva vs subjetiva\n"
-            f"• Cláusula penal compensatória vs moratória\n"
-            f"• Arras confirmatórias vs penitenciais"
+            f"• Planos da Escada Ponteana (existência, validade e eficácia)\n"
+            f"• Distinção entre Emptio Spei e Emptio Rei Speratae\n"
+            f"• Ações edilícias (redibitória e estimatória)\n"
+            f"• Consequências da ciência prévia do vício (art. 443)\n"
+            f"• Aliud pro alio vs. Vício redibitório"
         )
         
         # 3 Flashcards

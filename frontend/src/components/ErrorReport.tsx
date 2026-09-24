@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { ShieldAlert, Award, Play, ChevronDown, ChevronUp, Loader2 } from 'lucide-react';
+import { ShieldAlert, Award, Play, ChevronDown, ChevronUp, Loader2, Layers } from 'lucide-react';
 import { apiFetch } from '../api';
 
 interface ErrorLog {
@@ -25,6 +25,7 @@ interface ErrorReportProps {
 export const ErrorReport: React.FC<ErrorReportProps> = ({ apiBase, onNavigate }) => {
   const [errors, setErrors] = useState<ErrorLog[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [converting, setConverting] = useState<boolean>(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const fetchErrors = useCallback(async () => {
@@ -41,6 +42,20 @@ export const ErrorReport: React.FC<ErrorReportProps> = ({ apiBase, onNavigate })
       setLoading(false);
     }
   }, [apiBase]);
+
+  const handleConvertToFlashcards = async () => {
+    setConverting(true);
+    try {
+      const res = await apiFetch(apiBase, '/errors/convert-to-flashcards', { method: 'POST' });
+      if (res.ok) {
+        onNavigate('flashcards');
+      }
+    } catch (e) {
+      console.error("Erro ao converter para flashcards:", e);
+    } finally {
+      setConverting(false);
+    }
+  };
 
   useEffect(() => {
     Promise.resolve().then(() => {
@@ -92,12 +107,21 @@ export const ErrorReport: React.FC<ErrorReportProps> = ({ apiBase, onNavigate })
                 Você possui {errors.length} questões na sua fila de erros. Resolva treinos focados para limpar o painel.
               </p>
             </div>
-            <button
-              onClick={() => onNavigate('estudo', { trainErrors: true })}
-              className="w-full md:w-auto px-5 py-3 bg-red-600 hover:bg-red-500 text-white font-bold text-sm rounded-xl transition-all shadow-md hover:shadow-red-650/10 flex items-center justify-center gap-1.5 self-end md:self-auto"
-            >
-              <Play size={14} fill="currentColor" /> Treinar Apenas Meus Erros
-            </button>
+            <div className="flex flex-col sm:flex-row items-center gap-2.5 w-full md:w-auto">
+              <button
+                onClick={handleConvertToFlashcards}
+                disabled={converting}
+                className="w-full sm:w-auto px-4 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-xl transition-all shadow-md flex items-center justify-center gap-1.5 cursor-pointer"
+              >
+                <Layers size={14} /> {converting ? 'Gerando...' : 'Revisar em Flashcards'}
+              </button>
+              <button
+                onClick={() => onNavigate('estudo', { trainErrors: true })}
+                className="w-full sm:w-auto px-4 py-3 bg-red-600 hover:bg-red-500 text-white font-bold text-xs rounded-xl transition-all shadow-md hover:shadow-red-650/10 flex items-center justify-center gap-1.5 cursor-pointer"
+              >
+                <Play size={14} fill="currentColor" /> Treinar em Questões
+              </button>
+            </div>
           </div>
 
           {/* Listagem de Questões Erradas */}

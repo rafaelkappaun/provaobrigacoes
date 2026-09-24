@@ -1,1259 +1,1262 @@
 {
   "questions": [
     {
-      "subject": "Pagamento - Geral",
+      "subject": "Planos do Negócio Jurídico (Escada Ponteana)",
       "bank": "OAB",
       "difficulty": "Médio",
-      "enunciado": "(OAB XXXVIII) No tocante ao pagamento, assinale a opção correta.",
+      "enunciado": "(OAB / FGV) Segundo a clássica Teoria da Escada Ponteana formulada por Pontes de Miranda, a estrutura do negócio jurídico é analisada em três planos distintos: existência, validade e eficácia. A respeito dessa divisão tricotômica, assinale a afirmativa correta.",
       "options": {
-        "A": "O pagamento deve ser feito pessoalmente pelo devedor, sendo vedado o pagamento por terceiro, ainda que interessado.",
-        "B": "O credor é obrigado a aceitar prestação diversa da que lhe é devida, se a prestação alternativa for mais valiosa.",
-        "C": "Se o pagamento for feito por terceiro interessado, extingue-se a obrigação e opera-se a sub-rogação nos direitos do credor.",
-        "D": "O pagamento em dinheiro deve ser feito em moeda estrangeira se houver previsão contratual de escala móvel."
-      },
-      "gabarito": "C",
-      "article": "Art. 304 e Art. 313 CC",
-      "legal_basis": "Arts. 304, 305, 313, 346, III do Código Civil.",
-      "explanation": "O art. 304 autoriza o pagamento por qualquer interessado na extinção da dívida. O terceiro interessado (fiador, avalista) que paga sub-roga-se nos direitos do credor (art. 346, III). O credor não é obrigado a receber prestação diversa (art. 313) e o pagamento em dinheiro deve ser em moeda nacional corrente (art. 315).",
-      "id": "cbd4c0fa-6d11-4836-a2c3-a7d07358ad6b"
-    },
-    {
-      "subject": "Pagamento - Geral",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB XXXVIII) Em relação ao pagamento por terceiro, assinale a alternativa correta.",
-      "options": {
-        "A": "O terceiro não interessado que paga a dívida em seu próprio nome sub-roga-se nos direitos do credor.",
-        "B": "O terceiro interessado que paga a dívida sub-roga-se nos direitos do credor.",
-        "C": "O terceiro não interessado não tem direito de reembolso se pagar a dívida em seu próprio nome.",
-        "D": "O pagamento feito por terceiro, independentemente de ser interessado, não admite sub-rogação."
+        "A": "A capacidade do agente e a licitude do objeto são elementos situados no plano da existência do negócio jurídico.",
+        "B": "A manifestação de vontade, as partes, o objeto e a forma integram o plano da existência; enquanto a capacidade do agente, a licitude do objeto e a forma prescrita ou não defesa em lei integram o plano da validade.",
+        "C": "O plano da eficácia diz respeito unicamente à nulidade absoluta do negócio jurídico por vício de consentimento.",
+        "D": "Um negócio jurídico nulo por incapacidade absoluta do agente é inexistente de pleno direito, não adentrando no mundo fático."
       },
       "gabarito": "B",
-      "article": "Art. 304, 305 e 346 CC",
-      "legal_basis": "Arts. 304, 305 e 346, III do Código Civil.",
-      "explanation": "O terceiro interessado que paga a dívida sub-roga-se de pleno direito nos direitos do credor (art. 346, III). Já o terceiro não interessado que paga em seu próprio nome tem direito a reembolso, mas não se sub-roga (art. 305).",
-      "id": "eada29c4-fb0d-49af-a421-fda0562487af"
+      "article": "Art. 104 do Código Civil",
+      "legal_basis": "Art. 104 do Código Civil e Teoria Pontiana do Negócio Jurídico.",
+      "explanation": "Na Escada Ponteana: 1) Plano da Existência (substantivos: partes, vontade, objeto e forma); 2) Plano da Validade (adjetivos qualificadores: agente capaz, vontade livre, objeto lícito/possível/determinado e forma prescrita em lei - art. 104); 3) Plano da Eficácia (elementos acidentais: condição, termo e encargo, além da produção de efeitos concretos).",
+      "id": "e73448c7-431b-4827-9a2a-29ed1cb5856e"
     },
     {
-      "subject": "Pagamento - Geral",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB XXXIX) Assinale a opção que apresenta hipótese de pagamento indevido.",
-      "options": {
-        "A": "O devedor paga dívida vencida antes de ser cobrado judicialmente.",
-        "B": "O devedor paga dívida já prescrita, desconhecendo a prescrição.",
-        "C": "O devedor paga ao credor putativo de boa-fé.",
-        "D": "O terceiro não interessado paga a dívida em nome próprio, sem oposição do devedor."
-      },
-      "gabarito": "B",
-      "article": "Arts. 876 e 877 CC",
-      "legal_basis": "Arts. 876 e 877 do Código Civil.",
-      "explanation": "O pagamento indevido ocorre quando se paga o que não é devido (art. 876). O pagamento de dívida prescrita, quando desconhecida a prescrição, é pagamento indevido, pois a prescrição extingue a pretensão. O devedor tem direito de repetir o que pagou indevidamente (ação de repetição do indébito).",
-      "id": "878524e6-cddc-49d7-9b97-ffeee6e825c5"
-    },
-    {
-      "subject": "Pagamento - Geral",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB XLII) Sobre as obrigações indivisíveis, assinale a afirmativa correta.",
-      "options": {
-        "A": "Se houver pluralidade de devedores em obrigação indivisível, cada devedor é obrigado pela dívida toda.",
-        "B": "A indivisibilidade se extingue com a opção por perdas e danos, pois a obrigação se converte em divisível.",
-        "C": "Em caso de pluralidade de credores em obrigação indivisível, cada credor só pode exigir a sua quota-parte.",
-        "D": "O devedor pode escolher pagar a apenas um dos credores, extinguindo parcialmente a obrigação."
-      },
-      "gabarito": "B",
-      "article": "Art. 259 CC",
-      "legal_basis": "Art. 259 do Código Civil.",
-      "explanation": "Segundo o art. 259, 'se a obrigação for indivisível e houver dois ou mais devedores, cada um será obrigado pela dívida toda'. No entanto, a opção por perdas e danos (quando a indivisibilidade se perde pela conversão em prestação pecuniária) faz cessar a indivisibilidade, tornando a obrigação divisível entre os devedores.",
-      "id": "472fc5e6-9cf0-4d27-ba68-8ca4b7a795fa"
-    },
-    {
-      "subject": "Pagamento - Geral",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB XLI) Em relação à cessão de crédito, assinale a alternativa correta.",
-      "options": {
-        "A": "A cessão de crédito não produz efeitos em relação ao devedor se não houver notificação, ainda que por cláusula contratual expressa.",
-        "B": "O devedor pode opor ao cessionário as exceções que lhe competirem, bem como as que, no momento em que veio a ter conhecimento da cessão, já possuía contra o cedente.",
-        "C": "A cessão de crédito transfere ao cessionário apenas o crédito, mantendo-se as garantias com o cedente.",
-        "D": "O devedor que paga ao cedente antes da notificação da cessão não se libera, devendo pagar novamente ao cessionário."
-      },
-      "gabarito": "B",
-      "article": "Arts. 286 e 290 CC",
-      "legal_basis": "Arts. 286, 290 e 294 do Código Civil.",
-      "explanation": "Conforme o art. 290, a cessão não tem eficácia perante o devedor sem sua notificação. O art. 294 permite ao devedor opor ao cessionário as exceções que já tinha contra o cedente antes da cessão. As garantias acompanham o crédito (art. 287). O pagamento feito ao cedente antes da notificação é liberatório (art. 292).",
-      "id": "52635b32-0242-4875-ad71-47b69de1e735"
-    },
-    {
-      "subject": "Pagamento - Geral",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB XXXVI) Sobre a solidariedade ativa e passiva nas obrigações, assinale a opção correta.",
-      "options": {
-        "A": "Na solidariedade ativa, cada credor pode exigir do devedor a dívida por inteiro, mas o pagamento feito a um dos credores extingue a dívida até o montante do que recebeu.",
-        "B": "Na solidariedade passiva, cada devedor é obrigado pela dívida toda, mas o pagamento integral por um deles extingue a solidariedade, subsistindo o direito de regresso.",
-        "C": "Na solidariedade passiva, o pagamento parcial feito por um devedor não extingue a solidariedade quanto ao saldo remanescente.",
-        "D": "Na solidariedade ativa, se um dos credores remitir a dívida, a obrigação se extingue integralmente, sem direito de regresso dos demais credores."
-      },
-      "gabarito": "B",
-      "article": "Arts. 267 e 275 CC",
-      "legal_basis": "Arts. 267, 275, 276 e 277 do Código Civil.",
-      "explanation": "Na solidariedade passiva (art. 275), qualquer devedor pode ser cobrado pela dívida toda. O que pagar integralmente extingue a obrigação e tem direito de regresso contra os demais (art. 283). O pagamento parcial não extingue a solidariedade quanto ao saldo (art. 277). Na solidariedade ativa, a remissão feita por um credor extingue apenas sua quota-parte (art. 272).",
-      "id": "22eeab95-ff74-4c54-9350-c370e8b0f601"
-    },
-    {
-      "subject": "Pagamento - Geral",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB XXXVII) Considerando as regras sobre obrigações indivisíveis, assinale a opção correta.",
-      "options": {
-        "A": "Na obrigação indivisível, a escolha do devedor pelo pagamento em perdas e danos torna a obrigação divisível automaticamente.",
-        "B": "O devedor de obrigação indivisível com pluralidade de credores pode pagar a qualquer um deles, mas precisa do consentimento de todos para se liberar.",
-        "C": "Se a obrigação indivisível tiver por objeto coisa certa que se perde sem culpa dos devedores, a obrigação se extingue para todos.",
-        "D": "O credor de obrigação indivisível pode exigir o cumprimento de apenas parte da prestação, fracionando o objeto."
-      },
-      "gabarito": "A",
-      "article": "Arts. 235, 236, 257 e 259 CC",
-      "legal_basis": "Arts. 235, 236 e 259 do Código Civil.",
-      "explanation": "O art. 236 dispõe que, convertida a obrigação em perdas e danos, cessa a indivisibilidade. Isso ocorre porque a prestação pecuniária é essencialmente divisível. O art. 235 trata da perda da coisa sem culpa (extingue a obrigação). Nas obrigações indivisíveis com pluralidade de credores, o devedor deve pagar a todos conjuntamente (art. 260).",
-      "id": "c7f738d7-0c13-431d-8afd-f33d86a1491a"
-    },
-    {
-      "subject": "Consignação em pagamento",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB XXXVII) Sobre a consignação em pagamento, assinale a alternativa correta.",
-      "options": {
-        "A": "A consignação em pagamento é cabível quando o credor não quiser receber o pagamento, recusar dar quitação ou estiver ausente.",
-        "B": "A consignação só pode ser feita mediante depósito judicial, sendo vedado o depósito extrajudicial em banco oficial.",
-        "C": "A consignação extingue a obrigação apenas após sentença judicial transitada em julgado.",
-        "D": "A consignação não é cabível se houver dúvida sobre quem deve receber o pagamento."
-      },
-      "gabarito": "A",
-      "article": "Art. 335 CC e art. 547 CPC",
-      "legal_basis": "Art. 335 do Código Civil e arts. 539 e ss. do CPC.",
-      "explanation": "O art. 335 do CC elenca as hipóteses de cabimento: I - credor não quiser receber; II - credor não der quitação; III - credor for desconhecido ou ausente; IV - houver dúvida sobre quem receber; V - pender litígio sobre o crédito. Admite-se consignação extrajudicial (art. 539 CPC) quando o débito for em dinheiro.",
-      "id": "1366c887-ef4d-4348-8c4d-ec010e8a393f"
-    },
-    {
-      "subject": "Compensação",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB XXXIV) Sobre a compensação, assinale a alternativa correta.",
-      "options": {
-        "A": "A compensação opera de pleno direito entre dívidas líquidas, vencidas e de coisas fungíveis.",
-        "B": "A compensação é sempre convencional, dependendo de acordo entre as partes para operar efeitos.",
-        "C": "A compensação não admite que as partes excluam sua incidência por acordo contratual.",
-        "D": "A compensação exige autorização judicial, não operando automaticamente entre as partes."
-      },
-      "gabarito": "A",
-      "article": "Art. 369 CC",
-      "legal_basis": "Arts. 369, 370, 371 do Código Civil.",
-      "explanation": "O art. 369 estabelece a compensação legal: 'A compensação efetua-se entre dívidas líquidas, vencidas e de coisas fungíveis'. Opera automaticamente (ipso iure), independentemente de acordo - as partes podem, contudo, excluí-la convencionalmente. Também existe a compensação convencional (art. 375) e a facultativa.",
-      "id": "2907a9a8-1f36-4eb3-b461-4f1f9c48cefa"
-    },
-    {
-      "subject": "Mora do devedor",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB XXXIX) Assinale a opção correta acerca da mora do devedor com perecimento da coisa.",
-      "options": {
-        "A": "Se a coisa se perder por caso fortuito antes da constituição em mora, o devedor responde pelo valor equivalente.",
-        "B": "Se a coisa se perder por caso fortuito durante a mora do devedor, este responde pelo equivalente mais perdas e danos.",
-        "C": "O perecimento da coisa durante a mora do devedor sempre exonera o devedor de responsabilidade.",
-        "D": "A mora do devedor é purgada com a simples entrega da coisa, independentemente de juros e correção."
-      },
-      "gabarito": "B",
-      "article": "Arts. 239 e 399 CC",
-      "legal_basis": "Arts. 239 e 399 do Código Civil.",
-      "explanation": "O art. 399 dispõe: 'O devedor em mora responde pela impossibilidade da prestação, embora essa impossibilidade decorra de caso fortuito ou de força maior, se estas ocorrerem durante o atraso'. Aplica-se a responsabilidade agravada: o devedor em mora responde até por caso fortuito e força maior.",
-      "id": "ff631204-135a-49e9-81cc-b947fe395b9b"
-    },
-    {
-      "subject": "Mora do devedor",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB XXVI) Sobre a mora do devedor no contrato de comodato, assinale a alternativa correta.",
-      "options": {
-        "A": "O comodatário constituído em mora responde pela impossibilidade de restituição da coisa, ainda que decorrente de caso fortuito.",
-        "B": "O comodatário em mora não responde por caso fortuito ou força maior, pois a mora não agrava sua responsabilidade.",
-        "C": "A mora do comodatário se purga com a simples restituição da coisa, sem necessidade de pagamento de perdas e danos.",
-        "D": "O comodante deve provar culpa do comodatário para constituí-lo em mora."
-      },
-      "gabarito": "A",
-      "article": "Arts. 399, 582 e 583 CC",
-      "legal_basis": "Arts. 399, 582, 583 do Código Civil.",
-      "explanation": "Com fundamento no art. 399, o comodatário em mora responde pela impossibilidade da prestação, mesmo decorrente de caso fortuito. O comodato é mútuo de uso (art. 579). Se o comodatário não devolve a coisa no prazo, constitui-se em mora e assume o risco pelo perecimento, ainda que por caso fortuito.",
-      "id": "bb163a07-97ec-4562-81a1-137670a0ccff"
-    },
-    {
-      "subject": "Perdas e danos",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB XXXIX) Em relação às perdas e danos, assinale a alternativa correta.",
-      "options": {
-        "A": "As perdas e danos abrangem apenas o que a parte efetivamente perdeu (danos emergentes).",
-        "B": "As perdas e danos abrangem os danos emergentes e os lucros cessantes, salvo se o devedor provar que não agiu com dolo.",
-        "C": "As perdas e danos abrangem o que a parte efetivamente perdeu e o que razoavelmente deixou de lucrar.",
-        "D": "Os lucros cessantes presumem-se sempre que há inadimplemento contratual, independentemente de prova."
-      },
-      "gabarito": "C",
-      "article": "Arts. 402 e 403 CC",
-      "legal_basis": "Arts. 402, 403, 404 do Código Civil.",
-      "explanation": "O art. 402 define as perdas e danos como 'o que a parte efetivamente perdeu (danos emergentes) e o que razoavelmente deixou de lucrar (lucros cessantes)'. O art. 403 estabelece que a indenização se limita ao prejuízo direto e imediato (teoria dos danos diretos e imediatos, ou teoria da causalidade adequada).",
-      "id": "5eb2c54d-58fc-4aca-9932-f800ae4abf81"
-    },
-    {
-      "subject": "Cláusula penal",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB XXV) Sobre a cláusula penal moratória, assinale a alternativa correta.",
-      "options": {
-        "A": "A cláusula penal moratória tem por objetivo prefixar as perdas e danos decorrentes do inadimplemento absoluto da obrigação.",
-        "B": "A cláusula penal moratória incide sobre a mora, permitindo ao credor exigi-la juntamente com a prestação principal.",
-        "C": "A cláusula penal moratória exclui a possibilidade de o credor cobrar juros de mora e correção monetária.",
-        "D": "A cláusula penal moratória pode ser cumulada com a cláusula penal compensatória."
-      },
-      "gabarito": "B",
-      "article": "Arts. 408, 409 e 411 CC",
-      "legal_basis": "Arts. 408, 409, 411 do Código Civil.",
-      "explanation": "A cláusula penal moratória (art. 408) tem por finalidade punir a mora (retardamento), sendo cumulável com a prestação principal (art. 411). Já a cláusula penal compensatória substitui a prestação principal no caso de inadimplemento absoluto. O credor pode exigir a pena moratória e também cobrar a prestação principal.",
-      "id": "7d80cb98-3402-4c08-ac09-4ca61e36cf56"
-    },
-    {
-      "subject": "Cláusula penal",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB XXII) Sobre a cláusula penal compensatória, assinale a alternativa correta.",
-      "options": {
-        "A": "A cláusula penal compensatória pode ser exigida juntamente com a prestação principal, em caso de inadimplemento.",
-        "B": "A cláusula penal compensatória constitui prévia estimativa das perdas e danos, substituindo a prestação principal.",
-        "C": "A cláusula penal compensatória exclui a possibilidade de o credor rescindir o contrato.",
-        "D": "A cláusula penal compensatória é sempre reduzida pelo juiz, independentemente de requerimento."
-      },
-      "gabarito": "B",
-      "article": "Arts. 394, 408 e 410 CC",
-      "legal_basis": "Arts. 394, 408, 409, 410 do Código Civil.",
-      "explanation": "A cláusula penal compensatória (art. 410) substitui a indenização pelas perdas e danos, sendo exigível no caso de inadimplemento absoluto. O credor pode optar entre exigir a prestação principal ou a pena compensatória. Não pode cumulá-las. A redução judicial (art. 413) depende de requerimento e prova de excesso.",
-      "id": "84d20909-c6e2-4162-bafc-d0b261589ca1"
-    },
-    {
-      "subject": "Cláusula penal",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB XLIII) Sobre a cláusula penal moratória e sua redução judicial, assinale a alternativa correta.",
-      "options": {
-        "A": "A cláusula penal, ainda que moratória, não admite redução judicial, pois decorre da autonomia da vontade.",
-        "B": "A cláusula penal pode ser reduzida pelo juiz se for manifestamente excessiva, tendo em vista a natureza e a finalidade do negócio.",
-        "C": "A redução judicial da cláusula penal depende de prova de dolo ou má-fé do credor.",
-        "D": "A cláusula penal moratória não pode ser reduzida, ao contrário da compensatória."
-      },
-      "gabarito": "B",
-      "article": "Arts. 389, 396, 408, 411, 413 CC",
-      "legal_basis": "Arts. 389, 408, 411, 413 do Código Civil.",
-      "explanation": "O art. 413 autoriza a redução equitativa da cláusula penal pelo juiz se for manifestamente excessiva, considerando a natureza e a finalidade do negócio. Aplica-se tanto à penal moratória quanto à compensatória. A redução independe de dolo ou má-fé - é um controle de equidade e proporcionalidade.",
-      "id": "5f79de2a-00d5-40af-99a2-bda31e9e3f6d"
-    },
-    {
-      "subject": "Arras ou sinal",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB XXXIII) Sobre as arras penitenciais, assinale a alternativa correta.",
-      "options": {
-        "A": "Nas arras penitenciais, a parte que deu o sinal pode arrepender-se, perdendo-o, e a que recebeu pode devolvê-lo em dobro.",
-        "B": "Nas arras penitenciais, a parte prejudicada pode exigir a execução forçada do contrato, independentemente de arrependimento.",
-        "C": "Nas arras penitenciais, o arrependimento não é admitido, devendo o contrato ser cumprido obrigatoriamente.",
-        "D": "Nas arras penitenciais, o valor do sinal é devolvido em dobro independentemente de quem deu causa ao arrependimento."
-      },
-      "gabarito": "A",
-      "article": "Arts. 417, 418, 419, 420 CC",
-      "legal_basis": "Arts. 417, 418, 419, 420 do Código Civil.",
-      "explanation": "Nas arras penitenciais (art. 420), as partes podem arrepender-se: quem deu o sinal perde-o; quem recebeu, devolve-o em dobro. Diferem das arras confirmatórias (arts. 418-419), onde o arrependimento não é admitido, podendo a parte inocente exigir o cumprimento ou perdas e danos suplementares.",
-      "id": "71af7a37-cfc8-4d33-a37b-5e87026af7e5"
-    },
-    {
-      "subject": "Pagamento - Geral",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB XXXVI) João, Cláudia e Maria celebraram contrato de compra e venda de um carro com Carlos e Paula. Pelo respectivo contrato, Carlos e Paula se comprometeram, como devedores solidários, ao pagamento de R$ 50.000,00. Ficou estabelecido, ainda, solidariedade entre os credores João, Cláudia e Maria. Diante do enunciado, assinale a afirmativa correta.",
-      "options": {
-        "A": "O pagamento feito por Carlos ou por Paula não extingue a dívida, ainda que parcialmente.",
-        "B": "Qualquer dos credores tem direito a exigir e a receber de Carlos ou de Paula, parcial ou totalmente, a dívida comum.",
-        "C": "Impossibilitando-se a prestação por culpa de Carlos, extingue-se a solidariedade, e apenas este responde pelo equivalente.",
-        "D": "Carlos e Paula só se desonerarão pagando a todos os credores conjuntamente."
-      },
-      "gabarito": "B",
-      "article": "Arts. 267 e 275 CC",
-      "legal_basis": "Arts. 267 e 275 do Código Civil.",
-      "explanation": "Na solidariedade ativa (art. 267), qualquer credor pode exigir o pagamento integral. Na solidariedade passiva (art. 275), o credor pode cobrar de qualquer devedor o total da dívida. O pagamento a um dos credores solidários extingue a dívida até o montante pago (art. 269).",
-      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
-    },
-    {
-      "subject": "Quem deve pagar",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB XXXVIII) Os irmãos Eduardo e Letícia herdaram um apartamento de sua mãe. Concluído o inventário, decidiram vender o apartamento ao casal Pedro e Mariana. Para tanto, as partes celebraram contrato de compra e venda. Pedro e Mariana se obrigaram, solidariamente, a pagar o preço pactuado (R$ 600.000,00) no prazo de trinta dias. Não foi avençada cláusula de solidariedade ativa. Alcançado o prazo contratual, Pedro e Mariana não pagaram o preço. Tendo em vista a situação hipotética apresentada, assinale a afirmativa correta.",
-      "options": {
-        "A": "Eduardo, sozinho, tem direito de cobrar a integralidade do preço pactuado, R$ 600.000,00, de Mariana, sozinha.",
-        "B": "Letícia, sozinha, tem direito de cobrar apenas a metade do preço pactuado, R$ 300.000,00, de Pedro, sozinho.",
-        "C": "Letícia, sozinha, tem direito de cobrar apenas um quarto do preço pactuado, R$ 150.000,00, de Mariana, sozinha.",
-        "D": "Nenhum dos credores, sozinhos, tem direito a exigir o pagamento do preço, ainda que parcial."
-      },
-      "gabarito": "B",
-      "article": "Art. 257 CC",
-      "legal_basis": "Art. 257 do Código Civil.",
-      "explanation": "Em obrigação divisível sem solidariedade ativa, o crédito presume-se dividido em tantas obrigações iguais e distintas quantos os credores (art. 257). Logo, Letícia pode cobrar apenas R$ 300.000,00 (sua metade) de Pedro (um dos devedores solidários).",
-      "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901"
-    },
-    {
-      "subject": "Pagamento com sub-rogação",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB XLI) Adriana é fisioterapeuta e prestou serviços a Vitória (sessões de fisioterapia). Como contraprestação ao serviço prestado, Vitória se comprometeu a pagar a quantia de R$ 1.000,00 a Adriana. A obrigação foi registrada em instrumento contratual escrito. Posteriormente, Adriana cedeu seu crédito contra Vitória para Paulo. Sobre a cessão do crédito de Adriana para Paulo, assinale a afirmativa correta.",
-      "options": {
-        "A": "É inválida, pois a natureza do crédito resultante de contrato de prestação de serviços não é compatível com a cessão.",
-        "B": "É ineficaz perante Vitória, salvo se ela tiver sido devidamente notificada do referido negócio ou se ela tiver se declarado ciente da cessão feita.",
-        "C": "Antes de ter tido conhecimento dela, Vitória não poderá opor a Paulo o eventual pagamento da dívida que já tenha efetuado a Adriana.",
-        "D": "Não havendo estipulação em contrário, caso Vitória se torne insolvente, Adriana responderá a Paulo pela dívida cedida."
-      },
-      "gabarito": "B",
-      "article": "Art. 290 CC",
-      "legal_basis": "Art. 290 do Código Civil.",
-      "explanation": "A cessão de crédito é ineficaz perante o devedor enquanto este não for notificado (art. 290 CC). Antes da notificação, o devedor pode pagar ao credor originário com efeito liberatório. O cedente não responde pela solvência do devedor salvo estipulação em contrário (art. 296 CC).",
-      "id": "c3d4e5f6-a7b8-9012-cdef-123456789012"
-    },
-    {
-      "subject": "Pagamento - Geral",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB XLII) Ivan, André e Caio celebraram negócio jurídico pelo qual se obrigaram a entregar um veículo da marca M a Bruna. Na data avençada para o cumprimento da obrigação, Ivan deu à Bruna um carro da marca M de sua propriedade. Sobre a situação hipotética apresentada, assinale a afirmativa correta.",
-      "options": {
-        "A": "Bruna pode exigir de André e de Caio as suas respectivas cotas-partes na dívida.",
-        "B": "Ivan pode cobrar de André e de Caio, em dinheiro, as respectivas cotas-partes no débito.",
-        "C": "André e Caio permanecem coobrigados perante Bruna pela parte que lhes cabe na dívida.",
-        "D": "Tanto André como Caio permanecem responsáveis pela entrega de um carro, agora perante Ivan."
-      },
-      "gabarito": "B",
-      "article": "Arts. 259 e 260 CC",
-      "legal_basis": "Arts. 259 e 260 do Código Civil.",
-      "explanation": "Se a obrigação for indivisível e apenas um dos devedores a cumprir integralmente, ele se sub-roga nos direitos do credor para cobrar dos demais as respectivas cotas em dinheiro (art. 259 CC). A obrigação de entregar veículo é indivisível, e Ivan pagou integralmente, podendo cobrar dos demais.",
-      "id": "d4e5f6a7-b8c9-0123-defa-234567890123"
-    },
-    {
-      "subject": "Cláusula penal",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB XLIII) Cláudia comprou um apartamento e contratou o arquiteto Lúcio para elaborar o projeto de redecoração. Pelo contrato celebrado, Lúcio deverá entregar o projeto a Cláudia no prazo de 30 dias, contados da assinatura do instrumento. Em caso de mora, Lúcio fica obrigado a pagar multa diária a Cláudia. Considerando essa hipótese, assinale a afirmativa correta.",
-      "options": {
-        "A": "Caso haja atraso na entrega do projeto, Cláudia poderá exigir a multa de Lúcio, independentemente de alegar prejuízo da mora.",
-        "B": "A obrigação de pagar multa por dia de atraso afigura-se inválida, pois configura ônus manifestamente excessivo em detrimento do devedor.",
-        "C": "Havendo mora, caso Cláudia cobre a verba estipulada, não poderá exigir de Lúcio o cumprimento da obrigação principal, isto é, a entrega do projeto de redecoração.",
-        "D": "A obrigação de pagar a multa em caso de mora tem natureza jurídica de astreintes e não pode ser reduzida equitativamente pelo Juiz caso se revele manifestamente excessiva."
-      },
-      "gabarito": "A",
-      "article": "Art. 416 CC",
-      "legal_basis": "Art. 416 do Código Civil.",
-      "explanation": "A cláusula penal moratória (por mora) dispensa o credor de provar prejuízo (art. 416 CC). Pode ser cumulada com a obrigação principal (art. 409 CC) e pode ser reduzida se manifestamente excessiva (art. 413 CC). Astreintes são multas processuais, diferentes da cláusula penal.",
-      "id": "e5f6a7b8-c9d0-1234-efab-345678901234"
-    },
-    {
-      "id": "425418a6-d5d5-4b98-9d5c-b17dfbbc9b18",
-      "subject": "Pagamento - Geral",
-      "bank": "AOCP",
-      "difficulty": "Difícil",
-      "enunciado": "(AOCP) Pedro (Dentista) contraiu obrigação de pagar R$ 10.000,00 a Maria (Comerciante) decorrente de compra e venda de um veículo seminovo. Considerando as disposições gerais sobre pagamento no Código Civil, assinale a opção correta:",
-      "options": {
-        "A": "O pagamento deve ser necessariamente realizado pelo próprio devedor Pedro, sendo vedado o adimplemento por terceiros, ainda que interessados.",
-        "B": "O credor Maria é obrigado a aceitar prestação diversa da que lhe é devida, desde que a prestação alternativa seja mais valiosa que a original.",
-        "C": "O pagamento feito por terceiro juridicamente interessado, como o fiador, extingue a obrigação e opera a sub-rogação legal nos direitos do credor.",
-        "D": "O pagamento em dinheiro deve ser feito em moeda estrangeira sempre que houver cláusula de escala móvel pactuada entre as partes.",
-        "E": "A quitação dada pelo credor ao devedor não faz presumir a extinção da obrigação principal, devendo ser comprovada por outros meios jurídicos."
-      },
-      "gabarito": "C",
-      "article": "Art. 304 e Art. 313 do Código Civil",
-      "legal_basis": "Arts. 304, 305, 313, 314 e 320 do Código Civil.",
-      "explanation": "O art. 304 estabelece que 'qualquer interessado na extinção da dívida pode pagá-la'. O terceiro interessado (fiador, avalista, adquirente de imóvel hipotecado) ao pagar a dívida sub-roga-se nos direitos do credor (art. 346, III). O credor não é obrigado a receber prestação diversa (art. 313) nem a receber por partes (art. 314). A moeda de pagamento é a moeda corrente nacional (art. 315)."
-    },
-    {
-      "id": "88d42fb2-4aa5-405d-a2af-53086b6a22c5",
-      "subject": "Pagamento - Geral",
+      "subject": "Planos do Negócio Jurídico (Escada Ponteana)",
       "bank": "CESPE",
       "difficulty": "Difícil",
-      "enunciado": "(CESPE) Considera-se pagamento, no contexto do Direito das Obrigações, a entrega voluntária da prestação devida pelo devedor ao credor, podendo ser realizado por terceiro interessado ou não interessado, desde que observados os requisitos de validade do negócio jurídico.",
+      "enunciado": "(CESPE / Doutrina) A respeito da distinção entre os planos de existência, validade e eficácia do negócio jurídico, assinale a opção correta.",
       "options": {
-        "A": "CERTO",
-        "B": "ERRADO"
-      },
-      "gabarito": "A",
-      "article": "Art. 304 e Art. 313 do Código Civil",
-      "legal_basis": "Arts. 304 e 313 do Código Civil.",
-      "explanation": "O pagamento é o adimplemento voluntário da obrigação. Qualquer interessado pode pagar (art. 304), e terceiro não interessado também pode pagar em nome do devedor (art. 305). O credor não é obrigado a receber prestação diversa (art. 313). Portanto, a afirmação está CERTA."
-    },
-    {
-      "id": "101ee5ff-2532-43d2-9bd0-63653fc66122",
-      "subject": "Quem deve pagar",
-      "bank": "Consulplan",
-      "difficulty": "Difícil",
-      "enunciado": "(Consulplan) João (Arquiteto) possuía uma dívida no valor de R$ 200.000,00 decorrente de compra e venda de um veículo seminovo com Patrícia. Diante das dificuldades financeiras de João, seu amigo Daniel (Veterinário), terceiro juridicamente não interessado, resolveu quitar a obrigação diretamente com o credor. Sobre o pagamento feito por Daniel em seu próprio nome, assinale a opção correta à luz do Código Civil:",
-      "options": {
-        "A": "O pagamento feito por Daniel extingue a dívida e gera sub-rogação imediata em todos os direitos e garantias de Patrícia.",
-        "B": "Por ser terceiro não interessado, Daniel tem direito a reembolsar-se do que pagar, mas não se sub-roga nos direitos do credor original.",
-        "C": "Se Daniel tivesse pago a dívida antes de vencida, teria direito ao reembolso imediato, mesmo antes do vencimento do prazo original.",
-        "D": "O pagamento feito por Daniel é considerado nulo, pois somente o devedor ou terceiros juridicamente interessados podem adimplir a obrigação.",
-        "E": "Caso João tivesse meios para ilidir (impedir) a ação e desconhecesse o pagamento, Daniel ainda assim teria direito ao reembolso total."
+        "A": "A condição suspensiva, enquanto pendente, impede a existência do negócio jurídico.",
+        "B": "A condição suspensiva subordina a eficácia do negócio jurídico a evento futuro e incerto, não impedindo que o negócio já exista e seja válido.",
+        "C": "A incapacidade relativa do agente impede que o negócio jurídico atinja o plano da existência.",
+        "D": "Todo negócio jurídico válido é imediata e necessariamente eficaz, sendo incompatível a existência de negócio válido mas ineficaz."
       },
       "gabarito": "B",
-      "article": "Art. 304 e Art. 305 do Código Civil",
-      "legal_basis": "Art. 305 e Art. 306 do Código Civil.",
-      "explanation": "Conforme o art. 305, caput, do Código Civil, o terceiro não interessado que paga a dívida em seu próprio nome tem direito a reembolsar-se do que pagar, mas não se sub-roga nos direitos do credor. Além disso, o parágrafo único do mesmo artigo prevê que se pagar antes de vencida a dívida, só terá direito ao reembolso no vencimento. O art. 306 dispõe que o pagamento feito por terceiro, com desconhecimento ou oposição do devedor, não obriga a reembolso se este tinha meios para ilidir a ação."
+      "article": "Art. 121 e Art. 125 do Código Civil",
+      "legal_basis": "Arts. 104, 121 e 125 do Código Civil.",
+      "explanation": "A condição suspensiva atua exclusivamente no Plano da Eficácia (3º degrau). O negócio jurídico sob condição suspensiva já existe e já é válido; apenas a produção dos seus efeitos (exigibilidade do direito) fica suspensa até o implemento do evento futuro e incerto (art. 125, CC).",
+      "id": "0e76ee12-ba09-402e-a650-b1d8f1d840e2"
     },
     {
-      "id": "f4df1d05-804e-4d73-9216-09aebcaeddb9",
-      "subject": "Quem deve pagar",
-      "bank": "CESPE",
+      "subject": "Planos do Negócio Jurídico (Escada Ponteana)",
+      "bank": "FCC",
       "difficulty": "Médio",
-      "enunciado": "(CESPE) Roberto, terceiro não interessado na extinção de dívida decorrente de contrato de prestação de serviços de consultoria em TI firmado entre Marcos (devedor) e Maria (credor), realiza o pagamento integral do débito de R$ 120.000,00 em seu próprio nome, sem oposição de Marcos. Nessa situação, Roberto se sub-roga de pleno direito nos privilégios e garantias do credor original.",
+      "enunciado": "(FCC / Magistratura) Um contrato de compra e venda de imóvel de elevado valor foi firmado por instrumento particular, desrespeitando a solenidade de escritura pública exigida pelo art. 108 do Código Civil. Sob a ótica da Escada Ponteana, esse negócio jurídico:",
       "options": {
-        "A": "CERTO",
-        "B": "ERRADO"
+        "A": "É inexistente, pois a forma é elemento ontológico do plano da existência que não se aperfeiçoou.",
+        "B": "Existe no mundo dos fatos, porém é nulo no plano da validade por preterição de solenidade essencial que a lei considera para a sua validade.",
+        "C": "É plenamente válido, bastando termo aditivo posterior para ratificar a forma.",
+        "D": "É negócio com eficácia plena entre as partes, mas ineficaz perante terceiros."
       },
       "gabarito": "B",
-      "article": "Art. 304 e Art. 305 do Código Civil",
-      "legal_basis": "Art. 305, caput, do Código Civil.",
-      "explanation": "O terceiro não interessado que paga a dívida em seu próprio nome tem direito a reembolsar-se do que pagar, mas não se sub-roga nos direitos do credor (Art. 305, CC). A sub-rogação de pleno direito só ocorre a favor do terceiro interessado ou nas hipóteses legais expressas (Art. 346, CC). Portanto, a afirmação está ERRADA."
+      "article": "Art. 104, III e Art. 166, IV e V do Código Civil",
+      "legal_basis": "Arts. 104, III, 108 e 166, IV e V do Código Civil.",
+      "explanation": "A forma em si é elemento de existência. Já a forma legalmente prescrita ou pública (solenidade) é requisito do Plano da Validade (Art. 104, III). O desrespeito à forma legal torna o negócio nulo (Art. 166, IV), mas ele existe no plano fático.",
+      "id": "a17ef27c-c8e6-40b4-aeee-ccc22289526f"
     },
     {
-      "id": "9b08a12f-7293-440e-8a3e-c09da7063a6a",
-      "subject": "A quem se deve pagar",
+      "subject": "Princípios do Direito Contratual",
+      "bank": "FGV",
+      "difficulty": "Médio",
+      "enunciado": "(FGV / OAB) Duas sociedades empresárias celebraram contrato paritário com expressa previsão de alocação de riscos climáticos. Sobre a função social do contrato e a liberdade contratual após a Lei da Liberdade Econômica (Lei 13.874/2019), assinale a afirmativa correta.",
+      "options": {
+        "A": "A função social do contrato autoriza a intervenção judicial irrestrita para anular qualquer cláusula livremente ajustada entre empresários.",
+        "B": "Nas relações contratuais privadas, prevalecerão o princípio da intervenção mínima e a excepcionalidade da revisão contratual, presumindo-se paritários e simétricos os contratos civis e empresariais.",
+        "C": "O princípio do pacta sunt servanda foi integralmente abolido do ordenamento jurídico brasileiro.",
+        "D": "A alocação de riscos definida pelas partes não vincula o Poder Judiciário, devendo o juiz impor a repartição igualitária dos prejuízos."
+      },
+      "gabarito": "B",
+      "article": "Art. 421 e Art. 421-A do Código Civil",
+      "legal_basis": "Arts. 421, parágrafo único e 421-A do Código Civil (incluídos pela Lei 13.874/2019).",
+      "explanation": "A Lei da Liberdade Econômica positivou expressamente a presunção de paridade e simetria nos contratos civis e empresariais (art. 421-A), o princípio da intervenção mínima e a excepcionalidade da revisão contratual (art. 421, parágrafo único).",
+      "id": "a00ff615-0f9e-4636-a2e2-06dcaf47e3a8"
+    },
+    {
+      "subject": "Princípios do Direito Contratual",
       "bank": "VUNESP",
       "difficulty": "Médio",
-      "enunciado": "(VUNESP) Thiago contraiu uma obrigação perante Beatriz no valor de R$ 120.000,00 referente a compra e venda de um veículo seminovo. No dia do vencimento, Thiago realizou o pagamento de boa-fé a Roberto, pessoa que, por circunstâncias fáticas, apresentava-se socialmente e documentalmente como mandatário de Beatriz (credor putativo). Dias depois, Beatriz notificou Thiago exigindo o pagamento, alegando que Roberto nunca teve poderes para receber. Diante disso, assinale a opção correta:",
+      "enunciado": "(VUNESP / Notário) O princípio da relatividade dos efeitos do contrato sofre importante mitigação na ordem jurídica contemporânea em virtude:",
       "options": {
-        "A": "O pagamento é inválido, aplicando-se o brocardo popular 'quem paga mal paga duas vezes', restando a Thiago apenas pagar novamente a Beatriz.",
-        "B": "O pagamento feito de boa-fé ao credor putativo é válido, restando a Beatriz demandar contra Roberto para reaver o valor recebido.",
-        "C": "O pagamento a Roberto só seria válido se houvesse expressa autorização judicial prévia.",
-        "D": "O pagamento é anulável, devendo Thiago ingressar com ação de anulação do negócio jurídico em face de Roberto.",
-        "E": "O pagamento é válido porque qualquer pagamento realizado a terceiros extingue a obrigação, independentemente de boa-fé."
-      },
-      "gabarito": "B",
-      "article": "Art. 308 e Art. 309 do Código Civil",
-      "legal_basis": "Art. 309 do Código Civil.",
-      "explanation": "De acordo com o art. 309 do CC, o pagamento feito de boa-fé ao credor putativo é perfeitamente válido. A lei protege o devedor que foi induzido a erro escusável pela aparência de credor do receptor. O verdadeiro credor (Beatriz) deve buscar o ressarcimento contra quem recebeu indevidamente (Roberto)."
-    },
-    {
-      "id": "9a9b6ad6-b0ba-46fa-b1b0-2d55e6c06e2f",
-      "subject": "A quem se deve pagar",
-      "bank": "CESPE",
-      "difficulty": "Fácil",
-      "enunciado": "(CESPE) Marcos realizou o pagamento do débito de R$ 50.000,00 a André, que aparentava de forma convincente ser o legítimo credor (credor putativo). Posteriormente, o verdadeiro credor, Maria, demonstrou que André agia com falsidade. Nessa hipótese, o pagamento feito por Marcos a André é considerado plenamente válido, desde que Marcos tenha agido de boa-fé.",
-      "options": {
-        "A": "CERTO",
-        "B": "ERRADO"
+        "A": "Da tutela externa do crédito e da eficácia transubjetiva da função social do contrato, que veda que o contrato prejudique terceiros ou que terceiros lesem o contrato.",
+        "B": "Da vedação absoluta à celebração de contratos preliminares.",
+        "C": "Da aplicação da exceptio non adimpleti contractus aos contratos unilaterais benéficos.",
+        "D": "Da exigência de escritura pública para qualquer espécie de avença comercial."
       },
       "gabarito": "A",
-      "article": "Art. 308 e Art. 309 do Código Civil",
-      "legal_basis": "Art. 309 do Código Civil.",
-      "explanation": "O art. 309 do Código Civil consagra a Teoria da Aparência ao dispor que 'o pagamento feito de boa-fé ao credor putativo é válido, ainda provado depois que não era credor'. A boa-fé do devedor é o requisito essencial. Portanto, a afirmação está CERTA."
+      "article": "Art. 421 do Código Civil",
+      "legal_basis": "Art. 421 do Código Civil e Enunciado 21 da Jornada de Direito Civil.",
+      "explanation": "A eficácia externa da função social mitiga o princípio da relatividade dos efeitos contratuais (que restringia os efeitos apenas aos signatários), reconhecendo a tutela externa do crédito (o terceiro não pode cumpliciar-se com o inadimplemento) e impedindo que o contrato lese a coletividade.",
+      "id": "f957efb1-b1fa-442a-8990-8b56e4a7067f"
     },
     {
-      "id": "db713976-bf71-46fa-8eb1-2530367288c0",
-      "subject": "Objeto do pagamento e sua prova",
-      "bank": "FMP",
-      "difficulty": "Fácil",
-      "enunciado": "(FMP) Pedro firmou contrato de prestação de serviços de consultoria em TI com Beatriz no valor de R$ 120.000,00. No momento do adimplemento, Pedro propõe quitar a dívida de forma não pecuniária. Sobre as regras do objeto do pagamento e sua prova no Código Civil, assinale a opção correta:",
-      "options": {
-        "A": "O credor Beatriz é obrigado a receber prestação diversa em dinheiro caso o devedor Pedro ofereça bem imóvel de valor comprovadamente superior ao da dívida.",
-        "B": "O devedor Pedro pode exigir que o credor Beatriz receba o pagamento parceladamente, mesmo que o contrato tenha previsto pagamento à vista, desde que haja autorização judicial.",
-        "C": "A quitação (recibo) é o principal meio de prova do pagamento, devendo conter o valor da prestação, o nome do devedor e a assinatura do credor, entre outros requisitos legais.",
-        "D": "O pagamento feito em moeda estrangeira é plenamente válido se ambas as partes concordarem, independentemente de qualquer condição ou autorização legal.",
-        "E": "A prova do pagamento pode ser feita exclusivamente por testemunhas, sendo o recibo mera formalidade dispensável para a validade do negócio."
-      },
-      "gabarito": "C",
-      "article": "Art. 313, Art. 314 e Art. 320 do Código Civil",
-      "legal_basis": "Arts. 313, 314, 315, 316, 317 e 320 do Código Civil.",
-      "explanation": "O art. 320 do CC estabelece os requisitos da quitação: 'A quitação, que sempre poderá ser dada por instrumento particular, designará o valor e a espécie da dívida quitada, o nome do devedor, ou quem por este pagou, o tempo e o lugar do pagamento, com a assinatura do credor, ou do seu representante'. O credor não é obrigado a receber prestação diversa (art. 313), nem a receber por partes (art. 314). O pagamento em moeda estrangeira só é válido nos casos expressos em lei (art. 318)."
-    },
-    {
-      "id": "2156718b-ed24-4187-a962-34f0bf9eb69e",
-      "subject": "Objeto do pagamento e sua prova",
-      "bank": "CESPE",
-      "difficulty": "Difícil",
-      "enunciado": "(CESPE) O credor não é obrigado a receber prestação diversa da que lhe é devida, ainda que mais valiosa, salvo se o devedor oferecer garantias reais adicionais que assegurem o cumprimento da prestação original.",
-      "options": {
-        "A": "CERTO",
-        "B": "ERRADO"
-      },
-      "gabarito": "B",
-      "article": "Art. 313, Art. 314 e Art. 320 do Código Civil",
-      "legal_basis": "Art. 313 do Código Civil.",
-      "explanation": "O art. 313 do CC determina que 'o credor não é obrigado a receber prestação diversa da que lhe é devida, ainda que mais valiosa'. A ressalva sobre garantias reais adicionais não existe no texto legal â€” a regra é absoluta. Portanto, a afirmação está ERRADA."
-    },
-    {
-      "id": "ee77cec2-67cd-40f1-b0ce-c3d39c3ed332",
-      "subject": "Lugar do pagamento",
-      "bank": "AOCP",
+      "subject": "Boa-fé Objetiva e Figuras Parcelares",
+      "bank": "OAB",
       "difficulty": "Médio",
-      "enunciado": "(AOCP) No contrato de empréstimo de insumos agrícolas firmado entre Fabiano (devedor) e Camila (credor), não foi estipulado o lugar para a entrega do valor de R$ 10.000,00. Sabendo que Fabiano reside em São Paulo/SP e Camila reside em outra localidade, e considerando as regras do Código Civil brasileiro aplicáveis ao lugar do pagamento, assinale a opção correta:",
+      "enunciado": "(OAB / FGV) Caio celebrou contrato de locação com Tício, comprometendo-se a pagar o aluguel até o dia 5 de cada mês. No entanto, durante 3 anos consecutivos, Caio pagou no dia 20, sem qualquer oposição de Tício. Inesperadamente, Tício notificou Caio cobrando multa e juros moratórios retroativos de todos os meses. Essa pretensão de Tício é ilegítima em razão do instituto da:",
       "options": {
-        "A": "O pagamento deve ser feito no domicílio de Camila, pois vigora a regra geral de que as obrigações são portáveis.",
-        "B": "O pagamento deve ser feito no domicílio de Fabiano (São Paulo/SP), pois rege o princípio geral de que as obrigações são queríveis (quérables).",
-        "C": "Se houver dois ou mais lugares designados no contrato, cabe exclusivamente ao devedor escolher onde o pagamento será realizado.",
-        "D": "O pagamento feito reiteradamente em local diverso do avençado não gera qualquer presunção de renúncia do credor.",
-        "E": "A entrega de imóveis ou prestações relativas a eles deve ocorrer necessariamente no domicílio do credor."
+        "A": "Supressio, que gerou a Surrectio para Caio, vedando o comportamento contraditório (venire contra factum proprium).",
+        "B": "Exceptio doli generalis com efeitos extintivos de plano da locação.",
+        "C": "Cláusula resolutiva tácita com eficácia ex tunc.",
+        "D": "Novação subjetiva passiva compulsória por força de lei."
       },
-      "gabarito": "B",
-      "article": "Art. 327 e Art. 330 do Código Civil",
-      "legal_basis": "Art. 327 e Art. 330 do Código Civil.",
-      "explanation": "Pelo art. 327, caput, a regra geral é que o pagamento ocorra no domicílio do devedor (obrigação querível). O parágrafo único diz que se designados dois ou mais lugares, cabe ao *credor* escolher entre eles (eliminando a letra C). O art. 330 prevê que o pagamento reiteradamente feito em outro lugar faz presumir renúncia do credor relativamente ao previsto no contrato (eliminando a letra D)."
+      "gabarito": "A",
+      "article": "Art. 422 e Art. 330 do Código Civil",
+      "legal_basis": "Arts. 422 e 330 do Código Civil.",
+      "explanation": "O não exercício reiterado de um direito contratual acarreta a perda da pretensão de exigi-lo (supressio) e o nascimento correlato da faculdade para a outra parte (surrectio). Além disso, a cobrança repentina viola o venire contra factum proprium (proibição de comportamento contraditório decorrente da boa-fé objetiva).",
+      "id": "d222ebd7-c769-4910-a633-4e2850ae6715"
     },
     {
-      "id": "1d5d7772-fe96-4db7-ab00-b4a4a008f5e2",
-      "subject": "Lugar do pagamento",
+      "subject": "Boa-fé Objetiva e Figuras Parcelares",
       "bank": "CESPE",
       "difficulty": "Difícil",
-      "enunciado": "(CESPE) Salvo disposição em contrário do contrato ou das circunstâncias da lei, o pagamento de uma dívida de R$ 5.000,00 celebrado entre Felipe e Ana deve ser efetuado no domicílio do credor, configurando uma obrigação portável (portável).",
+      "enunciado": "(CESPE / Procuradoria) A boa-fé objetiva desempenha tríplice função no ordenamento civil: interpretativa, integrativa (criação de deveres anexos) e de controle (limite ao exercício de direitos). Dentre os desdobramentos da boa-fé objetiva, a figura que veda a uma das partes exigir da outra uma conduta que ela própria descumpriu é denominada:",
       "options": {
-        "A": "CERTO",
-        "B": "ERRADO"
+        "A": "Tu quoque.",
+        "B": "Supressio.",
+        "C": "Surrectio.",
+        "D": "Duty to mitigate the loss."
       },
-      "gabarito": "B",
-      "article": "Art. 327 e Art. 330 do Código Civil",
-      "legal_basis": "Art. 327 do Código Civil.",
-      "explanation": "Conforme o art. 327, caput, do Código Civil, a regra geral é que o pagamento deve ser efetuado no domicílio do devedor, caracterizando a obrigação querível (ou quérable). A obrigação portável (portável, no domicílio do credor) é a exceção e exige convenção das partes ou disposição legal em contrário. Portanto, a afirmação está ERRADA."
+      "gabarito": "A",
+      "article": "Art. 422 do Código Civil",
+      "legal_basis": "Art. 422 do Código Civil e Doutrina Contratual.",
+      "explanation": "O instituto do 'Tu quoque' decorre da boa-fé objetiva e estabelece a regra da reciprocidade ética: ninguém pode invocar uma norma ou cláusula contra outrem se ele próprio descumpriu a regra anteriormente ('até tu?').",
+      "id": "7396e256-0c92-4c31-be3f-1c2739242f02"
     },
     {
-      "id": "88124436-a322-44c3-964f-29d513f55403",
-      "subject": "Tempo do pagamento",
-      "bank": "FGV",
+      "subject": "Interpretação dos Contratos no Direito Brasileiro",
+      "bank": "OAB",
       "difficulty": "Médio",
-      "enunciado": "(FGV) Gustavo firmou com Letícia um contrato de prestação de serviços de consultoria em TI no valor de R$ 25.000,00. Sobre as regras legais acerca do tempo do pagamento e da cobrança antecipada da dívida, assinale a opção correta:",
+      "enunciado": "(OAB / FGV) No que tange às regras de interpretação dos negócios jurídicos e contratos consagradas no Código Civil brasileiro, assinale a opção correta.",
       "options": {
-        "A": "Ao credor assiste o direito de cobrar a dívida antes de vencido o prazo contratual se o devedor cair em insolvência ou for declarada sua falência.",
-        "B": "As obrigações condicionais vencem de pleno direito na data da assinatura do respectivo instrumento, independentemente do implemento da condição.",
-        "C": "Se não houver prazo estipulado no contrato, o devedor só poderá ser cobrado após interpelação judicial com prazo mínimo de 30 dias.",
-        "D": "Caso o devedor ofereça garantias reais adicionais que se tornem insuficientes, o credor não poderá exigir reforço de garantia nem antecipar o vencimento.",
-        "E": "O vencimento antecipado da dívida por insolvência do devedor estende-se automaticamente aos fiadores e codevedores solidários não insolventes."
+        "A": "Nas declarações de vontade se atenderá mais à intenção nelas consubstanciada do que ao sentido literal da linguagem.",
+        "B": "Os negócios jurídicos benéficos e a renúncia interpretam-se ampliativamente em favor do adquirente.",
+        "C": "Nos contratos de adesão com cláusulas contraditórias, adota-se a interpretação mais favorável ao estipulante.",
+        "D": "O comportamento das partes posterior à celebração do contrato não pode ser utilizado como critério de interpretação."
       },
       "gabarito": "A",
-      "article": "Art. 331 e Art. 333 do Código Civil",
-      "legal_basis": "Art. 333, I, e parágrafo único do Código Civil.",
-      "explanation": "O art. 333 do CC autoriza o credor a cobrar a dívida antes de vencido o prazo: I - no caso de falência do devedor, ou de sua insolvência; II - se os bens, hipotecados ou empenhados, forem penhorados por outro credor; III - se cessarem, ou se se tornarem insuficientes, as garantias do débito, e o devedor, intimado, se negar a reforçá-las. O parágrafo único prevê que nos casos de solidariedade passiva, o vencimento antecipado não se propaga aos demais codevedores solventes."
+      "article": "Art. 112 do Código Civil",
+      "legal_basis": "Arts. 112, 113, § 1º, 114 e 423 do Código Civil.",
+      "explanation": "O art. 112 consagra a prevalência da intenção sobre a literalidade estrita. Já os negócios benéficos interpretam-se estritamente (art. 114), e no contrato de adesão a ambiguidade favorece o aderente (art. 423).",
+      "id": "c646c4ed-ba68-436b-8e71-ec6be697495f"
     },
     {
-      "id": "ba8580ea-bf8e-455a-be56-877af86d0d5c",
-      "subject": "Tempo do pagamento",
-      "bank": "CESPE",
-      "difficulty": "Difícil",
-      "enunciado": "(CESPE) Se uma obrigação firmada entre Rodrigo e Beatriz não contiver prazo assinalado para o seu cumprimento, o credor poderá exigir o adimplemento imediatamente, sem a necessidade de prévia constituição em mora.",
-      "options": {
-        "A": "CERTO",
-        "B": "ERRADO"
-      },
-      "gabarito": "A",
-      "article": "Art. 331 e Art. 333 do Código Civil",
-      "legal_basis": "Art. 331 do Código Civil.",
-      "explanation": "O art. 331 do CC estabelece: 'Salvo disposição especial deste Código, as obrigações puras e simples, sem prazo assinalado, são exigíveis imediatamente'. Portanto, a afirmação está CERTA."
-    },
-    {
-      "id": "b43865f3-f3f5-4076-93fd-78b76a4a7fdf",
-      "subject": "Consignação em pagamento",
-      "bank": "FMP",
-      "difficulty": "Difícil",
-      "enunciado": "(FMP) Thiago pretende adimplir obrigação no valor de R$ 200.000,00 decorrente de locação de um galpão comercial perante Juliana. Contudo, há séria dúvida sobre quem é o legítimo credor, uma vez que Juliana e Lucas disputam judicialmente a titularidade do crédito. Diante desta situação de incerteza, conforme as regras de Consignação em Pagamento do Código Civil:",
-      "options": {
-        "A": "Thiago deve aguardar o trânsito em julgado da disputa entre Juliana e Lucas, suspendendo-se os juros moratórios automaticamente.",
-        "B": "Thiago pode requerer a consignação em pagamento do valor devido para exonerar-se da obrigação, depositando a quantia em juízo.",
-        "C": "A consignação é incabível em caso de dúvida sobre a titularidade do credor, devendo o devedor pagar a quem primeiro o interpelar.",
-        "D": "Mesmo julgada procedente a consignação, as despesas com o depósito judicial correrão por conta do devedor Thiago.",
-        "E": "Se Thiago consignar a importância e posteriormente levantar o depósito com anuência do credor, as garantias reais da dívida permanecerão intactas."
-      },
-      "gabarito": "B",
-      "article": "Art. 334 e Art. 335 do Código Civil",
-      "legal_basis": "Art. 335, IV, Art. 343 e Art. 344 do Código Civil.",
-      "explanation": "O art. 335, IV, do CC estabelece que cabe consignação se ocorrer dúvida sobre quem deva legitimamente receber. As despesas do depósito, se julgado procedente, correm por conta do credor (art. 343). O art. 344 determina que se o devedor levantar o depósito anuído pelo credor, extinguem-se as garantias e desobrigam-se os fiadores."
-    },
-    {
-      "id": "f1726136-70f5-4121-8873-9a14bdd0b3f0",
-      "subject": "Consignação em pagamento",
-      "bank": "CESPE",
-      "difficulty": "Difícil",
-      "enunciado": "(CESPE) O devedor Rafael poderá exonerar-se da obrigação mediante consignação em pagamento se o credor Patrícia, sem justa causa, recusar-se a receber o pagamento ou dar a respectiva quitação no tempo e lugar devidos.",
-      "options": {
-        "A": "CERTO",
-        "B": "ERRADO"
-      },
-      "gabarito": "A",
-      "article": "Art. 334 e Art. 335 do Código Civil",
-      "legal_basis": "Art. 335, I, do Código Civil.",
-      "explanation": "O art. 335, I, do CC prevê que a consignação tem lugar 'se o credor não puder, ou, sem justa causa, recusar receber o pagamento, ou dar quitação na devida forma'. Portanto, a afirmação está CERTA."
-    },
-    {
-      "id": "c724b1a7-2dfa-425c-b8ed-500ee217faeb",
-      "subject": "Pagamento com sub-rogação",
-      "bank": "VUNESP",
-      "difficulty": "Difícil",
-      "enunciado": "(VUNESP) Gustavo possui um débito hipotecário de R$ 50.000,00 com Beatriz. O imóvel dado em garantia foi vendido a Bruno. Para evitar a excussão da hipoteca e a perda do bem, Bruno decide pagar integralmente a dívida a Beatriz. Ã€ luz do Código Civil, o pagamento efetuado por Bruno acarreta:",
-      "options": {
-        "A": "Sub-rogação legal, operando-se de pleno direito em favor do adquirente do imóvel hipotecado.",
-        "B": "Sub-rogação convencional, dependendo da expressa concordância de do devedor original.",
-        "C": "Mero direito de reembolso simples, sem a transferência das garantias hipotecárias.",
-        "D": "Extinção absoluta da obrigação, restando a terceiro apenas a via da ação de enriquecimento sem causa.",
-        "E": "Nulidade do pagamento por não ser terceiro interessado sob a ótica jurídica."
-      },
-      "gabarito": "A",
-      "article": "Art. 346 e Art. 347 do Código Civil",
-      "legal_basis": "Art. 346, II, do Código Civil.",
-      "explanation": "Conforme o art. 346, II, do CC, a sub-rogação opera-se de pleno direito (sub-rogação legal) em favor do adquirente do imóvel hipotecado, que paga ao credor o débito que onerava o imóvel. Trata-se de hipótese expressa na lei, dispensando acordo das partes."
-    },
-    {
-      "id": "2663566b-673c-4669-a0a0-cf6b283ddda2",
-      "subject": "Pagamento com sub-rogação",
-      "bank": "CESPE",
-      "difficulty": "Fácil",
-      "enunciado": "(CESPE) A sub-rogação é legal (opera-se de pleno direito) em favor do terceiro interessado que paga a dívida pela qual era ou podia ser obrigado, como ocorre no caso do fiador que quita o débito do devedor principal.",
-      "options": {
-        "A": "CERTO",
-        "B": "ERRADO"
-      },
-      "gabarito": "A",
-      "article": "Art. 346 e Art. 347 do Código Civil",
-      "legal_basis": "Art. 346, III, do Código Civil.",
-      "explanation": "O art. 346, III, do CC prescreve que a sub-rogação opera-se, de pleno direito, em favor 'do terceiro interessado, que paga a dívida pela qual era ou podia ser obrigado, no todo ou em parte'. O fiador é o exemplo clássico de terceiro interessado. Portanto, a afirmação está CERTA."
-    },
-    {
-      "id": "2d941cde-fa1d-4f52-b134-a405ed61ee7a",
-      "subject": "Imputação do pagamento",
-      "bank": "CESPE",
-      "difficulty": "Difícil",
-      "enunciado": "(CESPE) Havendo capital e juros vencidos decorrentes de obrigações recíprocas entre João e Juliana, o pagamento imputar-se-á primeiro no capital e, somente após a sua integral quitação, nos juros vencidos, salvo acordo em contrário.",
-      "options": {
-        "A": "CERTO",
-        "B": "ERRADO"
-      },
-      "gabarito": "B",
-      "article": "Art. 352 e Art. 354 do Código Civil",
-      "legal_basis": "Art. 354 do Código Civil.",
-      "explanation": "O art. 354 do CC determina o oposto: 'Havendo capital e juros, o pagamento imputar-se-á primeiro nos juros vencidos, e depois no capital, salvo estipulação em contrário, ou se o credor passar quitação por conta do capital'. Portanto, a afirmação está ERRADA."
-    },
-    {
-      "id": "69478742-9c33-4521-8610-323402b9429b",
-      "subject": "Imputação do pagamento",
-      "bank": "AOCP",
-      "difficulty": "Fácil",
-      "enunciado": "(AOCP) Felipe possui três débitos vencidos e de mesma natureza perante Camila, todos líquidos e certos, mas de valores distintos. Ao efetuar um pagamento parcial no valor de R$ 5.000,00, inferior à soma das três dívidas, Felipe não declara qual delas deseja quitar. De acordo com as regras de Imputação do Pagamento, assinale a opção correta:",
-      "options": {
-        "A": "Se Felipe não indicar, a escolha passa imediatamente ao credor Camila, que poderá imputar o pagamento na dívida que bem entender, devendo o devedor aceitar sem ressalvas.",
-        "B": "Não tendo o devedor imputado, e se na quitação dada por Camila não constar imputação, o pagamento imputar-se-á nas dívidas líquidas e vencidas em primeiro lugar. Se todas forem vencidas ao mesmo tempo, na mais onerosa.",
-        "C": "A lei obriga que o pagamento parcial seja rateado proporcionalmente entre as três dívidas.",
-        "D": "Caso haja juros vencidos em uma das dívidas, o pagamento será obrigatoriamente imputado primeiro no capital de maior valor.",
-        "E": "A imputação é ato estritamente bilateral, exigindo necessariamente a assinatura de termo aditivo contratual."
-      },
-      "gabarito": "B",
-      "article": "Art. 352 e Art. 354 do Código Civil",
-      "legal_basis": "Art. 354 e Art. 355 do Código Civil.",
-      "explanation": "Se o devedor não exercer o direito de imputação (art. 352) e o credor também não o fizer na quitação (art. 353), aplica-se a imputação legal determinada pelo art. 355: imputar-se-á nas dívidas líquidas e vencidas em primeiro lugar. Se as dívidas forem todas líquidas e vencidas ao mesmo tempo, a imputação far-se-á na mais onerosa."
-    },
-    {
-      "id": "6704338e-2095-4c5d-9ada-cd700ebe39dc",
-      "subject": "Dação em pagamento",
-      "bank": "FGV",
-      "difficulty": "Fácil",
-      "enunciado": "(FGV) Fabiano deve a Patrícia a quantia de R$ 25.000,00. Sem dinheiro para honrar o compromisso, Fabiano oferece a entrega de um veículo de sua propriedade como forma de quitar integralmente o débito. Patrícia consente com a substituição. Considerando as normas da dação em pagamento, assinale a opção correta:",
-      "options": {
-        "A": "O consentimento de do credor é dispensável, bastando que o bem oferecido pelo devedor tenha valor igual ou superior à dívida original.",
-        "B": "Se o credor for evicto da coisa recebida (perder o veículo por decisão judicial favorável a terceiro), a obrigação original renasce, invalidando a quitação anterior, ressalvados direitos de terceiros de boa-fé.",
-        "C": "Se o devedor entregar coisa com vício redibitório, a obrigação original é considerada extinta de forma definitiva, restando apenas perdas e danos pelo vício.",
-        "D": "A dação em pagamento equipara-se à doação, aplicando-se integralmente as regras do contrato de doação pura.",
-        "E": "Se as partes determinarem o preço da coisa dada em substituição, o negócio jurídico será regido pelas regras do contrato de mútuo."
-      },
-      "gabarito": "B",
-      "article": "Art. 356 e Art. 359 do Código Civil",
-      "legal_basis": "Art. 356, Art. 357 e Art. 359 do Código Civil.",
-      "explanation": "A alternativa B reproduz fielmente a regra da evicção na dação em pagamento (art. 359, CC). A alternativa A está errada porque o credor não é obrigado a receber prestação diversa da que lhe é devida, ainda que mais valiosa (art. 313, CC). A alternativa E está errada pois se determinar o preço da coisa dada, a relação regula-se pelas regras do contrato de compra e venda (art. 357, CC)."
-    },
-    {
-      "id": "72c20d1b-9c40-4afb-a885-c2447cd27107",
-      "subject": "Dação em pagamento",
-      "bank": "CESPE",
+      "subject": "Interpretação dos Contratos no Direito Brasileiro",
+      "bank": "FCC",
       "difficulty": "Médio",
-      "enunciado": "(CESPE) Se o credor Beatriz aceitar receber de Gustavo um lote de terras em substituição à prestação pecuniária de R$ 25.000,00, e posteriormente Beatriz perder o imóvel por evicção, restabelecer-se-á a obrigação original, ficando sem efeito a quitação dada, ressalvados os direitos de terceiros de boa-fé.",
+      "enunciado": "(FCC / Defensoria) A respeito da interpretação dos negócios benéficos (gratuitos) e dos atos de renúncia de direitos no Código Civil, é correto afirmar que:",
       "options": {
-        "A": "CERTO",
-        "B": "ERRADO"
+        "A": "Interpretam-se estritamente, sendo vedada a extensão analógica ou ampliativa que crie obrigações ou renúncias não declaradas de forma expressa.",
+        "B": "Interpretam-se de forma analógica e extensiva, aplicando-se as mesmas regras dos contratos bilaterais onerosos.",
+        "C": "Presume-se a renúncia de direitos patrimoniais sempre que o credor tolerar atraso superior a trinta dias.",
+        "D": "São nulos se não contiverem cláusula expressa de arbitragem."
       },
       "gabarito": "A",
-      "article": "Art. 356 e Art. 359 do Código Civil",
-      "legal_basis": "Art. 359 do Código Civil.",
-      "explanation": "O art. 359 do Código Civil expressamente determina que, se o credor for evicto da coisa recebida em pagamento, restabelecer-se-á a obrigação primitiva, ficando sem efeito a quitação dada, ressalvados os direitos de terceiros. Portanto, a afirmação está CERTA."
+      "article": "Art. 114 do Código Civil",
+      "legal_basis": "Art. 114 do Código Civil.",
+      "explanation": "Art. 114 do CC: 'Os negócios jurídicos benéficos e a renúncia interpretam-se estritamente'. Não se presume doação ou renúncia além do que foi expressa e restritivamente delimitado pelo disponente.",
+      "id": "61b4de91-9e32-4b5e-b323-fb7d4b9252db"
     },
     {
-      "id": "9e0540fd-a8ab-4c34-ba7b-c4b5a43ef7bc",
-      "subject": "Novação",
-      "bank": "CESPE",
-      "difficulty": "Médio",
-      "enunciado": "(CESPE) A novação extingue os acessórios e garantias da dívida antiga sempre que não houver estipulação em contrário. Contudo, a garantia prestada por fiador que não anuiu com a novação permanece válida por força da solidariedade legal.",
-      "options": {
-        "A": "CERTO",
-        "B": "ERRADO"
-      },
-      "gabarito": "B",
-      "article": "Art. 360 e Art. 364 do Código Civil",
-      "legal_basis": "Art. 364 do Código Civil.",
-      "explanation": "O art. 364 do Código Civil estabelece que a novação extingue os acessórios e garantias da dívida, se não houver estipulação em contrário. Além disso, o mesmo artigo deixa claro que 'não aproveitará contudo ao credor ressalvar o penhor, a hipoteca ou a anticrese, se a coisa pertencer a terceiro que não foi parte na novação'. Súmula e jurisprudência confirmam que o fiador que não participou da novação fica exonerado da fiança (art. 366, CC). Portanto, a afirmação está ERRADA."
-    },
-    {
-      "id": "f19ad4b3-7d7a-41bd-b27c-3999cc677f4d",
-      "subject": "Novação",
-      "bank": "AOCP",
-      "difficulty": "Médio",
-      "enunciado": "(AOCP) Fabiano possui uma dívida de R$ 120.000,00 com Letícia. Para facilitar o adimplemento, as partes assinam um novo instrumento contratual contratando uma nova obrigação em substituição à anterior, que resta extinta. O contrato original era afiançado por Gabriel. Sobre os efeitos jurídicos dessa novação, assinale a opção correta:",
-      "options": {
-        "A": "A fiança prestada por Gabriel é transmitida automaticamente para a nova obrigação, independentemente de sua concordância, pois o acessório segue a sorte do principal.",
-        "B": "A novação extingue a obrigação anterior. Importa a exoneração de Gabriel (fiador) caso este não tenha anuído expressamente com o novo contrato.",
-        "C": "Qualquer tipo de modificação de prazo ou alteração de juros importa em novação presumida, mesmo sem a intenção inequívoca de novar (animus novandi).",
-        "D": "Se a obrigação primitiva novada for nula, a novação é plenamente válida se as partes agiram de boa-fé.",
-        "E": "A novação subjetiva passiva por expromissão exige obrigatoriamente o consentimento do devedor originário Fabiano."
-      },
-      "gabarito": "B",
-      "article": "Art. 360 e Art. 364 do Código Civil",
-      "legal_basis": "Art. 360, Art. 361, Art. 362, Art. 366 e Art. 367 do Código Civil.",
-      "explanation": "Conforme o art. 366 do CC, importa exoneração do fiador a novação feita sem consenso dele com o devedor. A novação requer ânimo de novar expresso ou inequívoco (art. 361, CC) - eliminando a letra C. Obrigações nulas não podem ser novadas (art. 367, CC) - eliminando a letra D. A expromissão (novação por substituição do devedor) pode ser feita *independentemente* do consentimento do devedor originário (art. 362, CC) - eliminando a letra E."
-    },
-    {
-      "id": "61da40bf-0f34-47f4-8170-f4db13a61973",
-      "subject": "Compensação",
-      "bank": "AOCP",
-      "difficulty": "Difícil",
-      "enunciado": "(AOCP) Felipe deve R$ 50.000,00 a Beatriz. Por sua vez, Beatriz deve R$ 50.000,00 a Felipe. Diante das regras de compensação estatuídas no Código Civil, assinale a opção que apresenta um impedimento à compensação legal:",
-      "options": {
-        "A": "Uma das dívidas decorrer de comodato, depósito ou alimentos.",
-        "B": "As dívidas possuírem prazos de vencimento diferentes, embora ambas já estejam vencidas.",
-        "C": "Uma das partes ser fiadora da outra e pretender compensar sua dívida com o crédito do devedor principal.",
-        "D": "As obrigações terem sido contraídas em locais de cumprimento distintos, mesmo que deduzidas as despesas de remessa.",
-        "E": "As obrigações decorrerem de relações contratuais de naturezas comerciais diversas."
-      },
-      "gabarito": "A",
-      "article": "Art. 368 e Art. 369 do Código Civil",
-      "legal_basis": "Art. 373, Art. 371 do Código Civil.",
-      "explanation": "A compensação legal não é admitida em certas hipóteses por razões de interesse público ou proteção social. O art. 373 do CC exclui a compensação se a causa de uma das dívidas provier: I - de esbulho, furto ou roubo; II - de comodato, depósito ou alimentos; III - de coisa não suscetível de penhora. O fiador pode compensar sua obrigação com o débito do credor ao devedor principal (art. 371) - logo, a alternativa C não é um impedimento."
-    },
-    {
-      "id": "c01aef28-188b-494d-8e08-34306a4387dd",
-      "subject": "Compensação",
-      "bank": "CESPE",
-      "difficulty": "Fácil",
-      "enunciado": "(CESPE) Para que ocorra a compensação legal, exige-se a reciprocidade das obrigações, que as dívidas sejam líquidas, vencidas (exigíveis) e de coisas fungíveis da mesma espécie e qualidade.",
-      "options": {
-        "A": "CERTO",
-        "B": "ERRADO"
-      },
-      "gabarito": "A",
-      "article": "Art. 368 e Art. 369 do Código Civil",
-      "legal_basis": "Art. 368 e Art. 369 do Código Civil.",
-      "explanation": "De acordo com o art. 368 (reciprocidade) e art. 369 do CC, a compensação legal efetua-se entre dívidas líquidas, vencidas e de coisas fungíveis. Portanto, a afirmação está CERTA."
-    },
-    {
-      "id": "d2c52fda-71f2-49ba-a3a1-00147026894f",
-      "subject": "Confusão",
-      "bank": "CESPE",
-      "difficulty": "Fácil",
-      "enunciado": "(CESPE) A confusão opera-se quando na mesma pessoa se reúnem as qualidades de credor e devedor, gerando a extinção automática do crédito. Se a confusão for desfeita por causa subsequente, a obrigação anterior não se restabelece, restando apenas perdas e danos.",
-      "options": {
-        "A": "CERTO",
-        "B": "ERRADO"
-      },
-      "gabarito": "B",
-      "article": "Art. 381 do Código Civil",
-      "legal_basis": "Art. 381 e Art. 384 do Código Civil.",
-      "explanation": "O art. 384 do CC prevê exatamente o contrário: 'Cessando a confusão, para logo se restabelece, com todos os seus acessórios, a obrigação anterior'. Portanto, a afirmação está ERRADA."
-    },
-    {
-      "id": "152189ab-a55e-4385-b95c-3093c90f70ef",
-      "subject": "Remissão das dívidas",
-      "bank": "VUNESP",
-      "difficulty": "Difícil",
-      "enunciado": "(VUNESP) Maria resolve perdoar (remitir) a dívida de R$ 5.000,00 contraída por Pedro. O contrato conta com garantia real de penhor sobre um bem de Pedro. Com base nas regras sobre a remissão das dívidas no Código Civil, assinale a opção correta:",
-      "options": {
-        "A": "A remissão é ato estritamente unilateral, operando seus efeitos de extinção mesmo se o devedor manifestar recusa expressa ao perdão.",
-        "B": "A devolução voluntária do objeto empenhado (garantia real) pelo credor ao devedor faz presumir a renúncia da garantia, mas não a extinção da dívida principal.",
-        "C": "A remissão concedida a um dos codevedores solidários extingue toda a dívida em relação aos demais codevedores, sem direito de cobrar a quota-parte dos outros.",
-        "D": "O perdão da dívida principal mantém íntegra a garantia real de penhor, a qual subsiste por força de lei.",
-        "E": "A remissão é negócio jurídico nulo por se tratar de doação indireta disfarçada de transação."
-      },
-      "gabarito": "B",
-      "article": "Art. 385 e Art. 388 do Código Civil",
-      "legal_basis": "Art. 385, Art. 387 e Art. 388 do Código Civil.",
-      "explanation": "Pelo art. 387 do CC, 'a restituição voluntária do objeto empenhado prova a renúncia do credor à garantia real, não a remissão da dívida'. A alternativa A está incorreta pois a remissão exige aceitação do devedor (art. 385). A alternativa C está incorreta porque a remissão a um codevedor extingue a dívida apenas até o montante de sua quota, restando aos outros codevedores o saldo deduzido (art. 388)."
-    },
-    {
-      "id": "82df1b00-b186-4342-ad02-e495a140fd19",
-      "subject": "Remissão das dívidas",
-      "bank": "CESPE",
-      "difficulty": "Médio",
-      "enunciado": "(CESPE) A remissão da dívida (perdão), aceita pelo devedor, extingue a obrigação, mas não pode prejudicar terceiros, como os credores do credor remitente.",
-      "options": {
-        "A": "CERTO",
-        "B": "ERRADO"
-      },
-      "gabarito": "A",
-      "article": "Art. 385 e Art. 388 do Código Civil",
-      "legal_basis": "Art. 385 do Código Civil.",
-      "explanation": "O art. 385 do Código Civil dispõe: 'A remissão da dívida, aceita pelo devedor, extingue a obrigação, mas sem prejuízo de terceiro'. Logo, credores do remitente prejudicados podem impugnar o ato. Portanto, a afirmação está CERTA."
-    },
-    {
-      "id": "f8d4279c-2996-43d0-8cfe-99ecbad74bdd",
-      "subject": "Inadimplemento - Disposições gerais",
-      "bank": "Consulplan",
-      "difficulty": "Fácil",
-      "enunciado": "(Consulplan) João descumpriu culposamente contrato de prestação de serviços no valor de R$ 50.000,00 celebrado com Camila. Como consequência direta e imediata do inadimplemento absoluto da obrigação, Camila sofreu prejuízos materiais. Acerca das normas de Inadimplemento e Perdas e Danos previstas no Código Civil, assinale a opção correta:",
-      "options": {
-        "A": "As perdas e danos devidas ao credor abrangem apenas o que ele efetivamente perdeu (dano emergente), sendo vedada a condenação por lucros cessantes no direito civil brasileiro.",
-        "B": "O devedor responde por caso fortuito ou de força maior mesmo que não tenha expressamente se responsabilizado por eles no contrato.",
-        "C": "Salvo as exceções previstas em lei, as perdas e danos abrangem, além do que o credor efetivamente perdeu, o que razoavelmente deixou de lucrar, desde que consequência direta e imediata do inadimplemento.",
-        "D": "Os juros de mora em perdas e danos decorrentes de responsabilidade contratual contam-se unicamente a partir da citação inicial do devedor.",
-        "E": "Nas obrigações de pagar em dinheiro, se o credor provar que o juro da mora não cobre o prejuízo, o juiz não poderá conceder indenização suplementar."
-      },
-      "gabarito": "C",
-      "article": "Art. 389, Art. 393 e Art. 402 do Código Civil",
-      "legal_basis": "Art. 389, Art. 393, Art. 402, Art. 403 e Art. 404 do Código Civil.",
-      "explanation": "A alternativa C retrata o art. 402 do CC, dispondo sobre a composição das perdas e danos (danos emergentes + lucros cessantes). A alternativa A erra ao vedar lucros cessantes. A alternativa B erra porque o devedor *não* responde por caso fortuito ou força maior se não se responsabilizou por eles (art. 393). A alternativa E erra ao ignorar o art. 404, parágrafo único, que autoriza indenização suplementar se os juros moratórios não cobrirem o prejuízo."
-    },
-    {
-      "id": "006967f6-8876-42e7-8c37-a5681caf2446",
-      "subject": "Inadimplemento - Disposições gerais",
-      "bank": "CESPE",
-      "difficulty": "Médio",
-      "enunciado": "(CESPE) O devedor Marcos responde pelos prejuízos decorrentes de caso fortuito ou força maior se estes ocorrerem durante o atraso (mora), a menos que prove que o dano ocorreria mesmo se a obrigação tivesse sido cumprida a tempo.",
-      "options": {
-        "A": "CERTO",
-        "B": "ERRADO"
-      },
-      "gabarito": "A",
-      "article": "Art. 389, Art. 393 e Art. 402 do Código Civil",
-      "legal_basis": "Art. 399 do Código Civil.",
-      "explanation": "O devedor em mora responde pelo caso fortuito ou força maior. Trata-se da perpetuação da obrigação (perpetuatio obligationis) prevista no art. 399, onde ele só se exime se provar a inevitabilidade do dano mesmo adimplindo tempestivamente. Portanto, a afirmação está CERTA."
-    },
-    {
-      "id": "1c69c921-5786-476a-bd03-8e5dbdefa307",
-      "subject": "Mora - Geral",
-      "bank": "CESPE",
-      "difficulty": "Fácil",
-      "enunciado": "(CESPE) Se Rafael (devedor) incorrer em atraso culposo no cumprimento de obrigação líquida e com prazo certo ajustada com Larissa, a mora operar-se-á de pleno direito no vencimento (mora ex re), dispensando-se qualquer notificação judicial.",
-      "options": {
-        "A": "CERTO",
-        "B": "ERRADO"
-      },
-      "gabarito": "A",
-      "article": "Art. 394, Art. 395 e Art. 396 do Código Civil",
-      "legal_basis": "Art. 397, caput, do Código Civil.",
-      "explanation": "Segundo o art. 397 do CC, 'o inadimplemento da obrigação, positiva e líquida, no seu termo, constitui de pleno direito em mora o devedor' (regra dies interpellat pro homine). A mora ex re dispensa interpelação. Portanto, a afirmação está CERTA."
-    },
-    {
-      "id": "5ba1f77f-9a8c-4521-8846-e830bbcc2033",
-      "subject": "Mora do devedor",
-      "bank": "FMP",
-      "difficulty": "Fácil",
-      "enunciado": "(FMP) Pedro firmou contrato de prestação de serviços de consultoria em TI com Camila. No vencimento do prazo para entrega do valor de R$ 120.000,00, Pedro não realiza o pagamento. Com base na disciplina da mora no Código Civil brasileiro, assinale a opção correta:",
-      "options": {
-        "A": "Não havendo fato ou omissão imputável ao devedor (ausência de culpa), este não incorre em mora.",
-        "B": "O devedor em mora responde pela impossibilidade da prestação, exceto se provar que a impossibilidade ocorreria mesmo se tivesse adimplido tempestivamente.",
-        "C": "A mora do credor (mora accipiendi) não isenta o devedor de responsabilidade pela conservação da coisa nem obsta a cobrança de juros moratórios standard.",
-        "D": "Para purgar a mora, basta ao devedor oferecer ao credor a prestação devida no valor principal, independentemente de juros ou perdas e danos.",
-        "E": "Se a obrigação não tiver prazo determinado, a mora do devedor (mora ex persona) ocorre no momento exato do inadimplemento material da prestação."
-      },
-      "gabarito": "A",
-      "article": "Art. 394, Art. 395 e Art. 396 do Código Civil",
-      "legal_basis": "Art. 396, Art. 399, Art. 400 e Art. 401 do Código Civil.",
-      "explanation": "A alternativa A reflete o art. 396 do CC: 'Não havendo fato ou omissão imputável ao devedor, não incorre este em mora'. A mora do devedor exige culpa. A alternativa B está incorreta porque o devedor responde pela impossibilidade *a menos que* prove que o dano sobreviria mesmo com o cumprimento pontual (art. 399). A alternativa C erra porque a mora do credor subtrai o devedor da responsabilidade pela conservação, salvo dolo (art. 400). A alternativa E erra pois se não há termo, a mora exige interpelação (art. 397, parágrafo único)."
-    },
-    {
-      "id": "7d9eb32a-41da-49c6-a8be-3c78a3173b11",
-      "subject": "Juros legais",
+      "subject": "Classificação dos Contratos",
       "bank": "VUNESP",
       "difficulty": "Médio",
-      "enunciado": "(VUNESP) Em uma ação judicial decorrente do inadimplemento de contrato de prestação de serviços no valor de R$ 10.000,00, o juiz deve arbitrar os juros de mora incidentes sobre a condenação. Considerando o regramento de juros legais do Código Civil:",
+      "enunciado": "(VUNESP / Magistratura) O contrato de mútuo feneratício (empréstimo de dinheiro com juros) classifica-se tecnicamente como contrato:",
       "options": {
-        "A": "Os juros moratórios só são devidos se o credor comprovar que sofreu prejuízo material efetivo com o atraso.",
-        "B": "Ainda que não se alegue prejuízo, o credor tem direito aos juros de mora, que se contam assim às dívidas em dinheiro, como às prestações de outra natureza, uma vez que lhes esteja estimado o valor pecuniário.",
-        "C": "Os juros legais são de no máximo 0,5% ao mês, sendo proibida a aplicação da taxa referencial Selic sob qualquer pretexto.",
-        "D": "Os juros de mora fluem a partir do vencimento apenas nas obrigações decorrentes de ato ilícito extracontratual.",
-        "E": "O credor que receber o pagamento da dívida principal sem ressalva de juros mantém o direito de cobrá-los autonomamente em ação própria posterior."
-      },
-      "gabarito": "B",
-      "article": "Art. 406 e Art. 407 do Código Civil",
-      "legal_basis": "Art. 407 do Código Civil.",
-      "explanation": "Conforme o art. 407 do CC, os juros de mora são devidos independentemente da alegação ou comprovação de prejuízo pelo credor. Aplicam-se a obrigações pecuniárias e a outras obrigações avaliáveis em dinheiro."
-    },
-    {
-      "id": "f4720258-0a51-4478-ba8a-2a461526a529",
-      "subject": "Juros legais",
-      "bank": "CESPE",
-      "difficulty": "Fácil",
-      "enunciado": "(CESPE) Quando os juros moratórios não forem convencionados no contrato de compra e venda de um veículo seminovo entre Marcos e Fernanda, eles deverão ser fixados de acordo com a taxa em vigor para a mora do pagamento de impostos devidos à Fazenda Nacional.",
-      "options": {
-        "A": "CERTO",
-        "B": "ERRADO"
+        "A": "Unilateral, oneroso e real.",
+        "B": "Bilateral, gratuito e consensual.",
+        "C": "Unilateral, gratuito e solene por escritura pública.",
+        "D": "Bilateral perfeito, puramente comutativo e solene."
       },
       "gabarito": "A",
-      "article": "Art. 406 e Art. 407 do Código Civil",
-      "legal_basis": "Art. 406 do Código Civil.",
-      "explanation": "O art. 406 do CC estatui: 'Quando os juros moratórios não forem convencionados, ou o forem sem taxa estipulada, ou provierem de determinação da lei, serão fixados segundo a taxa que estiver em vigor para a mora do pagamento de impostos devidos à Fazenda Nacional'. Portanto, a afirmação está CERTA."
+      "article": "Arts. 586 a 591 do Código Civil",
+      "legal_basis": "Arts. 586 e 591 do Código Civil e Doutrina Contratual.",
+      "explanation": "O mútuo é contrato real (só se aperfeiçoa com a efetiva entrega do dinheiro) e unilateral (após a tradição, apenas o mutuário tem obrigação de restituir). Quando prevê juros (feneratício), é também oneroso.",
+      "id": "d5773651-5cde-4227-b66b-d0e39f0f7e89"
     },
     {
-      "id": "5a166e0f-021d-4cb3-8dd1-fd6c66089071",
-      "subject": "Cláusula penal",
+      "subject": "Classificação dos Contratos",
+      "bank": "OAB",
+      "difficulty": "Fácil",
+      "enunciado": "(OAB / FGV) A compra e venda pura de bens móveis com pagamento parcelado é exemplo clássico de contrato:",
+      "options": {
+        "A": "Bilateral (sinalagmático), oneroso, comutativo e consensual.",
+        "B": "Unilateral, gratuito, solene e real.",
+        "C": "Aleatório, benéfico, atípico e real.",
+        "D": "Bilateral imperfeito, solene por escritura pública e de execução imediata."
+      },
+      "gabarito": "A",
+      "article": "Art. 481 e Art. 482 do Código Civil",
+      "legal_basis": "Arts. 481 e 482 do Código Civil.",
+      "explanation": "A compra e venda é bilateral (gera obrigações para ambos), onerosa (sacrifício patrimonial recíproco), comutativa (prestações certas e conhecidas) e consensual (aperfeiçoa-se com o simples acordo sobre coisa e preço).",
+      "id": "e28061aa-e8c3-41e1-879f-64e49b5defbc"
+    },
+    {
+      "subject": "Etapas de Formação do Contrato",
+      "bank": "OAB",
+      "difficulty": "Médio",
+      "enunciado": "(OAB / FGV) Sobre as etapas de formação do contrato civil (negociações preliminares/punctuação, proposta e aceitação), assinale a afirmativa correta.",
+      "options": {
+        "A": "A fase de negociações preliminares (punctuação) não gera em nenhuma hipótese dever de indenizar, dada a ampla liberdade contratual.",
+        "B": "A proposta séria e precisa vincula o proponente, salvo se o contrário resultar dos termos dela, da natureza do negócio ou das circunstâncias do caso.",
+        "C": "A aceitação com modificações ou adições importa conclusão imediata do contrato originário.",
+        "D": "Entre ausentes, o contrato só se conclui quando a aceitação é lida pessoalmente pelo proponente."
+      },
+      "gabarito": "B",
+      "article": "Art. 427 e Art. 431 do Código Civil",
+      "legal_basis": "Arts. 427, 428, 431 e 434 do Código Civil.",
+      "explanation": "A proposta vincula o proponente (art. 427). As negociações preliminares podem gerar dever de indenizar por responsabilidade pré-contratual se violada a boa-fé. A aceitação com adições é nova proposta (art. 431).",
+      "id": "b14722a6-3c28-49ca-9f39-f9c59ae00198"
+    },
+    {
+      "subject": "Etapas de Formação do Contrato",
+      "bank": "CESPE",
+      "difficulty": "Médio",
+      "enunciado": "(CESPE / Doutrina) No que diz respeito ao momento da conclusão do contrato entre pessoas ausentes, o Código Civil brasileiro adotou expressamente a Teoria:",
+      "options": {
+        "A": "Da Agnição, na subespécie da Expedição (art. 434 do CC).",
+        "B": "Da Recepção pura, exigindo que o proponente receba a aceitação em seu domicílio.",
+        "C": "Da Cognição ou Informação, exigindo que o proponente tome ciência do teor da aceitação.",
+        "D": "Da Declaração propriamente dita, bastando a redação da resposta na minuta."
+      },
+      "gabarito": "A",
+      "article": "Art. 434 do Código Civil",
+      "legal_basis": "Art. 434 do Código Civil.",
+      "explanation": "O Código Civil consagra a Teoria da Expedição: 'Os contratos entre ausentes tornam-se perfeitos desde que a aceitação é expedida' (art. 434), admitindo retratação antes ou concomitante à chegada.",
+      "id": "1ac87597-d56d-4895-acba-f25619cf7cff"
+    },
+    {
+      "subject": "Estipulação em Favor de Terceiro",
+      "bank": "OAB",
+      "difficulty": "Médio",
+      "enunciado": "(OAB / FGV) Na Estipulação em Favor de Terceiro (arts. 436 a 438 do CC), caso o estipulante tenha reservado ao terceiro o direito de reclamar a execução da obrigação:",
+      "options": {
+        "A": "O estipulante perde a faculdade de exonerar o devedor unilateralmente.",
+        "B": "O promitente fica desonerado de prestar qualquer esclarecimento ao terceiro.",
+        "C": "O terceiro assume a posição de devedor solidário de todos os custos do negócio.",
+        "D": "O estipulante não mais poderá substituir o terceiro sob nenhuma hipótese."
+      },
+      "gabarito": "A",
+      "article": "Art. 437 do Código Civil",
+      "legal_basis": "Art. 437 do Código Civil.",
+      "explanation": "Art. 437, CC: 'Se ao terceiro, em favor de quem se fez a estipulação, se deixar o direito de reclamar-lhe a execução, não poderá o estipulante exonerar o devedor'.",
+      "id": "bb68d84e-3485-4a2c-a737-ddd899f16a7a"
+    },
+    {
+      "subject": "Estipulação em Favor de Terceiro",
       "bank": "VUNESP",
-      "difficulty": "Fácil",
-      "enunciado": "(VUNESP) Felipe celebrou contrato de prestação de serviços com Letícia prevendo cláusula penal no montante de R$ 50.000,00 para o caso de inadimplemento absoluto. O valor total da obrigação principal era de R$ 40.000,00. Diante das disposições do Código Civil sobre cláusula penal, assinale a opção correta:",
-      "options": {
-        "A": "A cláusula penal pactuada é totalmente válida, uma vez que a autonomia de vontade permite fixar multa em qualquer montante.",
-        "B": "O valor da cláusula penal não pode exceder o da obrigação principal; portanto, o montante da multa deve ser reduzido a R$ 40.000,00.",
-        "C": "O credor pode cobrar perdas e danos excedentes ao valor da cláusula penal compensatória, mesmo sem qualquer previsão contratual nesse sentido.",
-        "D": "A penalidade deve ser reduzida equitativamente pelo juiz se a obrigação principal tiver sido cumprida em parte, ou se o montante for manifestamente excessivo, sendo esta uma faculdade exclusiva do juiz que depende de pedido do réu.",
-        "E": "Incorrido o devedor em mora, o credor deve provar o prejuízo sofrido para fazer jus ao recebimento do valor da cláusula penal."
-      },
-      "gabarito": "B",
-      "article": "Art. 408 a Art. 416 do Código Civil",
-      "legal_basis": "Art. 412, Art. 413 e Art. 416 do Código Civil.",
-      "explanation": "Segundo o art. 412 do CC, 'o valor da cominação imposta na cláusula penal não pode exceder o da obrigação principal'. Logo, a multa compensatória de R$ 50.000,00 deve ser reduzida para R$ 40.000,00. A redução judicial do art. 413 é de ordem pública e deve ser feita de ofício pelo juiz, não sendo mera faculdade (eliminando a letra D). Para exigir a cláusula penal, não é necessário provar prejuízo (art. 416, CC) - eliminando a letra E."
-    },
-    {
-      "id": "96571a98-438a-4cca-b384-b2981a36ee6c",
-      "subject": "Cláusula penal",
-      "bank": "CESPE",
       "difficulty": "Médio",
-      "enunciado": "(CESPE) Se no contrato de financiamento de maquinário industrial entre Marcos e Larissa houver cláusula penal compensatória pactuada, o credor poderá exigir cumulativamente o cumprimento da obrigação principal e o pagamento integral da multa em caso de inadimplemento total.",
+      "enunciado": "(VUNESP / Notário) O estipulante pode substituir o terceiro beneficiário designado no contrato?",
       "options": {
-        "A": "CERTO",
-        "B": "ERRADO"
-      },
-      "gabarito": "B",
-      "article": "Art. 408 a Art. 416 do Código Civil",
-      "legal_basis": "Art. 410 do Código Civil.",
-      "explanation": "A cláusula penal compensatória serve como pré-fixação de perdas e danos para o inadimplemento total. O art. 410 do CC determina que 'quando se estipular a cláusula penal para o caso de total inadimplemento da obrigação, esta converter-se-á em alternativa para o credor', sendo vedada a cumulação. A cumulação só é permitida na cláusula penal moratória (art. 411, CC). Portanto, a afirmação está ERRADA."
-    },
-    {
-      "id": "8d0f7d5b-d139-4c7f-a16b-6e2dabc7d159",
-      "subject": "Arras ou sinal",
-      "bank": "AOCP",
-      "difficulty": "Médio",
-      "enunciado": "(AOCP) Felipe assinou contrato de promessa de compra e venda de imóvel com Juliana, entregando a quantia de R$ 20.000,00 a título de arras confirmatórias. O contrato não prevê direito de arrependimento. Posteriormente, Felipe (devedor) desiste do negócio e deixa de pagar as parcelas pactuadas, operando o inadimplemento culposo. Ã€ luz do Código Civil, assinale a opção correta:",
-      "options": {
-        "A": "Juliana pode reter as arras de R$ 20.000,00 e, caso o prejuízo real seja superior, postular em juízo indenização suplementar.",
-        "B": "As arras confirmatórias devem ser devolvidas a Felipe em dobro, respondendo Juliana por perdas e danos.",
-        "C": "Como o contrato não prevê direito de arrependimento, as arras operam como arras penitenciais, sendo vedado pleitear qualquer valor adicional.",
-        "D": "Pelo inadimplemento de Felipe, Juliana é obrigado a aceitar a rescisão contratual sem poder exigir a execução do contrato.",
-        "E": "Se a parte que deu as arras (Felipe) der causa ao inadimplemento, a outra (Juliana) terá as arras devolvidas mais o equivalente."
+        "A": "Sim, pode reservar-se o direito de substituir o terceiro por ato entre vivos ou por disposição de última vontade (testamento), independentemente da anuência do terceiro e do promitente.",
+        "B": "Não, a indicação do terceiro é irrevogável após a assinatura do contrato pelas partes originárias.",
+        "C": "Apenas com autorização judicial prévia ou consentimento expresso do promitente.",
+        "D": "Somente se o terceiro cometer ato de ingratidão previsto nas regras de doação."
       },
       "gabarito": "A",
-      "article": "Art. 417 a Art. 420 do Código Civil",
-      "legal_basis": "Art. 418 e Art. 419 do Código Civil.",
-      "explanation": "Trata-se de arras confirmatórias (art. 418, CC). Se a parte que deu as arras der causa à inexecução, a outra poderá reter as arras (art. 418). E o art. 419 dispõe que a parte inocente pode pedir indenização suplementar, se provar maior prejuízo, valendo as arras como taxa mínima da indenização."
+      "article": "Art. 438 do Código Civil",
+      "legal_basis": "Art. 438 e parágrafo único do Código Civil.",
+      "explanation": "Art. 438, CC: 'O estipulante pode reservar-se o direito de substituir o terceiro designado no contrato, independentemente da sua anuência e da do outro contratante'.",
+      "id": "71e32678-7a81-43db-9afa-b03648805f4b"
     },
     {
-      "id": "fead143f-8f15-43fd-951c-624a918083ef",
-      "subject": "Quem deve pagar",
-      "bank": "FGV",
-      "difficulty": "Difícil",
-      "enunciado": "(FGV) Lucas, irmão de Rodrigo (devedor de uma obrigação pecuniária de R$ 5.000,00 perante Camila), resolve realizar o pagamento da dívida sem o conhecimento de Rodrigo, pois este se encontra viajando. Lucas efetua o pagamento em seu próprio nome. Sabendo que Rodrigo possuía meios legais e eficientes para ilidir (anular) a cobrança de Camila por já ter compensado o valor anteriormente, assinale a opção correta à luz das regras sobre adimplemento por terceiros:",
-      "options": {
-        "A": "Lucas terá direito de exigir o reembolso integral do valor pago a Rodrigo, pois o pagamento de boa-fé sempre gera direito a reembolso.",
-        "B": "Lucas se sub-roga automaticamente em todos os direitos e garantias que Camila possuía contra Rodrigo.",
-        "C": "O pagamento feito por Lucas é nulo de pleno direito por ter ocorrido sem a prévia anuência ou procuração de Rodrigo.",
-        "D": "O pagamento por terceiro não interessado, feito com desconhecimento ou oposição do devedor, não obriga a reembolso se este tinha meios para ilidir a ação.",
-        "E": "Camila responderá criminalmente por enriquecimento sem causa, devendo restituir o valor pago em dobro a Rodrigo."
-      },
-      "gabarito": "D",
-      "article": "Art. 306 do Código Civil",
-      "legal_basis": "Art. 305 e Art. 306 do Código Civil.",
-      "explanation": "De acordo com o art. 306 do CC, o pagamento feito por terceiro, com desconhecimento ou oposição do devedor, não obriga a reembolso se o devedor tinha meios para ilidir a ação. Como Rodrigo tinha meios para ilidir (compensação), Lucas não terá direito ao reembolso."
-    },
-    {
-      "id": "75a53b9b-99c2-4887-a48e-b0e990061add",
-      "subject": "A quem se deve pagar",
-      "bank": "CESPE",
-      "difficulty": "Médio",
-      "enunciado": "(CESPE) O devedor Bruno realiza o pagamento diretamente a Tiago, credor relativamente incapaz, sem a presença de seu assistente legal. Posteriormente, o responsável legal de Tiago cobra Bruno pelo adimplemento da obrigação. Bruno alega que o pagamento foi voluntário e de boa-fé. Nessa situação, de acordo com o Código Civil, o pagamento efetuado por Bruno ao incapaz:",
-      "options": {
-        "A": "Ã‰ nulo de pleno direito, devendo o devedor Bruno realizar novo pagamento sob a supervisão do assistente legal do incapaz.",
-        "B": "Ã‰ considerado válido se Bruno comprovar que o pagamento reverteu em proveito do credor incapaz.",
-        "C": "Gera a extinção imediata da obrigação devido à aplicação da teoria do credor putativo.",
-        "D": "Ã‰ ineficaz, e Tiago fica obrigado a devolver o valor em dobro por cobrança indevida.",
-        "E": "Ã‰ plenamente válido e inquestionável, pois a incapacidade relativa do credor não obsta o recebimento de valores pecuniários."
-      },
-      "gabarito": "B",
-      "article": "Art. 310 do Código Civil",
-      "legal_basis": "Art. 310 do Código Civil.",
-      "explanation": "O art. 310 do CC dispõe que 'Não vale o pagamento feito a quem se mostrava incapaz de quitá-lo, se o devedor não provar que reverteu em proveito do credor'. Ou seja, o pagamento ao incapaz em regra não vale, salvo se provado que o valor de fato beneficiou e reverteu em proveito do incapaz."
-    },
-    {
-      "id": "a7a17f76-6137-4421-bf3f-761e414ab10e",
-      "subject": "Objeto do pagamento e sua prova",
-      "bank": "FGV",
-      "difficulty": "Difícil",
-      "enunciado": "(FGV) Patrícia adquire um terreno com pagamento dividido em 24 prestações periódicas e consecutivas representada por notas promissórias. Ao pagar a 24ª prestação, o credor entrega o recibo sem fazer qualquer ressalva sobre as parcelas anteriores. Meses depois, o credor ingressa com ação de cobrança alegando que as parcelas 3 e 4 não foram adimplidas. Considerando as regras do Código Civil sobre quotas periódicas e devolução de título, assinale a opção correta:",
-      "options": {
-        "A": "A quitação da última parcela não gera qualquer presunção de pagamento das anteriores, devendo Patrícia apresentar o recibo de todas as 24 parcelas.",
-        "B": "Sendo a dívida pagável em quotas periódicas, a quitação da última faz presumir, até prova em contrário, solvidas as anteriores. Ademais, a entrega do título faz presumir o pagamento.",
-        "C": "O credor tem direito de exigir a prova do pagamento das parcelas anteriores de forma absoluta, sendo nula qualquer presunção de adimplemento sem o respectivo comprovante escrito.",
-        "D": "A quitação da última cota presume extintos os juros e o capital de forma irretratável, vedada qualquer prova em contrário pelo credor.",
-        "E": "A devolução das notas promissórias extingue a dívida por novação presumida e impede a cobrança judicial mesmo que comprovada fraude do devedor."
-      },
-      "gabarito": "B",
-      "article": "Art. 322 e Art. 324 do Código Civil",
-      "legal_basis": "Arts. 322, 323 e 324 do Código Civil.",
-      "explanation": "O art. 322 estabelece que a quitação da última quota periódica faz presumir, até prova em contrário, solvidas as anteriores (presunção iuris tantum). O art. 324 estatui que a entrega do título ao devedor faz presumir o pagamento. Portanto, Patrícia goza de presunção legal, cabendo ao credor provar o inadimplemento."
-    },
-    {
-      "id": "0645e40e-30e5-4075-a7a8-2c01afa2d5b0",
-      "subject": "Inadimplemento - Disposições gerais",
-      "bank": "FGV",
-      "difficulty": "Médio",
-      "enunciado": "(FGV) Bernardo assume a obrigação de não construir edificação que ultrapasse a altura do muro divisório da propriedade de Arthur. Bernardo descumpre a obrigação e constrói um anexo de dois andares. Arthur exige a demolição e perdas e danos. Bernardo alega que Arthur deveria tê-lo interpelado judicialmente para constituí-lo em mora antes de exigir indenização. Ã€ luz do Código Civil, Bernardo:",
-      "options": {
-        "A": "Tem razão, pois as obrigações de não fazer exigem notificação prévia de 15 dias antes de configurado o inadimplemento.",
-        "B": "Ã‰ considerado inadimplente desde o dia em que realizou o ato que se havia obrigado a abster-se, independentemente de interpelação.",
-        "C": "Só responde pelo valor do custo da demolição, sendo indevida qualquer verba a título de perdas e danos devido à natureza da obrigação.",
-        "D": "Não responde pelo inadimplemento se demonstrar que a construção valorizou o imóvel vizinho de Arthur.",
-        "E": "Pode purgar a mora a qualquer tempo oferecendo desfazer a obra em 90 dias sem arcar com indenização."
-      },
-      "gabarito": "B",
-      "article": "Art. 390 do Código Civil",
-      "legal_basis": "Art. 390 do Código Civil.",
-      "explanation": "Nas obrigações de não fazer, o devedor é considerado inadimplente desde o dia em que executa o ato de que se devia abster (mora presumida, de pleno direito). Não há necessidade de interpelação ou notificação prévia."
-    },
-    {
-      "id": "193a48ab-624f-4c85-962b-f6827754d711",
-      "subject": "Mora - Geral",
-      "bank": "CESPE",
-      "difficulty": "Difícil",
-      "enunciado": "(CESPE) No que tange à purgação da mora e mora do credor, julgue a opção que reflete a disciplina do Código Civil brasileiro:",
-      "options": {
-        "A": "A mora do credor isenta o devedor, em qualquer hipótese, da responsabilidade pela conservação da coisa, mesmo que o devedor aja com dolo.",
-        "B": "A purgação da mora pelo credor consiste em oferecer-se a receber o pagamento e sujeitar-se aos efeitos da sua mora até a mesma data.",
-        "C": "O devedor em mora responde pela impossibilidade da prestação, exceto se provar que a impossibilidade ocorreria mesmo se a obrigação tivesse sido adimplida no prazo.",
-        "D": "A mora do credor obriga-o a ressarcir as despesas com a conservação da coisa, mas não suspende a fluência dos juros de mora contra o devedor.",
-        "E": "A purgação da mora pelo devedor extingue retroativamente todos os efeitos dos juros já acumulados, desobrigando-o do pagamento das custas."
-      },
-      "gabarito": "B",
-      "article": "Art. 401 do Código Civil",
-      "legal_basis": "Art. 399, Art. 400 e Art. 401 do Código Civil.",
-      "explanation": "O art. 401, II, do CC determina que se purga a mora 'por parte do credor, oferecendo-se a receber o pagamento e sujeitando-se aos efeitos da sua mora até a mesma data'. A alternativa C erra porque omitiu a parte final do art. 399 ('se provar que o dano sobreviria, ainda que a obrigação fosse oportunamente desempenhada'). A alternativa A erra porque o art. 400 ressalva o dolo do devedor."
-    },
-    {
-      "id": "55f535c3-b539-4374-92c7-013d8ac9fe3e",
-      "subject": "Juros legais",
-      "bank": "FGV",
-      "difficulty": "Médio",
-      "enunciado": "(FGV) Douglas ingressou com ação de cobrança de dívida contratual não adimplida. As partes não estipularam no contrato a taxa de juros de mora a ser aplicada em caso de inadimplemento. De acordo com as disposições do Código Civil e a jurisprudência dominante, como devem ser calculados os juros moratórios legais?",
-      "options": {
-        "A": "Os juros de mora são limitados a 1% ao ano, aplicando-se subsidiariamente as regras do Código Tributário Nacional.",
-        "B": "Quando não convencionados, os juros moratórios serão fixados segundo a taxa que estiver em vigor para a mora do pagamento de impostos devidos à Fazenda Nacional (taxa referencial Selic).",
-        "C": "Na omissão das partes, aplica-se a taxa de 12% ao ano com capitalização diária, vedada a incidência de qualquer correção monetária concomitante.",
-        "D": "Os juros moratórios dependem de alegação de prejuízo do credor e só podem ser cobrados se demonstrada a culpa grave do devedor.",
-        "E": "A taxa aplicável é a taxa média de mercado de empréstimos pessoais divulgada mensalmente pelo Banco Central do Brasil."
-      },
-      "gabarito": "B",
-      "article": "Art. 406 do Código Civil",
-      "legal_basis": "Art. 406 e Art. 407 do Código Civil.",
-      "explanation": "O art. 406 do CC dispõe que, quando não convencionados, os juros moratórios são calculados segundo a taxa vigente para a mora do pagamento de impostos devidos à Fazenda Nacional (taxa Selic, conforme tese fixada pelo STJ). O art. 407 complementa que são devidos independentemente de alegação de prejuízo."
-    },
-    {
-      "id": "26468f6e-4e4b-4e0f-aa5e-0f6808040051",
-      "subject": "Arras ou sinal",
-      "bank": "FGV",
-      "difficulty": "Difícil",
-      "enunciado": "(FGV) Patrícia e Rodrigo firmaram compromisso de compra e venda de imóvel com entrega de arras confirmatórias de R$ 50.000,00 por Patrícia. O contrato não previu direito de arrependimento. Rodrigo deu causa ao inadimplemento definitivo da obrigação por desistência culposa. Patrícia comprova que o prejuízo real superou o valor do sinal recebido. Ã€ luz do Código Civil, Patrícia pode:",
-      "options": {
-        "A": "Apenas reaver os R$ 50.000,00 originais, sendo vedada qualquer indenização suplementar em arras confirmatórias.",
-        "B": "Exigir a devolução do sinal mais o equivalente (sinal em dobro), com atualização monetária, juros e honorários de advogado. E, se provar maior prejuízo, pleitear indenização suplementar.",
-        "C": "Pedir a conversão automática das arras confirmatórias em cláusula penal compensatória reduzida judicialmente.",
-        "D": "Reter o sinal original de forma perpétua, extinguindo a obrigação sem possibilidade de indenização complementar.",
-        "E": "Pedir apenas a devolução simples do sinal sob pena de enriquecimento sem causa."
-      },
-      "gabarito": "B",
-      "article": "Art. 418 e Art. 419 do Código Civil",
-      "legal_basis": "Arts. 418, 419 e 420 do Código Civil.",
-      "explanation": "Nas arras confirmatórias (sem direito de arrependimento), a parte inocente pode exigir a devolução das arras mais o equivalente (ou seja, arras em dobro) se a outra parte der causa à inexecução. Se provar que os prejuízos reais superaram o sinal, pode pedir indenização suplementar (art. 419). Nas arras penitenciais (com direito de arrependimento), não há direito a indenização suplementar (art. 420)."
-    },
-    {
-      "id": "1f7fd365-7b63-4ee3-904c-3ab3233bce41",
-      "subject": "Confusão",
+      "subject": "Promessa de Fato de Terceiro",
       "bank": "OAB",
       "difficulty": "Médio",
-      "enunciado": "(OAB) Rafael emitiu uma nota promissória a favor de seu tio Larissa no valor de R$ 50.000,00. Posteriormente, Larissa falece e, em seu testamento, deixa todo o seu patrimônio (incluindo o referido crédito) para seu único herdeiro e sobrinho Rafael. Ã€ luz das regras do Código Civil acerca da confusão, assinale a opção correta:",
+      "enunciado": "(OAB / FGV) Mário prometeu a José que sua irmã Clara, arquiteta premiada, elaboraria gratuitamente o projeto de reforma da casa de José. Todavia, Clara recusou-se veementemente a prestar o serviço, afirmando nada ter contratado com José. À luz do art. 439 do Código Civil:",
       "options": {
-        "A": "A obrigação extingue-se por confusão, posto que as qualidades de credor e devedor reuniram-se na figura de uma única pessoa.",
-        "B": "A obrigação permanece ativa, devendo o devedor pagar a si mesmo e recolher o imposto de transmissão correspondente.",
-        "C": "Trata-se de hipótese de compensação tácita testamentária, pois o devedor herdou o crédito do próprio devedor.",
-        "D": "A confusão, por ser causa de extinção meramente provisória, impede a cobrança de juros mas mantém as garantias prestadas por fiador.",
-        "E": "Se a confusão cessar posteriormente (ex: surgimento de testamento mais recente anulando o anterior), a obrigação original não se restabelece."
+        "A": "José pode ajuizar ação de obrigação de fazer contra Clara para compeli-la ao trabalho.",
+        "B": "Mário responderá por perdas e danos perante José, em razão da inexecução da obrigação prometida.",
+        "C": "Clara e Mário respondem solidariamente por perdas e danos perante José.",
+        "D": "O contrato é nulo por ilicitude do objeto, restando as partes desobrigadas."
+      },
+      "gabarito": "B",
+      "article": "Art. 439 do Código Civil",
+      "legal_basis": "Art. 439 do Código Civil.",
+      "explanation": "Art. 439 do CC: 'Aquele que tiver prometido fato de terceiro responderá por perdas e danos, quando este o não executar'. O terceiro estranho à avença não tem responsabilidade civil.",
+      "id": "051c94f6-53ca-4ddd-b96c-e2db8c9ad7e3"
+    },
+    {
+      "subject": "Promessa de Fato de Terceiro",
+      "bank": "FCC",
+      "difficulty": "Médio",
+      "enunciado": "(FCC / Analista) Quando cessa a responsabilidade daquele que prometeu fato de terceiro, conforme as disposições do Código Civil?",
+      "options": {
+        "A": "Quando o terceiro se comprometer perante o credor a executar a obrigação, assumindo-a (Art. 440 do CC).",
+        "B": "Apenas quando o terceiro concluir integralmente a prestação do fato.",
+        "C": "No prazo decadencial de 30 dias contados da celebração da promessa.",
+        "D": "Nunca cessa, permanecendo como fiador legal perpétuo do terceiro."
       },
       "gabarito": "A",
-      "article": "Art. 381 do Código Civil",
-      "legal_basis": "Art. 381 e Art. 384 do Código Civil.",
-      "explanation": "A reunião das qualidades de credor e devedor na mesma pessoa gera extinção da obrigação por confusão (art. 381, CC). Se a confusão cessar por causa superveniente (como a anulação do inventário/testamento), a obrigação renasce com todos os seus acessórios e garantias (art. 384, CC)."
+      "article": "Art. 440 do Código Civil",
+      "legal_basis": "Art. 440 do Código Civil.",
+      "explanation": "Art. 440 do CC: 'Nenhuma obrigação haverá para quem se comprometer por outrem, se este, depois de se ter obrigado, faltar à prestação'. Uma vez assumida a obrigação pelo terceiro perante o credor, o promitente fica exonerado.",
+      "id": "dda2d9a4-f95f-47e5-b2f7-9f496c4476bf"
     },
     {
-      "id": "04cf3a22-0c9d-47d4-916f-65d5fa67041e",
-      "subject": "Pagamento - Geral",
-      "bank": "OAB",
+      "subject": "Contratos Aleatórios - Conceito e Espécies",
+      "bank": "CESPE",
       "difficulty": "Médio",
-      "enunciado": "(OAB) João contraiu a obrigação de realizar a entrega de um trator seminovo a Marcos. Diante do vencimento da obrigação, João efetua a entrega voluntária do bem de acordo com as especificações pactuadas. Ã€ luz do Direito Civil, a extinção voluntária da obrigação por meio da execução espontânea da prestação devida caracteriza o(a):",
+      "enunciado": "(CESPE / Juiz) A respeito da teoria geral dos contratos aleatórios no Código Civil, assinale a opção correta.",
       "options": {
-        "A": "Novação, haja vista que a entrega do trator substitui a obrigação originária pecuniária de forma imediata.",
-        "B": "Adimplemento (ou pagamento), que é a execução voluntária da prestação devida pelo sujeito passivo ao sujeito ativo, extinguindo a relação jurídica obrigacional.",
-        "C": "Remissão de dívidas, haja vista o desprendimento patrimonial voluntário em benefício do credor.",
-        "D": "Dação em pagamento tácita, uma vez que a obrigação envolveu a entrega de coisa móvel infungível.",
-        "E": "Imputação do pagamento unilateral, por iniciativa exclusiva do devedor do débito."
-      },
-      "gabarito": "B",
-      "article": "Art. 304 do Código Civil",
-      "legal_basis": "Art. 304 do Código Civil.",
-      "explanation": "O pagamento (ou adimplemento) é o principal meio de extinção das obrigações, consistindo no cumprimento voluntário e espontâneo da prestação pactuada (seja de dar, fazer ou não fazer) pelo devedor em favor do credor."
-    },
-    {
-      "id": "a32cffd5-4f4c-4bc3-a635-e6e2780407a7",
-      "subject": "Quem deve pagar",
-      "bank": "OAB",
-      "difficulty": "Difícil",
-      "enunciado": "(OAB) Rogério, devedor de uma obrigação de dar coisa certa, efetua o pagamento a Cláudio mediante a entrega de um veículo que pertence a seu pai, do qual Rogério não tinha autorização para dispor ou alienar. Sobre a validade desse pagamento envolvendo a transmissão de propriedade, de acordo com as normas do Código Civil, assinale a opção correta:",
-      "options": {
-        "A": "O pagamento é plenamente válido, cabendo ao verdadeiro proprietário (pai de Rogério) apenas pleitear indenização por perdas e danos contra o credor Cláudio.",
-        "B": "Só vale o pagamento que importe transmissão da propriedade, quando feito por quem possa alienar a coisa; contudo, se for coisa fungível consumida de boa-fé, o pagamento será eficaz.",
-        "C": "O pagamento por terceiro não proprietário é anulável no prazo decadencial de 4 anos a contar da data da tradição do bem móvel.",
-        "D": "A validade da transmissão de propriedade de coisas móveis no adimplemento independe da titularidade do devedor, operando-se com a simples tradição.",
-        "E": "O credor Cláudio responderá solidariamente com Rogério pelo crime de receptação culposa, independentemente de sua boa-fé."
-      },
-      "gabarito": "B",
-      "article": "Art. 307 do Código Civil",
-      "legal_basis": "Art. 307 do Código Civil.",
-      "explanation": "Pelo caput do art. 307, só vale o pagamento que importe transmissão da propriedade quando feito por quem possa alienar a coisa. O parágrafo único, contudo, traz a exceção: se se der em pagamento coisa fungível, e o credor a receber de boa-fé, e a consumir, não se poderá mais reclamar do credor, resolvendo-se a relação em perdas e danos contra o pagador."
-    },
-    {
-      "id": "4fa95cb5-fccd-4b3c-b99f-0de6f71efb2e",
-      "subject": "A quem se deve pagar",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB) Júlio comparece ao estabelecimento de Flávio para adimplir uma obrigação contratual. No caixa do estabelecimento, encontra-se Roberto, funcionário que habitualmente atende no local e porta o respectivo bloco de recibos com a logomarca da empresa. Júlio paga a Roberto e recebe a respectiva quitação. Mais tarde, Flávio afirma que Roberto havia sido demitido no dia anterior e não tinha poderes para receber. Ã€ luz do Código Civil, o pagamento efetuado por Júlio:",
-      "options": {
-        "A": "Ã‰ ineficaz por ter sido feito a terceiro sem poderes de representação vigentes.",
-        "B": "Ã‰ válido, pois considera-se autorizado a receber o pagamento o portador da quitação, salvo se as circunstâncias contrariarem a presunção resultante desse título.",
-        "C": "Ã‰ nulo por envolver credor putativo de má-fé, devendo Júlio pagar novamente a Flávio.",
-        "D": "Gera solidariedade ativa automática entre Roberto e Flávio em relação ao valor recebido.",
-        "E": "Ã‰ anulável por erro substancial sobre a pessoa do credor."
-      },
-      "gabarito": "B",
-      "article": "Art. 311 do Código Civil",
-      "legal_basis": "Art. 311 do Código Civil.",
-      "explanation": "De acordo com o art. 311 do CC, considera-se autorizado a receber o pagamento o portador da quitação, exceto se as circunstâncias contrariarem a presunção resultante desse título. Como Roberto portava o recibo e as circunstâncias eram normais, o pagamento é perfeitamente válido."
-    },
-    {
-      "id": "d614e17a-7848-41c5-84ea-3c587fdd8434",
-      "subject": "Objeto do pagamento e sua prova",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB) Marcelo contraiu obrigação pecuniária de R$ 20.000,00 com vencimento em 30 dias perante Fábio. No vencimento, em razão de crise inflacionária severa e desequilíbrio imprevisível no contrato, Fábio exige a atualização do valor com base em moeda estrangeira ou ouro. Marcelo recusa-se e oferece o valor nominal em Real. Considerando as regras sobre prestação em dinheiro e teoria da imprevisão, assinale a opção correta:",
-      "options": {
-        "A": "Fábio está correto, pois o credor pode exigir a correção da moeda estrangeira em qualquer hipótese de desvalorização.",
-        "B": "O pagamento em dinheiro deve ser feito em moeda corrente nacional, pelo valor nominal, sendo nulas as convenções de pagamento em ouro ou moeda estrangeira, ressalvados os casos previstos em lei especial.",
-        "C": "A teoria da imprevisão autoriza a alteração unilateral do objeto pelo credor sempre que ocorrer inflação acima de dois dígitos.",
-        "D": "As obrigações em dinheiro devem ser pagas na cotação oficial do dólar americano do dia do vencimento.",
-        "E": "O juiz pode corrigir o valor nominal apenas se houver cláusula de escala móvel, sendo vedada a revisão em contratos sem tal cláusula."
-      },
-      "gabarito": "B",
-      "article": "Art. 315 e Art. 318 do Código Civil",
-      "legal_basis": "Arts. 315, 317 e 318 do Código Civil.",
-      "explanation": "O art. 315 consagra o princípio do nominalismo (moeda nacional pelo valor nominal). O art. 318 estatui a nulidade de convenções de pagamento em ouro, moeda estrangeira ou de compensação de diferença cambial. A teoria da imprevisão (art. 317) permite revisão pelo juiz, a requerimento da parte, mas não alteração unilateral."
-    },
-    {
-      "id": "ac01a576-fe38-4090-9148-50ccfcb44d94",
-      "subject": "Tempo do pagamento",
-      "bank": "OAB",
-      "difficulty": "Difícil",
-      "enunciado": "(OAB) André contraiu uma obrigação perante Renato com vencimento em 10 de dezembro. O contrato contava com fiança de Eduardo. Em 15 de outubro, André teve sua falência decretada judicialmente por insolvência. Renato cobra a dívida imediatamente de André e de seu fiador Eduardo em 20 de outubro. Eduardo recusa-se a pagar, alegando que o prazo do contrato não venceu. Sobre o tempo do pagamento e cobrança antecipada, assinale a opção correta:",
-      "options": {
-        "A": "Renato pode cobrar antecipadamente André e o fiador Eduardo de forma solidária e imediata devido à quebra de André.",
-        "B": "A cobrança antecipada por insolvência do devedor principal é ineficaz contra o fiador ou codevedores solventes, que continuam vinculados apenas ao termo original do contrato.",
-        "C": "O fiador Eduardo está obrigado ao pagamento imediato, pois a insolvência do devedor extingue o benefício de ordem e propaga os efeitos do vencimento antecipado a todos os garantidores.",
-        "D": "A falência do devedor não autoriza o vencimento antecipado das obrigações civis, aplicando-se apenas às obrigações estritamente empresariais.",
-        "E": "Eduardo está desonerado da fiança, pois a falência do devedor principal extingue as garantias acessórias automaticamente."
-      },
-      "gabarito": "B",
-      "article": "Art. 333 do Código Civil",
-      "legal_basis": "Art. 333, parágrafo único do Código Civil.",
-      "explanation": "O art. 333 do CC autoriza o vencimento antecipado em caso de insolvência ou falência do devedor (inciso I). No entanto, o parágrafo único determina expressamente que nos casos de solidariedade passiva (ou fiança), o vencimento antecipado não se propaga aos codevedores ou fiadores solventes."
-    },
-    {
-      "id": "f3074668-d489-4308-b9a6-24e874c43b9c",
-      "subject": "Inadimplemento - Disposições gerais",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB) Em razão do descumprimento culposo de um contrato de prestação de serviços por parte de Ricardo, o credor Felipe ingressa com ação de execução. Ricardo alega que não possui bens suficientes para honrar o débito e que sua responsabilidade deve se limitar aos bens dados em garantia contratual específica. Sobre a responsabilidade patrimonial no inadimplemento, de acordo com o Código Civil, assinale a opção correta:",
-      "options": {
-        "A": "Ricardo responde exclusivamente com os bens que estavam indicados como garantia no instrumento contratual original.",
-        "B": "Pelo inadimplemento das obrigações respondem todos os bens do devedor, ressalvadas as restrições e impenhorabilidades previstas em lei.",
-        "C": "A responsabilidade patrimonial civil limita-se a 30% dos bens líquidos do devedor para evitar superendividamento.",
-        "D": "O credor só pode executar os bens do devedor após comprovar que a dívida não decorreu de caso fortuito ou força maior de natureza econômica.",
-        "E": "O inadimplemento gera a prisão civil por dívida do devedor inadimplente caso este oculte bens da execução."
-      },
-      "gabarito": "B",
-      "article": "Art. 391 do Código Civil",
-      "legal_basis": "Art. 391 do Código Civil.",
-      "explanation": "O art. 391 do Código Civil estabelece a regra da responsabilidade patrimonial genérica: 'Pelo inadimplemento das obrigações respondem todos os bens do devedor'. Obviamente, excetuam-se os bens impenhoráveis na forma da lei especial (Lei 8.009/90 e CPC)."
-    },
-    {
-      "id": "3f8c58b9-70b5-441a-9bd9-d8dd8512e2c6",
-      "subject": "Perdas e danos",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB) Diante do inadimplemento culposo de uma obrigação contratual por parte do devedor, o credor pleiteia indenização abrangendo danos emergentes, lucros cessantes e prejuízos remotos sofridos em sua atividade econômica de forma reflexa. Com relação ao nexo de causalidade das perdas e danos no Código Civil, assinale a opção correta:",
-      "options": {
-        "A": "O devedor responde por todos os prejuízos diretos, indiretos e reflexos sofridos pelo credor, bastando haver liame histórico entre os fatos.",
-        "B": "Salvo as exceções previstas em lei, as perdas e danos devidas ao credor abrangem apenas o que ele efetivamente perdeu (danos emergentes), vedada a indenização por lucros cessantes.",
-        "C": "Ainda que o inadimplemento resulte de dolo do devedor, as perdas e danos só incluem os prejuízos efetivos e os lucros cessantes que decorram direta e imediatamente do inadimplemento.",
-        "D": "O nexo de causalidade no direito obrigacional adota a teoria do escopo da norma, que veda a indenização por lucros cessantes decorrentes de mora contratual simples.",
-        "E": "O valor das perdas e danos deve ser fixado equitativamente pelo juiz, sendo nula qualquer cláusula de prefixação das perdas e danos pelas partes."
-      },
-      "gabarito": "C",
-      "article": "Art. 403 do Código Civil",
-      "legal_basis": "Art. 402 e Art. 403 do Código Civil.",
-      "explanation": "Pelo art. 403 do CC, as perdas e danos só incluem os prejuízos efetivos e lucros cessantes decorrentes direta e imediatamente do inadimplemento. A teoria adotada é a do dano direto e imediato (teoria da interrupção do nexo causal), mesmo em caso de dolo do devedor."
-    },
-    {
-      "subject": "A quem se deve pagar",
-      "bank": "OAB",
-      "difficulty": "Médio",
-      "enunciado": "(OAB) Marcelo deve R$ 50.000,00 a Fernando. Por desconhecer que o crédito de Fernando havia sido penhorado em execução movida por terceiro, Marcelo paga a Fernando diretamente. Considerando essa situação, assinale a opção correta.",
-      "options": {
-        "A": "O pagamento é válido se Marcelo desconhecia a penhora e agiu de boa-fé.",
-        "B": "O pagamento é nulo, pois a penhora torna o credor absolutamente incapaz de receber.",
-        "C": "O pagamento só é válido se houver autorização judicial expressa.",
-        "D": "O pagamento é anulável, cabendo ao credor penhorante ação anulatória."
+        "A": "Diferenciam-se dos contratos comutativos porque neles a prestação de uma das partes fica subordinada a uma álea (risco de perda ou ganho futuro).",
+        "B": "São sempre vedados pelo ordenamento civil quando envolverem produtos agrícolas ou safras futuras.",
+        "C": "Permitem que qualquer das partes rescinda imotivadamente o contrato sem pagar o preço acordado caso o evento incerto se concretize.",
+        "D": "Classificam-se unicamente como contratos gratuitos e reais."
       },
       "gabarito": "A",
-      "article": "Art. 312 CC",
-      "legal_basis": "Art. 312 do Código Civil.",
-      "explanation": "O art. 312 dispõe: 'Se o devedor pagar ao credor, ignorando estar este impedido de receber, valerá o pagamento, se o devedor não tinha conhecimento da penhora ou do concurso de credores'. A boa-fé do devedor é protegida pela lei, sendo válido o pagamento.",
-      "id": "f70ec82b-5b46-4ad8-98be-14d562112c92"
+      "article": "Arts. 458 a 461 do Código Civil",
+      "legal_basis": "Arts. 458 a 461 do Código Civil e Doutrina Contratual.",
+      "explanation": "Nos contratos aleatórios, a incerteza futura (álea) faz parte da causa do contrato, assumindo uma das partes o risco de receber prestação desproporcional ou mesmo nada receber, pagando o preço ajustado.",
+      "id": "f01291f9-611a-41a8-a50f-d91d6c12b34d"
     },
     {
-      "subject": "Imputação do pagamento",
+      "subject": "Contrato Aleatório: Emptio Spei",
       "bank": "OAB",
       "difficulty": "Médio",
-      "enunciado": "(OAB) O devedor, sem imputar o pagamento, paga parte das dívidas que possui com o mesmo credor. As dívidas são: uma com juros, uma com garantia real e uma mais antiga. Assinale a alternativa correta quanto à imputação legal.",
+      "enunciado": "(OAB / FGV) Rodrigo comprou de um pescador profissional, pelo valor fechado de R$ 800,00 pago no ato, todo o produto que viesse a ser pescado no próximo lançamento de rede no mar. Ficou ajustado expressamente que Rodrigo assumiria o risco de nada vir a ser capturado (venda da esperança). O pescador lançou a rede adequadamente, mas nenhum peixe foi apanhado. Diante do Art. 458 do Código Civil:",
       "options": {
-        "A": "A imputação recai primeiro sobre a dívida vencida mais antiga, depois a mais onerosa.",
-        "B": "A imputação recai primeiro sobre a dívida mais onerosa entre as vencidas.",
-        "C": "A imputação recai proporcionalmente sobre todas as dívidas existentes.",
-        "D": "A imputação recai primeiro sobre a dívida com garantia real, depois a mais antiga."
+        "A": "O pescador tem direito de reter o valor integral recebido, desde que de sua parte não tenha havido dolo ou culpa, ainda que nada venha a existir.",
+        "B": "O pescador é obrigado a restituir o valor pago, sob pena de enriquecimento sem causa.",
+        "C": "O contrato é nulo por ausência de objeto no plano da existência.",
+        "D": "O pescador deve lançar a rede até que capture quantidade proporcional aos R$ 800,00 pagos."
+      },
+      "gabarito": "A",
+      "article": "Art. 458 do Código Civil",
+      "legal_basis": "Art. 458 do Código Civil.",
+      "explanation": "Art. 458 (Emptio Spei): O risco assumido pelo adquirente diz respeito à própria existência da coisa. O alienante tem direito a todo o preço desde que não tenha agido com dolo ou culpa, ainda que nada venha a existir.",
+      "id": "ab7f66fc-e15d-4bae-93bb-44fe6558864d"
+    },
+    {
+      "subject": "Contrato Aleatório: Emptio Rei Speratae",
+      "bank": "OAB",
+      "difficulty": "Médio",
+      "enunciado": "(OAB / FGV) Mariana adquiriu do produtor rural Paulo toda a safra futura de tomates de sua fazenda por R$ 30.000,00, ajustando que assumiria o risco sobre a quantidade que viesse a ser colhida (emptio rei speratae). Todavia, por motivos climáticos imprevisíveis e sem culpa de Paulo, a lavoura foi completamente dizimada, não tendo sido colhido um único tomate (quantidade zero). À luz do parágrafo único do Art. 459 do Código Civil:",
+      "options": {
+        "A": "Alienação não haverá, e o alienante Paulo restituirá integralmente o preço recebido de Mariana.",
+        "B": "Mariana deve pagar o valor integral de R$ 30.000,00 tendo em vista a álea contratual assumida.",
+        "C": "Paulo deve indenizar Mariana em perdas e danos equivalentes ao lucro que ela obteria no mercado.",
+        "D": "O contrato converte-se automaticamente em comodato remunerado."
+      },
+      "gabarito": "A",
+      "article": "Art. 459, parágrafo único do Código Civil",
+      "legal_basis": "Art. 459, parágrafo único do Código Civil.",
+      "explanation": "Na Emptio Rei Speratae (art. 459), o adquirente assume o risco da quantidade, mas NÃO da existência. 'Se da coisa nada vier a existir, alienação não haverá, e o alienante restituirá o preço recebido'.",
+      "id": "f92f139f-46c0-4e92-b7ac-b136cd375eae"
+    },
+    {
+      "subject": "Contrato Aleatório: Coisas Existentes Expostas a Risco",
+      "bank": "VUNESP",
+      "difficulty": "Difícil",
+      "enunciado": "(VUNESP / Magistratura) Nos contratos aleatórios que têm por objeto coisas existentes mas expostas a risco (art. 460 do CC), o alienante terá direito a todo o preço mesmo que a coisa já não existisse no dia do contrato, DESDE QUE:",
+      "options": {
+        "A": "O alienante estivesse de boa-fé, desconhecendo a consumação do sinistro na data da celebração.",
+        "B": "O adquirente renuncie expressamente à garantia de evicção perante tabelião de notas.",
+        "C": "O contrato seja firmado exclusivamente por instrumento público registrado em cartório.",
+        "D": "A perda da coisa tenha ocorrido por fato do príncipe."
+      },
+      "gabarito": "A",
+      "article": "Art. 460 e Art. 461 do Código Civil",
+      "legal_basis": "Arts. 460 e 461 do Código Civil.",
+      "explanation": "Art. 461: A alienação aleatória a risco pode ser anulada pelo adquirente se ele provar que o alienante não ignorava a consumação do risco (ou seja, sabia que a coisa já havia perecido e agiu de má-fé).",
+      "id": "a278678e-07a1-4747-af76-fa9e4d31a287"
+    },
+    {
+      "subject": "Contrato Preliminar / Promessa de Contratar",
+      "bank": "OAB",
+      "difficulty": "Médio",
+      "enunciado": "(OAB / FGV) Acerca do contrato preliminar no Código Civil (arts. 462 a 466), assinale a afirmativa correta.",
+      "options": {
+        "A": "O contrato preliminar deve conter todos os requisitos essenciais ao contrato a ser celebrado, exceto quanto à forma.",
+        "B": "O contrato preliminar de compra e venda de imóvel de alto valor exige necessariamente a forma de escritura pública sob pena de nulidade absoluta.",
+        "C": "O descumprimento do contrato preliminar gera unicamente direito a perdas e danos, sendo vedada a adjudicação compulsória.",
+        "D": "A validade do contrato preliminar depende de registro imobiliário prévio."
+      },
+      "gabarito": "A",
+      "article": "Art. 462 do Código Civil",
+      "legal_basis": "Art. 462 do Código Civil.",
+      "explanation": "Art. 462 do CC: 'O contrato preliminar, exceto quanto à forma, deve conter todos os requisitos essenciais ao contrato a ser celebrado'. Consagra o princípio da atração mitigada.",
+      "id": "6f7243a4-f936-457e-a184-a005f0a627e8"
+    },
+    {
+      "subject": "Contrato Preliminar / Promessa de Contratar",
+      "bank": "FCC",
+      "difficulty": "Médio",
+      "enunciado": "(FCC / PGE) Concluído o contrato preliminar sem cláusula de arrependimento, se uma das partes se recusar a celebrar o contrato definitivo, a outra parte poderá:",
+      "options": {
+        "A": "Requerer ao juiz que supra a manifestação de vontade, conferindo à sentença o caráter definitivo do contrato prometido (Art. 464 do CC).",
+        "B": "Apenas pleitear rescisão com retenção de arras, sem possibilidade de tutela específica.",
+        "C": "Promover a prisão civil do promitente inadimplente por crime de desobediência contratual.",
+        "D": "Exigir a conversão forçada do contrato em doação onerosa."
+      },
+      "gabarito": "A",
+      "article": "Art. 464 do Código Civil",
+      "legal_basis": "Art. 464 do Código Civil.",
+      "explanation": "Art. 464 do CC: 'Esgotado o prazo, poderá o contraente exigir a celebração do definitivo, conferindo o juiz, a pedido da parte, caráter definitivo ao contrato, sendo isso possível pela sua natureza'.",
+      "id": "e8f0fcd4-6006-4770-bbf3-75a9dbe10b39"
+    },
+    {
+      "subject": "Contrato com Pessoa a Declarar",
+      "bank": "OAB",
+      "difficulty": "Médio",
+      "enunciado": "(OAB / FGV) No momento da celebração de compra e venda de um imóvel, o comprador reservou-se a faculdade de indicar a pessoa que deve adquirir os direitos e assumir as obrigações dele decorrentes (contrato com pessoa a declarar). O prazo legal para comunicar a indicação (electio amici) à outra parte, se outro não tiver sido estipulado pelos contraentes, é de:",
+      "options": {
+        "A": "Cinco dias da conclusão do contrato.",
+        "B": "Quinze dias da imissão na posse.",
+        "C": "Trinta dias da assinatura da escritura.",
+        "D": "Seis meses da tradição efetiva."
+      },
+      "gabarito": "A",
+      "article": "Art. 468 do Código Civil",
+      "legal_basis": "Art. 468, caput do Código Civil.",
+      "explanation": "Art. 468 do CC: 'Essa indicação deve ser comunicada à outra parte no prazo de cinco dias da conclusão do contrato, se outro não tiver sido estipulado pelos contraentes'.",
+      "id": "10287afb-d893-4fdf-ab38-a126ceb7ad49"
+    },
+    {
+      "subject": "Contrato com Pessoa a Declarar vs. Outros Contratos",
+      "bank": "CESPE",
+      "difficulty": "Difícil",
+      "enunciado": "(CESPE / Procuradoria) A respeito da distinção do Contrato com Pessoa a Declarar frente a outras figuras contratuais, assinale a opção correta.",
+      "options": {
+        "A": "Distingue-se do mandato porque a parte age em nome próprio e, caso a pessoa indicada não aceite a nomeação ou seja insolvente, o contrato produzirá efeitos unicamente entre os contraentes originários.",
+        "B": "Equipara-se plenamente à estipulação em favor de terceiro, pois o terceiro nunca assume obrigações pecuniárias.",
+        "C": "Configura hipótese de representação direta necessária, exonerando o estipulante originário em qualquer circunstância.",
+        "D": "Produz efeitos unicamente ex nunc a partir da declaração da pessoa indicada."
+      },
+      "gabarito": "A",
+      "article": "Art. 469 e Art. 470 do Código Civil",
+      "legal_basis": "Arts. 467, 469 e 470 do Código Civil.",
+      "explanation": "No contrato com pessoa a declarar, a parte contrata em seu próprio nome. Se a nomeação falhar, for recusada ou recair sobre incapaz/insolvente, o contrato produz seus efeitos originários entre os signatários (art. 470). Além disso, a nomeação válida opera efeitos retroativos ex tunc (art. 469).",
+      "id": "9e510397-355e-4083-8130-46f808c02e3b"
+    },
+    {
+      "subject": "Vícios Redibitórios - Conceito e Requisitos",
+      "bank": "OAB",
+      "difficulty": "Médio",
+      "enunciado": "(OAB / FGV) A respeito dos vícios redibitórios disciplinados no Código Civil (arts. 441 a 446), assinale a afirmativa correta.",
+      "options": {
+        "A": "Aplicam-se aos contratos comutativos onerosos e também às doações onerosas (com encargo).",
+        "B": "Configuram-se mesmo diante de defeitos ostensivos e de fácil constatação prévia pelo adquirente.",
+        "C": "Podem ser invocados nas doações puras e universais sem qualquer encargo pecuniário.",
+        "D": "A responsabilidade por vício redibitório depende sempre da comprovação de culpa ou má-fé do alienante."
+      },
+      "gabarito": "A",
+      "article": "Art. 441 do Código Civil",
+      "legal_basis": "Art. 441 e seu parágrafo único do Código Civil.",
+      "explanation": "Art. 441: A coisa recebida em contrato comutativo pode ser enjeitada por defeitos ocultos. Parágrafo único: 'É aplicável a disposição deste artigo às doações onerosas'. Nas doações puras não se responde por vício redibitório.",
+      "id": "1e9ae5c1-0825-48c5-b958-63eb4e8ddcab"
+    },
+    {
+      "subject": "Efeitos da Boa-fé e Má-fé do Alienante no Vício",
+      "bank": "OAB",
+      "difficulty": "Médio",
+      "enunciado": "(OAB / FGV) Pedro vendeu a Lucas um veículo seminovo que possuía grave defeito no bloco do motor, oculto e preexistente. Comprovou-se em juízo que Pedro tinha plena ciência do vício e o ocultou de Lucas. Consoante o Art. 443 do Código Civil, qual a consequência da má-fé do alienante?",
+      "options": {
+        "A": "Restituirá o que recebeu com perdas e danos.",
+        "B": "Restituirá apenas o valor recebido e as despesas do contrato, ficando isento de perdas e danos.",
+        "C": "Ficará isento de qualquer obrigação civil se o comprador tiver feito test drive.",
+        "D": "O contrato será convalidado mediante pagamento de multa civil de 2% ao Estado."
+      },
+      "gabarito": "A",
+      "article": "Art. 443 do Código Civil",
+      "legal_basis": "Art. 443 do Código Civil.",
+      "explanation": "Art. 443 do CC: 'Se o alienante conhecia o vício ou defeito da coisa, restituirá o que recebeu com perdas e danos; se o não conhecia, tão-somente restituirá o valor recebido, mais as despesas do contrato'.",
+      "id": "92f662cd-233a-48ae-872c-83000469ea87"
+    },
+    {
+      "subject": "Efeitos da Boa-fé e Má-fé do Alienante no Vício",
+      "bank": "FCC",
+      "difficulty": "Médio",
+      "enunciado": "(FCC / Magistratura) O alienante que desconhecia o vício oculto da coisa na data da venda (alienante de boa-fé):",
+      "options": {
+        "A": "Continua responsável pela garantia legal, devendo restituir o valor recebido mais as despesas do contrato, mas fica isento de pagar perdas e danos.",
+        "B": "Fica totalmente desonerado da obrigação de restituir o preço recebido.",
+        "C": "Responde por lucros cessantes presumidos fixados pelo juiz.",
+        "D": "Pode exigir que o adquirente arque com 50% dos custos do conserto."
+      },
+      "gabarito": "A",
+      "article": "Art. 443 do Código Civil",
+      "legal_basis": "Art. 443, 2ª parte do Código Civil.",
+      "explanation": "A garantia do vício redibitório é objetiva: mesmo quem ignorava o defeito deve aceitar o desfazimento do negócio ou o abatimento do preço e pagar despesas contratuais; a boa-fé apenas o exonera de perdas e danos.",
+      "id": "866134e5-635e-4abf-b9ed-059fe937c1d5"
+    },
+    {
+      "subject": "Ações Edilícias (Redibitória e Estimatória/Quanti Minoris)",
+      "bank": "OAB",
+      "difficulty": "Médio",
+      "enunciado": "(OAB / FGV) Constatado o vício redibitório em negócio de compra e venda civil, o adquirente dispõe das denominadas ações edilícias. A esse respeito, assinale a opção correta.",
+      "options": {
+        "A": "O adquirente tem o direito potestativo de optar entre enjeitar a coisa, redibindo o contrato (ação redibitória), ou pleitear abatimento proporcional do preço (ação estimatória ou quanti minoris).",
+        "B": "O vendedor é quem possui a prerrogativa exclusiva de escolher se devolve o dinheiro ou concede abatimento no preço.",
+        "C": "O comprador pode cumular no mesmo processo o pedido de rescisão contratual com devolução do bem e o abatimento de 50% do valor.",
+        "D": "A ação redibitória prescreve em 10 anos pelo prazo geral de responsabilidade civil."
+      },
+      "gabarito": "A",
+      "article": "Art. 442 do Código Civil",
+      "legal_basis": "Arts. 441 e 442 do Código Civil.",
+      "explanation": "As ações edilícias são disjuntivas/alternativas. O adquirente tem a opção potestativa: rejeitar a coisa rescidindo o contrato (ação redibitória) ou ficar com ela pedindo abatimento no preço (ação estimatória/quanti minoris).",
+      "id": "51ca2d12-8ace-4d12-89ab-cdfe7be88997"
+    },
+    {
+      "subject": "Vício Redibitório vs. Entrega de Coisa Diversa (Aliud Pro Alio)",
+      "bank": "CESPE",
+      "difficulty": "Difícil",
+      "enunciado": "(CESPE / Magistratura) A entrega de coisa diversa da contratada (aliud pro alio), como a entrega de um trator agrícola quando o pactuado foi uma colheitadeira de grãos:",
+      "options": {
+        "A": "Não constitui vício redibitório, mas sim inadimplemento absoluto da obrigação de dar, subordinando-se às regras do inadimplemento e aos prazos prescricionais gerais.",
+        "B": "Constitui modalidade de vício redibitório extrínseco, submetida ao prazo decadencial de trinta dias do art. 445 do CC.",
+        "C": "Equipara-se à evicção parcial presumida por lei civil.",
+        "D": "Importa em novação objetiva tácita irrevogável."
+      },
+      "gabarito": "A",
+      "article": "Arts. 389 e 441 do Código Civil",
+      "legal_basis": "Arts. 389, 441 e 475 do Código Civil e Doutrina Contratual.",
+      "explanation": "Entregar coisa diversa da contratada (aliud pro alio) é descumprimento total da prestação (inadimplemento absoluto da obrigação de dar). Vício redibitório pressupõe que a coisa entregue é a mesma contratada, porém afetada por defeito oculto funcional.",
+      "id": "01937c5d-587d-4410-8617-eadd874b249c"
+    },
+    {
+      "subject": "Prazos Decadenciais dos Vícios Redibitórios",
+      "bank": "OAB",
+      "difficulty": "Médio",
+      "enunciado": "(OAB / FGV) No tocante aos prazos decadenciais para obter a redibição ou abatimento no preço em contratos regulados pelo Código Civil (art. 445), assinale a opção correta.",
+      "options": {
+        "A": "O prazo é de trinta dias se a coisa for móvel, e de um ano se for imóvel, contado da entrega efetiva; se o adquirente já estava na posse da coisa, o prazo conta-se da alienação, reduzido à metade.",
+        "B": "O prazo é prescricional de noventa dias para móveis e cinco anos para imóveis, equiparando-se ao Código de Defesa do Consumidor.",
+        "C": "Quando o vício só puder ser conhecido mais tarde, o prazo para móveis passa a ser decadencial de três anos.",
+        "D": "O prazo decadencial não flui contra pessoas absolutamente incapazes nos negócios civis imobiliários."
+      },
+      "gabarito": "A",
+      "article": "Art. 445 do Código Civil",
+      "legal_basis": "Art. 445, caput e § 1º do Código Civil.",
+      "explanation": "Art. 445, CC: Prazos de decadência: 30 dias (móveis) e 1 ano (imóveis), da entrega efetiva. Já estando na posse, conta da alienação pela metade (15 dias móvel, 6 meses imóvel).",
+      "id": "f2cc5aa4-ce98-45c6-bb2d-e89985153eb9"
+    },
+    {
+      "subject": "Extinção dos Contratos - Resolução e Cláusula Resolutiva",
+      "bank": "OAB",
+      "difficulty": "Médio",
+      "enunciado": "(OAB / FGV) A respeito das formas de extinção do contrato e da disciplina da cláusula resolutiva no Código Civil (arts. 474 e 475), é correto afirmar:",
+      "options": {
+        "A": "A cláusula resolutiva expressa opera de pleno direito; a tácita depende de interpelação judicial.",
+        "B": "A cláusula resolutiva expressa é nula de pleno direito por afastar a intervenção jurisdicional.",
+        "C": "A cláusula resolutiva tácita opera automaticamente, independentemente de interpelação do devedor.",
+        "D": "A parte lesada pelo inadimplemento só pode pedir perdas e danos se não pleitear a resolução do negócio."
+      },
+      "gabarito": "A",
+      "article": "Art. 474 do Código Civil",
+      "legal_basis": "Art. 474 e Art. 475 do Código Civil.",
+      "explanation": "Art. 474, CC: 'A cláusula resolutiva expressa opera de pleno direito; a tácita depende de interpelação judicial'. Art. 475: A parte lesada pode pedir a resolução ou exigir o cumprimento, cabendo indenização em qualquer caso.",
+      "id": "e34b23cf-bb10-4c5d-b8b7-10012c986210"
+    },
+    {
+      "subject": "Exceção do Contrato Não Cumprido e Onerosidade Excessiva",
+      "bank": "OAB",
+      "difficulty": "Médio",
+      "enunciado": "(OAB / FGV) Em contrato de compra e venda mercantil com obrigações recíprocas e simultâneas, o vendedor deixou de entregar os produtos pactuados e, ato contínuo, ajuizou ação cobrando o preço do comprador. Em contestação, o comprador alegou a exceção do contrato não cumprido. Nos termos do Art. 476 do Código Civil:",
+      "options": {
+        "A": "A alegação do comprador é legítima, pois nos contratos bilaterais nenhum dos contratantes, antes de cumprida a sua obrigação, pode exigir o implemento da do outro.",
+        "B": "A exceção do contrato não cumprido só pode ser veiculada por meio de reconvenção autônoma.",
+        "C": "O comprador deve efetuar o depósito judicial do valor integral da dívida antes de suscitar a exceção substancial.",
+        "D": "A exceptio non adimpleti contractus é privativa dos contratos de adesão celebrados com consumidores."
+      },
+      "gabarito": "A",
+      "article": "Art. 476 do Código Civil",
+      "legal_basis": "Art. 476 do Código Civil.",
+      "explanation": "Art. 476 do CC: 'Nos contratos bilaterais, nenhum dos contratantes, antes de cumprida a sua obrigação, pode exigir o implemento da do outro'. É a clássica exceptio non adimpleti contractus.",
+      "id": "1cecc0ba-73ce-46f9-8a12-13555aa1d8fe"
+    },
+    {
+      "subject": "Planos do Negócio Jurídico (Escada Ponteana)",
+      "bank": "VUNESP",
+      "difficulty": "Médio",
+      "enunciado": "(VUNESP / Delegado) No plano da eficácia do negócio jurídico, a aposição de um encargo (ou modo) em uma doação de bem imóvel:",
+      "options": {
+        "A": "Suspende a aquisição e o exercício do direito pelo donatário até que o encargo seja cumprido.",
+        "B": "Não suspende a aquisição nem o exercício do direito, salvo quando expressamente imposto no negócio como condição suspensiva pelo disponente.",
+        "C": "Torna o negócio jurídico juridicamente inexistente enquanto não homologado por sentença judicial.",
+        "D": "Macula o negócio no plano da validade com vício de simulação absoluta."
       },
       "gabarito": "B",
-      "article": "Arts. 354 e 355 CC",
-      "legal_basis": "Arts. 354 e 355 do Código Civil.",
-      "explanation": "Na falta de imputação pelo devedor e pelo credor, aplicam-se as regras legais: primeiro, imputa-se na dívida vencida mais antiga (art. 355); se forem da mesma natureza, proporcionalmente. O art. 354 determina que, entre dívidas vencidas, a imputação recai primeiro na mais onerosa (juros, garantia real).",
-      "id": "68fa2c5d-f4af-49a2-8ffc-2a500c207c7c"
+      "article": "Art. 136 do Código Civil",
+      "legal_basis": "Art. 136 do Código Civil.",
+      "explanation": "Art. 136 do CC: 'O encargo não suspende a aquisição nem o exercício do direito, salvo quando expressamente imposto no negócio, pelo disponente, como condição suspensiva'. Atua no plano da eficácia.",
+      "id": "2042a019-ade5-4eeb-91c4-c4e1f1959602"
+    },
+    {
+      "subject": "Planos do Negócio Jurídico (Escada Ponteana)",
+      "bank": "CESPE",
+      "difficulty": "Médio",
+      "enunciado": "(CESPE / Doutrina) Um contrato foi celebrado mediante coação moral irresistível exercida sobre uma das partes. Sob a ótica da Escada Ponteana:",
+      "options": {
+        "A": "O negócio existe, porém padece de vício no plano da validade, sendo classificado como ato anulável (art. 171, II do CC).",
+        "B": "O negócio é nulo de pleno direito no plano da existência, não chegando ao mundo jurídico.",
+        "C": "O negócio é inexistente por ausência total de manifestação da vontade humana.",
+        "D": "O negócio é válido, operando no plano da eficácia apenas contra terceiros de má-fé."
+      },
+      "gabarito": "A",
+      "article": "Art. 171, II do Código Civil",
+      "legal_basis": "Art. 171, II do Código Civil e Escada Ponteana.",
+      "explanation": "A coação moral (vis compulsiva) não exclui a existência da manifestação de vontade, mas contamina sua liberdade, situando-se no Plano da Validade como causa de anulabilidade (art. 171, II).",
+      "id": "6512ccca-51c2-4d4e-8f42-c26847634fc8"
+    },
+    {
+      "subject": "Princípios do Direito Contratual",
+      "bank": "FCC",
+      "difficulty": "Médio",
+      "enunciado": "(FCC / DPE) O princípio da força obrigatória dos contratos (pacta sunt servanda) no direito civil contemporâneo:",
+      "options": {
+        "A": "Permanece como postulado de segurança jurídica, sendo todavia relativizado pela função social, pela boa-fé objetiva e pela Teoria da Imprevisão / Onerosidade Excessiva.",
+        "B": "Foi inteiramente revogado pelo Código Civil de 2002, cabendo ao juiz redefinir livremente todas as cláusulas e preços das convenções privadas.",
+        "C": "Aplica-se unicamente aos contratos unilaterais regidos pelo direito administrativo.",
+        "D": "Impede em qualquer circunstância a resolução contratual por eventos imprevisíveis e extraordinários."
+      },
+      "gabarito": "A",
+      "article": "Arts. 421, 422 e 478 do Código Civil",
+      "legal_basis": "Arts. 421, 422 e 478 do Código Civil.",
+      "explanation": "O pacta sunt servanda continua em pleno vigor, mas sob feição social: subordina-se à função social (art. 421), à boa-fé objetiva (art. 422) e à revisão por onerosidade excessiva imprevisível (art. 478).",
+      "id": "4fccc092-7c6e-4e3b-bdfa-cfb1472834ce"
+    },
+    {
+      "subject": "Boa-fé Objetiva e Figuras Parcelares",
+      "bank": "OAB",
+      "difficulty": "Difícil",
+      "enunciado": "(OAB / FGV) A doutrina e a jurisprudência consagram o 'Duty to mitigate the loss' (dever do credor de mitigar o próprio prejuízo) como figura parcelar da boa-fé objetiva. Esse dever impõe ao credor:",
+      "options": {
+        "A": "A obrigação ética e jurídica de adotar medidas razoáveis para não agravar o dano patrimonial decorrente do inadimplemento do devedor, sob pena de redução da indenização.",
+        "B": "A obrigação de renunciar tacitamente aos juros moratórios vencidos há mais de 30 dias.",
+        "C": "O dever de pagar integralmente as custas processuais do devedor inadimplente.",
+        "D": "A proibição de ajuizar qualquer ação de execução antes de 5 anos de inadimplência."
+      },
+      "gabarito": "A",
+      "article": "Art. 422 do Código Civil",
+      "legal_basis": "Art. 422 do Código Civil e Enunciado 169 da III Jornada de Direito Civil.",
+      "explanation": "O 'duty to mitigate the loss' decorre da boa-fé objetiva (art. 422): o credor não pode permanecer inerte assistindo à dívida e ao dano crescerem indefinidamente para cobrar indenização astronômica posterior.",
+      "id": "d8828638-631c-4a65-98f8-cf8522d2bfbf"
+    },
+    {
+      "subject": "Boa-fé Objetiva e Figuras Parcelares",
+      "bank": "VUNESP",
+      "difficulty": "Médio",
+      "enunciado": "(VUNESP / TJ) Os deveres anexos, laterais ou instrumentais de conduta decorrentes da cláusula geral de boa-fé objetiva (art. 422 do CC):",
+      "options": {
+        "A": "Existem independentemente de previsão expressa no instrumento contratual e compreendem os deveres de lealdade, informação, proteção, cooperação e sigilo.",
+        "B": "Dependem de cláusula penal escrita expressa para gerarem qualquer efeito vinculante.",
+        "C": "Expiram de pleno direito imediatamente no momento em que as assinaturas do contrato são lançadas.",
+        "D": "Aplicam-se apenas aos contratos de consumo regulados pelo Procon."
+      },
+      "gabarito": "A",
+      "article": "Art. 422 do Código Civil",
+      "legal_basis": "Art. 422 do Código Civil e Doutrina de Judith Martins-Costa.",
+      "explanation": "Os deveres anexos decorrem da própria lei e da eticidade, vinculando os contratantes antes, durante e após o cumprimento do contrato (fases pré, de cumprimento e pós-contratual).",
+      "id": "9155b1e6-b89a-4428-bd1f-beed35d49b6a"
+    },
+    {
+      "subject": "Interpretação dos Contratos no Direito Brasileiro",
+      "bank": "CESPE",
+      "difficulty": "Médio",
+      "enunciado": "(CESPE / Analista) De acordo com as diretrizes do Art. 113, § 1º do Código Civil (incluído pela Lei 13.874/2019), a interpretação do negócio jurídico deve lhe atribuir o sentido que:",
+      "options": {
+        "A": "For confirmado pelo comportamento das partes posterior à celebração e for mais benéfico à parte que não redigiu o dispositivo contratual.",
+        "B": "Sempre prestigie a parte que redigiu a cláusula por haver investido nos custos de elaboração.",
+        "C": "Desconsidere categoricamente os usos e costumes do local onde o contrato foi celebrado.",
+        "D": "Invalide de ofício qualquer contrato que não tenha sido lavrado em notas de tabelião."
+      },
+      "gabarito": "A",
+      "article": "Art. 113, § 1º do Código Civil",
+      "legal_basis": "Art. 113, § 1º, incisos I a V do Código Civil.",
+      "explanation": "O § 1º do art. 113 estabelece critérios objetivos: comportamento posterior das partes, usos e costumes do mercado, razoabilidade da negociação e interpretação contra proferentem (em favor de quem não redigiu a cláusula).",
+      "id": "b06febe7-41d1-4a75-9f17-00669d6d82dc"
+    },
+    {
+      "subject": "Classificação dos Contratos",
+      "bank": "OAB",
+      "difficulty": "Médio",
+      "enunciado": "(OAB / FGV) A respeito da classificação dos contratos, quanto à presença ou ausência de solenidade e quanto ao momento do cumprimento das prestações, assinale a opção correta.",
+      "options": {
+        "A": "Os contratos solenes são aqueles para os quais a lei exige forma determinada como requisito de validade (ad solemnitatem), como a escritura pública na compra e venda de imóvel de valor superior a 30 salários mínimos.",
+        "B": "Os contratos de execução continuada (ou de trato sucessivo) cumprem-se em um único ato instantâneo imediatamente após a manifestação do consentimento.",
+        "C": "O contrato de adesão permite que o aderente altere substancialmente as cláusulas nucleares do negócio em mesa paritária de negociação.",
+        "D": "Todo contrato oneroso é necessariamente solene e formal."
+      },
+      "gabarito": "A",
+      "article": "Art. 107 e Art. 108 do Código Civil",
+      "legal_basis": "Arts. 107 e 108 do Código Civil.",
+      "explanation": "Contratos solenes exigem forma estrita da lei para valerem (art. 108: escritura pública para imóveis acima de 30 salários mínimos). Contratos de trato sucessivo têm cumprimento diferido e repetido no tempo.",
+      "id": "2669fd3f-5a14-4031-b8a1-8907ec86fbb2"
+    },
+    {
+      "subject": "Etapas de Formação do Contrato",
+      "bank": "VUNESP",
+      "difficulty": "Médio",
+      "enunciado": "(VUNESP / Notário) Se a aceitação da proposta for expedida com prazo, mas chegar tardiamente ao proponente por circunstâncias imprevistas, nos termos do Art. 430 do Código Civil:",
+      "options": {
+        "A": "O proponente deverá comunicar imediatamente o fato ao aceitante, sob pena de responder por perdas e danos.",
+        "B": "O contrato se considera nulo de pleno direito, dispensando qualquer comunicação ao aceitante.",
+        "C": "A aceitação tardia converte-se automaticamente em contrato definitivo concluído sem ressalvas.",
+        "D": "O aceitante decai de todos os seus direitos civis patrimoniais."
+      },
+      "gabarito": "A",
+      "article": "Art. 430 do Código Civil",
+      "legal_basis": "Art. 430 do Código Civil.",
+      "explanation": "Art. 430 do CC: 'Se a aceitação, por circunstância imprevista, chegar tarde ao conhecimento do proponente, este, sob pena de responder por perdas e danos, deverá comunicá-lo imediatamente ao aceitante'.",
+      "id": "ef3c1abd-89d6-48b4-82dc-029dbb7a628d"
+    },
+    {
+      "subject": "Estipulação em Favor de Terceiro",
+      "bank": "FCC",
+      "difficulty": "Médio",
+      "enunciado": "(FCC / Procurador) Na Estipulação em Favor de Terceiro disciplinada pelo Código Civil:",
+      "options": {
+        "A": "O estipulante pode exonerar o devedor promitente, salvo se ao terceiro beneficiário foi deixado expressamente o direito de reclamar a execução do contrato.",
+        "B": "O promitente pode unilateralmente indicar outro credor sem conhecimento das partes.",
+        "C": "A morte do terceiro beneficiário antes do vencimento extingue automaticamente a obrigação do promitente.",
+        "D": "O terceiro é obrigado a remunerar o estipulante em comissão de corretagem obrigatória."
+      },
+      "gabarito": "A",
+      "article": "Art. 437 do Código Civil",
+      "legal_basis": "Art. 437 do Código Civil.",
+      "explanation": "O estipulante pode liberar o devedor/promitente se não tiver transferido de forma irrevogável o direito de cobrança direta ao terceiro (art. 437).",
+      "id": "64676a63-4cba-4e6d-9c7d-8aafbb080f91"
+    },
+    {
+      "subject": "Promessa de Fato de Terceiro",
+      "bank": "CESPE",
+      "difficulty": "Difícil",
+      "enunciado": "(CESPE / Doutrina) O parágrafo único do Art. 439 do Código Civil estabelece uma causa especial de exoneração da responsabilidade de quem prometeu fato de terceiro. Essa responsabilidade NÃO existirá se:",
+      "options": {
+        "A": "O terceiro for o cônjuge do promitente, dependendo da sua anuência o ato a ser praticado, e pelo regime de bens a indenização alguma coisa do seu patrimônio possa arrebatar.",
+        "B": "O terceiro for amigo de infância do promitente.",
+        "C": "O promitente comprovar que o terceiro viajou para o exterior em férias.",
+        "D": "O credor tiver patrimônio líquido superior ao do promitente."
+      },
+      "gabarito": "A",
+      "article": "Art. 439, parágrafo único do Código Civil",
+      "legal_basis": "Art. 439, parágrafo único do Código Civil.",
+      "explanation": "Art. 439, parágrafo único: Exclui a indenização se o terceiro for o cônjuge do promitente e o pagamento da indenização atingir o patrimônio do próprio terceiro em razão da meação/comunhão de bens.",
+      "id": "4e956c3f-5850-4889-8eca-9f9cb2d4a888"
+    },
+    {
+      "subject": "Contratos Aleatórios - Conceito e Espécies",
+      "bank": "OAB",
+      "difficulty": "Médio",
+      "enunciado": "(OAB / FGV) No contrato aleatório, a equivalência subjetiva das prestações cede espaço à álea assumida pelos contratantes. Por tal razão, em regra, nos contratos aleatórios:",
+      "options": {
+        "A": "Não se admite a rescisão por lesão com fundamento na mera desproporção do resultado advindo da sorte (álea) contratada, salvo dolo da outra parte.",
+        "B": "É vedada a fixação de preço em moeda corrente nacional.",
+        "C": "As partes são obrigadas a registrar o contrato perante a Bolsa de Valores.",
+        "D": "A morte de qualquer dos contratantes invalida retroativamente a álea."
+      },
+      "gabarito": "A",
+      "article": "Art. 157 e Art. 458 do Código Civil",
+      "legal_basis": "Arts. 157 e 458 do Código Civil e Doutrina Contratual.",
+      "explanation": "Na lesão (art. 157) exige-se desproporção manifesta originária na comutatividade. Nos contratos aleatórios, como o desequilíbrio potencial é da própria essência do risco assumido, a álea normal não enseja vício de lesão.",
+      "id": "99014ceb-86db-4568-b4c2-453aa4083b8a"
+    },
+    {
+      "subject": "Contrato Aleatório: Emptio Spei",
+      "bank": "FCC",
+      "difficulty": "Médio",
+      "enunciado": "(FCC / Magistratura) Na venda de coisas futuras na modalidade Emptio Spei (Art. 458 do Código Civil), caso o alienante venha a agir com dolo ou culpa comprovada para a frustração do objeto:",
+      "options": {
+        "A": "Perderá o direito de receber o preço e deverá indenizar perdas e danos, pois a álea não acoberta a desídia ou a má-fé do contratante.",
+        "B": "Continuará tendo direito ao preço integral, pois o risco assumido pelo adquirente é absoluto e incondicionado.",
+        "C": "O contrato converter-se-á compulsoriamente em sociedade em conta de participação.",
+        "D": "O comprador poderá apenas exigir abatimento de 10% no valor contratado."
+      },
+      "gabarito": "A",
+      "article": "Art. 458 do Código Civil",
+      "legal_basis": "Art. 458 ('...desde que de sua parte não tenha havido dolo ou culpa...').",
+      "explanation": "O art. 458 é categórico: o alienante só recebe o preço integral se de sua parte não tiver havido dolo ou culpa na frustração da coisa futura.",
+      "id": "a08e90ed-7fb0-4aae-95fd-05e9381075b1"
+    },
+    {
+      "subject": "Contrato Aleatório: Emptio Rei Speratae",
+      "bank": "VUNESP",
+      "difficulty": "Médio",
+      "enunciado": "(VUNESP / TJ) Um comprador pactuou contrato aleatório de compra de colheita de laranjas assumindo o risco quanto à quantidade (Emptio Rei Speratae). O pomar sofreu praga natural sem culpa do agricultor e colheu apenas 1% do volume ordinário esperado. Nesse caso:",
+      "options": {
+        "A": "O comprador é obrigado a pagar a totalidade do preço convencionado, tendo em vista que alguma quantidade veio a existir e a álea assumida dizia respeito à quantidade.",
+        "B": "O comprador não deve pagar nada, pois a quantidade foi irrisória e descaracteriza a comutatividade.",
+        "C": "O agricultor deve pagar indenização ao comprador para compensar a perda.",
+        "D": "O contrato é nulo de pleno direito por quebra da base objetiva."
+      },
+      "gabarito": "A",
+      "article": "Art. 459 do Código Civil",
+      "legal_basis": "Art. 459, caput do Código Civil.",
+      "explanation": "Conforme o art. 459, caput, na emptio rei speratae o alienante tem direito a todo o preço ainda que a coisa venha a existir em quantidade inferior à esperada. Só se nada vier a existir é que o negócio desfaz-se (parágrafo único).",
+      "id": "66e343f7-f041-493f-b30a-ee1b6eb61f6f"
+    },
+    {
+      "subject": "Contrato Aleatório: Coisas Existentes Expostas a Risco",
+      "bank": "OAB",
+      "difficulty": "Médio",
+      "enunciado": "(OAB / FGV) A compra e venda aleatória de carga em transporte que se encontra exposta a alto risco no momento do contrato (arts. 460 e 461 do CC):",
+      "options": {
+        "A": "Pode ser anulada como dolosa pelo prejudicado se este provar que o outro contratante não ignorava a consumação prévia do risco.",
+        "B": "É proibida pelo direito brasileiro como contrato usurário.",
+        "C": "Transfere os riscos exclusivamente para a seguradora pública da União.",
+        "D": "Obriga o alienante a devolver em dobro o preço caso a coisa pereça no trajeto."
+      },
+      "gabarito": "A",
+      "article": "Art. 461 do Código Civil",
+      "legal_basis": "Art. 461 do Código Civil.",
+      "explanation": "Art. 461: Se o alienante já sabia que a carga havia sido destruída ou naufragado, sua omissão dolosa autoriza a anulação do contrato pelo comprador.",
+      "id": "50eb5089-a7be-43bc-af20-3597a49584fd"
+    },
+    {
+      "subject": "Contrato Preliminar / Promessa de Contratar",
+      "bank": "OAB",
+      "difficulty": "Médio",
+      "enunciado": "(OAB / FGV) Sobre o registro do compromisso de compra e venda de imóvel no Cartório de Registro de Imóveis, consoante a Súmula 239 do Superior Tribunal de Justiça (STJ):",
+      "options": {
+        "A": "O direito à adjudicação compulsória não se condiciona ao registro do compromisso de compra e venda no cartório de imóveis perante o promitente vendedor.",
+        "B": "A ausência de registro torna o compromisso de compra e venda absolutamente inexistente no plano material.",
+        "C": "Apenas os contratos registrados por escritura pública conferem direito a perdas e danos.",
+        "D": "O registro do contrato preliminar é pressuposto de existência na Escada Ponteana."
+      },
+      "gabarito": "A",
+      "article": "Art. 463 do Código Civil e Súmula 239 do STJ",
+      "legal_basis": "Súmula 239 do STJ e Art. 463 do Código Civil.",
+      "explanation": "A Súmula 239 do STJ sedimentou que o promitente comprador pode exigir do vendedor a adjudicação compulsória mesmo sem registro imobiliário do compromisso. O registro confere eficácia erga omnes perante terceiros (direito real de aquisição - art. 1.417), mas inter partes a pretensão existe.",
+      "id": "8440c6ac-ab0e-47fe-bca7-fb5c0d4528df"
+    },
+    {
+      "subject": "Contrato com Pessoa a Declarar",
+      "bank": "VUNESP",
+      "difficulty": "Médio",
+      "enunciado": "(VUNESP / Magistratura) Concluído o contrato com pessoa a declarar (arts. 467 e seguintes do CC), a indicação da pessoa nomeada (electio amici):",
+      "options": {
+        "A": "Não produzirá efeito se a pessoa nomeada era incapaz ou insolvente no momento da nomeação, hipótese em que o contrato produzirá efeitos unicamente entre os contraentes originários.",
+        "B": "Exonera o estipulante originário mesmo se a pessoa indicada recusar formalmente a nomeação.",
+        "C": "Transfere a posse da coisa apenas a partir do trânsito em julgado de sentença arbitral.",
+        "D": "Depende de nova escrituração pública de dação em pagamento."
+      },
+      "gabarito": "A",
+      "article": "Art. 470, II do Código Civil",
+      "legal_basis": "Art. 470, II do Código Civil.",
+      "explanation": "Art. 470, II: O contrato produz efeitos exclusivamente entre os contratantes originários se a pessoa nomeada era incapaz ou insolvente na hora da indicação e o outro contratante ignorava.",
+      "id": "33417d62-43e3-4c68-8de1-9f85ab3ead4c"
+    },
+    {
+      "subject": "Contrato com Pessoa a Declarar vs. Outros Contratos",
+      "bank": "FCC",
+      "difficulty": "Difícil",
+      "enunciado": "(FCC / PGE) Diferentemente da Cessão da Posição Contratual, o Contrato com Pessoa a Declarar caracteriza-se porque:",
+      "options": {
+        "A": "A faculdade de substituição subjetiva já é pactuada na origem do próprio negócio com cláusula de eficácia retroativa (ex tunc), ao passo que a cessão é negócio derivado posterior que depende de anuência superveniente do cedido.",
+        "B": "O cessionário na cessão adquire apenas direitos, ficando isento de quaisquer dívidas.",
+        "C": "O contrato com pessoa a declarar é sempre gratuito, não se admitindo ônus para a pessoa declarada.",
+        "D": "A cessão da posição contratual é vedada a pessoas jurídicas de direito privado."
+      },
+      "gabarito": "A",
+      "article": "Art. 467 do Código Civil",
+      "legal_basis": "Art. 467 do Código Civil e Doutrina Contratual.",
+      "explanation": "No contrato com pessoa a declarar, a cláusula pro amico integra a gênese do contrato e opera efeitos retroativos ex tunc desde a formação. Na cessão de contrato ordinária, há um negócio autônomo posterior de transferência com efeitos normalmente ex nunc.",
+      "id": "279b118b-09ff-4950-8293-196e6b320e98"
+    },
+    {
+      "subject": "Vícios Redibitórios - Conceito e Requisitos",
+      "bank": "OAB",
+      "difficulty": "Médio",
+      "enunciado": "(OAB / FGV) Se várias coisas forem vendidas conjuntamente por preço global e apenas uma delas apresentar vício redibitório oculto, segundo o Art. 503 do Código Civil:",
+      "options": {
+        "A": "O defeito oculto de uma delas não autoriza a redibição de todas, mas tão-só a da que estiver viciada, salvo se a viciada for inseparável ou formar um todo unitário com as demais.",
+        "B": "Todo o contrato deve ser rescindido compulsoriamente por imposição da boa-fé objetiva.",
+        "C": "O adquirente perde o direito a qualquer reclamação edilícia se não provar o dolo do vendedor.",
+        "D": "O valor global do contrato é reduzido automaticamente em 50%."
+      },
+      "gabarito": "A",
+      "article": "Art. 503 do Código Civil",
+      "legal_basis": "Art. 503 do Código Civil.",
+      "explanation": "Art. 503 do CC: 'Nas coisas vendidas conjuntamente, o defeito oculto de uma não autoriza a rejeição de todas, mas tão-somente a da defeituosa' (princípio da conservação dos contratos), salvo se formarem um todo inseparável (ex: junta de bois).",
+      "id": "e1551251-ee70-4ae5-9822-7a5619cc81d8"
+    },
+    {
+      "subject": "Efeitos da Boa-fé e Má-fé do Alienante no Vício",
+      "bank": "CESPE",
+      "difficulty": "Médio",
+      "enunciado": "(CESPE / Defensoria) Se a coisa alienada vier a perecer em poder do adquirente em decorrência direta do próprio vício oculto que já trazia consigo na entrega, nos termos do Art. 444 do Código Civil:",
+      "options": {
+        "A": "A responsabilidade subsiste para o alienante: se conhecia o vício, responderá pelo valor mais perdas e danos; se não conhecia, ressarcirá o que recebeu mais despesas do contrato.",
+        "B": "O alienante fica totalmente isento de responsabilidade com base na regra de que a coisa perece para o dono (res perit domino).",
+        "C": "O adquirente deve indenizar o alienante pela perda da oportunidade de consertar o bem.",
+        "D": "O contrato é convalidado como dação em pagamento involuntária."
+      },
+      "gabarito": "A",
+      "article": "Art. 444 do Código Civil",
+      "legal_basis": "Art. 444 do Código Civil.",
+      "explanation": "Art. 444 do CC: 'A responsabilidade do alienante subsiste ainda que a coisa pereça em poder do adquirente, se perecer por vício oculto, constante do tempo da tradição'. A causa da perda foi o defeito anterior entregue.",
+      "id": "34501320-6225-470b-b410-718d899160d1"
+    },
+    {
+      "subject": "Ações Edilícias (Redibitória e Estimatória/Quanti Minoris)",
+      "bank": "VUNESP",
+      "difficulty": "Médio",
+      "enunciado": "(VUNESP / TJ) Uma vez ajuizada pelo adquirente a Ação Estimatória (quanti minoris) requerendo o abatimento no preço em virtude de vício redibitório:",
+      "options": {
+        "A": "Opera-se a opção potestativa irretratável pela conservação do contrato com redução proporcional do valor, precluindo o direito de pleitear a devolução da coisa via ação redibitória.",
+        "B": "O juiz é obrigado a converter de ofício a petição inicial em ação de reintegração de posse.",
+        "C": "O vendedor pode recusar o abatimento e exigir judicialmente a devolução compulsória do bem.",
+        "D": "O comprador deve prestar caução no valor de 30% do contrato."
+      },
+      "gabarito": "A",
+      "article": "Art. 442 do Código Civil",
+      "legal_basis": "Art. 442 do Código Civil e Doutrina de Nelson Nery Jr.",
+      "explanation": "O adquirente dispõe de faculdade de escolha alternativa e disjuntiva entre a redibição e o abatimento no preço (art. 442). Escolhendo a ação estimatória, opta por conservar o contrato abatendo o preço.",
+      "id": "355d2be8-e21c-4b20-83eb-8008b2271598"
+    },
+    {
+      "subject": "Vício Redibitório vs. Entrega de Coisa Diversa (Aliud Pro Alio)",
+      "bank": "OAB",
+      "difficulty": "Difícil",
+      "enunciado": "(OAB / FGV) Um laboratório farmacêutico celebrou contrato de compra de insumos químicos para entrega de 500 kg de matéria-prima 'A'. Ao receber a carga, constatou que a fornecedora havia despachado matéria-prima 'B' (composto totalmente diverso). Nessa situação jurídica:",
+      "options": {
+        "A": "Trata-se de inadimplemento da obrigação de dar por entrega de coisa diversa (aliud pro alio), aplicando-se as regras gerais de perdas e danos e prazo prescricional decenal (art. 205 do CC), e não vício redibitório.",
+        "B": "Trata-se de vício redibitório de produto industrial, decaindo o direito do laboratório em trinta dias da entrega.",
+        "C": "O contrato é nulo de pleno direito por motivo torpe de ambas as partes.",
+        "D": "O comprador só pode recusar a carga se notificar o alienante perante o Conselho de Farmácia em 48 horas."
+      },
+      "gabarito": "A",
+      "article": "Arts. 205, 389 e 441 do Código Civil",
+      "legal_basis": "Arts. 205, 389 e 475 do Código Civil e Jurisprudência pacífica do STJ.",
+      "explanation": "No aliud pro alio, a prestação executada é ontologicamente diferente da contratada. O STJ firmou que essa hipótese constitui inadimplemento contratual de obrigação de entregar, sujeitando-se ao prazo prescricional de 10 anos (art. 205 do CC), e não à decadência edilícia de vícios redibitórios.",
+      "id": "a6094b9d-f973-4032-b8f7-19faaa1a7387"
+    },
+    {
+      "subject": "Prazos Decadenciais dos Vícios Redibitórios",
+      "bank": "FCC",
+      "difficulty": "Médio",
+      "enunciado": "(FCC / Magistratura) Conforme o Art. 446 do Código Civil, os prazos de decadência para redibição ou abatimento no preço (art. 445) NÃO correm:",
+      "options": {
+        "A": "Na constância de cláusula de garantia estipulada pelo alienante; mas o adquirente deve denunciar o defeito ao alienante nos trinta dias seguintes ao seu descobrimento, sob pena de decadência.",
+        "B": "Durante o período de férias forenses do Tribunal de Justiça local.",
+        "C": "Enquanto o comprador não registrar o veículo no Detran competente.",
+        "D": "Se a coisa for objeto de seguro facultativo contra terceiros."
+      },
+      "gabarito": "A",
+      "article": "Art. 446 do Código Civil",
+      "legal_basis": "Art. 446 do Código Civil.",
+      "explanation": "Art. 446 do CC: 'Não correrão os prazos do artigo antecedente na constância de cláusula de garantia; mas o adquirente deve denunciar o defeito ao alienante nos trinta dias seguintes ao seu descobrimento, sob pena de decadência'.",
+      "id": "66be9982-e2fc-4816-a958-0b5fdfbc67e5"
+    },
+    {
+      "subject": "Extinção dos Contratos - Resolução e Cláusula Resolutiva",
+      "bank": "CESPE",
+      "difficulty": "Médio",
+      "enunciado": "(CESPE / Defensoria) Sobre a extinção dos contratos por resilição bilateral (distrato) e resilição unilateral (denúncia), assinale a afirmativa correta à luz dos arts. 472 e 473 do Código Civil.",
+      "options": {
+        "A": "O distrato faz-se pela mesma forma exigida para o contrato; e a resilição unilateral, nos casos em que a lei admite, opera mediante denúncia notificada à outra parte.",
+        "B": "O distrato pode ser realizado verbalmente mesmo que a lei exija escritura pública para a validade do contrato primitivo.",
+        "C": "A resilição unilateral independe de notificação ou aviso prévio em qualquer relação contratual.",
+        "D": "O distrato extingue o contrato por vício de dolo congênito à celebração."
+      },
+      "gabarito": "A",
+      "article": "Art. 472 e Art. 473 do Código Civil",
+      "legal_basis": "Arts. 472 e 473 do Código Civil.",
+      "explanation": "Art. 472: 'O distrato faz-se pela mesma forma exigida para o contrato'. Art. 473: A resilição unilateral opera mediante denúncia notificada. Se uma das partes houver feito investimentos consideráveis, a denúncia só produz efeito depois de transcorrido prazo compatível (art. 473, parágrafo único).",
+      "id": "45e0e6bc-9f28-42d3-9ecd-b40ba7a2a2e5"
+    },
+    {
+      "subject": "Exceção do Contrato Não Cumprido e Onerosidade Excessiva",
+      "bank": "OAB",
+      "difficulty": "Médio",
+      "enunciado": "(OAB / FGV) Se, depois de concluído o contrato bilateral, sobrevier a uma das partes contratantes diminuição em seu patrimônio capaz de comprometer ou tornar duvidosa a prestação pela qual se obrigou, segundo o Art. 477 do Código Civil:",
+      "options": {
+        "A": "A outra parte pode recusar a prestação que lhe incumbe, até que aquela satisfaça a que lhe cabe ou dê garantia bastante de satisfazê-la.",
+        "B": "O contrato é rescindido imediatamente com cobrança compulsória da cláusula penal integral.",
+        "C": "O juiz deve decretar a falência sumária do devedor em dificuldade.",
+        "D": "A dívida é convertida compulsoriamente em título de crédito ao portador."
+      },
+      "gabarito": "A",
+      "article": "Art. 477 do Código Civil",
+      "legal_basis": "Art. 477 do Código Civil.",
+      "explanation": "Art. 477 do CC: Consagra a exceção de insegurança da prestação (exceptio ante tempus): se sobrevier diminuição patrimonial duvidosa ao devedor, a outra parte pode reter a sua prestação até que receba garantia idônea.",
+      "id": "ba9bcf85-a672-4499-a696-8c02dc862837"
+    },
+    {
+      "subject": "Planos do Negócio Jurídico (Escada Ponteana)",
+      "bank": "FGV",
+      "difficulty": "Difícil",
+      "enunciado": "(FGV / Magistratura) Dois amigos, brincando em uma mesa de bar, redigem em um guardanapo a venda da Lua por R$ 10,00. Sob a perspectiva da teoria dos planos do negócio jurídico (Escada Ponteana), o negócio padece no plano:",
+      "options": {
+        "A": "Da existência, por absoluta ausência de vontade negocial séria (declaração jocosa / animus jocandi) e falta de objeto fático no mundo jurídico.",
+        "B": "Da validade exclusivamente, sendo anulável por lesão patrimonial de 50%.",
+        "C": "Da eficácia, por estar sujeito a condição puramente potestativa.",
+        "D": "É negócio jurídico válido e eficaz de execução diferida."
+      },
+      "gabarito": "A",
+      "article": "Doutrina de Pontes de Miranda e Art. 104 do CC",
+      "legal_basis": "Teoria Geral do Negócio Jurídico (Pontes de Miranda).",
+      "explanation": "A manifestação de vontade com animus contrahendi (vontade negocial séria) é elemento substantivo do Plano da Existência. Declarações em gracejo (animus jocandi) não chegam a ingressar no mundo jurídico, sendo negócios inexistentes.",
+      "id": "f9175ae2-2369-4749-b496-cc8ba54dbfde"
+    },
+    {
+      "subject": "Boa-fé Objetiva e Figuras Parcelares",
+      "bank": "OAB",
+      "difficulty": "Médio",
+      "enunciado": "(OAB / FGV) O princípio do 'Venire contra factum proprium' veda o comportamento contraditório que frustra legítimas expectativas. São pressupostos doutrinários para a caracterização do venire contra factum proprium:",
+      "options": {
+        "A": "Uma conduta inicial (factum proprium); a legítima confiança gerada na contraparte; um comportamento posterior contraditório; e o potencial de causar dano patrimonial ou moral a quem confiou.",
+        "B": "Apenas a presença de dolo específico com intuito de fraudar a execução fiscal.",
+        "C": "A existência de cláusula penal expressa com estipulação de arras penitenciais.",
+        "D": "A prévia propositura de ação de interdito proibitório com pedido liminar."
+      },
+      "gabarito": "A",
+      "article": "Art. 422 do Código Civil",
+      "legal_basis": "Art. 422 do Código Civil e Enunciado 362 da IV Jornada de Direito Civil.",
+      "explanation": "São quatro os elementos do venire: 1) Um fato próprio (conduta inicial); 2) Confiança legítima despertada; 3) Comportamento posterior em contradição direta; 4) Prejuízo ou quebra da estabilidade das relações.",
+      "id": "e175b2d0-1c92-4179-81e2-640990da3e76"
+    },
+    {
+      "subject": "Etapas de Formação do Contrato",
+      "bank": "FCC",
+      "difficulty": "Médio",
+      "enunciado": "(FCC / Procurador) A proposta de contrato feita sem prazo a pessoa presente, se não for imediatamente aceita, segundo o Art. 428, inciso I, do Código Civil:",
+      "options": {
+        "A": "Deixa de ser obrigatória de imediato.",
+        "B": "Permanece obrigatória pelo prazo legal de 30 dias úteis.",
+        "C": "Converte-se em proposta entre ausentes automaticamente.",
+        "D": "Gera responsabilidade civil objetiva para o oblato por perdas e danos."
+      },
+      "gabarito": "A",
+      "article": "Art. 428, I do Código Civil",
+      "legal_basis": "Art. 428, I do Código Civil.",
+      "explanation": "Art. 428, I do CC: Deixa de ser obrigatória a proposta 'se, feita sem prazo a pessoa presente, não foi imediatamente aceita'. Considera-se presente também quem contrata por telefone ou meio de comunicação instantânea.",
+      "id": "0d218dce-fc15-4d3e-bf48-0abfcc6ef00e"
+    },
+    {
+      "subject": "Estipulação em Favor de Terceiro",
+      "bank": "CESPE",
+      "difficulty": "Médio",
+      "enunciado": "(CESPE / Doutrina) Em caso de morte do estipulante em contrato com estipulação em favor de terceiro, o direito de exigir o cumprimento da obrigação pelo promitente:",
+      "options": {
+        "A": "Transmite-se aos herdeiros do estipulante, mantendo-se também hígido o direito conferido ao terceiro beneficiário (art. 436, parágrafo único do CC).",
+        "B": "Extingue-se automaticamente por ser direito personalíssimo e intransmissível.",
+        "C": "Transfere-se compulsoriamente para a Fazenda Pública do Estado.",
+        "D": "Depende de alvará judicial com intervenção obrigatória do Ministério Público."
+      },
+      "gabarito": "A",
+      "article": "Art. 436 do Código Civil",
+      "legal_basis": "Art. 436 e parágrafo único do Código Civil.",
+      "explanation": "O direito de exigir o cumprimento tem natureza patrimonial e transfere-se aos sucessores do estipulante, subsistindo paralelamente o direito do terceiro beneficiário de exigir a obrigação.",
+      "id": "fb586071-b43f-4f98-8d84-f55f183bab6e"
+    },
+    {
+      "subject": "Promessa de Fato de Terceiro",
+      "bank": "VUNESP",
+      "difficulty": "Médio",
+      "enunciado": "(VUNESP / TJ) Um empresário comprometeu-se com um patrocinador afirmando que seu irmão, famoso conferencista internacional, ministraria palestra de encerramento em evento empresarial. O conferencista não anuiu e não compareceu. O empresário alegou caso fortuito. Nesse contexto:",
+      "options": {
+        "A": "O empresário responde integralmente por perdas e danos perante o patrocinador, pois aquele que promete fato de terceiro assume obrigação de garantia e resultado.",
+        "B": "O patrocinador deve penhorar os bens do conferencista que se recusou a palestrar.",
+        "C": "O contrato é nulo de pleno direito por vício social de simulação.",
+        "D": "O empresário só responde se for comprovado que agiu com dolo preordenado de estelionato."
+      },
+      "gabarito": "A",
+      "article": "Art. 439 do Código Civil",
+      "legal_basis": "Art. 439 do Código Civil.",
+      "explanation": "Quem promete fato de terceiro assume o risco e garante o resultado. Se o terceiro não cumpre, o promitente responde por perdas e danos contratuais (art. 439, CC).",
+      "id": "f47dc6d7-1fed-4401-9a3d-f2036d172854"
+    },
+    {
+      "subject": "Contrato Aleatório: Emptio Spei",
+      "bank": "CESPE",
+      "difficulty": "Difícil",
+      "enunciado": "(CESPE / Magistratura) Na Emptio Spei (Art. 458 do Código Civil), diz-se que o contrato tem por objeto a 'spes' (a esperança da existência). Qual elemento afasta a exigibilidade do preço pelo alienante caso o objeto venha a não existir?",
+      "options": {
+        "A": "A ocorrência de dolo ou culpa por parte do próprio alienante para a frustração da coisa futura.",
+        "B": "A mera verificação de que o valor de mercado caiu mais de 20%.",
+        "C": "A recusa imotivada do comprador em retirar a coisa inexistente.",
+        "D": "A superveniência de feriado nacional no dia pactuado para a entrega."
+      },
+      "gabarito": "A",
+      "article": "Art. 458 do Código Civil",
+      "legal_basis": "Art. 458 do Código Civil ('...desde que de sua parte não tenha havido dolo ou culpa...').",
+      "explanation": "Se o alienante der causa culposa ou dolosa para que nada venha a existir (ex: não fertilizou a terra, não lançou a rede, não alimentou os animais), perde o direito de exigir o preço e responde por perdas e danos.",
+      "id": "a0b3d5d2-bb63-4706-9f9d-a08c3300f148"
+    },
+    {
+      "subject": "Contrato Aleatório: Emptio Rei Speratae",
+      "bank": "OAB",
+      "difficulty": "Médio",
+      "enunciado": "(OAB / FGV) A distinção central entre a 'Emptio Spei' e a 'Emptio Rei Speratae' no Código Civil reside no fato de que:",
+      "options": {
+        "A": "Na emptio spei o adquirente assume o risco da própria existência da coisa (se nada existir, o preço ainda é devido); na emptio rei speratae o risco é apenas da quantidade (deve vir alguma quantidade; se nada existir, o contrato é ineficaz e o preço é devolvido).",
+        "B": "A emptio spei só pode ser celebrada por pessoas jurídicas, enquanto a emptio rei speratae é restrita a pessoas físicas.",
+        "C": "A emptio rei speratae exige outorga uxória sob pena de nulidade.",
+        "D": "Ambas as modalidades geram devolução em dobro do preço se a colheita for inferior à metade."
+      },
+      "gabarito": "A",
+      "article": "Art. 458 e Art. 459 do Código Civil",
+      "legal_basis": "Arts. 458 e 459 do Código Civil.",
+      "explanation": "Emptio Spei = risco da existência (tudo ou nada). Emptio Rei Speratae = risco da quantidade (deve existir ao menos uma unidade; se nada existir, desfaz-se o negócio).",
+      "id": "59bd456f-92eb-4fce-89c2-09ade2b0efbd"
+    },
+    {
+      "subject": "Contrato Preliminar / Promessa de Contratar",
+      "bank": "VUNESP",
+      "difficulty": "Médio",
+      "enunciado": "(VUNESP / TJ) Se no contrato preliminar de promessa de compra e venda as partes inseriram expressa cláusula de arrependimento (com estipulação de arras penitenciais), a recusa de uma das partes em concluir o definitivo:",
+      "options": {
+        "A": "Gera unicamente a perda das arras (ou devolução em dobro por quem as recebeu), impedindo a execução compulsória ou a adjudicação do imóvel.",
+        "B": "Autoriza a adjudicação compulsória forçada do bem pelo juiz de direito.",
+        "C": "Torna o contrato nulo no plano da existência com eficácia ex tunc.",
+        "D": "Obriga o promitente a pagar indenização suplementar ilimitada."
+      },
+      "gabarito": "A",
+      "article": "Art. 420 e Art. 463 do Código Civil",
+      "legal_basis": "Arts. 420 e 463 ('desde que dele não conste cláusula de arrependimento') do Código Civil.",
+      "explanation": "O art. 463 condiciona a exigibilidade da celebração definitiva à inexistência de cláusula de arrependimento. Havendo cláusula de arrependimento, o direito potestativo resolve-se pelas arras penitenciais (art. 420).",
+      "id": "bbc19f60-b621-49fe-878d-5b8f827125f2"
+    },
+    {
+      "subject": "Contrato com Pessoa a Declarar",
+      "bank": "FCC",
+      "difficulty": "Médio",
+      "enunciado": "(FCC / PGE) Aceita a nomeação da pessoa a declarar nos termos e forma exigidos pela lei, a pessoa nomeada:",
+      "options": {
+        "A": "Adquire os direitos e assume as obrigações decorrentes do contrato, a partir do momento em que este foi celebrado (efeito retroativo ex tunc).",
+        "B": "Assume as obrigações apenas para o futuro (efeito ex nunc da declaração), ficando o estipulante originário solidariamente obrigado.",
+        "C": "Responde apenas subsidiariamente com benefício de ordem.",
+        "D": "Pode anular as cláusulas do contrato celebrado pelo estipulante originário sem prévia concordância do vendedor."
+      },
+      "gabarito": "A",
+      "article": "Art. 469 do Código Civil",
+      "legal_basis": "Art. 469 do Código Civil.",
+      "explanation": "Art. 469 do CC: 'A pessoa, nomeada de conformidade com os artigos antecedentes, adquire os direitos e assume as obrigações decorrentes do contrato, a partir do momento em que este foi celebrado' (eficácia ex tunc).",
+      "id": "97a8b11f-039e-41a4-b887-a9b9b13733ff"
+    },
+    {
+      "subject": "Contrato com Pessoa a Declarar vs. Outros Contratos",
+      "bank": "OAB",
+      "difficulty": "Médio",
+      "enunciado": "(OAB / FGV) Se a pessoa indicada no contrato com pessoa a declarar recusar a nomeação ou for absolutamente incapaz e o outro contratante ignorava, o contrato:",
+      "options": {
+        "A": "Produzirá seus efeitos unicamente entre os contraentes originários (o próprio estipulante e o vendedor).",
+        "B": "Será extinto de pleno direito sem qualquer dever para os participantes.",
+        "C": "Será considerado nulo por fraude à lei contra credores.",
+        "D": "Será transferido forçadamente aos fiadores da pessoa recusante."
+      },
+      "gabarito": "A",
+      "article": "Art. 470 do Código Civil",
+      "legal_basis": "Art. 470, incisos I e II do Código Civil.",
+      "explanation": "Art. 470: 'O contrato produzirá os seus efeitos unicamente entre os contratantes originários: I - se não houver indicação de pessoa, ou se a nomeada recusar; II - se a pessoa nomeada era incapaz ou insolvente no momento da nomeação'.",
+      "id": "23e04ffd-e51e-44a1-bf23-22c9af5add66"
+    },
+    {
+      "subject": "Vícios Redibitórios - Conceito e Requisitos",
+      "bank": "CESPE",
+      "difficulty": "Médio",
+      "enunciado": "(CESPE / Juiz) Em relação aos vícios redibitórios em alienações judiciais (bens arrematados em leilão ou hasta pública):",
+      "options": {
+        "A": "Aplica-se a garantia contra vícios redibitórios também às vendas efetuadas em hasta pública (alienações judiciais), conforme entendimento pacífico da doutrina e art. 441 do CC.",
+        "B": "A hasta pública exonera de forma irrestrita qualquer responsabilidade por defeitos ocultos do bem.",
+        "C": "O arrematante não possui qualquer ação edilícia, devendo suportar integralmente o prejuízo.",
+        "D": "O juiz da execução responde pessoalmente com seu patrimônio pelos vícios da coisa praceada."
+      },
+      "gabarito": "A",
+      "article": "Art. 441 do Código Civil",
+      "legal_basis": "Art. 441 do Código Civil e Jurisprudência do STJ.",
+      "explanation": "A jurisprudência do STJ e o Enunciado 28 da Jornada de Direito Civil pacificaram que o arrematante em hasta pública faz jus à garantia dos vícios redibitórios, podendo deduzir pretensão edilícia contra o credor ou executado.",
+      "id": "f4c7a49c-1039-482e-9b2a-41480d504326"
+    },
+    {
+      "subject": "Efeitos da Boa-fé e Má-fé do Alienante no Vício",
+      "bank": "OAB",
+      "difficulty": "Médio",
+      "enunciado": "(OAB / FGV) A ignorância do alienante sobre o vício redibitório oculto da coisa na data da venda:",
+      "options": {
+        "A": "Não o exime da garantia legal de redibir o contrato ou conceder abatimento no preço, mas afasta a sua condenação ao pagamento de perdas e danos.",
+        "B": "Exime o alienante de qualquer obrigação, mantendo o negócio hígido e inalterado.",
+        "C": "Transfere o dever de indenizar para o fabricante originário da matéria-prima.",
+        "D": "Reduz o prazo decadencial para setenta e duas horas."
+      },
+      "gabarito": "A",
+      "article": "Art. 443 do Código Civil",
+      "legal_basis": "Art. 443 do Código Civil.",
+      "explanation": "Art. 443: A garantia por vício redibitório independe de culpa. O vendedor de boa-fé apenas não paga perdas e danos adicionais, mas restitui o que recebeu mais as despesas do contrato.",
+      "id": "df85453d-00b8-49f2-8077-08db95cde3d4"
+    },
+    {
+      "subject": "Ações Edilícias (Redibitória e Estimatória/Quanti Minoris)",
+      "bank": "FCC",
+      "difficulty": "Médio",
+      "enunciado": "(FCC / Magistratura) A característica preponderante que distingue a Ação Redibitória da Ação Estimatória (quanti minoris) é que:",
+      "options": {
+        "A": "A ação redibitória tem natureza desconstitutiva/resolutória (desfaz o contrato e devolve a coisa), ao passo que a ação estimatória tem natureza condenatória/modificativa (conserva o contrato e abate proporcionalmente o preço).",
+        "B": "A ação redibitória exige prova de dolo, enquanto a ação estimatória exige prova de coação moral.",
+        "C": "A ação estimatória só pode ser ajuizada se o bem for um imóvel rural.",
+        "D": "A ação redibitória prescreve em 20 anos pelo Código Civil."
+      },
+      "gabarito": "A",
+      "article": "Arts. 441 e 442 do Código Civil",
+      "legal_basis": "Arts. 441 e 442 do Código Civil.",
+      "explanation": "Ação Redibitória: resolução do contrato (desconstituição do vínculo com restituição mútua). Ação Estimatória (quanti minoris): manutenção do vínculo negocial com redução proporcional do montante pecuniário (princípio da conservação dos contratos).",
+      "id": "829bf80c-805f-4533-8709-679e55e2073d"
+    },
+    {
+      "subject": "Vício Redibitório vs. Entrega de Coisa Diversa (Aliud Pro Alio)",
+      "bank": "VUNESP",
+      "difficulty": "Difícil",
+      "enunciado": "(VUNESP / Magistratura) Considere as duas situações: I) João comprou um imóvel residencial e descobriu que as tubulações internas de esgoto estavam corroídas e rompidas (defeito oculto de engenharia); II) Maria comprou o lote 10 da quadra B, mas o vendedor entregou-lhe a posse do lote 10 da quadra C. Juridicamente, os casos tratam, respectivamente, de:",
+      "options": {
+        "A": "I - Vício redibitório (ação edilícia com prazo decadencial do art. 445); II - Entrega de coisa diversa / aliud pro alio (inadimplemento de obrigação de dar com prazo prescricional decenal).",
+        "B": "I - Aliud pro alio; II - Vício redibitório.",
+        "C": "Ambos tratam de evicção judicial.",
+        "D": "Ambos tratam de vícios redibitórios subordinados à decadência de 30 dias."
+      },
+      "gabarito": "A",
+      "article": "Arts. 389, 441 e 445 do Código Civil",
+      "legal_basis": "Arts. 389, 441 e 445 do Código Civil e Jurisprudência do STJ.",
+      "explanation": "No caso I, a coisa entregue é a mesma contratada, mas com defeito oculto funcional (vício redibitório). No caso II, entregou-se coisa diversa da avençada (aliud pro alio), gerando inadimplemento absoluto de obrigação de dar.",
+      "id": "7e602f76-f3f0-4e49-a6e5-19b2f8a2e050"
+    },
+    {
+      "subject": "Prazos Decadenciais dos Vícios Redibitórios",
+      "bank": "CESPE",
+      "difficulty": "Médio",
+      "enunciado": "(CESPE / Notário) Se o adquirente de bem móvel já estava na posse da coisa na data em que celebrou a compra e venda definitiva (ex: locatário que decide comprar o bem alugado), o prazo para redibir ou pedir abatimento por vício redibitório ostensivo:",
+      "options": {
+        "A": "Conta-se da alienação, reduzido à metade, ou seja, no prazo de 15 (quinze) dias (art. 445 do CC).",
+        "B": "Passa a ser de 60 dias úteis a contar da tradição originária da locação.",
+        "C": "Extingue-se de plano por renúncia tácita à garantia edilícia.",
+        "D": "Equipara-se ao prazo decenal de responsabilidade civil extracontratual."
+      },
+      "gabarito": "A",
+      "article": "Art. 445 do Código Civil",
+      "legal_basis": "Art. 445, parte final ('...se já estava na posse, o prazo conta-se da alienação, reduzido à metade').",
+      "explanation": "Para móveis, a regra geral é 30 dias da entrega. Se o comprador já estava na posse da coisa, o prazo corre da data da alienação (do contrato) e reduz-se pela metade (15 dias para móveis, 6 meses para imóveis).",
+      "id": "470ce0fd-9646-4335-9cc3-b869352194d2"
+    },
+    {
+      "subject": "Extinção dos Contratos - Resolução e Cláusula Resolutiva",
+      "bank": "OAB",
+      "difficulty": "Médio",
+      "enunciado": "(OAB / FGV) A resolução do contrato por inadimplemento voluntário (culposo) imputável ao devedor acarreta:",
+      "options": {
+        "A": "A extinção da relação contratual com retorno das partes ao status quo ante, acrescida da condenação do devedor ao pagamento de perdas e danos (danos emergentes e lucros cessantes).",
+        "B": "Apenas o dever de desculpas formais sem qualquer repercussão indenizatória.",
+        "C": "A conversão forçada de todas as dívidas civis em obrigações naturais inexigíveis.",
+        "D": "A exoneração automática do devedor de todas as despesas processuais."
+      },
+      "gabarito": "A",
+      "article": "Art. 475 do Código Civil",
+      "legal_basis": "Art. 475 do Código Civil.",
+      "explanation": "Art. 475 do CC: 'A parte lesada pelo inadimplemento pode pedir a resolução do contrato, se não preferir exigir-lhe o cumprimento, cabendo, em qualquer dos casos, indenização por perdas e danos'.",
+      "id": "63f7825a-85d6-457a-8e07-e57770366c0a"
+    },
+    {
+      "subject": "Exceção do Contrato Não Cumprido e Onerosidade Excessiva",
+      "bank": "OAB",
+      "difficulty": "Médio",
+      "enunciado": "(OAB / FGV) Nos contratos de execução continuada ou diferida, se a prestação de uma das partes se tornar excessivamente onerosa, com extrema vantagem para a outra, em virtude de acontecimentos extraordinários e imprevisíveis (Art. 478 do Código Civil):",
+      "options": {
+        "A": "Poderá o devedor pedir a resolução do contrato, podendo o réu evitar a resolução oferecendo-se a modificar equitativamente as condições do contrato (art. 479 do CC).",
+        "B": "O contrato torna-se nulo de pleno direito no plano da existência.",
+        "C": "O credor pode executar imediatamente a penhora de todos os bens de família do devedor.",
+        "D": "O juiz é proibido de acolher proposta de renegociação consensual das partes."
+      },
+      "gabarito": "A",
+      "article": "Art. 478 e Art. 479 do Código Civil",
+      "legal_basis": "Arts. 478 e 479 do Código Civil.",
+      "explanation": "Teoria da Imprevisão / Onerosidade Excessiva (art. 478). O devedor pode pleitear a resolução do pacto. Porém, em homenagem à conservação do negócio, o art. 479 autoriza o réu a evitar o desfazimento oferecendo revisão equitativa das bases contratuais.",
+      "id": "9b1b94e6-36fa-4ec0-b68c-d0d39bd2c08c"
     }
   ]
 }

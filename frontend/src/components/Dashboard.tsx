@@ -46,18 +46,35 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
     return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const adimplementoSubjects = data.subjects.filter(s => 
+  const parte1Subjects = data.subjects.filter(s => 
     [
-      "Pagamento - Geral", "Quem deve pagar", "A quem se deve pagar", "Objeto do pagamento e sua prova",
-      "Lugar do pagamento", "Tempo do pagamento", "Consignação em pagamento", "Pagamento com sub-rogação",
-      "Imputação do pagamento", "Dação em pagamento", "Novação", "Compensação", "Confusão", "Remissão das dívidas"
+      "Planos do Negócio Jurídico (Escada Ponteana)",
+      "Princípios do Direito Contratual",
+      "Boa-fé Objetiva e Figuras Parcelares",
+      "Interpretação dos Contratos no Direito Brasileiro",
+      "Classificação dos Contratos",
+      "Etapas de Formação do Contrato",
+      "Estipulação em Favor de Terceiro",
+      "Promessa de Fato de Terceiro"
     ].includes(s.subject)
   );
 
-  const inadimplementoSubjects = data.subjects.filter(s => 
+  const parte2Subjects = data.subjects.filter(s => 
     [
-      "Inadimplemento - Disposições gerais", "Mora - Geral", "Mora do devedor", "Mora do credor",
-      "Inadimplemento absoluto", "Perdas e danos", "Juros legais", "Cláusula penal", "Arras ou sinal"
+      "Contratos Aleatórios - Conceito e Espécies",
+      "Contrato Aleatório: Emptio Spei",
+      "Contrato Aleatório: Emptio Rei Speratae",
+      "Contrato Aleatório: Coisas Existentes Expostas a Risco",
+      "Contrato Preliminar / Promessa de Contratar",
+      "Contrato com Pessoa a Declarar",
+      "Contrato com Pessoa a Declarar vs. Outros Contratos",
+      "Vícios Redibitórios - Conceito e Requisitos",
+      "Efeitos da Boa-fé e Má-fé do Alienante no Vício",
+      "Ações Edilícias (Redibitória e Estimatória/Quanti Minoris)",
+      "Vício Redibitório vs. Entrega de Coisa Diversa (Aliud Pro Alio)",
+      "Prazos Decadenciais dos Vícios Redibitórios",
+      "Extinção dos Contratos - Resolução e Cláusula Resolutiva",
+      "Exceção do Contrato Não Cumprido e Onerosidade Excessiva"
     ].includes(s.subject)
   );
 
@@ -109,13 +126,13 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
         </div>
         <div className="max-w-2xl space-y-4">
           <span className="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 uppercase tracking-widest">
-            Direito Civil adaptativo
+            Direito Civil Adaptativo
           </span>
           <h1 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-            Domine Adimplemento e Inadimplemento das Obrigações
+            Domine o Questionário da Prova de Contratos
           </h1>
           <p className="text-slate-300 leading-relaxed text-sm md:text-base">
-            Preparação inteligente baseada nos artigos 304 a 420 do Código Civil. Nosso professor virtual guiará seus estudos até alcançar a meta de 95% de acertos.
+            Preparação inteligente baseada na Escada Ponteana, Princípios, Boa-fé, Contratos Aleatórios, Contrato Preliminar, Pessoa a Declarar e Vícios Redibitórios (Código Civil).
           </p>
           
           {data.intensive_subject && (
@@ -362,13 +379,13 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
           </div>
         </div>
 
-        {/* Categoria 1: Adimplemento */}
+        {/* Categoria 1: Teoria Geral, Princípios e Formação */}
         <div className="space-y-4 p-6 rounded-2xl bg-slate-900 border border-slate-800">
           <h4 className="text-sm font-extrabold text-indigo-400 uppercase tracking-widest flex items-center gap-2">
-            <BookOpen size={16} /> Adimplemento das Obrigações (arts. 304 a 388)
+            <BookOpen size={16} /> Bloco 1: Teoria Geral, Princípios, Interpretação e Formação
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {adimplementoSubjects.map(sub => (
+            {parte1Subjects.map(sub => (
               <button
                 key={sub.subject}
                 onClick={() => onNavigate('estudo', { subject: sub.subject })}
@@ -419,13 +436,13 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
           </div>
         </div>
 
-        {/* Categoria 2: Inadimplemento */}
+        {/* Categoria 2: Contratos Aleatórios, Preliminar, Pessoa a Declarar e Vícios Redibitórios */}
         <div className="space-y-4 p-6 rounded-2xl bg-slate-900 border border-slate-800">
           <h4 className="text-sm font-extrabold text-indigo-400 uppercase tracking-widest flex items-center gap-2">
-            <AlertTriangle size={16} /> Inadimplemento das Obrigações (arts. 389 a 420)
+            <AlertTriangle size={16} /> Bloco 2: Contratos Aleatórios, Preliminares, Pessoa a Declarar e Vícios Redibitórios
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {inadimplementoSubjects.map(sub => (
+            {parte2Subjects.map(sub => (
               <button
                 key={sub.subject}
                 onClick={() => onNavigate('estudo', { subject: sub.subject })}

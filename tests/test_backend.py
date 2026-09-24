@@ -48,9 +48,9 @@ def seed_test_data():
     if not db.query(UserStats).filter(UserStats.session_id == TEST_SESSION_ID).first():
         db.add(UserStats(session_id=TEST_SESSION_ID, total_time_seconds=3600, questions_answered=50, questions_correct=30, streak_days=5))
         for t in [
-            TopicMastery(session_id=TEST_SESSION_ID, subject="Pagamento - Geral", success_rate=75.0, status="Intermediario"),
-            TopicMastery(session_id=TEST_SESSION_ID, subject="Pagamento com sub-rogação", success_rate=40.0, status="Critico"),
-            TopicMastery(session_id=TEST_SESSION_ID, subject="Dação em pagamento", success_rate=90.0, status="Dominado"),
+            TopicMastery(session_id=TEST_SESSION_ID, subject="Planos do Negócio Jurídico (Escada Ponteana)", success_rate=75.0, status="Intermediario"),
+            TopicMastery(session_id=TEST_SESSION_ID, subject="Boa-fé Objetiva e Figuras Parcelares", success_rate=40.0, status="Critico"),
+            TopicMastery(session_id=TEST_SESSION_ID, subject="Vícios Redibitórios - Conceito e Requisitos", success_rate=90.0, status="Dominado"),
         ]:
             db.add(t)
         db.commit()
@@ -74,7 +74,7 @@ def test_health_check():
     assert response.status_code == 200
     data = response.json()
     assert data["status"] == "ok"
-    assert data["service"] == "jus-obrigacoes-master"
+    assert data["service"] == "jus-contratos-master"
 
 
 def test_root():
@@ -100,7 +100,7 @@ def test_articles():
 
 
 def test_articles_query():
-    response = client.get("/api/articles?query=304")
+    response = client.get("/api/articles?query=421")
     assert response.status_code == 200
     assert isinstance(response.json(), list)
 
@@ -247,3 +247,12 @@ def test_vespera_start_returns_questions():
     data = response.json()
     assert isinstance(data, list)
     assert len(data) == 50
+
+
+def test_convert_errors_to_flashcards():
+    """Verifica se o endpoint de conversão de erros para flashcards opera com sucesso"""
+    response = client.post("/api/errors/convert-to-flashcards")
+    assert response.status_code == 200
+    data = response.json()
+    assert "count" in data
+    assert "message" in data

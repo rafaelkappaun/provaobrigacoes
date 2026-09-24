@@ -1,135 +1,269 @@
 import uuid
+import logging
 from datetime import datetime, timedelta, timezone
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 from sqlalchemy.orm import Session
 from database.models import Flashcard
 
-# Banco de dados de flashcards offline de alta qualidade para todos os temas
+logger = logging.getLogger("FlashcardManager")
+
+# Banco de dados de flashcards cobrindo minuciosamente os 22 temas do Questionário da Prova de Contratos
 FLASHCARD_BANK: Dict[str, List[Dict[str, str]]] = {
-    "Pagamento - Geral": [
-        {"front": "Quem é o sujeito ativo e quem é o sujeito passivo no adimplemento?", "back": "O devedor é o sujeito ativo do pagamento (quem realiza a conduta), e o credor é o sujeito passivo (quem recebe)."},
-        {"front": "O que acontece se o pagamento for realizado por terceiro com desconhecimento do devedor?", "back": "Extingue a dívida, mas o devedor não é obrigado a reembolsar se demonstrar que tinha meios para ilidir (anular/impedir) a cobrança. Art. 306, CC."},
-        {"front": "Qual a consequência de pagar antes de vencida a dívida?", "back": "Se feito por terceiro não interessado, o reembolso só poderá ser exigido no vencimento original da obrigação. Art. 305, parágrafo único, CC."}
+    "Planos do Negócio Jurídico (Escada Ponteana)": [
+        {
+            "front": "Quais são os três planos da Escada Ponteana no negócio jurídico e o que cada um analisa?",
+            "back": "1) Plano da Existência (substantivos: manifestação de vontade, partes, objeto e forma);\n2) Plano da Validade (adjetivos: vontade livre, agente capaz, objeto lícito/possível/determinado e forma prescrita em lei - art. 104, CC);\n3) Plano da Eficácia (elementos acidentais: condição, termo e encargo; produção de efeitos)."
+        },
+        {
+            "front": "Qual a diferença prática entre um negócio inexistente e um negócio nulo (inválido)?",
+            "back": "O negócio inexistente não preencheu os pressupostos materiais mínimos e sequer adentrou o ordenamento jurídico (não se convalesce nem gera efeitos típicos). O negócio nulo existe no mundo fático, mas padece de nulidade absoluta (art. 166, CC) por vício no plano da validade, necessitando de declaração judicial."
+        },
+        {
+            "front": "Em qual degrau da Escada Ponteana se situam a condição, o termo e o encargo?",
+            "back": "No Plano da Eficácia. São elementos acidentais que interferem na exigibilidade ou resolução dos efeitos do negócio jurídico, não afetando sua existência nem sua validade."
+        }
     ],
-    "Quem deve pagar": [
-        {"front": "Qualquer interessado pode pagar a dívida?", "back": "Sim. E caso haja oposição do credor, pode usar os meios de exoneração (ex: consignação). Art. 304, CC."},
-        {"front": "Qual a diferença de efeitos entre o terceiro interessado e o não interessado?", "back": "O interessado se sub-roga nos direitos do credor. O não interessado que paga em seu nome tem apenas direito a reembolso, sem sub-rogação. Arts. 304/305, CC."},
-        {"front": "O que é um 'terceiro interessado'?", "back": "É aquele que pode sofrer prejuízo patrimonial caso a dívida não seja paga (ex: o fiador, o avalista, o adquirente do imóvel hipotecado)."},
-        {"front": "Quando o pagamento envolvendo transmissão de propriedade é considerado válido?", "back": "Apenas se o pagador for o dono da coisa (tiver poder de aliená-la). Porém, se for coisa fungível consumida de boa-fé pelo credor, resolve-se em perdas e danos e o pagamento é eficaz. Art. 307, CC."}
+    "Princípios do Direito Contratual": [
+        {
+            "front": "Quais são os principais princípios fundamentais do Direito Contratual brasileiro?",
+            "back": "1) Autonomia Privada;\n2) Força Obrigatória (Pacta Sunt Servanda);\n3) Relatividade dos Efeitos dos Contratos;\n4) Consensualismo;\n5) Boa-fé Objetiva (art. 422, CC);\n6) Função Social do Contrato (art. 421, CC);\n7) Equilíbrio e Justiça Contratual."
+        },
+        {
+            "front": "Como a Lei da Liberdade Econômica regulamentou a função social e a intervenção judicial (arts. 421 e 421-A)?",
+            "back": "Consagrou a intervenção mínima do Estado, a excepcionalidade da revisão contratual, a presunção de paridade e simetria dos contratos civis e empresariais, e o dever do juiz de respeitar a alocação de riscos convencionada pelas partes."
+        },
+        {
+            "front": "O que significa a eficácia externa da função social do contrato?",
+            "back": "Significa que o contrato não pode causar prejuízos a terceiros nem à coletividade, bem como terceiros não podem interferir ilicitamente na relação contratual alheia (tutela externa do crédito)."
+        }
     ],
-    "A quem se deve pagar": [
-        {"front": "O pagamento feito ao credor putativo de boa-fé é válido?", "back": "Sim, é plenamente válido, mesmo provado depois que ele não era o credor legítimo. Art. 309, CC."},
-        {"front": "O que rege o ditado popular 'quem paga mal paga duas vezes' no Código Civil?", "back": "O pagamento feito a quem não é credor (ou representante) só vale se ratificado por este ou se reverter em seu proveito. Art. 308, CC."},
-        {"front": "O pagamento ao credor cujo crédito foi penhorado é válido?", "back": "Não. Se o devedor foi notificado da penhora e pagar ao credor, o pagamento não vale contra terceiros penhorantes. Art. 312, CC."},
-        {"front": "O que ocorre se o pagamento for realizado a credor incapaz de quitar?", "back": "Em regra não vale, a menos que o devedor prove que o pagamento reverteu integralmente em proveito do incapaz. Art. 310, CC."},
-        {"front": "Quem é presumido autorizado a receber o pagamento?", "back": "O portador da quitação, exceto se as circunstâncias contrariarem essa presunção. Art. 311, CC."}
+    "Boa-fé Objetiva e Figuras Parcelares": [
+        {
+            "front": "O que significa 'Venire Contra Factum Proprium'? Cite um exemplo prático.",
+            "back": "É a proibição do comportamento contraditório decorrente da boa-fé objetiva (art. 422, CC). Impede que alguém exerça posição jurídica em contradição com conduta anterior sua que gerou legítima confiança na outra parte. Exemplo: locador que aceita sem oposição o aluguel no dia 20 e, de repente, cobra multa porque o contrato previa dia 10."
+        },
+        {
+            "front": "Qual a diferença exata entre Supressio (Verwirkung) e Surrectio (Erwirkung)?",
+            "back": "Supressio é a perda/supressão de um direito ou prerrogativa contratual decorrente do seu não exercício continuado e prolongado no tempo. Surrectio é o reflexo positivo correlato: o surgimento/nascimento de um novo direito para a contraparte com base nessa prática reiterada."
+        },
+        {
+            "front": "O que significa o dever anexo de proteção e informação na boa-fé objetiva?",
+            "back": "São deveres implícitos de conduta ética que obrigam as partes a agir com lealdade, transparência, cooperação mútua, informação clara e guarda de sigilo antes, durante e após a execução do contrato."
+        }
     ],
-    "Objeto do pagamento e sua prova": [
-        {"front": "O credor é obrigado a receber prestação diversa se for mais valiosa?", "back": "Não. O credor não pode ser obrigado a receber prestação diversa da que lhe é devida, ainda que mais valiosa. Art. 313, CC."},
-        {"front": "O devedor é obrigado a pagar em parcelas se o contrato previu parcela única?", "back": "Não. O credor não pode ser obrigado a receber por partes, nem o devedor a pagar por partes, se não convencionado. Art. 314, CC."},
-        {"front": "Qual o principal meio de prova do pagamento?", "back": "A quitação (recibo), que pode ser dada por instrumento particular e conter os requisitos do Art. 320, CC."},
-        {"front": "Nas dívidas em quotas periódicas, o que presume a quitação da última?", "back": "Faz presumir, até prova em contrário, que as parcelas anteriores foram integralmente pagas. Art. 322, CC."},
-        {"front": "O que presume a quitação do capital sem reserva dos juros?", "back": "Faz presumir que os juros da dívida foram pagos e extintos. Art. 323, CC."},
-        {"front": "Qual o efeito da devolução do título representativo da obrigação ao devedor?", "back": "Gera presunção de pagamento (adimplemento). O credor tem 60 dias para provar o não pagamento. Art. 324, CC."}
+    "Interpretação dos Contratos no Direito Brasileiro": [
+        {
+            "front": "Como o Código Civil harmoniza a intenção das partes e a literalidade do contrato (art. 112)?",
+            "back": "Art. 112, CC: 'Nas declarações de vontade se atenderá mais à intenção nelas consubstanciada do que ao sentido literal da linguagem'. Prevalece a vontade real e o propósito prático comum sobre a frieza gramatical das palavras."
+        },
+        {
+            "front": "Como devem ser interpretados os negócios jurídicos benéficos e a renúncia (art. 114, CC)?",
+            "back": "Interpretam-se ESTRITAMENTE (de forma restritiva). Como o disponente transfere patrimônio sem contraprestação ou abre mão de direito, não se admite interpretação extensiva que amplie a liberalidade."
+        },
+        {
+            "front": "Como a redação de cláusulas ambíguas é interpretada nos contratos de adesão (art. 423, CC)?",
+            "back": "Interpreta-se contra o estipulante (contra stipulatorem), isto é, adota-se a interpretação mais favorável ao aderente, que não teve oportunidade de negociar o conteúdo das cláusulas."
+        }
     ],
-    "Lugar do pagamento": [
-        {"front": "Qual a regra geral para o lugar do pagamento se não convencionado?", "back": "No domicílio do devedor (obrigação querível ou 'quérable'). Art. 327, CC."},
-        {"front": "O que caracteriza a obrigação 'portável' (portable)?", "back": "É aquela em que o pagamento deve ser feito no domicílio do credor, por força de lei ou convenção contratual."},
-        {"front": "O pagamento reiterado em local diverso do previsto em contrato presume o quê?", "back": "Faz presumir renúncia do credor relativamente ao previsto no instrumento. Art. 330, CC."}
+    "Classificação dos Contratos": [
+        {
+            "front": "Qual a diferença entre contratos unilaterais, bilaterais e plurilaterais?",
+            "back": "Unilaterais: geram obrigações para apenas um dos lados (ex: doação pura, mútuo). Bilaterais (sinalagmáticos): geram obrigações recíprocas e interdependentes para ambos os contratantes (ex: compra e venda, locação). Plurilaterais: envolvem múltiplos polos com finalidade comum (ex: sociedade, consórcio)."
+        },
+        {
+            "front": "Qual a distinção entre contratos comutativos e contratos aleatórios?",
+            "back": "Comutativos: as prestações são certas, conhecidas e estimadas pelas partes desde a celebração do contrato. Aleatórios: a prestação de uma das partes depende de um evento futuro e incerto (álea), gerando risco de ganho ou perda patrimonial."
+        },
+        {
+            "front": "O que são contratos reais e contratos consensuais?",
+            "back": "Consensuais: aperfeiçoam-se pelo mero acordo de vontades (consenso), que é a regra geral. Reais: só se aperfeiçoam com a efetiva entrega (tradição) da coisa (ex: comodato, mútuo, depósito, penhor)."
+        }
     ],
-    "Tempo do pagamento": [
-        {"front": "Nas obrigações sem prazo assinalado, quando o credor pode cobrar?", "back": "Imediatamente, salvo disposição especial do Código Civil. Art. 331, CC."},
-        {"front": "Em quais casos o credor pode cobrar a dívida antes de vencido o prazo?", "back": "Insolvência/falência do devedor; penhora do bem dado em garantia por outro credor; garantias insuficientes não reforçadas. Art. 333, CC."},
-        {"front": "O vencimento antecipado do devedor principal se propaga aos fiadores?", "back": "Não. Nos casos de solidariedade passiva, o vencimento antecipado não se propaga aos codevedores ou fiadores solventes. Art. 333, parágrafo único."},
-        {"front": "Como ocorre o pagamento de obrigação sob condição suspensiva?", "back": "O devedor deve adimplir na data do implemento (ocorrência) do evento futuro e incerto, devendo o credor provar que o devedor teve ciência desse fato. Art. 332, CC."}
+    "Etapas de Formação do Contrato": [
+        {
+            "front": "Quais são as três etapas sucessivas de formação do contrato civil?",
+            "back": "1) Punctuação (negociações preliminares / tratativas); \n2) Proposta ou Policitação (declaração receptícia e vinculante de contratar);\n3) Aceitação ou Oblação (aquiescência do oblato que sela o contrato)."
+        },
+        {
+            "front": "As negociações preliminares (fase de punctuação) vinculam a celebração do contrato?",
+            "back": "Não vinculam a obrigação de contratar, mas geram responsabilidade civil pré-contratual (dever de indenizar despesas e danos) se uma das partes romper abrupta e deslealmente as tratativas, violando a boa-fé objetiva."
+        },
+        {
+            "front": "Quando o contrato entre pessoas ausentes é considerado concluído pelo Código Civil?",
+            "back": "Pela Teoria da Agnição na subespécie da Expedição (art. 434, CC): considera-se concluído no momento em que a aceitação é expedida/enviada, salvo hipóteses de retratação tempestiva anterior ou simultânea."
+        }
     ],
-    "Consignação em pagamento": [
-        {"front": "O que caracteriza a consignação em pagamento?", "back": "O depósito judicial ou em estabelecimento bancário da coisa ou quantia devida, para fins de exoneração da obrigação. Art. 334, CC."},
-        {"front": "Quais as principais hipóteses que autorizam a consignação?", "back": "Recusa injusta do credor em receber/dar quitação; credor incapaz, desconhecido ou ausente; dúvida sobre quem é o credor; litígio sobre o crédito. Art. 335, CC."},
-        {"front": "Até que momento o devedor pode levantar o depósito consignado?", "back": "Enquanto o credor não declarar que aceita o depósito, ou não o impugnar, o devedor pode levantá-lo, pagando as despesas. Art. 336, CC."}
+    "Estipulação em Favor de Terceiro": [
+        {
+            "front": "Quem são as partes e quem tem o direito de exigir na Estipulação em Favor de Terceiro?",
+            "back": "Partes: Estipulante e Promitente; o Terceiro é o Beneficiário. Tanto o estipulante quanto o terceiro beneficiário possuem legitimidade para exigir o cumprimento da prestação do promitente (art. 436, CC)."
+        },
+        {
+            "front": "O estipulante pode revogar a indicação e substituir o terceiro beneficiário?",
+            "back": "Sim! O estipulante pode reservar-se o direito de substituir o terceiro designado no contrato, independentemente da anuência deste e do promitente, por ato entre vivos ou por testamento (art. 438, CC)."
+        },
+        {
+            "front": "Cite um exemplo prático de Estipulação em Favor de Terceiro diverso de seguro de vida.",
+            "back": "Exemplo: Um acordo de separação judicial no qual o pai estipula que a empresa locatária do seu imóvel deposite os aluguéis mensais diretamente na conta dos filhos menores para custeio de seus estudos."
+        }
     ],
-    "Pagamento com sub-rogação": [
-        {"front": "O que é a sub-rogação legal?", "back": "É a substituição automática do credor operada de pleno direito pela lei (ex: fiador que paga a dívida, adquirente de imóvel hipotecado). Art. 346, CC."},
-        {"front": "O que caracteriza a sub-rogação convencional?", "back": "A transferência acordada de direitos, ocorrendo quando o credor recebe o pagamento de terceiro e expressamente lhe transfere os direitos. Art. 347, CC."},
-        {"front": "Qual o limite do reembolso na sub-rogação legal?", "back": "O sub-rogado não pode reclamar do devedor mais do que despendeu para desobrigá-lo. Art. 350, CC."}
+    "Promessa de Fato de Terceiro": [
+        {
+            "front": "O que ocorre se quem prometeu fato de terceiro não obtiver o cumprimento por este?",
+            "back": "Aquele que prometeu fato de terceiro responderá por perdas e danos perante o credor (art. 439, CC). O terceiro não responde porque não manifestou vontade nem celebrou o contrato."
+        },
+        {
+            "front": "Em quais casos o promitente fica exonerado de indenizar na promessa de fato de terceiro?",
+            "back": "1) Quando o terceiro assumir expressamente a obrigação perante o credor (art. 440, CC);\n2) Quando o terceiro for cônjuge do promitente, dependendo de sua outorga o ato, e o regime de bens afetar seu patrimônio (art. 439, parágrafo único)."
+        },
+        {
+            "front": "Cite um exemplo de Promessa de Fato de Terceiro.",
+            "back": "Exemplo: Um produtor de eventos que contrata com uma casa de shows garantindo que uma banda famosa irá se apresentar no dia da festa; se a banda se recusar, o produtor responde integralmente por perdas e danos."
+        }
     ],
-    "Imputação do pagamento": [
-        {"front": "O que é a imputação do pagamento?", "back": "A indicação de qual dívida está sendo quitada quando o devedor possui dois ou mais débitos da mesma natureza com o mesmo credor. Art. 352, CC."},
-        {"front": "Havendo juros e capital vencidos, onde se imputa primeiro o pagamento?", "back": "Primeiro nos juros vencidos e, depois, no capital principal, salvo acordo em contrário. Art. 354, CC."},
-        {"front": "Se nem o devedor nem o credor indicarem, onde a lei imputa o pagamento?", "back": "Nas dívidas líquidas e vencidas em primeiro lugar. Sendo todas vencidas ao mesmo tempo, na mais onerosa. Art. 355, CC."}
+    "Contratos Aleatórios - Conceito e Espécies": [
+        {
+            "front": "Qual a diferença entre contrato aleatório por natureza e acidentalmente aleatório?",
+            "back": "Aleatório por natureza: o risco é da essência ontológica do contrato (ex: seguro, jogo e aposta). Acidentalmente aleatório: contrato originariamente comutativo (como compra e venda) cujas partes pactuam que o objeto fica sujeito a uma álea (arts. 458 a 461, CC)."
+        },
+        {
+            "front": "Quais são as três espécies de contratos acidentalmente aleatórios no Código Civil?",
+            "back": "1) Emptio Spei (venda da esperança - risco da existência);\n2) Emptio Rei Speratae (venda da coisa esperada - risco da quantidade);\n3) Risco sobre coisas existentes expostas a perigo (arts. 460 e 461)."
+        }
     ],
-    "Dação em pagamento": [
-        {"front": "O que é a dação em pagamento?", "back": "Ocorre quando o credor consente em receber prestação diversa da que lhe era devida (ex: receber um carro em vez de dinheiro). Art. 356, CC."},
-        {"front": "O que acontece se o credor for evicto (perder judicialmente) do bem recebido em dação?", "back": "Restabelece-se a obrigação original (pecuniária), ficando sem efeito a quitação, ressalvados direitos de terceiros de boa-fé. Art. 359, CC."},
-        {"front": "Quais regras se aplicam se as partes fixarem preço para a coisa dada em dação?", "back": "Regula-se pelas normas do contrato de compra e venda. Art. 357, CC."}
+    "Contrato Aleatório: Emptio Spei": [
+        {
+            "front": "O que é o contrato de 'Emptio Spei' (art. 458 do CC) e cite um exemplo?",
+            "back": "É a venda da esperança. O risco assumido pelo comprador concerne à própria EXISTÊNCIA da coisa futura. O comprador deve pagar 100% do preço ainda que NADA venha a existir, salvo se houver dolo ou culpa do alienante. Exemplo: compra antecipada pelo valor fixo de R$ 1.000 de tudo o que for capturado em um único lance de rede de pesca."
+        },
+        {
+            "front": "Na emptio spei, em que hipótese o comprador não é obrigado a pagar o preço?",
+            "back": "Se o alienante agir com dolo ou culpa para a não ocorrência da coisa (ex: o pescador sequer foi ao mar lançar a rede ou sabotou a pesca)."
+        }
     ],
-    "Novação": [
-        {"front": "O que caracteriza a novação?", "back": "A extinção de uma obrigação anterior mediante a criação de uma nova obrigação substituta. Exige o 'animus novandi'. Art. 360, CC."},
-        {"front": "O que é a novação por expromissão?", "back": "Novação subjetiva passiva onde um novo devedor substitui o antigo, independente do consentimento deste último. Art. 362, CC."},
-        {"front": "O que ocorre com a fiança se houver novação sem anuência do fiador?", "back": "O fiador fica exonerado da garantia, pois não anuiu com a nova dívida criada. Art. 366, CC."}
+    "Contrato Aleatório: Emptio Rei Speratae": [
+        {
+            "front": "O que é o contrato de 'Emptio Rei Speratae' (art. 459 do CC) e cite um exemplo?",
+            "back": "É a venda da coisa esperada. O risco assumido pelo comprador recai sobre a QUANTIDADE, mas não sobre a existência. Se vier qualquer quantidade (mesmo mínima), o preço integral é devido. Mas se NADA vier a existir, o contrato é ineficaz e o alienante restitui o preço recebido. Exemplo: compra da safra futura de laranjas de um pomar."
+        },
+        {
+            "front": "Qual a diferença fulcral entre Emptio Spei e Emptio Rei Speratae?",
+            "back": "Na Emptio Spei o risco é da EXISTÊNCIA (se colher zero peixes, paga tudo). Na Emptio Rei Speratae o risco é apenas da QUANTIDADE (se colher zero laranjas, o alienante devolve o dinheiro; se colher 1 laranja, o comprador paga tudo)."
+        }
     ],
-    "Compensação": [
-        {"front": "O que é compensação legal?", "back": "Extinção recíproca de obrigações entre duas pessoas que são credoras e devedoras uma da outra. Exige dívidas líquidas, vencidas e de coisas fungíveis da mesma espécie. Arts. 368/369, CC."},
-        {"front": "Quais dívidas são excluídas de compensação legal por força do Art. 373?", "back": "As que provierem de esbulho/roubo; comodato ou depósito; e alimentos (verbas alimentares)."},
-        {"front": "O fiador pode compensar sua dívida com o débito do credor ao devedor principal?", "back": "Sim, o fiador pode opor a compensação que o devedor principal teria contra o credor. Art. 371, CC."}
+    "Contrato Aleatório: Coisas Existentes Expostas a Risco": [
+        {
+            "front": "Como funciona o contrato sobre coisas existentes mas expostas a risco (art. 460 do CC)?",
+            "back": "O adquirente assume o risco da perda ou deterioração da coisa que já esteja exposta a perigo ou transporte arriscado. O alienante tem direito ao preço mesmo que a coisa já não existisse no dia do contrato, desde que estivesse de boa-fé."
+        },
+        {
+            "front": "Quando a venda aleatória de coisa exposta a risco pode ser anulada (art. 461 do CC)?",
+            "back": "Pode ser anulada como dolosa pelo prejudicado se provar que o outro contratante não ignorava a consumação do risco (já sabia que a carga havia naufragado ou sido destruída antes do contrato)."
+        }
     ],
-    "Confusão": [
-        {"front": "O que é a extinção por confusão?", "back": "Reunião das qualidades de credor e devedor em uma mesma pessoa (ex: filho herda dívida que tinha com o pai falecido). Art. 381, CC."},
-        {"front": "O que ocorre se a confusão cessar por causa subsequente?", "back": "Restabelece-se a obrigação anterior com todos os seus acessórios e garantias (ex: anulação do testamento). Art. 384, CC."},
-        {"front": "A confusão pode ser parcial?", "back": "Sim, a confusão pode ser total ou apenas parcial, extinguindo apenas parte do débito. Art. 382, CC."}
+    "Contrato Preliminar / Promessa de Contratar": [
+        {
+            "front": "Quais os requisitos de validade do Contrato Preliminar segundo o art. 462 do CC?",
+            "back": "O contrato preliminar, exceto quanto à FORMA, deve conter todos os requisitos essenciais ao contrato a ser celebrado (capacidade, objeto lícito, preço e consentimento). Pode ser celebrado por instrumento particular mesmo que o definitivo exija escritura pública."
+        },
+        {
+            "front": "O que pode fazer o promitente comprador se o vendedor se recusar a outorgar a escritura definitiva?",
+            "back": "Esgotado o prazo e sem cláusula de arrependimento, o credor pode mover ação de adjudicação compulsória para obter suprimento judicial da vontade (art. 464, CC), valendo a sentença como título translativo, ou resolver em perdas e danos (art. 465)."
+        }
     ],
-    "Remissão das dívidas": [
-        {"front": "O que é a remissão?", "back": "O perdão da dívida. É um ato bilateral que exige a aceitação (expressa ou tácita) do devedor para extinguir a obrigação. Art. 385, CC."},
-        {"front": "A devolução do objeto empenhado (garantia) significa perdão da dívida?", "back": "Não, prova apenas a renúncia à garantia real (penhor), subsistindo o crédito principal. Art. 387, CC."},
-        {"front": "Qual o efeito da remissão dada a um codevedor solidário?", "back": "Extingue a dívida na parte dele. O credor só pode cobrar os demais abatendo a quota perdoada. Art. 388, CC."}
+    "Contrato com Pessoa a Declarar": [
+        {
+            "front": "O que é o Contrato com Pessoa a Declarar e qual o prazo legal para a indicação (electio amici)?",
+            "back": "É o contrato em que uma das partes se reserva o direito de nomear terceiro que assumirá sua posição jurídica com efeito retroativo (ex tunc). O prazo legal supletivo para indicar o terceiro é de 5 DIAS após a conclusão do contrato (art. 468, CC), salvo convenção em contrário."
+        },
+        {
+            "front": "Cite um exemplo prático de Contrato com Pessoa a Declarar.",
+            "back": "Exemplo: Um corretor adquire um galpão em leilão constando a cláusula 'pro amico' (com pessoa a declarar), para posteriormente nomear a empresa investidora que realmente explorará a atividade, evitando especulação imobiliária."
+        },
+        {
+            "front": "Se a pessoa nomeada for insolvente e o estipulante ignorava, quem responde pelo contrato?",
+            "back": "O contrato produzirá seus efeitos unicamente entre os contratantes originários (o próprio estipulante continua obrigado), se a pessoa nomeada era incapaz ou insolvente no momento da nomeação (art. 470, II, CC)."
+        }
     ],
-    "Inadimplemento - Disposições gerais": [
-        {"front": "Quem responde pelas perdas e danos no inadimplemento?", "back": "O devedor inadimplente responde por perdas e danos, mais juros, atualização monetária e honorários de advogado. Art. 389, CC."},
-        {"front": "O devedor responde por caso fortuito ou força maior?", "back": "Em regra não, exceto se houver se responsabilizado expressamente ou se já estava em mora. Art. 393, CC."},
-        {"front": "Nos contratos bilaterais, o inadimplemento permite o quê?", "back": "A parte lesada pode pedir a resolução do contrato ou exigir-lhe o cumprimento, cabendo em qualquer caso indenização."},
-        {"front": "Nas obrigações de não fazer, quando se caracteriza o inadimplemento?", "back": "O devedor é considerado inadimplente desde o dia em que realizou o ato que se havia obrigado a abster-se. Art. 390, CC."},
-        {"front": "Quais bens do devedor respondem pelo inadimplemento das obrigações?", "back": "Todos os bens do devedor respondem pelo descumprimento, ressalvadas as restrições e impenhorabilidades previstas em lei. Art. 391, CC."}
+    "Contrato com Pessoa a Declarar vs. Outros Contratos": [
+        {
+            "front": "Qual a diferença entre o Contrato com Pessoa a Declarar e a Representação/Mandato?",
+            "back": "No Mandato, o mandatário age em nome e por conta do mandante desde o início. No Contrato com Pessoa a Declarar, a parte contrata em seu próprio nome e só depois nomeia o terceiro; caso este recuse, o contratante originário permanece pessoalmente obrigado."
+        },
+        {
+            "front": "Qual a diferença entre o Contrato com Pessoa a Declarar e a Estipulação em Favor de Terceiro?",
+            "back": "Na Estipulação em Favor de Terceiro, o terceiro é apenas beneficiário de uma vantagem econômica (não assume deveres contratuais). No Contrato com Pessoa a Declarar, o terceiro assume a posição contratual inteira (direitos e obrigações)."
+        }
     ],
-    "Mora - Geral": [
-        {"front": "Qual a diferença de mora ex re e mora ex persona?", "back": "A mora ex re decorre do vencimento de obrigação com termo certo. A mora ex persona exige interpelação/notificação judicial ou extrajudicial por falta de termo. Art. 397, CC."},
-        {"front": "Quem responde pelos danos em caso de mora do credor?", "back": "O credor responde pela conservação da coisa (salvo dolo do devedor) e deve ressarcir as despesas com a guarda. Art. 400, CC."},
-        {"front": "Como se purga a mora do devedor?", "back": "Oferecendo a prestação mais os juros, a atualização monetária e os prejuízos decorrentes do atraso. Art. 401, I, CC."},
-        {"front": "Como ocorre a purgação da mora pelo credor?", "back": "Oferecendo-se a receber o pagamento e sujeitando-se aos efeitos da sua mora (como arcar com as despesas de conservação). Art. 401, II, CC."}
+    "Vícios Redibitórios - Conceito e Requisitos": [
+        {
+            "front": "O que são Vícios Redibitórios e quais são seus requisitos legais cumulativos (art. 441 do CC)?",
+            "back": "São defeitos ocultos na coisa recebida em contrato comutativo ou doação onerosa que a tornam imprópria ao uso ou lhe diminuem o valor. Requisitos: 1) Contrato oneroso/comutativo ou doação modal; 2) Defeito oculto (não aparente); 3) Gravidade do vício; 4) Preexistência à tradição; 5) Ignorância do vício pelo adquirente."
+        },
+        {
+            "front": "O doador de uma doação pura e simples responde por vícios redibitórios?",
+            "back": "NÃO! A responsabilidade por vícios redibitórios aplica-se somente a contratos comutativos onerosos e a doações ONEROSAS/MÓDAIS (com encargo), conforme art. 441, parágrafo único, do CC."
+        }
     ],
-    "Mora do devedor": [
-        {"front": "Quais os requisitos para constituição em mora do devedor?", "back": "Existência de obrigação exigível; descumprimento injustificado (atraso culposo); e interpelação (se mora ex persona). Art. 396, CC."},
-        {"front": "O devedor responde pelo caso fortuito ocorrido durante sua mora?", "back": "Sim, responde pela impossibilidade da prestação mesmo que decorra de caso fortuito, a menos que prove que ocorreria mesmo se pontual. Art. 399, CC."},
-        {"front": "O credor pode rejeitar a prestação se ela se tornar inútil devido à mora?", "back": "Sim. Se a prestação se tornar inútil ao credor devido ao atraso, este pode enjeitá-la e exigir perdas e danos. Art. 395, parágrafo único, CC."}
+    "Efeitos da Boa-fé e Má-fé do Alienante no Vício": [
+        {
+            "front": "A ciência do defeito pelo alienante gera efeitos diferentes? O que prevê o art. 443 do CC?",
+            "back": "SIM! Se o alienante SABIA do vício (má-fé), restituirá o que recebeu mais PERDAS E DANOS. Se o alienante NÃO SABIA do vício (boa-fé), apenas restituirá o valor recebido mais as despesas do contrato, ficando ISENTO de perdas e danos."
+        },
+        {
+            "front": "A boa-fé subjetiva (ignorância do vício) exonera o alienante de devolver o valor da coisa?",
+            "back": "NÃO! A responsabilidade pelo vício redibitório é de garantia objetiva: ele responde pelo desfazimento do contrato ou pelo abatimento no preço mesmo que estivesse de boa-fé; sua boa-fé apenas o livra de pagar perdas e danos adicionais."
+        }
     ],
-    "Mora do credor": [
-        {"front": "O que caracteriza a mora do credor (mora accipiendi)?", "back": "A recusa injustificada em aceitar o pagamento no tempo, lugar e forma convencionados. Art. 394, CC."},
-        {"front": "Quais os efeitos da mora do credor sobre a responsabilidade do devedor?", "back": "Isenta o devedor (salvo se agir com dolo) da responsabilidade pela conservação da coisa e transfere o risco de oscilação de preço. Art. 400, CC."},
-        {"front": "A mora do credor afeta a cobrança de juros?", "back": "Sim, suspende a incidência de juros moratórios contra o devedor durante o período de mora do credor."}
+    "Ações Edilícias (Redibitória e Estimatória/Quanti Minoris)": [
+        {
+            "front": "Quais são as duas Ações Edilícias e qual a característica preponderante de cada uma delas?",
+            "back": "1) Ação Redibitória: visa a RESOLUÇÃO do contrato com devolução da coisa defeituosa e restituição do preço pago;\n2) Ação Estimatória (ou Quanti Minoris): visa a CONSERVAÇÃO do contrato mediante abatimento proporcional do preço pago em virtude da desvalorização sofrida."
+        },
+        {
+            "front": "O comprador pode ajuizar conjuntamente a Ação Redibitória e a Estimatória para o mesmo bem?",
+            "back": "NÃO. São ações de escolha disjuntiva/alternativa. O adquirente tem o direito potestativo de eleger uma delas; escolhendo uma, preclui a faculdade de pleitear a outra."
+        }
     ],
-    "Inadimplemento absoluto": [
-        {"front": "Quando a mora se converte em inadimplemento absoluto?", "back": "Quando a prestação se torna inútil para o credor ou impossível de ser cumprida pelo devedor culposamente. Art. 395, parágrafo único."},
-        {"front": "Qual a principal consequência do inadimplemento absoluto?", "back": "Conversão da obrigação em indenização equivalente (perdas e danos: danos emergentes + lucros cessantes). Art. 389, CC."},
-        {"front": "O devedor responde se a impossibilidade for sem culpa?", "back": "Não. Se a prestação se impossibilitar sem culpa do devedor, a obrigação resolve-se sem perdas e danos para as partes."}
+    "Vício Redibitório vs. Entrega de Coisa Diversa (Aliud Pro Alio)": [
+        {
+            "front": "A entrega de coisa diversa da contratada (aliud pro alio) constitui vício redibitório?",
+            "back": "NÃO! Constitui INADIMPLEMENTO ABSOLUTO da obrigação de dar/entregar (arts. 389 e 475, CC), sujeita aos prazos prescricionais gerais de responsabilidade civil contratual (art. 205, 10 anos). No vício redibitório, a coisa entregue é a contratada, porém com defeito oculto."
+        },
+        {
+            "front": "Cite um exemplo que diferencia vício redibitório de erro essencial ou 'aliud pro alio'.",
+            "back": "Comprar um touro reprodutor e receber o touro contratado, mas que é estéril = vício redibitório (coisa certa, vício oculto). Comprar um cavalo de corrida e o vendedor entregar uma égua de tração = aliud pro alio (inadimplemento da obrigação de entrega)."
+        }
     ],
-    "Perdas e danos": [
-        {"front": "O que compreende as perdas e danos?", "back": "O dano emergente (o que efetivamente se perdeu) e o lucro cessante (o que razoavelmente se deixou de lucrar). Art. 402, CC."},
-        {"front": "Como o Código Civil limita o nexo causal em perdas e danos?", "back": "Só são indenizáveis os prejuízos efetivos que decorram direta e imediatamente do inadimplemento. Art. 403, CC."},
-        {"front": "O juiz pode conceder indenização suplementar em obrigações em dinheiro?", "back": "Sim. Se os juros moratórios não cobrirem o prejuízo real e não houver cláusula penal, o juiz pode conceder indenização. Art. 404, parágrafo único."}
+    "Prazos Decadenciais dos Vícios Redibitórios": [
+        {
+            "front": "Quais são os prazos decadenciais gerais para reclamar vícios redibitórios no Código Civil (art. 445)?",
+            "back": "Contados da entrega efetiva (tradição): 30 DIAS para bens móveis; 1 ANO para bens imóveis. Se o adquirente já estava na posse da coisa, o prazo conta da alienação e cai pela metade (15 dias para móveis, 6 meses para imóveis)."
+        },
+        {
+            "front": "Como funciona o prazo quando o vício redibitório só puder ser conhecido mais tarde?",
+            "back": "O prazo de 30 dias (móvel) ou 1 ano (imóvel) conta-se a partir do momento em que o adquirente tiver CIÊNCIA do vício, desde que essa ciência ocorra no prazo máximo de 180 DIAS para bens móveis e de 1 ANO para bens imóveis (art. 445, § 1º, CC)."
+        }
     ],
-    "Juros legais": [
-        {"front": "Qual a taxa de juros de mora legal se não convencionada?", "back": "A taxa vigente para a mora do pagamento de impostos à Fazenda Nacional (atualmente a taxa SELIC). Art. 406, CC."},
-        {"front": "Os juros moratórios são devidos apenas se alegado prejuízo?", "back": "Não. Os juros de mora são devidos independentemente da alegação de prejuízo do credor. Art. 407, CC."},
-        {"front": "A partir de quando correm os juros de mora?", "back": "Nas obrigações contratuais, a partir da citação (ou vencimento se mora ex re). Nas extracontratuais (delito), desde o evento danoso. Art. 405, CC / Súmula 54 STJ."}
+    "Extinção dos Contratos - Resolução e Cláusula Resolutiva": [
+        {
+            "front": "Qual a diferença entre resolução, resilição e rescisão contratual?",
+            "back": "Resolução: extinção por inadimplemento culposo ou fortuito (arts. 474 e 475, CC). Resilição: extinção pela vontade das partes, podendo ser bilateral (distrato) ou unilateral (denúncia/aviso prévio - arts. 472 e 473). Rescisão: termo genérico ou extinção por vício congênito contemporâneo à formação (lesão, estado de perigo)."
+        },
+        {
+            "front": "Qual a diferença de eficácia entre a cláusula resolutiva expressa e a tácita (art. 474 do CC)?",
+            "back": "A cláusula resolutiva expressa opera de pleno direito (automaticamente pelo inadimplemento). A cláusula resolutiva tácita depende de interpelação judicial para constituir a parte em mora e rescindir o vínculo."
+        }
     ],
-    "Cláusula penal": [
-        {"front": "Qual o limite legal do valor da cláusula penal?", "back": "O valor da cominação imposta na cláusula penal não pode exceder o da obrigação principal. Art. 412, CC."},
-        {"front": "Quando o juiz deve reduzir equitativamente a cláusula penal?", "back": "Se a obrigação principal tiver sido cumprida em parte, ou se a penalidade for manifestamente excessiva (deve reduzir de ofício). Art. 413, CC."},
-        {"front": "O credor pode cobrar multa compensatória e perdas e danos cumulados?", "back": "Não, salvo se convencionado. E se convencionado, a multa funciona como mínimo, devendo provar o prejuízo excedente. Art. 416, parágrafo único."}
-    ],
-    "Arras ou sinal": [
-        {"front": "Qual a função das arras confirmatórias?", "back": "Sinalizar o fechamento do negócio e servir de taxa mínima de indenização em caso de inadimplemento. Permite indenização suplementar. Arts. 418/419, CC."},
-        {"front": "O que caracteriza as arras penitenciais?", "back": "Arras pactuadas quando há direito de arrependimento contratual. Funcionam como indenização máxima, vedando suplementação. Art. 420, CC."},
-        {"front": "Se quem recebeu as arras der causa à inexecução, o que deve fazer?", "back": "Deve devolvê-las em dobro a quem as deu, mais equivalente, com atualização, juros e honorários. Art. 418, CC."}
+    "Exceção do Contrato Não Cumprido e Onerosidade Excessiva": [
+        {
+            "front": "O que é a 'Exceptio Non Adimpleti Contractus' (art. 476 do CC) e quais seus pressupostos?",
+            "back": "É a exceção do contrato não cumprido. Nos contratos bilaterais e sinalagmáticos, nenhum dos contratantes, antes de cumprida a sua própria obrigação, pode exigir o implemento da obrigação do outro. É uma defesa de direito material."
+        },
+        {
+            "front": "Quais os requisitos para pleitear a resolução do contrato por onerosidade excessiva (art. 478 do CC)?",
+            "back": "1) Contrato de execução continuada ou diferida; 2) Prestação excessivamente onerosa para uma das partes com extrema vantagem para a outra; 3) Acontecimento extraordinário e imprevisível (Teoria da Imprevisão)."
+        }
     ]
 }
 
@@ -168,6 +302,55 @@ class FlashcardManager:
         return created_cards
 
     @staticmethod
+    def create_card_from_error(db: Session, question: Dict[str, Any], session_id: str = "default") -> Optional[Flashcard]:
+        """Cria instantaneamente um flashcard focado quando o aluno erra uma questão"""
+        q_id = str(question.get("id") or uuid.uuid4().hex[:8])[:30]
+        card_id = f"fc_err_{session_id}_{q_id}"
+        
+        existing = db.query(Flashcard).filter(Flashcard.id == card_id).first()
+        if existing:
+            # Reseta intervalo para forçar revisão imediata
+            existing.box = 1
+            existing.interval_days = 1
+            existing.mastered = False
+            existing.next_revision_date = datetime.now(timezone.utc).replace(tzinfo=None)
+            db.commit()
+            return existing
+            
+        subject = question.get("subject", "Contratos")
+        bank = question.get("bank", "Questão")
+        enunciado = question.get("enunciado", "")
+        gabarito = question.get("gabarito", "")
+        options = question.get("options", {})
+        texto_correto = options.get(gabarito, "") if isinstance(options, dict) else ""
+        expl = question.get("explanation", "")
+        art = question.get("article", "")
+        basis = question.get("legal_basis", "")
+        
+        front = f"⚠️ [REVISÃO DE ERRO - {bank} | {subject}]\n\n{enunciado}"
+        back = (
+            f"✅ GABARITO CORRETO: ({gabarito})\n"
+            f"{texto_correto}\n\n"
+            f"📖 FUNDAMENTAÇÃO LEGAL: {art}\n"
+            f"{basis}\n\n"
+            f"💡 EXPLICAÇÃO DIDÁTICA:\n{expl}"
+        )
+        
+        fc = Flashcard(
+            id=card_id,
+            session_id=session_id,
+            subject=subject,
+            front=front,
+            back=back,
+            box=1,
+            interval_days=1,
+            next_revision_date=datetime.now(timezone.utc).replace(tzinfo=None)
+        )
+        db.add(fc)
+        db.commit()
+        return fc
+
+    @staticmethod
     def get_due_flashcards(db: Session, session_id: str = "default") -> List[Flashcard]:
         """Obtém flashcards agendados para revisão hoje (exclui dominados)"""
         now = datetime.now(timezone.utc).replace(tzinfo=None)
@@ -188,7 +371,7 @@ class FlashcardManager:
         return query.all()
 
     @staticmethod
-    def mark_as_mastered(db: Session, card_id: str, session_id: str = "default") -> Flashcard:
+    def mark_as_mastered(db: Session, card_id: str, session_id: str = "default") -> Optional[Flashcard]:
         """Marca o flashcard como dominado (não aparecerá mais nas revisões agendadas)"""
         card = db.query(Flashcard).filter(
             Flashcard.id == card_id,
@@ -204,7 +387,7 @@ class FlashcardManager:
         return card
 
     @classmethod
-    def process_review(cls, db: Session, card_id: str, is_easy: bool, session_id: str = "default") -> Flashcard:
+    def process_review(cls, db: Session, card_id: str, is_easy: bool, session_id: str = "default") -> Optional[Flashcard]:
         """Processa a auto-avaliação do flashcard e atualiza sua data de repetição espaçada"""
         card = db.query(Flashcard).filter(
             Flashcard.id == card_id,
