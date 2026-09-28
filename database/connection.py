@@ -8,10 +8,12 @@ logger = logging.getLogger("database")
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///database/jus_obrigacoes.db")
 
 if DATABASE_URL.startswith("postgres://"):
-    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql+psycopg2://", 1)
+elif DATABASE_URL.startswith("postgresql://") and not DATABASE_URL.startswith("postgresql+"):
+    DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+psycopg2://", 1)
 
 is_sqlite = DATABASE_URL.startswith("sqlite:///")
-is_postgres = DATABASE_URL.startswith("postgresql://")
+is_postgres = "postgresql" in DATABASE_URL
 
 if is_sqlite:
     db_dir = "database"
