@@ -1,0 +1,1250 @@
+# -*- coding: utf-8 -*-
+"""
+Script gerador do banco oficial de questões para o módulo de Processo Penal.
+68 questões (4 por assunto nos 17 temas do Questionário do Prof. Felipe Velozo).
+Dupla conferência de precisão doutrinária, legal e jurisprudencial (STF e STJ).
+"""
+import json
+from pathlib import Path
+
+questions = [
+    # -------------------------------------------------------------
+    # TEMA 01: Juiz das Garantias - Criação e Campo de Atuação
+    # -------------------------------------------------------------
+    {
+        "id": "penal_01_a_termo_final_stf",
+        "subject": "Juiz das Garantias - Criação e Campo de Atuação",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Durante uma investigação policial sobre lavagem de dinheiro, o juiz das garantias Dr. Marcelo deferiu mandados de busca e apreensão e decretou a prisão temporária de Carlos. Concluído o inquérito, o Ministério Público ofereceu a denúncia formal perante a vara criminal. Conforme o entendimento vinculante firmado pelo Supremo Tribunal Federal no julgamento das ADIs 6.298, 6.299, 6.300 e 6.305, qual é o termo final de competência do juiz das garantias e a quem compete decidir sobre o recebimento da denúncia?",
+        "options": {
+            "A": "A competência do juiz das garantias cessa com o oferecimento da denúncia ou queixa-crime, competindo ao juiz da instrução deliberar sobre o recebimento ou rejeição da peça acusatória e sobre a manutenção de cautelares em curso.",
+            "B": "A competência do juiz das garantias perdura até a prolação da sentença definitiva condenatória em segundo grau de jurisdição.",
+            "C": "O juiz das garantias deve obrigatoriamente receber a denúncia e presidir a audiência de instrução e julgamento para garantir economia processual.",
+            "D": "O STF declarou inconstitucional a figura do juiz das garantias no direito processual penal brasileiro, extinguindo o instituto em todo o território nacional."
+        },
+        "gabarito": "A",
+        "article": "Art. 3º-C do CPP e ADIs 6.298, 6.299, 6.300 e 6.305 do STF",
+        "legal_basis": "O STF conferiu interpretação conforme ao art. 3º-C do CPP para fixar que a competência do juiz das garantias cessa com o oferecimento da denúncia ou queixa, cabendo ao juiz da instrução decidir sobre o recebimento e cautelares.",
+        "explanation": "No julgamento conjunto das ADIs concluído em agosto de 2023, o STF estabeleceu que a competência cessa com o oferecimento da exordial, cabendo ao juiz da instrução decidir sobre recebimento e medidas posteriores."
+    },
+    {
+        "id": "penal_01_b_finalidade_criacao",
+        "subject": "Juiz das Garantias - Criação e Campo de Atuação",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Fácil",
+        "enunciado": "A Lei nº 13.964/2019 (Pacote Anticrime) instituiu o instituto do juiz das garantias no Código de Processo Penal brasileiro. A finalidade precípua de sua criação pelo legislador processual consiste em:",
+        "options": {
+            "A": "Assegurar a higidez do sistema acusatório e salvaguardar a imparcialidade do magistrado da instrução, evitando que decisões tomadas no calor investigatório causem contaminação cognitiva prévia no julgador.",
+            "B": "Substituir a autoridade policial na condução direta de interrogatórios de testemunhas na delegacia de polícia.",
+            "C": "Atuar como assistente de acusação exclusivo do Ministério Público em todos os crimes dolosos contra a vida.",
+            "D": "Eliminar o contraditório e a ampla defesa durante a fase de instrução e julgamento criminal."
+        },
+        "gabarito": "A",
+        "article": "Art. 3º-B do Código de Processo Penal",
+        "legal_basis": "O juiz das garantias foi criado para assegurar a higidez do sistema acusatório e a imparcialidade do julgador da causa, prevenindo contaminação cognitiva.",
+        "explanation": "O objetivo basilar é separar o magistrado que toma medidas invasivas na investigação do magistrado que julgará o mérito da ação penal."
+    },
+    {
+        "id": "penal_01_c_contaminacao_cognitiva",
+        "subject": "Juiz das Garantias - Criação e Campo de Atuação",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Em debate sobre política criminal, discute-se o fenômeno da 'contaminação cognitiva' do julgador e a necessidade do juiz das garantias. Esse fenômeno psicológico-processual que a novel legislação buscou neutralizar decorre de:",
+        "options": {
+            "A": "O juiz que decreta interceptações telefônicas, quebras de sigilo e prisões preventivas na investigação formar juízos de valor prematuros e inconscientes sobre a culpa do investigado, comprometendo sua neutralidade na valoração da prova na instrução.",
+            "B": "A autoridade policial perder a titularidade para lavrar autos de prisão em flagrante na circunscrição judiciária.",
+            "C": "A necessidade de o promotor de justiça emitir parecer em recursos administrativos interpostos pelo escrivão da vara cível.",
+            "D": "O defensor público atuar obrigatoriamente sem contato pessoal prévio com o réu preso durante todo o inquérito policial."
+        },
+        "gabarito": "A",
+        "article": "Doutrina do Sistema Acusatório e Juiz das Garantias",
+        "legal_basis": "A contaminação cognitiva ocorre pelo contato antecipado com elementos informativos unilaterais da fase inquisitiva, gerando viés confirmatório prejudicial à imparcialidade.",
+        "explanation": "A separação funcional entre juiz das garantias e juiz da instrução visa justamente impedir que os pré-juízos da fase investigatória contaminem o juízo de mérito."
+    },
+    {
+        "id": "penal_01_d_cautelares_juiz_instrucao",
+        "subject": "Juiz das Garantias - Criação e Campo de Atuação",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Difícil",
+        "enunciado": "Após o oferecimento da denúncia pelo Ministério Público contra Rodrigo pela prática de estelionato qualificado, o magistrado designado para a instrução recebe os autos. Diante da existência de medida cautelar de monitoração eletrônica imposta anteriormente pelo juiz das garantias, compete ao juiz da instrução:",
+        "options": {
+            "A": "Deliberar sobre o recebimento ou rejeição da denúncia e reavaliar motivadamente a necessidade de manutenção, revogação ou substituição da medida cautelar em curso.",
+            "B": "Devolver imediatamente os autos ao juiz das garantias, que detém competência perpétua sobre medidas cautelares até o trânsito em julgado.",
+            "C": "Revogar compulsoriamente a medida cautelar, pois a atuação do juiz das garantias invalida todos os atos cautelares anteriores.",
+            "D": "Determinar o arquivamento automático da ação penal por usurpação de função privativa da polícia judiciária."
+        },
+        "gabarito": "A",
+        "article": "ADIs 6.298, 6.299, 6.300 e 6.305 do STF",
+        "legal_basis": "Cessada a competência do juiz das garantias no oferecimento da peça acusatória, cabe ao juiz da instrução decidir sobre o recebimento da denúncia e sobre as cautelares.",
+        "explanation": "Com o oferecimento da denúncia, todos os atos subsequentes (recebimento, rejeição e reavaliação de cautelares) pertencem ao juiz da instrução."
+    },
+
+    # -------------------------------------------------------------
+    # TEMA 02: Aplicação Imediata da Norma Processual Penal e Efeito Jurídico
+    # -------------------------------------------------------------
+    {
+        "id": "penal_02_a_tempus_regit_actum",
+        "subject": "Aplicação Imediata da Norma Processual Penal e Efeito Jurídico",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Fácil",
+        "enunciado": "O artigo 2º do Código de Processo Penal consagra o princípio fundamental da aplicação imediata da lei processual penal no tempo, alicerçado no brocardo 'tempus regit actum'. O efeito jurídico fulcral dessa regra consiste na:",
+        "options": {
+            "A": "Eficácia instantânea da novel legislação sobre todos os processos que se encontrem em curso, atingindo os atos processuais futuros sem comprometer a higidez ou validade daqueles já consumados sob a lei anterior.",
+            "B": "Nulidade imediata e automática de todas as provas testemunhais colhidas sob a vigência do diploma normativo anterior.",
+            "C": "Aplicação retroativa prejudicial obrigatória para agravar a situação do réu em crimes patrimoniais.",
+            "D": "Suspensão compulsória do curso processual por período indeterminado até a publicação de regulamento municipal."
+        },
+        "gabarito": "A",
+        "article": "Art. 2º do Código de Processo Penal",
+        "legal_basis": "A lei processual penal aplicar-se-á desde logo, sem prejuízo da validade dos atos realizados sob a vigência da lei anterior (princípio tempus regit actum).",
+        "explanation": "A norma processual atinge de imediato os atos pendentes/futuros nos processos em andamento, preservando incólumes os atos consumados."
+    },
+    {
+        "id": "penal_02_b_normas_mistas_hibridas",
+        "subject": "Aplicação Imediata da Norma Processual Penal e Efeito Jurídico",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Suponha a promulgação de nova lei que altere o rito procedimental de determinado crime e, ao mesmo tempo, reduza o prazo decadencial para representação da vítima (norma de natureza mista ou híbrida). Em relação à aplicação no tempo de normas com conteúdo processual e material indissociável, assinale a opção correta:",
+        "options": {
+            "A": "A garantia fundamental da irretroatividade da lei penal desfavorável (art. 5º, XL da CF) afasta a aplicação imediata prejudicial, aplicando-se a novel lei apenas se favorecer o acusado.",
+            "B": "Aplica-se imediatamente mesmo que prejudique o acusado, pois todo preceito inserido no CPP tem natureza puramente adjetiva.",
+            "C": "A norma é considerada nula de pleno direito, pois o direito brasileiro proíbe a edição de diplomas com comandos simultâneos de direito penal e processual.",
+            "D": "O juiz deve aplicar a parte procedimental para prejudicar e a parte material para beneficiar, criando uma terceira lei mista atípica."
+        },
+        "gabarito": "A",
+        "article": "Art. 2º do CPP e Art. 5º, XL da CF/88",
+        "legal_basis": "Normas processuais penais materiais (mistas/híbridas) subordinam-se ao princípio da irretroatividade da lei penal mais gravosa (art. 5º, XL, CF).",
+        "explanation": "Havendo reflexo no direito de liberdade ou punibilidade, a norma mista obedece ao princípio penal: não retroage se for pior, mas retroage se beneficiar o réu."
+    },
+    {
+        "id": "penal_02_c_atos_pretéritos_validade",
+        "subject": "Aplicação Imediata da Norma Processual Penal e Efeito Jurídico",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Eduardo foi interrogado na instrução criminal sob a égide da regra anterior. Durante a fase recursal, entrou em vigor uma nova lei alterando a ordem das perguntas formuladas pelas partes ao réu. O advogado de Eduardo requereu a anulação do interrogatório pretérito para que fosse refeito segundo a nova lei. À luz do art. 2º do CPP, o pedido da defesa deve ser:",
+        "options": {
+            "A": "Indeferido, pois o princípio da aplicação imediata da norma processual penal preserva a higidez e a validade de todos os atos processuais validamente praticados sob o império da lei precedente.",
+            "B": "Deferido, pois a vigência de qualquer nova lei processual acarreta a nulidade de pleno direito de todos os atos probatórios passados.",
+            "C": "Deferido com a imediata extinção da punibilidade do agente pelo fenômeno da abolitio criminis adjetiva.",
+            "D": "Encaminhado ao tribunal arbitral internacional de garantias para decisão sumária irrecorrível."
+        },
+        "gabarito": "A",
+        "article": "Art. 2º do Código de Processo Penal",
+        "legal_basis": "A eficácia instantânea da nova lei atinge apenas os atos processuais futuros, sem comprometer a higidez dos atos praticados sob a lei anterior.",
+        "explanation": "Ato processual praticado sob a lei anterior é ato jurídico perfeito, plenamente válido pelo princípio tempus regit actum."
+    },
+    {
+        "id": "penal_02_d_distincao_material_processual",
+        "subject": "Aplicação Imediata da Norma Processual Penal e Efeito Jurídico",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "A distinção entre norma genuinamente processual e norma penal material tem reflexos diretos na incidência temporal das leis. São consideradas normas de natureza material (ou mista), infensas à aplicação imediata prejudicial ao réu, aquelas que versem sobre:",
+        "options": {
+            "A": "Causas extintivas da punibilidade, renúncia, decadência, perdão, direito de liberdade do agente e requisitos para concessão de transação penal ou ANPP.",
+            "B": "Prazos cartorários para juntada de certidões administrativas pelos escrivães judiciais.",
+            "C": "Regras de distribuição interna de feitos entre as varas da mesma comarca judiciária.",
+            "D": "Formato das capas e numeração de folhas dos autos processuais físicos no fórum."
+        },
+        "gabarito": "A",
+        "article": "Doutrina de Normas Processuais Penais Materiais (Mistas)",
+        "legal_basis": "Normas que tocam na pretensão punitiva ou no direito de liberdade são materiais ou híbridas e não retroagem em desfavor do réu.",
+        "explanation": "Decadência, prescrição, perdão, transação penal e requisitos prisionais são institutos com carga material substantiva."
+    },
+
+    # -------------------------------------------------------------
+    # TEMA 03: Notitia Criminis e Atuação da Autoridade Policial
+    # -------------------------------------------------------------
+    {
+        "id": "penal_03_a_especies_acao_inquerito",
+        "subject": "Notitia Criminis e Atuação da Autoridade Policial",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Fácil",
+        "enunciado": "Ao tomar conhecimento da ocorrência de uma infração penal em sua comarca, a conduta a ser adotada pelo Delegado de Polícia para a deflagração da investigação policial é pautada estritamente pela:",
+        "options": {
+            "A": "Espécie de ação penal cominada ao fato pela legislação substantiva, conforme disciplina expressamente o artigo 5º do Código de Processo Penal.",
+            "B": "Vontade discricionária e impositiva do prefeito municipal local, independentemente da espécie de crime.",
+            "C": "Capacidade econômica da vítima para arcar com as despesas e perícias preliminares do inquérito.",
+            "D": "Exigência de homologação prévia por decisão unânime do plenário do Supremo Tribunal Federal."
+        },
+        "gabarito": "A",
+        "article": "Art. 5º do Código de Processo Penal",
+        "legal_basis": "A atuação do delegado pauta-se na espécie de ação: pública incondicionada (de ofício), pública condicionada (representação/requisição) ou privada (requerimento).",
+        "explanation": "O tipo de ação penal determina se o inquérito policial se inicia de ofício ou se necessita de manifestação de vontade expressa."
+    },
+    {
+        "id": "penal_03_b_publica_incondicionada_oficio",
+        "subject": "Notitia Criminis e Atuação da Autoridade Policial",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "O Delegado de Polícia Dr. Fernando recebe notícia fática de que ocorreu um crime de latrocínio (roubo qualificado pela morte). Cuidando-se de delito persequível mediante ação penal pública incondicionada, qual a conduta legalmente imposta à autoridade policial?",
+        "options": {
+            "A": "Instaurar imediatamente o inquérito policial de ofício (ex officio) por meio de portaria, independentemente de requerimento de terceiros ou pedido da família.",
+            "B": "Aguardar a contratação de advogado pelos parentes da vítima para colher autorização prévia por escritura pública.",
+            "C": "Encaminhar o caso ao Tribunal de Contas para que este decida se haverá ou não persecução investigativa.",
+            "D": "Abster-se de atuar até que o autor do homicídio se apresente espontaneamente com termo de confissão irretratável."
+        },
+        "gabarito": "A",
+        "article": "Art. 5º, inciso I do Código de Processo Penal",
+        "legal_basis": "Nos crimes de ação pública incondicionada, o inquérito policial será iniciado de ofício pela autoridade policial (art. 5º, I, CPP).",
+        "explanation": "Na ação penal pública incondicionada vige o princípio da obrigatoriedade, devendo o delegado agir ex officio."
+    },
+    {
+        "id": "penal_03_c_condicionada_e_privada",
+        "subject": "Notitia Criminis e Atuação da Autoridade Policial",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Mariana compareceu à delegacia afirmando ter sido vítima de crime de ameaça (ação pública condicionada) praticado por seu ex-colega de trabalho Lucas. Em outra mesa, Fernanda relata ter sido vítima de calúnia e difamação (ação de iniciativa exclusivamente privada). À luz do artigo 5º do CPP, a instauração dos respectivos inquéritos policiais depende de:",
+        "options": {
+            "A": "Expressa representação do ofendido (ou requisição do Ministro da Justiça) no caso de Mariana; e de requerimento formal subscrito por quem disponha de legitimidade no caso de Fernanda.",
+            "B": "Atuação imediata de ofício pelo delegado em ambos os casos, sendo irrelevante a vontade das ofendidas.",
+            "C": "Prisão temporária cautelar imediata de ambos os suspeitos antes de qualquer manifestação das vítimas.",
+            "D": "Autorização do juiz da vara da infância e da juventude mediante alvará de soltura preliminar."
+        },
+        "gabarito": "A",
+        "article": "Art. 5º, §§ 4º e 5º do Código de Processo Penal",
+        "legal_basis": "Na pública condicionada exige-se representação ou requisição ministerial; na de iniciativa privada, requerimento formal da pessoa legitimada.",
+        "explanation": "Sem a representação (no crime condicionado) ou requerimento (no privado), o delegado não pode instaurar inquérito policial."
+    },
+    {
+        "id": "penal_03_d_notitia_inqualificada",
+        "subject": "Notitia Criminis e Atuação da Autoridade Policial",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Difícil",
+        "enunciado": "A autoridade policial de determinado distrito recebeu denúncia anônima (notitia criminis inqualificada) relatando a prática continuada de tráfico de drogas em uma residência. Conforme a jurisprudência pacificada do STF e STJ e as regras processuais vigentes, o Delegado de Polícia deve:",
+        "options": {
+            "A": "Realizar previamente diligências preliminares simplificadas para averiguar a plausibilidade dos fatos narrados e, somente após confirmada a plausibilidade, instaurar formalmente a portaria de inquérito policial.",
+            "B": "Instaurar de imediato ação penal perante a comarca sem colher quaisquer elementos materiais de corroboração.",
+            "C": "Descartar obrigatoriamente a denúncia anônima no lixo, sendo terminantemente proibida qualquer averiguação pela polícia judiciária.",
+            "D": "Decretar incontinenti a prisão preventiva do morador sem necessidade de prévia decisão judicial."
+        },
+        "gabarito": "A",
+        "article": "Art. 5º, § 3º do CPP e Jurisprudência do STF/STJ (VPI)",
+        "legal_basis": "A denúncia anônima autoriza a realização de verificação preliminar da informação (VPI); constatada verossimilhança, instaura-se o inquérito policial.",
+        "explanation": "A denúncia anônima não pode, por si só, fundamentar abertura direta de inquérito ou medidas invasivas, mas impõe a verificação preliminar de procedência das informações."
+    },
+
+    # -------------------------------------------------------------
+    # TEMA 04: Inquérito Policial e Vedação ao Arquivamento pelo Delegado
+    # -------------------------------------------------------------
+    {
+        "id": "penal_04_a_art17_vedacao_expressa",
+        "subject": "Inquérito Policial e Vedação ao Arquivamento pelo Delegado",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Fácil",
+        "enunciado": "No que tange à condução e conclusão do Inquérito Policial, poderá a autoridade policial determinar de ofício o arquivamento do procedimento investigatório?",
+        "options": {
+            "A": "Não. O ordenamento processual penal veda expressamente à autoridade policial a competência para determinar o arquivamento de inquérito, conforme a dicção imperativa do artigo 17 do Código de Processo Penal.",
+            "B": "Sim, desde que o delegado verifique que o réu é primário, de bons antecedentes e residente na comarca.",
+            "C": "Sim, caso o valor do bem furtado seja inferior a um salário mínimo vigente na data da apreensão.",
+            "D": "Sim, por meio de decisão terminativa proferida pelo escrivão de polícia chefe do plantão."
+        },
+        "gabarito": "A",
+        "article": "Art. 17 do Código de Processo Penal",
+        "legal_basis": "Art. 17 do CPP: 'A autoridade policial não poderá mandar arquivar autos de inquérito'. O comando é imperativo e absoluto.",
+        "explanation": "Ao delegado de polícia falece competência para arquivar inquérito; cabe-lhe apenas elaborar relatório e encaminhar os autos ao Poder Judiciário/MP."
+    },
+    {
+        "id": "penal_04_b_funcao_investigatoria_opinio_delicti",
+        "subject": "Inquérito Policial e Vedação ao Arquivamento pelo Delegado",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "A fundamentação teórica da vedação imposta ao Delegado de Polícia para mandar arquivar autos de inquérito policial decorre do fato de que:",
+        "options": {
+            "A": "A função da autoridade policial reveste-se de índole puramente investigatória e preparatória, cabendo com exclusividade ao titular da ação penal a formação da opinio delicti e a decisão quanto a denunciar, requerer diligências ou promover o arquivamento.",
+            "B": "O Ministério Público é subordinado hierarquicamente à chefia da Polícia Civil nos crimes dolosos contra o patrimônio.",
+            "C": "A autoridade policial não possui formação jurídica superior reconhecida pelo Ministério da Educação.",
+            "D": "Os laudos periciais da polícia científica possuem natureza irrecorrível de coisa julgada material automática."
+        },
+        "gabarito": "A",
+        "article": "Princípio Acusatório e Art. 129, I da CF/88",
+        "legal_basis": "A titularidade privativa da ação penal pertence ao Ministério Público (art. 129, I, CF). Logo, o juízo sobre acusar ou arquivar é exclusivo do dominus litis.",
+        "explanation": "A opinio delicti é prerrogativa do Ministério Público na ação penal pública. A autoridade policial atua apenas na colheita informativa."
+    },
+    {
+        "id": "penal_04_c_excludente_ilicitude_dever_relatar",
+        "subject": "Inquérito Policial e Vedação ao Arquivamento pelo Delegado",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "O Delegado Dr. Roberto apurou em inquérito que Marcelo matou um agressor em comprovada e cristalina legítima defesa própria, confirmada por filmagens de segurança e testemunhas unânimes. Diante da evidente exclusão de ilicitude, como deve proceder o Delegado Roberto?",
+        "options": {
+            "A": "Deve elaborar minuciosamente o relatório final descrevendo as diligências realizadas e a prova da excludente, remetendo os autos ao órgão competente, sendo-lhe expressamente vedado arquivar o procedimento de ofício.",
+            "B": "Pode arquivar diretamente os autos em seu gabinete sem encaminhar a qualquer outro órgão.",
+            "C": "Deve aplicar sanção disciplinar de prisão administrativa a Marcelo por desobediência civil.",
+            "D": "Deve transferir a condução do inquérito para o Tribunal do Júri para realização de júri sumário secreto."
+        },
+        "gabarito": "A",
+        "article": "Art. 17 e Art. 10, § 1º do Código de Processo Penal",
+        "legal_basis": "A autoridade policial fará minucioso relatório no encerramento e enviará os autos ao juiz/MP; não pode arquivar sob fundamento de excludente de ilicitude.",
+        "explanation": "Ainda que haja prova manifesta de legítima defesa, o arquivamento compete ao Ministério Público e ao Poder Judiciário, vedado ao delegado."
+    },
+    {
+        "id": "penal_04_d_consequencia_arquivamento_indevido",
+        "subject": "Inquérito Policial e Vedação ao Arquivamento pelo Delegado",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Caso um Delegado de Polícia, arvorando-se em funções terminativas, profira despacho administrativo determinando o arquivamento definitivo de um inquérito de roubo e deixe de remeter os autos ao Poder Judiciário ou Ministério Público, tal ato:",
+        "options": {
+            "A": "É nulo de pleno direito por incompetência absoluta, sujeitando a autoridade policial a sanções disciplinares e eventual responsabilidade penal funcional (prevaricação).",
+            "B": "Produz coisa julgada material inatingível em benefício do suspeito do roubo.",
+            "C": "Substitui validamente o oferecimento da denúncia por ato de desjudicialização policial.",
+            "D": "Extingue a punibilidade pela concessão de indulto policial originário."
+        },
+        "gabarito": "A",
+        "article": "Art. 17 do CPP e Art. 319 do Código Penal",
+        "legal_basis": "O ato de arquivamento exarado por delegado de polícia é inexistente/nulo juridicamente, configurando abuso de função pública.",
+        "explanation": "Por expressa vedação do art. 17 do CPP, a decisão é ato nulo e não impede a regular tramitação e avocação pelo Ministério Público."
+    },
+
+    # -------------------------------------------------------------
+    # TEMA 05: Devolução do Inquérito Policial ao Delegado pelo MP
+    # -------------------------------------------------------------
+    {
+        "id": "penal_05_a_art16_imprescindibilidade",
+        "subject": "Devolução do Inquérito Policial ao Delegado pelo MP",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Fácil",
+        "enunciado": "É possível o Ministério Público requerer a devolução do inquérito policial à delegacia de origem? Em caso positivo, sob quais condições legais?",
+        "options": {
+            "A": "Sim; todavia, trata-se de providência de feição excepcional balizada pelo artigo 16 do CPP, sendo admitida unicamente para a realização de diligências novas que se mostrem comprovadamente imprescindíveis ao oferecimento da denúncia.",
+            "B": "Sim, para qualquer finalidade genérica, inclusive para aguardar a posse de um novo promotor de justiça titular.",
+            "C": "Não, o ordenamento processual brasileiro proíbe peremptoriamente qualquer devolução de inquérito à delegacia após sua remessa ao fórum.",
+            "D": "Sim, desde que a defesa do investigado concorde e subscreva termo de adesão financeira."
+        },
+        "gabarito": "A",
+        "article": "Art. 16 do Código de Processo Penal",
+        "legal_basis": "Art. 16 do CPP: 'O Ministério Público não poderá requerer a devolução do inquérito à autoridade policial, senão para novas diligências, imprescindíveis ao oferecimento da denúncia'.",
+        "explanation": "O legislador condiciona a devolução à demonstração de indispensabilidade da prova para a formação da convicção acusatória."
+    },
+    {
+        "id": "penal_05_b_diligencias_protelatorias_vedadas",
+        "subject": "Devolução do Inquérito Policial ao Delegado pelo MP",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "A Promotora de Justiça Dra. Mariana recebeu inquérito já instruído com prova testemunhal ocular inequívoca e laudo pericial que comprovam materialidade e autoria de um furto qualificado. Todavia, sobrecarregada com outros prazos, requereu a devolução dos autos à polícia para 'ouvir novamente os vizinhos da vítima sobre o passado da família'. O requerimento formulado por Dra. Mariana:",
+        "options": {
+            "A": "Viola o comando do artigo 16 do Código de Processo Penal, que veda a devolução de inquérito para diligências meramente protelatórias ou desnecessárias à formação da convicção da acusação.",
+            "B": "É plenamente legítimo, pois o Ministério Público pode devolver o inquérito quantas vezes desejar para interromper a prescrição penal.",
+            "C": "Opera automaticamente a concessão de liberdade definitiva com trânsito em julgado.",
+            "D": "Obriga o delegado de polícia a cumprir a diligência no prazo improrrogável de duas horas sob pena de demissão."
+        },
+        "gabarito": "A",
+        "article": "Art. 16 do Código de Processo Penal",
+        "legal_basis": "O retorno é excepcional e restrito a diligências imprescindíveis; diligências meramente protelatórias violam o art. 16 do CPP e a duração razoável do processo.",
+        "explanation": "Se os elementos colhidos já bastam para a denúncia, é incabível devolver os autos à polícia para atos periféricos ou protelatórios."
+    },
+    {
+        "id": "penal_05_c_controle_judicial_devolucao",
+        "subject": "Devolução do Inquérito Policial ao Delegado pelo MP",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Ao apreciar pedido ministerial de devolução de autos de inquérito policial à delegacia, o magistrado verifica que as diligências pleiteadas são manifestamente inúteis e que o investigado se encontra preso cautelarmente com prazo estourado. Nesse caso, compete ao magistrado:",
+        "options": {
+            "A": "Indeferir o pedido de devolução, alertando o órgão ministerial para que apresente a denúncia ou promova o arquivamento com os elementos existentes, sob pena de relaxamento de prisão por excesso de prazo.",
+            "B": "Devolver o inquérito sem ler os autos, pois o juiz não exerce qualquer controle sobre os pedidos ministeriais.",
+            "C": "Substituir o promotor e ele próprio, juiz, redigir a peça acusatória inaugural de ofício.",
+            "D": "Determinar que o réu permaneça incomunicável na carceragem até a conclusão das diligências."
+        },
+        "gabarito": "A",
+        "article": "Art. 16 do CPP e Princípio da Razoável Duração do Processo",
+        "legal_basis": "O magistrado exerce controle de legalidade sobre o art. 16 do CPP para coibir excesso de prazo e diligências protelatórias injustificadas, mormente com réu preso.",
+        "explanation": "A devolução não é automática: o magistrado deve fiscalizar a imprescindibilidade alegada para resguardar as garantias processuais do indiciado."
+    },
+    {
+        "id": "penal_05_d_inquerito_relatado_complementacao",
+        "subject": "Devolução do Inquérito Policial ao Delegado pelo MP",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Em inquérito que apura homicídio culposo na direção de veículo automotor, o Ministério Público constata que não foi juntado o laudo pericial cadavérico definitivo nem o laudo do tacógrafo do caminhão, documentos vitais para tipificar a velocidade e a causa mortis. Esse requerimento de devolução dos autos à delegacia para juntada dos laudos técnicos é:",
+        "options": {
+            "A": "Legítimo e amparado no artigo 16 do CPP, por versar sobre prova técnica indispensável à comprovação da materialidade e à justa causa para o oferecimento seguro da denúncia.",
+            "B": "Ilegal, pois laudos periciais só podem ser requisitados pelo réu na fase de alegações finais.",
+            "C": "Inútil, visto que a culpa criminal pode ser presumida no direito processual penal.",
+            "D": "Causa de anulação de todas as certidões de trânsito emitidas pelo DETRAN."
+        },
+        "gabarito": "A",
+        "article": "Art. 16 do Código de Processo Penal",
+        "legal_basis": "Diligência voltada à obtenção de laudo pericial necroscópico ou mecânico essencial constitui hipótese legítima e típica de imprescindibilidade do art. 16 do CPP.",
+        "explanation": "Laudos técnicos que comprovem materialidade direta são hipóteses incontestáveis de diligência imprescindível autorizada pelo art. 16 do CPP."
+    },
+
+    # -------------------------------------------------------------
+    # TEMA 06: Arquivamento do Inquérito e Realização de Novas Diligências
+    # -------------------------------------------------------------
+    {
+        "id": "penal_06_a_sumula_524_stf",
+        "subject": "Arquivamento do Inquérito e Realização de Novas Diligências",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Fácil",
+        "enunciado": "Depois de ordenado o arquivamento do inquérito policial por ausência de elementos informativos suficientes para o oferecimento da denúncia, é possível a autoridade policial realizar novas diligências se de outras provas tiver notícia?",
+        "options": {
+            "A": "Sim. O artigo 18 do CPP e a Súmula 524 do STF autorizam expressamente novas diligências e a reabertura das investigações desde que surjam notícias de provas substancialmente inéditas.",
+            "B": "Não. Todo e qualquer arquivamento de inquérito faz coisa julgada material definitiva, extinguindo perpetuamente a punibilidade estatal.",
+            "C": "Apenas se o indiciado pagar indenização pecuniária prévia à autoridade policial judiciária.",
+            "D": "Somente após decorridos vinte anos da data em que a decisão terminativa foi proferida."
+        },
+        "gabarito": "A",
+        "article": "Art. 18 do CPP e Súmula 524 do STF",
+        "legal_basis": "Súmula 524 do STF: 'Arquivado o inquérito policial, por despacho do juiz, a requerimento do promotor de justiça, não pode a ação penal ser iniciada, sem novas provas'.",
+        "explanation": "O arquivamento por falta de lastro probatório produz coisa julgada formal, autorizando nova investigação caso sobrevenham notícias de provas inéditas."
+    },
+    {
+        "id": "penal_06_b_coisa_julgada_formal_vs_material",
+        "subject": "Arquivamento do Inquérito e Realização de Novas Diligências",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "A eficácia preclusiva do arquivamento do inquérito policial varia conforme o seu fundamento fático-jurídico. Assinale a correlação tecnicamente correta sobre os efeitos do arquivamento:",
+        "options": {
+            "A": "O arquivamento por insuficiência de provas ou ausência de justa causa gera coisa julgada meramente formal (admitindo reabertura por novas provas); já o arquivamento fundado em atipicidade manifesta do fato gera coisa julgada material, impedindo nova persecução.",
+            "B": "O arquivamento por falta de provas gera coisa julgada material absoluta que proíbe qualquer investigação futura para sempre.",
+            "C": "O arquivamento por atipicidade penal do fato gera coisa julgada formal e autoriza denúncia no dia seguinte sem novas provas.",
+            "D": "Nenhuma modalidade de arquivamento gera qualquer espécie de coisa julgada no ordenamento processual penal pátrio."
+        },
+        "gabarito": "A",
+        "article": "Doutrina e Jurisprudência do STF sobre Eficácia do Arquivamento",
+        "legal_basis": "Falta de provas = coisa julgada formal (Súmula 524 STF). Atipicidade ou extinção da punibilidade = coisa julgada material (impede ação penal).",
+        "explanation": "Se a conduta é atípica ou está prescrita, o arquivamento é material e definitivo. Se o motivo for fragilidade probatória, é formal e admite reabertura."
+    },
+    {
+        "id": "penal_06_c_conceito_prova_substancialmente_nova",
+        "subject": "Arquivamento do Inquérito e Realização de Novas Diligências",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Em inquérito arquivado por falta de justa causa quanto à autoria de um homicídio, o delegado recebe requerimento para reinquirir as três mesmas testemunhas que já haviam prestado depoimento unânime nos autos, sem qualquer fato ou elemento novo. Segundo a doutrina e o enunciado da Súmula 524 do STF, esse ato:",
+        "options": {
+            "A": "Não autoriza a reabertura do inquérito nem o início da ação penal, pois 'novas provas' devem ser substancialmente inéditas, e não mera repetição de depoimentos já coligidos e valorados no inquérito arquivado.",
+            "B": "É plenamente válido para justificar a imediata prisão temporária das testemunhas para ver se mudam de opinião.",
+            "C": "Equipara-se automaticamente a uma nova prova pericial de DNA conclusiva.",
+            "D": "Obriga o juiz a condenar o indiciado por revelia sumária processual."
+        },
+        "gabarito": "A",
+        "article": "Súmula 524 do STF e Art. 18 do CPP",
+        "legal_basis": "A prova nova apta a reabrir inquérito deve ser substancialmente inovadora, capaz de alterar o juízo de probabilidade anterior, e não mera reiteração.",
+        "explanation": "Ouvir novamente as mesmas testemunhas sobre os mesmos pontos não constitui prova nova na acepção técnica da Súmula 524 do STF."
+    },
+    {
+        "id": "penal_06_d_desarquivamento_iniciativa",
+        "subject": "Arquivamento do Inquérito e Realização de Novas Diligências",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Surge notícia de que a arma utilizada em crime cujo inquérito fora arquivado por falta de elementos foi apreendida com digitais do suspeito em outra comarca. Quem detém legitimidade e atribuição para desarquivar formalmente as investigações e dar início à correlata ação penal?",
+        "options": {
+            "A": "A autoridade policial realiza as diligências das novas provas e remete os elementos ao Ministério Público, que decidirá sobre a propositura da denúncia em face das provas inéditas.",
+            "B": "A vítima pode prender o suspeito em sua casa e lavrar sentença arbitral condenatória irrecorrível.",
+            "C": "O próprio suspeito deve desarquivar a ação contra si próprio em juízo cível de pequenas causas.",
+            "D": "O Conselho de Ética da OAB local assume a titularidade da vara criminal por delegação."
+        },
+        "gabarito": "A",
+        "article": "Art. 18 do Código de Processo Penal e Súmula 524 do STF",
+        "legal_basis": "A polícia colhe as novas diligências (art. 18 CPP) e o Ministério Público, constatando o lastro inédito, exerce a ação penal.",
+        "explanation": "A polícia investiga as notícias de novas provas e o MP, dominus litis, desfecha a ação penal respaldado pelo novo arcabouço probatório."
+    },
+
+    # -------------------------------------------------------------
+    # TEMA 07: Espécies de Ação Penal e suas Subdivisões
+    # -------------------------------------------------------------
+    {
+        "id": "penal_07_a_arvore_classificacao",
+        "subject": "Espécies de Ação Penal e suas Subdivisões",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Fácil",
+        "enunciado": "A ação penal bifurca-se originariamente em ação penal pública e ação penal privada. Quais são as subdivisões correspondentes a cada uma dessas modalidades no direito brasileiro?",
+        "options": {
+            "A": "A ação pública divide-se em incondicionada e condicionada (à representação ou à requisição); a ação privada divide-se em exclusivamente privada, personalíssima e privada subsidiária da pública.",
+            "B": "A ação pública divide-se em cível e penal; a ação privada divide-se em administrativa e disciplinar.",
+            "C": "A ação pública é exercida pelo réu; a ação privada é exercida compulsoriamente pelo juiz de plantão.",
+            "D": "Não existem subdivisões, sendo toda e qualquer infração penal persequível por ação sumaríssima cartorária."
+        },
+        "gabarito": "A",
+        "article": "Art. 100 do CP e Arts. 24 a 32 do CPP",
+        "legal_basis": "Pública: incondicionada ou condicionada (representação/requisição). Privada: exclusiva, personalíssima e subsidiária da pública (art. 5º, LIX, CF).",
+        "explanation": "Estrutura básica descrita na questão 07 do questionário oficial de revisão."
+    },
+    {
+        "id": "penal_07_b_acao_personalissima_art236",
+        "subject": "Espécies de Ação Penal e suas Subdivisões",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "A ação penal de iniciativa privada personalíssima constitui hipótese excepcionalíssima no ordenamento pátrio. Seu traço distintivo em relação à ação privada exclusiva comum e seu exemplo clássico no Código Penal consistem em:",
+        "options": {
+            "A": "O ajuizamento circunscreve-se à esfera individual e intransmissível da vítima (não admitindo sucessão processual pelo cônjuge, ascendente, descendente ou irmão em caso de morte), como no crime de induzimento a erro essencial e ocultação de impedimento para casamento (art. 236 do CP).",
+            "B": "Pode ser proposta por qualquer cidadão da comunidade em substituição processual civil coletiva.",
+            "C": "O Ministério Público é o titular privativo exclusivo da petição inicial em litisconsórcio com o réu.",
+            "D": "Aplica-se unicamente ao crime de moeda falsa praticado contra bancos governamentais federais."
+        },
+        "gabarito": "A",
+        "article": "Art. 236 do Código Penal e Art. 31 do CPP",
+        "legal_basis": "No crime do art. 236 do CP a ação é privativa do cônjuge enganado e intransmissível aos herdeiros (art. 31 do CPP não se aplica).",
+        "explanation": "Ao contrário da ação privada comum onde o CADI pode prosseguir, na personalíssima apenas o próprio ofendido tem legitimidade, extinguindo-se com sua morte."
+    },
+    {
+        "id": "penal_07_c_subsidiaria_da_publica_requisitos",
+        "subject": "Espécies de Ação Penal e suas Subdivisões",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "A ação penal privada subsidiária da pública encontra amparo no artigo 5º, inciso LIX, da Constituição Federal e no artigo 29 do Código de Processo Penal. Essa modalidade somente é cabível e admissível quando:",
+        "options": {
+            "A": "O Ministério Público incorre em inércia e deixa transcorrer in albis o lapso legal sem oferecer denúncia, sem requerer o arquivamento e sem requisitar diligências complementares.",
+            "B": "O Ministério Público requer motivadamente o arquivamento do inquérito policial acolhido pelo Poder Judiciário.",
+            "C": "O Promotor de Justiça pede a fixação de fiança em valor considerado excessivo pelo indiciado.",
+            "D": "A vítima manifesta em cartório discordância com a capitulação jurídica constante da denúncia ministerial tempestiva."
+        },
+        "gabarito": "A",
+        "article": "Art. 5º, LIX da CF/88 e Art. 29 do CPP",
+        "legal_basis": "Será admitida ação privada nos crimes de ação pública se esta não for intentada no prazo legal. Exige inércia do dominus litis.",
+        "explanation": "Se o MP arquiva tempestivamente ou requisita diligências, ele não está inerte. A queixa subsidiária só cabe se o MP permaneceu em silêncio absoluto no prazo da denúncia."
+    },
+    {
+        "id": "penal_07_d_papel_mp_subsidiaria",
+        "subject": "Espécies de Ação Penal e suas Subdivisões",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Difícil",
+        "enunciado": "Uma vez ajuizada validamente a queixa-crime subsidiária da pública pela vítima em virtude da inércia ministerial, qual a posição jurídica e as prerrogativas do Ministério Público na relação processual, segundo o art. 29 do CPP?",
+        "options": {
+            "A": "O Ministério Público poderá aditar a queixa, repudiá-la e oferecer denúncia substitutiva, intervir em todos os termos do processo, fornecer elementos de prova, interpor recurso e, a todo tempo, no caso de negligência do querelante, retomar a ação como parte principal.",
+            "B": "O Ministério Público é excluído da relação processual, ficando proibido de atuar na audiência de instrução e julgamento.",
+            "C": "O órgão ministerial passa a figurar obrigatoriamente no polo passivo da ação penal como corréu do investigado.",
+            "D": "O processo criminal converte-se automaticamente em execução civil por quantia certa perante a vara de falências."
+        },
+        "gabarito": "A",
+        "article": "Art. 29 do Código de Processo Penal",
+        "legal_basis": "O art. 29 do CPP confere ao MP o direito de aditar, repudiar, fornecer provas, recorrer e retomar a ação como titular principal em caso de desídia da vítima.",
+        "explanation": "O Ministério Público não perde sua titularidade originária na ação subsidiária, figurando como fiscal e parte substitutiva imediata."
+    },
+
+    # -------------------------------------------------------------
+    # TEMA 08: Retratação da Representação na Ação Penal Pública Condicionada
+    # -------------------------------------------------------------
+    {
+        "id": "penal_08_a_regra_geral_oferecimento",
+        "subject": "Retratação da Representação na Ação Penal Pública Condicionada",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Fácil",
+        "enunciado": "Na ação penal pública condicionada, é possível o ofendido retratar-se da representação outorgada? Em qual limite temporal?",
+        "options": {
+            "A": "Sim. Conforme determinam o artigo 25 do Código de Processo Penal e o artigo 102 do Código Penal, o ofendido pode se retratar validamente desde que o faça antes do oferecimento da denúncia pelo Ministério Público.",
+            "B": "Sim, a qualquer tempo, inclusive durante a sessão de julgamento pelo Tribunal do Júri ou após o trânsito em julgado.",
+            "C": "Não, no processo penal brasileiro a representação criminal é absolutamente irretratável desde o momento em que a vítima declara a notícia na delegacia.",
+            "D": "Apenas se o acusado concordar em pagar os honorários do advogado particular da vítima."
+        },
+        "gabarito": "A",
+        "article": "Art. 25 do CPP e Art. 102 do Código Penal",
+        "legal_basis": "A representação será irretratável depois de oferecida a denúncia (art. 25 do CPP e art. 102 do CP). Logo, a retratação é válida até o oferecimento.",
+        "explanation": "O marco temporal da regra geral do CPP/CP é o OFERECIMENTO da denúncia perante o juízo competente."
+    },
+    {
+        "id": "penal_08_b_lei_maria_da_penha_art16",
+        "subject": "Retratação da Representação na Ação Penal Pública Condicionada",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Camila representou criminalmente contra seu cônjuge pela prática de ameaça no ambiente doméstico e familiar. Dois dias depois, compareceu à delegacia afirmando que 'releva o fato' e requer a desistência/retratação perante o escrivão de polícia. Conforme a regra especial do artigo 16 da Lei Maria da Penha (Lei nº 11.340/2006):",
+        "options": {
+            "A": "A retratação à representação submete-se a rito solene e diferenciado, sendo admitida apenas perante o juiz, em audiência especialmente designada para esse fim, e antes do recebimento da denúncia.",
+            "B": "A retratação perante o escrivão na delegacia de polícia é plenamente válida e encerra imediatamente a persecução criminal.",
+            "C": "A Lei Maria da Penha proíbe a retratação em qualquer hipótese, impondo a condenação sumária do agressor.",
+            "D": "O pedido de retratação deve ser formulado em anúncio publicado em jornal de grande circulação com firma reconhecida."
+        },
+        "gabarito": "A",
+        "article": "Art. 16 da Lei nº 11.340/2006 (Lei Maria da Penha)",
+        "legal_basis": "Nas ações públicas condicionadas da Lei Maria da Penha, a renúncia/retratação só cabe perante o juiz, em audiência própria, antes do recebimento da denúncia.",
+        "explanation": "Na Lei Maria da Penha há duas diferenças cruciais: deve ser perante o juiz em audiência especial e o termo final é antes do RECEBIMENTO da denúncia."
+    },
+    {
+        "id": "penal_08_c_retratacao_da_retratacao",
+        "subject": "Retratação da Representação na Ação Penal Pública Condicionada",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Difícil",
+        "enunciado": "Após sofrer crime de perseguição (stalking), Juliana representou contra o agressor e, dez dias depois, retratou-se formalmente antes da denúncia. Duas semanas após a retratação, ainda dentro do prazo decadencial semestral, Juliana arrependeu-se e desejou exercer novamente a representação. A respeito da denominada 'retratação da retratação', a doutrina e a jurisprudência assentam que:",
+        "options": {
+            "A": "É plenamente admitida, desde que formulada dentro do prazo decadencial legal de 6 meses contado do conhecimento da autoria do fato delituoso.",
+            "B": "É terminantemente vedada, pois a primeira retratação gera preclusão absoluta consumativa definitiva instantânea.",
+            "C": "Exige autorização prévia por decreto do governador do estado.",
+            "D": "Converte a ação pública em ação privada personalíssima perante o juízo cível."
+        },
+        "gabarito": "A",
+        "article": "Doutrina e Jurisprudência dos Tribunais Superiores",
+        "legal_basis": "A vítima pode se retratar da retratação desde que ainda esteja em curso o prazo decadencial de 6 meses (art. 38 do CPP).",
+        "explanation": "Dentro do prazo decadencial de 6 meses, a vítima pode rever sua posição e manifestar novamente a vontade de ver o autor processado."
+    },
+    {
+        "id": "penal_08_d_termo_recebimento_vs_oferecimento",
+        "subject": "Retratação da Representação na Ação Penal Pública Condicionada",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Em um crime de estelionato comum mediante fraude eletrônica (ação penal pública condicionada), o Ministério Público protocolou a denúncia no dia 10 de maio. No dia 12 de maio, antes de o juiz apreciar a inicial, o ofendido peticionou aos autos retratando-se da representação. À luz do art. 25 do CPP, o ato de retratação do ofendido é:",
+        "options": {
+            "A": "Ineficaz e extemporâneo, pois na regra geral do processo penal a representação torna-se irretratável a partir do momento em que a denúncia é oferecida pelo Ministério Público.",
+            "B": "Plenamente válido e eficaz, porque o magistrado ainda não havia recebido a denúncia nos autos.",
+            "C": "Causa de nulidade insanável que impõe a prisão temporária do promotor de justiça.",
+            "D": "Suficiente para converter o estelionato em delito incondicionado de roubo à mão armada."
+        },
+        "gabarito": "A",
+        "article": "Art. 25 do Código de Processo Penal",
+        "legal_basis": "Art. 25 do CPP: 'A representação será irretratável, depois de oferecida a denúncia'. Protocolada a exordial acusatória, preclui a retratação.",
+        "explanation": "Na regra do CPP, oferecida a denúncia, a representação tornou-se irretratável; o fato de não ter sido recebida ainda pelo juiz é irrelevante."
+    },
+
+    # -------------------------------------------------------------
+    # TEMA 09: Peças Inaugurais da Ação Penal: Denúncia e Queixa-Crime
+    # -------------------------------------------------------------
+    {
+        "id": "penal_09_a_distincao_denuncia_queixa",
+        "subject": "Peças Inaugurais da Ação Penal: Denúncia e Queixa-Crime",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Fácil",
+        "enunciado": "Qual a denominação técnica da peça inicial da ação penal pública e da ação penal privada no ordenamento processual brasileiro?",
+        "options": {
+            "A": "No âmbito da ação penal pública, a peça inaugural privativa subscrita pelo Ministério Público é a denúncia; na ação penal privada, a peça vestibular ofertada pelo ofendido recebe o nome de queixa-crime.",
+            "B": "Na ação pública chama-se queixa-crime; na ação privada chama-se termo circunstanciado de ocorrência policial.",
+            "C": "Denúncia é o termo privativo do boletim de ocorrência da delegacia; queixa é o parecer do juiz na sentença condenatória.",
+            "D": "Ambas as ações inauguram-se por meio de petição de interpelação judicial autotutelada."
+        },
+        "gabarito": "A",
+        "article": "Art. 24 e Art. 30 do Código de Processo Penal",
+        "legal_basis": "Ação penal pública promove-se por denúncia do MP; ação penal privada promove-se por queixa do ofendido ou de quem tenha qualidade para representá-lo.",
+        "explanation": "Conceito terminológico basilar: denúncia (pública) e queixa-crime (privada)."
+    },
+    {
+        "id": "penal_09_b_art44_cpp_procuracao_poderes",
+        "subject": "Peças Inaugurais da Ação Penal: Denúncia e Queixa-Crime",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Para a propositura válida de uma queixa-crime pelo advogado do ofendido em ação penal privada, o artigo 44 do Código de Processo Penal estabelece uma formalidade indeclinável na procuração outorgada ao causídico. Essa exigência consiste em:",
+        "options": {
+            "A": "Constar expressamente do instrumento de mandato a concessão de poderes especiais, o nome do querelante e a menção ao fato criminoso (com a indicação do artigo ou descrição sumária da conduta).",
+            "B": "Apenas poderes gerais da cláusula ad judicia sem menção ao fato, sob pena de violação ao sigilo profissional.",
+            "C": "Apresentar certidão de antecedentes criminais do advogado subscrita pelo Ministério da Justiça.",
+            "D": "Aprovação prévia por votação em assembleia geral de credores da comarca."
+        },
+        "gabarito": "A",
+        "article": "Art. 44 do Código de Processo Penal",
+        "legal_basis": "A queixa poderá ser dada por procurador com poderes especiais, devendo constar do instrumento do mandato o nome do querelante e a menção do fato criminoso.",
+        "explanation": "A procuração para queixa-crime exige poderes especiais e menção ao fato criminoso para fixar a responsabilidade da vítima por eventual denunciação caluniosa."
+    },
+    {
+        "id": "penal_09_c_requisitos_art41_cpp",
+        "subject": "Peças Inaugurais da Ação Penal: Denúncia e Queixa-Crime",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "O artigo 41 do Código de Processo Penal fixa os elementos estruturais obrigatórios que devem constar tanto da denúncia quanto da queixa-crime. São eles:",
+        "options": {
+            "A": "A exposição do fato criminoso, com todas as suas circunstâncias, a qualificação do acusado ou esclarecimentos pelos quais se possa identificá-lo, a classificação do crime e, quando necessário, o rol das testemunhas.",
+            "B": "A indicação do valor do dano moral a ser repassado compulsoriamente à previdência social e a assinatura de três peritos judiciais.",
+            "C": "A transcrição integral de todos os depoimentos da delegacia em ordem alfabética sob pena de preclusão.",
+            "D": "A concordância expressa do cônjuge do réu com o prosseguimento da persecução criminal."
+        },
+        "gabarito": "A",
+        "article": "Art. 41 do Código de Processo Penal",
+        "legal_basis": "Art. 41 do CPP: requisitos formais mandatórios da peça acusatória inaugural para garantir a ampla defesa.",
+        "explanation": "O art. 41 é a espinha dorsal da acusação formal: fato e circunstâncias, qualificação do autor, classificação e rol de testemunhas."
+    },
+    {
+        "id": "penal_09_d_erro_nomenclatura_vulgar",
+        "subject": "Peças Inaugurais da Ação Penal: Denúncia e Queixa-Crime",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Fácil",
+        "enunciado": "No jargão popular cotidiano, é comum as pessoas afirmarem que foram à delegacia de polícia 'prestar uma queixa contra o vizinho'. Sob o rigor técnico da linguagem processual penal, o estudante de Direito deve pontuar que:",
+        "options": {
+            "A": "O cidadão que comparece à delegacia comunica uma notitia criminis ou boletim de ocorrência; a queixa-crime é uma petição inicial de ação penal privada subscrita por quem detenha capacidade postulatória perante o juiz.",
+            "B": "A expressão popular é perfeitamente técnica, pois todo boletim de ocorrência é considerado automaticamente uma queixa-crime com trânsito em julgado.",
+            "C": "O delegado de polícia substitui a queixa-crime pela lavratura de sentença penal condenatória imediata.",
+            "D": "Não existe diferença prática ou técnica entre boletim de ocorrência e queixa-crime no direito pátrio."
+        },
+        "gabarito": "A",
+        "article": "Teoria Geral da Ação Penal e Nomenclatura Processual",
+        "legal_basis": "Boletim de ocorrência é comunicação de crime à polícia judiciária; Queixa-crime é petição inicial de ação penal de iniciativa privada perante o Poder Judiciário.",
+        "explanation": "Diferença conceitual importantíssima para provas e prática forense entre notitia criminis policial e petição inicial de queixa-crime."
+    },
+
+    # -------------------------------------------------------------
+    # TEMA 10: Prazos para Oferecimento da Denúncia
+    # -------------------------------------------------------------
+    {
+        "id": "penal_10_a_regra_geral_art46",
+        "subject": "Prazos para Oferecimento da Denúncia",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Fácil",
+        "enunciado": "Qual o prazo fixado na regra geral do Código de Processo Penal (artigo 46) para que o Ministério Público ofereça a denúncia em face do acusado?",
+        "options": {
+            "A": "5 dias se o réu estiver preso cautelarmente, e 15 dias caso o indiciado esteja solto ou afiançado, contados a partir da data em que o órgão ministerial receber os autos do inquérito policial.",
+            "B": "10 dias para réu solto e 30 dias para réu preso cautelarmente na carceragem.",
+            "C": "6 meses a contar do dia em que a autoridade policial concluir o relatório de indiciamento.",
+            "D": "Prazo improrrogável de vinte e quatro horas em qualquer circunstância sob pena de perda do cargo do promotor."
+        },
+        "gabarito": "A",
+        "article": "Art. 46 do Código de Processo Penal",
+        "legal_basis": "Art. 46 do CPP: 'O prazo para oferecimento da denúncia, estando o réu preso, será de 5 dias, contado da data em que o órgão do Ministério Público receber os autos do inquérito policial, e de 15 dias, se o réu estiver solto ou afiançado'.",
+        "explanation": "Regra geral pétrea: 5 dias preso, 15 dias solto, com termo a quo no recebimento dos autos no MP."
+    },
+    {
+        "id": "penal_10_b_termo_inicial_recebimento_mp",
+        "subject": "Prazos para Oferecimento da Denúncia",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Gabriel foi preso preventivamente no dia 1º de março. O inquérito policial tramitou na delegacia e foi relatado no dia 10 de março, sendo protocolado e recebido com vista formal no gabinete do Ministério Público no dia 15 de março. A contagem do prazo legal de 5 dias para o MP oferecer a denúncia tem início em:",
+        "options": {
+            "A": "15 de março, data em que o órgão ministerial efetivamente recebeu os autos do inquérito policial.",
+            "B": "1º de março, data originária da prisão preventiva na carceragem policial.",
+            "C": "10 de março, momento em que o delegado assinou o relatório final de investigação.",
+            "D": "Na data futura em que a defesa do réu apresentar resposta preliminar por escrito."
+        },
+        "gabarito": "A",
+        "article": "Art. 46 do Código de Processo Penal",
+        "legal_basis": "O termo a quo para a contagem do prazo da denúncia do réu preso é a data em que o MP recebe os autos do inquérito policial.",
+        "explanation": "Conforme o texto expresso do art. 46 do CPP, o prazo corre do recebimento dos autos pelo órgão do Ministério Público."
+    },
+    {
+        "id": "penal_10_c_microssistemas_lei_drogas",
+        "subject": "Prazos para Oferecimento da Denúncia",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Embora o art. 46 do CPP fixe a regra geral (5 dias preso e 15 dias solto), o próprio ordenamento jurídico convive com prazos específicos disciplinados em microssistemas legislativos próprios. Constitui exemplo de prazo especial para oferecimento da denúncia:",
+        "options": {
+            "A": "O prazo de 10 dias fixado pelo rito especial da Lei de Drogas (Lei nº 11.343/2006, art. 54) para réu preso.",
+            "B": "O prazo de 1 ano para crimes contra a honra de servidores públicos estaduais.",
+            "C": "O prazo de 48 horas previsto no Código Civil para cobrança de títulos extrajudiciais.",
+            "D": "O prazo de 90 dias contados da audiência de custódia na Lei de Lavagem de Dinheiro."
+        },
+        "gabarito": "A",
+        "article": "Art. 54 da Lei nº 11.343/2006 (Lei de Drogas)",
+        "legal_basis": "A Lei de Drogas estabelece procedimento especial: recebidos os autos do inquérito, o MP tem 10 dias para oferecer denúncia (art. 54).",
+        "explanation": "O questionário ressalta expressamente o prazo de 10 dias da Lei de Drogas como exemplo de microssistema legislativo específico."
+    },
+    {
+        "id": "penal_10_d_consequencia_excesso_prazo_preso",
+        "subject": "Prazos para Oferecimento da Denúncia",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Difícil",
+        "enunciado": "Estando o investigado segregado preventivamente, o Ministério Público deixa transcorrer duas semanas sem oferecer denúncia, sem pedir diligências ou arquivamento, ultrapassando injustificadamente o prazo de 5 dias do art. 46 do CPP. Quais são as duas consequências jurídicas decorrentes dessa desídia?",
+        "options": {
+            "A": "Configura-se constrangimento ilegal por excesso de prazo, ensejando o relaxamento da prisão cautelar do investigado via habeas corpus, bem como abre-se a legitimidade para o ofendido ajuizar ação penal privada subsidiária da pública.",
+            "B": "Extingue-se automaticamente a punibilidade do crime pelo instituto do perdão tácito soberano.",
+            "C": "O investigado é condenado compulsoriamente a cumprir pena em regime semiaberto sem processo.",
+            "D": "O juiz é obrigado a nomear o delegado como promotor substituto imediato do caso."
+        },
+        "gabarito": "A",
+        "article": "Art. 5º, LIX e LXV da CF/88; Art. 29 e 648, II do CPP",
+        "legal_basis": "Excesso de prazo em réu preso torna a prisão ilegal (deve ser relaxada) e a inércia do MP autoriza a queixa subsidiária.",
+        "explanation": "A superação desmotivada do prazo com réu preso impõe o relaxamento da prisão e legitima a queixa subsidiária pela vítima."
+    },
+
+    # -------------------------------------------------------------
+    # TEMA 11: Prazos para Oferecimento da Queixa-Crime e Consequência Jurídica
+    # -------------------------------------------------------------
+    {
+        "id": "penal_11_a_prazo_decadencial_semestral",
+        "subject": "Prazos para Oferecimento da Queixa-Crime e Consequência Jurídica",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Fácil",
+        "enunciado": "Qual é o prazo legal para a interposição da queixa-crime na ação penal privada e qual o efeito peremptório do seu não oferecimento tempestivo?",
+        "options": {
+            "A": "O lapso é decadencial de 6 meses (contados da ciência inequívoca da autoria ou do exaurimento do prazo do MP na subsidiária); o não oferecimento acarreta a decadência e a extinção da punibilidade do agente (art. 107, IV, CP).",
+            "B": "O prazo é prescricional de 2 anos; o não oferecimento transfere a ação para o juizado de pequenas causas.",
+            "C": "O prazo é preclusivo de 15 dias; o não oferecimento gera multa civil à vítima no valor de dez salários mínimos.",
+            "D": "Não há prazo decadencial para a vítima, que pode ajuizar queixa a qualquer momento de sua vida biológica."
+        },
+        "gabarito": "A",
+        "article": "Art. 38 do CPP, Art. 103 e Art. 107, IV do Código Penal",
+        "legal_basis": "Decai do direito de queixa o ofendido que não o exerce no prazo de 6 meses; a decadência extingue a punibilidade.",
+        "explanation": "O prazo semestral é fatal e decadencial, acarretando a extinção definitiva da punibilidade (art. 107, IV do CP)."
+    },
+    {
+        "id": "penal_11_b_termo_inicial_autoria",
+        "subject": "Prazos para Oferecimento da Queixa-Crime e Consequência Jurídica",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Em janeiro, Beatriz teve sua honra ofendida por um perfil anônimo na internet com injúrias gravíssimas. Apenas no dia 10 de maio, após quebra de sigilo telemático autorizada judicialmente, a polícia identificou com segurança que o autor das ofensas era seu vizinho Rodrigo. A contagem do prazo decadencial de 6 meses para Beatriz ajuizar a queixa-crime inicia-se em:",
+        "options": {
+            "A": "10 de maio, data em que a ofendida passou a conhecer com certeza e segurança quem é o autor do delito.",
+            "B": "Janeiro, data em que as ofensas anônimas foram inicialmente publicadas na rede social.",
+            "C": "No dia em que o juiz proferir o primeiro despacho na ação penal.",
+            "D": "Apenas após a conclusão de perícia psicológica no autor das publicações."
+        },
+        "gabarito": "A",
+        "article": "Art. 38 do Código de Processo Penal e Art. 103 do CP",
+        "legal_basis": "O prazo decadencial conta-se do dia em que o ofendido vem a saber quem é o autor do crime, e não da data do fato quando o autor era desconhecido.",
+        "explanation": "A lei é categórica: se a autoria é ignorada, o prazo de 6 meses conta-se do dia em que se descobre quem é o autor do fato."
+    },
+    {
+        "id": "penal_11_c_natureza_decadencial_improrrogavel",
+        "subject": "Prazos para Oferecimento da Queixa-Crime e Consequência Jurídica",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "O último dia do prazo decadencial de 6 meses para o ajuizamento de uma queixa-crime recaiu em um domingo de recesso forense. A respeito da contagem de prazos decadenciais de natureza penal material, é correto afirmar que:",
+        "options": {
+            "A": "Por se tratar de prazo de direito material penal (art. 10 do CP), o prazo não se prorroga para o primeiro dia útil seguinte, consumando-se a decadência se a queixa não for protocolada até as 23h59 do domingo no plantão eletrônico.",
+            "B": "Prorroga-se automaticamente por 30 dias corridos em benefício da parte hipossuficiente.",
+            "C": "Suspende-se durante todas as férias escolares do município do réu.",
+            "D": "O prazo decadencial converte-se em prazo prescricional quinquenal da fazenda pública."
+        },
+        "gabarito": "A",
+        "article": "Art. 10 do Código Penal e Jurisprudência do STF/STJ",
+        "legal_basis": "Prazo decadencial penal é fatal e improrrogável; inclui-se o dia do começo e não se prorroga para o dia útil subsequente.",
+        "explanation": "Ao contrário dos prazos processuais puramente formais do CPC, os prazos decadenciais penais (art. 10 CP) não se postergam para o próximo dia útil."
+    },
+    {
+        "id": "penal_11_d_subsidiaria_contagem_esgotamento",
+        "subject": "Prazos para Oferecimento da Queixa-Crime e Consequência Jurídica",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Difícil",
+        "enunciado": "Na ação penal privada subsidiária da pública, a contagem do prazo decadencial de 6 meses para o ofendido ofertar a queixa substitutiva inicia-se:",
+        "options": {
+            "A": "Do dia em que se esgota sem manifestação (in albis) o prazo conferido por lei para o oferecimento da denúncia pelo Ministério Público.",
+            "B": "Da data do fato criminoso noticiado no boletim de ocorrência inicial.",
+            "C": "Do momento em que a autoridade policial indicia o investigado na delegacia.",
+            "D": "Do dia em que o tribunal de justiça publica o acórdão de apelação cível."
+        },
+        "gabarito": "A",
+        "article": "Art. 29 e Art. 38 do Código de Processo Penal",
+        "legal_basis": "Na subsidiária da pública, o prazo de 6 meses flui a partir do esgotamento do prazo legal do Ministério Público sem atuação.",
+        "explanation": "Apenas quando o prazo do MP se esgota sem oferecimento de denúncia, arquivamento ou diligências é que nasce para a vítima o direito à queixa subsidiária."
+    },
+
+    # -------------------------------------------------------------
+    # TEMA 12: Hipóteses de Rejeição Liminar da Denúncia ou Queixa
+    # -------------------------------------------------------------
+    {
+        "id": "penal_12_a_art395_tres_incisos",
+        "subject": "Hipóteses de Rejeição Liminar da Denúncia ou Queixa",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Fácil",
+        "enunciado": "As hipóteses de rejeição liminar da denúncia ou da queixa-crime encontram-se catalogadas taxativamente no artigo 395 do Código de Processo Penal. O juiz rejeitará a peça inicial quando:",
+        "options": {
+            "A": "I - for manifestamente inepta; II - faltar pressuposto processual ou condição para o exercício da ação penal; III - faltar justa causa para a persecução penal.",
+            "B": "O réu comparecer à audiência acompanhado de seus genitores e pedir desculpas formais à vítima.",
+            "C": "O promotor de justiça pertencer a comarca contígua sem aprovação em concurso de remoção voluntária.",
+            "D": "A pena privativa de liberdade cominada em abstrato for superior a quarenta anos de reclusão."
+        },
+        "gabarito": "A",
+        "article": "Art. 395, incisos I, II e III do Código de Processo Penal",
+        "legal_basis": "Art. 395 do CPP: A denúncia ou queixa será rejeitada quando: I - for manifestamente inepta; II - faltar pressuposto processual ou condição para o exercício da ação penal; III - faltar justa causa para o exercício da ação penal.",
+        "explanation": "Esses são os três incisos taxativos que orientam o juízo preliminar negativo de admissibilidade da exordial acusatória."
+    },
+    {
+        "id": "penal_12_b_justa_causa_conceito",
+        "subject": "Hipóteses de Rejeição Liminar da Denúncia ou Queixa",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "O inciso III do artigo 395 do CPP determina a rejeição da peça acusatória quando faltar 'justa causa' para o exercício da ação penal. Na dogmática processual penal contemporânea, a justa causa traduz-se juridicamente em:",
+        "options": {
+            "A": "Suporte probatório mínimo (lastro probatório) que demonstre a prova da materialidade do fato criminoso e indícios suficientes de autoria ou participação do imputado.",
+            "B": "Certeza absoluta e inquestionável de culpa equivalente àquela exigida para a sentença condenatória com trânsito em julgado.",
+            "C": "Depósito prévio de caução em dinheiro em conta judicial pelo Ministério Público.",
+            "D": "Parecer favorável emitido pela comissão de direitos humanos da assembleia legislativa estadual."
+        },
+        "gabarito": "A",
+        "article": "Art. 395, inciso III do Código de Processo Penal",
+        "legal_basis": "Justa causa é o lastro mínimo de elementos informativos que tornam plausível a imputação penal, exigindo materialidade e indícios de autoria.",
+        "explanation": "A ação penal não pode ser fruto de leviandade ou presunção vazia; exige lastro indiciário mínimo de materialidade e autoria."
+    },
+    {
+        "id": "penal_12_c_falta_condicao_procedibilidade",
+        "subject": "Hipóteses de Rejeição Liminar da Denúncia ou Queixa",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Em crime de perseguição (art. 147-A do CP), delito processado por ação pública condicionada, o Ministério Público ofereceu denúncia sem que a vítima tenha oferecido qualquer representação e sem que tenha comparecido aos autos. O magistrado, ao apreciar a peça acusatória, deve:",
+        "options": {
+            "A": "Rejeitar liminarmente a denúncia com base no artigo 395, inciso II, do CPP, em razão da manifesta ausência de condição de procedibilidade exigida por lei.",
+            "B": "Receber a denúncia e ordenar a citação do réu para apresentar resposta à acusação no prazo de dez dias.",
+            "C": "Julgar antecipadamente o mérito para condenar o réu à pena máxima privativa de liberdade.",
+            "D": "Determinar que o réu represente contra si próprio sob pena de revelia."
+        },
+        "gabarito": "A",
+        "article": "Art. 395, inciso II do Código de Processo Penal",
+        "legal_basis": "Faltando representação na ação pública condicionada, falta condição de procedibilidade da ação penal, impondo a rejeição liminar (art. 395, II, CPP).",
+        "explanation": "A representação da vítima é condição de procedibilidade; sua ausência inviabiliza a admissibilidade da exordial acusatória."
+    },
+    {
+        "id": "penal_12_d_distincao_rejeicao_absolvicao_sumaria",
+        "subject": "Hipóteses de Rejeição Liminar da Denúncia ou Queixa",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Difícil",
+        "enunciado": "Diferenciando os momentos e institutos processuais penais, assinale a opção que distingue tecnicamente a 'rejeição liminar da denúncia' (art. 395 do CPP) da 'absolvição sumária' (art. 397 do CPP):",
+        "options": {
+            "A": "A rejeição liminar (art. 395) é juízo prévio de admissibilidade antes da citação e sem resolução do mérito; a absolvição sumária (art. 397) ocorre após a citação e resposta à acusação, resolvendo o próprio mérito da causa penal com eficácia de coisa julgada material.",
+            "B": "A rejeição liminar encerra a vida do processo com coisa julgada material irrecorrível; a absolvição sumária é mero ato do escrivão que pode ser reaberto pelo réu.",
+            "C": "Ambos os institutos ocorrem no mesmo momento antes da distribuição dos autos na secretaria do fórum.",
+            "D": "A absolvição sumária é privativa dos crimes falimentares, não se aplicando ao procedimento comum ordinário do CPP."
+        },
+        "gabarito": "A",
+        "article": "Arts. 395 e 397 do Código de Processo Penal",
+        "legal_basis": "Art. 395: juízo de admissibilidade formal e sem mérito. Art. 397: absolvição com resolução do mérito após a citação e apresentação de resposta preliminar.",
+        "explanation": "Distinção crucial do CPP: na rejeição o processo nem se instala formalmente; na absolvição sumária o processo existiu e o mérito é julgado."
+    },
+
+    # -------------------------------------------------------------
+    # TEMA 13: Inépcia da Denúncia e Consequência Jurídica
+    # -------------------------------------------------------------
+    {
+        "id": "penal_13_a_conceito_inepcia",
+        "subject": "Inépcia da Denúncia e Consequência Jurídica",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Fácil",
+        "enunciado": "O que caracteriza tecnicamente a 'inépcia da denúncia' no processo penal e qual a sua consequência jurídica imediata?",
+        "options": {
+            "A": "Ocorre quando a peça padece de imperfeições formais graves, desatende aos requisitos do art. 41 do CPP (veiculando imputações genéricas ou narrativa dissociada) e inviabiliza o contraditório e a ampla defesa; acarreta a rejeição liminar pelo juiz (art. 395, I, CPP).",
+            "B": "Ocorre quando o promotor deixa de pedir a condenação do réu em valores de indenização civil de trânsito.",
+            "C": "Verifica-se quando o acusado confessa voluntariamente o crime em depoimento extrajudicial perante peritos.",
+            "D": "É o ato pelo qual o juiz absolve o acusado após a instrução de todas as testemunhas em plenário."
+        },
+        "gabarito": "A",
+        "article": "Art. 41 e Art. 395, inciso I do Código de Processo Penal",
+        "legal_basis": "A inépcia decorre da ausência de individualização da conduta e descrição fática clara, inviabilizando a ampla defesa e impondo a rejeição da denúncia.",
+        "explanation": "Texto exato do questionário de revisão: imperfeição formal grave, imputações genéricas e violação à ampla defesa, acarretando rejeição pelo art. 395, I do CPP."
+    },
+    {
+        "id": "penal_13_b_crime_societario_individualizacao",
+        "subject": "Inépcia da Denúncia e Consequência Jurídica",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Em denúncia sobre suposta sonegação fiscal em uma sociedade limitada composta por cinco sócios, o Ministério Público afirmou genericamente que 'os cinco sócios, por integrarem o contrato social, cometeram em conluio a sonegação', sem descrever qual conduta específica cada sócio praticou ou quem detinha poderes de administração financeira. À luz da jurisprudência pacífica do STF e STJ sobre a inépcia da denúncia em crimes societários:",
+        "options": {
+            "A": "A denúncia é manifestamente inepta por consagrar responsabilidade penal objetiva e impedir o exercício da ampla defesa, sendo nula a imputação genérica que não descreve o liame mínimo de atuação de cada corréu.",
+            "B": "A denúncia é perfeitamente válida, pois em matéria penal societária presume-se que todos os cotistas praticam crimes dolosos solidariamente.",
+            "C": "O juiz deve condenar os sócios a prestarem fiança conjunta no prazo improrrogável de dez horas.",
+            "D": "A falta de individualização é sanada automaticamente pela citação por edital no diário de justiça."
+        },
+        "gabarito": "A",
+        "article": "Jurisprudência do STF e STJ sobre Crimes Societários e Art. 41 do CPP",
+        "legal_basis": "Nos crimes societários, embora não se exija descrição minudente exaustiva, é indispensável a individualização mínima da conduta de cada sócio, sob pena de inépcia por responsabilidade objetiva.",
+        "explanation": "A jurisprudência veda a denúncia genérica que se limita a elencar os sócios sem indicar sua participação fática real nos acontecimentos."
+    },
+    {
+        "id": "penal_13_c_preclusao_pos_sentenca",
+        "subject": "Inépcia da Denúncia e Consequência Jurídica",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Difícil",
+        "enunciado": "A defesa de Guilherme não alegou a inépcia da denúncia durante a resposta à acusação nem durante as alegações finais da instrução. O juiz proferiu sentença condenatória de mérito. Em sede de apelação criminal, a defesa suscita preliminar de nulidade alegando que a denúncia era inepta. De acordo com o entendimento pacífico do Superior Tribunal de Justiça (STJ):",
+        "options": {
+            "A": "A alegação de inépcia da denúncia resta preclusa com a superveniência de sentença condenatória, momento a partir do qual a cognição judicial recai sobre a higidez dos fundamentos da condenação e não mais sobre a forma da peça inaugural.",
+            "B": "A inépcia pode ser arguida a qualquer momento, inclusive décadas após o cumprimento integral da pena, anulando todos os efeitos da coisa julgada material.",
+            "C": "A sentença condenatória deve ser substituída compulsoriamente por acordo de não persecução cível.",
+            "D": "O promotor que subscreveu a denúncia deve arcar pessoalmente com as custas do tribunal de justiça."
+        },
+        "gabarito": "A",
+        "article": "Jurisprudência Vinculante do STJ (Preclusão da Inépcia após Sentença)",
+        "legal_basis": "Com a prolação da sentença condenatória, fica preclusa a alegação de inépcia da denúncia, transferindo-se a análise para a suficiência da prova da condenação.",
+        "explanation": "Segundo o STJ, proferida a sentença de mérito, encerra-se o debate formal sobre a inépcia da petição inicial, pois o édito condenatório absorveu o mérito probatório."
+    },
+    {
+        "id": "penal_13_d_ampla_defesa_contraditorio",
+        "subject": "Inépcia da Denúncia e Consequência Jurídica",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "A razão constitucional substancial pela qual a inépcia da denúncia acarreta a sua rejeição sumária reside no fato de que:",
+        "options": {
+            "A": "O réu se defende dos fatos descritos com exatidão na peça acusatória; portanto, uma acusação confusa, vaga ou indeterminada suprime a possibilidade de contraditório efetivo e ampla defesa técnica.",
+            "B": "O juiz togado não possui tempo regimental para ler petições com mais de cinco laudas de extensão.",
+            "C": "A defensoria pública é isenta de elaborar respostas aos processos em que o réu for primário.",
+            "D": "A Constituição de 1988 baniu todas as ações penais de iniciativa do Ministério Público."
+        },
+        "gabarito": "A",
+        "article": "Art. 5º, inciso LV da CF/88 e Art. 41 do CPP",
+        "legal_basis": "A ampla defesa exige saber com exatidão de qual conduta fática circunstanciada o indivíduo está sendo acusado para que possa contrapor álibis e provas.",
+        "explanation": "Ninguém pode se defender adequadamente de uma acusação obscura ou genérica; a inépcia agride o núcleo essencial da ampla defesa."
+    },
+
+    # -------------------------------------------------------------
+    # TEMA 14: Efeitos da Sentença Penal Absolutória na Esfera Cível
+    # -------------------------------------------------------------
+    {
+        "id": "penal_14_a_coisa_julgada_civel_hipoteses",
+        "subject": "Efeitos da Sentença Penal Absolutória na Esfera Cível",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Em quais casos a sentença absolutória proferida na esfera penal fará coisa julgada no juízo cível, impedindo a propositura ou procedência de ação de indenização contra o acusado?",
+        "options": {
+            "A": "Quando afere categoricamente que o fato delituoso não existiu na realidade material (art. 386, I, CPP), quando comprova que o imputado não concorreu como autor do fato (art. 386, IV, CPP) ou quando reconhece excludentes reais de ilicitude (art. 65 do CPP).",
+            "B": "Sempre que o réu for absolvido por qualquer motivo, inclusive por falta ou insuficiência de provas para a condenação.",
+            "C": "Apenas se o juiz penal arbitrar indenização civil em favor da família do acusado.",
+            "D": "Em nenhum caso, pois a esfera penal e a esfera cível são absolutamente estanques e nunca se comunicam no direito brasileiro."
+        },
+        "gabarito": "A",
+        "article": "Arts. 65, 66 e 386, incisos I e IV do CPP; Art. 935 do Código Civil",
+        "legal_basis": "Faz coisa julgada no cível a absolvição que reconhece a inexistência material do fato, a negativa categórica de autoria ou as excludentes de ilicitude do art. 23 do CP.",
+        "explanation": "Conforme o texto da revisão: inexistência do fato (386, I), negativa categórica de autoria (386, IV) e excludentes reais de ilicitude vinculam o juízo cível."
+    },
+    {
+        "id": "penal_14_b_falta_de_provas_nao_impede_civel",
+        "subject": "Efeitos da Sentença Penal Absolutória na Esfera Cível",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Lucas foi processado por homicídio culposo na direção de veículo automotor após atropelamento. Ao final da instrução criminal, o juiz absolveu Lucas com amparo estrito no artigo 386, inciso VII, do CPP ('não existir prova suficiente para a condenação'). A família da vítima ajuizou em seguida ação de indenização por perdas e danos na vara cível. Diante da absolvição penal, o juiz cível deve:",
+        "options": {
+            "A": "Processar e julgar regularmente o pedido indenizatório cível, pois a absolvição penal por insuficiência de provas (in dubio pro reo) não faz coisa julgada no cível, onde vigora standard probatório distinto de preponderância da culpa civil.",
+            "B": "Extinguir imediatamente a ação cível sem julgamento do mérito, pois a absolvição criminal proíbe qualquer discussão civil patrimonial.",
+            "C": "Condenar os autores da ação cível ao pagamento de indenização por litigância de má-fé contra o absolvido.",
+            "D": "Remeter os autos à vara de falências e concordatas para leilão dos bens do motorista."
+        },
+        "gabarito": "A",
+        "article": "Art. 66 do CPP e Art. 386, VII do CPP",
+        "legal_basis": "Não obstante a sentença absolutória no juízo criminal fundada em falta de provas, a ação civil para reparação do dano poderá ser proposta (art. 66, CPP).",
+        "explanation": "A falta de provas para condenação criminal não afasta a culpa civil extracontratual; logo, a ação indenizatória subsiste incólume."
+    },
+    {
+        "id": "penal_14_c_atipicidade_penal_vs_ilicito_civil",
+        "subject": "Efeitos da Sentença Penal Absolutória na Esfera Cível",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Eduardo foi denunciado por crime de apropriação indébita. O magistrado penal julgou improcedente a acusação e o absolveu com fundamento no art. 386, inciso III, do CPP, concluindo que o fato descrito não constituía crime, mas sim mero inadimplemento contratual civil culposo. A absolvição por atipicidade formal penal:",
+        "options": {
+            "A": "Não fecha as portas da via de reparação patrimonial civil, subsistindo incólume a possibilidade de responsabilização patrimonial do agente por ilícito civil contratual.",
+            "B": "Gera coisa julgada material absoluta no cível que impede o credor de cobrar o contrato em juízo.",
+            "C": "Obriga o credor a pagar alimentos ao devedor absolvido pelo período de cinco anos.",
+            "D": "Extingue todas as dívidas bancárias e obrigações tributárias do réu perante o fisco."
+        },
+        "gabarito": "A",
+        "article": "Art. 386, inciso III e Art. 67 do CPP",
+        "legal_basis": "A atipicidade penal afasta o crime, mas o fato pode constituir infração civil ou contratual; por isso, a via de ressarcimento patrimonial permanece aberta.",
+        "explanation": "O direito penal é a ultima ratio: o fato pode não ser crime (atípico), mas constituir inadimplemento civil e gerar dever indenizatório."
+    },
+    {
+        "id": "penal_14_d_legitima_defesa_terceiro_inocente",
+        "subject": "Efeitos da Sentença Penal Absolutória na Esfera Cível",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Difícil",
+        "enunciado": "Thiago, para defender-se de injusta agressão a tiros perpetrada por um assaltante, desferiu disparos de arma de fogo e repeliu o ataque em legítima defesa. Contudo, por aberratio ictus (erro na execução), um dos disparos atingiu a vidraça e o veículo de Caio, terceiro absolutamente inocente que passava pelo local. No juízo criminal, Thiago foi absolvido com base na legítima defesa. Em face de Caio (terceiro inocente lesado), Thiago:",
+        "options": {
+            "A": "Embora amparado pela excludente de ilicitude, responde civilmente pelo ressarcimento dos prejuízos materiais causados ao terceiro inocente, cabendo-lhe ação regressiva contra o agressor originário (arts. 929 e 930 do Código Civil).",
+            "B": "Está integralmente isento de qualquer obrigação de indenizar no cível, ficando o terceiro inocente sem qualquer direito a reparação.",
+            "C": "Deve cumprir pena privativa de liberdade em regime fechado na comarca da capital.",
+            "D": "Perde automaticamente o porte de arma e todos os seus direitos políticos fundamentais."
+        },
+        "gabarito": "A",
+        "article": "Art. 65 do CPP c/c Arts. 929 e 930 do Código Civil",
+        "legal_basis": "A excludente impede a ação civil em relação ao agressor; porém, se atingir terceiro inocente, o autor do dano indeniza e tem regresso contra o provocador (arts. 929 e 930 CC).",
+        "explanation": "Pegadinha clássica de responsabilidade civil ex delicto: o terceiro inocente lesado tem direito a ressarcimento pelo autor direto do disparo, que tem ação de regresso."
+    },
+
+    # -------------------------------------------------------------
+    # TEMA 15: Extinção da Punibilidade e Independência da Ação Civil
+    # -------------------------------------------------------------
+    {
+        "id": "penal_15_a_art67_ii_independencia",
+        "subject": "Extinção da Punibilidade e Independência da Ação Civil",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Fácil",
+        "enunciado": "A decisão judicial que julgar extinta a punibilidade do agente na esfera penal (por prescrição, decadência, indulto ou anistia) impedirá a propositura ou o prosseguimento da ação civil indenizatória?",
+        "options": {
+            "A": "Não. Conforme enuncia o artigo 67, inciso II, do Código de Processo Penal, a extinção da punibilidade criminal não atua como impeditivo para a propositura nem para a instrução da ação civil ex delicto.",
+            "B": "Sim, pois a extinção da pretensão punitiva do Estado anula automaticamente todas as relações patrimoniais de direito privado.",
+            "C": "Apenas se o crime apurado tiver pena mínima inferior a dois anos de detenção.",
+            "D": "Sim, salvo se a vítima for servidora pública de carreira na ativa."
+        },
+        "gabarito": "A",
+        "article": "Art. 67, inciso II do Código de Processo Penal",
+        "legal_basis": "Art. 67, II do CPP: 'Não impedirão igualmente a propositura da ação civil: II - a decisão que julgar extinta a punibilidade'.",
+        "explanation": "A prescrição penal fulmina apenas o jus puniendi do Estado; subsiste incólume o dever do ofensor de reparar o dano causado à vítima no cível."
+    },
+    {
+        "id": "penal_15_b_fundamento_jus_puniendi_vs_dano",
+        "subject": "Extinção da Punibilidade e Independência da Ação Civil",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "A fundamentação jurídica que sustenta a independência da ação civil indenizatória perante a extinção da punibilidade penal assenta-se no fato de que:",
+        "options": {
+            "A": "As causas extintivas da punibilidade fulminam apenas o jus puniendi do Estado na órbita criminal, preservando incólume a relação de ilicitude civil e a obrigação do causador do dano de reparar as perdas e danos provocadas à vítima.",
+            "B": "A ação civil indenizatória não exige demonstração de dano patrimonial ou moral para sua procedência.",
+            "C": "O juiz cível tem competência delegada para aplicar sanções de prisão comutável em multa.",
+            "D": "O Código de Processo Penal foi revogado pelo Código de Defesa do Consumidor em matéria de responsabilidade civil."
+        },
+        "gabarito": "A",
+        "article": "Art. 67, II do CPP e Princípio da Independência das Esferas",
+        "legal_basis": "A punibilidade criminal e o dever de indenizar civil decorrem de bens jurídicos distintos. A perda do direito de punir estatal não exonera o dever civil de ressarcimento.",
+        "explanation": "O Estado perde o poder punitivo, mas a obrigação civil de reparar o prejuízo patrimonial e moral subsiste na jurisdição cível."
+    },
+    {
+        "id": "penal_15_c_prescricao_penal_vs_civel",
+        "subject": "Extinção da Punibilidade e Independência da Ação Civil",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Em acidente automobilístico com lesão corporal culposa grave, transcorreram quatro anos e o juiz declarou extinta a punibilidade do condutor pela prescrição da pretensão punitiva penal em abstrato. Diante dessa sentença, a vítima:",
+        "options": {
+            "A": "Pode ajuizar perfeitamente a ação de cobrança indenizatória no juízo cível para haver o ressarcimento dos tratamentos médicos e danos morais, observados os prazos prescricionais civis.",
+            "B": "Está terminantemente proibida de pleitear ressarcimento patrimonial perante qualquer juízo da comarca.",
+            "C": "Deve arcar com a despesa do conserto do automóvel do condutor que causou as lesões.",
+            "D": "Perde os direitos da personalidade e a titularidade de sua conta bancária corrente."
+        },
+        "gabarito": "A",
+        "article": "Art. 67, II do CPP e Art. 206, § 3º, V do Código Civil",
+        "legal_basis": "A declaração de prescrição penal não extingue a pretensão cível; a vítima pode discutir e provar a culpa civil no juízo competente.",
+        "explanation": "Exemplo do questionário: a extinção da punibilidade não atua como óbice para a propositura nem para a procedência da correlata ação civil ex delicto."
+    },
+    {
+        "id": "penal_15_d_anistia_indulto_reparacao",
+        "subject": "Extinção da Punibilidade e Independência da Ação Civil",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Difícil",
+        "enunciado": "O Presidente da República editou decreto concedendo indulto e anistia a determinado grupo de infratores condenados criminalmente. Sob a perspectiva dos efeitos da condenação e das prerrogativas da vítima lesada:",
+        "options": {
+            "A": "O indulto e a anistia extinguem os efeitos penais primários e secundários da condenação, mas não afastam nem prejudicam o direito da vítima de executar ou pleitear a indenização cível correspondente.",
+            "B": "A anistia apaga retroativamente todas as perdas patrimoniais sofridas pela vítima, proibindo execução cível.",
+            "C": "O indulto converte a dívida civil do réu em precatório alimentar a ser pago pelo erário federal.",
+            "D": "A vítima fica obrigada a devolver todos os valores recebidos a título de seguro DPVAT."
+        },
+        "gabarito": "A",
+        "article": "Art. 67, II do CPP e Art. 107 do Código Penal",
+        "legal_basis": "A clemência soberana (indulto/anistia) atinge as sanções punitivas estatais, não podendo suprimir direitos indenizatórios de particulares.",
+        "explanation": "A extinção da punibilidade por graça, anistia ou indulto não lesa os direitos patrimoniais do particular ofendido."
+    },
+
+    # -------------------------------------------------------------
+    # TEMA 16: Conceito e Fundamentos do Flagrante Delito
+    # -------------------------------------------------------------
+    {
+        "id": "penal_16_a_conceito_flagrante_cautelar",
+        "subject": "Conceito e Fundamentos do Flagrante Delito",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Fácil",
+        "enunciado": "O que é o flagrante delito e qual a sua natureza jurídica no direito processual penal brasileiro?",
+        "options": {
+            "A": "Constitui medida cautelar pré-processual restritiva de liberdade, revestida de autoexecutoriedade e despida de prévia autorização judicial escrita (art. 5º, LXI, CF), assentando-se na certeza visual imediata da prática de um crime.",
+            "B": "É uma pena definitiva de prisão perpétua aplicada sumariamente pelo delegado no local dos acontecimentos.",
+            "C": "Consiste em ato privativo e exclusivo do Ministério Público praticado após o trânsito em julgado da condenação.",
+            "D": "É uma modalidade de conciliação cartorária extrajudicial celebrada entre a autoridade policial e o autor do fato."
+        },
+        "gabarito": "A",
+        "article": "Art. 5º, inciso LXI da CF/88 e Arts. 301 e seguintes do CPP",
+        "legal_basis": "O flagrante é medida cautelar de segregação prévia autoexecutável, que dispensa mandado judicial escrito em razão da visibilidade direta do crime.",
+        "explanation": "Texto da revisão: medida cautelar pré-processual restritiva de liberdade, autoexecutável e despida de prévia ordem judicial."
+    },
+    {
+        "id": "penal_16_b_dever_policial_vs_faculdade_povo",
+        "subject": "Conceito e Fundamentos do Flagrante Delito",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "O artigo 301 do Código de Processo Penal estabelece que 'qualquer do povo poderá e as autoridades policiais e seus agentes deverão prender quem quer que seja encontrado em flagrante delito'. Sobre essa distinção legal de deveres, assinale a opção correta:",
+        "options": {
+            "A": "Para o cidadão comum trata-se de flagrante facultativo (direito subjetivo); para a autoridade policial e seus agentes trata-se de flagrante compulsório (dever funcional obrigatório).",
+            "B": "O cidadão comum que não prender o flagrado responde criminalmente por prevaricação e perde o emprego.",
+            "C": "O policial civil ou militar tem a faculdade discricionária de escolher se deseja prender o homicida em flagrante ou não.",
+            "D": "A prisão em flagrante é vedada em via pública a qualquer cidadão que não seja bacharel em Direito."
+        },
+        "gabarito": "A",
+        "article": "Art. 301 do Código de Processo Penal",
+        "legal_basis": "Qualquer do povo 'poderá' (flagrante facultativo); as autoridades policiais e agentes 'deverão' (flagrante obrigatório/compulsório).",
+        "explanation": "Flagrante facultativo para os populares e flagrante obrigatório/compulsório para os agentes de segurança pública."
+    },
+    {
+        "id": "penal_16_c_audiencia_custodia_24h",
+        "subject": "Conceito e Fundamentos do Flagrante Delito",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Efetivada a prisão em flagrante de um indivíduo, a autoridade policial deve lavrar o respectivo auto e encaminhá-lo ao juiz competente e à defensoria pública no prazo improrrogável de 24 horas, devendo o preso ser apresentado em audiência de custódia (art. 310 do CPP). Nessa audiência, o magistrado deve motivadamente:",
+        "options": {
+            "A": "I - relaxar a prisão ilegal; II - converter a prisão em preventiva (se presentes os requisitos dos arts. 312 e 313 e inadequadas medidas cautelares diversas); ou III - conceder liberdade provisória, com ou sem fiança.",
+            "B": "Sentenciar de imediato o custodiado a vinte anos de reclusão em plenário sem necessidade de instrução posterior.",
+            "C": "Devolver o custodiado ao delegado para interrogatório sob sigilo absoluto perpétuo.",
+            "D": "Determinar que o preso pague honorários advocatícios ao magistrado que presidiu o ato."
+        },
+        "gabarito": "A",
+        "article": "Art. 310 do Código de Processo Penal (Lei 13.964/2019)",
+        "legal_basis": "Art. 310 do CPP: Ao receber o auto de prisão em flagrante, no prazo máximo de até 24 horas, o juiz deverá promover audiência de custódia e relaxar, converter em preventiva ou conceder liberdade provisória.",
+        "explanation": "A tríplice opção do juiz na audiência de custódia conforme o art. 310 do CPP: relaxar a prisão ilegal, converter em preventiva ou conceder liberdade provisória."
+    },
+    {
+        "id": "penal_16_d_inviolabilidade_domiciliar_flagrante",
+        "subject": "Conceito e Fundamentos do Flagrante Delito",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Difícil",
+        "enunciado": "A Constituição Federal estabelece que a casa é asilo inviolável do indivíduo (art. 5º, XI). Em caso de flagrante delito, a garantia da inviolabilidade do domicílio:",
+        "options": {
+            "A": "Ressalva expressamente a entrada forçada, admitindo o ingresso a qualquer hora do dia ou da noite, exigindo o STF a existência de fundadas razões prévias (justa causa) devidamente justificadas para a diligência domiciliar.",
+            "B": "Impede em qualquer circunstância o ingresso da polícia em residências sem autorização prévia por escrito do proprietário do imóvel.",
+            "C": "Permite que qualquer vizinho adentre a residência para retirar móveis e objetos particulares sem auxílio policial.",
+            "D": "Só permite a entrada de policiais entre 22h e 6h com autorização unânime do conselho tutelar."
+        },
+        "gabarito": "A",
+        "article": "Art. 5º, XI da CF/88 e Tema 280 da Repercussão Geral do STF (RE 603.616)",
+        "legal_basis": "O flagrante delito autoriza o ingresso domiciliar de dia ou à noite, mas o STF exige que haja prévia justa causa demonstrada para a intervenção policial.",
+        "explanation": "O flagrante é exceção constitucional à inviolabilidade domiciliar (art. 5º, XI), desde que haja justa causa prévia constatável antes da invasão."
+    },
+
+    # -------------------------------------------------------------
+    # TEMA 17: Modalidades Legais e Doutrinárias de Flagrante
+    # -------------------------------------------------------------
+    {
+        "id": "penal_17_a_proprio_improprio_presumido",
+        "subject": "Modalidades Legais e Doutrinárias de Flagrante",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "O artigo 302 do Código de Processo Penal contempla três espécies clássicas de flagrante delito cominadas pela legislação adjetiva. São elas:",
+        "options": {
+            "A": "Flagrante próprio/perfeito (está cometendo ou acaba de cometer - I e II); Flagrante impróprio/quase-flagrante (perseguido logo após - III); Flagrante presumido/ficto (encontrado logo depois com armas/objetos - IV).",
+            "B": "Flagrante preparatório, flagrante executório e flagrante rescisório.",
+            "C": "Flagrante de instrução, flagrante de recurso e flagrante de impugnação ao valor da causa.",
+            "D": "Flagrante tácito, flagrante expresso e flagrante homologatório cartorário."
+        },
+        "gabarito": "A",
+        "article": "Art. 302, incisos I a IV do Código de Processo Penal",
+        "legal_basis": "Espécies legais: Próprio (incisos I e II); Impróprio ou quase-flagrante (inciso III); Presumido ou ficto (inciso IV).",
+        "explanation": "Tríade legal do art. 302 do CPP, diferenciando o momento da captura e a presença ou ausência de perseguição física ininterrupta."
+    },
+    {
+        "id": "penal_17_b_flagrante_improprio_perseguicao",
+        "subject": "Modalidades Legais e Doutrinárias de Flagrante",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Roberto praticou furto a uma loja de eletrônicos e empreendeu fuga a pé pelas ruas da cidade. Dois minutos após a fuga, a polícia iniciou perseguição contínua e ininterrupta, conseguindo capturar Roberto em um terreno baldio a dois quilômetros de distância. Sob a ótica do artigo 302 do CPP, a prisão de Roberto enquadra-se tipicamente como:",
+        "options": {
+            "A": "Flagrante impróprio (ou quase-flagrante), previsto no art. 302, III, do CPP, em que o agente é perseguido logo após o cometimento em situação que faça presumir ser o autor da infração.",
+            "B": "Flagrante preparado ilícito decorrente de armadilha policial abusiva.",
+            "C": "Flagrante próprio ou perfeito de consumação simultânea imediata.",
+            "D": "Prisão administrativa inominada desprovida de previsão legal no processo penal."
+        },
+        "gabarito": "A",
+        "article": "Art. 302, inciso III do Código de Processo Penal",
+        "legal_basis": "Flagrante impróprio ou quase-flagrante: o agente é perseguido logo após a prática delituosa em situação que induza a presunção de autoria.",
+        "explanation": "O traço definidor do flagrante impróprio (art. 302, III) é a existência de perseguição imediata e ininterrupta logo após o fato."
+    },
+    {
+        "id": "penal_17_c_flagrante_presumido_logo_depois",
+        "subject": "Modalidades Legais e Doutrinárias de Flagrante",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Médio",
+        "enunciado": "Lucas arrombou um cofre bancário e fugiu de carro sem que ninguém o visse. Três horas após o fato, uma blitz de trânsito em rodovia interestadual interceptou o veículo de Lucas e encontrou no porta-malas as ferramentas de arrombamento e os malotes de dinheiro intactos com selo do banco. Inexistiu qualquer perseguição física anterior. A prisão de Lucas enquadra-se em:",
+        "options": {
+            "A": "Flagrante presumido (ou ficto), com amparo no art. 302, IV, do CPP, no qual o agente é interceptado pouco tempo depois na posse direta de instrumentos e objetos que façam presumir ser ele o executor da infração.",
+            "B": "Flagrante forjado ilegal praticado com desvio de poder pelos policiais rodoviários.",
+            "C": "Flagrante próprio perfeito de execução continuada instantânea.",
+            "D": "Flagrante condicionado com necessidade de representação da assembleia legislativa."
+        },
+        "gabarito": "A",
+        "article": "Art. 302, inciso IV do Código de Processo Penal",
+        "legal_basis": "No flagrante presumido/ficto (art. 302, IV, CPP) não há perseguição; o agente é encontrado logo depois com as armas, instrumentos ou produtos do crime.",
+        "explanation": "A ausência de perseguição e a constatação da posse dos instrumentos/produtos do crime logo depois caracterizam o flagrante ficto."
+    },
+    {
+        "id": "penal_17_d_doutrinarias_sumula145_esperado",
+        "subject": "Modalidades Legais e Doutrinárias de Flagrante",
+        "bank": "Revisão 1º Bimestre",
+        "difficulty": "Difícil",
+        "enunciado": "A respeito das modalidades doutrinárias de flagrante (flagrante preparado, flagrante forjado e flagrante esperado), analise a afirmativa tecnicamente correta com base no ordenamento e na jurisprudência do STF:",
+        "options": {
+            "A": "O flagrante preparado/provocado é nulo e ilegal por gerar crime impossível (Súmula 145 do STF); o flagrante forjado é ato criminoso de terceiros; e o flagrante esperado é plenamente válido, limitando-se a polícia a montar campana após notícia do plano criminoso sem qualquer induzimento.",
+            "B": "O flagrante preparado é plenamente legal e estimulado como melhor prática de investigação pelo Código de Processo Penal.",
+            "C": "O flagrante forjado é válido sempre que o réu tiver antecedentes penais por crimes patrimoniais.",
+            "D": "O flagrante esperado é inconstitucional por violar a intimidade do criminoso que planejou a conduta em sua residência."
+        },
+        "gabarito": "A",
+        "article": "Súmula 145 do STF e Doutrina de Processo Penal",
+        "legal_basis": "Súmula 145 do STF: 'Não há crime, quando a preparação do flagrante pela polícia torna impossível a sua consumação'. Flagrante esperado é lícito; preparado é crime impossível.",
+        "explanation": "No flagrante preparado o agente é induzido (crime impossível); no esperado a polícia apenas aguarda sem induzir (lícito e válido)."
+    }
+]
+
+def main():
+    target_path = Path(__file__).resolve().parent.parent / "database" / "seed_processo_penal.json"
+    data = {
+        "module": "processo_penal",
+        "version": "1.0.0",
+        "description": "68 questões inéditas alinhadas 100% ao Questionário do Professor Felipe Velozo (4 questões para cada um dos 17 temas, com casos práticos e nomes de pessoas)",
+        "questions": questions
+    }
+    
+    with open(target_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+    print(f"Sucesso! Geradas {len(questions)} questões de Processo Penal em {target_path}")
+
+if __name__ == "__main__":
+    main()

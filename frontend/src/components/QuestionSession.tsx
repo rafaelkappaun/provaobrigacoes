@@ -25,7 +25,8 @@ const CONTRATOS_SUBJECTS = [
   "Vício Redibitório vs. Entrega de Coisa Diversa (Aliud Pro Alio)",
   "Prazos Decadenciais dos Vícios Redibitórios",
   "Extinção dos Contratos - Resolução e Cláusula Resolutiva",
-  "Exceção do Contrato Não Cumprido e Onerosidade Excessiva"
+  "Exceção do Contrato Não Cumprido e Onerosidade Excessiva",
+  "Evicção - Conceito, Requisitos e Efeitos"
 ];
 
 const MULTIPORTAS_SUBJECTS = [
@@ -44,6 +45,27 @@ const MULTIPORTAS_SUBJECTS = [
   "Objetivos do Modelo Multiportas",
   "Evolução Histórica e Legislativa dos Juizados Especiais",
   "Evolução Histórica e Legislativa da Arbitragem no Brasil"
+];
+
+const PROCESSO_PENAL_SUBJECTS = [
+  "Todos os Temas (Automático)",
+  "Juiz das Garantias - Criação e Campo de Atuação",
+  "Aplicação Imediata da Norma Processual Penal e Efeito Jurídico",
+  "Notitia Criminis e Atuação da Autoridade Policial",
+  "Inquérito Policial e Vedação ao Arquivamento pelo Delegado",
+  "Devolução do Inquérito Policial ao Delegado pelo MP",
+  "Arquivamento do Inquérito e Realização de Novas Diligências",
+  "Espécies de Ação Penal e suas Subdivisões",
+  "Retratação da Representação na Ação Penal Pública Condicionada",
+  "Peças Inaugurais da Ação Penal: Denúncia e Queixa-Crime",
+  "Prazos para Oferecimento da Denúncia",
+  "Prazos para Oferecimento da Queixa-Crime e Consequência Jurídica",
+  "Hipóteses de Rejeição Liminar da Denúncia ou Queixa",
+  "Inépcia da Denúncia e Consequência Jurídica",
+  "Efeitos da Sentença Penal Absolutória na Esfera Cível",
+  "Extinção da Punibilidade e Independência da Ação Civil",
+  "Conceito e Fundamentos do Flagrante Delito",
+  "Modalidades Legais e Doutrinárias de Flagrante"
 ];
 
 interface Question {
@@ -278,7 +300,7 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, modul
               }}
               className="bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs font-bold text-slate-200 focus:outline-none focus:border-indigo-500 w-full truncate"
             >
-              {(module === 'multiportas' ? MULTIPORTAS_SUBJECTS : CONTRATOS_SUBJECTS).map((s) => (
+              {(module === 'processo_penal' ? PROCESSO_PENAL_SUBJECTS : module === 'multiportas' ? MULTIPORTAS_SUBJECTS : CONTRATOS_SUBJECTS).map((s) => (
                 <option key={s} value={s} className="bg-slate-900 text-slate-200">
                   {s}
                 </option>

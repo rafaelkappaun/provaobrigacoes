@@ -1,959 +1,959 @@
 {
   "module": "multiportas",
-  "version": "2.0.0",
-  "description": "56 questões inéditas, autônomas e sem repetições para a Prova 1 de Modelo Multiportas (4 questões exclusivas para cada um dos 14 temas)",
+  "version": "3.0.0",
+  "description": "56 questões inéditas e alinhadas 100% ao Questionário de Revisão para a Prova 01 de Modelo Multiportas (4 questões para cada um dos 14 temas com nomes de pessoas e casos práticos)",
   "questions": [
     {
-      "id": "multi_01_a_lide_carnelutti",
+      "id": "multi_01_a_carnelutti_lide",
       "subject": "Noção de Conflito de Direito e Conflito Social",
-      "bank": "FGV",
+      "bank": "Revisão Prova 01",
       "difficulty": "Médio",
-      "enunciado": "(FGV / Magistratura) Dois herdeiros divergem intensamente sobre o destino afetivo de bens de família deixados pelo falecido pai, acumulando ressentimentos pessoais. Ao ingressarem em juízo com ação de partilha litigiosa, discute-se a transposição da animosidade familiar para o campo processual. À luz da Teoria Geral dos Conflitos e da clássica lição de Francesco Carnelutti sobre o conceito de lide, assinale a afirmativa correta:",
+      "enunciado": "Mariana e Roberto são vizinhos e divergem sobre a demarcação de um muro divisório, bem da vida considerado escasso entre ambos. Mariana exige que Roberto recue sua cerca em dois metros, mas Roberto recusa terminantemente a pretensão, afirmando ter posse mansa e pacífica. À luz da doutrina processual clássica de Francesco Carnelutti sobre a transposição do conflito social para o plano jurídico, assinale a afirmativa correta:",
       "options": {
-        "A": "O conflito social e a lide jurídica são categorias idênticas, visto que qualquer controvérsia de ordem moral ou psicológica entre indivíduos constitui automaticamente lide processável.",
-        "B": "A lide consiste no conflito de interesses qualificado por uma pretensão resistida dotada de relevância jurídica, ao passo que o conflito social é mais amplo e sociológico.",
-        "C": "A existência de lide dispensa a resistência da parte adversa, aperfeiçoando-se a relação processual pela mera insatisfação unilateral de um dos herdeiros perante o tribunal.",
-        "D": "A jurisdição estatal tem por função primária sanar mágoas de foro íntimo, sendo prescindível demonstrar lesão ou ameaça a direito subjetivo tutelado pelo direito objetivo."
+        "A": "A situação narrada retrata uma lide, conceituada por Francesco Carnelutti como o conflito de interesses qualificado por uma pretensão resistida, em que Mariana quer subordinar o interesse de Roberto e este resiste.",
+        "B": "O conflito entre Mariana e Roberto constitui mero dissabor social sem relevância jurídica, uma vez que a noção de lide prescinde da existência de bens escassos ou de divergência de vontades.",
+        "C": "Segundo Carnelutti, a lide se aperfeiçoa unilateralmente, bastando que Mariana manifeste sua pretensão em juízo, sendo desnecessária a resistência ou recusa de Roberto.",
+        "D": "O conflito social e a lide jurídica são conceitos idênticos na lição de Francesco Carnelutti, pois qualquer divergência moral ou ética entre vizinhos configura lide perante o ordenamento."
       },
-      "gabarito": "B",
-      "article": "Teoria Geral do Processo (Francesco Carnelutti) e CPC/2015",
-      "legal_basis": "A lide é o conflito intersubjetivo de interesses qualificado por uma pretensão resistida. O conflito social precede a lide e nem sempre possui enquadramento jurídico direto.",
-      "explanation": "Carnelutti define a lide como o conflito de interesses qualificado por uma pretensão resistida: uma parte quer subordinar o interesse da outra, e esta resiste. O conflito social é amplo e de natureza sociológica."
+      "gabarito": "A",
+      "article": "Doutrina de Francesco Carnelutti (Teoria da Lide)",
+      "legal_basis": "A doutrina de Francesco Carnelutti conceitua o conflito de direito como lide: o conflito de interesses qualificado por uma pretensão resistida, quando um sujeito exige que o interesse alheio se subordine ao seu e o outro resiste.",
+      "explanation": "Conforme o questionário da Prova 01: o conflito social decorre da divergência sobre bens escassos. No plano jurídico, qualifica-se como lide segundo Francesco Carnelutti: conflito de interesses qualificado por pretensão resistida."
     },
     {
-      "id": "multi_01_b_sociologia_conflito",
+      "id": "multi_01_b_bens_escassos_social",
       "subject": "Noção de Conflito de Direito e Conflito Social",
-      "bank": "CESPE",
-      "difficulty": "Difícil",
-      "enunciado": "(CESPE / Defensoria) Na perspectiva da Sociologia Jurídica e da Teoria dos Conflitos (autores como Lewis Coser e Boaventura de Sousa Santos), o conflito não deve ser compreendido como uma anomalia puramente negativa, mas como fenômeno inerente à dinâmica social. Sob este enfoque teórico, é correto afirmar que:",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Fácil",
+      "enunciado": "Ao lecionar sobre a gênese das controvérsias na convivência humana, o Professor de Direito Processual explica aos alunos como os conflitos sociais emergem e quando adquirem relevância para o ordenamento jurídico. De acordo com o conceito fundamental de conflito social e de conflito de direito, assinale a opção correta:",
       "options": {
-        "A": "O conflito social atua como elemento propulsor de transformação e aprimoramento das normas, revelando tensões que demandam respostas adequadas e integradoras.",
-        "B": "Todo e qualquer conflito comunitário deve ser compulsoriamente submetido ao crivo judicial sob pena de desagregação permanente da ordem constitucional vigente.",
-        "C": "A função precípua do Direito é silenciar peremptoriamente as divergências sociais, impondo a pacificação compulsória mediante decisões jurisdicionais coercitivas.",
-        "D": "O conflito intersubjetivo surge exclusivamente quando uma das partes pratica ato ilícito tipificado na legislação penal ou de responsabilidade civil extracontratual."
+        "A": "O conflito social é um dado inerente à convivência humana, surgindo sempre que há divergência de interesses, necessidades ou valores sobre bens da vida que são escassos, ganhando relevância jurídica quando qualificado pelo ordenamento.",
+        "B": "O conflito social apenas existe quando decorre da prática de um crime expressamente tipificado na legislação penal, inexistindo conflito social em disputas contratuais.",
+        "C": "Os bens da vida, por serem infinitos e universais na sociedade moderna, afastam a existência do conflito social, remanescendo apenas disputas de natureza processual formal.",
+        "D": "O direito positivo proíbe o surgimento de conflitos sociais, punindo com multa coercitiva todo cidadão que manifestar discordância sobre valores ou necessidades."
       },
       "gabarito": "A",
-      "article": "Sociologia do Direito e Teoria Geral dos Conflitos",
-      "legal_basis": "O conflito é força motriz de transformação social e oxigenação das instituições jurídicas, não devendo ser encarado como mera patologia a ser reprimida a qualquer custo.",
-      "explanation": "Para a sociologia jurídica contemporânea, o conflito evidencia necessidades não atendidas e impulsiona o desenvolvimento de novos métodos de tratamento integrativo e democrático."
+      "article": "Teoria Geral do Processo - Conflito Social e Jurídico",
+      "legal_basis": "O conflito social surge da divergência de interesses sobre bens escassos da vida. Ele se qualifica no plano jurídico quando passa a ter relevância para o ordenamento.",
+      "explanation": "O conflito social decorre da escassez de bens e choque de interesses da vida gregária; qualifica-se como conflito de direito ao atrair tutela e relevância na ordem jurídica."
     },
     {
-      "id": "multi_01_c_espiral_conflito",
+      "id": "multi_01_c_pretensao_subordinacao",
       "subject": "Noção de Conflito de Direito e Conflito Social",
-      "bank": "VUNESP",
+      "bank": "Revisão Prova 01",
       "difficulty": "Médio",
-      "enunciado": "(VUNESP / TJ) Dois sócios fundadores de uma empresa de tecnologia divergem inicialmente sobre a divisão das cotas de um novo software patenteado. Com o passar dos meses, discussões técnicas pontuais evoluíram para trocas de ofensas pessoais em reuniões e notificações extrajudiciais hostis com acusações de deslealdade comercial. Na teoria da resolução de conflitos, a passagem de um problema objetivo para a desqualificação mútua das pessoas é denominada:",
+      "enunciado": "Lucas celebrou contrato de compra e venda de um veículo com Felipe. Felipe pagou o preço acordado, mas Lucas recusou-se a entregar os documentos de transferência, alegando despesas supervenientes. Felipe, então, busca a tutela jurisdicional para compelir Lucas a satisfazer a obrigação. Na clássica definição de lide (Carnelutti), o elemento caracterizador da pretensão consiste no ato pelo qual:",
       "options": {
-        "A": "Submissão processual regressiva, caracterizada pela aceitação involuntária das condições contratuais desvantajosas impostas pelo sócio majoritário.",
-        "B": "Escalada ou espiral do conflito, fenômeno no qual a animosidade subjetiva se intensifica e se distancia da controvérsia patrimonial originária.",
-        "C": "Transação fática compulsória, que opera efeitos preclusivos sobre os direitos patrimoniais dos sócios independentemente de homologação judicial.",
-        "D": "Heterocomposição privada involuntária, na qual a força econômica dos parceiros substitui legitimamente o império da lei nas relações comerciais."
+        "A": "Um indivíduo exige que o interesse de outrem se subordine ao seu e esse segundo sujeito resiste à exigência, reclamando a intervenção da ordem jurídica para restabelecer a paz social.",
+        "B": "As duas partes abrem mão imediata e espontânea de qualquer direito patrimonial, sem que haja resistência fática ou jurídica de nenhum dos polos.",
+        "C": "O Estado impõe compulsoriamente a prisão civil do devedor antes mesmo da citação formal no processo de conhecimento.",
+        "D": "O credor busca a conciliação extrajudicial sem formular qualquer exigência ou pretensão patrimonial perante o polo devedor."
       },
-      "gabarito": "B",
-      "article": "Teoria Geral dos Conflitos (Friedrich Glasl e Morton Deutsch)",
-      "legal_basis": "A espiral do conflito demonstra a escalada da intensidade destrutiva, onde as partes deixam de debater o problema patrimonial originário e passam a atacar a honra e a pessoa do adversário.",
-      "explanation": "A escalada do conflito faz com que pequenas divergências societárias atinjam níveis emocionais profundos, tornando indispensável a intervenção precoce de métodos autocompositivos como a mediação."
+      "gabarito": "A",
+      "article": "Doutrina de Francesco Carnelutti e Teoria Geral do Conflito",
+      "legal_basis": "A pretensão ocorre quando um sujeito exige a subordinação do interesse alheio ao seu; havendo resistência, surge a lide que reclama intervenção jurídica.",
+      "explanation": "Conforme o texto da revisão: isso se dá quando um indivíduo exige que o interesse de outrem se subordine ao seu e este segundo sujeito resiste à exigência."
     },
     {
-      "id": "multi_01_d_pretensao_insatisfacao",
+      "id": "multi_01_d_paz_social_relevancia",
       "subject": "Noção de Conflito de Direito e Conflito Social",
-      "bank": "FCC",
-      "difficulty": "Médio",
-      "enunciado": "(FCC / Procuradoria) Um consumidor sentiu-se profundamente ofendido com a campanha publicitária veiculada por uma grande rede de varejo, alegando mero desconforto estético pessoal, embora a propaganda estivesse estritamente em conformidade com as normas regulamentares do setor. À luz da distinção entre insatisfação subjetiva e conflito de direito, assinale a opção correta:",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Difícil",
+      "enunciado": "Em debate acadêmico, os estudantes Pedro e Amanda discutem a fronteira entre os conflitos puramente sociológicos de foro íntimo e aqueles que demandam intervenção do ordenamento jurídico. Amanda defende acertadamente que o conflito de interesses reclama a intervenção da ordem jurídica quando:",
       "options": {
-        "A": "A mera insatisfação de foro íntimo sem amparo em norma jurídica tuteladora não configura pretensão jurídica legítima apta a justificar a prestação jurisdicional.",
-        "B": "Qualquer sentimento subjetivo de desagrado constitui lide com repercussão patrimonial, cabendo ao Poder Judiciário arbitrar indenização punitiva pedagógica.",
-        "C": "O conflito de direito independe de previsão no ordenamento legal, bastando que o cidadão declare unilateralmente sua discordância perante a autoridade judiciária.",
-        "D": "A falta de enquadramento legal direto de uma insatisfação autoriza a parte a empregar autotutela privada coercitiva contra o patrimônio do estabelecimento comercial."
+        "A": "Passa a ter relevância para o ordenamento jurídico ao envolver pretensão resistida sobre bem tutelado, visando restabelecer a paz social e a estabilidade das relações.",
+        "B": "Envolve qualquer descontentamento amoroso ou frustração interpessoal privada, independentemente de previsão na ordem jurídica positiva.",
+        "C": "O Estado decide aplicar sanções administrativas de ofício sem que nenhuma das partes tenha manifestado resistência ou oposição fática.",
+        "D": "As partes já resolveram a lide amigavelmente antes de qualquer choque de interesses ou divergência quanto a bens da vida."
       },
       "gabarito": "A",
-      "article": "Art. 17 e Art. 485, VI do CPC/2015",
-      "legal_basis": "Para postular em juízo é necessário ter interesse e legitimidade. O mero dissabor sem sustentação em lesão ou ameaça a direito objetivo não consubstancia lide jurídica.",
-      "explanation": "Nem todo descontentamento da vida social é conflito de direito. Sem ofensa a bem da vida protegido pelo direito positivo, carece o indivíduo de interesse processual e pretensão jurídica."
+      "article": "Teoria Geral do Processo (Conflito e Paz Social)",
+      "legal_basis": "No plano jurídico, o conflito se qualifica quando ganha relevância para o ordenamento por meio da lide (pretensão resistida), reclamando a atuação da ordem jurídica para restabelecer a paz social.",
+      "explanation": "O conflito no plano jurídico se diferencia do mero choque sociológico por atrair a tutela normativa e exigir solução para a paz social."
     },
     {
-      "id": "multi_02_a_cultura_sentenca",
+      "id": "multi_02_a_monopolio_finalidade",
       "subject": "Enfrentamento dos Conflitos vs. Jurisdição",
-      "bank": "FGV",
-      "difficulty": "Médio",
-      "enunciado": "(FGV / OAB) Dados oficiais do relatório 'Justiça em Números' do Conselho Nacional de Justiça revelam mais de 80 milhões de processos em tramitação no Judiciário brasileiro. Para conter o colapso do modelo contencioso tradicional, a doutrina processual moderna defende a transição da 'cultura da sentença' para a 'cultura da pacificação'. Sobre essa transição, assinale a afirmativa correta:",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Fácil",
+      "enunciado": "Historicamente, o Estado moderno avocou para si o monopólio da função jurisdicional. De acordo com o questionário de revisão, a finalidade primária dessa avocação estatal e as limitações práticas da via judicial tradicional residem em:",
       "options": {
-        "A": "A cultura da pacificação visa substituir a imposição de sentenças judiciais pelo incentivo ao diálogo e à autocomposição responsável e sustentável dos litígios.",
-        "B": "O modelo multiportas estabeleceu o encerramento das funções jurisdicionais do Estado, privatizando integralmente a cobrança judicial de dívidas no país.",
-        "C": "A conciliação e a mediação buscam unicamente reduzir estatísticas judiciais de processos, mesmo que o acordo resulte em renúncia injusta a direitos fundamentais.",
-        "D": "A 'cultura da sentença' permanece como o modelo mais eficiente de pacificação social duradoura, razão pela qual o CPC/2015 desestimulou sessões prévias de mediação."
+        "A": "Evitar a justiça pelas próprias mãos e garantir segurança jurídica por meio de decisões acobertadas pela coisa julgada, embora a via judicial tradicional trabalhe sob a lógica binária de vencedor e perdedor.",
+        "B": "Impedir que qualquer cidadão celebre acordos extrajudiciais espontâneos sobre seus próprios direitos patrimoniais disponíveis.",
+        "C": "Garantir que todos os conflitos familiares sejam solucionados no prazo máximo improrrogável de vinte e quatro horas com aplicação de pena pecuniária.",
+        "D": "Eliminar a necessidade de fundamentação nas decisões dos magistrados togados, priorizando a celeridade arbitrária da sentença."
       },
       "gabarito": "A",
-      "article": "Art. 3º, §§ 2º e 3º do CPC/2015 e Resolução CNJ nº 125/2010",
-      "legal_basis": "O Estado promoverá, sempre que possível, a solução consensual dos conflitos. A conciliação, a mediação e outros métodos adequados devem ser estimulados por juízes, advogados e promotores.",
-      "explanation": "A cultura da pacificação reconhece que a sentença adjudicada pelo juiz muitas vezes apenas resolve o processo no papel, mas não pacifica a relação humana. O diálogo gera acordos com maior cumprimento espontâneo."
+      "article": "Monopólio da Jurisdição e Limitações do Processo Clássico",
+      "legal_basis": "O Estado avocou o monopólio da jurisdição para evitar a justiça com as próprias mãos e dar segurança jurídica pela coisa julgada. Sua limitação é a lógica binária (vencedor/perdedor).",
+      "explanation": "Texto exato do questionário: o Estado avocou o monopólio da jurisdição para evitar a justiça pelas próprias mãos e garantir segurança jurídica pela coisa julgada; contudo, trabalha sob a lógica binária de vencedor e perdedor."
     },
     {
-      "id": "multi_02_b_inafastabilidade",
+      "id": "multi_02_b_logica_binaria_passado",
       "subject": "Enfrentamento dos Conflitos vs. Jurisdição",
-      "bank": "CESPE",
-      "difficulty": "Difícil",
-      "enunciado": "(CESPE / Magistratura) O princípio constitucional da inafastabilidade da jurisdição (art. 5º, XXXV da CF/88) estabelece que a lei não excluirá da apreciação do Poder Judiciário lesão ou ameaça a direito. Questiona-se se o estímulo aos métodos adequados de solução de conflitos (MASCs) pelo CPC/2015 fragiliza esse postulado. A esse respeito, assinale a opção correta:",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Médio",
+      "enunciado": "Carlos e Juliana litigam judicialmente há cinco anos em razão da dissolução de uma união estável conturbada. O magistrado proferiu sentença meritória procedente em parte, transitada em julgado. Contudo, as partes continuam se hostilizando na rotina dos filhos. Esse fenômeno prático evidencia uma das limitações basilares da jurisdição estatal clássica, qual seja:",
       "options": {
-        "A": "A obrigatoriedade de comparecimento à audiência do art. 334 do CPC/2015 viola frontalmente o princípio constitucional do livre acesso à justiça estatal.",
-        "B": "Os métodos adequados de resolução de disputas complementam e aprimoram a garantia de acesso à ordem jurídica justa, sem restringir a via jurisdicional estatal.",
-        "C": "A adoção do modelo multiportas exige a prévia comprovação de recusa de acordo em câmara privada como condição formal de admissibilidade de qualquer ação cível.",
-        "D": "O princípio da inafastabilidade impõe que toda demanda judicial seja julgada exclusivamente por sentença de mérito proferida por magistrado togado de carreira."
+        "A": "O processo estatal clássico foca em fatos passados para atribuir culpa ou enquadramento legal, operando na lógica binária (vencedor/perdedor), o que encerra a relação processual formal, mas deixa intocado o conflito sociológico de fundo.",
+        "B": "A sentença judicial possui efeito nulo imediato sempre que as partes continuarem residindo no mesmo município após o trânsito em julgado.",
+        "C": "O juiz togado atua com desvio de finalidade ao julgar ações de família, competência que a Constituição Federal reservou exclusivamente à arbitragem privada.",
+        "D": "A coisa julgada material é incompatível com a proteção dos filhos, impondo a anulação automática da sentença que decretou a dissolução da união estável."
       },
-      "gabarito": "B",
-      "article": "Art. 5º, XXXV da CF/88 e Art. 3º do CPC/2015",
-      "legal_basis": "Acesso à justiça não se resume a obter uma sentença imposta por um juiz, mas a receber a resposta mais adequada e justa para a pacificação da controvérsia.",
-      "explanation": "O acesso à justiça é interpretado pela doutrina contemporânea como 'acesso à ordem jurídica justa' (Kazuo Watanabe). O modelo multiportas não afasta o Judiciário; abre portas adequadas para o cidadão."
+      "gabarito": "A",
+      "article": "Limitações da Jurisdição Estatal Clássica",
+      "legal_basis": "O processo clássico debruça-se sobre fatos passados para atribuir culpa e enquadramento legal. A sentença formalmente encerra o processo, mas não pacifica a relação sociológica.",
+      "explanation": "Na prática forense, a sentença muitas vezes encerra a relação processual formal, mas deixa intocado o conflito sociológico subjacente, demonstrando a necessidade de métodos adequados."
     },
     {
-      "id": "multi_02_c_desjudicializacao",
+      "id": "multi_02_c_conflito_sociologico_intocado",
       "subject": "Enfrentamento dos Conflitos vs. Jurisdição",
-      "bank": "FCC",
+      "bank": "Revisão Prova 01",
       "difficulty": "Médio",
-      "enunciado": "(FCC / Notário) O movimento legislativo contemporâneo de desjudicialização no Brasil vem ampliando as atribuições de serventias extrajudiciais (cartórios) e mediadores privados para a solução de atos jurídicos. Constitui exemplo legítimo desse enfrentamento desjudicializado de conflitos no direito brasileiro:",
+      "enunciado": "A doutrina contemporânea contrapõe a exclusividade da decisão judicial impositiva à adoção de métodos adequados de enfrentamento de litígios. O motivo central dessa contraposição é que:",
       "options": {
-        "A": "A possibilidade de realização de inventário, partilha e divórcio consensuais por escritura pública perante tabelião de notas, inexistindo herdeiros incapazes.",
-        "B": "A competência conferida aos cartórios de notas para decretar prisões civis de devedores de pensão alimentícia que recusarem a celebração de acordo prévio.",
-        "C": "A revogação do monopólio estatal sobre o julgamento de crimes contra o patrimônio, viabilizando a transação penal exclusiva perante câmaras privadas.",
-        "D": "A proibição de ajuizamento de ações possessórias na Justiça comum antes de decorrido o prazo peremptório de seis meses de negociação perante tabeliães."
+        "A": "A via judicial tradicional, ao focar na estrita subsunção normativa de fatos pretéritos, costuma encerrar o processo no papel sem promover a pacificação efetiva das relações humanas.",
+        "B": "O Poder Judiciário foi extinto como poder soberano do Estado pelo Código de Processo Civil de 2015, cedendo todo o espaço para os cartórios extrajudiciais.",
+        "C": "A decisão impositiva do juiz togado é juridicamente incapaz de produzir coisa julgada formal ou material no ordenamento processual brasileiro.",
+        "D": "Os métodos autocompositivos retiram do cidadão o direito fundamental de ser ouvido em juízo, obrigando-o a abrir mão de todos os seus bens."
       },
       "gabarito": "A",
-      "article": "Art. 733 do CPC/2015 e Lei nº 11.441/2007",
-      "legal_basis": "O divórcio consensual, a separação e a partilha amigável podem ser realizados por escritura pública em cartório, desonerando o Poder Judiciário de demandas em que há plena consonância.",
-      "explanation": "A Lei 11.441/07 e o art. 733 do CPC permitiram a realização de divórcio, separação e inventário pela via extrajudicial cartorária quando há consenso e inexistem incapazes, marco central da desjudicialização."
+      "article": "Enfrentamento Contemporâneo dos Litígios",
+      "legal_basis": "O enfrentamento contemporâneo contrapõe a exclusividade da decisão judicial impositiva à adoção de métodos adequados que buscam a pacificação efetiva das relações.",
+      "explanation": "Enquanto a sentença estatal impõe uma solução externa muitas vezes insuficiente para apaziguar os ânimos, os métodos adequados buscam a pacificação material e efetiva da relação."
     },
     {
-      "id": "multi_02_d_monopolio_limites",
+      "id": "multi_02_d_pacificacao_efetiva",
       "subject": "Enfrentamento dos Conflitos vs. Jurisdição",
-      "bank": "VUNESP",
-      "difficulty": "Médio",
-      "enunciado": "(VUNESP / Procurador) Historicamente, a passagem da justiça privada para a justiça pública consolidou o monopólio estatal sobre a jurisdição. Contudo, no Estado Democrático de Direito atual, a doutrina reconhece que a jurisdição estatal não é a única nem necessariamente a melhor via para todos os litígios. Isso se justifica porque:",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Difícil",
+      "enunciado": "Ao analisar a crise da prestação jurisdicional e o modelo de justiça estatal adjudicada, assinale a opção que reflete fielmente o contraponto contemporâneo entre a sentença judicial impositiva e os métodos adequados de resolução de disputas:",
       "options": {
-        "A": "O provimento judicial contencioso opera frequentemente na lógica binária (ganha-perde), que pode sufocar as reais causas subjacentes dos conflitos interpessoais.",
-        "B": "A jurisdição estatal perdeu sua força coercitiva soberana após a entrada em vigor da Constituição Federal de 1988 e do Código de Processo Civil de 2015.",
-        "C": "O juiz togado não possui autoridade constitucional para interpretar normas substantivas de direito civil e empresarial quando as partes divergirem no processo.",
-        "D": "As decisões proferidas por juízes de direito são desprovidas de eficácia de coisa julgada material perante órgãos da administração pública direta e indireta."
+        "A": "Contrapõe-se a exclusividade da decisão judicial impositiva à adoção de métodos adequados que buscam a pacificação efetiva das relações, superando a mera lógica de atribuir culpa e polarizar partes em vencedor e perdedor.",
+        "B": "A jurisdição estatal deve proibir qualquer modalidade de diálogo consensual entre os litigantes, pois o acordo entre as partes enfraquece o monopólio soberano do Estado.",
+        "C": "O contraponto inexiste na teoria processual brasileira, visto que a única forma legítima de paz social reconhecida pela Constituição é a sentença condenatória transitada em julgado.",
+        "D": "A decisão impositiva do juiz togado é sempre superior à autocomposição, porque a vontade das partes não tem qualquer valor normativo no Estado Democrático de Direito."
       },
       "gabarito": "A",
-      "article": "Teoria Geral do Processo e Teoria da Resolução de Conflitos",
-      "legal_basis": "A decisão adjudicada analisa o litígio sob uma ótica estritamente retrospectiva e jurídica estrita, muitas vezes não solucionando o cerne relacional e humano que une os envolvidos.",
-      "explanation": "A jurisdição tradicional foca no litígio passado e aplica a lei de forma impositiva. Nos conflitos relacionais, os métodos autocompositivos são mais efetivos para preservar laços sociais futuros."
+      "article": "Jurisdição vs. Métodos Adequados",
+      "legal_basis": "O contraponto contemporâneo combate a exclusividade da sentença adjudicada e propõe métodos adequados que alcancem a pacificação social real.",
+      "explanation": "A pacificação efetiva das relações substitui o antigo paradigma focado apenas na sentença formal e no binômio vencedor-perdedor."
     },
     {
-      "id": "multi_03_a_res125",
+      "id": "multi_03_a_marcos_normativos",
       "subject": "Construção Legislativa no Enfrentamento de Conflitos",
-      "bank": "FGV",
+      "bank": "Revisão Prova 01",
       "difficulty": "Médio",
-      "enunciado": "(FGV / OAB) A Resolução nº 125, editada pelo Conselho Nacional de Justiça (CNJ) em 29 de novembro de 2010, é considerada o marco normativo fundador da moderna política judiciária de tratamento dos conflitos no Brasil. Entre as principais inovações trazidas por esse ato normativo, destaca-se:",
+      "enunciado": "A evolução legislativa brasileira no tratamento de conflitos demonstra uma transição progressiva do foco exclusivo na sentença estatal para a valorização dos meios consensuais. Assinale a alternativa que apresenta a correta cronologia e os marcos normativos fundamentais dessa construção legislativa:",
       "options": {
-        "A": "A obrigatoriedade de criação dos Centros Judiciários de Solução de Conflitos e Cidadania (CEJUSCs) e a padronização da formação e do código de ética dos mediadores.",
-        "B": "A extinção definitiva das varas de família e cíveis, determinando a transferência obrigatória de todos os litígios para câmaras privadas com fins lucrativos.",
-        "C": "A fixação de honorários compulsórios a serem cobrados de cidadãos hipossuficientes como requisito para o agendamento de sessões pré-processuais de conciliação.",
-        "D": "A proibição de juízes togados atuarem na homologação judicial de acordos celebrados voluntariamente entre partes assistidas por advogados privados."
+        "A": "CF/88 (art. 5º, XXXV e art. 98, I), Lei nº 9.099/1995 (Juizados Especiais), Lei nº 9.307/1996 (Arbitragem), Resolução nº 125/2010 do CNJ (Política Judiciária e CEJUSCs), CPC/2015 (art. 3º) e Lei nº 13.140/2015 (Lei de Mediação).",
+        "B": "CPC/1973 que proibiu a conciliação, seguido pela Lei de Arbitragem em 2015 e pela Constituição Federal que baniu os Juizados Especiais em 2020.",
+        "C": "Lei nº 13.140/2015 que criou a arbitragem estatal, sucedida pela Resolução do CNJ que revogou o Código de Processo Civil de 2015.",
+        "D": "CF/88 que instituiu a autotutela compulsória como regra geral, seguida pela Lei nº 9.099/1995 que vedou transações nos Juizados Cíveis."
       },
       "gabarito": "A",
-      "article": "Resolução CNJ nº 125/2010 (arts. 1º a 12)",
-      "legal_basis": "A Res. 125/2010 instituiu a Política Judiciária Nacional de Tratamento Adequado dos Conflitos de Interesses, estruturou os CEJUSCs e regulamentou a capacitação dos conciliadores/mediadores.",
-      "explanation": "A Resolução 125/2010 do CNJ é o divisor de águas: instituiu os CEJUSCs em todos os tribunais do país, estabeleceu regras éticas estritas e grade curricular mínima de capacitação de facilitadores."
+      "article": "Construção Legislativa (CF/88, Leis 9.099, 9.307, Res. 125 CNJ, CPC/15, Lei 13.140)",
+      "legal_basis": "A linha do tempo do questionário destaca: CF/88 (art. 5º, XXXV e art. 98, I); Lei 9.099/95; Lei 9.307/96; Resolução 125/2010 CNJ; CPC/2015 (art. 3º) e Lei 13.140/2015.",
+      "explanation": "Esses são exatamente os diplomas normativos detalhados na resposta da questão 03 do Questionário de Revisão."
     },
     {
-      "id": "multi_03_b_clausula_mediacao",
+      "id": "multi_03_b_res125_cnj_cejusc",
       "subject": "Construção Legislativa no Enfrentamento de Conflitos",
-      "bank": "CESPE",
-      "difficulty": "Difícil",
-      "enunciado": "(CESPE / Analista Judiciário) A Lei nº 13.140/2015 (Lei de Mediação) disciplina a mediação entre particulares e a autocomposição de conflitos no âmbito da Administração Pública. No tocante à mediação extrajudicial disciplinada no diploma legal, assinale a opção correta:",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Médio",
+      "enunciado": "Em 2010, um ato normativo de fundamental importância para o sistema de justiça brasileiro formalizou a Política Judiciária Nacional de tratamento adequado dos conflitos de interesses. Trata-se da:",
       "options": {
-        "A": "O convite para participar da mediação extrajudicial extrai a obrigatoriedade de comparecimento sob pena de prisão civil por desacato à ordem mediadora.",
-        "B": "A previsão de cláusula de mediação em contrato obriga as partes a comparecerem à primeira reunião de mediação, sob pena de não poderem ajuizar ação sem a tentativa.",
-        "C": "O termo final de mediação extrajudicial, quando homologado exclusivamente pelo mediador privado, não possui qualquer eficácia jurídica perante terceiros.",
-        "D": "A celebração de acordo em mediação extrajudicial não é admitida nos litígios que versem sobre direitos patrimoniais disponíveis de pessoas plenamente capazes."
+        "A": "Resolução nº 125 do Conselho Nacional de Justiça (CNJ), que impôs a criação dos Centros Judiciários de Solução de Conflitos e Cidadania (CEJUSCs) pelos tribunais.",
+        "B": "Súmula Vinculante do Supremo Tribunal Federal que extinguiu a exigência de tentativa de conciliação prévia em ações cíveis e de família.",
+        "C": "Emenda Constitucional que privatizou a justiça de primeiro grau e entregou a condução de audiências exclusivamente a cartórios de registro de imóveis.",
+        "D": "Portaria do Ministério da Justiça que autorizou os delegados de polícia a proferirem sentenças cíveis condenatórias com força de coisa julgada."
       },
-      "gabarito": "B",
-      "article": "Art. 2º, § 1º e Art. 22 da Lei nº 13.140/2015",
-      "legal_basis": "Havendo cláusula contratual de mediação, as partes deverão comparecer à primeira reunião de mediação (art. 2º, § 1º da Lei 13.140/15).",
-      "explanation": "A cláusula contratual de mediação é vinculante quanto ao dever de comparecer à primeira sessão. Se uma das partes não comparecer injustificadamente, arcará com penalidades processuais e de honorários."
+      "gabarito": "A",
+      "article": "Resolução CNJ nº 125/2010",
+      "legal_basis": "Em 2010, a Resolução nº 125 do CNJ formalizou a Política Judiciária Nacional de tratamento adequado dos conflitos, impondo a criação dos CEJUSCs.",
+      "explanation": "A Resolução 125/2010 do CNJ é o marco administrativo estruturante da Política Judiciária Nacional e dos CEJUSCs."
     },
     {
-      "id": "multi_03_c_art334_desinteresse",
+      "id": "multi_03_c_cpc2015_art3_multiportas",
       "subject": "Construção Legislativa no Enfrentamento de Conflitos",
-      "bank": "FCC",
-      "difficulty": "Médio",
-      "enunciado": "(FCC / Magistratura) O Código de Processo Civil de 2015 consagrou a fase autocompositiva como etapa primordial e inaugural do procedimento comum (Art. 334). De acordo com as disposições expressas desse artigo, a audiência de conciliação ou mediação NÃO será realizada apenas quando:",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Fácil",
+      "enunciado": "O Código de Processo Civil de 2015 consagrou expressamente o modelo multiportas como norma fundamental do processo civil brasileiro logo em seu artigo 3º. Esse dispositivo e seus parágrafos determinam que:",
       "options": {
-        "A": "Ambas as partes manifestarem, expressamente, desinteresse na composição consensual, ou quando o litígio não admitir autocomposição.",
-        "B": "O autor, em petição inicial unilateral, declarar que não possui interesse na conciliação, sendo dispensada a manifestação do réu.",
-        "C": "O réu for pessoa jurídica de direito privado inscrita nos cadastros fiscais do Ministério da Fazenda com faturamento de grande porte.",
-        "D": "O valor da causa for superior a quarenta salários mínimos na data da propositura da petição inicial perante o juízo competente."
+        "A": "O Estado promoverá, sempre que possível, a solução consensual dos conflitos, devendo a conciliação, a mediação e outros métodos adequados ser estimulados por juízes, advogados, defensores e promotores.",
+        "B": "Apenas a sentença do magistrado togado tem validade jurídica, sendo expressamente proibido a advogados incentivar transações antes da instrução.",
+        "C": "A arbitragem é restrita a causas penais hediondas, sendo vedada em litígios civis sobre direitos patrimoniais disponíveis.",
+        "D": "O acesso à justiça consiste unicamente no direito de ajuizar petição inicial e aguardar sentença condenatória sem qualquer fase conciliatória."
       },
       "gabarito": "A",
-      "article": "Art. 334, § 4º, incisos I e II do CPC/2015",
-      "legal_basis": "A audiência não será realizada: I - se ambas as partes manifestarem desinteresse; II - quando não se admitir a autocomposição. O desinteresse unilateral do autor não dispensa a audiência.",
-      "explanation": "Regra fundamental do art. 334, § 4º do CPC: a audiência só é dispensada se AMBAS as partes manifestarem desinteresse expressamente (ou se a matéria for legalmente indisponível para transação)."
+      "article": "Art. 3º, §§ 1º, 2º e 3º do CPC/2015",
+      "legal_basis": "O CPC/2015 consolidou o sistema multiportas como norma fundamental no art. 3º, ladeado pela Lei de Mediação (Lei nº 13.140/2015).",
+      "explanation": "O art. 3º do CPC/2015 erige a solução consensual e a arbitragem a normas fundamentais da ordem processual brasileira."
     },
     {
-      "id": "multi_03_d_advocacia_publica",
+      "id": "multi_03_d_constituicao1988_art98",
       "subject": "Construção Legislativa no Enfrentamento de Conflitos",
-      "bank": "VUNESP",
-      "difficulty": "Difícil",
-      "enunciado": "(VUNESP / Procurador) A Lei nº 13.140/2015 trouxe importante inovação ao dedicar um capítulo específico à autocomposição de conflitos em que for parte pessoa jurídica de direito público (União, Estados, Municípios e autarquias). Sobre esse regime, assinale a alternativa correta:",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Médio",
+      "enunciado": "A Constituição da República de 1988 desempenhou papel primordial na virada paradigmática da resolução de disputas no Brasil ao consagrar não apenas o princípio do acesso à justiça (art. 5º, XXXV), mas também prever em seu artigo 98, inciso I:",
       "options": {
-        "A": "A criação de câmaras de prevenção e resolução administrativa de conflitos no âmbito da Advocacia Pública viabiliza a solução célere de controvérsias do Estado.",
-        "B": "O princípio da indisponibilidade do interesse público impede peremptoriamente que entes da Administração Pública celebrem qualquer modalidade de transação ou acordo.",
-        "C": "Os procuradores públicos estão proibidos de subscrever termos de autocomposição, devendo sempre exigir sentença judicial transitada em julgado para pagar valores.",
-        "D": "A transação celebrada pela Administração Pública só ganha eficácia jurídica caso seja confirmada por referendo popular prévio no respectivo ente federado."
+        "A": "A criação de Juizados Especiais providos por juízes togados ou togados e leigos, competentes para a conciliação, o julgamento e a execução de causas cíveis de menor complexidade e infrações penais de menor potencial ofensivo.",
+        "B": "A exclusão do Poder Judiciário de controvérsias patrimoniais decorrentes de relações de consumo entre fornecedores e consumidores.",
+        "C": "A obrigatoriedade de autotutela armada em conflitos fundiários rurais e urbanos como etapa prévia ao processo civil.",
+        "D": "O encerramento definitivo das funções jurisdicionais do Estado em matéria cível e comercial em benefício da mediação privada."
       },
       "gabarito": "A",
-      "article": "Arts. 32 a 40 da Lei nº 13.140/2015",
-      "legal_basis": "A União, os Estados, o DF e os Municípios poderão criar câmaras de prevenção e resolução administrativa de conflitos no âmbito de suas respectivas Advocacias Públicas.",
-      "explanation": "A Lei de Mediação superou o dogma da indisponibilidade cega: direitos patrimoniais disponíveis da Administração e litígios interorgânicos podem ser solucionados em câmaras administrativas autocompositivas."
+      "article": "Art. 98, I da Constituição Federal de 1988",
+      "legal_basis": "A CF/88 previu no art. 98, I a criação dos Juizados Especiais voltados prioritariamente à conciliação e transação.",
+      "explanation": "O art. 98, I da CF/88 é a matriz constitucional dos Juizados Especiais e do estímulo à conciliação e transação."
     },
     {
-      "id": "multi_04_a_criterio_decisorio",
+      "id": "multi_04_a_triade_classica",
       "subject": "Principais Formas de Resolução de Conflitos",
-      "bank": "FGV",
-      "difficulty": "Médio",
-      "enunciado": "(FGV / OAB) A doutrina clássica da Teoria Geral do Processo classifica os métodos de enfrentamento das controvérsias em três grandes modalidades: autotutela, autocomposição e heterocomposição. O critério determinante que distingue substancialmente a heterocomposição das demais modalidades é:",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Fácil",
+      "enunciado": "A Teoria Geral do Processo agrupa os meios de resolução de controvérsias em três grandes categorias fundamentais. Assinale a alternativa que indica corretamente essas três formas e sua premissa conceitual:",
       "options": {
-        "A": "A presença de um terceiro imparcial investido de poder decisório para impor a solução jurídica vinculante, independentemente da vontade dos litigantes.",
-        "B": "A utilização necessária e legítima da força física proporcional por um dos contendores para subjugar a resistência material da parte contrária.",
-        "C": "O alcance de um consenso construído voluntariamente pelos próprios envolvidos, dispensando qualquer imposição por ato de terceiro julgador.",
-        "D": "A obrigatoriedade de concessões mútuas em que ambos os polos abrem mão integralmente de suas pretensões patrimoniais primárias."
+        "A": "Autotutela (imposição pela própria força), autocomposição (os próprios contendores constroem o desfecho) e heterocomposição (terceiro neutro com decisão impositiva e vinculante).",
+        "B": "Transação, submissão e desistência da ação, sendo todas modalidades exclusivas de heterocomposição judicial estatal.",
+        "C": "Monopólio judicial, desforço possessório e coisa julgada, sendo todas consideradas formas de autotutela ilícita pelo Código Civil.",
+        "D": "Arbitragem voluntária, arbitragem legal e arbitragem obrigatória, inexistindo autotutela no ordenamento jurídico nacional."
       },
       "gabarito": "A",
-      "article": "Teoria Geral dos Métodos de Resolução de Conflitos",
-      "legal_basis": "Na heterocomposição o poder de decisão pertence a um terceiro (juiz togado ou árbitro), que impõe o desfecho às partes. Na autocomposição, a decisão é das próprias partes.",
-      "explanation": "A heterocomposição (jurisdição estatal e arbitragem) caracteriza-se por entregar a um terceiro neutro o poder de dizer o direito com eficácia vinculante e executiva sobre os litigantes."
+      "article": "Teoria Geral do Processo (Formas de Solução de Conflitos)",
+      "legal_basis": "A teoria geral do processo agrupa os meios em: autotutela (própria força), autocomposição (partes constroem o desfecho) e heterocomposição (terceiro impõe a decisão).",
+      "explanation": "Essa é a tríade conceitual exata constante da questão 04 do Questionário de Revisão."
     },
     {
-      "id": "multi_04_b_desforco_imediato",
+      "id": "multi_04_b_autotutela_excecoes",
       "subject": "Principais Formas de Resolução de Conflitos",
-      "bank": "CESPE",
+      "bank": "Revisão Prova 01",
       "difficulty": "Médio",
-      "enunciado": "(CESPE / Defensoria) Como regra geral no ordenamento brasileiro, a autotutela é vedada e tipificada como crime (art. 345 do Código Penal - exercício arbitrário das próprias razões). Contudo, em situações expressamente catalogadas pelo legislador civil e penal, ela é admitida de forma excepcional. Constitui hipótese de autotutela lícita no direito brasileiro:",
+      "enunciado": "A autotutela corresponde à imposição da vontade de uma das partes pelo emprego da própria força. No Estado de Direito contemporâneo, a autotutela é tratada como:",
       "options": {
-        "A": "O desforço possessório imediato e a legítima defesa da posse, desde que exercidos incontinenti e sem exceder os meios indispensáveis à manutenção.",
-        "B": "A invasão clandestina da residência do devedor civil de título de crédito pelo credor com o escopo exclusivo de penhorar bens móveis de valor equivalente.",
-        "C": "A apropriação unilateral forçada de mercadorias no estabelecimento comercial em virtude de inadimplemento moratório sem prévia autorização judicial.",
-        "D": "A interrupção compulsória e clandestina dos serviços públicos essenciais de água e luz realizada diretamente pelo locador em prejuízo do inquilino em mora."
+        "A": "Excepcional e, em regra, repudiada pelo direito (tipificada inclusive como crime de exercício arbitrário das próprias razões), ressalvadas hipóteses expressas como a legítima defesa e o desforço possessório imediato.",
+        "B": "A via preferencial e obrigatória de solução de todo e qualquer litígio patrimonial, devendo preceder o ajuizamento de qualquer demanda perante o Poder Judiciário.",
+        "C": "Um método autocompositivo indireto em que as partes são assessoradas por um mediador togado com poder coercitivo de uso da força policial.",
+        "D": "Um instituto exclusivo da arbitragem internacional de comércio, inexistindo qualquer reflexo na legislação civil brasileira."
       },
       "gabarito": "A",
-      "article": "Art. 1.210, § 1º do Código Civil e Art. 345 do CP",
-      "legal_basis": "O possuidor turbado ou esbulhado poderá manter-se ou restituir-se por sua própria força, contanto que o faça logo e com meios moderados (desforço incontinenti).",
-      "explanation": "A autotutela possessória (desforço imediato e legítima defesa da posse, art. 1.210, § 1º, CC) é exceção expressa à vedação geral de fazer justiça pelas próprias mãos."
+      "article": "Autotutela no Direito Brasileiro (Código Civil e Código Penal)",
+      "legal_basis": "A autotutela é excepcional e em regra repudiada pelo direito, ressalvadas hipóteses como a legítima defesa e o desforço possessório imediato.",
+      "explanation": "A regra geral é o repúdio à autotutela (art. 345 CP), sendo tolerada apenas excepcionalmente (ex: art. 1.210, § 1º CC e legítima defesa)."
     },
     {
-      "id": "multi_04_c_estruturas_autocomposicao",
+      "id": "multi_04_c_heterocomposicao_agentes",
       "subject": "Principais Formas de Resolução de Conflitos",
-      "bank": "VUNESP",
+      "bank": "Revisão Prova 01",
       "difficulty": "Médio",
-      "enunciado": "(VUNESP / Magistratura) A autocomposição consagra o protagonismo das partes no encerramento da controvérsia. Analisando as modalidades autocompositivas sob o prisma de sua estrutura (unilateral ou bilateral), assinale a correlação tecnicamente correta:",
+      "enunciado": "A heterocomposição opera quando as partes submetem a controvérsia à decisão impositiva e vinculante de um terceiro que se sobrepõe a elas. No sistema jurídico brasileiro, quem pode figurar como terceiro decisor na heterocomposição?",
       "options": {
-        "A": "A transação é modalidade autocompositiva bilateral; a renúncia ao direito e o reconhecimento do pedido são modalidades autocompositivas unilaterais.",
-        "B": "A transação é negócio autocompositivo unilateral passivo, exigindo apenas a manifestação volitiva expressa do réu perante o magistrado condutor do feito.",
-        "C": "O reconhecimento da procedência do pedido é modalidade autocompositiva bilateral que impõe concessões pecuniárias recíprocas a ambos os polos da demanda.",
-        "D": "A desistência da ação extingue o direito material em definitivo com força de coisa julgada, configurando modalidade autocompositiva bilateral perfeita."
+        "A": "O juiz estatal no exercício da jurisdição togada, ou o árbitro no âmbito da arbitragem privada.",
+        "B": "Exclusivamente o delegado de polícia civil nos inquéritos de família.",
+        "C": "Apenas o mediador judicial, visto que o juiz togado não possui poderes heterocompositivos no CPC/2015.",
+        "D": "O conciliador ou o facilitador comunitário, desde que apliquem sanções penais de prisão simples aos litigantes."
       },
       "gabarito": "A",
-      "article": "Art. 487, III do CPC/2015 e Art. 840 do Código Civil",
-      "legal_basis": "Bilateral: transação (concessões mútuas). Unilateral ativa: renúncia ao direito pelo autor. Unilateral passiva: reconhecimento jurídico do pedido pelo réu.",
-      "explanation": "A transação requer encontro de vontades e sacrifícios recíprocos (bilateral). A renúncia é ato exclusivo do autor e o reconhecimento é ato exclusivo do réu (unilaterais), ambos com resolução de mérito."
+      "article": "Heterocomposição (Jurisdição e Arbitragem)",
+      "legal_basis": "A heterocomposição opera com a submissão a um terceiro que se sobrepõe às partes: seja o juiz estatal na jurisdição togada, seja o árbitro na arbitragem privada.",
+      "explanation": "São as duas vias heterocompositivas do direito brasileiro: a jurisdição estatal togada e a arbitragem privada."
     },
     {
-      "id": "multi_04_d_direitos_indisponiveis",
+      "id": "multi_04_d_autocomposicao_desfecho",
       "subject": "Principais Formas de Resolução de Conflitos",
-      "bank": "FCC",
-      "difficulty": "Difícil",
-      "enunciado": "(FCC / Procuradoria) No modelo da Justiça Multiportas, o operador do direito deve avaliar as peculiaridades de cada caso para identificar o método mais adequado de resolução. A esse respeito, caso uma controvérsia envolva direitos personalíssimos indisponíveis puros (como reconhecimento de filiação biológica ou ação de interdição), é correto afirmar que:",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Médio",
+      "enunciado": "Diferenciando a autocomposição da heterocomposição, o elemento essencial que consagra a autocomposição é o fato de que:",
       "options": {
-        "A": "A heterocomposição estatal com intervenção do Ministério Público é imperativa, não se admitindo renúncia arbitral nem transação sobre o estado da pessoa.",
-        "B": "A arbitragem privada é o mecanismo legal prioritário e obrigatório, dada a confidencialidade necessária aos processos que versem sobre o estado civil.",
-        "C": "A autotutela privada imediata das partes é facultada pela lei para que os interessados definam de pleno direito sua respectiva filiação registral.",
-        "D": "A realização de sessão de mediação é terminantemente proibida, sendo vedado qualquer diálogo restaurativo sobre os aspectos relacionais da família."
+        "A": "Os próprios contendores constroem o desfecho do litígio, o que pode ocorrer diretamente entre eles (negociação) ou com a ajuda de um terceiro neutro (mediação ou conciliação).",
+        "B": "Um terceiro togado impõe compulsoriamente sua vontade aos sujeitos com base no princípio da autoridade judicial absoluta.",
+        "C": "As partes são obrigadas a aceitar qualquer decisão ditada pelo conciliador sob pena de aplicação de multa punitiva por litigância de má-fé.",
+        "D": "O conflito é submetido à câmara de arbitragem para julgamento por laudo irrecorrível sem participação dos litigantes."
       },
       "gabarito": "A",
-      "article": "Art. 1º da Lei nº 9.307/1996 e Art. 693 do CPC/2015",
-      "legal_basis": "A arbitragem é restrita a direitos patrimoniais disponíveis. Questões sobre estado da pessoa exigem provimento jurisdicional estatal com intervenção do fiscal da ordem jurídica.",
-      "explanation": "Em matérias de direitos indisponíveis (filiação, estado civil), a heterocomposição estatal é imprescindível. Contudo, os aspectos relacionais e de convivência familiar podem ser mediados (art. 694 CPC)."
+      "article": "Autocomposição - Conceito e Mecânica",
+      "legal_basis": "A autocomposição abrange os métodos em que os próprios litigantes constroem a solução, direta ou indiretamente com terceiro neutro.",
+      "explanation": "Na autocomposição, o poder de decisão pertence e permanece nas partes envolvidas na controvérsia."
     },
     {
-      "id": "multi_05_a_mediacao_vs_conciliacao",
+      "id": "multi_05_a_mediacao_papel_vedacao",
       "subject": "Métodos Alternativos de Resolução de Conflitos (MASCs/ADRs)",
-      "bank": "FGV",
+      "bank": "Revisão Prova 01",
       "difficulty": "Médio",
-      "enunciado": "(FGV / OAB) O Código de Processo Civil de 2015 estabeleceu no art. 165 uma clara diferenciação técnica entre as figuras do conciliador e do mediador. Em relação ao papel de cada condutor e ao perfil da relação prévia entre os conflitantes, assinale a opção correta:",
+      "enunciado": "Dra. Renata atua como mediadora em uma disputa de inventário entre irmãos com relações familiares profundamente abaladas. Durante a sessão, Dra. Renata percebe que as partes estão em impasse sobre a partilha de uma fazenda. Nos termos do artigo 165, § 3º, do CPC e do texto de revisão, qual deve ser a conduta e o papel de Dra. Renata como mediadora?",
       "options": {
-        "A": "O conciliador atua preferencialmente onde não houver vínculo anterior e pode propor soluções; o mediador atua com vínculo prévio e não propõe soluções.",
-        "B": "O mediador tem o dever ético de formular propostas impositivas de acordo, enquanto o conciliador deve abster-se categoricamente de sugerir alternativas.",
-        "C": "O conciliador só pode atuar perante a Justiça do Trabalho, enquanto o mediador possui competência exclusiva para processos de insolvência e falência empresarial.",
-        "D": "Ambos os facilitadores devem coagir as partes a transigirem, sob pena de imposição de multa judicial por litigância de má-fé em audiência inaugural."
+        "A": "Atuar como facilitadora da comunicação, auxiliando os irmãos a restabelecer o diálogo para que eles próprios construam a solução, sendo-lhe expressamente vedado sugerir propostas ou interferir no mérito.",
+        "B": "Apresentar imediatamente um plano obrigatório de partilha de bens elaborado por ela própria e intimar as partes a cumpri-lo em cinco dias.",
+        "C": "Impor sanção de perda do quinhão hereditário ao irmão que demonstrar menor disposição para concessões patrimoniais.",
+        "D": "Assumir a função de árbitra privada e proferir sentença arbitral sem o consentimento prévio dos herdeiros."
       },
       "gabarito": "A",
-      "article": "Art. 165, §§ 2º e 3º do CPC/2015",
-      "legal_basis": "§ 2º O conciliador, que atuará preferencialmente nos casos em que não houver vínculo anterior entre as partes, poderá sugerir soluções. § 3º O mediador atuará preferencialmente nos casos em que houver vínculo anterior e não sugere soluções.",
-      "explanation": "Distinção legal clássica: Conciliador atua em litígios pontuais (sem vínculo prévio) e pode sugerir saídas neutras; Mediador atua em relações continuadas (família, vizinhança, societário) e facilita a comunicação sem propor soluções."
+      "article": "Art. 165, § 3º do CPC/2015",
+      "legal_basis": "Na mediação (preferencial quando há vínculo prévio continuado), o mediador atua como facilitador da comunicação para que as partes construam a solução, sendo expressamente vedado sugerir propostas ou interferir no mérito.",
+      "explanation": "Diferença crucial: ao mediador é terminantemente proibido propor soluções (art. 165, § 3º CPC); sua missão é facilitar o diálogo das partes."
     },
     {
-      "id": "multi_05_b_negociacao_direta",
+      "id": "multi_05_b_conciliacao_propositivo",
       "subject": "Métodos Alternativos de Resolução de Conflitos (MASCs/ADRs)",
-      "bank": "CESPE",
+      "bank": "Revisão Prova 01",
       "difficulty": "Médio",
-      "enunciado": "(CESPE / Procuradoria) Dentre os Métodos Adequados de Solução de Conflitos, a Negociação Direta destaca-se por sua ampla utilização no tráfego comercial e civil. O traço distintivo fundamental da Negociação Direta frente à Mediação e à Conciliação é:",
+      "enunciado": "Rodrigo colidiu seu carro na traseira do veículo de Patrícia em um cruzamento urbano. Nunca haviam se visto antes e não possuem qualquer relação anterior. No CEJUSC, o conciliador Dr. Thiago atua na sessão. À luz do artigo 165, § 2º, do CPC e da teoria multiportas, como deve se dar a atuação de Dr. Thiago na conciliação?",
       "options": {
-        "A": "A ausência total de um terceiro facilitador intermediando a comunicação, negociando as próprias partes diretamente ou por seus procuradores.",
-        "B": "A obrigatoriedade de intervenção de um promotor de justiça para certificar a legitimidade das propostas formuladas durante a rodada de conversas.",
-        "C": "A exigência de homologação prévia por sentença judicial irrecorrível para que o acordo celebrado entre as partes adquira validade negocial.",
-        "D": "A exclusividade de aplicação às demandas trabalhistas e tributárias em que haja prévia renúncia fiscal autorizada por lei orçamentária anual."
-      },
-      "gabarito": "A",
-      "article": "Teoria Geral da Negociação (Projeto de Negociação de Harvard)",
-      "legal_basis": "A negociação é método autocompositivo bilateral não assistido: inexiste a figura do terceiro (mediador ou conciliador). As partes interagem diretamente.",
-      "explanation": "Na negociação direta não há terceiro facilitador. As partes conduzem a conversa por si sós ou assistidas por seus advogados (método autocompositivo direto)."
-    },
-    {
-      "id": "multi_05_c_escolas_mediacao",
-      "subject": "Métodos Alternativos de Resolução de Conflitos (MASCs/ADRs)",
-      "bank": "FCC",
-      "difficulty": "Difícil",
-      "enunciado": "(FCC / Magistratura) No campo teórico da mediação, diversas escolas doutrinárias propõem abordagens metodológicas específicas para o tratamento dos litígios. O modelo que foca no fortalecimento dos indivíduos (empowerment) e no reconhecimento recíproco das perspectivas (recognition), sem ter como meta primordial o acordo formal a qualquer custo, é denominado:",
-      "options": {
-        "A": "Modelo Transformativo (Bush e Folger), cujo foco reside na transformação das relações humanas e no resgate do protagonismo das partes envolvidas.",
-        "B": "Modelo Tradicional-Linear de Harvard (Fisher e Ury), prioritariamente centrado no alcance célere de um acordo sobre posições financeiras objetivas.",
-        "C": "Modelo Circular-Narrativo de Sara Cobb, voltado exclusivamente para a anulação das narrativas individuais em prol de uma sentença estatal substitutiva.",
-        "D": "Modelo Avaliativo Puro, no qual o mediador emite laudo pericial impositivo determinando qual dos litigantes deve arcar com as custas do conflito."
-      },
-      "gabarito": "A",
-      "article": "Doutrina de Mediação Transformativa (Robert A. Baruch Bush e Joseph P. Folger)",
-      "legal_basis": "A mediação transformativa busca transformar a qualidade da interação conflitual, desenvolvendo o empoderamento (protagonismo) e o reconhecimento (empatia com a perspectiva alheia).",
-      "explanation": "Diferença doutrinária crucial: O modelo de Harvard foca em separar as pessoas do problema e alcançar o acordo nos interesses; o transformativo foca na relação humana, valorizando empoderamento e reconhecimento mútuo."
-    },
-    {
-      "id": "multi_05_d_dispute_boards",
-      "subject": "Métodos Alternativos de Resolução de Conflitos (MASCs/ADRs)",
-      "bank": "VUNESP",
-      "difficulty": "Difícil",
-      "enunciado": "(VUNESP / TJ) Em contratos de grandes obras de infraestrutura e engenharia civil, é comum a previsão dos chamados Comitês de Resolução de Disputas (Dispute Boards). Sobre a atuação e a finalidade desses comitês contemporâneos, é correto afirmar:",
-      "options": {
-        "A": "Acompanham a execução do contrato desde o início e atuam prevenindo e dirimindo dúvidas técnicas em tempo real, evitando a paralisação da obra.",
-        "B": "Constituem varas judiciais itinerantes integradas por juízes de direito togados com dedicação exclusiva ao canteiro de obras da empreiteira.",
-        "C": "Possuem poder para decretar a desapropriação sumária de imóveis vizinhos que sofram impacto ambiental durante as escavações estruturais.",
-        "D": "São mecanismos ilegais no direito brasileiro por usurparem a competência privativa do Tribunal de Contas da União para fiscalizar licitações."
-      },
-      "gabarito": "A",
-      "article": "Lei nº 14.133/2021 (Nova Lei de Licitações, arts. 151 a 154) e Doutrina",
-      "legal_basis": "A Lei 14.133/21 autorizou expressamente o uso de dispute boards (comitês de resolução de disputas) nos contratos administrativos para dirimir controvérsias técnicas de engenharia.",
-      "explanation": "Os Dispute Boards atuam contemporaneamente à execução do contrato. Podem emitir recomendações (Dispute Review Board) ou decisões vinculantes imediatas (Dispute Adjudication Board), garantindo a continuidade do projeto."
-    },
-    {
-      "id": "multi_06_a_transacao_concessoes",
-      "subject": "Formas de Autocomposição e Fundamentos",
-      "bank": "FGV",
-      "difficulty": "Médio",
-      "enunciado": "(FGV / OAB) Um credor e um devedor comparecem a um CEJUSC e celebram acordo homologado judicialmente, no qual o credor perdoa 30% da dívida e o devedor antecipa o pagamento das parcelas restantes. Sob a ótica do Direito Material e Processual Civil, a natureza jurídica e a consequência deste ato são:",
-      "options": {
-        "A": "Transação civil, consubstanciada em concessões mútuas para prevenir ou extinguir o litígio, acarretando a extinção do processo com resolução do mérito.",
-        "B": "Submissão involuntária, que extingue o processo sem julgamento de mérito por ausência superveniente do interesse recursal de agir.",
-        "C": "Renúncia potestativa pura, ato unilateral exclusivo do credor que impede a formação de qualquer título executivo com força executiva futura.",
-        "D": "Desistência da ação com eficácia suspensiva por cinco anos, mantendo a pretensão jurídica em aberto até ulterior decisão do tribunal de justiça."
-      },
-      "gabarito": "A",
-      "article": "Art. 840 do Código Civil e Art. 487, III, 'b' do CPC/2015",
-      "legal_basis": "É lícito aos interessados prevenirem ou terminarem o litígio mediante concessões mútuas (art. 840 CC). A homologação de transação extingue o processo com resolução de mérito (art. 487, III, 'b' CPC).",
-      "explanation": "A transação pressupõe reciprocidade de sacrifícios (concessões mútuas). Uma vez homologada por juiz togado, produz eficácia de coisa julgada material e constitui título executivo judicial."
-    },
-    {
-      "id": "multi_06_b_renuncia_vs_desistencia",
-      "subject": "Formas de Autocomposição e Fundamentos",
-      "bank": "CESPE",
-      "difficulty": "Difícil",
-      "enunciado": "(CESPE / Magistratura) É imperativo distinguir com precisão a renúncia ao direito material da mera desistência da ação processual. A respeito das consequências jurídicas que diferenciam esses dois institutos no CPC/2015, assinale a opção correta:",
-      "options": {
-        "A": "A renúncia extingue o próprio direito material com resolução de mérito; a desistência extingue apenas o processo sem resolução, admitindo nova ação.",
-        "B": "A desistência da ação faz coisa julgada material e impede em definitivo que o autor rediscuta a matéria em qualquer juízo ou tribunal.",
-        "C": "A renúncia ao direito sobre o qual se funda a ação exige expressa concordância do réu caso já tenha sido apresentada a contestação no processo.",
-        "D": "Ambos os institutos dependem necessariamente da anuência de parecer favorável do Ministério Público, mesmo em causas estritamente patrimoniais."
-      },
-      "gabarito": "A",
-      "article": "Art. 485, VIII e Art. 487, III, 'c' do CPC/2015",
-      "legal_basis": "Desistência da ação: extinção sem resolução de mérito (art. 485, VIII). Renúncia ao direito: extinção com resolução de mérito (art. 487, III, 'c').",
-      "explanation": "Na desistência (art. 485, VIII), o autor desiste do processo atual (mas não do direito), podendo repropor a ação se não prescrito. Na renúncia (art. 487, III, 'c'), ele abre mão do próprio direito material (com mérito e coisa julgada)."
-    },
-    {
-      "id": "multi_06_c_reconhecimento_pedido",
-      "subject": "Formas de Autocomposição e Fundamentos",
-      "bank": "VUNESP",
-      "difficulty": "Médio",
-      "enunciado": "(VUNESP / TJ) Citado em ação de cobrança de indenização securitária, o réu peticiona nos autos declarando que os fatos narrados pelo autor são incontroversos e concorda expressamente com a condenação nos exatos termos pleiteados na petição inicial. Esse ato configura:",
-      "options": {
-        "A": "Reconhecimento da procedência do pedido, ato autocompositivo unilateral do réu que autoriza o julgamento imediato do mérito da demanda.",
-        "B": "Contestação genérica por negação geral, transferindo ao autor o ônus probatório indeclinável sobre todos os danos materiais alegados.",
-        "C": "Transação extrajudicial condicionada, dependente de termo de homologação a ser lavrado privativamente perante junta comercial competente.",
-        "D": "Exceção de pré-executividade com eficácia desconstitutiva da dívida, extinguindo os deveres acessórios contratuais de pleno direito."
-      },
-      "gabarito": "A",
-      "article": "Art. 487, III, 'a' do CPC/2015",
-      "legal_basis": "Haverá resolução de mérito quando o juiz homologar o reconhecimento da procedência do pedido formulado na ação ou na reconvenção.",
-      "explanation": "O reconhecimento da procedência do pedido é forma autocompositiva unilateral passiva (submissão). O réu curva-se à pretensão do autor, gerando extinção com julgamento de mérito."
-    },
-    {
-      "id": "multi_06_d_coisa_julgada_acordo",
-      "subject": "Formas de Autocomposição e Fundamentos",
-      "bank": "FCC",
-      "difficulty": "Médio",
-      "enunciado": "(FCC / Procurador) As partes celebraram acordo amigável em audiência no CEJUSC, abrangendo a quitação plena e geral de indenização decorrente de acidente de trânsito. O termo foi devidamente homologado por sentença pelo juiz coordenador. Meses depois, uma das partes ajuíza nova ação pleiteando valores adicionais sobre o mesmo fato. O juiz deve:",
-      "options": {
-        "A": "Extinguir a nova ação sem resolução de mérito, reconhecendo a eficácia preclusiva da coisa julgada material decorrente do acordo judicial homologado.",
-        "B": "Instaurar instrução probatória para reabrir a discussão sobre a culpa dos envolvidos, visto que acordos em CEJUSC produzem efeitos meramente provisórios.",
-        "C": "Remeter os autos para a Justiça Federal para anular a homologação anterior, haja vista a incompetência absoluta de juízes estaduais de CEJUSC.",
-        "D": "Aplicar sanção penal privativa de liberdade ao autor por violação dolosa da cláusula compromissória pactuada em sede pré-processual."
-      },
-      "gabarito": "A",
-      "article": "Art. 485, V e Art. 502 do CPC/2015",
-      "legal_basis": "A sentença homologatória de autocomposição faz coisa julgada material. Existindo coisa julgada sobre a mesma lide, o processo subsequente deve ser extinto sem resolução de mérito.",
-      "explanation": "A transação homologada judicialmente tem força de coisa julgada material. Não é lícito ajuizar nova ação para reabrir discussão sobre a mesma dívida quitada, ressalvada ação anulatória própria por vício de consentimento."
-    },
-    {
-      "id": "multi_07_a_sentenca_arbitral",
-      "subject": "Formas de Heterocomposição e Fundamentos",
-      "bank": "FGV",
-      "difficulty": "Médio",
-      "enunciado": "(FGV / Magistratura) Um tribunal arbitral legalmente constituído no Brasil proferiu sentença condenando uma sociedade empresária ao pagamento de indenização por quebra de contrato comercial. A respeito dos efeitos jurídicos e da executividade da sentença arbitral nacional (Lei nº 9.307/1996), assinale a correta:",
-      "options": {
-        "A": "A sentença arbitral produz os mesmos efeitos da sentença judicial e constitui título executivo judicial, dispensando qualquer homologação pelo Judiciário.",
-        "B": "A sentença arbitral tem natureza de mero laudo consultivo, só produzindo efeitos após ser ratificada por sentença de um juiz togado estadual.",
-        "C": "Das decisões de mérito proferidas pelo árbitro cabe recurso ordinário de apelação diretamente para o Tribunal de Justiça competente.",
-        "D": "A execução da sentença arbitral condenatória é processada perante o próprio árbitro, que detém poder originário de penhora e coerção patrimonial."
-      },
-      "gabarito": "A",
-      "article": "Art. 31 da Lei nº 9.307/1996 e Art. 515, VII do CPC/2015",
-      "legal_basis": "A sentença arbitral produz, entre as partes e seus sucessores, os mesmos efeitos da sentença proferida pelos órgãos do Poder Judiciário e, sendo condenatória, constitui título executivo judicial (dispensa homologação).",
-      "explanation": "A sentença arbitral é título executivo judicial (art. 515, VII, CPC). Não necessita de homologação pelo Judiciário. Se não for cumprida voluntariamente, executa-se perante o Judiciário (juiz togado), pois o árbitro não tem poder de coerção (executio)."
-    },
-    {
-      "id": "multi_07_b_kompetenz_kompetenz",
-      "subject": "Formas de Heterocomposição e Fundamentos",
-      "bank": "CESPE",
-      "difficulty": "Difícil",
-      "enunciado": "(CESPE / Procuradoria) Em contrato de compra e venda de cotas de sociedade empresária foi inserida cláusula compromissória arbitral. Diante de desentendimento, uma das partes ajuizou ação anulatória na Justiça comum alegando que a própria cláusula arbitral padecia de nulidade por vício de vontade. À luz do princípio da 'Kompetenz-Kompetenz' (Competência-Competência):",
-      "options": {
-        "A": "Cabe prioritariamente ao próprio árbitro decidir sobre sua competência e sobre a existência, validade e eficácia da convenção de arbitragem.",
-        "B": "O juiz togado deve assumir imediatamente o julgamento do mérito do contrato, haja vista que a alegação de nulidade revoga a jurisdição do árbitro.",
-        "C": "A cláusula compromissória extingue-se automaticamente caso uma das partes ingresse com petição perante o Ministério Público Estadual.",
-        "D": "Apenas o Superior Tribunal de Justiça tem competência originária para analisar alegações de nulidade de convenções arbitrais mercantis."
-      },
-      "gabarito": "A",
-      "article": "Art. 8º, parágrafo único da Lei nº 9.307/1996",
-      "legal_basis": "Caberá ao árbitro decidir de ofício ou por provocação das partes sobre as questões acerca de sua competência e sobre a existência, validade e eficácia da convenção de arbitragem.",
-      "explanation": "O princípio da Kompetenz-Kompetenz (art. 8º, p. único, Lei 9.307/96) assegura que o árbitro tem precedência para analisar sua própria competência e a validade da cláusula compromissória."
-    },
-    {
-      "id": "multi_07_c_clausula_vs_compromisso",
-      "subject": "Formas de Heterocomposição e Fundamentos",
-      "bank": "FCC",
-      "difficulty": "Médio",
-      "enunciado": "(FCC / Analista) A convenção de arbitragem compreende a cláusula compromissória e o compromisso arbitral (art. 3º da Lei nº 9.307/1996). O critério temporal e fático que distingue a cláusula compromissória do compromisso arbitral é:",
-      "options": {
-        "A": "A cláusula é estipulada previamente no contrato para litígios futuros; o compromisso é celebrado após o surgimento do conflito concreto entre as partes.",
-        "B": "A cláusula compromissória aplica-se somente a litígios já existentes, enquanto o compromisso arbitral destina-se a prever litígios hipotéticos futuros.",
-        "C": "O compromisso arbitral é privativo da Administração Pública, enquanto a cláusula compromissória só pode ser pactuada por pessoas naturais analfabetas.",
-        "D": "Ambas as figuras exigem obrigatoriamente a presença de três peritos judiciais concursados para a formalização do instrumento perante cartório."
-      },
-      "gabarito": "A",
-      "article": "Arts. 4º e 9º da Lei nº 9.307/1996",
-      "legal_basis": "Cláusula compromissória: convenção pela qual as partes se comprometem a submeter à arbitragem litígios futuros que possam surgir. Compromisso arbitral: convenção submetendo litígio já instaurado à arbitragem.",
-      "explanation": "A cláusula compromissória é anterior ao conflito (ex ante). O compromisso arbitral é celebrado quando o conflito já existe no mundo fático (ex post)."
-    },
-    {
-      "id": "multi_07_d_dever_revelacao",
-      "subject": "Formas de Heterocomposição e Fundamentos",
-      "bank": "VUNESP",
-      "difficulty": "Difícil",
-      "enunciado": "(VUNESP / TJ) Uma das partes em procedimento arbitral tomou conhecimento de que o árbitro único indicado era consultor jurídico remunerado da sociedade coligada à parte contrária, fato que foi omitido na data de sua aceitação. Conforme o Art. 14 da Lei nº 9.307/1996, o dever violado pelo árbitro e sua consequência são:",
-      "options": {
-        "A": "Violação do dever de revelação sobre circunstâncias que causem dúvida justificada de sua imparcialidade, ensejando a recusa do árbitro ou nulidade da sentença.",
-        "B": "Mero descumprimento de praxe administrativa sem qualquer repercussão sobre a higidez ou validade jurídica do procedimento arbitral instalado.",
-        "C": "Imposição de prisão administrativa de até trinta dias a ser decretada pelo presidente da câmara de arbitragem contra o árbitro omisso.",
-        "D": "Transferência compulsória do processo para a jurisdição do Tribunal Penal Internacional por prática de concussão institucionalizada."
-      },
-      "gabarito": "A",
-      "article": "Art. 14, § 1º e Art. 32, II da Lei nº 9.307/1996",
-      "legal_basis": "As pessoas indicadas para funcionar como árbitro têm o dever de revelar qualquer fato que denote dúvida justificada quanto à sua imparcialidade e independência.",
-      "explanation": "O dever de revelação do árbitro é estrito. A quebra desse dever que comprometa a imparcialidade enseja a exceção de recusa ou mesmo a anulação judicial da sentença arbitral (art. 32, II, Lei 9.307/96)."
-    },
-    {
-      "id": "multi_08_a_caso_familia_societario",
-      "subject": "Casos Práticos e Adequação dos Métodos (Autotutela, Hetero e Auto)",
-      "bank": "FGV",
-      "difficulty": "Médio",
-      "enunciado": "(FGV / Magistratura) Dois irmãos sócios de uma rede de restaurantes familiares enfrentam grave crise de relacionamento, com desavenças sobre gestão e mágoas pessoais que inviabilizam a convivência societária. De acordo com a teoria da adequação do método ao caso concreto (Appropriate Dispute Resolution), o mecanismo preliminar mais recomendado para tratar essa controvérsia é:",
-      "options": {
-        "A": "A mediação de conflitos, pois permite abordar tanto a preservação das relações familiares continuadas quanto os interesses econômicos da dissolução societária.",
-        "B": "A autotutela coercitiva, autorizando o sócio majoritário a trocar as fechaduras do estabelecimento e expulsar fisicamente o irmão sem prestação de contas.",
-        "C": "A execução judicial sumária imediata com pedido de penhora coercitiva das cotas, visando a falência célere da empresa familiar perante o Judiciário.",
-        "D": "A instauração de processo penal condenatório sumário por injúria para fixar o valor da indenização civil por perdas e danos mercantis das cotas."
-      },
-      "gabarito": "A",
-      "article": "Art. 165, § 3º e Art. 694 do CPC/2015",
-      "legal_basis": "A mediação é indicada quando há vínculo relacional prévio e continuado entre os participantes, viabilizando o diálogo estruturado sobre questões emocionais e patrimoniais.",
-      "explanation": "Empresas familiares conjugam afeto e patrimônio. A mediação é o método ideal porque restaura a comunicação e possibilita a transição ou divisão amigável sem destruir os laços interpessoais."
-    },
-    {
-      "id": "multi_08_b_caso_acidente_transito",
-      "subject": "Casos Práticos e Adequação dos Métodos (Autotutela, Hetero e Auto)",
-      "bank": "CESPE",
-      "difficulty": "Médio",
-      "enunciado": "(CESPE / Defensoria) Em um cruzamento urbano, dois condutores desconhecidos colidem seus veículos, gerando danos materiais estritamente patrimoniais no para-choque de ambos. Inexiste qualquer relação preexistente de afeto ou convivência continuada entre eles. Sob o ponto de vista da adequação procedimental, o mecanismo autocompositivo ideal é:",
-      "options": {
-        "A": "A conciliação, em que o facilitador atua em controvérsia pontual sem relação prévia e pode sugerir propostas práticas e financeiras para o conserto dos bens.",
-        "B": "A mediação transformativa continuada, exigindo pelo menos seis sessões de investigação profunda das emoções de infância dos motoristas envolvidos.",
-        "C": "A arbitragem internacional institucional vinculante, com tradução juramentada de todos os orçamentos das oficinas mecânicas para a língua inglesa.",
-        "D": "A autotutela com retenção forçada da carteira de habilitação do motorista causador pelo prejudicado até a conclusão do pagamento do dano."
+        "A": "Por se tratar de controvérsia circunstancial e desprovida de laço anterior duradouro, o conciliador pode atuar de forma mais propositiva, sugerindo alternativas factíveis para o acordo, sem criar constrangimento ou coação.",
+        "B": "O conciliador deve manter silêncio absoluto durante todo o ato, sendo proibido de fazer qualquer manifestação oral perante as partes.",
+        "C": "Dr. Thiago deve julgar o mérito da culpa no acidente de trânsito e expedir ordem judicial de penhora de bens do condutor culpado.",
+        "D": "A conciliação é expressamente vedada em acidentes automobilísticos, cabendo unicamente a autotutela material imediata dos condutores."
       },
       "gabarito": "A",
       "article": "Art. 165, § 2º do CPC/2015",
-      "legal_basis": "O conciliador atuará preferencialmente nos casos em que não houver vínculo anterior entre as partes, podendo sugerir soluções para o litígio.",
-      "explanation": "Acidente de trânsito entre estranhos é litígio puramente patrimonial e episódico. Não há vínculo a ser preservado; a conciliação é perfeita para orçar valores e fechar o acordo rapidamente."
+      "legal_basis": "A conciliação destina-se a controvérsias circunstanciais sem vínculo duradouro; o conciliador pode atuar de forma propositiva, sugerindo alternativas, sem constrangimento ou coação.",
+      "explanation": "Na conciliação, em litígios pontuais (como consumo e trânsito), o facilitador pode sugerir opções viáveis para o consenso."
     },
     {
-      "id": "multi_08_c_caso_satelite_multinacional",
-      "subject": "Casos Práticos e Adequação dos Métodos (Autotutela, Hetero e Auto)",
-      "bank": "FCC",
-      "difficulty": "Difícil",
-      "enunciado": "(FCC / Procurador) Duas corporações de telecomunicações de países distintos celebram contrato para construção e lançamento de um satélite de telecomunicações em órbita geoestacionária, envolvendo transferência de tecnologia sigilosa e cálculos de astrofísica de extrema complexidade. O método de resolução de controvérsias mais adequado para este litígio é:",
+      "id": "multi_05_c_negociacao_direta",
+      "subject": "Métodos Alternativos de Resolução de Conflitos (MASCs/ADRs)",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Fácil",
+      "enunciado": "A respeito da negociação como método de solução de disputas, é correto afirmar que sua característica precípua reside no fato de que:",
       "options": {
-        "A": "A arbitragem, que permite a escolha de árbitros com notória expertise técnica no setor aeroespacial, tramitação confidencial e decisão definitiva vinculante.",
-        "B": "O juizado especial cível de pequenas causas, dispensando a realização de qualquer exame pericial de engenharia aeroespacial em homenagem à celeridade.",
-        "C": "A autotutela das partes, permitindo que a empresa prejudicada bloqueie unilateralmente o sinal de transmissão dos satélites governamentais de segurança.",
-        "D": "A conciliação informal conduzida por líder comunitário do município onde a empresa contratante mantém sua filial contábil secundária."
+        "A": "Se desenvolve de modo direto entre os próprios interessados, prescindindo de condutor neutro ou intervenção de terceiro.",
+        "B": "Exige compulsoriamente a presença de um árbitro togado para validar as tratativas preliminares das partes.",
+        "C": "Só pode ser realizada após a prolação de sentença judicial condenatória em segundo grau de jurisdição.",
+        "D": "Constitui forma de heterocomposição estatal vinculante regida pelas normas da corregedoria de justiça."
       },
       "gabarito": "A",
-      "article": "Lei nº 9.307/1996 (arts. 1º e 13)",
-      "legal_basis": "A arbitragem permite a nomeação de especialistas na matéria da controvérsia (árbitros técnicos), além de assegurar sigilo industrial e celeridade especializada.",
-      "explanation": "Em disputas hiperespecializadas e confidenciais entre empresas de grande porte, o Judiciário comum estatal sofre com falta de peritos e lentidão. A arbitragem oferece árbitros técnicos especializados e sigilo."
+      "article": "Negociação Direta (Teoria dos MASCs)",
+      "legal_basis": "A negociação se desenvolve de modo direto entre os interessados, prescindindo de condutor neutro.",
+      "explanation": "Na negociação, não há terceiro interveniente; as partes comunicam-se e transacionam diretamente."
     },
     {
-      "id": "multi_08_d_caso_esbulho_imediato",
-      "subject": "Casos Práticos e Adequação dos Métodos (Autotutela, Hetero e Auto)",
-      "bank": "VUNESP",
+      "id": "multi_05_d_arbitragem_autoridade_sentenca",
+      "subject": "Métodos Alternativos de Resolução de Conflitos (MASCs/ADRs)",
+      "bank": "Revisão Prova 01",
       "difficulty": "Médio",
-      "enunciado": "(VUNESP / Magistratura) Um agricultor surpreende invasores armados tentando derrubar as cercas de sua propriedade produtiva durante a madrugada. Agindo incontinenti, convoca seus funcionários e, com meios proporcionais e sem excessos, impede a consolidação da invasão e restabelece a integridade da cerca. Esse ato prático configura:",
+      "enunciado": "Duas grandes companhias de aviação comercial inseriram cláusula compromissória arbitral para dirimir dúvidas sobre o contrato de leasing de turbinas. Iniciado o procedimento, o árbitro Dr. Henrique conduz o ato. Qual a natureza da arbitragem e a autoridade atribuída a Dr. Henrique no desfecho da lide?",
       "options": {
-        "A": "Exercício regular da autotutela lícita possessória (legítima defesa da posse e desforço imediato), expressamente amparada pelo Código Civil brasileiro.",
-        "B": "Transação fática extrajudicial, que extingue com resolução de mérito o direito dos invasores pleitearem indenização por benfeitorias úteis.",
-        "C": "Mediação comunitária tácita compulsória, que prescinde de diálogo entre os litigantes quando constatado estado de emergência agrária.",
-        "D": "Conduta criminosa inafiançável de exercício arbitrário das próprias razões, sendo vedada qualquer reação defensiva sem ordem judicial liminar prévia."
+        "A": "Possui natureza heterocompositiva privada sobre direitos patrimoniais disponíveis; o árbitro atua investido de autoridade de fato e de direito e profere sentença arbitral definitiva com eficácia executiva judicial.",
+        "B": "Possui natureza autocompositiva direta, cabendo ao árbitro apenas estimular o diálogo, dependendo sua decisão de homologação judicial obrigatória para ter qualquer validade.",
+        "C": "Possui natureza de autotutela administrativa, permitindo ao árbitro expropriar bens da companhia aérea sem previsão legal ou contratual.",
+        "D": "A arbitragem é ato meramente consultivo e opinativo, não produzindo título executivo nem impedindo rediscussão do mérito pelo juiz togado."
+      },
+      "gabarito": "A",
+      "article": "Lei nº 9.307/1996 (arts. 18 e 31) e Art. 515, VII do CPC",
+      "legal_basis": "A arbitragem é heterocomposição privada sobre direitos patrimoniais disponíveis. O árbitro é juiz de fato e de direito e sua sentença tem eficácia de título executivo judicial.",
+      "explanation": "O árbitro profere sentença arbitral definitiva, dotada de força de título executivo judicial, dispensando homologação pelo Poder Judiciário."
+    },
+    {
+      "id": "multi_06_a_participacao_terceiros_direta_indireta",
+      "subject": "Formas de Autocomposição e Fundamentos",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Fácil",
+      "enunciado": "Sob o prisma da participação de terceiros na facilitação do ato, a autocomposição divide-se e classifica-se em:",
+      "options": {
+        "A": "Direta, quando realizada sem intermediários, mediante negociação entre as próprias partes; ou indireta, quando conduzida com a assistência de um mediador ou conciliador.",
+        "B": "Judicial coativa ou extrajudicial compulsória, dependendo da aplicação imediata de prisão civil aos participantes.",
+        "C": "Heterocompositiva voluntária ou autotutelada coercitiva, a depender da presença de oficiais de justiça na sala de reunião.",
+        "D": "Primária estatal ou secundária administrativa, sendo vedada a participação de particulares na autocomposição indireta."
+      },
+      "gabarito": "A",
+      "article": "Classificação da Autocomposição (Direta vs. Indireta)",
+      "legal_basis": "Quanto ao modo de condução: direta (sem intermediários, por negociação) ou indireta (conduzida por mediador ou conciliador).",
+      "explanation": "A presença ou não do terceiro facilitador define se a autocomposição é direta (negociação pura) ou indireta (mediação/conciliação)."
+    },
+    {
+      "id": "multi_06_b_art487_iii_cpc_modalidades",
+      "subject": "Formas de Autocomposição e Fundamentos",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Médio",
+      "enunciado": "No tocante à manifestação de vontade perante o objeto do litígio, o Código de Processo Civil prevê expressamente no artigo 487, inciso III, as formas de autocomposição que geram extinção do processo com resolução de mérito. São elas:",
+      "options": {
+        "A": "A transação (concessões recíprocas), a renúncia à pretensão formulada na ação (o autor abre mão voluntariamente do direito) e o reconhecimento da procedência do pedido (o réu aceita a pretensão).",
+        "B": "A desistência da ação, o abandono da causa pelo autor e a convenção de arbitragem sem resolução de mérito.",
+        "C": "A perempção, a litispendência e a coisa julgada material proferida em juízo togado de forma impositiva.",
+        "D": "O compromisso arbitral forçado, o laudo pericial compulsório e a revelia com aplicação de confissão ficta."
+      },
+      "gabarito": "A",
+      "article": "Art. 487, III, alíneas 'a', 'b' e 'c' do CPC/2015",
+      "legal_basis": "O art. 487, III do CPC prevê a resolução de mérito quando o juiz: a) homologar o reconhecimento da procedência do pedido; b) homologar a transação; c) homologar a renúncia à pretensão formulada.",
+      "explanation": "As três formas materiais de autocomposição com resolução de mérito são: transação, renúncia à pretensão e reconhecimento da procedência do pedido."
+    },
+    {
+      "id": "multi_06_c_transacao_concessoes_reciprocas",
+      "subject": "Formas de Autocomposição e Fundamentos",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Médio",
+      "enunciado": "Em ação de cobrança de R$ 100.000,00 movida por Lucas contra Mateus, as partes acordam que Mateus pagará R$ 60.000,00 à vista e Lucas dará plena e geral quitação, abrindo mão do restante da quantia e dos juros de mora. Sob o ponto de vista da teoria dos atos de disposição autocompositiva, esse negócio jurídico configura:",
+      "options": {
+        "A": "Transação, consubstanciada no negócio jurídico bilateral em que ambos os litigantes fazem concessões recíprocas para extinguir a incerteza e pôr fim ao conflito.",
+        "B": "Reconhecimento da procedência do pedido, visto que Lucas concordou em receber valor menor do que o exigido na petição inicial.",
+        "C": "Renúncia da pretensão praticada exclusivamente por Mateus em benefício integral de Lucas.",
+        "D": "Autotutela moderada judicialmente autorizada pela tabela de custas processuais do tribunal."
+      },
+      "gabarito": "A",
+      "article": "Art. 840 do Código Civil e Art. 487, III, 'b' do CPC",
+      "legal_basis": "A transação opera quando os sujeitos fazem concessões recíprocas para pôr fim à controvérsia.",
+      "explanation": "Houve concessões mútuas: Lucas abriu mão de parte do crédito e Mateus concordou em pagar prontamente sem protelar."
+    },
+    {
+      "id": "multi_06_d_renuncia_vs_reconhecimento",
+      "subject": "Formas de Autocomposição e Fundamentos",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Médio",
+      "enunciado": "Gabriel ingressou com ação reivindicatória contra Daniela. Durante o processo, Daniela apresenta manifestação expressa nos autos admitindo que o imóvel pertence com exclusividade a Gabriel e que desocupará o bem sem opor resistência. Esse ato unilateral de autocomposição praticado pelo polo passivo denomina-se:",
+      "options": {
+        "A": "Reconhecimento da procedência do pedido, ato pelo qual o réu aceita integralmente a pretensão formulada pelo autor, resolvendo o mérito nos moldes do art. 487, III, 'a', do CPC.",
+        "B": "Renúncia à pretensão formulada na ação, ato privativo do polo ativo em que o autor desiste voluntariamente do direito.",
+        "C": "Desistência unilateral da contestação, mantendo incerto o mérito da causa para julgamento futuro em ação rescisória.",
+        "D": "Transação fática extrajudicial preliminar desprovida de homologação judicial pelo magistrado togado."
+      },
+      "gabarito": "A",
+      "article": "Art. 487, III, 'a' do CPC/2015",
+      "legal_basis": "O reconhecimento da procedência do pedido é o ato autocompositivo unilateral do réu, que se submete e aceita a pretensão articulada pelo autor.",
+      "explanation": "Quando o polo passivo aceita integralmente a procedência do pedido do autor, opera-se o reconhecimento da pretensão (art. 487, III, 'a' CPC)."
+    },
+    {
+      "id": "multi_07_a_modalidades_hetero",
+      "subject": "Formas de Heterocomposição e Fundamentos",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Fácil",
+      "enunciado": "A heterocomposição ocorre quando as partes transferem a faculdade de decidir a uma terceira pessoa estranha ao conflito. Quais são as duas modalidades de heterocomposição admitidas no ordenamento jurídico brasileiro?",
+      "options": {
+        "A": "A jurisdição estatal e a arbitragem privada.",
+        "B": "A mediação judicial e a negociação assistida.",
+        "C": "O desforço possessório e o direito de retenção de bens.",
+        "D": "A transação extrajudicial e a renúncia unilateral ao direito."
+      },
+      "gabarito": "A",
+      "article": "Teoria Geral do Processo (Formas de Heterocomposição)",
+      "legal_basis": "A heterocomposição manifesta-se na jurisdição estatal e na arbitragem privada.",
+      "explanation": "No direito brasileiro, a faculdade impositiva de decidir por terceiro ocorre na via estatal (juiz) ou arbitral (árbitro)."
+    },
+    {
+      "id": "multi_07_b_jurisdicao_estatal_fundamento",
+      "subject": "Formas de Heterocomposição e Fundamentos",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Médio",
+      "enunciado": "A heterocomposição estatal é exercida pelo Poder Judiciário por meio de juízes investidos do poder jurisdicional soberano. Seus fundamentos constitucionais expressos e a eficácia de seu provimento final consubstanciam-se:",
+      "options": {
+        "A": "Nos artigos 5º, inciso XXXV, e artigo 92 da Constituição Federal, resultando em sentença judicial dotada de coercibilidade e apta a fazer coisa julgada material.",
+        "B": "Na autonomia irrestrita da vontade privada, inexistindo coercibilidade ou poder de império por parte do magistrado togado.",
+        "C": "No Código Comercial de 1850, que autoriza juízes togados a proferirem pareceres não vinculantes sobre a conduta das partes.",
+        "D": "Nas resoluções ministeriais locais, sendo a sentença judicial revogável a qualquer tempo por simples requerimento administrativo do perdedor."
+      },
+      "gabarito": "A",
+      "article": "Art. 5º, XXXV e Art. 92 da CF/88",
+      "legal_basis": "A heterocomposição estatal baseia-se nos arts. 5º, XXXV e 92 da CF, culminando em sentença judicial com coercibilidade e aptidão para coisa julgada material.",
+      "explanation": "O fundamento é a soberania jurisdicional garantida pela Constituição nos artigos 5º, XXXV e 92 da CF/88."
+    },
+    {
+      "id": "multi_07_c_arbitragem_art31_dispensa",
+      "subject": "Formas de Heterocomposição e Fundamentos",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Médio",
+      "enunciado": "Em uma arbitragem societária regida pela Lei nº 9.307/1996, o tribunal arbitral proferiu sentença definitiva condenando um dos sócios ao pagamento de indenização. O sócio vencido alegou em juízo comum que a sentença arbitral não teria eficácia executiva por não ter sido homologada por um juiz togado. À luz do artigo 31 da Lei nº 9.307/1996 e do sistema de heterocomposição arbitral, é correto afirmar que:",
+      "options": {
+        "A": "A alegação do sócio vencido é incorreta, pois a sentença arbitral produz, entre as partes e seus sucessores, os mesmos efeitos da sentença proferida pelos órgãos do Poder Judiciário e, sendo condenatória, constitui título executivo judicial, dispensando qualquer homologação judicial.",
+        "B": "A alegação do sócio é procedente, visto que nenhuma decisão privada possui validade no Brasil sem o visto e a chancela prévia de um juiz de direito estadual.",
+        "C": "A sentença arbitral é mero parecer opinativo que se extingue se uma das partes manifestar discordância perante o tribunal de justiça.",
+        "D": "A arbitragem brasileira só dispensa homologação judicial quando envolver direitos da personalidade e incapazes sob tutela legal."
+      },
+      "gabarito": "A",
+      "article": "Art. 31 da Lei nº 9.307/1996 e Art. 515, VII do CPC",
+      "legal_basis": "A decisão final do árbitro possui força de título executivo judicial e dispensa qualquer homologação do Judiciário, consoante o art. 31 da Lei 9.307/96.",
+      "explanation": "A revolução da Lei 9.307/96 foi exatamente equiparar a sentença arbitral à judicial e dispensar homologação pelo Judiciário."
+    },
+    {
+      "id": "multi_07_d_requisito_arbitrabilidade",
+      "subject": "Formas de Heterocomposição e Fundamentos",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Difícil",
+      "enunciado": "A heterocomposição arbitral assenta-se na autonomia da vontade das partes, mas sua utilização está condicionada a limites objetivos e subjetivos expressos na Lei nº 9.307/1996. Segundo o artigo 1º desse diploma, a arbitragem somente pode ser validamente convencionada:",
+      "options": {
+        "A": "Por pessoas capazes de contratar, para dirimir litígios relativos a direitos patrimoniais disponíveis.",
+        "B": "Por qualquer cidadão, inclusive para definição de guarda de menores e investigação de crimes contra a vida.",
+        "C": "Exclusivamente por empresas públicas federais, sendo vedada a participação de pessoas jurídicas de direito privado.",
+        "D": "Apenas quando houver ordem impositiva do juiz togado determinando a renúncia forçada à jurisdição estatal."
+      },
+      "gabarito": "A",
+      "article": "Art. 1º da Lei nº 9.307/1996",
+      "legal_basis": "A heterocomposição arbitral ampara-se na autonomia da vontade sobre direitos patrimoniais disponíveis entre sujeitos capazes.",
+      "explanation": "A arbitrabilidade objetiva recai estritamente sobre direitos patrimoniais disponíveis de sujeitos capazes."
+    },
+    {
+      "id": "multi_08_a_autotutela_desforco_imediato",
+      "subject": "Casos Práticos e Adequação dos Métodos (Autotutela, Hetero e Auto)",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Médio",
+      "enunciado": "Ricardo é proprietário de uma chácara de lazer. Ao chegar à sua propriedade no sábado de manhã, surpreende um invasor derrubando a cerca divisória e erguendo um barraco em seu quintal. Utilizando seus próprios funcionários e instrumentos moderados logo após a constatação da invasão, Ricardo repele o invasor e restabelece a cerca. À luz das formas de resolução de conflitos, a conduta de Ricardo configura caso adequado de:",
+      "options": {
+        "A": "Autotutela lícita, consubstanciada no desforço possessório imediato (incontinenti) para defesa imediata da posse amparado no artigo 1.210, § 1º, do Código Civil.",
+        "B": "Heterocomposição estatal indireta, pois os funcionários de Ricardo possuem fé pública delegada pelo Poder Judiciário.",
+        "C": "Autocomposição por mediação comunitária informal compulsória.",
+        "D": "Exercício arbitrário das próprias razões punível com prisão preventiva imediata, sendo vedado qualquer ato de proteção à posse pelo possuidor."
       },
       "gabarito": "A",
       "article": "Art. 1.210, § 1º do Código Civil",
-      "legal_basis": "O possuidor turbado ou esbulhado poderá manter-se ou restituir-se por sua própria força, contanto que o faça logo e que os atos de defesa não vão além do indispensável.",
-      "explanation": "O desforço possessório e a legítima defesa da posse constituem a hipótese prática clássica de autotutela autorizada por lei, exigindo reação imediata (incontinenti) e moderação de meios."
+      "legal_basis": "A autotutela tem aplicação adequada na defesa imediata da posse pelo desforço imediato amparado no art. 1.210, § 1º do Código Civil, com moderação logo após o ocorrido.",
+      "explanation": "Exemplo expressamente citado no questionário: desforço imediato na defesa da posse contra invasão, feito com moderação logo após o fato."
     },
     {
-      "id": "multi_09_a_paradigma_ganha_ganha",
+      "id": "multi_08_b_hetero_estatal_paternidade_revel",
+      "subject": "Casos Práticos e Adequação dos Métodos (Autotutela, Hetero e Auto)",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Médio",
+      "enunciado": "Mariana move ação de investigação de paternidade cumulada com fixação de alimentos em face de Lucas, em benefício de seu filho recém-nascido. Lucas foi citado regularmente, mas quedou-se inerte, tornando-se revel e recusando-se expressamente a comparecer a qualquer audiência ou a submeter-se ao exame de DNA. Diante da indisponibilidade do estado de filiação e da recusa contumaz do réu, o caso concreto exige adequadamente a incidência da:",
+      "options": {
+        "A": "Heterocomposição estatal, indispensável para que o juiz togado, no exercício da jurisdição soberana, profira sentença declaratória e condenatória com força de coisa julgada.",
+        "B": "Heterocomposição arbitral, sendo obrigatória a remessa dos autos a uma câmara arbitral privada internacional.",
+        "C": "Autotutela física imediata para coagir o réu a comparecer ao laboratório sob pena de perda de seus bens.",
+        "D": "Autocomposição por mediação obrigatória, que não permite ao juiz julgar o processo sem o prévio acordo consensual das partes."
+      },
+      "gabarito": "A",
+      "article": "Heterocomposição Estatal no Direito de Família",
+      "legal_basis": "A heterocomposição estatal revela-se indispensável em investigação de paternidade cumulada com alimentos na qual o réu é revel e sem disposição conciliatória.",
+      "explanation": "Exemplo do questionário: na revelia e matéria indisponível/ausência de consenso, a via togado estatal é imperativa."
+    },
+    {
+      "id": "multi_08_c_hetero_arbitral_infraestrutura",
+      "subject": "Casos Práticos e Adequação dos Métodos (Autotutela, Hetero e Auto)",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Médio",
+      "enunciado": "A Construtora Alfa e o Consórcio Energético Beta firmaram contrato bilionário para construção de uma usina hidrelétrica. Surgiu controvérsia de alta complexidade técnica de engenharia sobre atraso no cronograma de concretagem e aplicação de multas milionárias, havendo cláusulas contratuais de segredo industrial e necessidade imperiosa de sigilo negocial. O método mais adequado para dirimir esse litígio é:",
+      "options": {
+        "A": "Heterocomposição arbitral, face à complexidade técnica das cláusulas de engenharia, à expertise dos árbitros e à necessidade de sigilo do negócio entre as empresas.",
+        "B": "Autotutela das máquinas e canteiro de obras pela construtora mediante confronto físico entre seguranças privados.",
+        "C": "Conciliação informal com audiência pública de quinze minutos no juizado especial cível estadual.",
+        "D": "Mediação comunitária em praça pública conduzida por associação de moradores do entorno da hidrelétrica."
+      },
+      "gabarito": "A",
+      "article": "Heterocomposição Arbitral (Lei nº 9.307/1996)",
+      "legal_basis": "A heterocomposição arbitral é ideal para controvérsia contratual entre grandes empresas por atraso na entrega de obras de infraestrutura, com complexidade técnica e sigilo.",
+      "explanation": "Exemplo do questionário: disputas societárias e de engenharia complexa entre grandes empresas encontram na arbitragem agilidade, sigilo e expertise."
+    },
+    {
+      "id": "multi_08_d_auto_mediacao_familia_vs_transito",
+      "subject": "Casos Práticos e Adequação dos Métodos (Autotutela, Hetero e Auto)",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Médio",
+      "enunciado": "Analise as duas situações práticas a seguir:\n1. Juliana e Marcelo estão se divorciando após 15 anos de casamento; há severo desgaste emocional e mágoas acumuladas, mas necessitam definir a guarda e a convivência dos dois filhos menores.\n2. André e Beatriz sofreram abalroamento de trânsito em um semáforo; não se conheciam e discutem unicamente o pagamento de R$ 3.500,00 pelo conserto do parachoque.\nÀ luz do questionário de revisão, quais métodos autocompositivos são os mais adequados para a Situação 1 e a Situação 2, respectivamente?",
+      "options": {
+        "A": "Situação 1: Autocomposição por Mediação (relação continuada e necessidade de restabelecer o diálogo familiar); Situação 2: Autocomposição por Conciliação (relação pontual/circunstancial entre condutores sem vínculo anterior).",
+        "B": "Situação 1: Autotutela familiar com desforço físico; Situação 2: Heterocomposição arbitral com câmara de Genebra.",
+        "C": "Situação 1: Autocomposição por Conciliação com imposição de propostas; Situação 2: Heterocomposição estatal com prisão civil imediata.",
+        "D": "Situação 1: Negociação sem intervenção judicial; Situação 2: Mediação profunda de três anos para investigar a árvore genealógica dos motoristas."
+      },
+      "gabarito": "A",
+      "article": "Critérios de Adequação: Mediação vs. Conciliação (Art. 165 CPC)",
+      "legal_basis": "A mediação adequa-se à guarda e convivência de filhos em divórcio litigioso com desgaste emocional severo. A conciliação adequa-se a abalroamento de veículos entre condutores que não se conheciam.",
+      "explanation": "São exatamente os dois exemplos de autocomposição formulados no item 08 do questionário."
+    },
+    {
+      "id": "multi_09_a_poder_decisorio_contraponto",
       "subject": "Processos Autocompositivos vs. Heterocompositivos",
-      "bank": "FGV",
-      "difficulty": "Médio",
-      "enunciado": "(FGV / OAB) No confronto analítico entre a autocomposição (mediação e conciliação) e a heterocomposição (jurisdição estatal e arbitragem), a doutrina destaca a diferença de paradigmas decisórios. Sobre a lógica de desfecho predominante em cada sistema, assinale a afirmativa correta:",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Fácil",
+      "enunciado": "Ao comparar os procedimentos autocompositivos e heterocompositivos, o contraponto basilar em relação à titularidade do poder decisório consiste em:",
       "options": {
-        "A": "A autocomposição privilegia a lógica do 'ganha-ganha' mediante integração de interesses, enquanto a heterocomposição opera tradicionalmente na lógica do 'ganha-perde'.",
-        "B": "A heterocomposição estatal assegura que ambos os litigantes saiam integralmente vitoriosos e satisfeitos em cem por cento das sentenças judiciais proferidas.",
-        "C": "A mediação judicial tem por escopo exclusivo identificar o culpado pelo inadimplemento para aplicar sanções disciplinares previstas no Código Civil.",
-        "D": "Na autocomposição, o terceiro facilitador decide o vencedor da contenda de acordo com critérios estritamente formais de distribuição do ônus da prova."
+        "A": "Na autocomposição, o poder decisório permanece retido nas partes, que operam sob a lógica cooperativa; na heterocomposição, o poder de ditar o desfecho é transferido ao juiz ou ao árbitro, que impõe o provimento de fora para dentro.",
+        "B": "Na autocomposição, o poder é do conciliador que obriga as partes a assinarem o termo; na heterocomposição, o juiz apenas opina sem poder vinculante.",
+        "C": "Em ambos os modelos o poder decisório pertence privativamente ao Ministério Público estadual.",
+        "D": "A heterocomposição não admite decisões impositivas, dependendo sempre da concordância unânime de todos os parentes dos litigantes."
       },
       "gabarito": "A",
-      "article": "Teoria Geral dos Conflitos e Métodos Adequados",
-      "legal_basis": "Autocomposição busca soluções integrativas ('ganha-ganha'), expandindo as opções para atender interesses comuns. Heterocomposição opera em lógica distributiva adjudicada ('ganha-perde').",
-      "explanation": "Na sentença judicial ou arbitral, a decisão aplica a regra jurídica dando a vitória a um e a derrota ao outro (ganha-perde). Na autocomposição, as partes constroem opções em benefício mútuo (ganha-ganha)."
+      "article": "Teoria Geral dos Procedimentos de Solução de Conflitos",
+      "legal_basis": "Na autocomposição, o poder decisório permanece nas partes sob lógica cooperativa. Na heterocomposição, é transferido ao terceiro que impõe o desfecho de fora para dentro.",
+      "explanation": "Texto exato do questionário: na autocomposição as partes retêm a decisão; na heterocomposição o terceiro impõe de fora para dentro."
     },
     {
-      "id": "multi_09_b_temporalidade_passado_futuro",
+      "id": "multi_09_b_logica_vencedor_perdedor",
       "subject": "Processos Autocompositivos vs. Heterocompositivos",
-      "bank": "CESPE",
-      "difficulty": "Difícil",
-      "enunciado": "(CESPE / Defensoria) Sob o ponto de vista da temporalidade e da eficácia social da resolução de disputas, a heterocomposição e a mediação orientam seus olhares para marcos temporais distintos. A esse respeito, é correto afirmar que:",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Médio",
+      "enunciado": "No tocante à dinâmica relacional e aos resultados esperados, a heterocomposição assenta-se na lógica adversária clássica de vitória de uma parte e derrota da outra (ganha-perde). Em contrapartida, a autocomposição caracteriza-se pela:",
       "options": {
-        "A": "A heterocomposição tem foco retrospectivo (olha para os fatos pretéritos para imputar culpa e direito); a mediação tem foco prospectivo (olha para o futuro da relação).",
-        "B": "A mediação foca exclusivamente na apuração retroativa de condutas ilícitas passadas, com a finalidade de arbitrar multas cominatórias aos participantes.",
-        "C": "A jurisdição contenciosa estatal tem como objetivo principal reorganizar os sentimentos futuros das partes, sem se preocupar com as provas de fatos já ocorridos.",
-        "D": "Ambos os sistemas desconsideram categoricamente o futuro dos litigantes, extinguindo-se qualquer reflexo jurídico no momento da assinatura da ata de audiência."
+        "A": "Lógica cooperativa em busca de um consenso mutualmente satisfatório (ganha-ganha), priorizando a preservação da comunicação e o futuro das relações entre os participantes.",
+        "B": "Submissão involuntária da parte economicamente mais fraca ao poder bélico da parte mais forte.",
+        "C": "Imposição de perda patrimonial integral a ambas as partes pelo mediador judicial.",
+        "D": "Necessidade de condenação criminal por perjúrio do polo que manifestar intenção conciliatória prévia."
       },
       "gabarito": "A",
-      "article": "Teoria da Mediação e Processo Civil Comparado",
-      "legal_basis": "O processo judicial olha para trás (o que ocorreu? quem tem razão?). A mediação olha para frente (como podemos nos relacionar e cooperar a partir de agora?).",
-      "explanation": "Essa distinção de lentes temporais é nuclear na teoria dos conflitos: o juiz precisa do passado para julgar o mérito; o mediador ajuda as partes a olharem para o futuro para construírem convivência pacífica."
+      "article": "Diferenças Estruturais: Auto vs. Heterocomposição",
+      "legal_basis": "A autocomposição opera sob a lógica cooperativa e busca o consenso mútuo; a heterocomposição assenta-se na lógica adversária de vencedor e perdedor.",
+      "explanation": "Enquanto a heterocomposição polariza o conflito em vitória de um e derrota de outro, a autocomposição busca a satisfação convergente dos interesses."
     },
     {
-      "id": "multi_09_c_cumprimento_espontaneo",
+      "id": "multi_09_c_forma_estrita_vs_flexibilidade",
       "subject": "Processos Autocompositivos vs. Heterocompositivos",
-      "bank": "FCC",
+      "bank": "Revisão Prova 01",
       "difficulty": "Médio",
-      "enunciado": "(FCC / Magistratura) Estudos empíricos de jurimetria no Brasil e no exterior demonstram que os acordos construídos em vias autocompositivas apresentam índice substancialmente mais elevado de cumprimento espontâneo do que as decisões impostas por sentença judicial contenciosa. Essa constatação sociológica decorre de:",
+      "enunciado": "Quanto às formalidades procedimentais e ao objeto de análise temporal, assinale a opção que descreve com rigor técnico o contraste entre autocomposição e heterocomposição:",
       "options": {
-        "A": "Maior adesão psicológica e sentimento de justiça gerados pelo protagonismo e corresponsabilidade dos envolvidos na criação das cláusulas do acordo.",
-        "B": "Aplicação de multas de trânsito em dobro aos cidadãos que descumprirem transações homologadas perante conciliadores judiciais.",
-        "C": "Imposição de prisão civil coercitiva automática e imediata contra qualquer contratante que atrase parcelas pactuadas em sede de mediação.",
-        "D": "Renúncia obrigatória e definitiva de todas as partes ao direito constitucional de constituir advogados privados para acompanhar a execução."
+        "A": "O procedimento autocompositivo é informal e flexível, priorizando a comunicação e o futuro das relações; o processo heterocompositivo submete-se à estrita forma legal, focando em fatos pretéritos, instrução probatória e aplicação cogente da norma.",
+        "B": "A autocomposição é rígida e exige prazos preclusivos fatais de vinte e quatro horas; a heterocomposição dispensa qualquer rito processual formal.",
+        "C": "A heterocomposição analisa exclusivamente o futuro amoroso das famílias; a autocomposição preocupa-se unicamente em atribuir culpas pretéritas.",
+        "D": "Ambos os procedimentos seguem o rito solene do Tribunal do Júri com quesitação obrigatória aos jurados sorteados."
       },
       "gabarito": "A",
-      "article": "Psicologia Jurídica e Análise Econômica do Processo",
-      "legal_basis": "Quem participa da construção da solução sente-se autor da regra e tem compromisso moral e prático em cumpri-la, diminuindo a necessidade de execução forçada pelo Estado.",
-      "explanation": "A sentença imposta de cima para baixo gera ressentimento no sucumbente, que busca recursos e oculta bens. O acordo autocomposto reflete a vontade das próprias partes, garantindo alta taxa de cumprimento espontâneo."
+      "article": "Procedimentos: Forma e Objeto Temporal",
+      "legal_basis": "Autocomposição: informal e flexível, foca na comunicação e no futuro. Heterocomposição: estrita forma legal, foca em fatos pretéritos e aplicação cogente da lei.",
+      "explanation": "Contraste nítido do item 09: flexibilidade/futuro vs. estrita forma/fatos pretéritos e instrução probatória."
     },
     {
-      "id": "multi_09_d_custos_desgaste",
+      "id": "multi_09_d_resumo_principios_opostos",
       "subject": "Processos Autocompositivos vs. Heterocompositivos",
-      "bank": "VUNESP",
-      "difficulty": "Médio",
-      "enunciado": "(VUNESP / TJ) Analisando os custos econômicos e emocionais do litígio, a autocomposição se destaca frente ao litígio judicial heterocompositivo prolongado porque:",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Difícil",
+      "enunciado": "Em síntese doutrinária sobre o contraponto entre os modelos autocompositivo e heterocompositivo, é correto afirmar que:",
       "options": {
-        "A": "Reduz o desgaste emocional e a incerteza temporal gerada pela espiral de recursos processuais, além de poupar despesas e honorários de sucumbência.",
-        "B": "Obriga o Poder Executivo a arcar com indenizações patrimoniais automáticas aos litigantes que comparecerem às sessões de conciliação do CEJUSC.",
-        "C": "Elimina a exigência de recolhimento de tributos federais e estaduais sobre as atividades empresariais exercidas pelas pessoas jurídicas acordantes.",
-        "D": "Garante ao advogado que homologar acordo em audiência prévia o recebimento de honorários em percentual não inferior a cinquenta por cento da causa."
+        "A": "Eles assentam-se em princípios e dinâmicas procedimentais opostas: enquanto um busca a pacificação pela autonomia e consenso espontâneo, o outro busca a pacificação pela imposição da autoridade e subsunção normativa do passado.",
+        "B": "A autocomposição visa exclusivamente substituir as leis substantivas civis pelas decisões unipessoais dos mediadores leigos.",
+        "C": "A heterocomposição estatal tornou-se inconstitucional no direito brasileiro após a promulgação da Lei de Mediação em 2015.",
+        "D": "Os dois modelos são idênticos em todas as suas fases, possuindo os mesmos ritos, princípios e instrumentos decisórios vinculantes."
       },
       "gabarito": "A",
-      "article": "CPC/2015 (art. 90, § 3º) e Teoria Econômica do Litígio",
-      "legal_basis": "Se a transação ocorrer antes da sentença, as partes ficam dispensadas do pagamento das custas remanescentes (art. 90, § 3º, CPC), além de eliminarem o risco da sucumbência.",
-      "explanation": "O processo judicial contencioso tem custos diretos (custas, perícias, sucumbência) e indiretos (anos de angústia, tempo perdido, desgaste da reputação). A autocomposição resolve com rapidez e economia."
+      "article": "Teoria Geral dos Meios de Resolução de Conflitos",
+      "legal_basis": "Os procedimentos autocompositivos e heterocompositivos assentam-se em princípios e dinâmicas procedimentais opostas.",
+      "explanation": "Afirmação de abertura da questão 09 do questionário: dinâmica procedimental oposta entre consenso e imposição externa."
     },
     {
-      "id": "multi_10_a_confidencialidade_alcance",
+      "id": "multi_10_a_principios_bussola",
       "subject": "Princípios da Resolução de Conflitos e Acesso à Justiça",
-      "bank": "FGV",
+      "bank": "Revisão Prova 01",
       "difficulty": "Médio",
-      "enunciado": "(FGV / OAB) Durante uma sessão de mediação pré-processual em um CEJUSC, uma das partes admite que estaria disposta a aceitar R$ 50.000,00 para encerrar a controvérsia, proposta que não foi aceita pela outra parte. Frustrada a mediação, a parte adversa ajuíza ação e arrola o mediador como testemunha e junta cópia das anotações feitas na sessão. O juiz da causa deve:",
+      "enunciado": "Os princípios reitores da solução de disputas — a exemplo da confidencialidade, autonomia da vontade, oralidade e cooperação — desempenham papel crucial na ordem jurídica contemporânea, atuando como:",
       "options": {
-        "A": "Desentranhar os documentos e dispensar o depoimento do mediador, em observância ao princípio da confidencialidade estrita das informações da mediação.",
-        "B": "Ouvir o mediador sob compromisso legal de dizer a verdade e condenar a parte com base na confissão manifestada voluntariamente durante a sessão.",
-        "C": "Impor a conversão obrigatória do procedimento em arbitragem compulsória, punindo as partes por violação ao princípio da lealdade processual.",
-        "D": "Decretar a revelia do demandante que se recusou a pagar o montante ofertado durante os trabalhos de facilitação do acordo pré-processual."
+        "A": "Bússola interpretativa para aplicar o direito processual e integrar lacunas do sistema jurídico na busca pela pacificação.",
+        "B": "Meras recomendações morais desprovidas de qualquer força normativa ou utilidade prática no processo civil.",
+        "C": "Instrumentos para impedir que o cidadão tenha assistência jurídica de advogados e defensores públicos.",
+        "D": "Justificativa legal para a quebra de sigilo fiscal e bancário de todos os envolvidos em conciliação cível."
       },
       "gabarito": "A",
-      "article": "Art. 166, §§ 1º e 2º do CPC/2015 e Art. 30 da Lei nº 13.140/2015",
-      "legal_basis": "A confidencialidade é princípio nuclear da mediação. O mediador não pode testemunhar sobre o que ouviu e as declarações da sessão são inadmissíveis como prova.",
-      "explanation": "Sem garantia de sigilo e confidencialidade, as partes não se abrem para dialogar com franqueza. O art. 166 do CPC e o art. 30 da Lei de Mediação vedam o uso das conversas como prova judicial."
+      "article": "Art. 166 do CPC/2015 e Teoria Geral dos Princípios",
+      "legal_basis": "Os princípios reitores da solução de disputas atuam como bússola interpretativa para aplicar o direito processual e integrar lacunas do sistema.",
+      "explanation": "Texto da questão 10: atuam como bússola interpretativa e integrativa para aplicação das normas e colmatação de lacunas."
     },
     {
-      "id": "multi_10_b_autonomia_vontade_acordo",
+      "id": "multi_10_b_acesso_justica_ordem_justa",
       "subject": "Princípios da Resolução de Conflitos e Acesso à Justiça",
-      "bank": "CESPE",
-      "difficulty": "Difícil",
-      "enunciado": "(CESPE / Procuradoria) Um cidadão foi intimado para comparecer a uma audiência de conciliação designada nos termos do art. 334 do CPC. Presente à sessão acompanhado de seu advogado, o cidadão ouviu as ponderações do conciliador, mas afirmou convictamente que preferia que o caso fosse julgado pelo magistrado togado por entender que a tese contrária era improcedente. Sobre a conduta do cidadão:",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Fácil",
+      "enunciado": "Sob a ótica do modelo multiportas e da moderna teoria processual, o princípio constitucional do acesso à justiça (art. 5º, XXXV, CF) é ressignificado, deixando de ser compreendido como mero direito formal de provocar a máquina judiciária para significar:",
       "options": {
-        "A": "É plenamente legítima, pois o princípio da autonomia da vontade assegura que ninguém é obrigado a transigir ou aceitar acordo contra sua convicção.",
-        "B": "Configura ato atentatório à dignidade da justiça, devendo o juiz aplicar multa de dez por cento do valor da causa pela recusa imotivada do acordo.",
-        "C": "Autoriza o conciliador a proferir sentença condenatória sumária em desfavor do cidadão, em homenagem ao princípio da celeridade processual.",
-        "D": "Gera a confissão ficta e a presunção absoluta de veracidade dos fatos articulados pela parte adversa na exordial da petição inicial."
+        "A": "O acesso à ordem jurídica justa, incumbindo ao Estado oferecer o mecanismo mais apropriado à pacificação do caso concreto.",
+        "B": "A obrigatoriedade de obter uma sentença meritória condenatória proferida por juiz togado em todos os conflitos da sociedade.",
+        "C": "O encerramento do protocolo de petições nas varas cíveis para impor a arbitragem internacional compulsória.",
+        "D": "O acesso gratuito e ilimitado a recursos judiciais extraordinários perante os tribunais superiores sem pagamento de preparo."
       },
       "gabarito": "A",
-      "article": "Art. 166, § 4º do CPC/2015 e Art. 2º, § 2º da Lei nº 13.140/2015",
-      "legal_basis": "Ninguém será obrigado a permanecer em procedimento de mediação ou a firmar acordo (princípio da voluntariedade e autonomia da vontade).",
-      "explanation": "A presença na audiência é dever processual (salvo desinteresse de ambos), mas a celebração do acordo é estritamente VOLUNTÁRIA. Ninguém é obrigado a abrir mão de direitos ou aceitar acordos indesejados."
+      "article": "Art. 5º, XXXV da CF/88 e Doutrina de Acesso à Ordem Jurídica Justa",
+      "legal_basis": "O acesso à justiça deixa de ser compreendido como mero direito formal de provocar a máquina judiciária e passa a significar o acesso à ordem jurídica justa, incumbindo ao Estado oferecer o mecanismo mais apropriado.",
+      "explanation": "Definição literal do questionário: acesso à ordem jurídica justa mediante o método mais adequado a cada situação."
     },
     {
-      "id": "multi_10_c_imparcialidade_impedimento",
+      "id": "multi_10_c_celeridade_efetividade_cumprimento",
       "subject": "Princípios da Resolução de Conflitos e Acesso à Justiça",
-      "bank": "FCC",
+      "bank": "Revisão Prova 01",
       "difficulty": "Médio",
-      "enunciado": "(FCC / Magistratura) O princípio da imparcialidade impõe deveres estritos de conduta aos mediadores e conciliadores judiciais. De acordo com o art. 172 do CPC/2015, o conciliador e o mediador ficam impedidos, pelo prazo de um ano contado do término da última audiência em que atuaram, de:",
+      "enunciado": "Como os princípios da celeridade processual e da efetividade da prestação jurisdicional encontram pleno cumprimento na atuação consensual e arbitral segundo o questionário de revisão?",
       "options": {
-        "A": "Assessorar, representar ou patrocinar qualquer das partes envolvidas na sessão em que atuaram como terceiros facilitadores.",
-        "B": "Prestar concurso público de provas e títulos para o ingresso na carreira da Magistratura ou do Ministério Público de qualquer Estado da Federação.",
-        "C": "Exercer a advocacia privada perante qualquer vara da comarca em que se localiza o Centro Judiciário de Solução de Conflitos (CEJUSC).",
-        "D": "Participar de palestras, seminários acadêmicos e congressos jurídicos que versem sobre métodos adequados de resolução consensual de disputas."
+        "A": "A simplificação do procedimento encurta o tempo de desfecho da lide e os acordos construídos pelas próprias partes possuem índices mínimos de descumprimento, desonerando a fase executiva.",
+        "B": "Pela eliminação de todas as garantias do contraditório e da ampla defesa, proferindo-se sentenças sem ouvir os réus.",
+        "C": "Pelo aumento do número de recursos judiciais cabíveis contra qualquer manifestação dos mediadores em audiência.",
+        "D": "Pela transferência da cobrança de honorários advocatícios para os cartórios de protesto de títulos de crédito."
       },
       "gabarito": "A",
-      "article": "Art. 172 do CPC/2015",
-      "legal_basis": "O conciliador e o mediador ficam impedidos pelo prazo de 1 ano, contado do término da última audiência em que atuaram, de assessorar, representar ou patrocinar qualquer das partes.",
-      "explanation": "A quarentena de 1 ano (art. 172 do CPC) protege a confiança depositada no mediador e impede que ele se utilize das informações privilegiadas obtidas na sessão para advogar para um dos participantes."
+      "article": "Celeridade e Efetividade Jurisdicional nos Métodos Adequados",
+      "legal_basis": "A celeridade e efetividade realizam-se porque a simplificação procedimental encurta o tempo e os acordos construídos pelas próprias partes têm índice mínimo de descumprimento, desonerando a execução.",
+      "explanation": "Quando as partes constroem o acordo, o cumprimento espontâneo é altíssimo, evitando anos de execução forçada."
     },
     {
-      "id": "multi_10_d_decisao_informada",
+      "id": "multi_10_d_confidencialidade_autonomia_integracao",
       "subject": "Princípios da Resolução de Conflitos e Acesso à Justiça",
-      "bank": "VUNESP",
+      "bank": "Revisão Prova 01",
       "difficulty": "Médio",
-      "enunciado": "(VUNESP / Defensoria) Em sessão de mediação judicial que envolvia partilha de patrimônio vultoso entre conviventes de união estável, uma das partes compareceu desacompanhada de advogado ou defensor público e, sem compreender os reflexos fiscais e societários das renúncias propostas, manifestou intenção de assinar o termo de acordo. O princípio que impõe ao mediador suspender a sessão e orientar a busca de assistência jurídica adequada é:",
+      "enunciado": "Durante uma sessão de mediação judicial entre dois sócios de uma clínica médica, foram discutidas informações estratégicas sobre faturamento e proposta de aquisição de cotas. Posteriormente, não havendo acordo, um dos sócios requereu que o mediador prestasse depoimento como testemunha em juízo para relatar as propostas da outra parte. À luz do princípio da confidencialidade (art. 166 do CPC), o juiz deve:",
       "options": {
-        "A": "O princípio da decisão informada, que exige que os participantes compreendam plenamente os termos, repercussões e direitos transacionados.",
-        "B": "O princípio da publicidade restrita, que confere ao mediador poder monocrático para anular as certidões de casamento emitidas por tabeliães.",
-        "C": "O princípio da oralidade pura, que dispensa a elaboração de instrumentos escritos nos negócios jurídicos celebrados em audiências preliminares.",
-        "D": "O princípio da soberania do terceiro, que investe o conciliador na condição de representante legal vitalício de pessoas sem assistência de advogado."
+        "A": "Indeferir o depoimento do mediador, haja vista que as informações reveladas na sessão autocompositiva são estritamente confidenciais e não podem ser utilizadas como prova no processo.",
+        "B": "Determinar que o mediador junte cópia de todas as anotações sob pena de prisão em flagrante por desobediência.",
+        "C": "Anular a sessão de mediação e julgar antecipadamente a lide em favor do sócio que requereu a prova testemunhal.",
+        "D": "Autorizar a quebra de sigilo por se tratar de direito patrimonial societário com fins lucrativos privados."
       },
       "gabarito": "A",
-      "article": "Art. 166, caput do CPC/2015 e Art. 2º da Lei nº 13.140/2015",
-      "legal_basis": "A decisão informada é princípio expresso da mediação (art. 166 CPC). O acordo só é legítimo quando a parte tem pleno esclarecimento sobre seus direitos e consequências do que está pactuando.",
-      "explanation": "Autonomia da vontade requer informação qualificada. Na mediação judicial, o art. 26 da Lei 13.140/15 e o CPC exigem que as partes estejam assistidas por advogados ou defensores para garantir decisão informada."
+      "article": "Art. 166, §§ 1º e 2º do CPC/2015",
+      "legal_basis": "O princípio da confidencialidade protege as informações prestadas durante a mediação, sendo vedado ao mediador depor como testemunha ou divulgar o teor das tratativas.",
+      "explanation": "A confidencialidade é garantia estrutural dos métodos consensuais para assegurar que as partes negociem sem medo de prejuízo futuro."
     },
     {
-      "id": "multi_11_a_ondas_cappelletti",
+      "id": "multi_11_a_conferencia_pound_1976",
       "subject": "Evolução Histórica dos Métodos Consensuais",
-      "bank": "FGV",
+      "bank": "Revisão Prova 01",
       "difficulty": "Médio",
-      "enunciado": "(FGV / Magistratura) O célebre relatório internacional 'Acesso à Justiça' (Access to Justice Project), capitaneado pelos juristas Mauro Cappelletti e Bryant Garth, estruturou a evolução das reformas processuais contemporâneas em 'Três Ondas Renovatórias'. A Terceira Onda Renovatória caracteriza-se por:",
+      "enunciado": "No cenário internacional, a crise do modelo tradicional de jurisdição contenciosa culminou no surgimento do movimento ADR (Alternative Dispute Resolution) nos Estados Unidos durante a década de 1970. O divisor de águas histórico e ponto de virada desse movimento foi:",
       "options": {
-        "A": "Novo enfoque sobre o acesso à justiça, com estímulo a procedimentos flexíveis, reformas no tribunal e adoção dos métodos adequados de resolução de litígios (ADRs).",
-        "B": "Criação exclusiva de sistemas de assistência jurídica gratuita e estruturação de órgãos de defensoria pública para cidadãos pobres no sentido da lei.",
-        "C": "Representação processual adequada dos direitos difusos, coletivos e transindividuais mediante ação civil pública e mandado de segurança coletivo.",
-        "D": "Informatização mecânica dos sistemas judiciais, vedando o atendimento presencial de jurisdicionados em balcões de atendimento dos fóruns estaduais."
+        "A": "A Conferência Pound, realizada em 1976, na qual se discutiu a insatisfação popular com a administração da justiça e se lançaram as bases do modelo multiportas.",
+        "B": "A Convenção de Viena de 1969, que proibiu os tribunais estatais de julgarem controvérsias comerciais privadas.",
+        "C": "O julgamento do caso Marbury v. Madison pela Suprema Corte norte-americana no início do século XIX.",
+        "D": "A edição do Código de Hamurabi na Babilônia antiga consagrando a conciliação comercial obrigatória."
       },
       "gabarito": "A",
-      "article": "Doutrina de Acesso à Justiça (Mauro Cappelletti e Bryant Garth, 1978)",
-      "legal_basis": "1ª Onda: assistência judiciária aos hipossuficientes; 2ª Onda: tutela dos direitos coletivos/difusos; 3ª Onda: novo enfoque no acesso à justiça mediante métodos adequados e informais (ADRs).",
-      "explanation": "Cappelletti e Garth propuseram na 3ª Onda que o acesso à justiça não se satisfaz apenas abrindo as portas do Judiciário tradicional, mas oferecendo caminhos alternativos céleres e integradores (mediação, conciliação e arbitragem)."
+      "article": "Evolução Histórica das ADRs (Conferência Pound de 1976)",
+      "legal_basis": "No cenário internacional, a crise do modelo tradicional culminou no movimento ADR nos EUA nos anos 1970, cujo ponto de virada foi a Conferência Pound de 1976.",
+      "explanation": "A Conferência Pound de 1976 é mundialmente consagrada como o marco de nascimento do movimento ADR e do modelo multiportas."
     },
     {
-      "id": "multi_11_b_conferencia_pound_1976",
+      "id": "multi_11_b_constituicao_imperio_1824",
       "subject": "Evolução Histórica dos Métodos Consensuais",
-      "bank": "CESPE",
-      "difficulty": "Difícil",
-      "enunciado": "(CESPE / Procuradoria) Em abril de 1976, realizou-se nos Estados Unidos a emblemática Conferência de Pound (National Conference on the Causes of Popular Dissatisfaction with the Administration of Justice). O marco histórico dessa conferência para o surgimento do modelo multiportas foi:",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Médio",
+      "enunciado": "No Brasil, a conciliação possui raízes constitucionais profundas. Na história do direito pátrio, qual diploma fundamental já previa a tentativa de conciliação como etapa obrigatória antes de se litigar em juízo contencioso?",
       "options": {
-        "A": "A conferência de Frank Sander intitulada 'Variedades de Resolução de Disputas', em que propôs o conceito de tribunal com múltiplas portas de atendimento.",
-        "B": "A aprovação do Código Civil norte-americano, que extinguiu todas as faculdades de direito e eliminou a obrigatoriedade da atuação de advogados em litígios.",
-        "C": "A declaração formal de inconstitucionalidade de todos os métodos privados de resolução de controvérsias perante a Suprema Corte dos Estados Unidos.",
-        "D": "A proibição de celebração de acordos extrajudiciais entre sindicatos patronais e associações de trabalhadores da indústria automobilística."
+        "A": "A Constituição do Império de 1824, em seus artigos 161 e 162, estabelecendo que nenhuma ação começaria sem que se tentasse a reconciliação perante o juiz de paz.",
+        "B": "A Constituição da República de 1891, que proibiu qualquer intervenção estatal nos conflitos de particulares.",
+        "C": "O Código Civil de 1916, que vedou a conciliação prévia em virtude do princípio da imutabilidade processual.",
+        "D": "O Código de Processo Penal de 1941, que estendeu a conciliação forçada a todos os crimes dolosos contra a vida."
       },
       "gabarito": "A",
-      "article": "Conferência de Pound (Frank E. A. Sander, 1976 - 'Varieties of Dispute Processing')",
-      "legal_basis": "Frank Sander propôs a ideia revolucionária do 'Multi-door Courthouse' (Tribunal Multiportas): em vez de apenas uma porta para o juiz, o fórum deveria ter portas variadas para cada espécie de lide.",
-      "explanation": "A palestra do professor de Harvard Frank Sander na Conferência de Pound (1976) é a certidão de nascimento do Modelo Multiportas mundial, sugerindo triagem e direcionamento adequado das causas."
+      "article": "Constituição Imperial de 1824 (arts. 161 e 162)",
+      "legal_basis": "No Brasil, a conciliação estava prevista na Constituição do Império de 1824 como etapa obrigatória antes de se litigar em juízo.",
+      "explanation": "O texto da questão 11 destaca expressamente a Constituição do Império de 1824 como antecedente histórico fundamental."
     },
     {
-      "id": "multi_11_c_constituicao_1824_paz",
+      "id": "multi_11_c_cultura_demandista_reversao",
       "subject": "Evolução Histórica dos Métodos Consensuais",
-      "bank": "FCC",
+      "bank": "Revisão Prova 01",
       "difficulty": "Médio",
-      "enunciado": "(FCC / Analista) No Brasil, a preocupação com a conciliação prévia remonta ao período colonial e imperial. A Constituição Imperial de 1824, em seu artigo 161, estabeleceu um requisito histórico marcante para o ajuizamento de ações cíveis contenciosas no Império, consubstanciado na:",
+      "enunciado": "Apesar dos antecedentes históricos favoráveis, o século XX no Brasil assistiu ao enraizamento de uma cultura fortemente demandista e litigiosa. A reversão prática dessa tendência teve início a partir:",
       "options": {
-        "A": "Obrigatoriedade de tentativa prévia de conciliação perante o Juiz de Paz, sem a qual não se podia começar processo contencioso algum.",
-        "B": "Proibição expressa de qualquer modalidade de acordo entre cidadãos livres e pessoas escravizadas no território do Império do Brasil.",
-        "C": "Submissão compulsória de todas as controvérsias de direito privado à decisão final e irrecorrível do Poder Moderador exercido pelo Imperador.",
-        "D": "Exclusão dos métodos consensuais de solução de controvérsias, adotando-se o modelo de duelo judiciário medieval germânico."
+        "A": "Da década de 1990, com as leis de Juizados Especiais (Lei nº 9.099/1995) e de Arbitragem (Lei nº 9.307/1996), culminando na unificação principiológica advinda da Resolução nº 125/2010 do CNJ e do CPC/2015.",
+        "B": "Da proclamação da República, que fechou os tribunais estaduais de primeira instância até a década de 1970.",
+        "C": "Da edição da Lei de Segurança Nacional durante o regime militar, que proibiu os juízes de proferirem sentenças cíveis.",
+        "D": "Da criação do Supremo Tribunal Federal pelo Tratado de Tordesilhas no século XV."
       },
       "gabarito": "A",
-      "article": "Art. 161 da Constituição Imperial de 1824 e Doutrina Histórica",
-      "legal_basis": "Art. 161 da CF/1824: 'Sem se fazer constar que se tem intentado o meio da reconciliação, não se começará Processo algum.' A conciliação era etapa obrigatória com os Juízes de Paz.",
-      "explanation": "O Brasil Imperial já valorizava a conciliação: o art. 161 da Carta de 1824 proibia o início de ação judicial sem prova de prévia tentativa de reconciliação perante o Juiz de Paz eleito localmente."
+      "article": "Histórico Brasileiro: Anos 1990 e Virada Paradigmática",
+      "legal_basis": "A reversão da cultura demandista iniciou-se na década de 1990 com as leis de Juizados e Arbitragem, culminando na Resolução 125/2010 do CNJ e no CPC/2015.",
+      "explanation": "A virada legislativa consolidou-se na década de 1990 e alcançou maturidade com o CNJ e o CPC/2015."
     },
     {
-      "id": "multi_11_d_difusao_global_adrs",
+      "id": "multi_11_d_crise_monopolio_sobrecarga",
       "subject": "Evolução Histórica dos Métodos Consensuais",
-      "bank": "VUNESP",
-      "difficulty": "Difícil",
-      "enunciado": "(VUNESP / TJ) O movimento mundial em torno das ADRs (Alternative Dispute Resolutions) difundiu-se intensamente a partir das décadas de 1980 e 1990 nos sistemas de Common Law e Civil Law. Sob o ponto de vista semântico e doutrinário contemporâneo, a substituição da palavra 'Alternativa' por 'Adequada' (MASCs) reflete:",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Fácil",
+      "enunciado": "A principal razão histórica que motivou a eclosão do movimento pelas vias consensuais e alternativas de resolução de litígios no mundo e no Brasil foi:",
       "options": {
-        "A": "A superação da ideia de que tais métodos seriam secundários ou inferiores à via judicial, reconhecendo que cada litígio possui sua via metodológica mais apropriada.",
-        "B": "A obrigatoriedade de revogação de todos os Códigos de Processo Civil dos países ocidentais que integram a Organização dos Estados Americanos.",
-        "C": "A criação de um monopólio universal privativo da Organização das Nações Unidas para auditar contratos comerciais internacionais.",
-        "D": "A proibição de juízes de direito exercerem a docência universitária quando vinculados a centros de conciliação e mediação comunitária."
+        "A": "A sobrecarga generalizada da jurisdição contenciosa após a substituição histórica da autotutela pelo monopólio judiciário dos Estados modernos.",
+        "B": "A extinção definitiva das faculdades de direito e a carência de magistrados em escala planetária.",
+        "C": "O desinteresse da sociedade civil pelo direito à ampla defesa e ao contraditório nos processos formais.",
+        "D": "A proibição internacional do comércio eletrônico e das transações bancárias virtuais."
       },
       "gabarito": "A",
-      "article": "Teoria Geral da Solução Adequada de Conflitos (Kazuo Watanabe)",
-      "legal_basis": "A doutrina prefere 'Métodos Adequados' a 'Métodos Alternativos', pois a autocomposição não é um 'plano B' inferior à sentença, mas sim a porta natural e sob medida para a controvérsia.",
-      "explanation": "A expressão 'Alternative' dava ideia de segunda categoria. A moderna processualística adota 'Appropriate Dispute Resolution' (Solução Adequada): a conciliação/mediação é a via principal e mais nobre para litígios compatíveis."
+      "article": "Crise da Jurisdição Estatal e Movimento ADR",
+      "legal_basis": "Após a substituição histórica da autotutela pelo monopólio judiciário promovido pelos Estados modernos, a jurisdição contenciosa passou a apresentar sobrecarga generalizada.",
+      "explanation": "A sobrecarga generalizada do Judiciário e a morosidade da jurisdição contenciosa deflagraram a busca por vias adequadas."
     },
     {
-      "id": "multi_12_a_conceito_multiportas",
+      "id": "multi_12_a_frank_sander_origem",
       "subject": "Objetivos do Modelo Multiportas",
-      "bank": "FGV",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Fácil",
+      "enunciado": "O modelo multiportas (Multi-door Courthouse System) foi idealizado por qual jurista e em qual contexto acadêmico internacional?",
+      "options": {
+        "A": "Por Frank Sander, professor da Universidade de Harvard, durante a Conferência Pound de 1976.",
+        "B": "Por Francesco Carnelutti, na Universidade de Roma, durante a redação do Código de Processo Civil Italiano de 1940.",
+        "C": "Por Hans Kelsen, no Tribunal Constitucional da Áustria, em 1920.",
+        "D": "Por Pontes de Miranda, no Supremo Tribunal Federal do Brasil, na década de 1950."
+      },
+      "gabarito": "A",
+      "article": "Histórico do Multi-door Courthouse (Frank Sander / 1976)",
+      "legal_basis": "Idealizado por Frank Sander na Conferência Pound de 1976, o modelo multiportas visa estruturar o fórum como um centro de resolução com múltiplas portas de encaminhamento.",
+      "explanation": "Frank Sander na Conferência Pound de 1976 é a referência nominal e histórica obrigatória do Modelo Multiportas."
+    },
+    {
+      "id": "multi_12_b_conceito_centro_resolucao",
+      "subject": "Objetivos do Modelo Multiportas",
+      "bank": "Revisão Prova 01",
       "difficulty": "Médio",
-      "enunciado": "(FGV / Magistratura) O Modelo Multiportas de Justiça (Multi-door Courthouse) visa estruturar o Poder Judiciário como um centro inteligente de triagem e pacificação. O objetivo primordial desse modelo no direito brasileiro contemporâneo é:",
+      "enunciado": "A metáfora do 'Tribunal Multiportas' concebida por Frank Sander propõe uma alteração estrutural no papel do Poder Judiciário. Essa proposta consiste em estruturar o fórum não como:",
       "options": {
-        "A": "Oferecer a porta mais adequada para o tratamento e resolução de cada conflito específico, promovendo pacificação social com efetividade e celeridade.",
-        "B": "Aumentar a arrecadação de custas forenses dos tribunais por meio da aplicação de taxas de admissibilidade sobre petições iniciais cíveis.",
-        "C": "Retirar das partes o direito de assistência jurídica por advogado, tornando obrigatória a representação por peritos contábeis credenciados no CNJ.",
-        "D": "Impedir que demandas de direito do consumidor tenham acesso a juízes togados, delegando o julgamento irrecorrível às empresas fornecedoras."
+        "A": "Um tribunal de porta única para o processo judicial formal, mas como um centro de resolução com múltiplas alternativas de encaminhamento de controvérsias.",
+        "B": "Um local de atendimento médico de emergência para as vítimas de acidentes automobilísticos urbanos.",
+        "C": "Uma repartição arrecadadora de tributos fiscais para custeio do funcionalismo público federal.",
+        "D": "Um centro de triagem de processos com envio compulsório de todos os cidadãos à penitenciária pública."
       },
       "gabarito": "A",
-      "article": "Art. 3º do CPC/2015 e Resolução CNJ nº 125/2010",
-      "legal_basis": "O modelo multiportas visa conferir a 'porta mais adequada' (Appropriate Dispute Resolution) a cada conflito, seja conciliação, mediação, arbitragem, julgamento contencioso ou justiça restaurativa.",
-      "explanation": "O Judiciário multiportas deixa de ser uma corte de sentença padronizada e passa a atuar como um centro de resolução ampla de controvérsias, encaminhando a demanda para a ferramenta metodologicamente correta."
+      "article": "Conceito de Tribunal Multiportas (Frank Sander)",
+      "legal_basis": "O modelo visa estruturar o fórum não como um tribunal de porta única para o processo judicial formal, mas como um centro de resolução com múltiplas alternativas de encaminhamento.",
+      "explanation": "Supera-se o tribunal de porta única (sentença formal) para oferecer múltiplas portas de tratamento qualificado."
     },
     {
-      "id": "multi_12_b_desafogamento_etico",
+      "id": "multi_12_c_quatro_objetivos_basilares",
       "subject": "Objetivos do Modelo Multiportas",
-      "bank": "CESPE",
-      "difficulty": "Difícil",
-      "enunciado": "(CESPE / Defensoria) Muito se debate se o Modelo Multiportas teria como finalidade precípua o mero 'desafogamento estatístico' dos tribunais. A respeito da crítica doutrinária sobre a instrumentalização quantitativa da mediação, assinale a opção correta:",
-      "options": {
-        "A": "O modelo multiportas visa à pacificação justa e duradoura das relações; tratá-lo como mera esteira de descarte de processos compromete sua legitimidade ética.",
-        "B": "O único objetivo do modelo multiportas validado pela jurisprudência do STJ é a extinção numérica de processos para o cumprimento de metas do CNJ a qualquer custo.",
-        "C": "O mediador judicial tem permissão expressa para coagir os envolvidos a renunciarem a alimentos indispensáveis para aumentar os índices de acordos da vara cível.",
-        "D": "A celebração de acordos que violem direitos indisponíveis de vulneráveis é expressamente recomendada pelo CPC/2015 caso reduza o acervo do cartório judicial."
-      },
-      "gabarito": "A",
-      "article": "Código de Ética de Mediadores e Conciliadores (Resolução CNJ nº 125/2010)",
-      "legal_basis": "A política de tratamento adequado dos conflitos não pode ser degradada em mero mecanismo de cumprimento de metas estatísticas que coaja as partes a aceitarem acordos precários.",
-      "explanation": "A doutrina processual e o CNJ enfatizam: o objetivo do modelo multiportas é a qualidade da justiça e a pacificação real das pessoas, e não uma 'esteira rápida' para livrar juízes do excesso de processos."
-    },
-    {
-      "id": "multi_12_c_protagonismo_cidadao",
-      "subject": "Objetivos do Modelo Multiportas",
-      "bank": "FCC",
+      "bank": "Revisão Prova 01",
       "difficulty": "Médio",
-      "enunciado": "(FCC / Procurador) Sob a ótica do empoderamento e da cidadania participativa, o modelo multiportas promove uma profunda revolução cultural ao:",
+      "enunciado": "De acordo com o questionário de revisão para a prova, os objetivos basilares do modelo multiportas consistem em:",
       "options": {
-        "A": "Devolver aos cidadãos a capacidade de gerir e construir as soluções de suas próprias vidas e conflitos, em vez de dependerem passivamente do veredito estatal.",
-        "B": "Instituir tribunais de exceção formados por cidadãos eleitos em bairros para aplicar penalidades patrimoniais sem direito a recurso judicial.",
-        "C": "Exigir que todos os munícipes atuem compulsoriamente como conciliadores judiciais em regime de trabalho forçado sem remuneração durante as férias.",
-        "D": "Proibir que a Defensoria Pública atue na defesa de vulneráveis em audiências de autocomposição realizadas nos Centros Judiciários de Cidadania."
+        "A": "1) Garantir adequação procedimental; 2) Restaurar o protagonismo dos cidadãos; 3) Desafogar a sobrecarga do Judiciário; 4) Assegurar a pacificação material do conflito, superando a mera extinção formal.",
+        "B": "1) Privatizar os fóruns estaduais; 2) Extinguir os honorários advocatícios; 3) Aumentar as custas judiciais; 4) Suprimir o contraditório.",
+        "C": "1) Proibir a atuação de juízes togados; 2) Tornar a mediação compulsória para crimes hediondos; 3) Revogar o CPC/2015; 4) Incentivar a autotutela armada.",
+        "D": "1) Manter o foco exclusivo na sentença estatal; 2) Retirar das partes o poder decisório; 3) Ampliar os recursos processuais; 4) Congelar pautas de audiência."
       },
       "gabarito": "A",
-      "article": "Doutrina de Acesso à Ordem Jurídica Justa e Teoria do Empoderamento",
-      "legal_basis": "A autocomposição resgata o protagonismo democrático das partes (empowerment), tornando-as agentes responsáveis pela construção de seus acordos e pactos de convivência.",
-      "explanation": "Na cultura contenciosa paternalista, o cidadão transfere seu conflito ao juiz e espera passivamente. O modelo multiportas empodera as pessoas a dialogarem e assumirem a responsabilidade pelo seu destino."
+      "article": "Objetivos Centrais do Modelo Multiportas",
+      "legal_basis": "Objetivos: garantir adequação procedimental, restaurar o protagonismo dos cidadãos, desafogar a sobrecarga de demandas do Judiciário e assegurar pacificação material.",
+      "explanation": "Os quatro objetivos essenciais explicados no texto da questão 12 do questionário."
     },
     {
-      "id": "multi_12_d_justica_restaurativa",
+      "id": "multi_12_d_adequacao_protagonismo",
       "subject": "Objetivos do Modelo Multiportas",
-      "bank": "VUNESP",
-      "difficulty": "Difícil",
-      "enunciado": "(VUNESP / Magistratura) Uma das portas contemporâneas que integram o Modelo Multiportas, em especial na Justiça da Infância e Juventude e em Juizados Criminais Especiais, é a Justiça Restaurativa. O postulado central da Justiça Restaurativa consiste em:",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Médio",
+      "enunciado": "No modelo multiportas, a 'adequação procedimental' significa que o sistema de justiça deve:",
       "options": {
-        "A": "Focar na reparação dos danos e na restauração dos laços rompidos pelo delito, envolvendo vítima, ofensor e comunidade no processo de responsabilização.",
-        "B": "Aumentar em dobro as penas privativas de liberdade em presídios de segurança máxima para todos os atos infracionais cometidos por adolescentes.",
-        "C": "Substituir a legislação penal codificada por ordálios e julgamentos religiosos sumários conduzidos por lideranças de associações civis de classe.",
-        "D": "Impedir a vítima de prestar depoimento perante o delegado de polícia, mantendo o autor do fato em regime de sigilo e anonimato absoluto perante a sociedade."
+        "A": "Destinar cada litígio concreto ao meio condizente com a sua natureza e com o tipo de relação existente entre as partes (ex: mediação para famílias e arbitragem para complexidade empresarial).",
+        "B": "Uniformizar todos os procedimentos num rito único e inflexível, aplicando rigorosamente as mesmas regras probatórias para todas as causas.",
+        "C": "Obrigar os litigantes a desistirem de suas ações patrimoniais sob pena de litigância de má-fé.",
+        "D": "Encaminhar todos os processos cíveis diretamente ao Supremo Tribunal Federal em grau de recurso de ofício."
       },
       "gabarito": "A",
-      "article": "Resolução CNJ nº 225/2016 (Política Nacional de Justiça Restaurativa)",
-      "legal_basis": "A Justiça Restaurativa orienta-se pela restauração das relações, responsabilização ativa do ofensor, atendimento às necessidades da vítima e reintegração comunitária.",
-      "explanation": "A Justiça Restaurativa é uma porta essencial do modelo multiportas no âmbito criminal e infracional, focando em círculos restaurativos, diálogo honesto, reparação de danos e prevenção de reincidência."
+      "article": "Adequação Procedimental no Sistema Multiportas",
+      "legal_basis": "Adequação procedimental consiste em destinar cada litígio ao meio condizente com a sua natureza e com a relação das partes.",
+      "explanation": "A premissa da adequação (Fitting the Forum to the Fuss) é conectar a disputa à porta metodológica correta."
     },
     {
-      "id": "multi_13_a_trajetoria_legislativa",
+      "id": "multi_13_a_origem_rs_pequenas_causas",
       "subject": "Evolução Histórica e Legislativa dos Juizados Especiais",
-      "bank": "FGV",
+      "bank": "Revisão Prova 01",
       "difficulty": "Médio",
-      "enunciado": "(FGV / OAB) A criação e consolidação dos Juizados Especiais no Brasil resultou de expressiva evolução legislativa e constitucional. O encadeamento histórico correto dos diplomas legais que deram origem ao microssistema atual é:",
+      "enunciado": "O surgimento prático dos Juizados Especiais no Brasil remonta às experiências pioneiras ocorridas no início da década de 1980. Qual foi o marco empírico originário dessa trajetória e sua inspiração internacional?",
       "options": {
-        "A": "Lei nº 7.244/1984 (Pequenas Causas), previsão constitucional originária no Art. 98, I da CF/1988 e promulgação da Lei nº 9.099/1995 (Juizados Especiais Cíveis e Criminais).",
-        "B": "Código de Processo Civil de 1973, Código Civil de 1916 e revogação das normas de conciliação pela Lei nº 13.105/2015.",
-        "C": "Emenda Constitucional nº 45/2004, Lei de Falências de 2005 e criação dos juizados privativos de execução fiscal pela Lei nº 6.830/1980.",
-        "D": "Decreto-Lei nº 4.657/1942 (LINDB), revogação dos Juizados de Pequenas Causas pelo CPC de 2015 e unificação das varas cíveis estaduais."
+        "A": "Os Juizados Informais de Conciliação criados no Rio Grande do Sul no início dos anos 1980, inspirados nos tribunais de pequenas causas (Small Claims Courts) norte-americanos, que culminaram na Lei nº 7.244/1984.",
+        "B": "A criação dos tribunais feudais ingleses no século XII durante o reinado do Rei João Sem Terra.",
+        "C": "A Lei das Doze Tábuas em Roma, que instituiu a conciliação cartorária nos litígios entre patrícios e plebeus.",
+        "D": "O Código Civil Francês de Napoleão Bonaparte de 1804, que aboliu os tribunais de primeira instância na Europa."
       },
       "gabarito": "A",
-      "article": "Lei nº 7.244/1984, Art. 98, I da CF/88 e Lei nº 9.099/1995",
-      "legal_basis": "Evolução: 1) Lei 7.244/84 (Juizados de Pequenas Causas); 2) CF/88 (art. 98, I prevê juizados providos por juízes togados ou togados e leigos); 3) Lei 9.099/95 (Juizados Especiais).",
-      "explanation": "A trajetória é clássica em provas: a pioneira Lei 7.244/84 (Pequenas Causas) inspirou o constituinte de 1988 (art. 98, I), que determinou a criação dos Juizados Especiais Cíveis e Criminais, materializados na Lei 9.099/95."
+      "article": "Juizados Especiais - Origem no RS e Lei nº 7.244/1984",
+      "legal_basis": "O surgimento remonta aos Juizados Informais de Conciliação no RS no início dos anos 80, inspirados nas pequenas causas dos EUA, culminando na Lei 7.244/1984.",
+      "explanation": "A experiência empírica dos Juizados Informais de Conciliação do Rio Grande do Sul gerou a Lei 7.244/84 e a inclusão no art. 98, I da CF/88."
     },
     {
-      "id": "multi_13_b_principios_art2",
+      "id": "multi_13_b_principios_norteadores_lei9099",
       "subject": "Evolução Histórica e Legislativa dos Juizados Especiais",
-      "bank": "CESPE",
-      "difficulty": "Médio",
-      "enunciado": "(CESPE / Analista Judiciário) O artigo 2º da Lei nº 9.099/1995 elenca os princípios norteadores do processo no âmbito dos Juizados Especiais Cíveis. Constituem vetores principiológicos expressos desse dispositivo legal:",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Fácil",
+      "enunciado": "A concretização definitiva dos Juizados Especiais Cíveis e Criminais em âmbito estadual ocorreu com a Lei nº 9.099/1995. Quais são os princípios expressos no artigo 2º desse diploma que orientam todo o procedimento?",
       "options": {
-        "A": "Oralidade, simplicidade, informalidade, economia processual e celeridade, buscando, sempre que possível, a conciliação ou a transação.",
-        "B": "Taxatividade recursal estrita, solenidade instrumental obrigatória, escrituração pública de todos os atos e moratória probatória pericial.",
-        "C": "Publicidade restrita inquisitorial, precedência da prisão civil sobre a dívida pecuniária e obrigatoriedade de duas perícias grafotécnicas.",
-        "D": "Monopólio da prova testemunhal pública, hierarquia tarifada de documentos mercantis e impossibilidade de transação antes do trânsito em julgado."
+        "A": "Simplicidade, oralidade, informalidade, economia processual e celeridade.",
+        "B": "Rigor formal, solenidade cartorária, sigilo obrigatório, onerosidade e presunção de culpa.",
+        "C": "Taxatividade recursal, colegialidade plena, litisconsórcio passivo universal e lentidão moderada.",
+        "D": "Autotutela punitiva, segredo de justiça absoluto, preclusão formal imediata e mediação internacional."
       },
       "gabarito": "A",
       "article": "Art. 2º da Lei nº 9.099/1995",
-      "legal_basis": "Art. 2º O processo orientar-se-á pelos critérios da oralidade, simplicidade, informalidade, economia processual e celeridade, buscando, sempre que possível, a conciliação ou a transação.",
-      "explanation": "Decorar e compreender os 5 princípios do art. 2º da Lei 9.099/95 é mandatório: Oralidade, Simplicidade, Informalidade, Economia Processual e Celeridade, com prioridade absoluta à conciliação/transação."
+      "legal_basis": "A Lei nº 9.099/1995 é orientada pelos princípios da simplicidade, oralidade, informalidade, economia processual e celeridade.",
+      "explanation": "O quinteto principiológico básico do art. 2º da Lei 9.099/95: oralidade, simplicidade, informalidade, economia processual e celeridade."
     },
     {
-      "id": "multi_13_c_vedacoes_especiais",
+      "id": "multi_13_c_juizes_togados_leigos_constituicao",
       "subject": "Evolução Histórica e Legislativa dos Juizados Especiais",
-      "bank": "FCC",
-      "difficulty": "Difícil",
-      "enunciado": "(FCC / Magistratura) O procedimento dos Juizados Especiais Cíveis (Lei nº 9.099/1995) estabelece peculiaridades processuais estritas com o objetivo de assegurar a celeridade e a menor complexidade das causas. No âmbito da Lei nº 9.099/1995, NÃO é juridicamente admitida:",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Médio",
+      "enunciado": "O artigo 98, inciso I, da Constituição Federal de 1988 inovou na organização judiciária brasileira ao dispor que os Juizados Especiais serão providos por:",
       "options": {
-        "A": "A citação por edital de réu não localizado, bem como qualquer modalidade de intervenção de terceiros ou assistência (arts. 10 e 18, § 2º).",
-        "B": "A apresentação de pedido contraposto formulado pelo réu em face do autor na própria contestação escrita ou oral.",
-        "C": "A realização de audiência de instrução e julgamento conduzida por juiz leigo sob a supervisão do juiz togado competente.",
-        "D": "A propositura de ação de cobrança de condomínio residencial por valor equivalente a vinte salários mínimos vigentes no país."
+        "A": "Juízes togados, ou togados e leigos, competentes para a conciliação, o julgamento e a execução de causas cíveis de menor complexidade e infrações penais de menor potencial ofensivo.",
+        "B": "Apenas juízes leigos voluntários, sendo terminantemente proibida a intervenção de magistrados togados de carreira.",
+        "C": "Oficiais do exército nacional investidos de poder de polícia civil judiciária.",
+        "D": "Árbitros privados contratados pelas partes para atuar exclusivamente mediante pagamento antecipado de custas."
       },
       "gabarito": "A",
-      "article": "Art. 10 e Art. 18, § 2º da Lei nº 9.099/1995",
-      "legal_basis": "Art. 10: Não se admitirá, no processo, qualquer forma de intervenção de terceiro, nem de assistência. Art. 18, § 2º: Não se fará citação por edital (se o réu não for encontrado, o processo extingue-se sem mérito).",
-      "explanation": "Duas pegadinhas clássicas dos Juizados Cíveis: 1) É proibida qualquer intervenção de terceiros e assistência (art. 10); 2) É expressamente vedada a citação por edital (art. 18, § 2º) — não achou o réu, extingue sem mérito."
+      "article": "Art. 98, I da Constituição Federal de 1988",
+      "legal_basis": "A CF/88 determinou a instituição de juizados providos por juízes togados ou togados e leigos para conciliação e julgamento de causas cíveis de menor complexidade e infrações de menor potencial ofensivo.",
+      "explanation": "Previsão expressa do art. 98, I da Carta Maior, combinando juízes togados e juízes leigos/conciliadores."
     },
     {
-      "id": "multi_13_d_fase_conciliatoria_obrigatoria",
+      "id": "multi_13_d_consolidacao_federal_fazenda",
       "subject": "Evolução Histórica e Legislativa dos Juizados Especiais",
-      "bank": "VUNESP",
+      "bank": "Revisão Prova 01",
       "difficulty": "Médio",
-      "enunciado": "(VUNESP / TJ) Instalada a sessão nos Juizados Especiais Cíveis (Lei nº 9.099/1995), caso as partes não cheguem a um acordo perante o conciliador ou juiz leigo, o procedimento legalmente fixado para a sequência dos atos processuais é:",
+      "enunciado": "Após a consolidação dos Juizados Especiais estaduais pela Lei nº 9.099/1995, o microssistema dos juizados foi ampliado no Brasil para abranger demandas contra entes públicos federais, estaduais e municipais por meio da edição de quais diplomas legais?",
       "options": {
-        "A": "Passar de imediato à audiência de instrução e julgamento para colheita de depoimentos e sentença, caso a prova já esteja madura e o réu conteste o feito.",
-        "B": "Remeter compulsoriamente os autos para o tribunal do júri popular para que sete jurados decidam sobre o dever de indenizar do devedor civil.",
-        "C": "Declarar a caducidade definitiva do direito do autor e determinar o arquivamento sem possibilidade de recurso inominado perante a turma recursal.",
-        "D": "Suspender o processo por prazo improrrogável de dois anos até que as partes comprovem tratamento psicológico familiar obrigatório."
+        "A": "Lei nº 10.259/2001 (Juizados Especiais Federais) e Lei nº 12.153/2009 (Juizados Especiais da Fazenda Pública).",
+        "B": "Código Comercial de 1850 e Lei de Falências de 1945.",
+        "C": "Lei do Mandado de Segurança de 2009 e Consolidação das Leis do Trabalho de 1943.",
+        "D": "Estatuto do Desarmamento e Lei de Responsabilidade Fiscal de 2000."
       },
       "gabarito": "A",
-      "article": "Arts. 27 a 30 da Lei nº 9.099/1995",
-      "legal_basis": "Não obtida a conciliação, será oferecida a contestação e instaurada imediatamente a instrução e julgamento, se não for necessária a produção de novas provas, sob os auspícios da concentração dos atos.",
-      "explanation": "Nos Juizados Especiais vigora o princípio da concentração: frustrada a conciliação obrigatória, o feito prossegue imediatamente com a contestação, colheita oral e decisão de mérito (arts. 27 a 30)."
+      "article": "Leis nº 10.259/2001 e nº 12.153/2009",
+      "legal_basis": "Posteriormente, o microssistema foi consolidado com a edição da Lei nº 10.259/2001 para a Justiça Federal e da Lei nº 12.153/2009 para os Juizados da Fazenda Pública.",
+      "explanation": "O microssistema dos Juizados Especiais se compõe da Lei 9.099/95, Lei 10.259/01 (Federal) e Lei 12.153/09 (Fazenda Pública)."
     },
     {
-      "id": "multi_14_a_stf_constitucionalidade",
+      "id": "multi_14_a_inoperancia_cc1916_cpc1973",
       "subject": "Evolução Histórica e Legislativa da Arbitragem no Brasil",
-      "bank": "FGV",
+      "bank": "Revisão Prova 01",
       "difficulty": "Médio",
-      "enunciado": "(FGV / Magistratura) A consolidação definitiva da arbitragem no Brasil ocorreu após histórico julgamento proferido pelo Supremo Tribunal Federal (STF) em 2001 no Agravo Regimental na Sentença Estrangeira nº 5.206/Espanha. A Suprema Corte reconheceu a plena constitucionalidade da Lei nº 9.307/1996 sob o fundamento de que:",
+      "enunciado": "A arbitragem sempre teve raízes no direito brasileiro, constando das Ordenações Filipinas e da Constituição Imperial de 1824. Contudo, sob a vigência do Código Civil de 1916 e do Código de Processo Civil de 1973, o instituto revelou-se praticamente inoperante na prática brasileira. Quais eram os dois entraves técnicos que causavam essa inoperância?",
       "options": {
-        "A": "A submissão voluntária de direitos patrimoniais disponíveis à arbitragem constitui renúncia legítima ao processo estatal, compatível com a CF/1988.",
-        "B": "A arbitragem é inconstitucional por suprimir o monopólio judicial soberano previsto no art. 5º, inciso XXXV da Constituição da República Federativa do Brasil.",
-        "C": "O juízo arbitral só tem validade se todos os árbitros forem magistrados estaduais de carreira devidamente cedidos pelo Tribunal de Justiça local.",
-        "D": "A sentença proferida por tribunal arbitral depende de homologação prévia por deliberação do Congresso Nacional para possuir força executiva judicial."
+        "A": "A decisão do árbitro dependia de posterior homologação judicial para produzir efeitos (laudo homologando) e a cláusula compromissória era considerada mero pré-contrato sem força executiva imediata.",
+        "B": "A arbitragem exigia autorização prévia por referendo popular e as custas eram repassadas integralmente ao Ministério Público.",
+        "C": "A lei impunha pena de prisão civil imediata a qualquer cidadão que contratasse câmara arbitral privada.",
+        "D": "O tribunal arbitral só podia julgar controvérsias criminais e desapropriações de terras indígenas."
       },
       "gabarito": "A",
-      "article": "STF (AgRg na SE nº 5.206/Espanha, Rel. Min. Sepúlveda Pertence) e Lei nº 9.307/1996",
-      "legal_basis": "O STF fixou que a convenção de arbitragem (especialmente a execução específica da cláusula compromissória) não ofende a inafastabilidade da jurisdição quando envolve direitos patrimoniais disponíveis de sujeitos capazes.",
-      "explanation": "O marco histórico da arbitragem no Brasil foi o julgamento do STF em 2001 (SE 5.206). O plenário decidiu que pactuar arbitragem é manifestação livre da autonomia privada e renúncia válida à jurisdição estatal."
+      "article": "Histórico da Arbitragem no Brasil (CC/1916 e CPC/1973)",
+      "legal_basis": "Sob o CC/16 e CPC/73, a arbitragem era inoperante porque a decisão do árbitro dependia de posterior homologação judicial e a cláusula compromissória era tida como mero pré-contrato sem força executiva direta.",
+      "explanation": "A dependência de homologação e a fragilidade da cláusula esvaziavam a arbitragem antes da Lei 9.307/96."
     },
     {
-      "id": "multi_14_b_lei13129_adm_publica",
+      "id": "multi_14_b_lei9307_eficacia_efeito_negativo",
       "subject": "Evolução Histórica e Legislativa da Arbitragem no Brasil",
-      "bank": "CESPE",
+      "bank": "Revisão Prova 01",
+      "difficulty": "Médio",
+      "enunciado": "Esse cenário de inoperância da arbitragem foi superado de forma definitiva com a promulgação da Lei nº 9.307/1996 (Lei de Arbitragem). Esse diploma revolucionou a matéria ao:",
+      "options": {
+        "A": "Conferir eficácia executiva direta à sentença arbitral (dispensando homologação judicial) e dotar a convenção arbitral de efeito vinculante negativo (afastando a jurisdição estatal).",
+        "B": "Subordinar todas as sentenças arbitrais a recurso ordinário automático perante os juizados especiais cíveis estaduais.",
+        "C": "Extinguir as câmaras arbitrais privadas no país, transferindo sua estrutura para as delegacias de polícia civil.",
+        "D": "Proibir que empresas multinacionais utilizem cláusulas compromissórias em contratos celebrados no território brasileiro."
+      },
+      "gabarito": "A",
+      "article": "Lei nº 9.307/1996 (arts. 18, 31 e 485, VII do CPC)",
+      "legal_basis": "A Lei nº 9.307/1996 superou os entraves ao conferir eficácia executiva direta à sentença arbitral e dotar a convenção arbitral de efeito vinculante negativo.",
+      "explanation": "A sentença arbitral virou título executivo judicial direto e a convenção impede o julgamento pelo juiz togado."
+    },
+    {
+      "id": "multi_14_c_stf_sec5206_constitucionalidade",
+      "subject": "Evolução Histórica e Legislativa da Arbitragem no Brasil",
+      "bank": "Revisão Prova 01",
       "difficulty": "Difícil",
-      "enunciado": "(CESPE / Procuradoria) A Lei nº 13.129/2015 promoveu importante atualização na Lei de Arbitragem (Lei nº 9.307/1996). Entre as alterações substanciais mais relevantes introduzidas por essa reforma legislativa, assinale a opção correta:",
+      "enunciado": "A segurança jurídica definitiva da arbitragem no Brasil foi fixada pelo Supremo Tribunal Federal em paradigmático julgamento concluído no ano de 2001. Trata-se do precedente firmado na:",
       "options": {
-        "A": "Autorização expressa para a administração pública direta e indireta utilizar a arbitragem para dirimir conflitos relativos a direitos patrimoniais disponíveis.",
-        "B": "Proibição da escolha de árbitros que não possuam inscrição ativa na Ordem dos Advogados do Brasil há mais de quinze anos ininterruptos.",
-        "C": "Obrigatoriedade de segredo de justiça absoluto em todos os procedimentos arbitrais em que figure qualquer ente da Administração Pública.",
-        "D": "Revogação da possibilidade de concessão de tutelas de urgência antes da instituição do tribunal arbitral competente perante o Judiciário."
+        "A": "Sentença Estrangeira Contestada (SEC) nº 5.206, na qual o STF declarou a plena constitucionalidade da Lei nº 9.307/1996 e a legitimidade da renúncia convencional à jurisdição estatal.",
+        "B": "Ação Direta de Inconstitucionalidade que anulou a Lei nº 9.099/1995 por violação ao princípio do devido processo legal formal.",
+        "C": "Arguição de Descumprimento de Preceito Fundamental que proibiu a celebração de acordos consensuais em matéria cível.",
+        "D": "Súmula Vinculante que impôs a revisão obrigatória de todas as sentenças arbitrais pelo Ministério Público da União."
       },
       "gabarito": "A",
-      "article": "Art. 1º, § 1º da Lei nº 9.307/1996 (com redação dada pela Lei nº 13.129/2015)",
-      "legal_basis": "A administração pública direta e indireta poderá utilizar-se da arbitragem para dirimir conflitos relativos a direitos patrimoniais disponíveis, sendo a arbitragem pública obrigatória (art. 2º, § 3º).",
-      "explanation": "A reforma da Lei 13.129/15 pacificou a legalidade da arbitragem na Administração Pública (concessões, PPPs, contratos de energia). Mas com um detalhe: com o Poder Público a arbitragem deve ser pública (sem sigilo)."
+      "article": "STF - SEC nº 5.206/Espanha (Pleno, 2001)",
+      "legal_basis": "A segurança jurídica definitiva foi fixada em 2001 pelo STF na SEC nº 5.206, que declarou a plena constitucionalidade da lei.",
+      "explanation": "O STF, no julgamento da SEC 5.206, pacificou que a cláusula compromissória e a sentença arbitral sem homologação judicial respeitam o art. 5º, XXXV da CF/88."
     },
     {
-      "id": "multi_14_c_efeito_negativo_cpc",
+      "id": "multi_14_d_lei13129_administracao_publica",
       "subject": "Evolução Histórica e Legislativa da Arbitragem no Brasil",
-      "bank": "FCC",
+      "bank": "Revisão Prova 01",
       "difficulty": "Médio",
-      "enunciado": "(FCC / Magistratura) Duas sociedades empresárias incluíram cláusula compromissória cheia em contrato de arrendamento mercantil. Havendo inadimplemento, a locadora ajuizou ação de cobrança perante a 2ª Vara Cível da comarca. Em contestação, a ré arguiu oportunamente a existência de convenção de arbitragem. O juiz togado deve:",
+      "enunciado": "Mais recentemente, a Lei nº 13.129/2015 modernizou o diploma arbitral brasileiro (Lei nº 9.307/1996). Entre as principais inovações expressamente destacadas na revisão da matéria, inclui-se:",
       "options": {
-        "A": "Extinguir o processo sem resolução de mérito, em virtude da eficácia vinculante negativa da convenção de arbitragem (Art. 485, VII, do CPC).",
-        "B": "Prosseguir com o julgamento da causa na Justiça comum, considerando que a cláusula arbitral é mera recomendação facultativa destituída de eficácia.",
-        "C": "Determinar a prisão do representante da ré por insurgência infundada contra o princípio republicano da inafastabilidade da jurisdição estatal.",
-        "D": "Anular de ofício o contrato de arrendamento mercantil e destinar o maquinário penhorado ao fundo penitenciário do Ministério da Justiça."
+        "A": "A admissão formal e expressa da arbitragem na Administração Pública (direta e indireta) para dirimir litígios sobre direitos patrimoniais disponíveis, bem como a regulamentação das tutelas de urgência cautelares no âmbito arbitral.",
+        "B": "A determinação de que as sessões arbitrais passem a ser transmitidas obrigatoriamente em televisão aberta de âmbito nacional.",
+        "C": "A exigência de que os árbitros sejam aprovados em concurso público de provas e títulos organizado pelo Conselho Nacional do Ministério Público.",
+        "D": "A proibição de aplicação de normas do Código de Defesa do Consumidor nos contratos administrativos de concessão de serviços."
       },
       "gabarito": "A",
-      "article": "Art. 485, VII e Art. 337, X do CPC/2015",
-      "legal_basis": "O juiz não resolverá o mérito quando: VII - acolher a alegação de existência de convenção de arbitragem ou quando o juízo arbitral reconhecer sua competência.",
-      "explanation": "A convenção de arbitragem tem efeito negativo: subtrai a competência do juiz estatal. Se a ré arguir a convenção na contestação (art. 337, X), o juiz é obrigado a extinguir o processo sem julgar o mérito (art. 485, VII)."
-    },
-    {
-      "id": "multi_14_d_acao_anulatoria_90dias",
-      "subject": "Evolução Histórica e Legislativa da Arbitragem no Brasil",
-      "bank": "VUNESP",
-      "difficulty": "Difícil",
-      "enunciado": "(VUNESP / TJ) Uma parte sucumbente em arbitragem pretende impugnar a sentença arbitral perante o Poder Judiciário. À luz do art. 33 da Lei nº 9.307/1996 e da jurisprudência consolidada do Superior Tribunal de Justiça (STJ), a via processual adequada e seus limites são:",
-      "options": {
-        "A": "Ação anulatória no prazo decadencial estrito de 90 dias, limitada às hipóteses de nulidade do art. 32 da lei, vedado o reexame do mérito da decisão arbitral.",
-        "B": "Recurso de apelação ordinário com pedido de reexame fático de mérito a ser distribuído livremente perante o Tribunal de Justiça estadual.",
-        "C": "Ação rescisória imprescritível a ser proposta perante o plenário do Supremo Tribunal Federal com pedido liminar de efeito suspensivo automático.",
-        "D": "Embargos infringentes perante o Conselho Nacional de Justiça pleiteando a anulação da taxa de administração da câmara privada de arbitragem."
-      },
-      "gabarito": "A",
-      "article": "Art. 33, caput e § 1º da Lei nº 9.307/1996 e Jurisprudência do STJ",
-      "legal_basis": "A parte interessada poderá pleitear a declaração de nulidade da sentença arbitral no prazo de noventa dias após o recebimento da notificação. O Judiciário faz controle de legalidade formal, não rejulga o mérito.",
-      "explanation": "Da sentença arbitral NÃO cabe recurso ao Judiciário. A única via é a ação anulatória (art. 33 da Lei 9.307/96), com prazo decadencial exíguo de 90 dias e causas taxativas de nulidade formal (art. 32). O juiz togado não pode rejulgar o mérito."
+      "article": "Lei nº 13.129/2015 (Alterações na Lei nº 9.307/1996)",
+      "legal_basis": "A Lei nº 13.129/2015 modernizou a arbitragem para admitir formalmente sua realização pela Administração Pública e regulamentar as tutelas de urgência.",
+      "explanation": "A reforma de 2015 consagrou a arbitrabilidade na Administração Pública e estabeleceu a cooperação judicial nas cartas arbitrais e tutelas de urgência."
     }
   ]
 }

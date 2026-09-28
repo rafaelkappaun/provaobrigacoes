@@ -12,6 +12,7 @@ from database.models import SystemConfig
 from database.crypto import decrypt_value
 from ai.offline_generator import generate_question_offline, SUBJECTS, BANKS
 from ai.multiportas_generator import generate_multiportas_question_offline, MULTIPORTAS_SUBJECTS
+from ai.processo_penal_generator import generate_processo_penal_question_offline, PROCESSO_PENAL_SUBJECTS
 
 load_dotenv()
 
@@ -41,6 +42,18 @@ try:
         logger.info(f"Seed pool Multiportas carregado: {len(_multiportas_seed_pool)} questões de {len(MULTIPORTAS_SUBJECTS)} assuntos")
 except Exception as e:
     logger.error(f"Erro ao carregar seed pool Multiportas: {e}")
+
+# 3. Carrega o pool de questões seed de Processo Penal (1º Bimestre)
+_processo_penal_seed_pool: List[Dict[str, Any]] = []
+_processo_penal_file = Path(__file__).resolve().parent.parent / "database" / "seed_processo_penal.json"
+try:
+    if _processo_penal_file.exists():
+        with open(_processo_penal_file, "r", encoding="utf-8") as f:
+            p_data = json.load(f)
+            _processo_penal_seed_pool = p_data.get("questions", [])
+        logger.info(f"Seed pool Processo Penal carregado: {len(_processo_penal_seed_pool)} questões de {len(PROCESSO_PENAL_SUBJECTS)} assuntos")
+except Exception as e:
+    logger.error(f"Erro ao carregar seed pool Processo Penal: {e}")
 
 class AIProviderManager:
     @staticmethod
@@ -111,6 +124,28 @@ class AIProviderManager:
         if not bank or bank not in BANKS:
             bank = random.choice(BANKS)
             
+        if module == "processo_penal":
+            if not subject or subject not in PROCESSO_PENAL_SUBJECTS:
+                subject = random.choice(PROCESSO_PENAL_SUBJECTS)
+            
+            # 1. Tenta servir do seed pool para o assunto solicitado
+            seed_q = cls._pick_from_seed_pool(subject, bank, db, session_id, pool=_processo_penal_seed_pool)
+            if seed_q:
+                return cls._shuffle_and_balance_question(dict(seed_q))
+                
+            # 2. Se já respondeu todas as sementes deste assunto, busca outros assuntos de Processo Penal
+            other_subjects = [s for s in PROCESSO_PENAL_SUBJECTS if s != subject]
+            random.shuffle(other_subjects)
+            for alt_subj in other_subjects:
+                alt_q = cls._pick_from_seed_pool(alt_subj, bank, db, session_id, pool=_processo_penal_seed_pool)
+                if alt_q:
+                    logger.info(f"Processo Penal: assunto '{subject}' esgotado na sessão. Redirecionando para '{alt_subj}'.")
+                    return cls._shuffle_and_balance_question(dict(alt_q))
+            
+            # 3. Se todos os 17 assuntos forem esgotados, gera procedural inédito
+            logger.info("Processo Penal: todas as sementes da sessão esgotadas. Gerando procedural inédito.")
+            return cls._shuffle_and_balance_question(generate_processo_penal_question_offline(subject, bank, difficulty))
+
         if module == "multiportas":
             if not subject or subject not in MULTIPORTAS_SUBJECTS:
                 subject = random.choice(MULTIPORTAS_SUBJECTS)
@@ -344,7 +379,7 @@ class AIProviderManager:
     def _build_request(provider: str, api_key: str, prompt: str, temperature: float, json_mode: bool):
         """Constrói a requisição HTTP para cada provedor"""
         if provider == "gemini":
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key={api_key}"
             headers = {"Content-Type": "application/json"}
             gen_config = {"temperature": temperature}
             if json_mode:
@@ -364,7 +399,7 @@ class AIProviderManager:
                 "X-Title": "Jus Obrigacoes Master",
             }
             payload = {
-                "model": "google/gemini-2.0-flash-001",
+                "model": "google/gemini-2.5-flash",
                 "messages": [{"role": "user", "content": prompt}],
                 "temperature": temperature,
             }
@@ -410,7 +445,7 @@ class AIProviderManager:
             "X-Title": "Jus Obrigacoes Master",
         }
         payload = {
-            "model": model_map.get(provider, "google/gemini-2.0-flash-001"),
+            "model": model_map.get(provider, "google/gemini-2.5-flash"),
             "messages": [{"role": "user", "content": prompt}],
             "temperature": temperature,
         }

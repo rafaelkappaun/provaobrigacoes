@@ -20,7 +20,7 @@ MULTIPORTAS_SUBJECTS = [
     "Evolução Histórica e Legislativa da Arbitragem no Brasil"
 ]
 
-MULTIPORTAS_BANKS = ["OAB", "FGV", "CESPE", "FCC", "VUNESP", "Doutrina"]
+MULTIPORTAS_BANKS = ["Prova 01 - Modelo Multiportas", "Revisão Acadêmica", "Estudo de Caso", "Doutrina"]
 
 MULTIPORTAS_STUDY_GUIDE: Dict[str, Dict[str, str]] = {
     "Noção de Conflito de Direito e Conflito Social": {
@@ -98,7 +98,7 @@ MULTIPORTAS_STUDY_GUIDE: Dict[str, Dict[str, str]] = {
 NOMES = ["Adriano", "Beatriz", "Caio", "Débora", "Estêvão", "Flávia", "Gabriel", "Heloísa", "Ismael", "Júlia", "Leandro", "Manuela", "Otávio", "Priscila", "Renato", "Sabrina", "Tiago", "Valéria"]
 EMPRESAS = ["Alfa Logística", "Beta Softwares", "Gama Biofarmacêutica", "Delta Agrícola", "Ômega Energia Solar", "Titan Infraestrutura", "Vértice Construtora", "Horizonte Alimentos"]
 
-def generate_multiportas_question_offline(subject: str, bank: str = "FGV", difficulty: str = "Médio") -> Dict[str, Any]:
+def generate_multiportas_question_offline(subject: str, bank: str = "Prova 01 - Modelo Multiportas", difficulty: str = "Médio") -> Dict[str, Any]:
     """
     Gera proceduralmente questões técnicas sobre os 14 temas de Modelo Multiportas.
     Possui múltiplos cenários factuais distintos por assunto (garantindo diversidade e zero repetições idênticas).

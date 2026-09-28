@@ -9,6 +9,7 @@ from sqlalchemy.orm import Session
 from database.models import TopicMastery, UserStats, QuestionHistory, ErrorLog, Flashcard
 from ai.offline_generator import SUBJECTS
 from ai.multiportas_generator import MULTIPORTAS_SUBJECTS, MULTIPORTAS_STUDY_GUIDE
+from ai.processo_penal_generator import PROCESSO_PENAL_SUBJECTS, PROCESSO_PENAL_STUDY_GUIDE
 from ai.manager import AIProviderManager
 
 logger = logging.getLogger("AdaptiveEngine")
@@ -128,6 +129,11 @@ TOPIC_STUDY_GUIDE: Dict[str, Dict[str, str]] = {
         "articles": "Arts. 476 a 480 do Código Civil",
         "key_concept": "Exceptio non adimpleti contractus (art. 476): nenhum contratante pode exigir a prestação do outro sem antes ter cumprido a sua. Onerosidade excessiva (art. 478): resolução em contratos de execução continuada/diferida por evento extraordinário e imprevisível.",
         "trap": "A resolução por onerosidade excessiva pode ser evitada se a parte contrária oferecer modificação equitativa das condições contratuais (art. 479)."
+    },
+    "Evicção - Conceito, Requisitos e Efeitos": {
+        "articles": "Arts. 447 a 457 do Código Civil",
+        "key_concept": "Perda total ou parcial da posse/propriedade por decisão judicial ou ato administrativo fundada em causa jurídica anterior à alienação. O alienante responde pelos prejuízos, salvo cláusula expressa de exclusão com ciência e assunção do risco pelo evicto.",
+        "trap": "A cláusula de não responder pela evicção (sem ciência e assunção do risco) não impede o evicto de recobrar o preço que pagou pela coisa evicta (art. 449)."
     }
 }
 
@@ -135,7 +141,12 @@ class AdaptiveEngine:
     @staticmethod
     def initialize_topics_if_needed(db: Session, session_id: str = "default", module: str = "contratos"):
         """Inicializa os assuntos do módulo correspondente no banco de dados se vazios e limpa legados"""
-        target_subjects = MULTIPORTAS_SUBJECTS if module == "multiportas" else SUBJECTS
+        if module == "processo_penal":
+            target_subjects = PROCESSO_PENAL_SUBJECTS
+        elif module == "multiportas":
+            target_subjects = MULTIPORTAS_SUBJECTS
+        else:
+            target_subjects = SUBJECTS
         
         # Remove tópicos legados deste módulo e sessão
         db.query(TopicMastery).filter(
@@ -218,8 +229,15 @@ class AdaptiveEngine:
         total_correct = stats.questions_correct
         overall_success_rate = (total_correct / total_answered * 100.0) if total_answered > 0 else 0.0
         
-        guide_dict = MULTIPORTAS_STUDY_GUIDE if module == "multiportas" else TOPIC_STUDY_GUIDE
-        default_law = "CPC / Leis de Mediação e Arbitragem" if module == "multiportas" else "Código Civil Brasileiro"
+        if module == "processo_penal":
+            guide_dict = PROCESSO_PENAL_STUDY_GUIDE
+            default_law = "Código de Processo Penal e Jurisprudência do STF"
+        elif module == "multiportas":
+            guide_dict = MULTIPORTAS_STUDY_GUIDE
+            default_law = "CPC / Leis de Mediação e Arbitragem"
+        else:
+            guide_dict = TOPIC_STUDY_GUIDE
+            default_law = "Código Civil Brasileiro"
 
         # Detalhamento de cada assunto com cálculo para meta 90%
         subjects_detail = []
@@ -349,7 +367,9 @@ class AdaptiveEngine:
     def process_answer(cls, db: Session, question: Dict[str, Any], selected_option: str, response_time: float, session_id: str = "default", module: str = "contratos") -> Dict[str, Any]:
         """Processa a resposta do aluno e atualiza o mecanismo adaptativo com isolamento de módulo"""
         subject = question["subject"]
-        if subject in MULTIPORTAS_SUBJECTS:
+        if subject in PROCESSO_PENAL_SUBJECTS:
+            module = "processo_penal"
+        elif subject in MULTIPORTAS_SUBJECTS:
             module = "multiportas"
         elif subject in SUBJECTS:
             module = "contratos"
