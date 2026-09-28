@@ -124,7 +124,7 @@ def get_dashboard(module: str = "contratos", db: Session = Depends(get_db), sess
         raise HTTPException(status_code=500, detail="Erro ao obter dados do painel")
 
 @app.get("/api/question/next")
-def get_next_question(bank: str = "FGV", subject: Optional[str] = None, module: str = "contratos", db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
+def get_next_question(bank: Optional[str] = None, subject: Optional[str] = None, module: str = "contratos", db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
     try:
         if not subject:
             subject = AdaptiveEngine.get_next_subject(db, session_id, module=module)
@@ -243,7 +243,7 @@ def get_articles(query: Optional[str] = None, related: Optional[str] = None):
                         break
             if subject:
                 questions = []
-                for bank in ["FGV", "CESPE", "OAB"]:
+                for bank in ["Revisão Oficial", "Doutrina", "Estudo Dirigido"]:
                     q = generate_question_offline(subject, bank)
                     questions.append(q)
                 return {"subject": subject, "questions": questions}
@@ -264,21 +264,30 @@ def get_articles(query: Optional[str] = None, related: Optional[str] = None):
         raise HTTPException(status_code=500, detail="Erro ao ler artigos")
 
 @app.get("/api/simulado/start")
-def get_simulado(size: int = 10, db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
+def get_simulado(size: int = 10, module: str = "contratos", db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
     try:
-        AdaptiveEngine.initialize_topics_if_needed(db, session_id)
-        topics = db.query(TopicMastery).filter(TopicMastery.session_id == session_id).all()
+        AdaptiveEngine.initialize_topics_if_needed(db, session_id, module=module)
+        topics = db.query(TopicMastery).filter(
+            TopicMastery.session_id == session_id,
+            TopicMastery.module == module
+        ).all()
         sorted_topics = sorted(topics, key=lambda x: x.success_rate)
         selected_subjects = [t.subject for t in sorted_topics]
         if not selected_subjects:
-            selected_subjects = ["Adimplemento e Extinção das Obrigações"]
+            if module == "processo_penal":
+                selected_subjects = ["Juiz das Garantias - Criação e Campo de Atuação"]
+            elif module == "multiportas":
+                selected_subjects = ["Noção de Conflito de Direito e Conflito Social"]
+            else:
+                selected_subjects = ["Planos do Negócio Jurídico (Escada Ponteana)"]
         questions = []
         for i in range(size):
             subj = selected_subjects[i % len(selected_subjects)]
-            bank = "FGV" if i % 2 == 0 else "OAB"
+            bank = "Revisão Oficial"
             mastery = db.query(TopicMastery).filter(
                 TopicMastery.subject == subj,
-                TopicMastery.session_id == session_id
+                TopicMastery.session_id == session_id,
+                TopicMastery.module == module
             ).first()
             difficulty = "Médio"
             if mastery:
@@ -286,7 +295,8 @@ def get_simulado(size: int = 10, db: Session = Depends(get_db), session_id: str 
                     difficulty = "Fácil"
                 elif mastery.status == "Dominado":
                     difficulty = "Difícil"
-            q = AIProviderManager.generate_question(subj, bank, difficulty, db, session_id)
+            q = AIProviderManager.generate_question(subj, bank, difficulty, db, session_id, module=module)
+            q["module"] = module
             questions.append(q)
         return questions
     except Exception:
@@ -294,9 +304,9 @@ def get_simulado(size: int = 10, db: Session = Depends(get_db), session_id: str 
         raise HTTPException(status_code=500, detail="Erro ao iniciar simulado")
 
 @app.get("/api/vespera/start")
-def get_vespera(db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
+def get_vespera(module: str = "contratos", db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
     try:
-        return get_simulado(size=50, db=db, session_id=session_id)
+        return get_simulado(size=50, module=module, db=db, session_id=session_id)
     except Exception:
         logger.exception("Falha ao carregar revisão final")
         raise HTTPException(status_code=500, detail="Erro ao carregar revisão final")
@@ -326,18 +336,19 @@ def get_error_log(db: Session = Depends(get_db), session_id: str = Depends(get_s
         raise HTTPException(status_code=500, detail="Erro ao obter log de erros")
 
 @app.post("/api/errors/train")
-def train_errors(db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
+def train_errors(module: str = "contratos", db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
     try:
         errors = db.query(ErrorLog).filter(
             ErrorLog.resolved == False,
             ErrorLog.session_id == session_id
         ).all()
         if not errors:
-            return get_simulado(size=5, db=db, session_id=session_id)
+            return get_simulado(size=5, module=module, db=db, session_id=session_id)
         questions = []
         for i, err in enumerate(errors[:10]):
-            bank = "OAB" if i % 2 == 0 else "FGV"
-            q = AIProviderManager.generate_question(err.subject, bank, "Médio", db, session_id)
+            bank = "Revisão Oficial"
+            q = AIProviderManager.generate_question(err.subject, bank, "Médio", db, session_id, module=module)
+            q["module"] = module
             questions.append(q)
         return questions
     except Exception:
