@@ -4,7 +4,7 @@ import { Dashboard, type DashboardData } from './components/Dashboard';
 import { QuestionSession } from './components/QuestionSession';
 import { ArticleLibrary } from './components/ArticleLibrary';
 import { UserProfileModal } from './components/UserProfileModal';
-import { apiFetch, getCurrentProfile } from './api';
+import { apiFetch, getCurrentProfile, getLocalAnswers, syncLocalAnswersWithBackend } from './api';
 
 const API_BASE = import.meta.env.VITE_API_BASE || "/api";
 
@@ -64,6 +64,7 @@ export default function App() {
   const [extraProps, setExtraProps] = useState<Record<string, unknown>>({});
   const [profileModalOpen, setProfileModalOpen] = useState<boolean>(false);
   const [profileName, setProfileName] = useState<string>(getCurrentProfile().name);
+  const [localSavedCount, setLocalSavedCount] = useState<number>(() => getLocalAnswers().length);
 
   const fetchDashboardData = useCallback(async (moduleName: string): Promise<DashboardData> => {
     const res = await apiFetch(API_BASE, `/dashboard?module=${encodeURIComponent(moduleName)}`);
@@ -88,6 +89,17 @@ export default function App() {
       })
       .finally(() => { setLoading(false); isLoadingRef.current = false; });
   }, [fetchDashboardData]);
+
+  // Sincroniza respostas gravadas localmente no navegador com o backend automaticamente
+  useEffect(() => {
+    setLocalSavedCount(getLocalAnswers().length);
+    syncLocalAnswersWithBackend(API_BASE, activeModule).then((res) => {
+      if (res && res.restored > 0) {
+        console.info(`[JusProvas] ${res.restored} respostas restauradas no servidor a partir do armazenamento local.`);
+        loadDashboard(activeModule);
+      }
+    }).catch(() => {});
+  }, [activeModule, loadDashboard]);
 
   useEffect(() => {
     loadDashboard(activeModule);
@@ -268,7 +280,10 @@ export default function App() {
             </div>
             <Users size={14} className="text-slate-500 shrink-0" />
           </button>
-          <p className="text-center text-[10px] text-slate-500 font-semibold">100% Offline • Sem Cota de IA</p>
+          <div className="flex items-center justify-center gap-1.5 py-1 px-2 rounded-lg bg-emerald-950/40 border border-emerald-500/25 text-emerald-400 text-[10px] font-bold">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span>Salvo no Navegador ({localSavedCount} {localSavedCount === 1 ? 'questão' : 'questões'})</span>
+          </div>
         </div>
       </aside>
 

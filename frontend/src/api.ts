@@ -12,6 +12,7 @@ export interface LocalAnswerRecord {
   id: string;
   questionId: string;
   subject: string;
+  module?: string;
   bank?: string;
   difficulty?: string;
   selectedOption: string;
@@ -20,6 +21,8 @@ export interface LocalAnswerRecord {
   responseTime: number;
   timestamp: number;
   enunciado?: string;
+  explanation?: string;
+  article?: string;
 }
 
 const STORAGE_PROFILES_KEY = 'jus_profiles_list';
@@ -201,6 +204,45 @@ export function getLocalAnswers(profileId?: string): LocalAnswerRecord[] {
   } catch {
     return [];
   }
+}
+
+export function getAnsweredQuestionIds(profileId?: string, module?: string): string[] {
+  const all = getLocalAnswers(profileId);
+  const filtered = module ? all.filter(a => !a.module || a.module === module) : all;
+  return filtered.map(a => a.questionId).filter(Boolean);
+}
+
+export function clearLocalAnswers(profileId?: string): void {
+  const pId = profileId || getCurrentProfile().id;
+  try {
+    localStorage.removeItem(`jus_answers_${pId}`);
+  } catch (e) {
+    console.warn("Erro ao limpar histórico local:", e);
+  }
+}
+
+export async function syncLocalAnswersWithBackend(apiBase: string, module?: string): Promise<{ restored: number; total: number } | null> {
+  const profile = getCurrentProfile();
+  const answers = getLocalAnswers(profile.id);
+  if (!answers || answers.length === 0) return null;
+
+  try {
+    const res = await apiFetch(apiBase, '/sync/restore-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        answers: answers,
+        module: module
+      })
+    });
+    if (res.ok) {
+      const data = await res.json();
+      return { restored: data.restored || 0, total: answers.length };
+    }
+  } catch (e) {
+    console.warn("Sincronização em segundo plano indisponível:", e);
+  }
+  return null;
 }
 
 // Exporta todos os dados do aluno atual como JSON para backup ou migração

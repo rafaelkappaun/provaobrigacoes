@@ -4,6 +4,7 @@ import json
 import time
 import logging
 import threading
+from datetime import datetime, timezone
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -102,6 +103,23 @@ class ConfigPayload(BaseModel):
     groq_api_key: str
     temperature: float
 
+class LocalAnswerItem(BaseModel):
+    questionId: str
+    subject: str
+    module: Optional[str] = "contratos"
+    bank: Optional[str] = "Revisão Oficial"
+    difficulty: Optional[str] = "Médio"
+    selectedOption: str
+    gabarito: str
+    isCorrect: bool
+    responseTime: Optional[float] = 15.0
+    timestamp: Optional[float] = None
+    enunciado: Optional[str] = None
+
+class RestoreSessionPayload(BaseModel):
+    answers: List[LocalAnswerItem]
+    module: Optional[str] = None
+
 class ProfessorChatPayload(BaseModel):
     context: Dict[str, Any]
     query: str
@@ -114,6 +132,55 @@ class ProfessorChatPayload(BaseModel):
 def health_check():
     return {"status": "ok", "service": "jus-provas"}
 
+@app.post("/api/sync/restore-session")
+def restore_session(payload: RestoreSessionPayload, db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
+    """Restaura e re-hidrata o progresso do estudante a partir das respostas salvas no navegador"""
+    try:
+        restored = 0
+        modules_affected = set()
+        for item in payload.answers:
+            qid = str(item.questionId).strip()[:100]
+            if not qid:
+                continue
+            history_id = f"{qid}_{session_id[:20]}"[:120]
+            existing = db.query(QuestionHistory).filter(QuestionHistory.id == history_id).first()
+            if existing:
+                continue
+            mod = item.module or payload.module or "contratos"
+            modules_affected.add(mod)
+            answered_dt = datetime.now(timezone.utc).replace(tzinfo=None)
+            if item.timestamp:
+                try:
+                    answered_dt = datetime.fromtimestamp(item.timestamp / 1000.0, tz=timezone.utc).replace(tzinfo=None)
+                except Exception:
+                    pass
+            q_hist = QuestionHistory(
+                id=history_id,
+                question_id=qid,
+                session_id=session_id,
+                module=mod,
+                subject=item.subject,
+                difficulty=item.difficulty or "Médio",
+                bank=item.bank or "Revisão Oficial",
+                is_correct=item.isCorrect,
+                response_time=item.responseTime or 15.0,
+                is_insecure=False,
+                answered_at=answered_dt
+            )
+            db.add(q_hist)
+            restored += 1
+            
+        if restored > 0:
+            db.commit()
+            for mod in modules_affected:
+                AdaptiveEngine.recalculate_user_stats(db, session_id, module=mod)
+                
+        return {"status": "ok", "restored": restored, "total_local": len(payload.answers)}
+    except Exception as exc:
+        db.rollback()
+        logger.exception("Falha ao sincronizar respostas locais")
+        raise HTTPException(status_code=500, detail=str(exc))
+
 @app.get("/api/dashboard")
 def get_dashboard(module: str = "contratos", db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
     try:
@@ -124,7 +191,7 @@ def get_dashboard(module: str = "contratos", db: Session = Depends(get_db), sess
         raise HTTPException(status_code=500, detail="Erro ao obter dados do painel")
 
 @app.get("/api/question/next")
-def get_next_question(bank: Optional[str] = None, subject: Optional[str] = None, module: str = "contratos", db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
+def get_next_question(bank: Optional[str] = None, subject: Optional[str] = None, module: str = "contratos", exclude_ids: Optional[str] = None, db: Session = Depends(get_db), session_id: str = Depends(get_session_id)):
     try:
         if not subject:
             subject = AdaptiveEngine.get_next_subject(db, session_id, module=module)
@@ -139,7 +206,8 @@ def get_next_question(bank: Optional[str] = None, subject: Optional[str] = None,
                 difficulty = "Fácil"
             elif mastery.status == "Dominado":
                 difficulty = "Difícil"
-        question = AIProviderManager.generate_question(subject, bank, difficulty, db, session_id, module=module)
+        exclude_list = [x.strip() for x in exclude_ids.split(",") if x.strip()] if exclude_ids else None
+        question = AIProviderManager.generate_question(subject, bank, difficulty, db, session_id, module=module, exclude_ids=exclude_list)
         question["module"] = module
         return question
     except Exception:

@@ -198,6 +198,70 @@ class AdaptiveEngine:
         db.commit()
 
     @classmethod
+    def recalculate_user_stats(cls, db: Session, session_id: str = "default", module: str = "contratos") -> None:
+        """Recalcula TopicMastery e UserStats com base em todo o QuestionHistory daquela sessão e módulo"""
+        from database.models import QuestionHistory
+        cls.initialize_topics_if_needed(db, session_id, module=module)
+        
+        history_records = db.query(QuestionHistory).filter(
+            QuestionHistory.session_id == session_id,
+            QuestionHistory.module == module
+        ).all()
+        
+        stats = db.query(UserStats).filter(
+            UserStats.session_id == session_id,
+            UserStats.module == module
+        ).first()
+        if not stats:
+            stats = UserStats(session_id=session_id, module=module, total_time_seconds=0, questions_answered=0, questions_correct=0, streak_days=1)
+            db.add(stats)
+            db.flush()
+            
+        stats.questions_answered = len(history_records)
+        stats.questions_correct = sum(1 for h in history_records if h.is_correct)
+        stats.total_time_seconds = int(sum(h.response_time for h in history_records if h.response_time))
+        if len(history_records) > 0 and stats.streak_days == 0:
+            stats.streak_days = 1
+        stats.last_study_date = datetime.now(timezone.utc).replace(tzinfo=None)
+        
+        by_subject: Dict[str, List[Any]] = {}
+        for h in history_records:
+            by_subject.setdefault(h.subject, []).append(h)
+            
+        for subj, records in by_subject.items():
+            mastery = db.query(TopicMastery).filter(
+                TopicMastery.subject == subj,
+                TopicMastery.session_id == session_id,
+                TopicMastery.module == module
+            ).first()
+            if not mastery:
+                mastery = TopicMastery(
+                    session_id=session_id,
+                    module=module,
+                    subject=subj,
+                    questions_answered=0,
+                    questions_correct=0,
+                    consecutive_errors=0,
+                    success_rate=0.0,
+                    status="Critico"
+                )
+                db.add(mastery)
+                db.flush()
+                
+            mastery.questions_answered = len(records)
+            mastery.questions_correct = sum(1 for r in records if r.is_correct)
+            rate = (mastery.questions_correct / mastery.questions_answered) * 100.0 if mastery.questions_answered > 0 else 0.0
+            mastery.success_rate = rate
+            if rate >= 90.0 and mastery.questions_answered >= 3:
+                mastery.status = "Dominado"
+            elif rate >= 60.0:
+                mastery.status = "Intermediario"
+            else:
+                mastery.status = "Critico"
+                
+        db.commit()
+
+    @classmethod
     def get_dashboard_data(cls, db: Session, session_id: str = "default", module: str = "contratos") -> Dict[str, Any]:
         """Obtém todas as métricas com foco na Meta de 90% de acertos e recomendações de estudo"""
         cls.initialize_topics_if_needed(db, session_id, module=module)

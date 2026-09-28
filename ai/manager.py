@@ -119,8 +119,9 @@ class AIProviderManager:
 
     @classmethod
     def generate_question(cls, subject: str, bank: str, difficulty: str,
-                          db: Any = None, session_id: str = None, module: str = "contratos") -> Dict[str, Any]:
-        """Gera questão 100% offline: isolada por módulo (contratos ou multiportas), sem repetição de questões já respondidas"""
+                          db: Any = None, session_id: str = None, module: str = "contratos",
+                          exclude_ids: Optional[List[str]] = None) -> Dict[str, Any]:
+        """Gera questão 100% offline: isolada por módulo, sem repetição de questões já respondidas"""
         if not bank or bank not in BANKS:
             bank = random.choice(BANKS)
             
@@ -129,7 +130,7 @@ class AIProviderManager:
                 subject = random.choice(PROCESSO_PENAL_SUBJECTS)
             
             # 1. Tenta servir do seed pool para o assunto solicitado
-            seed_q = cls._pick_from_seed_pool(subject, bank, db, session_id, pool=_processo_penal_seed_pool)
+            seed_q = cls._pick_from_seed_pool(subject, bank, db, session_id, pool=_processo_penal_seed_pool, exclude_ids=exclude_ids)
             if seed_q:
                 return cls._shuffle_and_balance_question(dict(seed_q))
                 
@@ -137,7 +138,7 @@ class AIProviderManager:
             other_subjects = [s for s in PROCESSO_PENAL_SUBJECTS if s != subject]
             random.shuffle(other_subjects)
             for alt_subj in other_subjects:
-                alt_q = cls._pick_from_seed_pool(alt_subj, bank, db, session_id, pool=_processo_penal_seed_pool)
+                alt_q = cls._pick_from_seed_pool(alt_subj, bank, db, session_id, pool=_processo_penal_seed_pool, exclude_ids=exclude_ids)
                 if alt_q:
                     logger.info(f"Processo Penal: assunto '{subject}' esgotado na sessão. Redirecionando para '{alt_subj}'.")
                     return cls._shuffle_and_balance_question(dict(alt_q))
@@ -151,7 +152,7 @@ class AIProviderManager:
                 subject = random.choice(MULTIPORTAS_SUBJECTS)
             
             # 1. Tenta servir do seed pool para o assunto solicitado (evitando já respondidas na sessão)
-            seed_q = cls._pick_from_seed_pool(subject, bank, db, session_id, pool=_multiportas_seed_pool)
+            seed_q = cls._pick_from_seed_pool(subject, bank, db, session_id, pool=_multiportas_seed_pool, exclude_ids=exclude_ids)
             if seed_q:
                 return cls._shuffle_and_balance_question(dict(seed_q))
                 
@@ -159,7 +160,7 @@ class AIProviderManager:
             other_subjects = [s for s in MULTIPORTAS_SUBJECTS if s != subject]
             random.shuffle(other_subjects)
             for alt_subj in other_subjects:
-                alt_q = cls._pick_from_seed_pool(alt_subj, bank, db, session_id, pool=_multiportas_seed_pool)
+                alt_q = cls._pick_from_seed_pool(alt_subj, bank, db, session_id, pool=_multiportas_seed_pool, exclude_ids=exclude_ids)
                 if alt_q:
                     logger.info(f"Multiportas: assunto '{subject}' esgotado na sessão. Redirecionando para '{alt_subj}'.")
                     return cls._shuffle_and_balance_question(dict(alt_q))
@@ -173,7 +174,7 @@ class AIProviderManager:
             subject = random.choice(SUBJECTS)
             
         # 1. Tenta servir do seed pool (prioriza não respondidas na sessão)
-        seed_q = cls._pick_from_seed_pool(subject, bank, db, session_id, pool=_seed_pool)
+        seed_q = cls._pick_from_seed_pool(subject, bank, db, session_id, pool=_seed_pool, exclude_ids=exclude_ids)
         if seed_q:
             return cls._shuffle_and_balance_question(dict(seed_q))
 
@@ -181,7 +182,7 @@ class AIProviderManager:
         other_subjects = [s for s in SUBJECTS if s != subject]
         random.shuffle(other_subjects)
         for alt_subj in other_subjects:
-            alt_q = cls._pick_from_seed_pool(alt_subj, bank, db, session_id, pool=_seed_pool)
+            alt_q = cls._pick_from_seed_pool(alt_subj, bank, db, session_id, pool=_seed_pool, exclude_ids=exclude_ids)
             if alt_q:
                 logger.info(f"Contratos: assunto '{subject}' esgotado na sessão. Redirecionando para '{alt_subj}'.")
                 return cls._shuffle_and_balance_question(dict(alt_q))
@@ -193,7 +194,8 @@ class AIProviderManager:
     @classmethod
     def _pick_from_seed_pool(cls, subject: str, bank: str,
                               db: Any = None, session_id: str = None,
-                              pool: Optional[List[Dict[str, Any]]] = None) -> Optional[Dict[str, Any]]:
+                              pool: Optional[List[Dict[str, Any]]] = None,
+                              exclude_ids: Optional[List[str]] = None) -> Optional[Dict[str, Any]]:
         """Escolhe questão do seed pool do respectivo módulo, garantindo que TODAS as questões não respondidas sejam aproveitadas"""
         active_pool = pool if pool is not None else _seed_pool
         if not active_pool:
@@ -228,6 +230,14 @@ class AIProviderManager:
                             if "_" in base_hid:
                                 answered_ids.add(base_hid.rsplit("_", 1)[0])
                 
+                if exclude_ids:
+                    for ex in exclude_ids:
+                        if ex:
+                            clean_ex = str(ex).strip()
+                            answered_ids.add(clean_ex)
+                            if "_" in clean_ex:
+                                answered_ids.add(clean_ex.rsplit("_", 1)[0])
+
                 # Exclui qualquer questão do assunto que já tenha sido respondida
                 unanswered = [
                     q for q in subject_candidates 
@@ -237,7 +247,11 @@ class AIProviderManager:
                 logger.warning(f"Erro ao verificar histórico de questões respondidas: {e}")
                 unanswered = subject_candidates
         else:
-            unanswered = subject_candidates
+            if exclude_ids:
+                ex_set = set(str(e).strip() for e in exclude_ids if e)
+                unanswered = [q for q in subject_candidates if q["id"] not in ex_set]
+            else:
+                unanswered = subject_candidates
 
         if not unanswered:
             return None

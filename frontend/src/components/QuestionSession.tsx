@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { ArrowRight, CheckCircle2, XCircle, Clock, Filter, User, Award, BookOpen, AlertCircle } from 'lucide-react';
-import { apiFetch, saveLocalAnswer, getCurrentProfile } from '../api';
+import { ArrowRight, CheckCircle2, XCircle, Clock, Filter, User, Award, BookOpen, AlertCircle, History, ChevronDown, ChevronUp, Check } from 'lucide-react';
+import { apiFetch, saveLocalAnswer, getLocalAnswers, getAnsweredQuestionIds, syncLocalAnswersWithBackend, getCurrentProfile, type LocalAnswerRecord } from '../api';
 
 const CONTRATOS_SUBJECTS = [
   "Todos os Temas (Automático)",
@@ -116,6 +116,16 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, modul
   // Trava anti-duplo envio
   const submittingRef = useRef<boolean>(false);
   const mountedRef = useRef<boolean>(true);
+
+  // Histórico salvo localmente no navegador para o módulo atual
+  const [localHistory, setLocalHistory] = useState<LocalAnswerRecord[]>(() => {
+    return getLocalAnswers().filter(a => !a.module || a.module === module);
+  });
+  const [showHistory, setShowHistory] = useState<boolean>(false);
+
+  useEffect(() => {
+    setLocalHistory(getLocalAnswers().filter(a => !a.module || a.module === module));
+  }, [module]);
   
   // Cronômetro da questão
   const [seconds, setSeconds] = useState<number>(0);
@@ -167,6 +177,13 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, modul
     if (targetSub && targetSub !== "Todos os Temas (Automático)") {
       params.append('subject', targetSub);
     }
+    
+    // Envia os IDs já respondidos localmente para impedir qualquer repetição
+    const answeredIds = getAnsweredQuestionIds(undefined, module);
+    if (answeredIds.length > 0) {
+      params.append('exclude_ids', answeredIds.slice(-50).join(','));
+    }
+
     const queryString = params.toString();
     if (queryString) {
       url += `?${queryString}`;
@@ -231,18 +248,26 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, modul
         const data: AnswerResponse = await res.json();
         setResponse(data);
 
-        // Salva histórico no armazenamento local
-        saveLocalAnswer({
+        // Salva histórico no armazenamento local com todos os dados
+        const newRecord: Omit<LocalAnswerRecord, 'id' | 'timestamp'> = {
           questionId: question.id,
           subject: question.subject,
+          module: module,
           bank: question.bank,
           difficulty: question.difficulty,
           selectedOption: selectedOption,
           gabarito: question.gabarito,
           isCorrect: data.is_correct,
           responseTime: responseTime,
-          enunciado: question.enunciado?.slice(0, 150)
-        });
+          enunciado: question.enunciado?.slice(0, 200),
+          explanation: question.explanation,
+          article: question.article
+        };
+        saveLocalAnswer(newRecord);
+        setLocalHistory(getLocalAnswers().filter(a => !a.module || a.module === module));
+
+        // Re-hidrata o backend em segundo plano caso o container tenha reiniciado
+        syncLocalAnswersWithBackend(apiBase, module).catch(() => {});
       } else if (res.status === 409) {
         setErrorMessage('Esta questão já foi respondida anteriormente. Carregando próxima...');
         setTimeout(() => fetchNextQuestion(), 1200);
@@ -519,6 +544,109 @@ export const QuestionSession: React.FC<QuestionSessionProps> = ({ apiBase, modul
           )}
         </div>
       ) : null}
+
+      {/* PAINEL DE PERSISTÊNCIA: RESPOSTAS SALVAS NO NAVEGADOR */}
+      <div className="rounded-2xl bg-slate-900/80 border border-slate-800 p-5 shadow-lg space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0">
+              <Check size={18} />
+            </div>
+            <div>
+              <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                Progresso Salvo no Navegador
+                <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 text-[11px] font-black">
+                  {localHistory.length} {localHistory.length === 1 ? 'questão salva' : 'questões salvas'}
+                </span>
+              </h3>
+              <p className="text-xs text-slate-400">
+                Todas as suas respostas ficam registradas permanentemente neste dispositivo. Você não precisa reiniciar ao fechar ou recarregar a página.
+              </p>
+            </div>
+          </div>
+
+          {localHistory.length > 0 && (
+            <button
+              type="button"
+              onClick={() => setShowHistory(!showHistory)}
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-200 text-xs font-bold transition-all shrink-0"
+            >
+              <History size={14} className="text-indigo-400" />
+              {showHistory ? 'Ocultar Histórico' : 'Ver Minhas Respostas'}
+              {showHistory ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+            </button>
+          )}
+        </div>
+
+        {/* Histórico expandido com estatísticas locais */}
+        {showHistory && localHistory.length > 0 && (
+          <div className="pt-4 border-t border-slate-800/80 space-y-3 max-h-96 overflow-y-auto pr-1">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pb-2">
+              <div className="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 text-center">
+                <p className="text-[10px] uppercase font-bold text-slate-500">Respondidas</p>
+                <p className="text-lg font-black text-white">{localHistory.length}</p>
+              </div>
+              <div className="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 text-center">
+                <p className="text-[10px] uppercase font-bold text-slate-500">Acertos</p>
+                <p className="text-lg font-black text-emerald-400">
+                  {localHistory.filter(h => h.isCorrect).length}
+                </p>
+              </div>
+              <div className="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 text-center">
+                <p className="text-[10px] uppercase font-bold text-slate-500">Erros</p>
+                <p className="text-lg font-black text-rose-400">
+                  {localHistory.filter(h => !h.isCorrect).length}
+                </p>
+              </div>
+              <div className="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 text-center">
+                <p className="text-[10px] uppercase font-bold text-slate-500">Aproveitamento</p>
+                <p className="text-lg font-black text-indigo-400">
+                  {localHistory.length > 0 ? Math.round((localHistory.filter(h => h.isCorrect).length / localHistory.length) * 100) : 0}%
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              {localHistory.slice().reverse().map((ans, idx) => (
+                <div
+                  key={ans.id || idx}
+                  className="p-3 rounded-xl bg-slate-950/70 border border-slate-800/90 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs"
+                >
+                  <div className="space-y-1 min-w-0">
+                    <div className="flex items-center gap-2">
+                      {ans.isCorrect ? (
+                        <span className="inline-flex items-center gap-1 text-emerald-400 font-bold">
+                          <CheckCircle2 size={13} /> Acertou
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1 text-rose-400 font-bold">
+                          <XCircle size={13} /> Errou
+                        </span>
+                      )}
+                      <span className="text-slate-500">•</span>
+                      <span className="text-slate-300 font-semibold truncate">{ans.subject}</span>
+                    </div>
+                    <p className="text-slate-400 text-[11px] truncate max-w-xl">
+                      {ans.enunciado || 'Questão registrada'}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-[11px] shrink-0">
+                    <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">
+                      Marcou: <strong>{ans.selectedOption}</strong>
+                    </span>
+                    {!ans.isCorrect && (
+                      <span className="px-2 py-0.5 rounded bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 font-mono">
+                        Gabarito: <strong>{ans.gabarito}</strong>
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
