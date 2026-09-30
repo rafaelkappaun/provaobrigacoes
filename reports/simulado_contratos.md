@@ -1,6 +1,6 @@
 # SIMULADO E REVISÃO OFICIAL - DIREITO DOS CONTRATOS
 **Disciplina:** Teoria Geral dos Contratos (Código Civil Brasileiro)  
-**Material:** Questionário Oficial de Revisão da Prova (23 Temas Integrais)  
+**Material:** Questionário Oficial de Revisão da Prova (22 Temas Integrais - Evicção Excluída)  
 *Redação puramente dissertativa, aprofundada, com exemplos práticos inéditos e espelhos de correção oficiais com fundamentação legal.*
 
 ---
@@ -264,14 +264,3 @@ Não. A entrega de coisa diversa da contratada não constitui vício redibitóri
 No vício redibitório, o alienante entrega exatamente a coisa que foi pactuada na avença, porém este objeto apresenta internamente uma imperfeição ou defeito funcional oculto que diminui seu valor ou prejudica o uso normal, submetendo-se a tutela aos prazos decadenciais extremamente curtos do artigo 445 do Código Civil (30 dias para bens móveis e 1 ano para bens imóveis).
 Por sua vez, no *aliud pro alio* (entrega de "uma coisa por outra"), há manifesto inadimplemento absoluto ou relativo da obrigação de dar coisa certa: o devedor entrega coisa substancialmente diferente daquela prometida no título contratual, violando frontalmente o artigo 313 do Código Civil, segundo o qual o credor não pode ser obrigado a receber prestação diversa da que lhe é devida, ainda que mais valiosa. Trata-se de descumprimento contratual regido pelas regras gerais do inadimplemento (artigos 389 e 475 do Código Civil), cujo prazo não é decadencial curtíssimo, mas sim o prazo prescricional decenal geral do artigo 205 do Código Civil.
 
----
-
-## QUESTÃO DISSERTATIVA 23: EVICÇÃO (CONCEITO, REQUISITOS, CONSEQUÊNCIAS E EVICÇÃO PARCIAL)
-**Enunciado:**
-Discorra sobre a evicção no direito contratual brasileiro, conceituando o instituto, apontando seus requisitos legais cumulativos, as verbas indenizatórias devidas ao evicto e o regramento legal incidente na hipótese de evicção parcial.
-
-**Gabarito Padrão de Resposta / Critérios de Correção (Espelho de Prova):**
-A evicção, regulada nos artigos 447 a 457 do Código Civil, é a perda total ou parcial da posse ou propriedade de uma coisa adquirida onerosamente, sofrida pelo adquirente (evicto), em virtude de uma decisão judicial ou de ato administrativo de autoridade pública que reconhece a titularidade ou direito preexistente de uma terceira pessoa (evictor) sobre o bem alienado.
-São requisitos cumulativos para a sua caracterização: (1) contrato oneroso translativo de domínio ou posse; (2) perda efetiva da posse ou propriedade da coisa; (3) anterioridade da causa jurídica em relação à alienação (o direito do terceiro evictor já devia existir antes da venda); (4) prolação de provimento jurisdicional ou ato administrativo de apreensão; (5) ausência de ciência do adquirente de que a coisa era alheia ou litigiosa (artigo 457 do Código Civil).
-Quanto às consequências financeiras, conforme o artigo 450 do Código Civil, salvo estipulação em contrário, o evicto tem direito a: restituição integral do preço ou valor pago pela coisa evicta; indenização dos frutos que tiver sido obrigado a restituir ao evictor; ressarcimento das despesas contratuais e dos prejuízos que diretamente da evicção resultarem; ressarcimento das custas processuais e honorários advocatícios desembolsados. A garantia subsiste mesmo que o bem tenha sido adquirido em hasta pública (artigo 447).
-Quanto à evicção parcial, o artigo 455 do Código Civil determina que, se a perda for considerável (de grande vulto ou importância funcional), o evicto tem o direito potestativo de escolher entre a rescisão total do contrato (com devolução integral do preço pago) ou a conservação da parcela remanescente com o abatimento proporcional do valor correspondente ao desfalque sofrido. Se a perda parcial não for de grande importância, caberá unicamente a restituição proporcional do preço.

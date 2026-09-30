@@ -2,7 +2,7 @@ import random
 import uuid
 from typing import Dict, Any, List
 
-# Os 23 assuntos oficiais alinhados 100% ao Questionário da Prova de Contratos
+# Os 22 assuntos oficiais alinhados 100% ao Questionário da Prova de Contratos
 SUBJECTS = [
     "Planos do Negócio Jurídico (Escada Ponteana)",
     "Princípios do Direito Contratual",
@@ -26,7 +26,6 @@ SUBJECTS = [
     "Prazos Decadenciais dos Vícios Redibitórios",
     "Extinção dos Contratos - Resolução e Cláusula Resolutiva",
     "Exceção do Contrato Não Cumprido e Onerosidade Excessiva",
-    "Evicção - Conceito, Requisitos e Efeitos",
 ]
 
 BANKS = ["Revisão Oficial - Contratos", "Estudo de Caso", "Doutrina", "Direito Contratual"]
@@ -427,7 +426,8 @@ def generate_question_offline(subject: str, bank: str = "Revisão Oficial - Cont
         basis = "Art. 474. A cláusula resolutiva expressa opera de pleno direito; a tácita depende de interpelação judicial."
         expl = "A cláusula resolutiva expressa opera de pleno direito com o inadimplemento. A tácita é inerente aos contratos bilaterais (art. 475), mas exige interpelação judicial prévia."
 
-    elif subject == "Exceção do Contrato Não Cumprido e Onerosidade Excessiva":
+    # 22. EXCEÇÃO DO CONTRATO NÃO CUMPRIDO E ONEROSIDADE EXCESSIVA
+    else:
         enunciado = (
             f"{p1} e {p2} celebraram contrato bilateral no qual {p1} deveria entregar equipamentos no valor de {valor} "
             f"e {p2} deveria pagar o preço no ato da entrega. {p1} não entregou os equipamentos, mas ajuizou ação de cobrança contra {p2}. "
@@ -443,25 +443,6 @@ def generate_question_offline(subject: str, bank: str = "Revisão Oficial - Cont
         art = "Art. 476 do Código Civil"
         basis = "Art. 476. Nos contratos bilaterais, nenhum dos contratantes, antes de cumprida a sua obrigação, pode exigir o implemento da do outro."
         expl = "A exceção do contrato não cumprido decorre da interdependência e reciprocidade das prestações no contrato sinalagmático. Quem não adimpliu não pode cobrar a prestação alheia."
-
-    # 23. EVICÇÃO - CONCEITO, REQUISITOS E EFEITOS
-    else:
-        enunciado = (
-            f"{p1} adquiriu onerosamente de {p2} um imóvel urbano em {cidade} por {valor}. "
-            f"Após a imissão na posse, {p1} foi demandado em ação reivindicatória movida por {terceiro}, verdadeiro proprietário "
-            f"com registro imobiliário anterior à alienação, vindo {p1} a perder a propriedade por sentença transitada em julgado. "
-            f"Sobre o instituto da evicção e a responsabilidade do alienante {p2}, assinale a afirmativa correta:"
-        )
-        opts = {
-            "A": "Nos contratos onerosos, o alienante {p2} responde pela evicção, tendo {p1} direito à restituição integral do preço pago, despesas contratuais, frutos restituídos e custas judiciais (Arts. 447 e 450 do CC).",
-            "B": "A perda do bem por sentença judicial caracteriza vício redibitório funcional sujeito a prazo decadencial de trinta dias.",
-            "C": "A responsabilidade pela evicção só existe se {p2} tiver agido com dolo comprovado, sendo isento o alienante de boa-fé.",
-            "D": "A evicção é vedada nos negócios que envolvam bens imóveis matriculados no registro público."
-        }
-        gabarito = "A"
-        art = "Arts. 447 e 450 do Código Civil"
-        basis = "Art. 447. Nos contratos onerosos, o alienante responde pela evicção. Art. 450. Salvo estipulação em contrário, tem direito o evicto à restituição integral do preço e indenização dos prejuízos diretos."
-        expl = "A evicção é a perda da coisa adquirida em contrato oneroso para terceiro em virtude de decisão judicial anterior. O alienante responde objetivamente pela garantia."
 
     # Embaralha alternativas mantendo consistência do gabarito
     keys = ["A", "B", "C", "D"]

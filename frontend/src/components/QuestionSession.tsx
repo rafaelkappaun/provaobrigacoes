@@ -25,8 +25,7 @@ const CONTRATOS_SUBJECTS = [
   "Vício Redibitório vs. Entrega de Coisa Diversa (Aliud Pro Alio)",
   "Prazos Decadenciais dos Vícios Redibitórios",
   "Extinção dos Contratos - Resolução e Cláusula Resolutiva",
-  "Exceção do Contrato Não Cumprido e Onerosidade Excessiva",
-  "Evicção - Conceito, Requisitos e Efeitos"
+  "Exceção do Contrato Não Cumprido e Onerosidade Excessiva"
 ];
 
 const MULTIPORTAS_SUBJECTS = [

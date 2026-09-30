@@ -129,11 +129,6 @@ TOPIC_STUDY_GUIDE: Dict[str, Dict[str, str]] = {
         "articles": "Arts. 476 a 480 do Código Civil",
         "key_concept": "Exceptio non adimpleti contractus (art. 476): nenhum contratante pode exigir a prestação do outro sem antes ter cumprido a sua. Onerosidade excessiva (art. 478): resolução em contratos de execução continuada/diferida por evento extraordinário e imprevisível.",
         "trap": "A resolução por onerosidade excessiva pode ser evitada se a parte contrária oferecer modificação equitativa das condições contratuais (art. 479)."
-    },
-    "Evicção - Conceito, Requisitos e Efeitos": {
-        "articles": "Arts. 447 a 457 do Código Civil",
-        "key_concept": "Perda total ou parcial da posse/propriedade por decisão judicial ou ato administrativo fundada em causa jurídica anterior à alienação. O alienante responde pelos prejuízos, salvo cláusula expressa de exclusão com ciência e assunção do risco pelo evicto.",
-        "trap": "A cláusula de não responder pela evicção (sem ciência e assunção do risco) não impede o evicto de recobrar o preço que pagou pela coisa evicta (art. 449)."
     }
 }
 

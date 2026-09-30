@@ -159,8 +159,6 @@ def audit_seeds():
         ('penal_09_a_maria_da_penha_art16', 'perante o juiz'),
         ('penal_10_a_anpp_art28a', 'inferior a 4 anos'),
         ('penal_17_d_doutrinarias_sumula145_esperado', 'súmula 145'),
-        ('contratos_23_a_eviccao_conceito', 'perda'),
-        ('contratos_23_c_eviccao_parcial_consideravel', 'rescisão total'),
         ('multi_01_a_carnelutti_lide', 'pretensão resistida'),
         ('multi_05_a_mediacao_papel_vedacao', 'facilitar o diálogo'),
         ('multi_05_b_conciliacao_propositivo', 'sugerir soluções'),
